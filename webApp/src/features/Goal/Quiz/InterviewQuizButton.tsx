@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Badge, Button, Stack } from '@mui/material';
 import { ArrowRight } from 'lucide-react';
 
@@ -40,6 +40,14 @@ export const InterviewQuizButton: React.FC<{
   secondButtonAnalyticsId,
   quiet = false,
 }) => {
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const ignoreClickAfterTouch = useRef(false);
+
+  const activate = () => {
+    if (disabled) return;
+    onClick?.();
+  };
+
   return (
     <Stack
       sx={{
@@ -72,7 +80,35 @@ export const InterviewQuizButton: React.FC<{
         }}
       >
         <Button
-          onClick={onClick}
+          onMouseDown={(event) => {
+            event.preventDefault();
+          }}
+          onTouchStart={(event) => {
+            const touch = event.changedTouches[0];
+            if (!touch) return;
+            touchStart.current = { x: touch.clientX, y: touch.clientY };
+          }}
+          onTouchEnd={(event) => {
+            const start = touchStart.current;
+            touchStart.current = null;
+            const touch = event.changedTouches[0];
+            if (!start || !touch || disabled) return;
+            const moved = Math.hypot(touch.clientX - start.x, touch.clientY - start.y);
+            if (moved > 12) return;
+            if (event.cancelable) event.preventDefault();
+            ignoreClickAfterTouch.current = true;
+            activate();
+            window.setTimeout(() => {
+              ignoreClickAfterTouch.current = false;
+            }, 700);
+          }}
+          onClick={() => {
+            if (ignoreClickAfterTouch.current) {
+              ignoreClickAfterTouch.current = false;
+              return;
+            }
+            activate();
+          }}
           variant={quiet ? 'text' : 'contained'}
           color={color}
           disabled={disabled}
@@ -88,6 +124,7 @@ export const InterviewQuizButton: React.FC<{
             textAlign: 'left',
             textTransform: quiet ? 'none' : undefined,
             opacity: quiet ? 0.8 : 1,
+            touchAction: 'manipulation',
           }}
           fullWidth
           endIcon={quiet ? undefined : endIcon || <ArrowRight />}

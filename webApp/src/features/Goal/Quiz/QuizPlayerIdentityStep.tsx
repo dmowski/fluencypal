@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { InfoStep } from '../../Survey/InfoStep';
@@ -25,6 +25,8 @@ export const QuizPlayerIdentityStep = ({
   const [username, setUsername] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const savingRef = useRef(false);
+  const avatarTouchStart = useRef<{ x: number; y: number } | null>(null);
 
   const trimmed = username.trim();
   const isTooShort = trimmed.length > 0 && trimmed.length < MIN_USERNAME_LENGTH;
@@ -33,9 +35,9 @@ export const QuizPlayerIdentityStep = ({
     game.userNames &&
     Object.entries(game.userNames).some(([id, name]) => id !== auth.uid && name === trimmed),
   );
+  // A stalled Firestore listener in an in-app webview must not keep Next disabled.
   const canContinue =
     Boolean(auth.uid) &&
-    !game.isLoading &&
     trimmed.length >= MIN_USERNAME_LENGTH &&
     !isTaken &&
     Boolean(selectedAvatar) &&
@@ -43,7 +45,8 @@ export const QuizPlayerIdentityStep = ({
     !isStepLoading;
 
   const save = async () => {
-    if (!canContinue || !selectedAvatar) return;
+    if (savingRef.current || !canContinue || !selectedAvatar) return;
+    savingRef.current = true;
     setSaving(true);
     try {
       await game.updateUsername(trimmed);
@@ -52,6 +55,7 @@ export const QuizPlayerIdentityStep = ({
     } catch (error) {
       Sentry.captureException(error);
     } finally {
+      savingRef.current = false;
       setSaving(false);
     }
   };
@@ -118,6 +122,24 @@ export const QuizPlayerIdentityStep = ({
                       aria-selected={isSelected}
                       aria-label={i18n._('Avatar {number}', { number: index + 1 })}
                       data-selected={isSelected ? 'true' : 'false'}
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                      }}
+                      onTouchStart={(event) => {
+                        const touch = event.changedTouches[0];
+                        if (!touch) return;
+                        avatarTouchStart.current = { x: touch.clientX, y: touch.clientY };
+                      }}
+                      onTouchEnd={(event) => {
+                        const start = avatarTouchStart.current;
+                        avatarTouchStart.current = null;
+                        const touch = event.changedTouches[0];
+                        if (!start || !touch) return;
+                        const moved = Math.hypot(touch.clientX - start.x, touch.clientY - start.y);
+                        if (moved > 12) return;
+                        if (event.cancelable) event.preventDefault();
+                        setSelectedAvatar(url);
+                      }}
                       onClick={() => setSelectedAvatar(url)}
                       sx={{
                         flex: '0 0 auto',
@@ -126,6 +148,7 @@ export const QuizPlayerIdentityStep = ({
                         background: 'transparent',
                         borderRadius: '50%',
                         cursor: 'pointer',
+                        touchAction: 'manipulation',
                         padding: index === 0 ? '0 0 0 10px' : '0',
                       }}
                     >

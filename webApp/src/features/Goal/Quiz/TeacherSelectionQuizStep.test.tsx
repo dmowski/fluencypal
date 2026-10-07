@@ -58,12 +58,6 @@ jest.mock('./useQuizTeacherVoice', () => ({
   useQuizTeacherVoice: () => mockUseQuizTeacherVoice(),
 }));
 
-jest.mock('@/features/Settings/useSettings', () => ({
-  useSettings: () => ({
-    aiVoiceSpeed: 'normal',
-  }),
-}));
-
 jest.mock('@/features/Settings/VoiceSpeedSelector', () => ({
   VoiceSpeedSelector: () => null,
 }));

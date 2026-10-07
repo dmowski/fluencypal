@@ -40,7 +40,7 @@ vi.mock('@/features/Game/useGame', () => ({
     },
     updateUsername,
     setAvatar,
-    isLoading: false,
+    isLoading: true,
   }),
 }));
 

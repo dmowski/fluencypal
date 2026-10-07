@@ -6,7 +6,6 @@ import { ArrowRight } from 'lucide-react';
 import { InfoStep } from '../../Survey/InfoStep';
 import { FooterButton } from '../../Survey/FooterButton';
 import { useAuth } from '@/features/Auth/useAuth';
-import { useSettings } from '@/features/Settings/useSettings';
 import { VoiceSpeedSelector } from '@/features/Settings/VoiceSpeedSelector';
 import { SelectTeacher } from '@/features/Conversation/CallMode/SelectTeacher';
 import { useQuizTeacherVoice } from './useQuizTeacherVoice';
@@ -20,7 +19,6 @@ export const TeacherSelectionQuizStep = ({
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
-  const settings = useSettings();
   const { selectedVoice, savedVoice, selectVoice } = useQuizTeacherVoice();
   const isAuthReady = Boolean(auth.uid);
   const canContinue = isAuthReady && Boolean(savedVoice);
@@ -42,11 +40,7 @@ export const TeacherSelectionQuizStep = ({
               alignItems: 'flex-start',
             }}
           >
-            <SelectTeacher
-              selectedVoice={selectedVoice}
-              onSelectVoice={selectVoice}
-              voiceSpeed={settings.aiVoiceSpeed}
-            />
+            <SelectTeacher selectedVoice={selectedVoice} onSelectVoice={selectVoice} />
 
             <VoiceSpeedSelector />
           </Stack>

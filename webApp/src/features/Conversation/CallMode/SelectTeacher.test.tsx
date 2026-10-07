@@ -6,16 +6,6 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { SelectTeacher } from './SelectTeacher';
 
-jest.mock('@/features/Audio/useConversationAudio', () => ({
-  useConversationAudio: () => ({
-    isPlaying: false,
-  }),
-}));
-
-jest.mock('@/features/Audio/AudioPlayIcon', () => ({
-  AudioPlayIcon: () => null,
-}));
-
 const setNavigator = ({
   userAgent,
   maxTouchPoints = 0,
@@ -55,13 +45,18 @@ describe('SelectTeacher', () => {
     const onSelectVoice = jest.fn();
 
     render(
-      <SelectTeacher selectedVoice={null} onSelectVoice={onSelectVoice} voiceSpeed="normal" />,
+      <SelectTeacher selectedVoice={null} onSelectVoice={onSelectVoice} />,
     );
 
     expect(document.querySelectorAll('video')).toHaveLength(0);
     expect(document.querySelectorAll('img').length).toBeGreaterThan(0);
+    expect(screen.getByTestId('teacher-preview-audio-ash')).toHaveAttribute(
+      'src',
+      '/audio/teachers/ash.mp3',
+    );
 
-    fireEvent.click(screen.getByRole('button', { name: 'ash' }));
+    const ashCard = document.querySelector('[data-analytics="teacher-select"][aria-label="ash"]');
+    fireEvent.click(ashCard!);
     expect(onSelectVoice).toHaveBeenCalledWith('ash');
     expect(document.querySelectorAll('video')).toHaveLength(0);
   });
@@ -74,7 +69,7 @@ describe('SelectTeacher', () => {
     HTMLMediaElement.prototype.canPlayType = () => 'maybe';
 
     render(
-      <SelectTeacher selectedVoice={null} onSelectVoice={() => undefined} voiceSpeed="normal" />,
+      <SelectTeacher selectedVoice={null} onSelectVoice={() => undefined} />,
     );
 
     await waitFor(() => {

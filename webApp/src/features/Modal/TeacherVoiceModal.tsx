@@ -11,7 +11,6 @@ import { Check } from 'lucide-react';
 export const TeacherVoiceModal: React.FC = () => {
   const { i18n } = useLingui();
   const settings = useSettings();
-  const voiceSpeed = settings.aiVoiceSpeed;
 
   return (
     <>
@@ -45,11 +44,7 @@ export const TeacherVoiceModal: React.FC = () => {
               </Typography>
             </Stack>
             <VoiceSpeedSelector />
-            <SelectTeacher
-              selectedVoice={settings.voice}
-              onSelectVoice={settings.setVoice}
-              voiceSpeed={voiceSpeed}
-            />
+            <SelectTeacher selectedVoice={settings.voice} onSelectVoice={settings.setVoice} />
             <Button
               size="large"
               color="info"

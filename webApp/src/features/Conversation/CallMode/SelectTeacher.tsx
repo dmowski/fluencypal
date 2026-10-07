@@ -3,11 +3,8 @@ import { voiceAvatarMap } from './voiceAvatar';
 import { AiVoice } from '@/features/Ai/ai';
 import { AiAvatarVideo } from './AiAvatarVideo';
 import { AiAvatar } from './types';
-import { AudioPlayIcon } from '@/features/Audio/AudioPlayIcon';
-import { useConversationAudio } from '@/features/Audio/useConversationAudio';
+import { TeacherPreviewButton } from './TeacherPreviewButton';
 import { useState, useSyncExternalStore } from 'react';
-import { AiVoiceSpeed } from '@/features/Settings/userSettings';
-import { getVoiceSpeedInstruction } from './voiceSpeed';
 import { shouldForceTeacherCardPhoto } from './teacherCardMedia';
 
 const subscribeTeacherCardMedia = () => () => {};
@@ -27,11 +24,9 @@ const useForceTeacherCardPhoto = (): boolean =>
 export const SelectTeacher = ({
   selectedVoice,
   onSelectVoice,
-  voiceSpeed,
 }: {
   selectedVoice?: AiVoice | null;
   onSelectVoice: (voice: AiVoice) => void;
-  voiceSpeed: AiVoiceSpeed;
 }) => {
   const voices = Object.keys(voiceAvatarMap) as AiVoice[];
   const forcePhoto = useForceTeacherCardPhoto();
@@ -59,7 +54,6 @@ export const SelectTeacher = ({
             isSelected={isSelected}
             onToggle={() => onSelectVoice(voice)}
             voice={voice}
-            voiceSpeed={voiceSpeed}
             forcePhoto={forcePhoto}
           />
         );
@@ -73,21 +67,16 @@ export const AvatarCard = ({
   isSelected,
   onToggle,
   voice,
-  voiceSpeed,
   forcePhoto,
 }: {
   voice: AiVoice;
   aiAvatar: AiAvatar;
   isSelected: boolean;
   onToggle: () => void;
-  voiceSpeed: AiVoiceSpeed;
   forcePhoto: boolean;
 }) => {
-  const audio = useConversationAudio();
   const [isPlayingThisVoice, setIsPlayingThisVoice] = useState(false);
 
-  const voiceInstructionWithSpeed =
-    `${getVoiceSpeedInstruction(voiceSpeed)} ${aiAvatar.voiceInstruction}`.trim();
   return (
     <Stack
       sx={{
@@ -133,7 +122,7 @@ export const AvatarCard = ({
         >
           <AiAvatarVideo
             aiVideo={aiAvatar}
-            isSpeaking={audio.isPlaying && isPlayingThisVoice}
+            isSpeaking={isPlayingThisVoice}
             isUsePhoto={forcePhoto}
           />
         </Stack>
@@ -161,15 +150,9 @@ export const AvatarCard = ({
           transform: 'scale(1.3)',
         }}
       >
-        <AudioPlayIcon
-          text={aiAvatar.helloPhrases[0]}
-          customVoice={voice}
-          cache
-          analyticsId="teacher-preview-play"
-          buttonLabel={voice}
-          useElementPlayback={forcePhoto}
-          customInstructions={voiceInstructionWithSpeed}
-          onChangeState={(isPlaying) => {
+        <TeacherPreviewButton
+          voice={voice}
+          onPlayingChange={(isPlaying) => {
             setIsPlayingThisVoice(isPlaying);
             if (isPlaying && !isSelected) {
               onToggle();

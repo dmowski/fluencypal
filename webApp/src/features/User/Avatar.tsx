@@ -28,6 +28,9 @@ export const Avatar = ({
         borderRadius: '50%',
         position: 'relative',
         cursor: onClick ? 'pointer' : 'default',
+        '& img, & span': {
+          pointerEvents: 'none',
+        },
 
         boxShadow: isActive
           ? `0px 0px 0px 2px ${activeColor || 'rgba(0, 185, 252, 1)'}`
@@ -44,6 +47,7 @@ export const Avatar = ({
           zIndex: 2,
           borderRadius: '50%',
           boxShadow: 'inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1)',
+          pointerEvents: 'none',
         },
       }}
     >
@@ -57,6 +61,7 @@ export const Avatar = ({
             objectFit: 'cover',
             zIndex: 1,
             borderRadius: '50%',
+            pointerEvents: 'none',
           }}
         />
       )}
