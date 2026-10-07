@@ -6,6 +6,7 @@ This repository is a monorepo with two active project areas:
 - `landing/`: Next.js application (Landing pages)
 - `helperProjects/trimAudios/`: Node.js CLI pipeline for audio processing and upload
 - `realtime/`: WebSocket AI conversation service (isolated package)
+- `googleAds/`: CLI for the Google Ads API (account state, change history, create and pause ads). See `googleAds/AGENTS.md`.
 
 Instruction hierarchy uses nearest-file precedence:
 
@@ -34,6 +35,11 @@ Use pnpm for all package operations.
 - Realtime unit tests: `cd realtime && pnpm test`
 - Realtime API e2e (Firebase emulator + service): `cd realtime && pnpm test:e2e`
 - Realtime browser e2e (Playwright): `cd realtime && pnpm test:e2e:browser`
+
+- Google Ads install: `cd googleAds && pnpm install`
+- Google Ads typecheck: `cd googleAds && pnpm typecheck`
+- Google Ads unit tests: `cd googleAds && pnpm test`
+- Google Ads commands: `cd googleAds && pnpm ads -- <command>` (see `googleAds/AGENTS.md`)
 
 When changing one area, run checks for that area first. Avoid running full Playwright by default unless the task touches e2e-sensitive behavior.
 
