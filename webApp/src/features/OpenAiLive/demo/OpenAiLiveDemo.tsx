@@ -147,9 +147,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
             </Button>
           </AuthWall>
         ) : null}
-        <Button href={`${getUrlStart(pageLanguage)}quiz`} variant="text">
-          {i18n._('Create my learning plan instead')}
-        </Button>
+
         {reviewLines.length > 0 && ended ? (
           <Stack sx={{ gap: 1, mt: 2 }}>
             <Typography component="h2" variant="h5">
