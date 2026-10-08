@@ -13,6 +13,7 @@ import {
   isPaidAccessPlanId,
   paidAccessCheckoutUsd,
   paidAccessGrantForCheckout,
+  formatHourCount,
   paidAccessStripeName,
   PaidAccessPlanId,
 } from '@/features/Price/paidAccessPlans';
@@ -100,6 +101,9 @@ export async function POST(request: Request) {
           },
         ],
         mode: 'payment',
+        ...(hoursCheckout.product === 'advanced-hours'
+          ? {}
+          : { payment_intent_data: { description: hoursCheckout.description } }),
         ...stripeCheckoutTaxCollection,
         success_url: hoursCheckout.successUrl,
         cancel_url: hoursCheckout.cancelUrl,
@@ -163,6 +167,9 @@ export async function POST(request: Request) {
         : paidAccessGrantForCheckout({ plan, months, days });
 
       const stripeMoney = Number(toStripeUnit(totalPrice, stripeCurrency.toUpperCase()));
+      const receiptDescription = isDayPass
+        ? `FluencyPal English language course — paid access for ${days} day${days > 1 ? 's' : ''}`
+        : paidAccessStripeName(plan, months, days);
 
       const session = await stripe.checkout.sessions.create({
         line_items: [
@@ -170,17 +177,14 @@ export async function POST(request: Request) {
             price_data: stripeInclusivePriceData({
               currency: stripeCurrency,
               unitAmount: stripeMoney,
-              name: isDayPass
-                ? `Paid access for ${days} day${days > 1 ? 's' : ''}`
-                : paidAccessStripeName(plan, months, days),
-              description: isDayPass
-                ? `Add ${days} day${days > 1 ? 's' : ''} of paid access`
-                : paidAccessStripeName(plan, months, days),
+              name: receiptDescription,
+              description: receiptDescription,
             }),
             quantity: 1,
           },
         ],
         mode: 'payment',
+        payment_intent_data: { description: receiptDescription },
         ...stripeCheckoutTaxCollection,
         success_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true&paymentSuccess=true`,
         cancel_url: `${siteUrl}${getUrlStart(supportedLang)}practice?paymentModal=true`,
@@ -239,10 +243,12 @@ const getHoursCheckoutConfig = ({
     pricePerHourInCurrency: isAdvancedHours ? unitPriceUsd : unitPriceUsd * rate,
     maxHours: isAdvancedHours ? 20 : 40,
     minHours: isAdvancedHours ? 1 : 0,
-    name: isAdvancedHours ? 'Advanced AI Talking' : 'Balance Top-up',
+    name: isAdvancedHours
+      ? 'Advanced AI Talking'
+      : `FluencyPal English language course — ${formatHourCount(amountOfHours)} of speaking practice`,
     description: isAdvancedHours
       ? `Add ${amountOfHours} hour(s) of advanced AI talking`
-      : `Add ${amountOfHours} hours to your account balance`,
+      : `FluencyPal English language course — ${formatHourCount(amountOfHours)} of speaking practice`,
     successUrl: isAdvancedHours
       ? `${siteUrl}${advancedPath}?paymentSuccess=true`
       : `${siteUrl}${practicePath}?paymentModal=true&paymentSuccess=true`,

@@ -43,6 +43,8 @@ export const createOpenAiLiveCheckout = async ({
   const lang = supportedLanguages.find((code) => code === languageCode) || 'en';
   const practicePath = `${getUrlStart(lang)}practice`;
   const stripe = new Stripe(stripeKey);
+  const hourLabel = hours === 1 ? '1 hour' : `${hours} hours`;
+  const receiptDescription = `FluencyPal English language course — ${hourLabel} of live conversation practice`;
 
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -50,13 +52,14 @@ export const createOpenAiLiveCheckout = async ({
         price_data: stripeInclusivePriceData({
           currency: stripeCurrency,
           unitAmount,
-          name: 'Live conversation balance',
-          description: `Add ${hours} hour(s) of live AI conversation`,
+          name: receiptDescription,
+          description: receiptDescription,
         }),
         quantity: 1,
       },
     ],
     mode: 'payment',
+    payment_intent_data: { description: receiptDescription },
     ...stripeCheckoutTaxCollection,
     success_url: `${siteUrl}${practicePath}?openAiLive=paid`,
     cancel_url: `${siteUrl}${practicePath}?openAiLive=buy`,

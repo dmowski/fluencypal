@@ -52,9 +52,14 @@ describe('paid access plans', () => {
   });
 
   it('names the Stripe product after the grant', () => {
-    expect(paidAccessStripeName('practice', 1, 0)).toBe('Paid access for a month');
+    expect(paidAccessStripeName('practice', 1, 0)).toBe(
+      'FluencyPal English language course — paid access for a month',
+    );
     expect(paidAccessStripeName('conversation', 1, 0)).toBe(
-      'Paid access for a month, with 1 hour of advanced conversation',
+      'FluencyPal English language course — paid access for a month, including 1 hour of conversation practice',
+    );
+    expect(paidAccessStripeName('conversation-10', 1, 0)).toBe(
+      'FluencyPal English language course — paid access for a month, including 10 hours of conversation practice',
     );
     expect(formatHourCount(0.5)).toBe('30 minutes');
   });

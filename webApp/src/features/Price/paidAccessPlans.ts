@@ -129,13 +129,14 @@ export const paidAccessStripeName = (
   const grant = paidAccessGrantForCheckout({ plan, months, days });
   const extras: string[] = [];
   if (grant.advancedHours > 0) {
-    extras.push(`${formatHourCount(grant.advancedHours)} of advanced conversation`);
+    extras.push(`${formatHourCount(grant.advancedHours)} of conversation practice`);
   }
   if (grant.communityMonths > 0 || grant.communityDays > 0) {
     extras.push('group conversations');
   }
-  if (extras.length === 0) return `Paid access for ${length}`;
-  return `Paid access for ${length}, with ${extras.join(' and ')}`;
+  const access = `FluencyPal English language course — paid access for ${length}`;
+  if (extras.length === 0) return access;
+  return `${access}, including ${extras.join(' and ')}`;
 };
 
 export const formatHourCount = (hours: number): string => {
