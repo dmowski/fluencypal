@@ -22,7 +22,7 @@ export function communityCallPath({
   return communityCallStepIds.filter((step) => {
     if (step === 'pageLanguage') return includePageLanguage;
     if (step === 'account') return includeAccount;
-    if (step === 'membership' || step === 'waiting') return false;
+    if (step === 'language' || step === 'membership' || step === 'waiting') return false;
     return true;
   });
 }
@@ -40,7 +40,7 @@ export function resolveCommunityCallStep(
 ): CommunityCallStep | 'practice' {
   if (path.includes(step as CommunityCallStep)) return step as CommunityCallStep;
   const requestedIndex = communityCallStepIds.indexOf(step as CommunityCallStep);
-  if (requestedIndex === -1) return path[0] ?? 'language';
+  if (requestedIndex === -1) return path[0] ?? 'calls';
   const next = communityCallStepIds.slice(requestedIndex + 1).find((item) => path.includes(item));
   return next ?? 'practice';
 }

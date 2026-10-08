@@ -13,13 +13,7 @@ const full = {
 
 describe('communityCallPath', () => {
   it('keeps page language and account, and skips the old membership step', () => {
-    expect(communityCallPath(full)).toEqual([
-      'language',
-      'calls',
-      'native',
-      'pageLanguage',
-      'account',
-    ]);
+    expect(communityCallPath(full)).toEqual(['calls', 'native', 'pageLanguage', 'account']);
   });
 
   it('skips page language when the native language is already a site language', () => {
@@ -31,7 +25,7 @@ describe('communityCallPath', () => {
         includePageLanguage: false,
         includeAccount: true,
       }),
-    ).toEqual(['language', 'calls', 'native', 'account']);
+    ).toEqual(['calls', 'native', 'account']);
   });
 
   it('skips account for someone who is already signed in', () => {
@@ -40,7 +34,7 @@ describe('communityCallPath', () => {
         includePageLanguage: false,
         includeAccount: false,
       }),
-    ).toEqual(['language', 'calls', 'native']);
+    ).toEqual(['calls', 'native']);
   });
 });
 
@@ -62,7 +56,11 @@ describe('resolveCommunityCallStep', () => {
   });
 
   it('falls back to the first step for an unknown value', () => {
-    expect(resolveCommunityCallStep('date', path)).toBe('language');
+    expect(resolveCommunityCallStep('date', path)).toBe('calls');
+  });
+
+  it('sends an old language link to the calls list', () => {
+    expect(resolveCommunityCallStep('language', path)).toBe('calls');
   });
 });
 
@@ -70,9 +68,9 @@ describe('community call neighbours', () => {
   const path = communityCallPath(full);
 
   it('walks forward and back', () => {
-    expect(nextCommunityCallStep('language', path)).toBe('calls');
-    expect(previousCommunityCallStep('calls', path)).toBe('language');
+    expect(nextCommunityCallStep('calls', path)).toBe('native');
+    expect(previousCommunityCallStep('calls', path)).toBeNull();
     expect(nextCommunityCallStep('account', path)).toBeNull();
-    expect(previousCommunityCallStep('language', path)).toBeNull();
+    expect(previousCommunityCallStep('native', path)).toBe('calls');
   });
 });

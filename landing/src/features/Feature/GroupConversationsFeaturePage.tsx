@@ -5,8 +5,9 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
-import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
+import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { englishGroupCallOnboardingHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { FeatureData } from './types';
@@ -19,7 +20,7 @@ export const GroupConversationsFeaturePage = ({
   feature: FeatureData;
 }) => {
   const i18n = getI18nInstance(lang);
-  const appHref = `${getAppUrlStart(lang)}community-call`;
+  const appHref = englishGroupCallOnboardingHref(lang);
   const urlStart = getUrlStart(lang);
   const expectations = [
     {

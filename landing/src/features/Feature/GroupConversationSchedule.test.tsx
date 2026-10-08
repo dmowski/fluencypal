@@ -5,6 +5,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { renderWithI18n } from '@/features/Alias/test-utils/i18nTestHelper';
+import { englishGroupCallOnboardingHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { groupCallTimeLabel } from './groupCallTimeLabel';
@@ -13,7 +14,7 @@ import { resetEnglishGroupCallsCache } from './useEnglishGroupCalls';
 const sooner = '2027-06-03T17:00:00.000Z';
 const later = '2027-06-04T18:30:00.000Z';
 const afterThat = '2027-06-05T12:00:00.000Z';
-const href = 'https://app.fluencypal.com/community-call';
+const href = englishGroupCallOnboardingHref('en');
 
 const payload = {
   calls: [
@@ -23,6 +24,17 @@ const payload = {
     { id: 'spanish', startsAtIso: sooner, languageCode: 'es', joinCount: 9 },
   ],
 };
+
+describe('english group-call links', () => {
+  it('opens the calls list with English already selected', () => {
+    expect(englishGroupCallOnboardingHref('en')).toBe(
+      'https://app.fluencypal.com/community-call?step=calls&learn=en',
+    );
+    expect(englishGroupCallOnboardingHref('ko')).toBe(
+      'https://app.fluencypal.com/ko/community-call?step=calls&learn=en',
+    );
+  });
+});
 
 describe('group conversation times', () => {
   beforeEach(() => {

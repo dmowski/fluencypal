@@ -5,13 +5,8 @@ import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { isTMA } from '@telegram-apps/sdk-react';
 import { useRouter } from 'next/navigation';
-import {
-  SupportedLanguage,
-  fullLanguageName,
-  supportedLanguages,
-  supportedLanguagesToLearn,
-} from '@/features/Lang/lang';
-import { LangSelector, LanguageButton } from '@/features/Lang/LangSelector';
+import { SupportedLanguage, fullLanguageName, supportedLanguages } from '@/features/Lang/lang';
+import { LanguageButton } from '@/features/Lang/LangSelector';
 import { getLandingUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
 import { replaceUrlToLang } from '@/features/Lang/replaceLangInUrl';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -46,13 +41,11 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
   const router = useRouter();
   const auth = useAuth();
   const settings = useSettings();
-  const fallbackLearn = fluencyCallLanguageCode(lang);
-  const [learnParam, setLearnParam] = useUrlState('learn', fallbackLearn, false);
   const [nativeParam, setNativeParam] = useUrlState('native', '', false);
-  const [stepParam, setStepParam] = useUrlState('step', 'language', true);
+  const [stepParam, setStepParam] = useUrlState('step', 'calls', true);
   const [pageLanguage, setPageLanguage] = useState<SupportedLanguage>(lang);
 
-  const learn = fluencyCallLanguageCode(learnParam);
+  const learn = fluencyCallLanguageCode('en');
   const includePageLanguage = needsCommunityCallPageLanguage(nativeParam);
   const includeAccount = auth.loading || !auth.isIdentified;
   const path = useMemo(
@@ -60,7 +53,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     [includeAccount, includePageLanguage],
   );
   const destination = resolveCommunityCallStep(stepParam, path);
-  const step: CommunityCallStep = destination === 'practice' ? 'language' : destination;
+  const step: CommunityCallStep = destination === 'practice' ? 'calls' : destination;
   const stepIndex = Math.max(path.indexOf(step), 0);
   const progress = (stepIndex + 1) / path.length;
   const isTelegramApp = useMemo(() => isTMA(), []);
@@ -92,11 +85,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       void setStepParam(destination);
     }
   }, [auth.loading, destination, setStepParam, stepParam]);
-
-  const continueFromLanguage = async () => {
-    await persistLearn();
-    await setStepParam('calls');
-  };
 
   const continueFromNative = async () => {
     if (!nativeParam) return;
@@ -187,38 +175,14 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         width="600px"
       />
       <Stack sx={{ width: '100%', maxWidth: '600px', padding: '0 10px' }}>
-        {step === 'language' ? (
-          <Stack data-testid="community-call-language" sx={{ gap: '16px' }}>
-            <Typography variant="h4" sx={{ fontWeight: 800 }}>
-              {i18n._('I want to learn:')}
-            </Typography>
-            <LangSelector
-              value={learn}
-              availableList={supportedLanguagesToLearn}
-              onChange={(next) => {
-                void setLearnParam(next);
-              }}
-            />
-            <Button
-              variant="contained"
-              size="large"
-              data-testid="community-call-next"
-              data-analytics="community-call-language-continue"
-              onClick={() => {
-                void continueFromLanguage();
-              }}
-              sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
-            >
-              {i18n._('Next')}
-            </Button>
-          </Stack>
-        ) : null}
-
         {step === 'calls' ? (
           <CommunityCallScheduleStep
             language={learn}
             onContinue={() => {
-              void setStepParam('native');
+              void (async () => {
+                await persistLearn();
+                await setStepParam('native');
+              })();
             }}
           />
         ) : null}
