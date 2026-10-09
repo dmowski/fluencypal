@@ -53,9 +53,9 @@ const ReviewCard: React.FC<{ review: LandingReview; index: number }> = ({ review
         padding: '32px 28px',
         gap: '20px',
         width: '100%',
-        borderRadius: '16px',
         backgroundColor: '#fff',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06)',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        borderRadius: '15px',
         justifyContent: 'space-between',
         '@media (max-width: 600px)': {
           padding: '24px 20px',

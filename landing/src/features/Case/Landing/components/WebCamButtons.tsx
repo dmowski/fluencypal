@@ -40,9 +40,7 @@ export const WebCamButtons = ({
           backgroundColor: isPlaying ? 'rgba(255, 255, 255, 0.3)' : '#1E88FF',
           color: '#fff',
           transition: 'all 0.2s ease-in-out',
-          boxShadow: isPlaying
-            ? '0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 1)'
-            : '0 8px 28px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(255, 255, 255, 1)',
+
           ':hover': {
             backgroundColor: '#3A98FF',
           },

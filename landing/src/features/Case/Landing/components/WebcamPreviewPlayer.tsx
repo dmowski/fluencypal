@@ -8,7 +8,6 @@ const videoSx = {
   aspectRatio: '16/10',
   maxWidth: '100%',
   objectFit: 'cover',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.21)',
   backgroundColor: 'rgba(255, 255, 255, 0.05)',
   width: '100%',
   borderRadius: '12px 12px 0 0',

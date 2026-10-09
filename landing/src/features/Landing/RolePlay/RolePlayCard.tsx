@@ -20,7 +20,7 @@ export const RolePlayCard: React.FC<RolePlayCardProps> = ({ scenario, lang, heig
       href={`${getUrlStart(lang)}scenarios/${scenario.id}`}
       sx={{
         position: 'relative',
-        backgroundColor: 'rgba(0, 0, 10, 0.01)',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
         color: '#111',
         border: '1px solid rgba(0, 0, 0, 0.1)',
         width: '100%',
