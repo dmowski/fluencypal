@@ -201,9 +201,8 @@ export function AdminStats() {
       <Stack
         sx={{
           flexDirection: 'row',
-          alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '20px',
+          gap: '10px',
         }}
       >
         <Button
