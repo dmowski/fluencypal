@@ -508,15 +508,15 @@ msgstr "Додайте більше годин"
 msgid "Add my question"
 msgstr "Додати моє питання"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:193
-#. js-lingui-explicit-id
-msgid "Add new goal"
-msgstr "Додати нову ціль"
-
 #: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Додати нову нотатку"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:134
+#. js-lingui-explicit-id
+msgid "Add new plan"
+msgstr "Додати новий план"
 
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
@@ -973,6 +973,7 @@ msgstr "Аналізуємо ваші введення..."
 msgid "Analyzing..."
 msgstr "Аналізуємо..."
 
+#: src/features/Auth/AuthSignInStep.tsx:226
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
@@ -1080,6 +1081,11 @@ msgstr "Architecture & Resiliency - Архітектура та стійкіст
 msgid "Are there any hidden fees?"
 msgstr "Чи є приховані комісії?"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:48
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Ви впевнені, що хочете видалити \"{title}\"? Цю дію не можна буде скасувати."
+
 #: src/features/Chat/Message/Message.tsx:301
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
@@ -1105,11 +1111,6 @@ msgstr "Ви впевнені, що хочете видалити цей про�
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "Ви впевнені, що хочете видалити свій аккаунт?"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:41
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr "Ви впевнені, що хочете видалити свою мету? Цю дію не можна скасувати."
 
 #: src/features/Game/Battle/BattleCard.tsx:339
 #. js-lingui-explicit-id
@@ -1248,6 +1249,7 @@ msgstr "Середній бал за граматику, словниковий 
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1636,6 +1638,11 @@ msgstr "Купівля {hours} годин розмовного часу"
 msgid "By continuing, you agree to our"
 msgstr "Продовжуючи, ви погоджуєтеся з нашими"
 
+#: src/features/Auth/AuthSignInStep.tsx:220
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to the"
+msgstr "Продовжуючи, ви погоджуєтесь з"
+
 #: src/features/Case/data/backendCSharp/techData.ts:23
 #. js-lingui-explicit-id
 msgid "C#"
@@ -1879,7 +1886,7 @@ msgstr "Перевірте запропоновані слова"
 msgid "Check your access and included conversation time."
 msgstr "Перевірте свій доступ і включений час розмови."
 
-#: src/features/Auth/AuthWallBasic.tsx:201
+#: src/features/Auth/AuthSignInStep.tsx:266
 #: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Check your email"
@@ -1890,7 +1897,7 @@ msgstr "Перевірте вашу електронну пошту"
 msgid "Check Your Progress"
 msgstr "Перевірте Свій Прогрес"
 
-#: src/features/Auth/AuthWallBasic.tsx:216
+#: src/features/Auth/AuthSignInStep.tsx:281
 #: src/features/Reader/components/ReaderSignInModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
@@ -2697,7 +2704,7 @@ msgstr "Завершіть речення"
 msgid "Complete verification to proceed."
 msgstr "Завершіть перевірку, щоб продовжити."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:137
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "Завершено"
@@ -2927,7 +2934,8 @@ msgstr "Контекст (тема, аудиторія, мета...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3022,7 +3030,7 @@ msgstr "Деталі контракту"
 msgid "Contract Tests"
 msgstr "Тестування контрактів"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:55
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3214,6 +3222,7 @@ msgstr ""
 "Не вдалося почати роботу з вашим обліковим записом. Будь ласка, спробуйте "
 "ще раз."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3261,6 +3270,7 @@ msgstr ""
 "говоріння чи слухання, і слідкуйте за своїм прогресом, щоб ефективно "
 "оволодіти англійською."
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:178
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3441,7 +3451,7 @@ msgstr "інтерв'ю розробника C#"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "Цікавість робить навчання цікавим. Вивчайте сьогоднішні завдання."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:210
+#: src/features/Dashboard/PlanDashboardCards.tsx:120
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -3557,7 +3567,7 @@ msgstr ""
 "допомагають вам сформувати звичку до навчання і зміцнюють ваші навички, щоб "
 "швидше покращити вільне володіння мовою."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:164
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:162
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
@@ -4016,11 +4026,6 @@ msgstr "Видалити аналіз"
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Видалити чат"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:378
-#. js-lingui-explicit-id
-msgid "Delete current goal"
-msgstr "Видалити поточну мету"
 
 #: src/features/Reader/components/DeleteBookModal.tsx:114
 #. js-lingui-explicit-id
@@ -4652,7 +4657,7 @@ msgstr "Вісімдесять днів — ваша послідовність 
 msgid "Either you run the day, or the day runs you."
 msgstr "Або ти керуєш днем, або день керує тобою."
 
-#: src/features/Auth/AuthWallBasic.tsx:244
+#: src/features/Auth/AuthSignInStep.tsx:135
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4806,11 +4811,6 @@ msgstr "Задоволення допомагає закріпити звичк�
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "Досить говорити? Час вдосконалитися!"
-
-#: src/features/Auth/AuthWallBasic.tsx:233
-#. js-lingui-explicit-id
-msgid "Enter your email to get a sign-in link"
-msgstr "Введіть свій email, щоб отримати посилання для входу"
 
 #: src/features/Reader/components/SendToKindleModal.tsx:232
 #. js-lingui-explicit-id
@@ -5983,11 +5983,12 @@ msgstr "Загальний AI Асистент"
 msgid "General Assistant"
 msgstr "Загальний асистент"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:395
+#: src/features/Dashboard/PlanDashboardCards.tsx:292
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Створюйте більше унікальних уроків"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -5998,7 +5999,9 @@ msgstr "Згенерувати план"
 msgid "Generating explanation..."
 msgstr "Генерування пояснення..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:394
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Генеруємо..."
@@ -6221,8 +6224,8 @@ msgid "Go to the main page"
 msgstr "Перейти на головну сторінку"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
-#: src/features/Dashboard/PlanDashboardCards.tsx:353
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
+#: src/features/Dashboard/PlanDashboardCards.tsx:268
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Мета"
@@ -6819,7 +6822,7 @@ msgstr ""
 msgid "I accept the"
 msgstr "Я приймаю"
 
-#: src/features/Auth/AuthWallBasic.tsx:277
+#: src/features/Auth/AuthWallBasic.tsx:224
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:85
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:47
 #. js-lingui-explicit-id
@@ -6964,6 +6967,11 @@ msgstr ""
 "Я хочу вивчити англійську, щоб мати можливість пройти співбесіду на роботу. "
 "Я лікар, і мені потрібно пояснити свій досвід та відповідати на запитання "
 "про мою роботу."
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#. js-lingui-explicit-id
+msgid "I want to learn it so I can..."
+msgstr "Я хочу вивчити це, щоб я міг..."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
@@ -7250,7 +7258,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Менш ніж за 5 хвилин ви отримаєте:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:405
+#: src/features/Dashboard/PlanDashboardCards.tsx:302
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Щоб генерувати більше уроків, вам потрібно завершити принаймні 3 уроки"
@@ -7524,11 +7532,6 @@ msgstr "Представтеся"
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
 msgstr "Представте себе як бекенд-інженера"
-
-#: src/features/Auth/AuthWallBasic.tsx:212
-#. js-lingui-explicit-id
-msgid "Invite Link Sent to:"
-msgstr "Запрошувальне посилання надіслано на:"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
@@ -8008,7 +8011,7 @@ msgstr "Навчайтеся з спільнотою"
 msgid "Learning never exhausts the mind."
 msgstr "Навчання ніколи не виснажує розум."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:129
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Шлях навчання"
@@ -8212,7 +8215,7 @@ msgstr "Завантаження..."
 #: src/features/Conversation/ConversationReviewModal.tsx:138
 #: src/features/Conversation/ConversationReviewModal.tsx:153
 #: src/features/Conversation/ConversationReviewModal.tsx:171
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
@@ -8676,7 +8679,7 @@ msgstr ""
 msgid "More options"
 msgstr "Більше опцій"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#: src/features/Dashboard/PlanDashboardCards.tsx:264
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Більше унікальних уроків"
@@ -8821,7 +8824,7 @@ msgstr "Новини"
 msgid "News Discussion"
 msgstr "Обговорення новин"
 
-#: src/features/Auth/AuthWallBasic.tsx:265
+#: src/features/Auth/AuthWallBasic.tsx:212
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
@@ -9485,7 +9488,7 @@ msgstr "Ой! Щось пішло не так"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -9578,6 +9581,11 @@ msgid ""
 msgstr ""
 "Необов’язково: спеціальний словниковий запас, фонові деталі, заперечення, "
 "питання або поведінка"
+
+#: src/features/Auth/AuthSignInStep.tsx:175
+#. js-lingui-explicit-id
+msgid "or"
+msgstr "або"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:154
 #. js-lingui-explicit-id
@@ -10009,6 +10017,11 @@ msgstr "Місце для обміну думками"
 msgid "Plan for"
 msgstr "План для"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:62
+#. js-lingui-explicit-id
+msgid "Plan settings"
+msgstr "Налаштування плану"
+
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:61
 #. js-lingui-explicit-id
 msgid "Plans & access"
@@ -10149,7 +10162,7 @@ msgstr "Будь ласка, введіть ім'я для кожного гра
 msgid "Please enter a space title"
 msgstr "Будь ласка, введіть назву простору"
 
-#: src/features/Auth/AuthWallBasic.tsx:249
+#: src/features/Auth/AuthWallBasic.tsx:282
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:18
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -10781,8 +10794,9 @@ msgstr "Ціна за день"
 msgid "Priority support"
 msgstr "Пріоритетна підтримка"
 
+#: src/features/Auth/AuthSignInStep.tsx:223
 #: src/features/Auth/AuthWall.tsx:69
-#: src/features/Auth/AuthWallBasic.tsx:311
+#: src/features/Auth/AuthWallBasic.tsx:258
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Community/SupportPage.tsx:142
@@ -10828,6 +10842,7 @@ msgstr "Обробка існуючих знань в цьому мозку..."
 msgid "Processing latest session"
 msgstr "Обробка останньої сесії"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
@@ -11391,6 +11406,11 @@ msgstr "Записати більше"
 msgid "Record new essay"
 msgstr "Записати новий есе"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#. js-lingui-explicit-id
+msgid "Record with voice"
+msgstr "Записати голосом"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
@@ -11487,6 +11507,11 @@ msgstr "Видалити мову"
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "Видалити мої дані (видалити обліковий запис)"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:102
+#. js-lingui-explicit-id
+msgid "Remove plan"
+msgstr "Видалити план"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:38
 #. js-lingui-explicit-id
@@ -11669,7 +11694,7 @@ msgstr "Переглядайте, редагуйте або додавайте �
 msgid "Robot Thinking"
 msgstr "Робот думає"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:56
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11755,7 +11780,7 @@ msgstr "Маршрутизація"
 msgid "Rudeness"
 msgstr "Грубість"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:32
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11988,7 +12013,7 @@ msgstr "Відправити"
 msgid "Send at least 10 messages in Just talk"
 msgstr "Надішліть щонайменше 10 повідомлень у Просто говоріть."
 
-#: src/features/Auth/AuthWallBasic.tsx:221
+#: src/features/Auth/AuthSignInStep.tsx:296
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Надіслати електронний лист ще раз"
@@ -11998,15 +12023,15 @@ msgstr "Надіслати електронний лист ще раз"
 msgid "Send for approval"
 msgstr "Надіслати на затвердження"
 
+#: src/features/Auth/AuthSignInStep.tsx:164
+#. js-lingui-explicit-id
+msgid "Send link"
+msgstr "Надіслати посилання"
+
 #: src/features/Header/NotificationsModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Надсилати мені сповіщення електронною поштою"
-
-#: src/features/Auth/AuthWallBasic.tsx:230
-#. js-lingui-explicit-id
-msgid "Send me sign-in link"
-msgstr "Надішліть мені посилання для входу"
 
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
@@ -12056,7 +12081,7 @@ msgstr "Надішліть свою відповідь, щоб продовжи�
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Надішліть {messagesNeeded} повідомлень, щоб розблокувати повний доступ"
 
-#: src/features/Auth/AuthWallBasic.tsx:230
+#: src/features/Auth/AuthSignInStep.tsx:164
 #: src/features/Chat/SubmitForm.tsx:327
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12366,21 +12391,19 @@ msgstr "Увійдіть, щоб отримати доступ до більше
 msgid "Sign in to use FluencyPal"
 msgstr "Увійдіть, щоб використовувати FluencyPal"
 
-#: src/features/Auth/AuthWallBasic.tsx:232
-#: src/features/Auth/AuthWallBasic.tsx:339
 #: src/features/Reader/components/ReaderSignInModal.tsx:130
 #: src/features/Reader/components/ReaderSignInModal.tsx:181
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Увійти за допомогою електронної пошти"
 
-#: src/features/Auth/AuthWallBasic.tsx:335
+#: src/features/Auth/AuthWallBasic.tsx:287
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Увійти через Google"
 
-#: src/features/Auth/AuthWallBasic.tsx:334
+#: src/features/Auth/AuthSignInStep.tsx:200
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:94
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
@@ -12527,7 +12550,7 @@ msgstr "Тож я можу перекладати слова для вас"
 msgid "So we can save your purchase to your account"
 msgstr "Щоб ми могли зберегти вашу покупку у вашому обліковому записі"
 
-#: src/features/Auth/AuthWallBasic.tsx:282
+#: src/features/Auth/AuthWallBasic.tsx:229
 #. js-lingui-explicit-id
 msgid "So we need your agreement with that and our policies"
 msgstr "Тому нам потрібна ваша згода з цим та нашими політиками"
@@ -12560,6 +12583,13 @@ msgstr ""
 "Міцні знання ASP.NET Core та EF Core. Деякі прогалини у патернах стійкості "
 "та спостережуваності."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#. js-lingui-explicit-id
+msgid "Something went wrong while creating your plan. Please try again later."
+msgstr ""
+"Щось пішло не так під час створення вашого плану. Будь ласка, спробуйте "
+"пізніше."
+
 #: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
@@ -12569,7 +12599,7 @@ msgstr ""
 "Щось пішло не так під час завантаження цієї статті. Будь ласка, перевірте "
 "ваше з'єднання та спробуйте ще раз."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -12693,7 +12723,7 @@ msgstr "Зірки"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:138
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
@@ -12868,7 +12898,7 @@ msgstr "Почніть свій інтерв'ю-тест"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Розпочніть свою подорож до вільного спілкування зараз"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:133
+#: src/features/Dashboard/PlanDashboardCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Розпочніть шлях до володіння"
@@ -13028,6 +13058,7 @@ msgstr "Кроки:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
@@ -14005,8 +14036,9 @@ msgstr "Умови та Положення"
 msgid "Terms of Service"
 msgstr "Умови обслуговування"
 
+#: src/features/Auth/AuthSignInStep.tsx:229
 #: src/features/Auth/AuthWall.tsx:74
-#: src/features/Auth/AuthWallBasic.tsx:316
+#: src/features/Auth/AuthWallBasic.tsx:263
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Community/SupportPage.tsx:129
@@ -15052,6 +15084,7 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Спробуйте"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -15633,7 +15666,7 @@ msgstr ""
 "Ми є тим, що робимо постійно. Досконалість, таким чином, — це не дія, а "
 "звичка."
 
-#: src/features/Auth/AuthWallBasic.tsx:302
+#: src/features/Auth/AuthWallBasic.tsx:249
 #. js-lingui-explicit-id
 msgid "We can send you marketing emails"
 msgstr "Ми можемо надсилати вам маркетингові електронні листи"
@@ -15653,7 +15686,7 @@ msgstr "Ми даємо один одному час, щоб завершити.
 msgid "We join the Meet on time, and leave whenever we need to."
 msgstr "Ми приєднуємося до зустрічі вчасно та залишаємо, коли нам потрібно."
 
-#: src/features/Auth/AuthWallBasic.tsx:285
+#: src/features/Auth/AuthWallBasic.tsx:232
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Ми обробляємо ваш голос за допомогою ШІ"
@@ -15677,7 +15710,7 @@ msgstr "Ми надіслали посилання для відновлення
 msgid "We sent a sign-in link to"
 msgstr "Ми надіслали посилання для входу на"
 
-#: src/features/Auth/AuthWallBasic.tsx:202
+#: src/features/Auth/AuthSignInStep.tsx:275
 #. js-lingui-explicit-id
 msgid ""
 "We sent a sign-in link to your email. Please check your inbox and click the "
@@ -15696,7 +15729,7 @@ msgstr "Ми говоримо англійською, навіть коли сл
 msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
 msgstr "Ми залишаємося добрими. Образи, флірт та продажі залишаються поза розмовою."
 
-#: src/features/Auth/AuthWallBasic.tsx:306
+#: src/features/Auth/AuthWallBasic.tsx:253
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Ми використовуємо файли cookie, щоб покращити ваш досвід"
@@ -15722,10 +15755,15 @@ msgstr ""
 msgid "We will show FluencyPal in this language."
 msgstr "Ми покажемо FluencyPal цією мовою."
 
-#: src/features/Auth/AuthWallBasic.tsx:281
+#: src/features/Auth/AuthWallBasic.tsx:228
 #. js-lingui-explicit-id
 msgid "We will speak freely"
 msgstr "Ми будемо говорити вільно"
+
+#: src/features/Auth/AuthSignInStep.tsx:140
+#. js-lingui-explicit-id
+msgid "We'll email you a sign-in link."
+msgstr "Ми надішлемо вам посилання для входу електронною поштою."
 
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:71
 #. js-lingui-explicit-id
@@ -16072,6 +16110,12 @@ msgstr "Чому кандидати на позиції бекенду швид�
 msgid "Why candidates improve so quickly"
 msgstr "Чому кандидати покращують так швидко"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Why do you want to learn {language}?"
+msgstr "Чому ви хочете вивчати {language}?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
@@ -16148,7 +16192,7 @@ msgid "Word Stats"
 msgstr "Статистика слів"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16233,6 +16277,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Workplace Fairness Check"
 msgstr "Перевірка Справедливості на Робочому Місці"
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#. js-lingui-explicit-id
+msgid "Write a few sentences in your own words."
+msgstr "Напишіть кілька речень своїми словами."
 
 #: src/features/Review/ReviewDashboard.tsx:70
 #. js-lingui-explicit-id
@@ -16522,7 +16571,7 @@ msgstr ""
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Ви можете придбати повний доступ, якщо хочете зняти це обмеження"
 
-#: src/features/Auth/AuthWallBasic.tsx:298
+#: src/features/Auth/AuthWallBasic.tsx:245
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Ви можете видалити свої особисті дані будь-коли"
@@ -16610,7 +16659,7 @@ msgstr "Ви можете відстежувати прогрес на голо�
 msgid "You can use text to answer if you prefer."
 msgstr "Ви можете використовувати текст для відповіді, якщо вам зручно."
 
-#: src/features/Auth/AuthWallBasic.tsx:289
+#: src/features/Auth/AuthWallBasic.tsx:236
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:33
 #. js-lingui-explicit-id
 msgid "You confirm that you are at least 13 years old"
@@ -16695,7 +16744,7 @@ msgstr "Ви маєте повний доступ"
 msgid "You have no private chats yet."
 msgstr "У вас ще немає приватних чатів."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:65
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:64
 #. js-lingui-explicit-id
 msgid "You have not created a learning plan yet. Do you want to create one now?"
 msgstr "Ви ще не створили план навчання. Ви хочете створити його зараз?"
@@ -16834,6 +16883,7 @@ msgstr "Ваш AI-співрозмовник"
 msgid "Your AI teacher voice:"
 msgstr "Голос вашого AI вчителя:"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
 #: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
@@ -17080,7 +17130,7 @@ msgstr ""
 "Ваш вчитель розпочне з легкого питання. Таймер починає відлік, щойно ви "
 "під'єднаєтеся. Ми повідомимо вам, коли залишиться 30 секунд."
 
-#: src/features/Auth/AuthWallBasic.tsx:294
+#: src/features/Auth/AuthWallBasic.tsx:241
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Ваші транскрипти надійно зберігаються в нашому сервісі"

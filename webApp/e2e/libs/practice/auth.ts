@@ -58,8 +58,9 @@ const fetchLatestOobCodeForEmail = async (email: string): Promise<OobCode> => {
 
 /**
  * Drive the practice-page auth stepper end-to-end: walk through the
- * features → agreement → auth → email steps in the real UI, then complete
- * the email-link sign-in by consuming the Firebase Auth emulator oobCode.
+ * features → agreement → auth steps in the real UI, send the email link
+ * from the auth form, then complete sign-in by consuming the Firebase Auth
+ * emulator oobCode.
  *
  * This is the production-realistic auth flow used by the practice page and
  * is intentionally separate from the reader's password-based test helper.
@@ -100,12 +101,9 @@ export const signInPracticeWithStepper = async (
     await page.getByRole('button', { name: 'I agree', exact: true }).click();
   }
 
-  // Step 3: auth — choose the email path (secondary button).
-  await page.getByRole('button', { name: 'Sign in with email', exact: true }).click();
-
-  // Step 4: email — fill the address and request the link.
+  // Auth form: email is on the same screen as Google.
   await page.getByLabel('Email', { exact: true }).fill(email);
-  await page.getByRole('button', { name: 'Send me sign-in link', exact: true }).click();
+  await page.getByRole('button', { name: 'Send link', exact: true }).click();
 
   // Step 5: email-send confirmation.
   await expect(page.getByText('Check your email', { exact: true })).toBeVisible({

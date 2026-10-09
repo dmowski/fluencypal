@@ -505,15 +505,15 @@ msgstr "Dodajte više sati"
 msgid "Add my question"
 msgstr "Dodaj moje pitanje"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:193
-#. js-lingui-explicit-id
-msgid "Add new goal"
-msgstr "Dodaj novi cilj"
-
 #: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Dodaj novu belešku"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:134
+#. js-lingui-explicit-id
+msgid "Add new plan"
+msgstr "Dodaj novi plan"
 
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
@@ -969,6 +969,7 @@ msgstr "Analiziram vaše unose..."
 msgid "Analyzing..."
 msgstr "Analiziranje..."
 
+#: src/features/Auth/AuthSignInStep.tsx:226
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
@@ -1081,6 +1082,13 @@ msgstr ""
 msgid "Are there any hidden fees?"
 msgstr "Da li postoje skriveni troškovi?"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:48
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr ""
+"Да ли сте сигурни да желите да обришете \"{title}\"? Ова акција се не може "
+"поништити."
+
 #: src/features/Chat/Message/Message.tsx:301
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
@@ -1108,13 +1116,6 @@ msgstr "Јесте ли сигурни да желите да обришете �
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "Да ли сте сигурни да желите да обришете свој налог?"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:41
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr ""
-"Да ли сте сигурни да желите да избришете свој циљ? Ова акција се не може "
-"поништити."
 
 #: src/features/Game/Battle/BattleCard.tsx:339
 #. js-lingui-explicit-id
@@ -1255,6 +1256,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1642,6 +1644,11 @@ msgstr "Kupovina {hours} sati razgovora"
 msgid "By continuing, you agree to our"
 msgstr "Nastavkom prihvatate naše"
 
+#: src/features/Auth/AuthSignInStep.tsx:220
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to the"
+msgstr "Nastavljajući, slažete se sa"
+
 #: src/features/Case/data/backendCSharp/techData.ts:23
 #. js-lingui-explicit-id
 msgid "C#"
@@ -1885,7 +1892,7 @@ msgstr "Proveri predložene reči"
 msgid "Check your access and included conversation time."
 msgstr "Proverite svoj pristup i uključeno vreme za razgovor."
 
-#: src/features/Auth/AuthWallBasic.tsx:201
+#: src/features/Auth/AuthSignInStep.tsx:266
 #: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Check your email"
@@ -1896,7 +1903,7 @@ msgstr "Proverite svoj email"
 msgid "Check Your Progress"
 msgstr "Proverite Svoj Napredak"
 
-#: src/features/Auth/AuthWallBasic.tsx:216
+#: src/features/Auth/AuthSignInStep.tsx:281
 #: src/features/Reader/components/ReaderSignInModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
@@ -2703,7 +2710,7 @@ msgstr "Popunite rečenicu"
 msgid "Complete verification to proceed."
 msgstr "Dovršite verifikaciju da biste nastavili."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:137
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "Završeno"
@@ -2934,7 +2941,8 @@ msgstr "Kontekst (tema, publika, cilj...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3029,7 +3037,7 @@ msgstr "Detalji ugovora"
 msgid "Contract Tests"
 msgstr "Testovi Ugovora"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:55
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3218,6 +3226,7 @@ msgstr "Nije moguće započeti ispit. Molimo pokušajte ponovo."
 msgid "Could not start your account. Please try again."
 msgstr "Nije moguće pokrenuti vaš nalog. Molimo pokušajte ponovo."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3265,6 +3274,7 @@ msgstr ""
 "što su govor ili slušanje, i pratite svoj napredak kako biste efektivno "
 "savladali engleski."
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:178
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3444,7 +3454,7 @@ msgstr "csharp developer interview"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "Znatiželja čini učenje zabavnim. Istražite današnje zadatke."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:210
+#: src/features/Dashboard/PlanDashboardCards.tsx:120
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -3563,7 +3573,7 @@ msgstr ""
 "pomažu vam da izgradite naviku učenja i učvršćuju vaše veštine kako biste "
 "brže poboljšali tečnost."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:164
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:162
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
@@ -4013,11 +4023,6 @@ msgstr "Obriši Analizu"
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Obriši razgovor"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:378
-#. js-lingui-explicit-id
-msgid "Delete current goal"
-msgstr "Obriši trenutni cilj"
 
 #: src/features/Reader/components/DeleteBookModal.tsx:114
 #. js-lingui-explicit-id
@@ -4646,7 +4651,7 @@ msgstr "Osamdeset dana — vaša doslednost se isplaćuje."
 msgid "Either you run the day, or the day runs you."
 msgstr "Ili ti vodiš dan, ili dan vodi tebe."
 
-#: src/features/Auth/AuthWallBasic.tsx:244
+#: src/features/Auth/AuthSignInStep.tsx:135
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4795,11 +4800,6 @@ msgstr "Uživanje čini da se navike učvršćuju. Zaronite u današnje zadatke.
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "Dosta je pričanja? Vreme je za napredak!"
-
-#: src/features/Auth/AuthWallBasic.tsx:233
-#. js-lingui-explicit-id
-msgid "Enter your email to get a sign-in link"
-msgstr "Unesite vašu email adresu kako biste dobili link za prijavljivanje"
 
 #: src/features/Reader/components/SendToKindleModal.tsx:232
 #. js-lingui-explicit-id
@@ -5958,11 +5958,12 @@ msgstr "Општи AI Асистент"
 msgid "General Assistant"
 msgstr "Opšti asistent"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:395
+#: src/features/Dashboard/PlanDashboardCards.tsx:292
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generiši više jedinstvenih lekcija"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -5973,7 +5974,9 @@ msgstr "Generiši plan"
 msgid "Generating explanation..."
 msgstr "Generisanje objašnjenja..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:394
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generisanje..."
@@ -6200,8 +6203,8 @@ msgid "Go to the main page"
 msgstr "Idi na glavnu stranicu"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
-#: src/features/Dashboard/PlanDashboardCards.tsx:353
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
+#: src/features/Dashboard/PlanDashboardCards.tsx:268
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Cilj"
@@ -6792,7 +6795,7 @@ msgstr ""
 msgid "I accept the"
 msgstr "Prihvatam"
 
-#: src/features/Auth/AuthWallBasic.tsx:277
+#: src/features/Auth/AuthWallBasic.tsx:224
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:85
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:47
 #. js-lingui-explicit-id
@@ -6932,6 +6935,11 @@ msgid ""
 msgstr ""
 "Желим да научим енглески како бих могао положити интервју за посао. Ја сам "
 "доктор и морам да објасним своје искуство и одговарам на питања о мом раду."
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#. js-lingui-explicit-id
+msgid "I want to learn it so I can..."
+msgstr "Желим да га научим како бих могао..."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
@@ -7217,7 +7225,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "За мање од 5 минута, добићете:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:405
+#: src/features/Dashboard/PlanDashboardCards.tsx:302
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr ""
@@ -7494,11 +7502,6 @@ msgstr "Predstavite se"
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
 msgstr "Predstavite se kao backend inženjer"
-
-#: src/features/Auth/AuthWallBasic.tsx:212
-#. js-lingui-explicit-id
-msgid "Invite Link Sent to:"
-msgstr "Pozivni link poslat na:"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
@@ -7979,7 +7982,7 @@ msgstr "Učite sa zajednicom"
 msgid "Learning never exhausts the mind."
 msgstr "Učenje nikad ne zamara um."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:129
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Put obrazovanja"
@@ -8182,7 +8185,7 @@ msgstr "Učitavanje.."
 #: src/features/Conversation/ConversationReviewModal.tsx:138
 #: src/features/Conversation/ConversationReviewModal.tsx:153
 #: src/features/Conversation/ConversationReviewModal.tsx:171
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
@@ -8648,7 +8651,7 @@ msgstr ""
 msgid "More options"
 msgstr "Više opcija"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#: src/features/Dashboard/PlanDashboardCards.tsx:264
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Više jedinstvenih lekcija"
@@ -8791,7 +8794,7 @@ msgstr "Vesti"
 msgid "News Discussion"
 msgstr "Дискусија о вестима"
 
-#: src/features/Auth/AuthWallBasic.tsx:265
+#: src/features/Auth/AuthWallBasic.tsx:212
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
@@ -9453,7 +9456,7 @@ msgstr "Упс! Нешто је пошло наопако"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -9546,6 +9549,11 @@ msgid ""
 msgstr ""
 "Opcionalno: specifičan vokabular, detalji u pozadini, prigovori, pitanja "
 "ili ponašanje"
+
+#: src/features/Auth/AuthSignInStep.tsx:175
+#. js-lingui-explicit-id
+msgid "or"
+msgstr "или"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:154
 #. js-lingui-explicit-id
@@ -9977,6 +9985,11 @@ msgstr "Mesto za deljenje vaših misli"
 msgid "Plan for"
 msgstr "Planiraj za"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:62
+#. js-lingui-explicit-id
+msgid "Plan settings"
+msgstr "Podešavanja plana"
+
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:61
 #. js-lingui-explicit-id
 msgid "Plans & access"
@@ -10115,7 +10128,7 @@ msgstr "Molimo unesite ime za svakog igrača."
 msgid "Please enter a space title"
 msgstr "Molimo unesite naslov prostora"
 
-#: src/features/Auth/AuthWallBasic.tsx:249
+#: src/features/Auth/AuthWallBasic.tsx:282
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:18
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -10742,8 +10755,9 @@ msgstr "Cena po danu"
 msgid "Priority support"
 msgstr "Prioritetna podrška"
 
+#: src/features/Auth/AuthSignInStep.tsx:223
 #: src/features/Auth/AuthWall.tsx:69
-#: src/features/Auth/AuthWallBasic.tsx:311
+#: src/features/Auth/AuthWallBasic.tsx:258
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Community/SupportPage.tsx:142
@@ -10789,6 +10803,7 @@ msgstr "Obrada postojećeg znanja u tom mozgu..."
 msgid "Processing latest session"
 msgstr "Obrada najnovije sesije"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
@@ -11348,6 +11363,11 @@ msgstr "Zabeleži još"
 msgid "Record new essay"
 msgstr "Snimi novi esej"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#. js-lingui-explicit-id
+msgid "Record with voice"
+msgstr "Снимите гласом"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
@@ -11444,6 +11464,11 @@ msgstr "Уклони језик"
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "Ukloni moje podatke (obriši nalog)"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:102
+#. js-lingui-explicit-id
+msgid "Remove plan"
+msgstr "Ukloni plan"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:38
 #. js-lingui-explicit-id
@@ -11626,7 +11651,7 @@ msgstr "Pregledajte, uredite ili dodajte beleške koje AI koristi o vama."
 msgid "Robot Thinking"
 msgstr "Razmišljanje Robota"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:56
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11712,7 +11737,7 @@ msgstr "Ruting"
 msgid "Rudeness"
 msgstr "Neuljudnost"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:32
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11941,7 +11966,7 @@ msgstr "Пошаљи"
 msgid "Send at least 10 messages in Just talk"
 msgstr "Pošalji najmanje 10 poruka u Samo pričaj"
 
-#: src/features/Auth/AuthWallBasic.tsx:221
+#: src/features/Auth/AuthSignInStep.tsx:296
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Ponovo pošalji email"
@@ -11951,15 +11976,15 @@ msgstr "Ponovo pošalji email"
 msgid "Send for approval"
 msgstr "Пошаљи на одобрење"
 
+#: src/features/Auth/AuthSignInStep.tsx:164
+#. js-lingui-explicit-id
+msgid "Send link"
+msgstr "Pošalji link"
+
 #: src/features/Header/NotificationsModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Pošalji mi obaveštenja putem e-pošte"
-
-#: src/features/Auth/AuthWallBasic.tsx:230
-#. js-lingui-explicit-id
-msgid "Send me sign-in link"
-msgstr "Pošalji mi link za prijavu."
 
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
@@ -12009,7 +12034,7 @@ msgstr "Pošaljite svoj odgovor za nastavak."
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Pošaljite {messagesNeeded} poruka da biste otključali potpuni pristup"
 
-#: src/features/Auth/AuthWallBasic.tsx:230
+#: src/features/Auth/AuthSignInStep.tsx:164
 #: src/features/Chat/SubmitForm.tsx:327
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12315,21 +12340,19 @@ msgstr "Prijavite se da biste otključali više funkcija"
 msgid "Sign in to use FluencyPal"
 msgstr "Prijavite se da koristite FluencyPal"
 
-#: src/features/Auth/AuthWallBasic.tsx:232
-#: src/features/Auth/AuthWallBasic.tsx:339
 #: src/features/Reader/components/ReaderSignInModal.tsx:130
 #: src/features/Reader/components/ReaderSignInModal.tsx:181
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Prijavite se putem e-pošte"
 
-#: src/features/Auth/AuthWallBasic.tsx:335
+#: src/features/Auth/AuthWallBasic.tsx:287
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Prijavite se putem Google-a"
 
-#: src/features/Auth/AuthWallBasic.tsx:334
+#: src/features/Auth/AuthSignInStep.tsx:200
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:94
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
@@ -12475,7 +12498,7 @@ msgstr "Могу да ти преведем речи"
 msgid "So we can save your purchase to your account"
 msgstr "Da bismo mogli sačuvati vašu kupovinu na vašem nalogu"
 
-#: src/features/Auth/AuthWallBasic.tsx:282
+#: src/features/Auth/AuthWallBasic.tsx:229
 #. js-lingui-explicit-id
 msgid "So we need your agreement with that and our policies"
 msgstr "Дакле, потребна нам је ваша сагласност са тим и нашом политиком"
@@ -12508,6 +12531,13 @@ msgstr ""
 "Solidno znanje ASP.NET Core i EF Core. Nekoliko nedostataka u obrascima "
 "otpornosti i mogućnosti posmatranja."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#. js-lingui-explicit-id
+msgid "Something went wrong while creating your plan. Please try again later."
+msgstr ""
+"Nešto je pošlo po zlu prilikom kreiranja vašeg plana. Molimo vas da "
+"pokušate ponovo kasnije."
+
 #: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
@@ -12517,7 +12547,7 @@ msgstr ""
 "Nešto je pošlo po zlu prilikom preuzimanja ovog članka. Molimo proverite "
 "vašu vezu i pokušajte ponovo."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -12641,7 +12671,7 @@ msgstr "Zvezde"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:138
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
@@ -12810,7 +12840,7 @@ msgstr "Započni svoj intervju test"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Започните своје путовање ка течној комуникацији одмах"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:133
+#: src/features/Dashboard/PlanDashboardCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Pokreni svoj put ka tečnom govoru"
@@ -12969,6 +12999,7 @@ msgstr "Koraci:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
@@ -13948,8 +13979,9 @@ msgstr "Uslovi i odredbe"
 msgid "Terms of Service"
 msgstr "Uslovi korišćenja"
 
+#: src/features/Auth/AuthSignInStep.tsx:229
 #: src/features/Auth/AuthWall.tsx:74
-#: src/features/Auth/AuthWallBasic.tsx:316
+#: src/features/Auth/AuthWallBasic.tsx:263
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Community/SupportPage.tsx:129
@@ -14994,6 +15026,7 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Pokušaj"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -15570,7 +15603,7 @@ msgstr "Спремни смо да саставимо ваш план."
 msgid "We are what we repeatedly do. Excellence, then, is not an act but a habit."
 msgstr "Ми смо оно што стално радимо. Изврсност, затим, није чин већ навика."
 
-#: src/features/Auth/AuthWallBasic.tsx:302
+#: src/features/Auth/AuthWallBasic.tsx:249
 #. js-lingui-explicit-id
 msgid "We can send you marketing emails"
 msgstr "Možemo vam slati marketinške e-poruke"
@@ -15590,7 +15623,7 @@ msgstr "Dajemo jedni drugima vreme da završimo."
 msgid "We join the Meet on time, and leave whenever we need to."
 msgstr "Prisustvujemo sastanku na vreme, i odlazimo kad god to poželimo."
 
-#: src/features/Auth/AuthWallBasic.tsx:285
+#: src/features/Auth/AuthWallBasic.tsx:232
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Obrađujemo vaš glas koristeći veštačku inteligenciju"
@@ -15614,7 +15647,7 @@ msgstr "Poslali smo link za resetovanje lozinke. Proverite vaš inbox."
 msgid "We sent a sign-in link to"
 msgstr "Poslali smo link za prijavu na"
 
-#: src/features/Auth/AuthWallBasic.tsx:202
+#: src/features/Auth/AuthSignInStep.tsx:275
 #. js-lingui-explicit-id
 msgid ""
 "We sent a sign-in link to your email. Please check your inbox and click the "
@@ -15633,7 +15666,7 @@ msgstr "Говоримо енглески, чак и кад речи долаз�
 msgid "We stay kind. Insults, flirting, and selling stay out of the conversation."
 msgstr "Ostajemo ljubazni. Uvrede, flert i prodaja ne ulaze u razgovor."
 
-#: src/features/Auth/AuthWallBasic.tsx:306
+#: src/features/Auth/AuthWallBasic.tsx:253
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Koristimo kolačiće kako bismo poboljšali vaše iskustvo"
@@ -15659,10 +15692,15 @@ msgstr ""
 msgid "We will show FluencyPal in this language."
 msgstr "Приказаћемо FluencyPal на овом језику."
 
-#: src/features/Auth/AuthWallBasic.tsx:281
+#: src/features/Auth/AuthWallBasic.tsx:228
 #. js-lingui-explicit-id
 msgid "We will speak freely"
 msgstr "Ми ћемо говорити слободно"
+
+#: src/features/Auth/AuthSignInStep.tsx:140
+#. js-lingui-explicit-id
+msgid "We'll email you a sign-in link."
+msgstr "Poslaćemo vam link za prijavu putem e-pošte."
 
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:71
 #. js-lingui-explicit-id
@@ -16001,6 +16039,12 @@ msgstr "Zašto se kandidati za pozadinske funkcije brzo poboljšavaju"
 msgid "Why candidates improve so quickly"
 msgstr "Zašto kandidati napreduju tako brzo"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Why do you want to learn {language}?"
+msgstr "Zašto želite da naučite {language}?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
@@ -16077,7 +16121,7 @@ msgid "Word Stats"
 msgstr "Statistika reči"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16161,6 +16205,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Workplace Fairness Check"
 msgstr "Provera poštenja na radnom mestu"
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#. js-lingui-explicit-id
+msgid "Write a few sentences in your own words."
+msgstr "Напишите пар реченица својим речима."
 
 #: src/features/Review/ReviewDashboard.tsx:70
 #. js-lingui-explicit-id
@@ -16446,7 +16495,7 @@ msgstr ""
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Možete kupiti potpuni pristup ako želite ukloniti to ograničenje"
 
-#: src/features/Auth/AuthWallBasic.tsx:298
+#: src/features/Auth/AuthWallBasic.tsx:245
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Možete obrisati svoje lične podatke u bilo kojem trenutku"
@@ -16531,7 +16580,7 @@ msgstr "Можете да пратите напредак на главној с
 msgid "You can use text to answer if you prefer."
 msgstr "Можете користити текст за одговор ако вам више одговара."
 
-#: src/features/Auth/AuthWallBasic.tsx:289
+#: src/features/Auth/AuthWallBasic.tsx:236
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:33
 #. js-lingui-explicit-id
 msgid "You confirm that you are at least 13 years old"
@@ -16614,7 +16663,7 @@ msgstr "Imate potpuni pristup"
 msgid "You have no private chats yet."
 msgstr "Još nemate privatne razgovore."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:65
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:64
 #. js-lingui-explicit-id
 msgid "You have not created a learning plan yet. Do you want to create one now?"
 msgstr "Нисте још увек креирали план учења. Да ли желите да га креирате сада?"
@@ -16753,6 +16802,7 @@ msgstr "Ваш AI партнер за разговор"
 msgid "Your AI teacher voice:"
 msgstr "Vaš AI glas učitelja:"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
 #: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
@@ -16991,7 +17041,7 @@ msgstr ""
 "Ваш наставник ће почети са лаким питањем. Тајмер почиње када се повежете, и "
 "обавестићемо вас када остане 30 секунди."
 
-#: src/features/Auth/AuthWallBasic.tsx:294
+#: src/features/Auth/AuthWallBasic.tsx:241
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Ваши transkripti su sigurno pohranjeni u našoj usluzi"

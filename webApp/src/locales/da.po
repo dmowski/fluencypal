@@ -508,15 +508,15 @@ msgstr "Tilføj flere timer"
 msgid "Add my question"
 msgstr "Tilføj mit spørgsmål"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:193
-#. js-lingui-explicit-id
-msgid "Add new goal"
-msgstr "Tilføj nyt mål"
-
 #: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Tilføj ny note"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:134
+#. js-lingui-explicit-id
+msgid "Add new plan"
+msgstr "Tilføj ny plan"
 
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
@@ -971,6 +971,7 @@ msgstr "Analyserer dine input..."
 msgid "Analyzing..."
 msgstr "Analyserer..."
 
+#: src/features/Auth/AuthSignInStep.tsx:226
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
@@ -1076,6 +1077,13 @@ msgstr "Arkitektur & Modstandsdygtighed"
 msgid "Are there any hidden fees?"
 msgstr "Er der nogle skjulte gebyrer?"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:48
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr ""
+"Er du sikker på, at du vil slette \"{title}\"? Denne handling kan ikke "
+"fortrydes."
+
 #: src/features/Chat/Message/Message.tsx:301
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
@@ -1103,13 +1111,6 @@ msgstr "Er du sikker på, at du vil slette dette rum?"
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "Er du sikker på, at du vil slette din konto?"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:41
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr ""
-"Er du sikker på, at du vil slette dit mål? Denne handling kan ikke "
-"fortrydes."
 
 #: src/features/Game/Battle/BattleCard.tsx:339
 #. js-lingui-explicit-id
@@ -1250,6 +1251,7 @@ msgstr ""
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1633,6 +1635,11 @@ msgstr "Køber {hours} timers taletid"
 msgid "By continuing, you agree to our"
 msgstr "Ved at fortsætte, accepterer du vores"
 
+#: src/features/Auth/AuthSignInStep.tsx:220
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to the"
+msgstr "Ved at fortsætte, accepterer du"
+
 #: src/features/Case/data/backendCSharp/techData.ts:23
 #. js-lingui-explicit-id
 msgid "C#"
@@ -1878,7 +1885,7 @@ msgstr "Tjek foreslåede ord"
 msgid "Check your access and included conversation time."
 msgstr "Tjek din adgang og inkluderet samtaletid."
 
-#: src/features/Auth/AuthWallBasic.tsx:201
+#: src/features/Auth/AuthSignInStep.tsx:266
 #: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Check your email"
@@ -1889,7 +1896,7 @@ msgstr "Tjek din email"
 msgid "Check Your Progress"
 msgstr "Tjek din fremgang"
 
-#: src/features/Auth/AuthWallBasic.tsx:216
+#: src/features/Auth/AuthSignInStep.tsx:281
 #: src/features/Reader/components/ReaderSignInModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
@@ -2694,7 +2701,7 @@ msgstr "Fuldfør sætningen"
 msgid "Complete verification to proceed."
 msgstr "Fuldfør bekræftelse for at fortsætte."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:137
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "Fuldført"
@@ -2924,7 +2931,8 @@ msgstr "Kontekst (emne, målgruppe, mål...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3019,7 +3027,7 @@ msgstr "Kontraktdetaljer"
 msgid "Contract Tests"
 msgstr "Kontrakttest"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:55
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3206,6 +3214,7 @@ msgstr "Kunne ikke starte eksamenen. Prøv igen."
 msgid "Could not start your account. Please try again."
 msgstr "Kunne ikke starte din konto. Prøv venligst igen."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3252,6 +3261,7 @@ msgstr ""
 "mål, fokuser på specifikke færdigheder som tale eller lytte, og spoor din "
 "fremgang for at mestre engelsk effektivt."
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:178
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3431,7 +3441,7 @@ msgstr "csharp udvikler interview"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "Nysgerrighed gør læring sjov. Udforsk dagens opgaver."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:210
+#: src/features/Dashboard/PlanDashboardCards.tsx:120
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -3545,7 +3555,7 @@ msgstr ""
 "dig med at opbygge en læringsvane og styrker dine færdigheder for at "
 "forbedre flydende tale hurtigere."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:164
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:162
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
@@ -3995,11 +4005,6 @@ msgstr "Slet Analyse"
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Slet chat"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:378
-#. js-lingui-explicit-id
-msgid "Delete current goal"
-msgstr "Slet nuværende mål"
 
 #: src/features/Reader/components/DeleteBookModal.tsx:114
 #. js-lingui-explicit-id
@@ -4622,7 +4627,7 @@ msgstr "Firs dage ind — din konsekvens betaler sig."
 msgid "Either you run the day, or the day runs you."
 msgstr "Enten styrer du dagen, eller også styrer dagen dig."
 
-#: src/features/Auth/AuthWallBasic.tsx:244
+#: src/features/Auth/AuthSignInStep.tsx:135
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4772,11 +4777,6 @@ msgstr "Nydelse gør vaner varige. Dyk ned i dagens opgaver."
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "Er det nok med at tale? Tid til at forbedre dig!"
-
-#: src/features/Auth/AuthWallBasic.tsx:233
-#. js-lingui-explicit-id
-msgid "Enter your email to get a sign-in link"
-msgstr "Indtast din e-mail for at få et login-link"
 
 #: src/features/Reader/components/SendToKindleModal.tsx:232
 #. js-lingui-explicit-id
@@ -5933,11 +5933,12 @@ msgstr "Generel AI Assistent"
 msgid "General Assistant"
 msgstr "Generel Assistent"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:395
+#: src/features/Dashboard/PlanDashboardCards.tsx:292
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Generer flere unikke lektioner"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -5948,7 +5949,9 @@ msgstr "Generer plan"
 msgid "Generating explanation..."
 msgstr "Genererer forklaring..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:394
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Genererer..."
@@ -6171,8 +6174,8 @@ msgid "Go to the main page"
 msgstr "Gå til hovedsiden"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
-#: src/features/Dashboard/PlanDashboardCards.tsx:353
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
+#: src/features/Dashboard/PlanDashboardCards.tsx:268
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mål"
@@ -6761,7 +6764,7 @@ msgstr ""
 msgid "I accept the"
 msgstr "Jeg accepterer"
 
-#: src/features/Auth/AuthWallBasic.tsx:277
+#: src/features/Auth/AuthWallBasic.tsx:224
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:85
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:47
 #. js-lingui-explicit-id
@@ -6911,6 +6914,11 @@ msgstr ""
 "Jeg ønsker at lære engelsk, så jeg kan bestå en jobsamtale. Jeg er læge, og "
 "jeg har brug for at forklare min erfaring og besvare spørgsmål om mit "
 "arbejde."
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#. js-lingui-explicit-id
+msgid "I want to learn it so I can..."
+msgstr "Jeg vil lære det, så jeg kan..."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
@@ -7199,7 +7207,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Inden for mindre end 5 minutter får du:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:405
+#: src/features/Dashboard/PlanDashboardCards.tsx:302
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "For at generere flere lektioner skal du gennemføre mindst 3 lektioner"
@@ -7470,11 +7478,6 @@ msgstr "Introducer dig selv"
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
 msgstr "Introducer dig selv som backend-ingeniør"
-
-#: src/features/Auth/AuthWallBasic.tsx:212
-#. js-lingui-explicit-id
-msgid "Invite Link Sent to:"
-msgstr "Invite-link sendt til:"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
@@ -7951,7 +7954,7 @@ msgstr "Lær med fællesskabet"
 msgid "Learning never exhausts the mind."
 msgstr "At lære trætter aldrig sindet."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:129
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Læringssti"
@@ -8154,7 +8157,7 @@ msgstr "Indlæser.."
 #: src/features/Conversation/ConversationReviewModal.tsx:138
 #: src/features/Conversation/ConversationReviewModal.tsx:153
 #: src/features/Conversation/ConversationReviewModal.tsx:171
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
@@ -8615,7 +8618,7 @@ msgstr ""
 msgid "More options"
 msgstr "Flere muligheder"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#: src/features/Dashboard/PlanDashboardCards.tsx:264
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Flere unikke lektioner"
@@ -8758,7 +8761,7 @@ msgstr "Nyheder"
 msgid "News Discussion"
 msgstr "Nyhedsdiskussion"
 
-#: src/features/Auth/AuthWallBasic.tsx:265
+#: src/features/Auth/AuthWallBasic.tsx:212
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
@@ -9416,7 +9419,7 @@ msgstr "Ups! Noget gik galt"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -9509,6 +9512,11 @@ msgid ""
 msgstr ""
 "Valgfrit: specifikt ordforråd, baggrundsdetaljer, indvendinger, spørgsmål "
 "eller adfærd"
+
+#: src/features/Auth/AuthSignInStep.tsx:175
+#. js-lingui-explicit-id
+msgid "or"
+msgstr "eller"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:154
 #. js-lingui-explicit-id
@@ -9940,6 +9948,11 @@ msgstr "Sted at dele dine tanker"
 msgid "Plan for"
 msgstr "Planlæg for"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:62
+#. js-lingui-explicit-id
+msgid "Plan settings"
+msgstr "Planindstillinger"
+
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:61
 #. js-lingui-explicit-id
 msgid "Plans & access"
@@ -10076,7 +10089,7 @@ msgstr "Indtast venligst et navn for hver spiller."
 msgid "Please enter a space title"
 msgstr "Venligst indtast en rumtitel"
 
-#: src/features/Auth/AuthWallBasic.tsx:249
+#: src/features/Auth/AuthWallBasic.tsx:282
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:18
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -10700,8 +10713,9 @@ msgstr "Pris per dag"
 msgid "Priority support"
 msgstr "Prioritetsstøtte"
 
+#: src/features/Auth/AuthSignInStep.tsx:223
 #: src/features/Auth/AuthWall.tsx:69
-#: src/features/Auth/AuthWallBasic.tsx:311
+#: src/features/Auth/AuthWallBasic.tsx:258
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Community/SupportPage.tsx:142
@@ -10747,6 +10761,7 @@ msgstr "Behandler eksisterende viden i den hjerne..."
 msgid "Processing latest session"
 msgstr "Behandler nyeste session"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
@@ -11306,6 +11321,11 @@ msgstr "Optag Mere"
 msgid "Record new essay"
 msgstr "Optag ny stil"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#. js-lingui-explicit-id
+msgid "Record with voice"
+msgstr "Optag med stemme"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
@@ -11400,6 +11420,11 @@ msgstr "Fjern sprog"
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "Fjern mine data (slet konto)"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:102
+#. js-lingui-explicit-id
+msgid "Remove plan"
+msgstr "Fjern plan"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:38
 #. js-lingui-explicit-id
@@ -11580,7 +11605,7 @@ msgstr "Gennemse, rediger eller tilføj de noter, som AI'en bruger om dig."
 msgid "Robot Thinking"
 msgstr "Robot Tænker"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:56
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11666,7 +11691,7 @@ msgstr "Routing"
 msgid "Rudeness"
 msgstr "Uhøflighed"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:32
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -11895,7 +11920,7 @@ msgstr "Send"
 msgid "Send at least 10 messages in Just talk"
 msgstr "Send mindst 10 beskeder i Bare snak"
 
-#: src/features/Auth/AuthWallBasic.tsx:221
+#: src/features/Auth/AuthSignInStep.tsx:296
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Send e-mail igen"
@@ -11905,15 +11930,15 @@ msgstr "Send e-mail igen"
 msgid "Send for approval"
 msgstr "Send til godkendelse"
 
+#: src/features/Auth/AuthSignInStep.tsx:164
+#. js-lingui-explicit-id
+msgid "Send link"
+msgstr "Send link"
+
 #: src/features/Header/NotificationsModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Send mig e-mailmeddelelser"
-
-#: src/features/Auth/AuthWallBasic.tsx:230
-#. js-lingui-explicit-id
-msgid "Send me sign-in link"
-msgstr "Send mig tilmeldingslink"
 
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
@@ -11963,7 +11988,7 @@ msgstr "Send dit svar for at fortsætte."
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Send {messagesNeeded} beskeder for at låse op for fuld adgang"
 
-#: src/features/Auth/AuthWallBasic.tsx:230
+#: src/features/Auth/AuthSignInStep.tsx:164
 #: src/features/Chat/SubmitForm.tsx:327
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12273,21 +12298,19 @@ msgstr "Log ind for at låse op for flere funktioner"
 msgid "Sign in to use FluencyPal"
 msgstr "Log ind for at bruge FluencyPal"
 
-#: src/features/Auth/AuthWallBasic.tsx:232
-#: src/features/Auth/AuthWallBasic.tsx:339
 #: src/features/Reader/components/ReaderSignInModal.tsx:130
 #: src/features/Reader/components/ReaderSignInModal.tsx:181
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Log ind med e-mail"
 
-#: src/features/Auth/AuthWallBasic.tsx:335
+#: src/features/Auth/AuthWallBasic.tsx:287
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Log ind med Google"
 
-#: src/features/Auth/AuthWallBasic.tsx:334
+#: src/features/Auth/AuthSignInStep.tsx:200
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:94
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
@@ -12433,7 +12456,7 @@ msgstr "Så jeg kan oversætte ord for dig"
 msgid "So we can save your purchase to your account"
 msgstr "Så vi kan gemme dit køb til din konto"
 
-#: src/features/Auth/AuthWallBasic.tsx:282
+#: src/features/Auth/AuthWallBasic.tsx:229
 #. js-lingui-explicit-id
 msgid "So we need your agreement with that and our policies"
 msgstr "Så vi har brug for din aftale med det og vores politikker"
@@ -12466,6 +12489,11 @@ msgstr ""
 "Solid forståelse af ASP.NET Core og EF Core. Nogle mangler inden for "
 "resiliensmønstre og observerbarhed."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#. js-lingui-explicit-id
+msgid "Something went wrong while creating your plan. Please try again later."
+msgstr "Noget gik galt, mens din plan blev oprettet. Prøv venligst igen senere."
+
 #: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
@@ -12475,7 +12503,7 @@ msgstr ""
 "Noget gik galt, mens der blev hentet denne artikel. Kontroller venligst din "
 "forbindelse og prøv igen."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -12598,7 +12626,7 @@ msgstr "Stjerner"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:138
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
@@ -12767,7 +12795,7 @@ msgstr "Start din interviewtest"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Start Din Rejse til Flydende Samtaler Nu"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:133
+#: src/features/Dashboard/PlanDashboardCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Start din vej til flydende"
@@ -12927,6 +12955,7 @@ msgstr "Trin:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
@@ -13902,8 +13931,9 @@ msgstr "Vilkår og Betingelser"
 msgid "Terms of Service"
 msgstr "Servicevilkår"
 
+#: src/features/Auth/AuthSignInStep.tsx:229
 #: src/features/Auth/AuthWall.tsx:74
-#: src/features/Auth/AuthWallBasic.tsx:316
+#: src/features/Auth/AuthWallBasic.tsx:263
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Community/SupportPage.tsx:129
@@ -14950,6 +14980,7 @@ msgstr "Tillidspilot"
 msgid "Try"
 msgstr "Prøv"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -15522,7 +15553,7 @@ msgstr ""
 "Vi er, hvad vi gentagne gange gør. Excellence er derfor ikke en handling, "
 "men en vane."
 
-#: src/features/Auth/AuthWallBasic.tsx:302
+#: src/features/Auth/AuthWallBasic.tsx:249
 #. js-lingui-explicit-id
 msgid "We can send you marketing emails"
 msgstr "Vi kan sende dig markedsførings-e-mails"
@@ -15542,7 +15573,7 @@ msgstr "Vi giver hinanden tid til at blive færdige."
 msgid "We join the Meet on time, and leave whenever we need to."
 msgstr "Vi deltager i mødet til tiden og forlader det, når vi har brug for det."
 
-#: src/features/Auth/AuthWallBasic.tsx:285
+#: src/features/Auth/AuthWallBasic.tsx:232
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Vi behandler din stemme ved hjælp af AI"
@@ -15566,7 +15597,7 @@ msgstr "Vi har sendt et link til nulstilling af adgangskode. Tjek din indbakke."
 msgid "We sent a sign-in link to"
 msgstr "Vi har sendt et logind-link til"
 
-#: src/features/Auth/AuthWallBasic.tsx:202
+#: src/features/Auth/AuthSignInStep.tsx:275
 #. js-lingui-explicit-id
 msgid ""
 "We sent a sign-in link to your email. Please check your inbox and click the "
@@ -15587,7 +15618,7 @@ msgstr ""
 "Vi forbliver venlige. Fornærmelser, flirteri og salg holder sig ude af "
 "samtalen."
 
-#: src/features/Auth/AuthWallBasic.tsx:306
+#: src/features/Auth/AuthWallBasic.tsx:253
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Vi bruger cookies til at forbedre din oplevelse"
@@ -15613,10 +15644,15 @@ msgstr ""
 msgid "We will show FluencyPal in this language."
 msgstr "Vi vil vise FluencyPal på dette sprog."
 
-#: src/features/Auth/AuthWallBasic.tsx:281
+#: src/features/Auth/AuthWallBasic.tsx:228
 #. js-lingui-explicit-id
 msgid "We will speak freely"
 msgstr "Vi vil tale frit"
+
+#: src/features/Auth/AuthSignInStep.tsx:140
+#. js-lingui-explicit-id
+msgid "We'll email you a sign-in link."
+msgstr "Vi sender dig et login-link via e-mail."
 
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:71
 #. js-lingui-explicit-id
@@ -15957,6 +15993,12 @@ msgstr "Hvorfor backend-kandidater forbedrer sig hurtigt"
 msgid "Why candidates improve so quickly"
 msgstr "Hvorfor kandidater forbedrer sig så hurtigt"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Why do you want to learn {language}?"
+msgstr "Hvorfor vil du lære {language}?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
@@ -16033,7 +16075,7 @@ msgid "Word Stats"
 msgstr "Ord Stats"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16116,6 +16158,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Workplace Fairness Check"
 msgstr "Arbejdsplads Fairness Tjek"
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#. js-lingui-explicit-id
+msgid "Write a few sentences in your own words."
+msgstr "Skriv et par sætninger med dine egne ord."
 
 #: src/features/Review/ReviewDashboard.tsx:70
 #. js-lingui-explicit-id
@@ -16399,7 +16446,7 @@ msgstr "Du kan bygge projekter, men **ved ikke, hvad interviewere faktisk vil se
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Du kan købe fuld adgang, hvis du vil fjerne den begrænsning"
 
-#: src/features/Auth/AuthWallBasic.tsx:298
+#: src/features/Auth/AuthWallBasic.tsx:245
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Du kan slette dine personlige data når som helst"
@@ -16482,7 +16529,7 @@ msgstr "Du kan følge fremskridtene på hovedsiden."
 msgid "You can use text to answer if you prefer."
 msgstr "Du kan bruge tekst til at svare, hvis du foretrækker det."
 
-#: src/features/Auth/AuthWallBasic.tsx:289
+#: src/features/Auth/AuthWallBasic.tsx:236
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:33
 #. js-lingui-explicit-id
 msgid "You confirm that you are at least 13 years old"
@@ -16568,7 +16615,7 @@ msgstr "Du har fuld adgang"
 msgid "You have no private chats yet."
 msgstr "Du har ingen private chats endnu."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:65
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:64
 #. js-lingui-explicit-id
 msgid "You have not created a learning plan yet. Do you want to create one now?"
 msgstr "Du har ikke oprettet en læringsplan endnu. Ønsker du at oprette en nu?"
@@ -16711,6 +16758,7 @@ msgstr "Din AI samtalepartner"
 msgid "Your AI teacher voice:"
 msgstr "Din AI-lærer stemme:"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
 #: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
@@ -16953,7 +17001,7 @@ msgstr ""
 "opretter forbindelse, og vi giver dig besked, når der er 30 sekunder "
 "tilbage."
 
-#: src/features/Auth/AuthWallBasic.tsx:294
+#: src/features/Auth/AuthWallBasic.tsx:241
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Dine udskrifter er sikkert gemt i vores tjeneste"

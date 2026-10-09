@@ -46,4 +46,21 @@ For example, Lucy
 
 ## Plan
 
-Organize 10 1-1 calls. Arrange group of 2-3 people. Make it repeating.
+Organize ten 1-1 calls. Arrange group of 2-3 people. Make it repeating.
+Transit them to FluencyPal scheduler.
+While record video about social networks.
+While tune onboarding. Make sure that every one who started onboarding, finish it.
+Simplify login: If webview, show login / password
+
+## Template for personal message
+
+Hi. I saw that your are looking for a reliable partner for practice speaking.
+
+I am looking someone too.
+
+About me. I am Alex. I work in English speaking company last 5 years. I am software developer.
+I live in Poland, I relocated from Belarus.
+
+I know how it might be difficult to find a good partner, because I am also creating an app for practicing speaking.
+
+so. we can arrange a short call. like 20-30 mins. to get each other better. find out if it's comfortable for us both speaking. and who knows, can arrange regular calls.

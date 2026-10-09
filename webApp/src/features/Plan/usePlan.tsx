@@ -75,6 +75,7 @@ interface PlanContextType {
   loading: boolean;
   addGoalPlan: (goalPlan: GoalPlan) => Promise<void>;
   activeGoal: GoalPlan | null;
+  deleteGoal: (goalId: string) => Promise<void>;
   deleteGoals: () => void;
   generateGoal: (input: GenerateGoalProps) => Promise<GoalPlan>;
   increaseStartCount: (plan: GoalPlan, goalElement: PlanElement) => void;
@@ -326,12 +327,17 @@ ${JSON.stringify(input.progress, null, 2)}
     return null;
   }, [goals, settings.languageCode]);
 
-  const deleteGoals = async () => {
+  const deleteGoal = async (goalId: string) => {
     if (!goalsCollectionRef || !auth.uid) {
       throw new Error('goalsCollectionRef ref is not defined');
     }
+    if (!goalId) return;
+    await deleteDoc(doc(goalsCollectionRef, goalId));
+  };
+
+  const deleteGoals = async () => {
     if (!activeGoal?.id) return;
-    await deleteDoc(doc(goalsCollectionRef, activeGoal.id));
+    await deleteGoal(activeGoal.id);
   };
 
   const updateActiveGoalProgress = async (data: GoalElementProgress) => {
@@ -502,6 +508,7 @@ ${JSON.stringify(input.progress, null, 2)}
     increaseStartCount,
     loading,
     addGoalPlan,
+    deleteGoal,
     deleteGoals,
     generateGoal,
     isCraftingGoal,

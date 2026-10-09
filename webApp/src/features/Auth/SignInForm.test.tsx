@@ -132,7 +132,8 @@ describe('SignInForm', () => {
     expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Sign in instead' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Sign in with email' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Send link' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('textbox', { name: 'Email' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'I agree' })).not.toBeInTheDocument();
@@ -152,7 +153,8 @@ describe('SignInForm', () => {
     expect(screen.getByText(hotelOpening)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Reply' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Continue to talk' })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: 'Sign in with email' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Send link' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('textbox', { name: 'Email' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
   });
 
@@ -174,11 +176,17 @@ describe('SignInForm', () => {
     expect(screen.getByText('Sign in to keep talking')).toBeInTheDocument();
     expect(screen.getByTestId('roleplay-guest-reply-skeleton')).toBeInTheDocument();
     expect(screen.getByLabelText('You:')).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: 'Email' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Send link' })).toHaveAttribute(
+      'data-analytics',
+      'auth-email-send',
+    );
     expect(screen.getByRole('button', { name: 'Continue to talk' })).toHaveAttribute(
       'data-analytics',
       'auth-google',
     );
-    expect(screen.getByRole('button', { name: 'Sign in with email' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Privacy Policy' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Terms of Use' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Reply' })).not.toBeInTheDocument();
   });
 
@@ -191,6 +199,7 @@ describe('SignInForm', () => {
 
     expect(screen.getByRole('button', { name: 'Next' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Sign in with Google' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('textbox', { name: 'Email' })).not.toBeInTheDocument();
     expect(screen.queryByTestId('roleplay-opening-preview')).not.toBeInTheDocument();
   });
 });

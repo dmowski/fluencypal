@@ -1,55 +1,28 @@
-import {
-  Button,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from '@mui/material';
-import { LandPlot, Plus, Settings } from 'lucide-react';
+import { Button, Stack, Typography } from '@mui/material';
+import { LandPlot } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { usePlan } from '../Plan/usePlan';
 import { PlanElementMode } from '../Plan/types';
 import { PlanCard } from '../Plan/PlanCard';
 import { cardColors, modeCardProps } from '../Plan/data';
-import { SupportedLanguage } from '@/features/Lang/lang';
 import { useMemo, useState } from 'react';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
-import { getUrlStart } from '../Lang/getUrlStart';
 import { useUrlParam } from '../Url/useUrlParam';
+import { CreatePersonalPlanModal } from './CreatePersonalPlanModal';
+import { PlanSettingsMenu } from './PlanSettingsMenu';
 import { useSettings } from '../Settings/useSettings';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { SectionHeader } from './CartsHeader';
 import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 
-export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
+export const PlanDashboardCards = () => {
   const { i18n } = useLingui();
   const plan = usePlan();
   const settings = useSettings();
 
-  const [selectGoalModalAnchorEl, setSelectGoalModalAnchorEl] = useState<null | HTMLElement>(null);
+  const [isCreatePlanOpen, setIsCreatePlanOpen] = useState(false);
 
   const isGoalSet = !!plan.activeGoal?.elements?.length;
-
-  const deletePlans = async () => {
-    const confirmResult = confirm(
-      i18n._(`Are you sure you want to delete your goal? This action cannot be undone.`),
-    );
-    if (!confirmResult) {
-      return;
-    }
-
-    plan.deleteGoals();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   const modeLabels: Record<PlanElementMode, string> = {
     conversation: i18n._(`Conversation`),
@@ -108,10 +81,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
   const minimumLessonsCountToExpand = 3;
   const isAbleToExpand = doneLessonsCount >= minimumLessonsCountToExpand;
 
-  const languageGoals = plan.goals
-    .filter((goal) => goal.languageCode === settings.languageCode)
-    .sort((a, b) => b.createdAt - a.createdAt);
-
   const nextElementId = plan.nextElement?.id;
   const voiceName = settings.voice;
   const aiAvatar = voiceAvatarMap[voiceName];
@@ -133,68 +102,8 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
               : i18n._(`Start your way to fluency`)
           }
         />
-        {languageGoals.length > 0 && (
-          <IconButton
-            size="small"
-            onClick={(event) => setSelectGoalModalAnchorEl(event.currentTarget)}
-          >
-            <Settings size={'20px'} />
-          </IconButton>
-        )}
+        <PlanSettingsMenu onAddPlan={() => setIsCreatePlanOpen(true)} />
       </Stack>
-
-      {selectGoalModalAnchorEl && (
-        <Menu
-          sx={{
-            marginBottom: '130px',
-          }}
-          anchorEl={selectGoalModalAnchorEl}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          keepMounted
-          open={Boolean(selectGoalModalAnchorEl)}
-          onClose={() => setSelectGoalModalAnchorEl(null)}
-        >
-          {languageGoals.map((goal) => {
-            const isActive = plan.activeGoal?.id === goal.id;
-            return (
-              <MenuItem
-                key={goal.id}
-                sx={{}}
-                disabled={isActive}
-                onClick={() => {
-                  setSelectGoalModalAnchorEl(null);
-                  plan.setActiveGoal(goal.id);
-                }}
-              >
-                <ListItemIcon>
-                  {isActive ? <RadioButtonCheckedIcon /> : <RadioButtonUncheckedIcon />}
-                </ListItemIcon>
-                <ListItemText>
-                  <Typography>{goal.title}</Typography>
-                </ListItemText>
-              </MenuItem>
-            );
-          })}
-
-          <Divider />
-
-          <MenuItem
-            onClick={() => {
-              window.location.href = `${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}`;
-            }}
-          >
-            <ListItemIcon>
-              <Plus />
-            </ListItemIcon>
-            <ListItemText>
-              <Typography> {i18n._(`Add new goal`)}</Typography>
-            </ListItemText>
-          </MenuItem>
-        </Menu>
-      )}
 
       {plan.nextElement && nextElementId && (
         <Stack sx={{ gap: '10px' }}>
@@ -258,13 +167,14 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
       {(!isGoalSet || !plan.activeGoal) && (
         <Button
           startIcon={<LandPlot size={'21px'} />}
-          href={`${getUrlStart(lang)}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`}
+          onClick={() => setIsCreatePlanOpen(true)}
           sx={{
             padding: '10px 20px',
           }}
           variant="outlined"
+          data-testid="create-personal-plan-open"
         >
-          Create a plan
+          {i18n._('Create a plan')}
         </Button>
       )}
 
@@ -324,6 +234,10 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
         </Stack>
       )}
 
+      {isCreatePlanOpen && (
+        <CreatePersonalPlanModal onClose={() => setIsCreatePlanOpen(false)} />
+      )}
+
       {isShowMoreModal && (
         <CustomModal isOpen={true} onClose={() => setIsShowMoreModal(false)}>
           <Stack
@@ -360,24 +274,6 @@ export const PlanDashboardCards = ({ lang }: { lang: SupportedLanguage }) => {
                 gap: '2px',
               }}
             >
-              <Button
-                sx={{
-                  width: '100%',
-                  marginTop: '20px',
-                  padding: '10px 20px',
-                }}
-                onClick={() => {
-                  deletePlans();
-                  setIsShowMoreModal(false);
-                }}
-                variant="text"
-                color="error"
-                size="large"
-                disabled={isLearningPlanUpdating}
-              >
-                {i18n._(`Delete current goal`)}
-              </Button>
-
               <Button
                 sx={{
                   width: '100%',

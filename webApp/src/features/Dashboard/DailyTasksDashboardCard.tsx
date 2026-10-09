@@ -3,7 +3,7 @@ import { Stack } from '@mui/material';
 import { CardItem, StoreCard } from '../uiKit/Card/StoreCard';
 import { useDailyTasks } from '../Tasks/useDailyTasks';
 import { SectionHeader } from './CartsHeader';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { DailyTaskType } from '../Tasks/types';
 import { useStories } from '../Sentence/useStories';
 import { useJustTalk } from '../Conversation/useJustTalk';
@@ -13,9 +13,8 @@ import { useSettings } from '../Settings/useSettings';
 import { voiceAvatarMap } from '../Conversation/CallMode/voiceAvatar';
 import { useGrammarImprovement } from './Grammar/useGrammarImprovement';
 import { useDailyQuestion } from '../DailyQuestion/useDailyQuestion';
-import { getUrlStart } from '../Lang/getUrlStart';
-import { useRouter } from 'next/navigation';
 import { getHourlyDailyTasksQuote } from './dailyTasksQuotes';
+import { CreatePersonalPlanModal } from './CreatePersonalPlanModal';
 import { useInteractiveLesson } from '../InteractiveLesson/useInteractiveLesson';
 import {
   INTERACTIVE_LESSON_CARD_IMAGE,
@@ -27,7 +26,7 @@ export const DailyTasksDashboardCard = () => {
   const tasks = useDailyTasks();
   const stories = useStories();
   const plan = usePlan();
-  const router = useRouter();
+  const [isCreatePlanOpen, setIsCreatePlanOpen] = useState(false);
 
   const globalModals = useGlobalModals();
 
@@ -65,8 +64,7 @@ export const DailyTasksDashboardCard = () => {
         i18n._('You have not created a learning plan yet. Do you want to create one now?'),
       );
       if (isCreatePlan) {
-        const url = `${getUrlStart(settings.pageLanguageCode || 'en')}quiz?learn=${settings.languageCode || 'en'}&currentStep=before_recordAbout`;
-        router.push(url);
+        setIsCreatePlanOpen(true);
       }
       return;
     }
@@ -162,6 +160,9 @@ export const DailyTasksDashboardCard = () => {
       }}
     >
       <SectionHeader title={i18n._('Daily Tasks')} subTitle={dailyQuoteSubTitle} />
+      {isCreatePlanOpen && (
+        <CreatePersonalPlanModal onClose={() => setIsCreatePlanOpen(false)} />
+      )}
       <StoreCard
         textColor={'#fff'}
         backgroundColor={

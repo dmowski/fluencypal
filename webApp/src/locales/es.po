@@ -508,15 +508,15 @@ msgstr "Agregar más horas"
 msgid "Add my question"
 msgstr "Añadir mi pregunta"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:193
-#. js-lingui-explicit-id
-msgid "Add new goal"
-msgstr "Agregar nuevo objetivo"
-
 #: src/features/User/AiKnowledgeModal.tsx:140
 #. js-lingui-explicit-id
 msgid "Add new note"
 msgstr "Agregar nueva nota"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:134
+#. js-lingui-explicit-id
+msgid "Add new plan"
+msgstr "Agregar nuevo plan"
 
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
@@ -973,6 +973,7 @@ msgstr "Analizando tus entradas..."
 msgid "Analyzing..."
 msgstr "Analizando..."
 
+#: src/features/Auth/AuthSignInStep.tsx:226
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
@@ -1080,6 +1081,13 @@ msgstr "Arquitectura y Resiliencia"
 msgid "Are there any hidden fees?"
 msgstr "¿Hay algún cargo oculto?"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:48
+#. js-lingui-explicit-id
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr ""
+"¿Estás seguro de que quieres eliminar \"{title}\"? Esta acción no se puede "
+"deshacer."
+
 #: src/features/Chat/Message/Message.tsx:301
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this attachment?"
@@ -1107,13 +1115,6 @@ msgstr "¿Estás seguro de que quieres eliminar este espacio?"
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete your account?"
 msgstr "¿Estás seguro de que quieres eliminar tu cuenta?"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:41
-#. js-lingui-explicit-id
-msgid "Are you sure you want to delete your goal? This action cannot be undone."
-msgstr ""
-"¿Estás seguro de que quieres eliminar tu objetivo? Esta acción no puede "
-"deshacerse."
 
 #: src/features/Game/Battle/BattleCard.tsx:339
 #. js-lingui-explicit-id
@@ -1252,6 +1253,7 @@ msgstr "Puntajes promedio en gramática, vocabulario, fluidez y confianza."
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1637,6 +1639,11 @@ msgstr "Comprando {hours} horas de tiempo de conversación"
 msgid "By continuing, you agree to our"
 msgstr "Al continuar, aceptas nuestros"
 
+#: src/features/Auth/AuthSignInStep.tsx:220
+#. js-lingui-explicit-id
+msgid "By continuing, you agree to the"
+msgstr "Al continuar, aceptas los"
+
 #: src/features/Case/data/backendCSharp/techData.ts:23
 #. js-lingui-explicit-id
 msgid "C#"
@@ -1883,7 +1890,7 @@ msgstr "Revisa las palabras propuestas"
 msgid "Check your access and included conversation time."
 msgstr "Verifique su acceso y el tiempo de conversación incluido."
 
-#: src/features/Auth/AuthWallBasic.tsx:201
+#: src/features/Auth/AuthSignInStep.tsx:266
 #: src/features/Reader/components/ReaderSignInModal.tsx:116
 #. js-lingui-explicit-id
 msgid "Check your email"
@@ -1894,7 +1901,7 @@ msgstr "Verifica tu correo electrónico"
 msgid "Check Your Progress"
 msgstr "Verifica tu Progreso"
 
-#: src/features/Auth/AuthWallBasic.tsx:216
+#: src/features/Auth/AuthSignInStep.tsx:281
 #: src/features/Reader/components/ReaderSignInModal.tsx:121
 #. js-lingui-explicit-id
 msgid "Check your spam folder if you don't see the email."
@@ -2710,7 +2717,7 @@ msgstr "Completa la frase"
 msgid "Complete verification to proceed."
 msgstr "Complete la verificación para continuar."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:137
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
 #. js-lingui-explicit-id
 msgid "Completed"
 msgstr "Completado"
@@ -2940,7 +2947,8 @@ msgstr "Contexto (tema, audiencia, objetivo...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3035,7 +3043,7 @@ msgstr "Detalles del contrato"
 msgid "Contract Tests"
 msgstr "Pruebas de Contrato"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:55
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3228,6 +3236,7 @@ msgstr ""
 msgid "Could not start your account. Please try again."
 msgstr "No se pudo iniciar su cuenta. Por favor, inténtelo de nuevo."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3276,6 +3285,7 @@ msgstr ""
 "hablar o escuchar, y haz un seguimiento de tu progreso para dominar el "
 "inglés de manera efectiva."
 
+#: src/features/Dashboard/PlanDashboardCards.tsx:178
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3458,7 +3468,7 @@ msgstr "entrevista para desarrollador de csharp"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "La curiosidad mantiene el aprendizaje divertido. Explora las tareas de hoy."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:210
+#: src/features/Dashboard/PlanDashboardCards.tsx:120
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -3574,7 +3584,7 @@ msgstr ""
 "estructuras de oraciones, te ayudan a crear un hábito de aprendizaje y "
 "refuerzan tus habilidades para mejorar la fluidez más rápidamente."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:164
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:162
 #: src/features/Dashboard/TasksCard.tsx:39
 #. js-lingui-explicit-id
 msgid "Daily Tasks"
@@ -4024,11 +4034,6 @@ msgstr "Eliminar Análisis"
 #. js-lingui-explicit-id
 msgid "Delete chat"
 msgstr "Borrar chat"
-
-#: src/features/Dashboard/PlanDashboardCards.tsx:378
-#. js-lingui-explicit-id
-msgid "Delete current goal"
-msgstr "Eliminar objetivo actual"
 
 #: src/features/Reader/components/DeleteBookModal.tsx:114
 #. js-lingui-explicit-id
@@ -4665,7 +4670,7 @@ msgstr "Ochenta días — tu constancia está dando sus frutos."
 msgid "Either you run the day, or the day runs you."
 msgstr "O diriges el día, o el día te dirige a ti."
 
-#: src/features/Auth/AuthWallBasic.tsx:244
+#: src/features/Auth/AuthSignInStep.tsx:135
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4817,11 +4822,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Enough with speaking? Time to improve!"
 msgstr "¿Basta de hablar? ¡Es hora de mejorar!"
-
-#: src/features/Auth/AuthWallBasic.tsx:233
-#. js-lingui-explicit-id
-msgid "Enter your email to get a sign-in link"
-msgstr "Ingrese su correo electrónico para obtener un enlace de inicio de sesión"
 
 #: src/features/Reader/components/SendToKindleModal.tsx:232
 #. js-lingui-explicit-id
@@ -6001,11 +6001,12 @@ msgstr "Asistente General de IA"
 msgid "General Assistant"
 msgstr "Asistente General"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:395
+#: src/features/Dashboard/PlanDashboardCards.tsx:292
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Genera más lecciones únicas"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -6016,7 +6017,9 @@ msgstr "Generar plan"
 msgid "Generating explanation..."
 msgstr "Generando explicación..."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:394
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generando..."
@@ -6240,8 +6243,8 @@ msgid "Go to the main page"
 msgstr "Ir a la página principal"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:132
-#: src/features/Dashboard/PlanDashboardCards.tsx:353
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
+#: src/features/Dashboard/PlanDashboardCards.tsx:268
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Meta"
@@ -6837,7 +6840,7 @@ msgstr ""
 msgid "I accept the"
 msgstr "Acepto el"
 
-#: src/features/Auth/AuthWallBasic.tsx:277
+#: src/features/Auth/AuthWallBasic.tsx:224
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:85
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:47
 #. js-lingui-explicit-id
@@ -6981,6 +6984,11 @@ msgstr ""
 "Quiero aprender inglés para poder pasar una entrevista de trabajo. Soy "
 "médico y necesito explicar mi experiencia y responder preguntas sobre mi "
 "trabajo."
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#. js-lingui-explicit-id
+msgid "I want to learn it so I can..."
+msgstr "Quiero aprenderlo para poder..."
 
 #: src/features/Goal/Quiz/LanguageToLearnSelector.tsx:53
 #: src/features/Goal/Quiz/QuizEarlySteps.browser.test.tsx:87
@@ -7273,7 +7281,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "En menos de 5 minutos, obtendrás:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:405
+#: src/features/Dashboard/PlanDashboardCards.tsx:302
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Para generar más lecciones, necesita completar al menos 3 lecciones"
@@ -7549,11 +7557,6 @@ msgstr "Preséntate"
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
 msgstr "Preséntate como ingeniero de backend"
-
-#: src/features/Auth/AuthWallBasic.tsx:212
-#. js-lingui-explicit-id
-msgid "Invite Link Sent to:"
-msgstr "Enlace de invitación enviado a:"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:140
 #. js-lingui-explicit-id
@@ -8033,7 +8036,7 @@ msgstr "Aprende con la comunidad"
 msgid "Learning never exhausts the mind."
 msgstr "El aprendizaje nunca agota la mente."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:129
+#: src/features/Dashboard/PlanDashboardCards.tsx:99
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Ruta de aprendizaje"
@@ -8238,7 +8241,7 @@ msgstr "Cargando.."
 #: src/features/Conversation/ConversationReviewModal.tsx:138
 #: src/features/Conversation/ConversationReviewModal.tsx:153
 #: src/features/Conversation/ConversationReviewModal.tsx:171
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:135
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
@@ -8707,7 +8710,7 @@ msgstr ""
 msgid "More options"
 msgstr "Más opciones"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:349
+#: src/features/Dashboard/PlanDashboardCards.tsx:264
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Más lecciones únicas"
@@ -8852,7 +8855,7 @@ msgstr "Noticias"
 msgid "News Discussion"
 msgstr "Discusión de Noticias"
 
-#: src/features/Auth/AuthWallBasic.tsx:265
+#: src/features/Auth/AuthWallBasic.tsx:212
 #: src/features/Case/data/frontend-junior/webcamDemoSection.tsx:43
 #: src/features/Case/data/frontend-senior/webcamDemoSection.tsx:43
 #: src/features/Case/quiz/InterviewQuizPage.tsx:79
@@ -9513,7 +9516,7 @@ msgstr "¡Vaya! Algo salió mal"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:246
+#: src/features/Dashboard/PlanDashboardCards.tsx:156
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -9606,6 +9609,11 @@ msgid ""
 msgstr ""
 "Opcional: vocabulario específico, detalles de fondo, objeciones, preguntas "
 "o comportamiento"
+
+#: src/features/Auth/AuthSignInStep.tsx:175
+#. js-lingui-explicit-id
+msgid "or"
+msgstr "o"
 
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:154
 #. js-lingui-explicit-id
@@ -10045,6 +10053,11 @@ msgstr "Lugar para compartir tus pensamientos"
 msgid "Plan for"
 msgstr "Planificar para"
 
+#: src/features/Dashboard/PlanSettingsMenu.tsx:62
+#. js-lingui-explicit-id
+msgid "Plan settings"
+msgstr "Configuración del plan"
+
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:61
 #. js-lingui-explicit-id
 msgid "Plans & access"
@@ -10183,7 +10196,7 @@ msgstr "Por favor, introduce un nombre para cada jugador."
 msgid "Please enter a space title"
 msgstr "Por favor, introduce un título para el espacio"
 
-#: src/features/Auth/AuthWallBasic.tsx:249
+#: src/features/Auth/AuthWallBasic.tsx:282
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:18
 #. js-lingui-explicit-id
 msgid "Please enter a valid email address"
@@ -10817,8 +10830,9 @@ msgstr "Precio por día"
 msgid "Priority support"
 msgstr "Soporte prioritario"
 
+#: src/features/Auth/AuthSignInStep.tsx:223
 #: src/features/Auth/AuthWall.tsx:69
-#: src/features/Auth/AuthWallBasic.tsx:311
+#: src/features/Auth/AuthWallBasic.tsx:258
 #: src/features/Auth/InterviewAuthWall.tsx:43
 #: src/features/Case/Landing/components/Footer.tsx:131
 #: src/features/Community/SupportPage.tsx:142
@@ -10864,6 +10878,7 @@ msgstr "Procesando el conocimiento existente en ese cerebro..."
 msgid "Processing latest session"
 msgstr "Procesando la última sesión"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
@@ -11438,6 +11453,11 @@ msgstr "Grabar más"
 msgid "Record new essay"
 msgstr "Grabar nuevo ensayo"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#. js-lingui-explicit-id
+msgid "Record with voice"
+msgstr "Grabar con voz"
+
 #: src/features/RolePlay/fullArticles/AliasRolePlay.tsx:198
 #. js-lingui-explicit-id
 msgid "Record your description"
@@ -11532,6 +11552,11 @@ msgstr "Eliminar idioma"
 #. js-lingui-explicit-id
 msgid "Remove my data (delete account)"
 msgstr "Eliminar mis datos (eliminar cuenta)"
+
+#: src/features/Dashboard/PlanSettingsMenu.tsx:102
+#. js-lingui-explicit-id
+msgid "Remove plan"
+msgstr "Eliminar plan"
 
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:38
 #. js-lingui-explicit-id
@@ -11714,7 +11739,7 @@ msgstr "Revisar, editar o agregar las notas que la IA utiliza sobre ti."
 msgid "Robot Thinking"
 msgstr "Pensamiento del Robot"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:56
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11800,7 +11825,7 @@ msgstr "Enrutamiento"
 msgid "Rudeness"
 msgstr "Maleducado"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:58
+#: src/features/Dashboard/PlanDashboardCards.tsx:32
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -12033,7 +12058,7 @@ msgstr "Enviar"
 msgid "Send at least 10 messages in Just talk"
 msgstr "Envía al menos 10 mensajes en Solo hablar"
 
-#: src/features/Auth/AuthWallBasic.tsx:221
+#: src/features/Auth/AuthSignInStep.tsx:296
 #. js-lingui-explicit-id
 msgid "Send email again"
 msgstr "Enviar correo electrónico de nuevo"
@@ -12043,15 +12068,15 @@ msgstr "Enviar correo electrónico de nuevo"
 msgid "Send for approval"
 msgstr "Enviar para aprobación"
 
+#: src/features/Auth/AuthSignInStep.tsx:164
+#. js-lingui-explicit-id
+msgid "Send link"
+msgstr "Enviar enlace"
+
 #: src/features/Header/NotificationsModal.tsx:57
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Envíame notificaciones por correo electrónico"
-
-#: src/features/Auth/AuthWallBasic.tsx:230
-#. js-lingui-explicit-id
-msgid "Send me sign-in link"
-msgstr "Envíame el enlace para iniciar sesión"
 
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
@@ -12103,7 +12128,7 @@ msgstr "Envía tu respuesta para continuar."
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Envía {messagesNeeded} mensajes para desbloquear el acceso completo"
 
-#: src/features/Auth/AuthWallBasic.tsx:230
+#: src/features/Auth/AuthSignInStep.tsx:164
 #: src/features/Chat/SubmitForm.tsx:327
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12413,21 +12438,19 @@ msgstr "Inicia sesión para desbloquear más funciones"
 msgid "Sign in to use FluencyPal"
 msgstr "Inicia sesión para usar FluencyPal"
 
-#: src/features/Auth/AuthWallBasic.tsx:232
-#: src/features/Auth/AuthWallBasic.tsx:339
 #: src/features/Reader/components/ReaderSignInModal.tsx:130
 #: src/features/Reader/components/ReaderSignInModal.tsx:181
 #. js-lingui-explicit-id
 msgid "Sign in with email"
 msgstr "Iniciar sesión con correo electrónico"
 
-#: src/features/Auth/AuthWallBasic.tsx:335
+#: src/features/Auth/AuthWallBasic.tsx:287
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
 msgid "Sign in with Google"
 msgstr "Iniciar sesión con Google"
 
-#: src/features/Auth/AuthWallBasic.tsx:334
+#: src/features/Auth/AuthSignInStep.tsx:200
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:94
 #: src/features/Reader/components/ReaderSignInModal.tsx:174
 #. js-lingui-explicit-id
@@ -12573,7 +12596,7 @@ msgstr "Así que puedo traducir palabras para ti"
 msgid "So we can save your purchase to your account"
 msgstr "Para que podamos guardar su compra en su cuenta"
 
-#: src/features/Auth/AuthWallBasic.tsx:282
+#: src/features/Auth/AuthWallBasic.tsx:229
 #. js-lingui-explicit-id
 msgid "So we need your agreement with that and our policies"
 msgstr "Así que necesitamos su acuerdo con eso y nuestras políticas"
@@ -12606,6 +12629,11 @@ msgstr ""
 "Sólidos conocimientos de ASP.NET Core y EF Core. Algunas lagunas en "
 "patrones de resiliencia y observabilidad."
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#. js-lingui-explicit-id
+msgid "Something went wrong while creating your plan. Please try again later."
+msgstr "Algo salió mal al crear su plan. Por favor, inténtelo de nuevo más tarde."
+
 #: src/features/News/NewsModal.tsx:331
 #. js-lingui-explicit-id
 msgid ""
@@ -12615,7 +12643,7 @@ msgstr ""
 "Algo salió mal al obtener este artículo. Por favor, verifica tu conexión e "
 "inténtalo de nuevo."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:75
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -12739,7 +12767,7 @@ msgstr "Estrellas"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:138
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:77
@@ -12910,7 +12938,7 @@ msgstr "Inicia Tu Prueba de Entrevista"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Comienza Tu Viaje hacia Conversaciones Fluidas Ahora"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:133
+#: src/features/Dashboard/PlanDashboardCards.tsx:103
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Comienza tu camino hacia la fluidez"
@@ -13070,6 +13098,7 @@ msgstr "Pasos:"
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
@@ -14055,8 +14084,9 @@ msgstr "Términos y Condiciones"
 msgid "Terms of Service"
 msgstr "Términos de servicio"
 
+#: src/features/Auth/AuthSignInStep.tsx:229
 #: src/features/Auth/AuthWall.tsx:74
-#: src/features/Auth/AuthWallBasic.tsx:316
+#: src/features/Auth/AuthWallBasic.tsx:263
 #: src/features/Auth/InterviewAuthWall.tsx:48
 #: src/features/Case/Landing/components/Footer.tsx:128
 #: src/features/Community/SupportPage.tsx:129
@@ -15112,6 +15142,7 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Intenta"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -15689,7 +15720,7 @@ msgstr ""
 "Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto "
 "sino un hábito."
 
-#: src/features/Auth/AuthWallBasic.tsx:302
+#: src/features/Auth/AuthWallBasic.tsx:249
 #. js-lingui-explicit-id
 msgid "We can send you marketing emails"
 msgstr "Podemos enviarte correos electrónicos de marketing"
@@ -15709,7 +15740,7 @@ msgstr "Nos damos tiempo para terminar."
 msgid "We join the Meet on time, and leave whenever we need to."
 msgstr "Nos unimos al Meet a tiempo y salimos cuando lo necesitamos."
 
-#: src/features/Auth/AuthWallBasic.tsx:285
+#: src/features/Auth/AuthWallBasic.tsx:232
 #. js-lingui-explicit-id
 msgid "We process your voice using AI"
 msgstr "Procesamos tu voz usando IA"
@@ -15735,7 +15766,7 @@ msgstr ""
 msgid "We sent a sign-in link to"
 msgstr "Hemos enviado un enlace de inicio de sesión a"
 
-#: src/features/Auth/AuthWallBasic.tsx:202
+#: src/features/Auth/AuthSignInStep.tsx:275
 #. js-lingui-explicit-id
 msgid ""
 "We sent a sign-in link to your email. Please check your inbox and click the "
@@ -15757,7 +15788,7 @@ msgstr ""
 "Nos mantenemos amables. Los insultos, el coqueteo y la venta quedan fuera "
 "de la conversación."
 
-#: src/features/Auth/AuthWallBasic.tsx:306
+#: src/features/Auth/AuthWallBasic.tsx:253
 #. js-lingui-explicit-id
 msgid "We use cookies to enhance your experience"
 msgstr "Usamos cookies para mejorar su experiencia"
@@ -15783,10 +15814,15 @@ msgstr ""
 msgid "We will show FluencyPal in this language."
 msgstr "Mostraremos FluencyPal en este idioma."
 
-#: src/features/Auth/AuthWallBasic.tsx:281
+#: src/features/Auth/AuthWallBasic.tsx:228
 #. js-lingui-explicit-id
 msgid "We will speak freely"
 msgstr "Hablaremos libremente"
+
+#: src/features/Auth/AuthSignInStep.tsx:140
+#. js-lingui-explicit-id
+msgid "We'll email you a sign-in link."
+msgstr "Te enviaremos un enlace para iniciar sesión."
 
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:71
 #. js-lingui-explicit-id
@@ -16132,6 +16168,12 @@ msgstr "Por qué los candidatos de backend mejoran rápido"
 msgid "Why candidates improve so quickly"
 msgstr "Por qué los candidatos mejoran tan rápidamente"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#. js-lingui-explicit-id
+msgid "Why do you want to learn {language}?"
+msgstr "¿Por qué quieres aprender {language}?"
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:99
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:55
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:74
@@ -16210,7 +16252,7 @@ msgid "Word Stats"
 msgstr "Estadísticas de Palabras"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:57
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16292,6 +16334,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Workplace Fairness Check"
 msgstr "Verificación de Justicia en el Lugar de Trabajo"
+
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#. js-lingui-explicit-id
+msgid "Write a few sentences in your own words."
+msgstr "Escribe algunas oraciones con tus propias palabras."
 
 #: src/features/Review/ReviewDashboard.tsx:70
 #. js-lingui-explicit-id
@@ -16586,7 +16633,7 @@ msgstr ""
 msgid "You can buy full access if you want to remove that limit"
 msgstr "Puedes comprar acceso completo si quieres eliminar ese límite"
 
-#: src/features/Auth/AuthWallBasic.tsx:298
+#: src/features/Auth/AuthWallBasic.tsx:245
 #. js-lingui-explicit-id
 msgid "You can delete your personal data anytime"
 msgstr "Puedes eliminar tus datos personales en cualquier momento"
@@ -16674,7 +16721,7 @@ msgstr "Puede realizar un seguimiento del progreso en la página principal."
 msgid "You can use text to answer if you prefer."
 msgstr "Puedes usar texto para responder si lo prefieres."
 
-#: src/features/Auth/AuthWallBasic.tsx:289
+#: src/features/Auth/AuthWallBasic.tsx:236
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:33
 #. js-lingui-explicit-id
 msgid "You confirm that you are at least 13 years old"
@@ -16761,7 +16808,7 @@ msgstr "Tienes acceso completo"
 msgid "You have no private chats yet."
 msgstr "Todavía no tienes chats privados."
 
-#: src/features/Dashboard/DailyTasksDashboardCard.tsx:65
+#: src/features/Dashboard/DailyTasksDashboardCard.tsx:64
 #. js-lingui-explicit-id
 msgid "You have not created a learning plan yet. Do you want to create one now?"
 msgstr "No has creado un plan de aprendizaje todavía. ¿Quieres crear uno ahora?"
@@ -16905,6 +16952,7 @@ msgstr "Tu compañero de conversación de IA"
 msgid "Your AI teacher voice:"
 msgstr "Tu voz de profesor de IA:"
 
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
 #: src/features/Game/Battle/BattleActionModal.tsx:371
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
@@ -17146,7 +17194,7 @@ msgstr ""
 "Tu profesor comenzará con una pregunta fácil. El temporizador comienza "
 "cuando te conectes, y te avisaremos cuando queden 30 segundos."
 
-#: src/features/Auth/AuthWallBasic.tsx:294
+#: src/features/Auth/AuthWallBasic.tsx:241
 #. js-lingui-explicit-id
 msgid "Your transcripts are securely stored in our service"
 msgstr "Tus expedientes están almacenados de forma segura en nuestro servicio"

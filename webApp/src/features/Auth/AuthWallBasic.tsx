@@ -1,8 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
-import Google from '@mui/icons-material/Google';
-import { Stack, TextField, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { ArrowRight, Check, Mail } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { scrollTopFast } from '@/libs/scroll';
 import { InfoStep } from '../Survey/InfoStep';
 import { LoadingShapes } from '@/features/uiKit/Loading/LoadingShapes';
@@ -11,6 +10,7 @@ import { getLandingUrlStart } from '../Lang/getUrlStart';
 import { useAuth } from './useAuth';
 import { normalizeEmail } from './normalizeEmail';
 import { resolveAuthWallStartStep } from './practiceAuthWall';
+import { AuthEmailSentStep, AuthSignInStep } from './AuthSignInStep';
 
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,6 +42,14 @@ const setStoredAuthMethod = (method: AuthMethod) => {
   window.localStorage.setItem(AUTH_WALL_LAST_METHOD_KEY, method);
 };
 
+const isPolicyLink = (item: ListItem) => {
+  const href = item.href ?? '';
+  return href.endsWith('privacy') || href.endsWith('terms');
+};
+
+const policyHref = (items: ListItem[], page: 'privacy' | 'terms') =>
+  items.find((item) => item.href?.endsWith(page))?.href;
+
 interface AuthWallBasicProps {
   children: ReactNode;
   featuresTitle: string;
@@ -72,12 +80,10 @@ export const AuthWallBasic = ({
   authList,
   featuresImageUrl,
   agreementImageUrl,
-  authImageUrl,
   width,
   startOnAuth = false,
   authSubComponent,
   authActionTitle,
-  authListAfterActions = false,
   authActionsQuiet = false,
   hideAuthActions = false,
 }: AuthWallBasicProps) => {
@@ -95,7 +101,6 @@ export const AuthWallBasic = ({
 
   const isValidEmailAddress = isValidEmail(email);
   const [lastAuthMethod, setLastAuthMethod] = useState<AuthMethod | null>(getStoredAuthMethod);
-  const lastUsedBadgeLabel = 'Last used';
 
   useEffect(() => {
     if (isValidEmailError && isValidEmailAddress) {
@@ -103,7 +108,7 @@ export const AuthWallBasic = ({
     }
   }, [email, isValidEmailAddress, isValidEmailError]);
 
-  const steps = ['features', 'agreement', 'auth', 'email', 'email-send'] as const;
+  const steps = ['features', 'agreement', 'auth', 'email-send'] as const;
   const [step, setStep] = useState<(typeof steps)[number]>(() =>
     resolveAuthWallStartStep({
       startOnAuth,
@@ -139,6 +144,7 @@ export const AuthWallBasic = ({
     }
     setEmailSignInError('');
     setIsEmailSignInLoading(true);
+    onSelectAuthMethod('email');
     const signInResult = await auth.signInWithEmail(email);
     setIsEmailSignInLoading(false);
     if (!signInResult.isDone) {
@@ -197,66 +203,7 @@ export const AuthWallBasic = ({
         }}
       >
         {step === 'email-send' && (
-          <InfoStep
-            title={i18n._('Check your email')}
-            subTitle={i18n._(
-              'We sent a sign-in link to your email. Please check your inbox and click the link to sign in.',
-            )}
-            subComponent={
-              <Stack
-                sx={{
-                  paddingTop: '20px',
-                }}
-              >
-                <Typography>
-                  {i18n._('Invite Link Sent to:')} <b>{email}</b>
-                </Typography>
-
-                <Typography sx={{}}>
-                  {i18n._("Check your spam folder if you don't see the email.")}
-                </Typography>
-              </Stack>
-            }
-            onClick={() => setStep('email')}
-            actionButtonTitle={i18n._('Send email again')}
-            actionButtonEndIcon={<Mail />}
-            width={width}
-          />
-        )}
-
-        {step === 'email' && (
-          <InfoStep
-            actionButtonTitle={
-              isEmailSignInLoading ? i18n._('Sending...') : i18n._('Send me sign-in link')
-            }
-            title={i18n._('Sign in with email')}
-            subTitle={i18n._('Enter your email to get a sign-in link')}
-            subComponent={
-              <Stack
-                sx={{
-                  paddingTop: '20px',
-                }}
-              >
-                <TextField
-                  value={email}
-                  onChange={(e) => setEmail(normalizeEmail(e.target.value))}
-                  fullWidth
-                  label={i18n._('Email')}
-                  type="email"
-                  error={isValidEmailError || emailSignInError !== ''}
-                  helperText={
-                    isValidEmailError
-                      ? i18n._('Please enter a valid email address')
-                      : emailSignInError
-                  }
-                />
-              </Stack>
-            }
-            onClick={signInWithEmail}
-            disabled={isValidEmailError || isEmailSignInLoading}
-            width={width}
-            actionButtonAnalyticsId="auth-email-send"
-          />
+          <AuthEmailSentStep email={email} onSendAgain={() => setStep('auth')} />
         )}
 
         {step === 'features' && (
@@ -324,47 +271,28 @@ export const AuthWallBasic = ({
         )}
 
         {step === 'auth' && (
-          <InfoStep
-            imageUrl={authImageUrl}
-            width={width}
+          <AuthSignInStep
             title={authTitle}
             subTitle={authSubTitle}
-            actionButtonTitle={
-              isGoogleSignInLoading
-                ? i18n._('Signing in...')
-                : authActionTitle || i18n._('Sign in with Google')
+            subComponent={authSubComponent}
+            reassuranceItems={authList.filter((item) => !isPolicyLink(item))}
+            email={email}
+            onEmailChange={(value) => setEmail(normalizeEmail(value))}
+            emailError={
+              isValidEmailError ? i18n._('Please enter a valid email address') : emailSignInError
             }
-            actionButtonStartIcon={<Google />}
-            actionButtonBadgeText={lastAuthMethod === 'google' ? lastUsedBadgeLabel : undefined}
-            secondButtonTitle={i18n._('Sign in with email')}
-            secondButtonStartIcon={<Mail />}
-            secondButtonEndIcon={<ArrowRight />}
-            secondButtonBadgeText={lastAuthMethod === 'email' ? lastUsedBadgeLabel : undefined}
-            listItems={authList}
-            listItemsAfterActions={authListAfterActions}
-            disabled={isGoogleSignInLoading}
-            isStepLoading={isGoogleSignInLoading}
-            actionButtonAnalyticsId="auth-google"
-            secondButtonAnalyticsId="auth-email"
-            quietActions={authActionsQuiet}
+            onSendLink={() => void signInWithEmail()}
+            isSendingLink={isEmailSignInLoading}
+            sendDisabled={isValidEmailError || isEmailSignInLoading}
+            googleTitle={authActionTitle || i18n._('Sign in with Google')}
+            onGoogle={() => void signInWithGoogle()}
+            isGoogleLoading={isGoogleSignInLoading}
+            googleError={googleSignInError}
+            lastUsedMethod={lastAuthMethod}
+            privacyHref={policyHref(authList, 'privacy')}
+            termsHref={policyHref(authList, 'terms')}
             hideActions={hideAuthActions}
-            subComponent={
-              authSubComponent || googleSignInError ? (
-                <Stack>
-                  {authSubComponent}
-                  {googleSignInError ? (
-                    <Typography color="error" sx={{ paddingTop: '12px' }}>
-                      {googleSignInError}
-                    </Typography>
-                  ) : null}
-                </Stack>
-              ) : undefined
-            }
-            onClick={() => void signInWithGoogle()}
-            onSecondButtonClick={() => {
-              onSelectAuthMethod('email');
-              nextStep();
-            }}
+            quiet={authActionsQuiet}
           />
         )}
       </Stack>

@@ -54,7 +54,7 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
             <DailyQuestionDashboardCard />
             <GrammarImprovesCard />
             <InstallAppInstruction />
-            <PlanDashboardCards lang={lang} />
+            <PlanDashboardCards />
             <RolePlayDashboardCard />
 
             <GameDashboardCard />
