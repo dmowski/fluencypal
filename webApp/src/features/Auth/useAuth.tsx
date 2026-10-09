@@ -7,6 +7,8 @@ import {
   ActionCodeSettings,
 } from 'firebase/auth';
 import { completeEmailLinkSignIn } from './emailLinkSignIn';
+import { emailLinkConfirmFailure, resolveEmailLinkArrival } from './emailLinkArrival';
+import { EmailLinkConfirmForm } from './EmailLinkConfirmForm';
 import {
   dayPassEmailReturnTarget,
   rememberDayPassEmailReturn,
@@ -75,6 +77,8 @@ export interface AuthContext {
   getToken: (forceRefresh?: boolean) => Promise<string>;
 
   signInWithEmail: (email: string) => Promise<SignInResult>;
+  emailLinkNeedsEmail: boolean;
+  confirmEmailLink: (email: string) => Promise<SignInResult>;
   submitQuizPassword: (
     email: string,
     password: string,
@@ -107,6 +111,10 @@ export const authContext: Context<AuthContext> = createContext<AuthContext>({
   signInWithEmail: async () => {
     throw new Error('signInWithEmail not implemented');
   },
+  emailLinkNeedsEmail: false,
+  confirmEmailLink: async () => {
+    throw new Error('confirmEmailLink not implemented');
+  },
   submitQuizPassword: async () => {
     throw new Error('submitQuizPassword not implemented');
   },
@@ -123,6 +131,8 @@ function useProvideAuth(): AuthContext {
   const [tokenReadyUid, setTokenReadyUid] = useState<string | null>(null);
   // linkWithPopup and linkWithCredential keep the same uid, so useAuthState does not re-render.
   const [linkedAuthUid, setLinkedAuthUid] = useState('');
+  const [emailLinkNeedsEmail, setEmailLinkNeedsEmail] = useState(false);
+  const pendingEmailLinkRef = useRef('');
   const [googleSignInSettled, setGoogleSignInSettled] = useState(0);
   const reportedGoogleSignIn = useRef(0);
   const googleSignInInProgress = useRef(false);
@@ -246,12 +256,12 @@ function useProvideAuth(): AuthContext {
   };
 
   const confirmEmailLinkSignIn = async (): Promise<void> => {
-    if (!isSignInWithEmailLink(auth, window.location.href)) return;
+    const href = window.location.href;
+    if (!isSignInWithEmailLink(auth, href)) return;
     const email = window.localStorage.getItem(LOCALSTORAGE_EMAIL_KEY);
-    if (!email) {
-      cleanEmailSignInUrl();
-      const confirmUrl = dayPassEmailReturnTarget(window.location.href);
-      if (confirmUrl) window.location.replace(confirmUrl);
+    if (resolveEmailLinkArrival({ isEmailLink: true, storedEmail: email }) === 'ask' || !email) {
+      pendingEmailLinkRef.current = href;
+      setEmailLinkNeedsEmail(true);
       return;
     }
 
@@ -354,6 +364,34 @@ function useProvideAuth(): AuthContext {
 
   const sendQuizPasswordResetEmail = async (email: string): Promise<QuizPasswordResetResult> => {
     return sendQuizPasswordReset(auth, email, quizPasswordDeps);
+  };
+
+  const confirmEmailLink = async (emailAddress: string): Promise<SignInResult> => {
+    const link = pendingEmailLinkRef.current || window.location.href;
+    try {
+      const credential = await completeEmailLinkSignIn(auth, normalizeEmail(emailAddress), link);
+      await credential.user.getIdToken(true);
+      window.localStorage.removeItem(LOCALSTORAGE_EMAIL_KEY);
+      pendingEmailLinkRef.current = '';
+      setEmailLinkNeedsEmail(false);
+      if (auth.currentUser && !auth.currentUser.isAnonymous) {
+        setLinkedAuthUid(auth.currentUser.uid);
+      }
+      const confirmUrl = dayPassEmailReturnTarget(window.location.href);
+      if (confirmUrl) {
+        window.location.replace(confirmUrl);
+        return { isDone: true, error: '' };
+      }
+      cleanEmailSignInUrl();
+      return { isDone: true, error: '' };
+    } catch (error) {
+      const code = error instanceof FirebaseError ? error.code : '';
+      if (emailLinkConfirmFailure(code) === 'failed') {
+        console.error('Error confirming email link sign-in', error);
+        Sentry.captureException(error);
+      }
+      return { isDone: false, error: emailLinkConfirmFailure(code) };
+    }
   };
 
   const signInWithEmail = async (email: string): Promise<SignInResult> => {
@@ -515,6 +553,8 @@ function useProvideAuth(): AuthContext {
     logout,
     getToken,
     signInWithEmail,
+    emailLinkNeedsEmail,
+    confirmEmailLink,
     submitQuizPassword,
     sendQuizPasswordReset: sendQuizPasswordResetEmail,
 
@@ -527,7 +567,14 @@ function useProvideAuth(): AuthContext {
 export function AuthProvider(props: { children: ReactNode }): JSX.Element {
   const auth = useProvideAuth();
 
-  return <authContext.Provider value={auth}>{props.children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={auth}>
+      {props.children}
+      {auth.emailLinkNeedsEmail ? (
+        <EmailLinkConfirmForm onConfirm={auth.confirmEmailLink} />
+      ) : null}
+    </authContext.Provider>
+  );
 }
 
 export const useAuth = (): AuthContext => useContext(authContext);
