@@ -3,6 +3,7 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { ChevronRight } from 'lucide-react';
+import { groupCallChoiceHref } from './groupCallOnboardingHref';
 import { groupCallTimeLabel } from './groupCallTimeLabel';
 import { useEnglishGroupCalls } from './useEnglishGroupCalls';
 
@@ -85,7 +86,7 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
             <Stack
               key={call.id}
               component="a"
-              href={moreHref}
+              href={groupCallChoiceHref(moreHref, call.id)}
               direction="row"
               data-analytics="community-call-schedule-row"
               data-testid="group-conversations-schedule-row"

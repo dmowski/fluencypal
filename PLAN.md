@@ -7,6 +7,9 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
+- Fix empty game usernames
+- Redesign Group call landing: record demo
+
 ## Record video on YouTube
 
 - About social networks in general

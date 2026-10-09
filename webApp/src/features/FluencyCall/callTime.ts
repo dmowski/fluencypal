@@ -229,6 +229,20 @@ export function formatCallLabel(
   };
 }
 
+/** Heading for the language step after someone taps a call time. */
+export function communityCallChosenTitle(
+  startsAtIso: string,
+  now: Date,
+  locale: string,
+  words: { today: string; tomorrow: string; now: string },
+  timeZone = viewerTimeZone(),
+): string | null {
+  const label = formatCallLabel(startsAtIso, now, locale, timeZone);
+  if (!label) return null;
+  const live = new Date(startsAtIso).getTime() <= now.getTime();
+  return fluencyCallRowTitle(label, live, words);
+}
+
 export function fluencyCallRowTitle(
   label: CallClockLabel,
   isLive: boolean,

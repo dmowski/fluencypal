@@ -1,5 +1,13 @@
 import { getAppUrlStart } from '@/features/Lang/getUrlStart';
 
-/** English call times on the group-conversations page. Skip “I want to learn” and open the calls list. */
+/** Hero, Show more, and the footer. Open the English calls list. */
 export const englishGroupCallOnboardingHref = (lang: string) =>
-  `${getAppUrlStart(lang)}community-call?step=calls&learn=en`;
+  `${getAppUrlStart(lang)}community-call`;
+
+/** A tapped time skips that list and opens native language for this call. */
+export const groupCallChoiceHref = (listHref: string, callId: string) => {
+  const url = new URL(listHref);
+  url.searchParams.set('step', 'native');
+  url.searchParams.set('call', callId);
+  return url.toString();
+};

@@ -2,6 +2,7 @@
 
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { ChevronRight } from 'lucide-react';
 import { SupportedLanguage, fullLanguageName } from '@/features/Lang/lang';
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -11,7 +12,15 @@ import { useFluencyCallRsvps, useListedFluencyCalls } from './useFluencyCalls';
 import { useNow } from './useNow';
 import { FluencyCall } from './types';
 
-const CallRow = ({ call, now }: { call: FluencyCall; now: Date }) => {
+const CallRow = ({
+  call,
+  now,
+  onChoose,
+}: {
+  call: FluencyCall;
+  now: Date;
+  onChoose: (callId: string) => void;
+}) => {
   const { i18n } = useLingui();
   const { joinCount } = useFluencyCallRsvps(call.id);
   const timeZone = viewerTimeZone();
@@ -28,13 +37,24 @@ const CallRow = ({ call, now }: { call: FluencyCall; now: Date }) => {
 
   return (
     <Stack
+      component="button"
+      type="button"
       direction="row"
+      onClick={() => onChoose(call.id)}
+      data-analytics="community-call-calls-continue"
       data-testid={`community-call-scheduled-${call.id}`}
       sx={{
         alignItems: 'center',
         gap: '12px',
+        width: '100%',
         padding: '12px 0',
+        border: 0,
         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        background: 'transparent',
+        color: 'inherit',
+        font: 'inherit',
+        textAlign: 'left',
+        cursor: 'pointer',
       }}
     >
       <Stack
@@ -62,15 +82,18 @@ const CallRow = ({ call, now }: { call: FluencyCall; now: Date }) => {
           {joinCount > 0 ? ` · ${i18n._('{count} people', { count: joinCount })}` : ''}
         </Typography>
       </Stack>
+      <ChevronRight size={18} style={{ marginLeft: 'auto', opacity: 0.7 }} />
     </Stack>
   );
 };
 
 export const CommunityCallScheduleStep = ({
   language,
+  onChoose,
   onContinue,
 }: {
   language: SupportedLanguage;
+  onChoose: (callId: string) => void;
   onContinue: () => void;
 }) => {
   const { i18n } = useLingui();
@@ -104,20 +127,22 @@ export const CommunityCallScheduleStep = ({
       ) : (
         <Stack>
           {visible.map((call) => (
-            <CallRow key={call.id} call={call} now={now} />
+            <CallRow key={call.id} call={call} now={now} onChoose={onChoose} />
           ))}
         </Stack>
       )}
-      <Button
-        variant="contained"
-        size="large"
-        data-testid="community-call-next"
-        data-analytics="community-call-calls-continue"
-        onClick={onContinue}
-        sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
-      >
-        {i18n._('Continue')}
-      </Button>
+      {visible.length === 0 ? (
+        <Button
+          variant="contained"
+          size="large"
+          data-testid="community-call-next"
+          data-analytics="community-call-calls-continue"
+          onClick={onContinue}
+          sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
+        >
+          {i18n._('Continue')}
+        </Button>
+      ) : null}
     </Stack>
   );
 };

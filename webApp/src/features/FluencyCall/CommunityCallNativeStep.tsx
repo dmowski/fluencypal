@@ -10,10 +10,12 @@ import { NativeLangCode } from '@/libs/language/type';
 
 export const CommunityCallNativeStep = ({
   value,
+  callTitle,
   onChange,
   onContinue,
 }: {
   value: string;
+  callTitle: string | null;
   onChange: (language: NativeLangCode) => void;
   onContinue: () => void;
 }) => {
@@ -36,7 +38,16 @@ export const CommunityCallNativeStep = ({
 
   return (
     <Stack data-testid="community-call-native" sx={{ gap: '14px', width: '100%' }}>
-      <Typography variant="h4" sx={{ fontWeight: 800 }}>
+      {callTitle ? (
+        <Typography
+          variant="h4"
+          data-testid="community-call-chosen-time"
+          sx={{ fontWeight: 800 }}
+        >
+          {callTitle}
+        </Typography>
+      ) : null}
+      <Typography variant={callTitle ? 'h5' : 'h4'} sx={{ fontWeight: 800 }}>
         {i18n._('What language do you speak')}
       </Typography>
       <Typography sx={{ opacity: 0.75 }}>{i18n._('So I can translate words for you')}</Typography>

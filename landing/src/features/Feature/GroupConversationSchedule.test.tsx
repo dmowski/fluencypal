@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { renderWithI18n } from '@/features/Alias/test-utils/i18nTestHelper';
-import { englishGroupCallOnboardingHref } from './groupCallOnboardingHref';
+import { englishGroupCallOnboardingHref, groupCallChoiceHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { groupCallTimeLabel } from './groupCallTimeLabel';
@@ -27,11 +27,12 @@ const payload = {
 
 describe('english group-call links', () => {
   it('opens the calls list with English already selected', () => {
-    expect(englishGroupCallOnboardingHref('en')).toBe(
-      'https://app.fluencypal.com/community-call?step=calls&learn=en',
-    );
+    expect(englishGroupCallOnboardingHref('en')).toBe('https://app.fluencypal.com/community-call');
     expect(englishGroupCallOnboardingHref('ko')).toBe(
-      'https://app.fluencypal.com/ko/community-call?step=calls&learn=en',
+      'https://app.fluencypal.com/ko/community-call',
+    );
+    expect(groupCallChoiceHref(englishGroupCallOnboardingHref('en'), 'sat-21')).toBe(
+      'https://app.fluencypal.com/community-call?step=native&call=sat-21',
     );
   });
 });
@@ -58,9 +59,9 @@ describe('group conversation times', () => {
 
     const rows = await screen.findAllByTestId('group-conversations-schedule-row');
     expect(rows).toHaveLength(2);
-    expect(rows[0]).toHaveAttribute('href', href);
+    expect(rows[0]).toHaveAttribute('href', groupCallChoiceHref(href, 'sooner'));
     expect(rows[0]).toHaveAttribute('data-analytics', 'community-call-schedule-row');
-    expect(rows[1]).toHaveAttribute('href', href);
+    expect(rows[1]).toHaveAttribute('href', groupCallChoiceHref(href, 'later'));
     expect(screen.getByTestId('group-conversations-show-more')).toHaveAttribute('href', href);
     expect(screen.queryByText('9')).not.toBeInTheDocument();
   });

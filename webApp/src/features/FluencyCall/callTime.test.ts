@@ -3,6 +3,7 @@ import { fluencyCallLanguageCode } from './callLanguage';
 import {
   buildCallJoinTelegramMessage,
   buildCallRequestTelegramMessage,
+  communityCallChosenTitle,
   fluencyCallRowTitle,
   formatCallStartLabel,
   formatCallLabel,
@@ -30,6 +31,20 @@ const call = (
   updatedAtIso: '2026-10-01T00:00:00.000Z',
   stoppedAtIso: null,
   ...overrides,
+});
+
+describe('communityCallChosenTitle', () => {
+  it('names the chosen call with the weekday and local time', () => {
+    expect(
+      communityCallChosenTitle(
+        '2026-10-17T21:00:00.000Z',
+        new Date('2026-10-09T12:00:00.000Z'),
+        'en-US',
+        { today: 'Today', tomorrow: 'Tomorrow', now: 'Now' },
+        'UTC',
+      ),
+    ).toBe('Saturday · 21:00');
+  });
 });
 
 describe('formatCallStartLabel', () => {

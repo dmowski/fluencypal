@@ -16,9 +16,13 @@ import { QuizPasswordAccountForm } from '@/features/Goal/Quiz/QuizPasswordAccoun
 import { QuizPageLoader } from '@/features/Case/quiz/QuizPageLoader';
 import { QuizProgressBar } from '@/features/Goal/Quiz/components/QuizProgressBar';
 import { NativeLangCode } from '@/libs/language/type';
+import { scrollTopFast } from '@/libs/scroll';
 import { fluencyCallLanguageCode } from './callLanguage';
+import { communityCallChosenTitle } from './callTime';
 import { CommunityCallNativeStep } from './CommunityCallNativeStep';
 import { CommunityCallScheduleStep } from './CommunityCallScheduleStep';
+import { useListedFluencyCalls } from './useFluencyCalls';
+import { useNow } from './useNow';
 import {
   CommunityCallStep,
   communityCallPath,
@@ -43,6 +47,9 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
   const settings = useSettings();
   const [nativeParam, setNativeParam] = useUrlState('native', '', false);
   const [stepParam, setStepParam] = useUrlState('step', 'calls', true);
+  const [callParam] = useUrlState('call', '', false);
+  const now = useNow(15_000);
+  const { calls } = useListedFluencyCalls(now);
   const [pageLanguage, setPageLanguage] = useState<SupportedLanguage>(lang);
 
   const learn = fluencyCallLanguageCode('en');
@@ -64,6 +71,25 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       await settings.setLanguage(learn);
     }
   };
+
+  const openNative = async (callId: string | null) => {
+    await persistLearn();
+    const params = new URLSearchParams(window.location.search);
+    params.set('step', 'native');
+    if (callId) params.set('call', callId);
+    else params.delete('call');
+    router.push(`${window.location.pathname}?${params.toString()}`);
+    scrollTopFast();
+  };
+
+  const chosenCall = calls.find((call) => call.id === callParam) ?? null;
+  const chosenTitle = chosenCall
+    ? communityCallChosenTitle(chosenCall.startsAtIso, now, i18n.locale || 'en', {
+        today: i18n._('Today'),
+        tomorrow: i18n._('Tomorrow'),
+        now: i18n._('Now'),
+      })
+    : null;
 
   const openPractice = async (pageLang: SupportedLanguage = lang) => {
     await persistLearn();
@@ -103,7 +129,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
       const params = new URLSearchParams(window.location.search);
       params.set('step', next);
       params.set('native', nativeParam);
-      params.set('learn', learn);
       router.push(
         replaceUrlToLang(siteLanguage, `${window.location.pathname}?${params.toString()}`),
       );
@@ -137,7 +162,6 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
     const params = new URLSearchParams(window.location.search);
     params.set('step', next);
     params.set('native', nativeParam);
-    params.set('learn', learn);
     router.push(replaceUrlToLang(pageLanguage, `${window.location.pathname}?${params.toString()}`));
   };
 
@@ -178,11 +202,11 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         {step === 'calls' ? (
           <CommunityCallScheduleStep
             language={learn}
+            onChoose={(callId) => {
+              void openNative(callId);
+            }}
             onContinue={() => {
-              void (async () => {
-                await persistLearn();
-                await setStepParam('native');
-              })();
+              void openNative(null);
             }}
           />
         ) : null}
@@ -190,6 +214,7 @@ export const CommunityCallOnboarding = ({ lang }: { lang: SupportedLanguage }) =
         {step === 'native' ? (
           <CommunityCallNativeStep
             value={nativeParam}
+            callTitle={chosenTitle}
             onChange={(language) => {
               void setNativeParam(language);
             }}

@@ -62,7 +62,7 @@ test.describe('Quiz finish', () => {
     await seedAnonymousPracticeSettings(page, uid, 'en');
     await seedQuizGoalReviewSurvey(page, uid, 'en');
 
-    await page.goto('/quiz?currentStep=goalReview&learn=en&nativeLang=en&pageLang=en');
+    await page.goto('/quiz?currentStep=goalReview');
     await expectAnonymousCurrentUser(page);
     await expect(page.getByText('Speak Confidently')).toBeVisible();
 
@@ -90,7 +90,7 @@ test.describe('Quiz finish', () => {
     await seedAnonymousPracticeSettings(page, uid, 'en');
     await seedQuizGoalReviewSurvey(page, uid, 'en');
 
-    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
+    await page.goto('/quiz?currentStep=authWall');
     await expect(page.getByRole('button', { name: 'Create account', exact: true })).toBeVisible();
 
     const email = `quiz-${Date.now()}@example.com`;
@@ -119,7 +119,7 @@ test.describe('Quiz finish', () => {
     await seedAnonymousPracticeSettings(page, anonUid, 'en');
     await seedQuizGoalReviewSurvey(page, anonUid, 'en');
 
-    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
+    await page.goto('/quiz?currentStep=authWall');
     await page.getByRole('button', { name: 'I already have an account' }).click();
     await page.getByLabel('Email').fill(existing.email);
     await page.getByLabel('Password').fill(existing.password);
@@ -149,7 +149,7 @@ test.describe('Quiz finish', () => {
     });
     await seedQuizGoalReviewSurvey(page, user.uid, 'en');
 
-    await page.goto('/quiz?currentStep=authWall&learn=en&nativeLang=en&pageLang=en');
+    await page.goto('/quiz?currentStep=authWall');
 
     await expect(page).toHaveURL(/plan-id=e2e-el-1/);
     await expect(page.getByRole('heading', { name: 'Talk', exact: true }).first()).toBeVisible();
