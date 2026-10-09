@@ -240,3 +240,26 @@ export function generateRandomUsername() {
 
   return `${adjective}${noun}${verb}`;
 }
+
+export function generateAvailableUsername(
+  existingNames: Iterable<string | null | undefined>,
+): string {
+  const taken = new Set<string>();
+  for (const name of existingNames) {
+    const normalized = name?.trim().toLowerCase();
+    if (normalized) taken.add(normalized);
+  }
+
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const candidate = generateRandomUsername();
+    if (!taken.has(candidate.toLowerCase())) return candidate;
+  }
+
+  const base = generateRandomUsername();
+  for (let suffix = 2; suffix < 1000; suffix += 1) {
+    const candidate = `${base}${suffix}`;
+    if (!taken.has(candidate.toLowerCase())) return candidate;
+  }
+
+  return `${base}${Date.now()}`;
+}

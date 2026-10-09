@@ -29,9 +29,9 @@ import { useSettings } from '../Settings/useSettings';
 import { shuffleArray } from '@/libs/array';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { db } from '../Firebase/firebaseDb';
-import { setDoc } from 'firebase/firestore';
+import { runTransaction, setDoc } from 'firebase/firestore';
 import { avatars } from './avatars';
-import { generateRandomUsername } from './userNames';
+import { generateAvailableUsername } from './userNames';
 import { useUrlState } from '../Url/useUrlState';
 import { isActiveBrowserTab } from '@/libs/isActiveBrowserTab';
 import { isFetchNetworkError } from '@/libs/sentry/isFetchNetworkError';
@@ -110,7 +110,6 @@ function useProvideGame(): GameContextType {
 
   const playGame = () => {
     void setDefaultAvatarIfNeeded().catch(ignorePermissionDenied);
-    void setDefaultUsernameIfNeeded().catch(ignorePermissionDenied);
     generateQuestions();
     setIsGamePlaying(true);
   };
@@ -221,15 +220,6 @@ function useProvideGame(): GameContextType {
     return () => clearInterval(interval);
   }, [userId]);
 
-  const setDefaultUsernameIfNeeded = async () => {
-    if (!userId || isLoading) return;
-    if (userNames?.[userId]) return;
-
-    const randomUsername = generateRandomUsername();
-    if (!randomUsername) return;
-    await updateUsername(randomUsername);
-  };
-
   const resetPointsIfNeeded = async () => {
     if (!userId || isLoading || !gameAvatars) return;
     if (myStats) return; // Avatar already set
@@ -330,6 +320,42 @@ function useProvideGame(): GameContextType {
       ),
     );
   };
+
+  const claimGeneratedUsername = async (username: string) => {
+    if (!userId || !username.trim()) return;
+    const namesDoc = db.documents.gameUserNames2;
+    await runWithFirestoreAuth(auth.getToken, () =>
+      runTransaction(namesDoc.firestore, async (transaction) => {
+        const snap = await transaction.get(namesDoc);
+        const current = snap.data()?.[userId];
+        if (typeof current === 'string' && current.trim()) return;
+        transaction.set(namesDoc, { [userId]: username }, { merge: true });
+      }),
+    );
+  };
+
+  const ensuredUsernameForUserId = useRef<string | null>(null);
+
+  // Onboarding no longer collects a username. Assign one after the names
+  // document loads, and skip the write if a name landed in the meantime.
+  useEffect(() => {
+    if (!userId || userNamesLoading) return;
+    const existing = userNames?.[userId]?.trim();
+    if (existing) {
+      ensuredUsernameForUserId.current = userId;
+      return;
+    }
+    if (ensuredUsernameForUserId.current === userId) return;
+    ensuredUsernameForUserId.current = userId;
+
+    const randomUsername = generateAvailableUsername(Object.values(userNames ?? {}));
+    void claimGeneratedUsername(randomUsername).catch((error) => {
+      if (ensuredUsernameForUserId.current === userId) {
+        ensuredUsernameForUserId.current = null;
+      }
+      ignorePermissionDenied(error);
+    });
+  }, [userId, userNames, userNamesLoading]);
 
   const myPoints = myStats !== null ? myStats.points : null;
   const myUserName = userNames?.[userId || ''] || null;
