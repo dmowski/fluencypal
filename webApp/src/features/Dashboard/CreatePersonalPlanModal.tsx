@@ -1,9 +1,8 @@
 'use client';
 
-import { Button, CircularProgress, Stack, TextField, Typography } from '@mui/material';
+import { Button, Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Mic, Square } from 'lucide-react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as Sentry from '@sentry/nextjs';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
 import { ModalHeader } from '@/features/uiKit/Modal/ModalHeader';
@@ -13,6 +12,7 @@ import { usePlan } from '@/features/Plan/usePlan';
 import { useTextAi } from '@/features/Ai/useTextAi';
 import { useAiUserInfo } from '@/features/User/useAiUserInfo';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
+import { VoiceRecordControl } from '@/features/Audio/VoiceRecordControl';
 import { generateFollowUpQuestion } from '@/features/Goal/Quiz/followUpQuestion';
 import { followUpSubtitle, personalizedPlanContext } from '@/features/Goal/Quiz/onboardingContent';
 
@@ -158,16 +158,26 @@ export const CreatePersonalPlanModal = ({ onClose }: { onClose: () => void }) =>
               disabled={isBusy}
               data-testid="create-personal-plan-reason"
             />
-            <PlanVoiceAnswer
+            <VoiceRecordControl
               isRecording={recorder.isRecording}
               isTranscribing={recorder.isTranscribing}
-              error={recorder.error}
               visualizer={recorder.visualizerComponent}
+              idleLabel={i18n._('Record with voice')}
               disabled={isWritingQuestion || isGeneratingPlan}
               onToggle={() => {
                 void toggleVoice();
               }}
+              onCancel={() => {
+                void recorder.cancelRecording();
+              }}
+              buttonTestId="create-personal-plan-voice"
+              visualizerTestId="create-personal-plan-voice-visualizer"
             />
+            {recorder.error ? (
+              <Typography color="error" variant="body2">
+                {recorder.error}
+              </Typography>
+            ) : null}
             {questionError && (
               <Typography color="error">
                 {i18n._('Could not write your next question. Please try again.')}
@@ -204,16 +214,26 @@ export const CreatePersonalPlanModal = ({ onClose }: { onClose: () => void }) =>
               disabled={isBusy}
               data-testid="create-personal-plan-follow-up"
             />
-            <PlanVoiceAnswer
+            <VoiceRecordControl
               isRecording={recorder.isRecording}
               isTranscribing={recorder.isTranscribing}
-              error={recorder.error}
               visualizer={recorder.visualizerComponent}
+              idleLabel={i18n._('Record with voice')}
               disabled={isGeneratingPlan}
               onToggle={() => {
                 void toggleVoice();
               }}
+              onCancel={() => {
+                void recorder.cancelRecording();
+              }}
+              buttonTestId="create-personal-plan-voice"
+              visualizerTestId="create-personal-plan-voice-visualizer"
             />
+            {recorder.error ? (
+              <Typography color="error" variant="body2">
+                {recorder.error}
+              </Typography>
+            ) : null}
             <Stack sx={{ gap: '8px' }}>
               <Button
                 variant="contained"
@@ -240,64 +260,5 @@ export const CreatePersonalPlanModal = ({ onClose }: { onClose: () => void }) =>
         )}
       </Stack>
     </CustomModal>
-  );
-};
-
-const PlanVoiceAnswer = ({
-  isRecording,
-  isTranscribing,
-  error,
-  visualizer,
-  disabled,
-  onToggle,
-}: {
-  isRecording: boolean;
-  isTranscribing: boolean;
-  error: string;
-  visualizer: ReactNode;
-  disabled: boolean;
-  onToggle: () => void;
-}) => {
-  const { i18n } = useLingui();
-
-  return (
-    <Stack sx={{ gap: '8px', width: '100%' }}>
-      {isRecording && visualizer ? (
-        <Stack
-          data-testid="create-personal-plan-voice-visualizer"
-          sx={{ width: '100%', height: '56px', '& canvas': { width: '100% !important' } }}
-        >
-          {visualizer}
-        </Stack>
-      ) : null}
-      <Button
-        variant="outlined"
-        color="inherit"
-        size="large"
-        disabled={disabled || isTranscribing}
-        startIcon={
-          isTranscribing ? (
-            <CircularProgress size={18} color="inherit" />
-          ) : isRecording ? (
-            <Square size={18} />
-          ) : (
-            <Mic size={18} />
-          )
-        }
-        onClick={onToggle}
-        data-testid="create-personal-plan-voice"
-      >
-        {isTranscribing
-          ? i18n._('Processing...')
-          : isRecording
-            ? i18n._('Stop')
-            : i18n._('Record with voice')}
-      </Button>
-      {error ? (
-        <Typography color="error" variant="body2">
-          {error}
-        </Typography>
-      ) : null}
-    </Stack>
   );
 };

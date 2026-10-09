@@ -1,24 +1,15 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import StopIcon from '@mui/icons-material/Stop';
-import MicIcon from '@mui/icons-material/Mic';
-import { X } from 'lucide-react';
+import { VoiceRecordControl } from '@/features/Audio/VoiceRecordControl';
 import { LessonMarkdown } from './LessonMarkdown';
 import { ThinkingProgress } from './ThinkingProgress';
 import { UserAudioPlayer } from './UserAudioPlayer';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 import { PlayButton } from './PlayButton';
-import {
-  lessonGhostButtonSx,
-  lessonRecordButtonSx,
-  lessonRecordingButtonSx,
-  lessonRecordingCancelSx,
-  lessonRecordingVisualizerSx,
-  lessonSx,
-} from './lessonTheme';
+import { lessonSx } from './lessonTheme';
 
 export interface SpeechAnswerPanelViewProps {
   part: LessonPartState;
@@ -84,102 +75,28 @@ export const SpeechAnswerPanelView = ({
           </Typography>
         )}
 
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            gap: 0,
-            alignItems: 'stretch',
-            width: '100%',
-            paddingTop: '10px',
-          }}
-        >
-          <Button
-            disabled={isTranscribing || isEvaluating}
-            variant={answered && !isRecording ? 'text' : isRecording ? 'contained' : 'outlined'}
-            color="inherit"
-            size="large"
-            startIcon={isRecording ? <StopIcon /> : <MicIcon />}
-            onClick={onToggleRecord}
-            sx={{
-              flexShrink: 0,
-              ...(isRecording
-                ? lessonRecordingButtonSx
-                : answered
-                  ? lessonGhostButtonSx
-                  : lessonRecordButtonSx),
-              ...(isRecording && visualizer
-                ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 }
-                : {}),
-            }}
-          >
-            {isRecording
-              ? i18n._('Stop')
-              : answered
-                ? isReadAloud
-                  ? i18n._('Read again')
-                  : i18n._('Answer again')
-                : isReadAloud
-                  ? i18n._('Read aloud')
-                  : i18n._('Record answer')}
-          </Button>
-
-          {isTranscribing && (
-            <Stack
-              sx={{
-                flex: 1,
-                minWidth: 0,
-                justifyContent: 'center',
-                padding: '0 12px',
-              }}
-            >
-              <Typography variant="body2" className="loading-shimmer">
-                {i18n._('Processing...')}
-              </Typography>
-            </Stack>
-          )}
-          {isEvaluating && (
-            <Stack
-              sx={{
-                flex: 1,
-                minWidth: 0,
-                justifyContent: 'center',
-                padding: '0 12px',
-              }}
-            >
-              <ThinkingProgress variant="inline" />
-            </Stack>
-          )}
-          {(isRecording || visualizer) && !isEvaluating && (
-            <Stack
-              sx={{
-                flex: 1,
-                justifyContent: 'center',
-                overflow: 'hidden',
-                ...lessonRecordingVisualizerSx,
-                borderRadius: '0 10px 10px 0',
-              }}
-              data-testid="interactive-lesson-recording-visualizer"
-            >
-              {visualizer}
-            </Stack>
-          )}
-          {isRecording && (
-            <IconButton
-              onClick={onCancelRecord}
-              aria-label={i18n._('Cancel recording')}
-              data-testid="interactive-lesson-cancel-recording"
-              sx={{
-                ...lessonRecordingCancelSx,
-                flexShrink: 0,
-                alignSelf: 'stretch',
-                width: '42px',
-                marginLeft: '5px',
-              }}
-            >
-              <X size={20} />
-            </IconButton>
-          )}
-        </Stack>
+        <VoiceRecordControl
+          isRecording={isRecording}
+          isTranscribing={isTranscribing}
+          isEvaluating={isEvaluating}
+          visualizer={visualizer}
+          idleLabel={
+            answered
+              ? isReadAloud
+                ? i18n._('Read again')
+                : i18n._('Answer again')
+              : isReadAloud
+                ? i18n._('Read aloud')
+                : i18n._('Record answer')
+          }
+          idleAppearance={answered ? 'ghost' : 'outlined'}
+          onToggle={onToggleRecord}
+          onCancel={onCancelRecord}
+          evaluatingContent={<ThinkingProgress variant="inline" />}
+          visualizerTestId="interactive-lesson-recording-visualizer"
+          cancelTestId="interactive-lesson-cancel-recording"
+          sx={{ paddingTop: '10px' }}
+        />
 
         {needMoreText && (
           <Typography variant="caption" sx={lessonSx.warningText}>
