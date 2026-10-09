@@ -1001,7 +1001,7 @@ msgstr ""
 "Rispondi a una nuova domanda ogni giorno e osserva come il tuo stile "
 "migliora!"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:120
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:87
 #. js-lingui-explicit-id
 msgid "Answer again"
 msgstr "Rispondi di nuovo"
@@ -1257,7 +1257,7 @@ msgstr "Punteggi medi in grammatica, vocabolario, fluidità e fiducia."
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:256
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1760,9 +1760,9 @@ msgstr "Posso usarlo sullo smartphone?"
 msgid "Cancel"
 msgstr "Annulla"
 
+#: src/features/Audio/VoiceRecordControl.tsx:137
 #: src/features/Conversation/CallMode/CallButtons.tsx:490
 #: src/features/Conversation/ConversationCanvas.tsx:757
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Annulla registrazione"
@@ -2950,8 +2950,8 @@ msgstr "Contesto (argomento, pubblico, obiettivo...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
-#: src/features/Dashboard/PlanDashboardCards.tsx:156
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:200
+#: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3046,7 +3046,7 @@ msgstr "Dettagli del contratto"
 msgid "Contract Tests"
 msgstr "Test di contratto"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:29
+#: src/features/Dashboard/PlanDashboardCards.tsx:28
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3235,7 +3235,7 @@ msgstr "Impossibile avviare l'esame. Per favore riprova."
 msgid "Could not start your account. Please try again."
 msgstr "Non è stato possibile avviare il tuo account. Per favore riprova."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:183
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3284,7 +3284,7 @@ msgstr ""
 "specifiche come parlare o ascoltare, e traccia i tuoi progressi per "
 "padroneggiare l'inglese in modo efficace."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:177
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3468,7 +3468,7 @@ msgstr "colloquio per sviluppatore csharp"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "La curiosità mantiene l'apprendimento divertente. Esplora i compiti di oggi."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:120
+#: src/features/Dashboard/PlanDashboardCards.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -5343,7 +5343,7 @@ msgid "Fast Answer Practice"
 msgstr "Pratica di Risposta Veloce"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:172
 #: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -5999,12 +5999,12 @@ msgstr "Assistente AI Generale"
 msgid "General Assistant"
 msgstr "Assistente Generale"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:292
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Genera lezioni più uniche"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:248
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -6015,9 +6015,9 @@ msgstr "Genera piano"
 msgid "Generating explanation..."
 msgstr "Generazione della spiegazione..."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
-#: src/features/Dashboard/PlanDashboardCards.tsx:291
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:197
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:248
+#: src/features/Dashboard/PlanDashboardCards.tsx:290
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Generando..."
@@ -6240,8 +6240,8 @@ msgid "Go to the main page"
 msgstr "Vai alla pagina principale"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:268
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:267
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Obiettivo"
@@ -6985,7 +6985,7 @@ msgstr ""
 "un medico e ho bisogno di spiegare la mia esperienza e rispondere a domande "
 "sul mio lavoro."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
 #. js-lingui-explicit-id
 msgid "I want to learn it so I can..."
 msgstr "Voglio impararlo così posso..."
@@ -7279,7 +7279,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "In meno di 5 minuti, otterrai:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:302
+#: src/features/Dashboard/PlanDashboardCards.tsx:301
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Per generare più lezioni, devi completare almeno 3 lezioni"
@@ -8042,7 +8042,7 @@ msgstr "Impara con la comunità"
 msgid "Learning never exhausts the mind."
 msgstr "Imparare non stanca mai la mente."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Percorso di apprendimento"
@@ -8712,7 +8712,7 @@ msgstr ""
 msgid "More options"
 msgstr "Altre opzioni"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:264
+#: src/features/Dashboard/PlanDashboardCards.tsx:263
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Lezioni più uniche"
@@ -9518,7 +9518,7 @@ msgstr "Oops! Qualcosa è andato storto"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:156
+#: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -10143,7 +10143,7 @@ msgid "Players:"
 msgstr "Giocatori:"
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:172
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "Giocando"
@@ -10205,12 +10205,12 @@ msgstr ""
 "Si prega di compilare i dettagli dei genitori e selezionare tutte le "
 "caselle nel Passo 1."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:189
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:106
 #. js-lingui-explicit-id
 msgid "Please read more of the text."
 msgstr "Per favore, leggi di più del testo."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:190
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:107
 #. js-lingui-explicit-id
 msgid "Please record a longer answer — a few words is enough."
 msgstr "Si prega di registrare una risposta più lunga — bastano poche parole."
@@ -10261,7 +10261,7 @@ msgstr "Per favore seleziona almeno una categoria."
 msgid "Please stop the recording before closing the window."
 msgstr "Si prega di fermare la registrazione prima di chiudere la finestra."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:187
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:104
 #. js-lingui-explicit-id
 msgid "Please talk a bit longer — aim for about two minutes."
 msgstr "Per favore, parla un po' più a lungo — punta a circa due minuti."
@@ -10875,8 +10875,7 @@ msgstr "Elaborando le conoscenze esistenti in quel cervello..."
 msgid "Processing latest session"
 msgstr "Elaborazione dell'ultima sessione"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
+#: src/features/Audio/VoiceRecordControl.tsx:104
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -11149,12 +11148,12 @@ msgid "Read"
 msgstr "Leggi"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:285
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:119
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:86
 #. js-lingui-explicit-id
 msgid "Read again"
 msgstr "Leggi di nuovo"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:122
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:89
 #. js-lingui-explicit-id
 msgid "Read aloud"
 msgstr "Leggi ad alta voce"
@@ -11179,7 +11178,7 @@ msgstr "Leggi la lezione, poi pronunciala"
 msgid "Read the text"
 msgstr "Leggi il testo"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:78
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:69
 #. js-lingui-explicit-id
 msgid "Read the text aloud. You can play it first."
 msgstr "Leggi il testo ad alta voce. Puoi riprodurlo prima."
@@ -11403,7 +11402,7 @@ msgstr "Registra di nuovo"
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:123
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:90
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Registra risposta"
@@ -11444,7 +11443,8 @@ msgstr "Registra di più"
 msgid "Record new essay"
 msgstr "Registra nuovo saggio"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:165
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:221
 #. js-lingui-explicit-id
 msgid "Record with voice"
 msgstr "Registra con la voce"
@@ -11730,7 +11730,7 @@ msgstr "Rivedi, modifica o aggiungi le note che l'IA utilizza su di te."
 msgid "Robot Thinking"
 msgstr "Pensiero del Robot"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:30
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11816,7 +11816,7 @@ msgstr "Instradamento"
 msgid "Rudeness"
 msgstr "Scortesia"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:32
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -12618,7 +12618,7 @@ msgstr ""
 "Solida conoscenza di ASP.NET Core e EF Core. Alcuni gap nei pattern di "
 "resilienza e osservabilità."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Something went wrong while creating your plan. Please try again later."
 msgstr ""
@@ -12634,7 +12634,7 @@ msgstr ""
 "Qualcosa è andato storto durante il recupero di questo articolo. Si prega "
 "di controllare la connessione e riprovare."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:75
+#: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr ""
@@ -12697,7 +12697,7 @@ msgstr "Piano di Apprendimento Spagnolo"
 msgid "Speak"
 msgstr "Parla"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:83
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:74
 #. js-lingui-explicit-id
 msgid "Speak for about 2–3 minutes. This talk helps us pick your next lesson."
 msgstr ""
@@ -12927,7 +12927,7 @@ msgstr "Inizia il tuo test di intervista"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Inizia il tuo viaggio verso conversazioni fluenti ora"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:103
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Inizia il tuo percorso verso la padronanza"
@@ -13084,12 +13084,11 @@ msgstr ""
 msgid "Steps:"
 msgstr "Passi:"
 
+#: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Fermati"
@@ -15136,7 +15135,7 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Prova"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:199
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -16163,8 +16162,8 @@ msgstr "Perché i candidati del backend migliorano rapidamente"
 msgid "Why candidates improve so quickly"
 msgstr "Perché i candidati migliorano così rapidamente"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:145
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Why do you want to learn {language}?"
 msgstr "Perché vuoi imparare {language}?"
@@ -16247,7 +16246,7 @@ msgid "Word Stats"
 msgstr "Statistiche delle Parole"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:31
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16334,7 +16333,7 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "Verifica dell'equità sul posto di lavoro"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:146
 #. js-lingui-explicit-id
 msgid "Write a few sentences in your own words."
 msgstr "Scrivi alcune frasi con parole tue."
@@ -16946,9 +16945,9 @@ msgstr "Il tuo partner di conversazione AI"
 msgid "Your AI teacher voice:"
 msgstr "La voce del tuo insegnante AI:"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:209
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -17123,7 +17122,7 @@ msgstr "Il tuo piano di pratica"
 msgid "Your questions answered"
 msgstr "Le tue domande ricevono risposta"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #. js-lingui-explicit-id
 msgid "Your reading"
 msgstr "La tua lettura"

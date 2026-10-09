@@ -1003,7 +1003,7 @@ msgstr ""
 "Trả lời một câu hỏi mới mỗi ngày và xem phong cách của bạn được cải thiện "
 "như thế nào!"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:120
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:87
 #. js-lingui-explicit-id
 msgid "Answer again"
 msgstr "Trả lời lại"
@@ -1257,7 +1257,7 @@ msgstr "Điểm trung bình về ngữ pháp, từ vựng, lưu loát và sự t
 #: src/features/Alias/components/RoundSettings.tsx:221
 #: src/features/Chat/ChatPage.tsx:167
 #: src/features/Chat/ChatSection.tsx:89
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:242
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:256
 #: src/features/Header/WithdrawFromContractModal.tsx:269
 #: src/features/Navigation/BackHomeNavButton.tsx:46
 #: src/features/Quiz/components/QuizModalHeader.tsx:31
@@ -1756,9 +1756,9 @@ msgstr "Bạn có thể sử dụng nó trên điện thoại thông minh không
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
+#: src/features/Audio/VoiceRecordControl.tsx:137
 #: src/features/Conversation/CallMode/CallButtons.tsx:490
 #: src/features/Conversation/ConversationCanvas.tsx:757
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:169
 #. js-lingui-explicit-id
 msgid "Cancel recording"
 msgstr "Hủy bỏ ghi âm"
@@ -2939,8 +2939,8 @@ msgstr "Ngữ cảnh (chủ đề, đối tượng, mục tiêu...)"
 #: src/features/Case/data/frontend-senior/quizData.ts:283
 #: src/features/Case/data/frontend-senior/quizData.ts:292
 #: src/features/Case/data/frontend-senior/quizData.ts:315
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:196
-#: src/features/Dashboard/PlanDashboardCards.tsx:156
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:200
+#: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/SelectLanguage.tsx:292
 #: src/features/FluencyCall/CommunityCallNativeStep.tsx:111
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:235
@@ -3035,7 +3035,7 @@ msgstr "Chi tiết hợp đồng"
 msgid "Contract Tests"
 msgstr "Kiểm Tra Hợp Đồng"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:29
+#: src/features/Dashboard/PlanDashboardCards.tsx:28
 #: src/features/Dashboard/StreaksDaysBadge.tsx:132
 #: src/features/Goal/Quiz/GoalReview.tsx:40
 #: src/features/Goal/Quiz/PlanPreview.tsx:17
@@ -3222,7 +3222,7 @@ msgstr "Không thể bắt đầu kỳ thi. Vui lòng thử lại."
 msgid "Could not start your account. Please try again."
 msgstr "Không thể khởi động tài khoản của bạn. Vui lòng thử lại."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:179
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:183
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
 msgid "Could not write your next question. Please try again."
@@ -3269,7 +3269,7 @@ msgstr ""
 "thạo của bạn, tập trung vào các kỹ năng cụ thể như nói hoặc nghe, và theo "
 "dõi tiến trình của bạn để thành thạo tiếng Anh một cách hiệu quả."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:178
+#: src/features/Dashboard/PlanDashboardCards.tsx:177
 #: src/features/Landing/PlanLandingBlock.tsx:434
 #. js-lingui-explicit-id
 msgid "Create a plan"
@@ -3451,7 +3451,7 @@ msgstr "phỏng vấn nhà phát triển csharp"
 msgid "Curiosity keeps learning fun. Explore today’s tasks."
 msgstr "Sự tò mò khiến việc học trở nên thú vị. Khám phá các nhiệm vụ hôm nay."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:120
+#: src/features/Dashboard/PlanDashboardCards.tsx:119
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:282
 #. js-lingui-explicit-id
 msgid "Current Lesson"
@@ -5330,7 +5330,7 @@ msgid "Fast Answer Practice"
 msgstr "Luyện tập Trả lời Nhanh"
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:135
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:172
 #: src/features/Settings/MyProfile.tsx:271
 #. js-lingui-explicit-id
 msgid "Feedback"
@@ -5978,12 +5978,12 @@ msgstr "Trợ lý AI Tổng quát"
 msgid "General Assistant"
 msgstr "Trợ Lý Chung"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:292
+#: src/features/Dashboard/PlanDashboardCards.tsx:291
 #. js-lingui-explicit-id
 msgid "Generate more unique lessons"
 msgstr "Tạo thêm nhiều bài học độc đáo"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:248
 #: src/features/Goal/Quiz/QuizBeforeGoalReviewStep.tsx:22
 #. js-lingui-explicit-id
 msgid "Generate plan"
@@ -5994,9 +5994,9 @@ msgstr "Tạo kế hoạch"
 msgid "Generating explanation..."
 msgstr "Đang tạo lời giải thích..."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:193
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:234
-#: src/features/Dashboard/PlanDashboardCards.tsx:291
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:197
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:248
+#: src/features/Dashboard/PlanDashboardCards.tsx:290
 #. js-lingui-explicit-id
 msgid "Generating..."
 msgstr "Đang tạo..."
@@ -6226,8 +6226,8 @@ msgid "Go to the main page"
 msgstr "Đi đến trang chính"
 
 #: src/features/Dashboard/GoalCard.tsx:12
-#: src/features/Dashboard/PlanDashboardCards.tsx:102
-#: src/features/Dashboard/PlanDashboardCards.tsx:268
+#: src/features/Dashboard/PlanDashboardCards.tsx:101
+#: src/features/Dashboard/PlanDashboardCards.tsx:267
 #. js-lingui-explicit-id
 msgid "Goal"
 msgstr "Mục tiêu"
@@ -6966,7 +6966,7 @@ msgstr ""
 "là một bác sĩ, và tôi cần giải thích về kinh nghiệm của mình và trả lời các "
 "câu hỏi về công việc của mình."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:157
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
 #. js-lingui-explicit-id
 msgid "I want to learn it so I can..."
 msgstr "Tôi muốn học nó để tôi có thể..."
@@ -7254,7 +7254,7 @@ msgstr ""
 msgid "In less than 5 minutes, you'll get:"
 msgstr "Trong chưa đầy 5 phút, bạn sẽ nhận được:"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:302
+#: src/features/Dashboard/PlanDashboardCards.tsx:301
 #. js-lingui-explicit-id
 msgid "In order to generate more lessons, you need to complete at least 3 lessons"
 msgstr "Để tạo thêm nhiều bài học, bạn cần hoàn thành ít nhất 3 bài học"
@@ -8003,7 +8003,7 @@ msgstr "Học cùng cộng đồng"
 msgid "Learning never exhausts the mind."
 msgstr "Học tập không bao giờ làm cạn kiệt tâm trí."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:99
+#: src/features/Dashboard/PlanDashboardCards.tsx:98
 #. js-lingui-explicit-id
 msgid "Learning path"
 msgstr "Lộ trình học tập"
@@ -8670,7 +8670,7 @@ msgstr ""
 msgid "More options"
 msgstr "Nhiều tùy chọn"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:264
+#: src/features/Dashboard/PlanDashboardCards.tsx:263
 #. js-lingui-explicit-id
 msgid "More unique lessons"
 msgstr "Thêm nhiều bài học độc đáo"
@@ -9474,7 +9474,7 @@ msgstr "Rất tiếc! Đã xảy ra lỗi"
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
 #: src/features/Dashboard/NewPrivateMessageCard.tsx:74
-#: src/features/Dashboard/PlanDashboardCards.tsx:156
+#: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
 #: src/features/Landing/Price/PricePage.tsx:200
@@ -10098,7 +10098,7 @@ msgid "Players:"
 msgstr "Người chơi:"
 
 #: src/features/InteractiveLesson/LessonResultsView.tsx:60
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:255
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:172
 #. js-lingui-explicit-id
 msgid "Playing"
 msgstr "Chơi"
@@ -10156,12 +10156,12 @@ msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 msgid "Please fill parent details and check all boxes in Step 1."
 msgstr "Vui lòng điền thông tin bố mẹ và đánh dấu vào tất cả các ô trong Bước 1."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:189
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:106
 #. js-lingui-explicit-id
 msgid "Please read more of the text."
 msgstr "Vui lòng đọc thêm văn bản."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:190
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:107
 #. js-lingui-explicit-id
 msgid "Please record a longer answer — a few words is enough."
 msgstr "Vui lòng ghi lại một câu trả lời dài hơn — vài từ là đủ."
@@ -10212,7 +10212,7 @@ msgstr "Vui lòng chọn ít nhất một danh mục."
 msgid "Please stop the recording before closing the window."
 msgstr "Vui lòng dừng ghi âm trước khi đóng cửa sổ."
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:187
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:104
 #. js-lingui-explicit-id
 msgid "Please talk a bit longer — aim for about two minutes."
 msgstr "Vui lòng nói lâu hơn một chút — hãy nhắm tới khoảng hai phút."
@@ -10829,8 +10829,7 @@ msgstr "Đang xử lý kiến thức hiện có trong não..."
 msgid "Processing latest session"
 msgstr "Đang xử lý phiên gần đây nhất"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:297
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
+#: src/features/Audio/VoiceRecordControl.tsx:104
 #: src/features/Survey/RecordUserAudioAnswer.tsx:103
 #. js-lingui-explicit-id
 msgid "Processing..."
@@ -11103,12 +11102,12 @@ msgid "Read"
 msgstr "Đọc"
 
 #: src/features/Dashboard/Grammar/InteractiveExample.tsx:285
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:119
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:86
 #. js-lingui-explicit-id
 msgid "Read again"
 msgstr "Đọc lại"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:122
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:89
 #. js-lingui-explicit-id
 msgid "Read aloud"
 msgstr "Đọc to"
@@ -11133,7 +11132,7 @@ msgstr "Đọc bài học, sau đó nói nó"
 msgid "Read the text"
 msgstr "Đọc văn bản"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:78
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:69
 #. js-lingui-explicit-id
 msgid "Read the text aloud. You can play it first."
 msgstr "Đọc to văn bản này. Bạn có thể phát trước."
@@ -11354,7 +11353,7 @@ msgstr "Ghi âm lại"
 #: src/features/Case/data/backendCSharp/quizData.ts:29
 #: src/features/Case/data/backendCSharp/quizData.ts:42
 #: src/features/Case/data/backendCSharp/quizData.ts:49
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:123
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:90
 #. js-lingui-explicit-id
 msgid "Record answer"
 msgstr "Ghi âm câu trả lời"
@@ -11395,7 +11394,8 @@ msgstr "Ghi Âm Thêm"
 msgid "Record new essay"
 msgstr "Ghi lại bài luận mới"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:300
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:165
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:221
 #. js-lingui-explicit-id
 msgid "Record with voice"
 msgstr "Ghi âm bằng giọng nói"
@@ -11688,7 +11688,7 @@ msgstr "Xem lại, chỉnh sửa hoặc thêm ghi chú AI sử dụng về bạn
 msgid "Robot Thinking"
 msgstr "Robot Đang suy nghĩ"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:30
+#: src/features/Dashboard/PlanDashboardCards.tsx:29
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:74
 #: src/features/Goal/Quiz/GoalReview.tsx:41
 #: src/features/Goal/Quiz/PlanPreview.tsx:18
@@ -11774,7 +11774,7 @@ msgstr "Định tuyến"
 msgid "Rudeness"
 msgstr "Sự thô lỗ"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:32
+#: src/features/Dashboard/PlanDashboardCards.tsx:31
 #: src/features/Dashboard/StreaksDaysBadge.tsx:134
 #: src/features/Goal/Quiz/GoalReview.tsx:43
 #: src/features/Landing/PlanLandingBlock.tsx:281
@@ -12574,7 +12574,7 @@ msgstr ""
 "Kiến thức vững chắc về ASP.NET Core và EF Core. Một số thiếu sót về mẫu sự "
 "bền bỉ và khả năng quan sát."
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:133
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Something went wrong while creating your plan. Please try again later."
 msgstr "Đã xảy ra lỗi khi tạo kế hoạch của bạn. Vui lòng thử lại sau."
@@ -12588,7 +12588,7 @@ msgstr ""
 "Đã xảy ra lỗi khi lấy bài viết này. Vui lòng kiểm tra kết nối của bạn và "
 "thử lại."
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:75
+#: src/features/Dashboard/PlanDashboardCards.tsx:74
 #. js-lingui-explicit-id
 msgid "Something went wrong while generating more lessons. Please try again later."
 msgstr "Đã xảy ra lỗi trong quá trình tạo thêm bài học. Vui lòng thử lại sau."
@@ -12649,7 +12649,7 @@ msgstr "Kế Hoạch Học Tiếng Tây Ban Nha"
 msgid "Speak"
 msgstr "Nói"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:83
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:74
 #. js-lingui-explicit-id
 msgid "Speak for about 2–3 minutes. This talk helps us pick your next lesson."
 msgstr ""
@@ -12883,7 +12883,7 @@ msgstr "Bắt Đầu Bài Kiểm Tra Phỏng Vấn Của Bạn"
 msgid "Start Your Journey to Fluent Conversations Now"
 msgstr "Bắt Đầu Hành Trình Đến Những Cuộc Hội Thoại Lưu Loát Ngay Bây Giờ"
 
-#: src/features/Dashboard/PlanDashboardCards.tsx:103
+#: src/features/Dashboard/PlanDashboardCards.tsx:102
 #. js-lingui-explicit-id
 msgid "Start your way to fluency"
 msgstr "Bắt đầu con đường của bạn để trở nên thành thạo"
@@ -13042,12 +13042,11 @@ msgstr ""
 msgid "Steps:"
 msgstr "Các bước:"
 
+#: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:299
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:299
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:116
 #. js-lingui-explicit-id
 msgid "Stop"
 msgstr "Dừng"
@@ -15087,7 +15086,7 @@ msgstr "Trustpilot"
 msgid "Try"
 msgstr "Cố gắng"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:195
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:199
 #: src/features/Goal/Quiz/QuizPage2.tsx:65
 #: src/features/Goal/Quiz/QuizPage2.tsx:255
 #: src/features/Quiz/components/QuizModal.tsx:281
@@ -16121,8 +16120,8 @@ msgstr "Tại sao ứng viên backend cải thiện nhanh chóng"
 msgid "Why candidates improve so quickly"
 msgstr "Tại sao ứng viên cải thiện nhanh chóng như vậy"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:151
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:158
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:145
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
 #. js-lingui-explicit-id
 msgid "Why do you want to learn {language}?"
 msgstr "Tại sao bạn muốn học {language}?"
@@ -16203,7 +16202,7 @@ msgid "Word Stats"
 msgstr "Thống kê từ vựng"
 
 #: src/features/Alias/components/WordCounter.tsx:16
-#: src/features/Dashboard/PlanDashboardCards.tsx:31
+#: src/features/Dashboard/PlanDashboardCards.tsx:30
 #: src/features/Dashboard/StreaksDaysBadge.tsx:133
 #: src/features/Goal/Quiz/GoalReview.tsx:42
 #: src/features/Goal/Quiz/PlanPreview.tsx:19
@@ -16287,7 +16286,7 @@ msgstr ""
 msgid "Workplace Fairness Check"
 msgstr "Kiểm Tra Công Bằng Nơi Làm Việc"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:152
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:146
 #. js-lingui-explicit-id
 msgid "Write a few sentences in your own words."
 msgstr "Viết một vài câu bằng từ ngữ của riêng bạn."
@@ -16897,9 +16896,9 @@ msgstr "Đối tác nói chuyện AI của bạn"
 msgid "Your AI teacher voice:"
 msgstr "Giọng nói giáo viên AI của bạn:"
 
-#: src/features/Dashboard/CreatePersonalPlanModal.tsx:205
+#: src/features/Dashboard/CreatePersonalPlanModal.tsx:209
 #: src/features/Game/Battle/BattleActionModal.tsx:371
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #: src/features/Quiz/components/SubmittedAnswerPreview.tsx:29
 #: src/features/Survey/RecordUserAudioAnswer.tsx:68
 #. js-lingui-explicit-id
@@ -17072,7 +17071,7 @@ msgstr "Kế hoạch luyện tập của bạn"
 msgid "Your questions answered"
 msgstr "Câu hỏi của bạn đã được giải đáp"
 
-#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:219
+#: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:136
 #. js-lingui-explicit-id
 msgid "Your reading"
 msgstr "Bài đọc của bạn"
