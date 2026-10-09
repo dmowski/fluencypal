@@ -80,6 +80,7 @@ test('auth screen shows email, send link, and Google', async () => {
   await expect.element(page.getByRole('button', { name: 'Sign in with Google' })).toBeVisible();
   await expect.element(page.getByRole('link', { name: 'Privacy Policy' })).toBeVisible();
   await expect.element(page.getByRole('link', { name: 'Terms of Use' })).toBeVisible();
+  expect(document.querySelector('[data-testid="auth-sign-in"] .MuiBadge-root')).toBeNull();
   const privacy = document.querySelector('a[href*="privacy"]') as HTMLAnchorElement;
   const terms = document.querySelector('a[href*="terms"]') as HTMLAnchorElement;
   expect(privacy.getAttribute('href')).toBe('https://www.fluencypal.com/privacy');
@@ -129,5 +130,15 @@ test('auth screen marks the last used method', async () => {
   await expect
     .element(page.getByTestId('auth-wall-last-method-badge'))
     .toHaveTextContent('Last used');
+  const badge = document.querySelector('[data-testid="auth-wall-last-method-badge"]');
+  const googleButton = document.querySelector('[data-analytics="auth-google"]');
+  expect(badge?.parentElement).toBeTruthy();
+  expect(googleButton).toBeTruthy();
+  const badgeWidth = badge!.parentElement!.getBoundingClientRect().width;
+  const buttonWidth = googleButton!.getBoundingClientRect().width;
+  expect(badgeWidth).toBeGreaterThan(40);
+  expect(badgeWidth).toBeLessThan(buttonWidth / 2);
+  expect(document.querySelectorAll('[data-testid="auth-sign-in"] .MuiBadge-root')).toHaveLength(1);
+  await page.getByRole('heading', { name: "Let's create an account" }).hover();
   await expectAuthScreenshot('auth-sign-in-last-used-google');
 });

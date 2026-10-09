@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import Google from '@mui/icons-material/Google';
 import { Badge, Button, Link, Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
@@ -22,12 +22,42 @@ const lastUsedBadgeSx = {
   width: '100%',
   '& .MuiBadge-badge': {
     left: 16,
+    right: 'auto',
+    width: 'max-content',
     top: 0,
     transform: 'translateY(-50%)',
     zIndex: 1,
     pointerEvents: 'none',
   },
 } as const;
+
+// An empty MUI badge stays in the DOM as "invisible". On the first paint its
+// anchor falls back to the top-right, and the positioning override above turns
+// that into a full-width bar. Mount the badge only when it has a label.
+const LastUsedBadge = ({
+  show,
+  label,
+  children,
+}: {
+  show: boolean;
+  label: string;
+  children: ReactElement;
+}) => {
+  if (!show) {
+    return children;
+  }
+
+  return (
+    <Badge
+      badgeContent={<span data-testid="auth-wall-last-method-badge">{label}</span>}
+      color="secondary"
+      anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+      sx={lastUsedBadgeSx}
+    >
+      {children}
+    </Badge>
+  );
+};
 
 export const AuthSignInStep = ({
   title,
@@ -141,16 +171,7 @@ export const AuthSignInStep = ({
             disabled={isSendingLink}
           />
 
-          <Badge
-            badgeContent={
-              !quiet && lastUsedMethod === 'email' ? (
-                <span data-testid="auth-wall-last-method-badge">{lastUsedLabel}</span>
-              ) : undefined
-            }
-            color="secondary"
-            anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-            sx={lastUsedBadgeSx}
-          >
+          <LastUsedBadge show={!quiet && lastUsedMethod === 'email'} label={lastUsedLabel}>
             <Button
               type="submit"
               variant={quiet ? 'text' : 'contained'}
@@ -163,7 +184,7 @@ export const AuthSignInStep = ({
             >
               {isSendingLink ? i18n._('Sending...') : i18n._('Send link')}
             </Button>
-          </Badge>
+          </LastUsedBadge>
 
           <Typography
             variant="body2"
@@ -175,16 +196,7 @@ export const AuthSignInStep = ({
             {i18n._('or')}
           </Typography>
 
-          <Badge
-            badgeContent={
-              !quiet && lastUsedMethod === 'google' ? (
-                <span data-testid="auth-wall-last-method-badge">{lastUsedLabel}</span>
-              ) : undefined
-            }
-            color="secondary"
-            anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-            sx={lastUsedBadgeSx}
-          >
+          <LastUsedBadge show={!quiet && lastUsedMethod === 'google'} label={lastUsedLabel}>
             <Button
               type="button"
               variant={quiet ? 'text' : 'outlined'}
@@ -199,7 +211,7 @@ export const AuthSignInStep = ({
             >
               {isGoogleLoading ? i18n._('Signing in...') : googleTitle}
             </Button>
-          </Badge>
+          </LastUsedBadge>
 
           {googleError ? (
             <Typography color="error" variant="body2">

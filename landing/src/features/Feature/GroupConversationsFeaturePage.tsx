@@ -125,83 +125,84 @@ export const GroupConversationsFeaturePage = ({
                 {feature.subTitle}
               </Typography>
               <GroupConversationJoinButton href={appHref} />
-              <Link href={`${urlStart}features`} sx={{ color: '#8ec8ef' }}>
-                {i18n._('View all features')}
-              </Link>
             </Stack>
 
             <GroupConversationSchedule moreHref={appHref} />
           </Stack>
 
-          <Stack sx={{ gap: '18px' }}>
-            <Typography component="h2" variant="h4" sx={{ fontWeight: 800 }}>
+          <Stack sx={{ gap: '18px', paddingTop: '48px' }}>
+            <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
               {i18n._('What to expect')}
+            </Typography>
+            <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
+              {i18n._('Each call also has a text chat in FluencyPal for the people on it.')}
             </Typography>
             <Stack
               sx={{
                 display: 'grid',
+                paddingTop: '18px',
                 gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
-                gap: '16px',
+                gap: '36px',
               }}
             >
               {expectations.map((item) => (
                 <Stack
                   key={item.title}
                   sx={{
-                    gap: '10px',
-                    padding: '20px',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    gap: '20px',
+                    padding: '30px 0 0 0 ',
+                    borderTop: '1px solid #435045',
                   }}
                 >
                   <Stack sx={{ color: '#7DDEAA' }}>{item.icon}</Stack>
-                  <Typography sx={{ fontWeight: 800 }}>{item.title}</Typography>
-                  <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>{item.body}</Typography>
+                  <Stack>
+                    <Typography sx={{ fontWeight: 800 }}>{item.title}</Typography>
+                    <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>{item.body}</Typography>
+                  </Stack>
                 </Stack>
               ))}
             </Stack>
-            <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
-              {i18n._('Each call also has a text chat in FluencyPal for the people on it.')}
-            </Typography>
           </Stack>
 
-          <Stack sx={{ gap: '18px' }}>
-            <Typography component="h2" variant="h4" sx={{ fontWeight: 800 }}>
+          <Stack sx={{ gap: '18px', paddingTop: '68px' }}>
+            <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
               {i18n._('How you join')}
+            </Typography>
+            <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
+              {i18n._('Want to warm up before your call? Practice with AI first.')}
             </Typography>
             <Stack
               sx={{
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
-                gap: '16px',
+                gap: '36px',
               }}
             >
               {steps.map((step, index) => (
                 <Stack
                   key={step.title}
                   sx={{
-                    gap: '8px',
-                    padding: '20px',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    gap: '20px',
+                    padding: '30px 0 0 0 ',
+                    borderTop: '1px solid #435045',
                   }}
                 >
-                  <Typography sx={{ fontWeight: 800, color: '#7DDEAA' }}>{index + 1}</Typography>
-                  <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
-                    {step.title}
+                  <Typography sx={{ fontWeight: 900, color: '#7DDEAA', fontSize: '2.15rem' }}>
+                    {index + 1}
                   </Typography>
-                  <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>{step.body}</Typography>
+                  <Stack>
+                    <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
+                      {step.title}
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>{step.body}</Typography>
+                  </Stack>
                 </Stack>
               ))}
             </Stack>
-            <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
-              {i18n._('Want to warm up before your call? Practice with AI first.')}
-            </Typography>
           </Stack>
 
-          <Stack sx={{ gap: '22px', maxWidth: '720px', paddingBottom: '24px' }}>
-            <Typography component="h2" variant="h4" sx={{ fontWeight: 800 }}>
+          <Stack sx={{ gap: '22px', maxWidth: '720px', paddingBottom: '24px', paddingTop: '68px' }}>
+            <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
               {i18n._('Questions')}
             </Typography>
             {questions.map((item) => (

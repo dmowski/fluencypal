@@ -3,8 +3,6 @@
 import { Button } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { buttonStyle } from '@/features/Landing/landingSettings';
-import { groupCallTimeLabel, nextGroupCall } from './groupCallTimeLabel';
-import { useEnglishGroupCalls } from './useEnglishGroupCalls';
 
 const ctaButtonSx = {
   ...buttonStyle,
@@ -16,20 +14,6 @@ const ctaButtonSx = {
 
 export const GroupConversationJoinButton = ({ href }: { href: string }) => {
   const { i18n } = useLingui();
-  const { calls } = useEnglishGroupCalls();
-  const next = calls ? nextGroupCall(calls) : null;
-  const label = next
-    ? groupCallTimeLabel(
-        next.startsAtIso,
-        i18n.locale || 'en',
-        Intl.DateTimeFormat().resolvedOptions().timeZone,
-      )
-    : null;
-  const title = label?.live
-    ? i18n._('Join now')
-    : label
-      ? i18n._('Join {when}', { when: label.when })
-      : i18n._('See upcoming calls');
 
   return (
     <Button
@@ -40,7 +24,7 @@ export const GroupConversationJoinButton = ({ href }: { href: string }) => {
       data-testid="group-conversations-cta"
       sx={{ ...ctaButtonSx, marginTop: '8px' }}
     >
-      {title}
+      {i18n._('See schedule')}
     </Button>
   );
 };

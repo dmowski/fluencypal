@@ -3,12 +3,11 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { renderWithI18n } from '@/features/Alias/test-utils/i18nTestHelper';
 import { englishGroupCallOnboardingHref, groupCallChoiceHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
-import { groupCallTimeLabel } from './groupCallTimeLabel';
 import { resetEnglishGroupCallsCache } from './useEnglishGroupCalls';
 
 const sooner = '2027-06-03T17:00:00.000Z';
@@ -66,16 +65,10 @@ describe('group conversation times', () => {
     expect(screen.queryByText('9')).not.toBeInTheDocument();
   });
 
-  it('names the next call on the hero button', async () => {
+  it('labels the hero button See schedule', () => {
     render(renderWithI18n(<GroupConversationJoinButton href={href} />));
 
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See upcoming calls');
-    const when = groupCallTimeLabel(sooner, 'en', Intl.DateTimeFormat().resolvedOptions().timeZone);
-    await waitFor(() => {
-      expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent(
-        when.live ? 'Join now' : `Join ${when.when}`,
-      );
-    });
+    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See schedule');
     expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute('href', href);
     expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute(
       'data-analytics',
@@ -100,7 +93,7 @@ describe('group conversation times', () => {
     );
 
     expect(await screen.findByTestId('group-conversations-schedule-empty')).toBeInTheDocument();
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See upcoming calls');
+    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See schedule');
     expect(screen.queryByTestId('group-conversations-schedule-row')).not.toBeInTheDocument();
   });
 });
