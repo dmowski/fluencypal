@@ -1,7 +1,14 @@
 'use client';
 
 import { isDev } from './isDev';
-import { CHECKOUT_CONVERSION, initGTag, restoreAdClickOnPage } from './initGTag';
+import { readCookieConsent } from './cookieConsent';
+import {
+  CHECKOUT_CONVERSION,
+  GRANTED_CONSENT,
+  bindAdsClickId,
+  initGTag,
+  restoreAdClickOnPage,
+} from './initGTag';
 
 export { CHECKOUT_CONVERSION };
 export const CONVERSION_WAIT_MS = 1500;
@@ -34,6 +41,10 @@ export const confirmGtag = async (): Promise<void> => {
       if (!window.gtag) {
         finish();
         return;
+      }
+      if (readCookieConsent() === 'accepted') {
+        window.gtag('consent', 'update', GRANTED_CONSENT);
+        bindAdsClickId();
       }
       window.gtag('event', 'conversion', {
         send_to: CHECKOUT_CONVERSION,

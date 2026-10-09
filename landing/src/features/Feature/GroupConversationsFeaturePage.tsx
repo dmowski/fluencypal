@@ -1,13 +1,13 @@
-import { Link, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { Clock, Languages, Video } from 'lucide-react';
 import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
-import { getUrlStart } from '@/features/Lang/getUrlStart';
-import { maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
-import { englishGroupCallOnboardingHref } from './groupCallOnboardingHref';
+import { MutedPreviewVideo } from '@/features/uiKit/Video/MutedPreviewVideo';
+import { buttonStyle, maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
+import { englishGroupCallOnboardingHref, talkWithAlexHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { FeatureData } from './types';
@@ -21,7 +21,7 @@ export const GroupConversationsFeaturePage = ({
 }) => {
   const i18n = getI18nInstance(lang);
   const appHref = englishGroupCallOnboardingHref(lang);
-  const urlStart = getUrlStart(lang);
+  const alexHref = talkWithAlexHref(lang);
   const expectations = [
     {
       icon: <Video size={22} />,
@@ -128,6 +128,107 @@ export const GroupConversationsFeaturePage = ({
             </Stack>
 
             <GroupConversationSchedule moreHref={appHref} />
+          </Stack>
+
+          <Stack
+            data-testid="group-conversations-video"
+            sx={{
+              gap: '22px',
+              alignItems: 'center',
+              paddingTop: { xs: '12px', md: '8px' },
+            }}
+          >
+            <Stack
+              sx={{ gap: '10px', alignItems: 'center', textAlign: 'center', maxWidth: '640px' }}
+            >
+              <Typography
+                sx={{
+                  color: '#7DDEAA',
+                  fontWeight: 700,
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  fontSize: '0.85rem',
+                }}
+              >
+                {i18n._('From Alex')}
+              </Typography>
+              <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
+                {i18n._('Talk with the group, or just with Alex')}
+              </Typography>
+              <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>
+                {i18n._(
+                  'Group calls are with other learners. You can ask people to speak slowly, and you can leave when you want. If a group feels like a lot, talk with Alex first.',
+                )}
+              </Typography>
+            </Stack>
+            <MutedPreviewVideo src="/group_call/intro.webm" />
+            <Stack
+              sx={{
+                width: '100%',
+                maxWidth: '640px',
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: '16px',
+              }}
+            >
+              <Stack sx={{ gap: '8px', alignItems: 'center' }}>
+                <Button
+                  href={appHref}
+                  variant="outlined"
+                  size="large"
+                  data-analytics="community-call-video"
+                  data-testid="group-conversations-join-group"
+                  sx={{
+                    ...buttonStyle,
+                    width: '100%',
+                    padding: '12px 24px',
+                    color: '#f4f7fb',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(125, 222, 170, 0.7)',
+                    fontWeight: 800,
+                  }}
+                >
+                  {i18n._('Join a group call')}
+                </Button>
+                <Typography
+                  sx={{
+                    color: 'rgba(244, 247, 251, 0.7)',
+                    textAlign: 'center',
+                    fontSize: '0.95rem',
+                  }}
+                >
+                  {i18n._('Other learners on Google Meet')}
+                </Typography>
+              </Stack>
+              <Stack sx={{ gap: '8px', alignItems: 'center' }}>
+                <Button
+                  href={alexHref}
+                  variant="contained"
+                  size="large"
+                  data-analytics="talk-with-alex-cta"
+                  data-testid="group-conversations-talk-with-alex"
+                  sx={{
+                    ...buttonStyle,
+                    width: '100%',
+                    padding: '12px 24px',
+                    color: '#041018',
+                    backgroundColor: '#7DDEAA',
+                    fontWeight: 800,
+                  }}
+                >
+                  {i18n._('Talk with Alex')}
+                </Button>
+                <Typography
+                  sx={{
+                    color: 'rgba(244, 247, 251, 0.7)',
+                    textAlign: 'center',
+                    fontSize: '0.95rem',
+                  }}
+                >
+                  {i18n._('A short call so we can get to know each other')}
+                </Typography>
+              </Stack>
+            </Stack>
           </Stack>
 
           <Stack sx={{ gap: '18px', paddingTop: '48px' }}>

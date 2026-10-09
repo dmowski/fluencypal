@@ -5,7 +5,11 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { renderWithI18n } from '@/features/Alias/test-utils/i18nTestHelper';
-import { englishGroupCallOnboardingHref, groupCallChoiceHref } from './groupCallOnboardingHref';
+import {
+  englishGroupCallOnboardingHref,
+  groupCallChoiceHref,
+  talkWithAlexHref,
+} from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { resetEnglishGroupCallsCache } from './useEnglishGroupCalls';
@@ -33,6 +37,8 @@ describe('english group-call links', () => {
     expect(groupCallChoiceHref(englishGroupCallOnboardingHref('en'), 'sat-21')).toBe(
       'https://app.fluencypal.com/community-call?step=native&call=sat-21',
     );
+    expect(talkWithAlexHref('en')).toBe('https://app.fluencypal.com/talk-with-alex');
+    expect(talkWithAlexHref('ko')).toBe('https://app.fluencypal.com/ko/talk-with-alex');
   });
 });
 
@@ -46,7 +52,9 @@ describe('group conversation times', () => {
   });
 
   it('shows two placeholder rows while the schedule loads', () => {
-    global.fetch = jest.fn().mockReturnValue(new Promise(() => undefined)) as unknown as typeof fetch;
+    global.fetch = jest
+      .fn()
+      .mockReturnValue(new Promise(() => undefined)) as unknown as typeof fetch;
     resetEnglishGroupCallsCache();
     render(renderWithI18n(<GroupConversationSchedule moreHref={href} />));
 

@@ -1,6 +1,26 @@
+import { persistBrowserAdClick, browserClickIds, urlWithClickIds } from './adClickParams';
+
 export const GOOGLE_ADS_ID = 'AW-16463260124';
 
 export const GOOGLE_ADS_SCRIPT_SRC = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`;
+
+export const GOOGLE_ADS_LINKER = {
+  domains: ['fluencypal.com', 'www.fluencypal.com', 'app.fluencypal.com'],
+  accept_incoming: true,
+} as const;
+
+/** Share the Google click cookie across www and app once consent is granted. */
+export const adsDestinationConfig = (
+  hostname: string,
+  options?: { sendPageView?: boolean },
+): { cookie_domain?: string; send_page_view?: boolean } | undefined => {
+  const config: { cookie_domain?: string; send_page_view?: boolean } = {};
+  if (hostname === 'fluencypal.com' || hostname.endsWith('.fluencypal.com')) {
+    config.cookie_domain = 'fluencypal.com';
+  }
+  if (options?.sendPageView === false) config.send_page_view = false;
+  return Object.keys(config).length > 0 ? config : undefined;
+};
 
 export const DENIED_CONSENT = {
   analytics_storage: 'denied',
@@ -34,8 +54,35 @@ const shouldLoadRemoteScript = (loadRemoteScript?: boolean): boolean => {
   return process.env.NODE_ENV === 'production';
 };
 
+/** Put a click id back on this page after navigation dropped it. */
+export const restoreAdClickOnPage = (): void => {
+  if (typeof window === 'undefined') return;
+  const next = urlWithClickIds(window.location.href, browserClickIds());
+  if (!next) return;
+  const url = new URL(next);
+  const target = `${url.pathname}${url.search}${url.hash}`;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (target === current) return;
+  window.history.replaceState(window.history.state, '', target);
+};
+
+/**
+ * Ask the already-loaded Ads tag to store the click id now on the URL.
+ * send_page_view is off so this does not count another page-view conversion.
+ */
+export const bindGoogleAdsClick = (): void => {
+  if (typeof window === 'undefined' || !window.gtag) return;
+  restoreAdClickOnPage();
+  const config = adsDestinationConfig(window.location.hostname, { sendPageView: false }) ?? {
+    send_page_view: false,
+  };
+  window.gtag('config', GOOGLE_ADS_ID, config);
+};
+
 export const initGoogleAds = (options?: { loadRemoteScript?: boolean }): void => {
   if (typeof window === 'undefined') return;
+  persistBrowserAdClick();
+  restoreAdClickOnPage();
   if (window.gtag) return;
 
   window.dataLayer = window.dataLayer || [];
@@ -50,8 +97,11 @@ export const initGoogleAds = (options?: { loadRemoteScript?: boolean }): void =>
   });
   window.gtag('set', 'ads_data_redaction', true);
   window.gtag('set', 'url_passthrough', true);
+  window.gtag('set', 'linker', GOOGLE_ADS_LINKER);
   window.gtag('js', new Date());
-  window.gtag('config', GOOGLE_ADS_ID);
+  const adsConfig = adsDestinationConfig(window.location.hostname);
+  if (adsConfig) window.gtag('config', GOOGLE_ADS_ID, adsConfig);
+  else window.gtag('config', GOOGLE_ADS_ID);
 
   if (!shouldLoadRemoteScript(options?.loadRemoteScript)) return;
   if (document.querySelector(`script[src="${GOOGLE_ADS_SCRIPT_SRC}"]`)) return;
@@ -64,5 +114,7 @@ export const initGoogleAds = (options?: { loadRemoteScript?: boolean }): void =>
 
 export const applyGoogleAdsConsent = (choice: 'accepted' | 'declined' | null): void => {
   if (typeof window === 'undefined' || !window.gtag) return;
+  restoreAdClickOnPage();
   window.gtag('consent', 'update', consentForChoice(choice));
+  if (choice === 'accepted') bindGoogleAdsClick();
 };

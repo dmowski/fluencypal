@@ -1,4 +1,11 @@
-import { adClickUrl, captureAdClick, type AdClickStore } from './adClickParams';
+import {
+  adClickUrl,
+  captureAdClick,
+  clickIdsForRestore,
+  serializeAdClickCookie,
+  urlWithClickIds,
+  type AdClickStore,
+} from './adClickParams';
 
 const memoryStore = (): AdClickStore => {
   const data = new Map<string, string>();
@@ -33,5 +40,32 @@ describe('adClickParams', () => {
     store.setItem('fp_ad_click', '{');
 
     expect(adClickUrl('https://app.fluencypal.com/demo', store)).toBeNull();
+  });
+
+  it('shares the click id on .fluencypal.com and reads it back after the tab is gone', () => {
+    const cookie = serializeAdClickCookie({ gclid: 'click-1' }, 'www.fluencypal.com', true);
+
+    expect(cookie).toContain('Domain=.fluencypal.com');
+    expect(cookie).toContain('SameSite=Lax');
+    expect(
+      clickIdsForRestore({
+        sessionRaw: null,
+        cookie: cookie ?? '',
+        userSourceRaw: null,
+      }).gclid,
+    ).toBe('click-1');
+    expect(urlWithClickIds('https://app.fluencypal.com/practice', { gclid: 'click-1' })).toBe(
+      'https://app.fluencypal.com/practice?gclid=click-1',
+    );
+  });
+
+  it('falls back to the first-touch user source when the tab and cookie are empty', () => {
+    expect(
+      clickIdsForRestore({
+        sessionRaw: null,
+        cookie: '',
+        userSourceRaw: JSON.stringify({ gclid: 'click-from-source', gbraid: null }),
+      }),
+    ).toEqual({ gclid: 'click-from-source' });
   });
 });

@@ -52,7 +52,8 @@ describe('confirmGtag', () => {
         event_timeout: CONVERSION_WAIT_MS,
       }),
     );
-    const params = gtag.mock.calls[0][2] as Record<string, unknown>;
+    const conversion = gtag.mock.calls.find((call) => call[1] === 'conversion');
+    const params = conversion?.[2] as Record<string, unknown>;
     expect(params).not.toHaveProperty('email');
     expect(JSON.stringify(params)).not.toMatch(/@/);
 

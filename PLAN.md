@@ -7,6 +7,4 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Record video about FluencyPal calls
-- Redesign Group call landing: Add Video
-- Better calendar.
+- Better calendar

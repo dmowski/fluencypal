@@ -543,6 +543,11 @@ describe('parentVisitorId', () => {
       'https://www.fluencypal.com/th',
     );
     expect(
+      decorateAppHref('https://app.fluencypal.com/quiz', visitorId, 'https://www.fluencypal.com/', {
+        gclid: 'click-1',
+      }),
+    ).toBe(`https://app.fluencypal.com/quiz?fpv=${visitorId}&gclid=click-1`);
+    expect(
       stripVisitorIdFromHref(
         `https://app.fluencypal.com/quiz?fpv=${visitorId}`,
         ANALYTICS_VISITOR_QUERY,

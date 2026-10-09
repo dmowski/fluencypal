@@ -1,3 +1,5 @@
+import { appendAdClickIds, browserClickIds } from '../GoogleAds/adClickParams';
+
 const VISITOR_ID_PATTERN =
   /^fpv_[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const STORAGE_KEY = 'fp_custom_analytics_visitor_id';
@@ -85,7 +87,12 @@ const copyAttributionParams = (fromHref: string | undefined, toUrl: URL): void =
   }
 };
 
-export const decorateAppHref = (href: string, visitorId: string, baseHref?: string): string => {
+export const decorateAppHref = (
+  href: string,
+  visitorId: string,
+  baseHref?: string,
+  storedClickIds?: Record<string, string>,
+): string => {
   if (!href || !isValidVisitorId(visitorId)) return href;
   try {
     const url = new URL(href, baseHref || 'https://www.fluencypal.com');
@@ -94,6 +101,8 @@ export const decorateAppHref = (href: string, visitorId: string, baseHref?: stri
       url.searchParams.set(ANALYTICS_VISITOR_QUERY, visitorId);
     }
     copyAttributionParams(baseHref, url);
+    const stored = storedClickIds ?? (typeof document === 'undefined' ? {} : browserClickIds());
+    appendAdClickIds(url, stored);
     return url.toString();
   } catch {
     return href;

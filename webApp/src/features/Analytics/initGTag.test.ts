@@ -6,11 +6,13 @@ import { COOKIE_CONSENT_STORAGE_KEY, writeCookieConsent } from './cookieConsent'
 import {
   acceptCookies,
   ADS_ID,
+  adsDestinationConfig,
   DENIED_CONSENT,
   GA4_ID,
   GOOGLE_TAG_SRC,
   GRANTED_CONSENT,
   initGTag,
+  restoreAdClickOnPage,
 } from './initGTag';
 
 jest.mock('./isDev', () => ({
@@ -27,6 +29,8 @@ describe('initGTag', () => {
     document.head.innerHTML = '';
     document.body.innerHTML = '';
     window.localStorage.clear();
+    window.sessionStorage.clear();
+    document.cookie = 'fp_ad_click=; Path=/; Max-Age=0';
   });
 
   it('queues denied consent before GA4 and Google Ads config, then loads one tag', () => {
@@ -69,6 +73,22 @@ describe('initGTag', () => {
     initGTag();
 
     expect(dataLayerCalls()).toEqual(expect.arrayContaining([['set', 'url_passthrough', true]]));
+  });
+
+  it('shares the ads cookie domain on fluencypal hosts', () => {
+    expect(adsDestinationConfig('app.fluencypal.com')).toEqual({
+      cookie_domain: 'fluencypal.com',
+    });
+    expect(adsDestinationConfig('localhost')).toBeUndefined();
+  });
+
+  it('restores a click id saved on the marketing site', () => {
+    document.cookie = `fp_ad_click=${encodeURIComponent(JSON.stringify({ gclid: 'from-www' }))}`;
+    window.history.replaceState({}, '', '/practice');
+
+    restoreAdClickOnPage();
+
+    expect(window.location.search).toContain('gclid=from-www');
   });
 
   it('restores the ad click id before granting consent', () => {

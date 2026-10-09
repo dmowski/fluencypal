@@ -14,6 +14,8 @@ const dataLayerCalls = () =>
 describe('GoogleAdsHost', () => {
   beforeEach(() => {
     window.localStorage.clear();
+    window.sessionStorage.clear();
+    document.cookie = 'fp_ad_click=; Path=/; Max-Age=0';
     delete window.gtag;
     delete window.dataLayer;
     document.head.innerHTML = '';

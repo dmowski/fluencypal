@@ -7,6 +7,7 @@ import {
   consentForChoice,
   DENIED_CONSENT,
   GOOGLE_ADS_ID,
+  GOOGLE_ADS_LINKER,
   GOOGLE_ADS_SCRIPT_SRC,
   GRANTED_CONSENT,
   initGoogleAds,
@@ -18,6 +19,8 @@ const dataLayerCalls = () =>
 describe('googleAds', () => {
   beforeEach(() => {
     window.localStorage.clear();
+    window.sessionStorage.clear();
+    document.cookie = 'fp_ad_click=; Path=/; Max-Age=0';
     delete window.gtag;
     delete window.dataLayer;
     document.head.innerHTML = '';
@@ -47,9 +50,19 @@ describe('googleAds', () => {
           }),
         ],
         ['config', GOOGLE_ADS_ID],
+        ['set', 'linker', GOOGLE_ADS_LINKER],
       ]),
     );
     expect(document.querySelector(`script[src="${GOOGLE_ADS_SCRIPT_SRC}"]`)).toBeNull();
+  });
+
+  it('keeps a landing click id for the app', () => {
+    window.history.replaceState({}, '', '/features/group-conversations?gclid=click-1');
+
+    initGoogleAds({ loadRemoteScript: false });
+
+    expect(document.cookie).toContain('gclid');
+    expect(document.cookie).toContain('click-1');
   });
 
   it('loads the Google tag script only when asked', () => {
