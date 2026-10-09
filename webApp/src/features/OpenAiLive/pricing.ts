@@ -42,6 +42,12 @@ export const chargeUsdMicrosForElapsedMs = (elapsedMs: number): number => {
   return Math.floor((elapsedMs * openAiLivePricePerMinuteUsdMicros) / 60_000);
 };
 
+/** OpenAI's listed GPT-Live rate, before the user margin. Admin cost views use this. */
+export const openAiLiveProviderCostUsdForElapsedMs = (elapsedMs: number): number => {
+  if (!Number.isFinite(elapsedMs) || elapsedMs <= 0) return 0;
+  return (elapsedMs * API_USD_MICROS_PER_MINUTE) / 60_000 / USD_MICROS_PER_DOLLAR;
+};
+
 export const creditUsdMicrosForHours = (hours: number): number =>
   hours * openAiLivePricePerMinuteUsdMicros * 60;
 

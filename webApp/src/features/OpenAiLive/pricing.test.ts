@@ -10,6 +10,7 @@ import {
   openAiLiveHoursFromMetadata,
   openAiLivePricePerMinuteUsd,
   openAiLivePricePerMinuteUsdMicros,
+  openAiLiveProviderCostUsdForElapsedMs,
   openAiLiveWelcomeBalanceUsdMicros,
 } from './pricing';
 
@@ -53,6 +54,13 @@ describe('openAi live user price', () => {
         welcomeGrantedAt: '2026-10-02T00:00:00.000Z',
       }),
     ).toEqual({ balanceUsdMicros: 1_000_000, grant: false });
+  });
+
+  it('prices a live conversation at the listed per-minute cost', () => {
+    expect(openAiLiveProviderCostUsdForElapsedMs(0)).toBe(0);
+    expect(openAiLiveProviderCostUsdForElapsedMs(-1)).toBe(0);
+    expect(openAiLiveProviderCostUsdForElapsedMs(60_000)).toBe(0.05);
+    expect(openAiLiveProviderCostUsdForElapsedMs(90_000)).toBe(0.075);
   });
 
   it('bills active time from the user price and stops at an empty balance', () => {

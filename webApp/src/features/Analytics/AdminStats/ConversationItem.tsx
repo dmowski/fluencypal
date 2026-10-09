@@ -2,7 +2,12 @@ import { Stack, Tooltip, Typography } from '@mui/material';
 import { Bot, MessageSquareCodeIcon, MessagesSquare, User } from 'lucide-react';
 import dayjs from 'dayjs';
 import { Conversation } from '@/features/Conversation/conversation';
+import { openAiLiveProviderCostUsdForElapsedMs } from '@/features/OpenAiLive/pricing';
 import { getConversationsStats } from './getConversationsStats';
+import {
+  openAiLiveConversationElapsedMs,
+  openAiLiveConversationPriceUsd,
+} from './openAiLiveConversationPrice';
 
 interface ConversationItemProps {
   conversation: Conversation;
@@ -21,6 +26,10 @@ export function ConversationItem({ conversation, onClick }: ConversationItemProp
   const nowHour = dayjs().hour();
   const isToday =
     conversation.updatedAtIso && dayjs().diff(dayjs(conversation.updatedAtIso), 'hour') <= nowHour;
+  const livePriceUsd = openAiLiveConversationPriceUsd(conversation);
+  const liveMinutes =
+    livePriceUsd === null ? 0 : openAiLiveConversationElapsedMs(conversation) / 60_000;
+  const liveRateUsd = openAiLiveProviderCostUsdForElapsedMs(60_000);
 
   return (
     <Stack
@@ -104,20 +113,28 @@ export function ConversationItem({ conversation, onClick }: ConversationItemProp
             },
           }}
           title={
-            <Stack
-              sx={{
-                gap: '5px',
-              }}
-            >
-              {usageKeys.map((key) => (
-                <Typography key={key}>
-                  {`${key}`}: {(conversation.usage?.[key] || 0).toFixed(4)}
-                </Typography>
-              ))}
-            </Stack>
+            livePriceUsd === null ? (
+              <Stack
+                sx={{
+                  gap: '5px',
+                }}
+              >
+                {usageKeys.map((key) => (
+                  <Typography key={key}>
+                    {`${key}`}: {(conversation.usage?.[key] || 0).toFixed(4)}
+                  </Typography>
+                ))}
+              </Stack>
+            ) : (
+              <Typography>
+                {liveMinutes.toFixed(1)} min × ${liveRateUsd.toFixed(2)}/min (OpenAI)
+              </Typography>
+            )
           }
         >
-          <Typography>{totalUsage.toFixed(4)} USD</Typography>
+          <Typography>
+            {(livePriceUsd === null ? totalUsage : livePriceUsd).toFixed(4)} USD
+          </Typography>
         </Tooltip>
       </Stack>
     </Stack>
