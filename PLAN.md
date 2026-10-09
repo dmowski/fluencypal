@@ -7,8 +7,9 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Fix empty game usernames
+- Fix empty game usernames:
 - Redesign Group call landing: record demo
+- On Admin panel show usage per session open-ai-live
 
 ## Record video on YouTube
 
