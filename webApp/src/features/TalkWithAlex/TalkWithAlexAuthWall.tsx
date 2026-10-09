@@ -37,10 +37,6 @@ export const TalkWithAlexAuthWall = ({ children }: { children: ReactNode }) => {
       authSubTitle={i18n._('So Alex knows who wants to talk')}
       authList={[
         {
-          title: i18n._('No ads, no spam'),
-          iconName: 'between-horizontal-start',
-        },
-        {
           title: i18n._('Privacy Policy'),
           iconName: 'scroll-text',
           href: `${getLandingUrlStart('en')}privacy`,
