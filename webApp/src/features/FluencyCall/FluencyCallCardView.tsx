@@ -110,6 +110,8 @@ export type FluencyCallCardViewProps = {
   onSendMessage: (text: string) => Promise<void>;
   onEditMessage?: (messageId: string, text: string) => Promise<void>;
   onDeleteMessage?: (messageId: string) => Promise<void>;
+  /** Same translator as the main chat. Omitted when translation is not available. */
+  onTranslate?: (text: string) => Promise<string>;
   canJoin: boolean;
   requestedAtLabel: string | null;
   paidNotice: boolean;
@@ -136,17 +138,47 @@ const FluencyCallMessageRow = ({
   message,
   onEdit,
   onDelete,
+  onTranslate,
 }: {
   message: FluencyCallCardMessage;
   onEdit?: (text: string) => Promise<void>;
   onDelete?: () => Promise<void>;
+  onTranslate?: (text: string) => Promise<string>;
 }) => {
   const { i18n } = useLingui();
   const [mode, setMode] = useState<'view' | 'edit' | 'confirm-delete'>('view');
   const [editDraft, setEditDraft] = useState(message.text);
   const [pending, setPending] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
+  const [translation, setTranslation] = useState<string | null>(null);
+  const [translatedFrom, setTranslatedFrom] = useState('');
+  const [showTranslation, setShowTranslation] = useState(false);
+  const [translating, setTranslating] = useState(false);
   const closeMenu = () => setMenuAnchor(null);
+  const canTranslate = Boolean(onTranslate && message.text);
+
+  const toggleTranslation = async () => {
+    closeMenu();
+    if (!onTranslate || !message.text || translating) return;
+    if (showTranslation) {
+      setShowTranslation(false);
+      return;
+    }
+    if (translation && translatedFrom === message.text) {
+      setShowTranslation(true);
+      return;
+    }
+    setTranslating(true);
+    try {
+      const translatedText = await onTranslate(message.text);
+      if (!translatedText.trim()) return;
+      setTranslation(translatedText);
+      setTranslatedFrom(message.text);
+      setShowTranslation(true);
+    } finally {
+      setTranslating(false);
+    }
+  };
 
   const saveEdit = async () => {
     const text = editDraft.trim();
@@ -247,7 +279,12 @@ const FluencyCallMessageRow = ({
               overflowWrap: 'anywhere',
             }}
           >
-            {message.text}
+            {showTranslation && translation ? translation : message.text}
+          </Typography>
+        ) : null}
+        {translating ? (
+          <Typography sx={{ color: token.muted, fontSize: '13px' }}>
+            {i18n._('Loading...')}
           </Typography>
         ) : null}
         {message.extra}
@@ -307,7 +344,7 @@ const FluencyCallMessageRow = ({
           </Stack>
         ) : null}
       </Box>
-      {mode === 'view' && (onEdit || onDelete) ? (
+      {mode === 'view' && (onEdit || onDelete || canTranslate) ? (
         <>
           <IconButton
             color="inherit"
@@ -337,6 +374,18 @@ const FluencyCallMessageRow = ({
               },
             }}
           >
+            {canTranslate ? (
+              <MenuItem
+                data-testid={`fluency-call-translate-${message.id}`}
+                disabled={translating}
+                onClick={() => {
+                  void toggleTranslation();
+                }}
+                sx={{ color: token.text }}
+              >
+                {showTranslation ? i18n._('See original') : i18n._('Translate')}
+              </MenuItem>
+            ) : null}
             {onEdit && message.text ? (
               <MenuItem
                 data-testid={`fluency-call-edit-${message.id}`}
@@ -380,6 +429,7 @@ export const FluencyCallCardView = ({
   onSendMessage,
   onEditMessage,
   onDeleteMessage,
+  onTranslate,
   canJoin,
   requestedAtLabel,
   paidNotice,
@@ -513,7 +563,7 @@ export const FluencyCallCardView = ({
         </Stack>
 
         <Typography sx={{ margin: '6px 0', color: token.muted }}>
-          {i18n._('A little practice. A few friendly faces.')}
+          {i18n._('A short practice. A few friendly people.')}
         </Typography>
 
         {paidNotice ? (
@@ -724,7 +774,7 @@ export const FluencyCallCardView = ({
           {next ? rsvp(next) : null}
         </Stack>
         <Typography sx={{ margin: '10px 0 0', color: token.muted, fontSize: '12px' }}>
-          {i18n._('Take your time speaking. You can listen first.')}
+          {i18n._('Speak when you are ready. You can listen first.')}
         </Typography>
       </Stack>
 
@@ -813,6 +863,7 @@ export const FluencyCallCardView = ({
                     }
                   : undefined
               }
+              onTranslate={onTranslate}
             />
           ))}
           {messages.length === 0 ? (

@@ -222,6 +222,26 @@ test('you can edit your own message and a failure keeps the draft', async () => 
   await expect.element(page.getByText('Hi everyone')).toBeVisible();
 });
 
+test('translate replaces the message and a second choice restores it', async () => {
+  const onTranslate = vi.fn(async (text: string) => `ES: ${text}`);
+  await renderCard({
+    messages: [message({ id: 'theirs', text: 'Hi everyone' })],
+    onTranslate,
+  });
+
+  await userEvent.click(page.getByTestId('fluency-call-message-menu-theirs'));
+  await userEvent.click(page.getByTestId('fluency-call-translate-theirs'));
+  await expect.element(page.getByText('ES: Hi everyone')).toBeVisible();
+  expect(onTranslate).toHaveBeenCalledWith('Hi everyone');
+
+  await userEvent.click(page.getByTestId('fluency-call-message-menu-theirs'));
+  await expect.element(page.getByText('See original')).toBeVisible();
+  await userEvent.click(page.getByTestId('fluency-call-translate-theirs'));
+  await expect.element(page.getByText('Hi everyone')).toBeVisible();
+  await expect.element(page.getByText('ES: Hi everyone')).not.toBeInTheDocument();
+  expect(onTranslate).toHaveBeenCalledTimes(1);
+});
+
 test('you can delete your own message and someone else cannot', async () => {
   const onDeleteMessage = vi.fn(async () => {});
   await renderCard({

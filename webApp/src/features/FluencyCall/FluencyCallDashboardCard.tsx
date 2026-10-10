@@ -16,6 +16,7 @@ import { Attachments } from '@/features/Chat/Message/Attachments';
 import { ThreadsMessageAttachment } from '@/features/Chat/type';
 import { ChatProvider, useChat } from '@/features/Chat/useChat';
 import { useUrlState } from '@/features/Url/useUrlState';
+import { useTranslate } from '@/features/Translation/useTranslate';
 import { fluencyCallLanguageCode } from './callLanguage';
 import {
   fluencyCallRowTitle,
@@ -108,6 +109,7 @@ const FluencyCallDashboardBody = ({
   const settings = useSettings();
   const game = useGame();
   const chat = useChat();
+  const translator = useTranslate();
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [pendingJoinId, setPendingJoinId] = useState<string | null>(null);
   const [conductSaving, setConductSaving] = useState(false);
@@ -318,6 +320,11 @@ const FluencyCallDashboardBody = ({
         onDeleteMessage={async (messageId) => {
           await chat.deleteMessage(messageId);
         }}
+        onTranslate={
+          translator.isTranslateAvailable
+            ? (text) => translator.translateText({ text })
+            : undefined
+        }
         canJoin
         requestedAtLabel={requestedLabel}
         paidNotice={paidNotice}
