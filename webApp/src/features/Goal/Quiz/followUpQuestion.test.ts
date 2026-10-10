@@ -2,6 +2,7 @@ import { TextAiContextType } from '@/features/Ai/types';
 import {
   buildFollowUpQuestionMessages,
   claimFollowUpQuestion,
+  coerceFollowUpQuestionResponse,
   followUpQuestionHash,
   generateFollowUpQuestion,
   isFollowUpQuestionReady,
@@ -60,10 +61,9 @@ describe('followUpQuestion', () => {
 
   it('returns the question the model wrote for this recording', async () => {
     const textAi = {
-      generateStrictJson: jest.fn(async () => ({
-        parsed: { title: 'Какие случаи вам нужно объяснять пациентам?' },
-        rawOutput: '',
-      })),
+      generate: jest.fn(async () =>
+        JSON.stringify({ title: 'Какие случаи вам нужно объяснять пациентам?' }),
+      ),
     } as unknown as TextAiContextType;
 
     await expect(
@@ -74,9 +74,36 @@ describe('followUpQuestion', () => {
       }),
     ).resolves.toBe('Какие случаи вам нужно объяснять пациентам?');
 
-    const request = (textAi.generateStrictJson as jest.Mock).mock.calls[0][0];
+    const request = (textAi.generate as jest.Mock).mock.calls[0][0];
     expect(request.languageCode).toBe('ru');
     expect(request.userMessage).toContain('Я врач и готовлюсь к собеседованию.');
     expect(request.systemMessage).toContain('Russian');
+    expect(request.systemMessage).toContain('no question written outside');
+  });
+
+  it('uses the question written beside a placeholder JSON object', async () => {
+    const textAi = {
+      generate: jest.fn(
+        async () => `Which meeting, such as a client call, do you want to handle in English?
+
+{ "title": "Follow-up Question" }`,
+      ),
+    } as unknown as TextAiContextType;
+
+    await expect(
+      generateFollowUpQuestion({
+        textAi,
+        transcript: 'I freeze when a meeting starts.',
+        languageCode: 'en',
+      }),
+    ).resolves.toBe('Which meeting, such as a client call, do you want to handle in English?');
+    expect(textAi.generate).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps a valid JSON title when the model also wrote a question', () => {
+    const raw = `Which cafe should we visit?\n{"title":"Which meeting do you want to handle?"}`;
+    expect(JSON.parse(coerceFollowUpQuestionResponse(raw))).toEqual({
+      title: 'Which meeting do you want to handle?',
+    });
   });
 });

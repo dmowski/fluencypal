@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { generateJsonResult } from '@/features/Ai/generateJson';
+import { extractJsonFromAiResponse, parseStrictJson } from '@/features/Ai/jsonParser';
 import { TextAiContextType } from '@/features/Ai/types';
 import { SupportedLanguage, fullEnglishLanguageName } from '@/features/Lang/lang';
 import { fnv1aHash } from '@/libs/hash';
@@ -68,10 +70,41 @@ export const buildFollowUpQuestionMessages = (input: {
     'One sentence only.',
     `Write the question in ${input.languageName}.`,
     'End with a question mark.',
-    'Return JSON with a title field and no other text.',
+    'Put that question in the title field.',
+    'Return only a JSON object, with no question written outside it.',
   ].join(' '),
   userMessage: `What they said:\n${input.transcript.trim()}`,
 });
+
+const questionSentenceFromText = (text: string): string | null => {
+  const compact = text.replace(/\s+/g, ' ').trim();
+  const match = compact.match(/([^.!?]{8,280}[?？؟])/);
+  if (!match) return null;
+  const title = match[1].trim();
+  return followUpQuestionSchema.safeParse({ title }).success ? title : null;
+};
+
+/**
+ * Models sometimes write the question as prose and a placeholder object
+ * such as {"title":"Follow-up Question"}. Keep a valid title, otherwise
+ * use the question sentence.
+ */
+export const coerceFollowUpQuestionResponse = (raw: string): string => {
+  const embedded = extractJsonFromAiResponse(raw);
+  try {
+    const parsed: unknown = JSON.parse(embedded);
+    if (followUpQuestionSchema.safeParse(parsed).success) {
+      return JSON.stringify(parsed);
+    }
+  } catch {
+    // The embedded slice is not JSON yet; the strict parser can still repair it.
+  }
+
+  const prose = embedded === raw.trim() ? raw : raw.replace(embedded, ' ');
+  const question = questionSentenceFromText(prose);
+  if (question) return JSON.stringify({ title: question });
+  return raw;
+};
 
 export const generateFollowUpQuestion = async (input: {
   textAi: TextAiContextType;
@@ -83,13 +116,22 @@ export const generateFollowUpQuestion = async (input: {
     transcript: input.transcript,
     languageName,
   });
-  const { parsed } = await input.textAi.generateStrictJson({
-    ...messages,
-    model: FOLLOW_UP_QUESTION_MODEL,
-    cache: false,
-    languageCode: input.languageCode,
-    attempts: 3,
-    schema: followUpQuestionSchema,
+  const { parsed } = await generateJsonResult({
+    conversationDate: {
+      ...messages,
+      model: FOLLOW_UP_QUESTION_MODEL,
+      cache: false,
+      languageCode: input.languageCode,
+      attempts: 3,
+    },
+    parseResponse: (response) =>
+      parseStrictJson({
+        json: coerceFollowUpQuestionResponse(response),
+        schema: followUpQuestionSchema,
+        generate: input.textAi.generate,
+        languageCode: input.languageCode,
+      }),
+    generate: input.textAi.generate,
   });
   return parsed.title.trim();
 };

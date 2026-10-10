@@ -4,20 +4,90 @@ import { AiTextGenerator } from './types';
 import * as Sentry from '@sentry/nextjs';
 import z, { ZodError } from 'zod';
 
-export const extractJsonFromAiResponse = (raw: string): string => {
-  const trimmed = raw.trim();
+const extractFencedJson = (trimmed: string): string | null => {
+  if (!trimmed.startsWith('```')) return null;
+  const firstLineBreak = trimmed.indexOf('\n');
+  if (firstLineBreak === -1) return null;
+  const closeFenceIndex = trimmed.indexOf('\n```', firstLineBreak);
+  if (closeFenceIndex === -1) return null;
+  return trimmed.slice(firstLineBreak + 1, closeFenceIndex).trim();
+};
 
-  if (trimmed.startsWith('```')) {
-    const firstLineBreak = trimmed.indexOf('\n');
-    if (firstLineBreak !== -1) {
-      const closeFenceIndex = trimmed.indexOf('\n```', firstLineBreak);
-      if (closeFenceIndex !== -1) {
-        return trimmed.slice(firstLineBreak + 1, closeFenceIndex).trim();
+/** First `{...}` or `[...]` starting at `start`, respecting strings. */
+const extractBalancedJson = (raw: string, start: number): string | null => {
+  const opener = raw[start];
+  if (opener !== '{' && opener !== '[') return null;
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+
+  for (let index = start; index < raw.length; index++) {
+    const char = raw[index];
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+        continue;
       }
+      if (char === '\\') {
+        escaped = true;
+        continue;
+      }
+      if (char === '"') inString = false;
+      continue;
+    }
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+    if (char === '{' || char === '[') depth += 1;
+    if (char === '}' || char === ']') {
+      depth -= 1;
+      if (depth === 0) return raw.slice(start, index + 1);
     }
   }
 
-  return trimmed;
+  return null;
+};
+
+const parsesAsJson = (value: string): boolean => {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    try {
+      JSON.parse(jsonrepair(value));
+      return true;
+    } catch {
+      return false;
+    }
+  }
+};
+
+/**
+ * jsonrepair turns "sentence, more text? { ... }" into an array.
+ * Pull the JSON value out of that prose instead.
+ */
+const extractEmbeddedJson = (raw: string): string | null => {
+  for (let index = 0; index < raw.length; index++) {
+    if (raw[index] !== '{' && raw[index] !== '[') continue;
+    const balanced = extractBalancedJson(raw, index);
+    if (!balanced) continue;
+    if (parsesAsJson(balanced)) return balanced;
+    index += balanced.length - 1;
+  }
+  return null;
+};
+
+export const extractJsonFromAiResponse = (raw: string): string => {
+  const trimmed = raw.trim();
+  const candidate = extractFencedJson(trimmed) ?? trimmed;
+
+  if (candidate.startsWith('{') || candidate.startsWith('[')) {
+    return extractBalancedJson(candidate, 0) ?? candidate;
+  }
+
+  return extractEmbeddedJson(candidate) ?? candidate;
 };
 
 export const parseStrictJson = async <T>({
