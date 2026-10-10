@@ -251,7 +251,7 @@ msgstr ""
 "Un divertido juego de adivinanza de palabras para 2-20 jugadores. ¡Explica "
 "palabras a tus compañeros de equipo sin decir la palabra misma!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:959
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:122
 #. js-lingui-explicit-id
 msgid "A hello from Alex"
 msgstr "Un saludo de Alex"
@@ -365,12 +365,12 @@ msgstr ""
 "Una breve llamada para conocernos. Alex te escribe después de esto, y tú "
 "eliges un horario."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:648
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:92
 #. js-lingui-explicit-id
 msgid "A short hello from Alex · What to expect"
 msgstr "Un breve saludo de Alex · Qué esperar"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:566
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:62
 #. js-lingui-explicit-id
 msgid "A short practice. A few friendly people."
 msgstr "Una breve práctica. Unos pocos amigos."
@@ -934,7 +934,7 @@ msgstr ""
 msgid "All time"
 msgstr "Todo el tiempo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:977
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:50
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Todas las horas en {zone}"
@@ -1145,7 +1145,7 @@ msgstr ""
 "deshacer."
 
 #: src/features/Chat/Message/Message.tsx:105
-#: src/features/FluencyCall/FluencyCallCardView.tsx:321
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:213
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "¿Está seguro de que desea eliminar este mensaje?"
@@ -1399,7 +1399,7 @@ msgstr "Esté preparado para su entrevista de trabajo"
 msgid "Be specific about your role"
 msgstr "Sea específico acerca de su rol"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:874
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:149
 #. js-lingui-explicit-id
 msgid "Be the first to say hello."
 msgstr "Sé el primero en saludar."
@@ -1799,8 +1799,8 @@ msgstr "¿Puedo usarlo en un teléfono inteligente?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
-#: src/features/FluencyCall/FluencyCallCardView.tsx:314
-#: src/features/FluencyCall/FluencyCallCardView.tsx:341
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:206
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:233
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
 #: src/features/Reader/components/AddBookModal.tsx:426
@@ -1876,7 +1876,7 @@ msgstr "Desafiante"
 msgid "Change plan"
 msgstr "Cambiar plan"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1057
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Cambiar hora"
@@ -3135,7 +3135,7 @@ msgstr "conversación"
 msgid "Conversation 10"
 msgstr "Conversación 10"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:804
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:79
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Conversation chat"
@@ -3309,13 +3309,13 @@ msgstr ""
 msgid "Could not start your account. Please try again."
 msgstr "No se pudo iniciar su cuenta. Por favor, inténtelo de nuevo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:847
-#: src/features/FluencyCall/FluencyCallCardView.tsx:860
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:122
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:135
 #. js-lingui-explicit-id
 msgid "Could not update your message. Please try again."
 msgstr "No se pudo actualizar su mensaje. Por favor, inténtelo de nuevo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:462
+#: src/features/FluencyCall/FluencyCallCardView.tsx:56
 #: src/features/FluencyCall/FluencyCallDashboardCard.tsx:232
 #. js-lingui-explicit-id
 msgid "Could not update your plans. Please try again."
@@ -4099,8 +4099,8 @@ msgid "Decrease paragraph gap"
 msgstr "Disminuir el espacio entre párrafos"
 
 #: src/features/Chat/Message/Message.tsx:423
-#: src/features/FluencyCall/FluencyCallCardView.tsx:333
-#: src/features/FluencyCall/FluencyCallCardView.tsx:411
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:225
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:303
 #: src/features/Reader/components/Cards.tsx:270
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
@@ -4705,7 +4705,7 @@ msgstr "Fácil"
 #: src/features/Chat/Message/Message.tsx:411
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:61
 #: src/features/Essay/EssayText.tsx:405
-#: src/features/FluencyCall/FluencyCallCardView.tsx:399
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:291
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -4716,7 +4716,7 @@ msgstr "Editar"
 msgid "Edit Community Space"
 msgstr "Editar Espacio Comunitario"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:252
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:144
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "Editar mensaje"
@@ -5599,7 +5599,7 @@ msgstr "Lecciones terminadas. Abre una para escuchar tus respuestas de nuevo."
 msgid "First talk"
 msgstr "Primer diálogo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:645
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:89
 #. js-lingui-explicit-id
 msgid "First time? Meet your host"
 msgstr "¿Primera vez? Conoce a tu anfitrión"
@@ -6516,7 +6516,7 @@ msgstr ""
 "Las llamadas grupales son gratuitas. Ve las próximas horas, crea una cuenta "
 "y practica con IA hasta la llamada."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:554
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:50
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
 #. js-lingui-explicit-id
@@ -6760,7 +6760,7 @@ msgstr "Ocultar para siempre"
 msgid "Hide names"
 msgstr "Ocultar nombres"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:819
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
 msgid "Hide older"
 msgstr "Ocultar antiguos"
@@ -7227,12 +7227,12 @@ msgstr ""
 msgid "I'd add retries with a longer timeout."
 msgstr "Agregaría reintentos con un tiempo de espera más largo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:501
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:37
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "Me uniré"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:500
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:36
 #. js-lingui-explicit-id
 msgid "I'm joining"
 msgstr "Me estoy uniendo"
@@ -8332,7 +8332,7 @@ msgstr "Cargar más"
 msgid "Load More"
 msgstr "Cargar más"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:831
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:106
 #. js-lingui-explicit-id
 msgid "Load more messages"
 msgstr "Cargar más mensajes"
@@ -8398,7 +8398,7 @@ msgstr "Cargando.."
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
-#: src/features/FluencyCall/FluencyCallCardView.tsx:287
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:179
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:146
 #: src/features/News/NewsTranslationPopover.tsx:58
@@ -8632,7 +8632,7 @@ msgstr "Mensaje oculto debido a violación de políticas."
 msgid "Message options"
 msgstr "Opciones de mensaje"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:902
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:177
 #. js-lingui-explicit-id
 msgid "Message the group"
 msgstr "Mensaje al grupo"
@@ -8833,7 +8833,7 @@ msgstr "Plan Mensual"
 msgid "More"
 msgstr "Más"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:727
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:103
 #. js-lingui-explicit-id
 msgid "More conversations soon"
 msgstr "Más conversaciones pronto"
@@ -8854,7 +8854,7 @@ msgstr ""
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
-#: src/features/FluencyCall/FluencyCallCardView.tsx:351
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:243
 #. js-lingui-explicit-id
 msgid "More options"
 msgstr "Más opciones"
@@ -9024,7 +9024,7 @@ msgstr "Siguiente"
 msgid "Next article"
 msgstr "Próximo artículo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:672
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:48
 #. js-lingui-explicit-id
 msgid "Next conversation"
 msgstr "Próxima conversación"
@@ -9233,7 +9233,7 @@ msgstr "Nadie se unirá todavía."
 msgid "No original file found for this book."
 msgstr "No se encontró el archivo original para este libro."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1020
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:94
 #. js-lingui-explicit-id
 msgid "No other calls scheduled yet."
 msgstr "No hay otras llamadas programadas todavía."
@@ -9618,7 +9618,7 @@ msgstr "Un patrón. Práctica real de conversación."
 msgid "One payment. No automatic renewal."
 msgstr "Un pago. Sin renovación automática."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:807
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:82
 #. js-lingui-explicit-id
 msgid "One shared chat for all calls"
 msgstr "Un chat compartido para todas las llamadas"
@@ -9687,8 +9687,7 @@ msgstr "Abrir Panel de Control"
 msgid "Open Dev Panel"
 msgstr "Abrir Panel de Desarrollo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:758
-#: src/features/FluencyCall/FluencyCallCardView.tsx:771
+#: src/features/FluencyCall/card/FluencyCallMeetButton.tsx:10
 #. js-lingui-explicit-id
 msgid "Open Google Meet"
 msgstr "Abrir Google Meet"
@@ -9817,7 +9816,7 @@ msgstr "Orden con obligación de pago {amount}"
 msgid "Other languages"
 msgstr "Otros idiomas"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:681
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:57
 #. js-lingui-explicit-id
 msgid "Other times"
 msgstr "Otras veces"
@@ -10038,12 +10037,12 @@ msgstr "Historial de pagos"
 msgid "Payment option"
 msgstr "Opción de pago"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:573
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:69
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Pago recibido. Puedes unirte en un momento."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:572
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:68
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Pago recibido. Puedes unirte a las conversaciones grupales."
@@ -11140,7 +11139,7 @@ msgstr "Pronunciar fuente"
 msgid "Pronounce translations"
 msgstr "Pronunciar traducciones"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1046
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:117
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11796,7 +11795,7 @@ msgstr "Reportar usuario"
 msgid "Request failed. Please try again."
 msgstr "Solicitud fallida. Por favor, inténtelo de nuevo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1029
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:100
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -12051,7 +12050,7 @@ msgstr "La misma lección Just Talk a través del nuevo servidor de voz WebSocke
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
 #: src/features/Essay/EssayText.tsx:281
-#: src/features/FluencyCall/FluencyCallCardView.tsx:302
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:194
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -12095,12 +12094,12 @@ msgstr ""
 "Di un poco más sobre cómo te sentiste con la lección o qué quieres a "
 "continuación."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:730
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:106
 #. js-lingui-explicit-id
 msgid "Say hello in the chat while we plan the next call."
 msgstr "Di hola en el chat mientras planificamos la próxima llamada."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:899
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:174
 #. js-lingui-explicit-id
 msgid "Say hello or ask a question..."
 msgstr "Saluda o haz una pregunta..."
@@ -12162,7 +12161,7 @@ msgstr "Ver todo"
 msgid "See how you improve over time."
 msgstr "Mira cómo mejoras con el tiempo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:386
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:278
 #. js-lingui-explicit-id
 msgid "See original"
 msgstr "Ver original"
@@ -12270,7 +12269,7 @@ msgstr "Enviar enlace"
 msgid "Send me email notifications"
 msgstr "Envíame notificaciones por correo electrónico"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:927
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Send message"
 msgstr "Enviar mensaje"
@@ -12325,7 +12324,7 @@ msgstr "Envía tu respuesta para continuar."
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Envía {messagesNeeded} mensajes para desbloquear el acceso completo"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:927
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Sending message"
 msgstr "Enviando mensaje"
@@ -12551,7 +12550,7 @@ msgstr "Mostrar menos"
 msgid "Show more"
 msgstr "Mostrar más"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:819
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
 msgid "Show older"
 msgstr "Mostrar más antiguo"
@@ -12928,7 +12927,7 @@ msgstr ""
 msgid "Speak naturally, without overthinking"
 msgstr "Habla de manera natural, sin pensarlo demasiado"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:777
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:126
 #. js-lingui-explicit-id
 msgid "Speak when you are ready. You can listen first."
 msgstr "Habla cuando estés listo. Puedes escuchar primero."
@@ -15322,7 +15321,7 @@ msgstr ""
 "el progreso a lo largo del tiempo."
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
-#: src/features/FluencyCall/FluencyCallCardView.tsx:386
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:278
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
 #. js-lingui-explicit-id
@@ -15621,12 +15620,12 @@ msgstr "Desactivar silencio"
 msgid "Upcoming calls"
 msgstr "Próximas llamadas"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:976
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Conversaciones próximas"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:498
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:34
 #. js-lingui-explicit-id
 msgid "Updating..."
 msgstr "Actualizando..."
@@ -16080,12 +16079,12 @@ msgstr "Te enviaremos un enlace para iniciar sesión."
 msgid "We'll get back to you with a confirmation."
 msgstr "Volveremos a contactarte con una confirmación."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1034
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:105
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Responderemos pronto."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:960
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:123
 #. js-lingui-explicit-id
 msgid ""
 "We'll say hello and start with something simple, like how your week is "
@@ -17356,7 +17355,7 @@ msgstr "Tu única limitación es tu imaginación."
 msgid "Your Message"
 msgstr "Tu mensaje"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:478
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:49
 #. js-lingui-explicit-id
 msgid "Your message was not sent. Please try again."
 msgstr "Su mensaje no fue enviado. Por favor, inténtelo de nuevo."
@@ -17579,8 +17578,8 @@ msgstr "{count} hora"
 msgid "{count} hours"
 msgstr "{count} horas"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:718
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1007
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:94
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:77
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{count} uniéndose"

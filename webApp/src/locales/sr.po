@@ -248,7 +248,7 @@ msgstr ""
 "Забавна игра погађања речи за 2-20 играча. Објасните речи својим саиграчима "
 "без да изговорите саму реч!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:959
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:122
 #. js-lingui-explicit-id
 msgid "A hello from Alex"
 msgstr "Pozdrav od Aleksa"
@@ -362,12 +362,12 @@ msgstr ""
 "Kratak poziv da se upoznamo. Alex će vam pisati nakon ovoga, a vi birate "
 "vreme."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:648
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:92
 #. js-lingui-explicit-id
 msgid "A short hello from Alex · What to expect"
 msgstr "Kratak pozdrav od Aleksa · Šta možete očekivati"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:566
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:62
 #. js-lingui-explicit-id
 msgid "A short practice. A few friendly people."
 msgstr "Kratka praksa. Nekoliko prijateljskih ljudi."
@@ -930,7 +930,7 @@ msgstr ""
 msgid "All time"
 msgstr "Све време"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:977
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:50
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "Sva vremena u {zone}"
@@ -1146,7 +1146,7 @@ msgstr ""
 "поништити."
 
 #: src/features/Chat/Message/Message.tsx:105
-#: src/features/FluencyCall/FluencyCallCardView.tsx:321
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:213
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "Да ли сте сигурни да желите да обришете ову поруку?"
@@ -1402,7 +1402,7 @@ msgstr "Budite spremni za vaš razgovor za posao"
 msgid "Be specific about your role"
 msgstr "Budite specifični u vezi sa svojom ulogom"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:874
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:149
 #. js-lingui-explicit-id
 msgid "Be the first to say hello."
 msgstr "Budite prvi koji će reći zdravo."
@@ -1806,8 +1806,8 @@ msgstr "Mogu li ga koristiti na pametnom telefonu?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
-#: src/features/FluencyCall/FluencyCallCardView.tsx:314
-#: src/features/FluencyCall/FluencyCallCardView.tsx:341
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:206
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:233
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
 #: src/features/Reader/components/AddBookModal.tsx:426
@@ -1880,7 +1880,7 @@ msgstr "Изазован"
 msgid "Change plan"
 msgstr "Promeni plan"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1057
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:128
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "Promeni vreme"
@@ -3131,7 +3131,7 @@ msgstr "разговор"
 msgid "Conversation 10"
 msgstr "Razgovor 10"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:804
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:79
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Conversation chat"
@@ -3301,13 +3301,13 @@ msgstr "Nije moguće započeti ispit. Molimo pokušajte ponovo."
 msgid "Could not start your account. Please try again."
 msgstr "Nije moguće pokrenuti vaš nalog. Molimo pokušajte ponovo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:847
-#: src/features/FluencyCall/FluencyCallCardView.tsx:860
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:122
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:135
 #. js-lingui-explicit-id
 msgid "Could not update your message. Please try again."
 msgstr "Nije moguće ažurirati vašu poruku. Molimo pokušajte ponovo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:462
+#: src/features/FluencyCall/FluencyCallCardView.tsx:56
 #: src/features/FluencyCall/FluencyCallDashboardCard.tsx:232
 #. js-lingui-explicit-id
 msgid "Could not update your plans. Please try again."
@@ -4090,8 +4090,8 @@ msgid "Decrease paragraph gap"
 msgstr "Smanji razmak između pasusa"
 
 #: src/features/Chat/Message/Message.tsx:423
-#: src/features/FluencyCall/FluencyCallCardView.tsx:333
-#: src/features/FluencyCall/FluencyCallCardView.tsx:411
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:225
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:303
 #: src/features/Reader/components/Cards.tsx:270
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
@@ -4688,7 +4688,7 @@ msgstr "Lako"
 #: src/features/Chat/Message/Message.tsx:411
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:61
 #: src/features/Essay/EssayText.tsx:405
-#: src/features/FluencyCall/FluencyCallCardView.tsx:399
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:291
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -4699,7 +4699,7 @@ msgstr "Измени"
 msgid "Edit Community Space"
 msgstr "Izmeni prostor zajednice"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:252
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:144
 #. js-lingui-explicit-id
 msgid "Edit message"
 msgstr "Izmeni poruku"
@@ -5574,7 +5574,7 @@ msgstr "Završene lekcije. Otvorite jednu da ponovo čujete svoje odgovore."
 msgid "First talk"
 msgstr "Prvi razgovor"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:645
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:89
 #. js-lingui-explicit-id
 msgid "First time? Meet your host"
 msgstr "Prvi put? Upoznajte svog domaćina"
@@ -6474,7 +6474,7 @@ msgstr ""
 "Grupni pozivi su besplatni. Pogledajte predstojeće vreme, kreirajte nalog i "
 "vežbajte sa veštačkom inteligencijom do poziva."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:554
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:50
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
 #. js-lingui-explicit-id
@@ -6717,7 +6717,7 @@ msgstr "Sakrij zauvek"
 msgid "Hide names"
 msgstr "Сакриј имена"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:819
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
 msgid "Hide older"
 msgstr "Sakrij starije"
@@ -7178,12 +7178,12 @@ msgstr "Dodao bih keširanje u memoriji i povećao resurse baze podataka."
 msgid "I'd add retries with a longer timeout."
 msgstr "Додао бих поновне покушаје са дужим временом чекања."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:501
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:37
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "Придружићу се"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:500
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:36
 #. js-lingui-explicit-id
 msgid "I'm joining"
 msgstr "Pridružujem se"
@@ -8278,7 +8278,7 @@ msgstr "Učitaj još"
 msgid "Load More"
 msgstr "Učitaj Još"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:831
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:106
 #. js-lingui-explicit-id
 msgid "Load more messages"
 msgstr "Učitaj više poruka"
@@ -8344,7 +8344,7 @@ msgstr "Učitavanje.."
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:133
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:38
-#: src/features/FluencyCall/FluencyCallCardView.tsx:287
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:179
 #: src/features/FluencyCall/FluencyCallParticipants.tsx:27
 #: src/features/Header/PaymentHistoryModal.tsx:146
 #: src/features/News/NewsTranslationPopover.tsx:58
@@ -8576,7 +8576,7 @@ msgstr "Poruka skrivena zbog kršenja pravila."
 msgid "Message options"
 msgstr "Opcije poruka"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:902
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:177
 #. js-lingui-explicit-id
 msgid "Message the group"
 msgstr "Pošalji poruku grupi"
@@ -8776,7 +8776,7 @@ msgstr "Mesečni plan"
 msgid "More"
 msgstr "Više"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:727
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:103
 #. js-lingui-explicit-id
 msgid "More conversations soon"
 msgstr "Više razgovora uskoro"
@@ -8797,7 +8797,7 @@ msgstr ""
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
-#: src/features/FluencyCall/FluencyCallCardView.tsx:351
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:243
 #. js-lingui-explicit-id
 msgid "More options"
 msgstr "Više opcija"
@@ -8965,7 +8965,7 @@ msgstr "Dalje"
 msgid "Next article"
 msgstr "Следећи чланак"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:672
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:48
 #. js-lingui-explicit-id
 msgid "Next conversation"
 msgstr "Sledeći razgovor"
@@ -9176,7 +9176,7 @@ msgstr "Niko se još neće pridružiti."
 msgid "No original file found for this book."
 msgstr "Za ovu knjigu nije pronađena originalna datoteka."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1020
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:94
 #. js-lingui-explicit-id
 msgid "No other calls scheduled yet."
 msgstr "Još nema zakazanih poziva."
@@ -9560,7 +9560,7 @@ msgstr "Jedan obrazac. Prava praksa govora."
 msgid "One payment. No automatic renewal."
 msgstr "Jednokratno plaćanje. Bez automatskog obnove."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:807
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:82
 #. js-lingui-explicit-id
 msgid "One shared chat for all calls"
 msgstr "Jedan zajednički čet za sve pozive"
@@ -9629,8 +9629,7 @@ msgstr "Otvori Kontrolnu Tablu"
 msgid "Open Dev Panel"
 msgstr "Otvorite panel za razvojne programere"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:758
-#: src/features/FluencyCall/FluencyCallCardView.tsx:771
+#: src/features/FluencyCall/card/FluencyCallMeetButton.tsx:10
 #. js-lingui-explicit-id
 msgid "Open Google Meet"
 msgstr "Отвори Google Meet"
@@ -9759,7 +9758,7 @@ msgstr "Naručivanje sa obavezom plaćanja {amount}"
 msgid "Other languages"
 msgstr "Ostali jezici"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:681
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:57
 #. js-lingui-explicit-id
 msgid "Other times"
 msgstr "Други путеви"
@@ -9972,12 +9971,12 @@ msgstr "Istorija plaćanja"
 msgid "Payment option"
 msgstr "Opcija plaćanja"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:573
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:69
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Uplata primljena. Možete se pridružiti za trenutak."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:572
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:68
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Primljena uplata. Možete se pridružiti grupnim razgovorima."
@@ -11065,7 +11064,7 @@ msgstr "Izgovor izvora"
 msgid "Pronounce translations"
 msgstr "Izgovori prevode"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1046
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:117
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11710,7 +11709,7 @@ msgstr "Prijavi korisnika"
 msgid "Request failed. Please try again."
 msgstr "Zahtjev nije uspio. Molimo pokušajte ponovo."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1029
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:100
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11963,7 +11962,7 @@ msgstr "Ista lekcija Just Talk preko novog WebSocket servera za glas."
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
 #: src/features/Essay/EssayText.tsx:281
-#: src/features/FluencyCall/FluencyCallCardView.tsx:302
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:194
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -12003,12 +12002,12 @@ msgstr "Реците неколико реченица својим речима
 msgid "Say a little more about how the lesson felt or what you want next."
 msgstr "Реците нешто више о томе како је час изгледао или шта желите следеће."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:730
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:106
 #. js-lingui-explicit-id
 msgid "Say hello in the chat while we plan the next call."
 msgstr "Kaži zdravo u četu dok planiramo sledeći poziv."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:899
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:174
 #. js-lingui-explicit-id
 msgid "Say hello or ask a question..."
 msgstr "Reci zdravo ili postavi pitanje..."
@@ -12070,7 +12069,7 @@ msgstr "Pogledaj sve"
 msgid "See how you improve over time."
 msgstr "Pogledajte kako napredujete tokom vremena."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:386
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:278
 #. js-lingui-explicit-id
 msgid "See original"
 msgstr "Погледај оригинал"
@@ -12178,7 +12177,7 @@ msgstr "Pošalji link"
 msgid "Send me email notifications"
 msgstr "Pošalji mi obaveštenja putem e-pošte"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:927
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Send message"
 msgstr "Pošalji poruku"
@@ -12231,7 +12230,7 @@ msgstr "Pošaljite svoj odgovor za nastavak."
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "Pošaljite {messagesNeeded} poruka da biste otključali potpuni pristup"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:927
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:202
 #. js-lingui-explicit-id
 msgid "Sending message"
 msgstr "Slanje poruke"
@@ -12453,7 +12452,7 @@ msgstr "Prikaži manje"
 msgid "Show more"
 msgstr "Прикажи више"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:819
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
 msgid "Show older"
 msgstr "Prikaži starije"
@@ -12832,7 +12831,7 @@ msgstr ""
 msgid "Speak naturally, without overthinking"
 msgstr "Govorite prirodno, bez previše razmišljanja."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:777
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:126
 #. js-lingui-explicit-id
 msgid "Speak when you are ready. You can listen first."
 msgstr "Говорите када будете спремни. Можете прво слушати."
@@ -15206,7 +15205,7 @@ msgstr ""
 "vremena."
 
 #: src/features/Chat/Message/MessageFooter.tsx:68
-#: src/features/FluencyCall/FluencyCallCardView.tsx:386
+#: src/features/FluencyCall/card/FluencyCallMessageRow.tsx:278
 #: src/features/TranslationPage/TranslationPage.tsx:45
 #: src/features/TranslationPage/TranslationSettingsBar.tsx:65
 #. js-lingui-explicit-id
@@ -15505,12 +15504,12 @@ msgstr "Isključi isključenje zvuka"
 msgid "Upcoming calls"
 msgstr "Nadolazeći pozivi"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:976
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:49
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "Nadolazeći razgovori"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:498
+#: src/features/FluencyCall/card/FluencyCallJoinButton.tsx:34
 #. js-lingui-explicit-id
 msgid "Updating..."
 msgstr "Ažuriranje..."
@@ -15958,12 +15957,12 @@ msgstr "Poslaćemo vam link za prijavu putem e-pošte."
 msgid "We'll get back to you with a confirmation."
 msgstr "Вратићемо вам се са потврдом."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1034
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:105
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "Odgovorićemo uskoro."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:960
+#: src/features/FluencyCall/card/FluencyCallWelcome.tsx:123
 #. js-lingui-explicit-id
 msgid ""
 "We'll say hello and start with something simple, like how your week is "
@@ -17203,7 +17202,7 @@ msgstr "Vaše ograničenje je samo vaša mašta."
 msgid "Your Message"
 msgstr "Vaša Poruka"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:478
+#: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:49
 #. js-lingui-explicit-id
 msgid "Your message was not sent. Please try again."
 msgstr "Vaša poruka nije poslata. Molimo pokušajte ponovo."
@@ -17424,8 +17423,8 @@ msgstr "{count} сат"
 msgid "{count} hours"
 msgstr "{count} sati"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:718
-#: src/features/FluencyCall/FluencyCallCardView.tsx:1007
+#: src/features/FluencyCall/card/FluencyCallNextConversation.tsx:94
+#: src/features/FluencyCall/card/FluencyCallScheduleModal.tsx:77
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{count} se pridružuje"
