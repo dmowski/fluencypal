@@ -11,8 +11,6 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 ### Plan for video
 
-- Write chat message for Group Chat
-
 [deploy]
 
 - Better UI for Demo call: Better finish screen and redirection to the App

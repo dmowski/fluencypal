@@ -182,6 +182,22 @@ test('load more reveals messages above the first page', async () => {
   await expect.element(page.getByText('Message 0')).toBeVisible();
 });
 
+test('a message keeps its line breaks', async () => {
+  const onSendMessage = vi.fn(async () => {});
+  await renderCard({
+    messages: [message({ id: 'story', text: 'First line\n\nSecond line' })],
+    onSendMessage,
+  });
+
+  const shown = (await page.getByTestId('fluency-call-message-story').element()).textContent ?? '';
+  expect(shown).toContain('First line\n\nSecond line');
+
+  const draft = page.getByRole('textbox', { name: 'Message the group' });
+  await userEvent.fill(draft, 'Line one\nLine two');
+  await userEvent.click(page.getByTestId('fluency-call-send'));
+  expect(onSendMessage).toHaveBeenCalledWith('Line one\nLine two');
+});
+
 test('a failed reply keeps the draft', async () => {
   await renderCard({
     messages: [],

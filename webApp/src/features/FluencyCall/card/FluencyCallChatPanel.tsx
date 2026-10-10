@@ -158,7 +158,7 @@ export const FluencyCallChatPanel = ({
         }}
         sx={{
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-end',
           border: `1px solid ${token.line}`,
           borderRadius: '11px',
           padding: '5px',
@@ -166,11 +166,14 @@ export const FluencyCallChatPanel = ({
           gap: '8px',
         }}
       >
-        <InputBase
-          fullWidth
-          value={draft}
-          disabled={sending}
-          onChange={(event) => setDraft(event.target.value)}
+          <InputBase
+            fullWidth
+            multiline
+            minRows={1}
+            maxRows={10}
+            value={draft}
+            disabled={sending}
+            onChange={(event) => setDraft(event.target.value)}
           placeholder={i18n._('Say hello or ask a question...')}
           slotProps={{
             input: {
@@ -185,6 +188,8 @@ export const FluencyCallChatPanel = ({
             '& .MuiInputBase-input': {
               color: token.text,
               fontSize: '14px',
+              lineHeight: '20px',
+              padding: '6px 0',
               [narrow]: { fontSize: '16px' },
             },
             '& .MuiInputBase-input::placeholder': { color: token.muted, opacity: 1 },
