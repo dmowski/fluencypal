@@ -66,13 +66,13 @@ Owner read/write in `firestore.rules` (`match /interactiveLessons/{languageCode}
 
 Spoken answers: upload audio → `userAudioUrl` on the part. Refresh mid-lesson reloads `currentLesson` from Firestore.
 
-Progress stores only the last speech part of each lesson (the 2–3 minute open talk). Read-aloud and short quiz answers are not sampled.
+Progress stores only the open talk of each lesson (the 2–3 minute speech part, not the feedback note). Read-aloud and short quiz answers are not sampled.
 
 ## Flow
 
 1. Open card. If native language equals target language (or either is missing) → language setup + **Continue**.
 2. If no current lesson → generate (loader: _We are preparing a lesson for you, based on your previous practice._).
-3. Render parts. First `read` = a 4-5 paragraph how-to (simple words, examples, optional native-language gloss). Next `speech` = short pattern drill to read aloud (6–10 examples). Next `speech` = **read this longer text aloud** (play control still available). Later `speech` = record → stop → auto-check. Last `speech` = 2-3 minute open talk. Feedback is spoken automatically. **Answer again** / **Read again** replaces the previous take.
+3. Render parts. First `read` = a 4-5 paragraph how-to (simple words, examples, optional native-language gloss). Next `speech` = short pattern drill to read aloud (6–10 examples). Next `speech` = **read this longer text aloud** (play control still available). Later `speech` = record → stop → auto-check. Then a 2-3 minute open talk. The last `speech` is a feedback note (`role: "lessonFeedback"`): how this lesson felt and what they want next. Their own language is fine. The note is not graded as language practice. Spoken replies play automatically. **Answer again** / **Read again** / **Record again** replaces the previous take.
 4. **Finish lesson** marks today’s `interactive-lesson` daily task done, then starts two requests in parallel: `LessonResults` and the next `InteractiveLesson`.
    4b. **Skip this lesson** immediately drops the current lesson (not marked done, daily task stays open) and generates a completely different language form. No confirmation.
 5. When results are ready, show them under the button, scroll there, and speak them automatically (same play control as speech feedback). **Next lesson** / **Finish**. Reopening a finished lesson does not auto-play.
@@ -93,12 +93,14 @@ The **second part is always speech**: a short pattern drill (about 6–10 short 
 
 The **third part is always speech**: a longer passage (4-5 short paragraphs, about 200-320 words) that uses the form, which the learner reads aloud (they can play it first). Feedback checks they read the passage, not a free answer.
 
-The **last part is always a 2–3 minute open talk** on a concrete topic. One middle speech task is a translation from the native language into the target language: about 5 connected sentences, not one short sentence. Other quiz-like speech items stay short. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
+The **open talk is the last language-practice part**: 2–3 minutes on a concrete topic. One middle speech task is a translation from the native language into the target language: about 5 connected sentences, not one short sentence. Other quiz-like speech items stay short. Next lessons are generated from those long talks, because one-sentence checks do not show enough language to teach from.
+
+After the open talk, every new lesson appends one **feedback note**. The model writes `feedbackPromptMD` in the target language; `toInteractiveLesson` stores it as the last speech part with `role: "lessonFeedback"`. The learner records how the lesson felt and any preference for the next one (easier, harder, a form, a topic). That transcript is `lessonFeedbackSummary` on the next-lesson prompt. It chooses direction. It is not a language sample, and it does not override the ban on repeating a recent form. Older lessons have no note; their last speech part stays the open talk.
 
 | When          | Context                                                                                                                                                                                              |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | First lesson  | Last 30 messages from the latest conversation; if that chat is short, walk previous chats. If still thin, user goal / `advancedUserRecords`. If none, a B1 lesson on one form. Last part: open talk. |
-| Later lessons | Open talks first, then previous results and short answers. Recent titles/subtitles are banned so the next lesson changes category instead of looping (e.g. another -ing variant).                    |
+| Later lessons | Open talks first, then the learner’s feedback note (how it felt, what they want next), then previous results and short answers. Recent titles/subtitles are banned so the next lesson changes category instead of looping (e.g. another -ing variant). A note can pick the form, difficulty, or topic. A banned form stays banned. | |
 
 In-flight generation is deduped per storage key so Strict Mode remounts do not double-call AI.
 
@@ -110,12 +112,13 @@ In-flight generation is deduped per storage key so Strict Mode remounts do not d
 - Speech check keeps the record button in place and shows the cycling _Thinking / Understanding... / Analyzing_ bar beside it.
 - Every part has a small play control at the end of the text (`AudioPlayIcon` → `/api/ttsStream` without cache so the MP3 can start streaming). Lesson playback uses the OpenAI 4096-character cap, not the default 600-character TTS trim.
 - The pattern-drill and long read-aloud parts show **Read aloud** (not **Record answer**). The play control stays so they can listen first.
+- The feedback note shows **Record feedback**. A short line under the button says it is not a language test and that the note is used for the next lesson.
 - Lesson results use the same play control as speech feedback and auto-play after **Finish lesson**.
 - Bottom fixed bar is **scroll progress** in the modal, not lesson-step progress.
 
 ## Types
 
-See `types.ts`. `LessonPart.type` is `"read" | "speech"`. A speech part becomes `LessonPartWithUserAnswer` after submit (`userVoiceTranscript`, `aiResultToUser`). `isReadAloudPart` is the short pattern drill (second part) and the long passage after it when present; on older lessons only the second part. `isOpenTalkPart` is the last `speech` part.
+See `types.ts`. `LessonPart.type` is `"read" | "speech"`. A speech part becomes `LessonPartWithUserAnswer` after submit (`userVoiceTranscript`, `aiResultToUser`). `role: "lessonFeedback"` marks the closing note. `isReadAloudPart` is the short pattern drill (second part) and the long passage after it when present; on older lessons only the second part. `isOpenTalkPart` is the last `speech` part that is not the feedback note.
 
 ## Testing
 

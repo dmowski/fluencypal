@@ -34,6 +34,7 @@ import {
   promoteFinishedLesson,
   listRecentLessonForms,
   summarizeFinishedLessons,
+  summarizeLessonFeedback,
   summarizeOpenTalks,
 } from './lessonState';
 import {
@@ -44,6 +45,7 @@ import { uploadLessonAudio } from './uploadLessonAudio';
 import {
   InteractiveLesson,
   InteractiveLessonStore,
+  isLessonFeedbackPart,
   isOpenTalkPart,
   isReadAloudPart,
   LessonGenerationContext,
@@ -192,6 +194,10 @@ const useProvideInteractiveLesson = () => {
       }),
       previousLessonsSummary: summarizeFinishedLessons(finished),
       openTalkSummary: summarizeOpenTalks(finished),
+      lessonFeedbackSummary: summarizeLessonFeedback([
+        ...(currentStore.currentLesson ? [currentStore.currentLesson] : []),
+        ...currentStore.history,
+      ]),
       recentFormsSummary: listRecentLessonForms(recentForms),
     };
   };
@@ -314,6 +320,7 @@ const useProvideInteractiveLesson = () => {
           nativeLanguageCode,
           isOpenTalk: isOpenTalkPart(lesson.parts, partIndex),
           isReadAloud: isReadAloudPart(lesson.parts, partIndex),
+          isLessonFeedback: isLessonFeedbackPart(lesson.parts[partIndex]),
         }),
       ]);
       pendingAudioUploads.current.delete(partIndex);
@@ -399,13 +406,19 @@ const useProvideInteractiveLesson = () => {
     if (!lesson || !targetLanguageCode || !nativeLanguageCode) return;
     if (lesson.lessonResults) return;
 
+    const feedbackNote = summarizeLessonFeedback([lesson]);
     const skippedNote = [
       'The learner skipped this lesson because they are tired of it.',
       'Generate something COMPLETELY new. Change the language category.',
       'A tighter or themed variant of the same form is a failure (e.g. another -ing / present continuous lesson).',
       `Banned title: ${lesson.title}`,
       `Banned subtitle: ${lesson.subTitle}`,
-    ].join('\n');
+      feedbackNote
+        ? `They also left this note. Honor the preference unless it asks for a banned form:\n${feedbackNote}`
+        : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     const alsoBan = storeRef.current.nextLesson;
     bannedFormsRef.current = [

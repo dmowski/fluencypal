@@ -7,4 +7,7 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
+- Tune UI for calls
 - Better calendar
+- Cut vercel function costs
+- YouTube video

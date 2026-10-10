@@ -35,6 +35,7 @@ const parseLessonPart = (value: unknown): LessonPartState | null => {
   const part: LessonPartState = {
     contentMD: value.contentMD,
     type: value.type,
+    ...(value.role === 'lessonFeedback' ? { role: 'lessonFeedback' as const } : {}),
   };
 
   if (typeof value.userVoiceTranscript === 'string' && typeof value.aiResultToUser === 'string') {

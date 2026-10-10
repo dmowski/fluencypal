@@ -1,9 +1,11 @@
 import { emptyAudioProgress } from './audioProgress';
-import { MAX_HISTORY_LESSONS } from './constants';
+import { LESSON_FEEDBACK_MIN_CHARS, MAX_HISTORY_LESSONS } from './constants';
 import {
   InteractiveLesson,
   InteractiveLessonStore,
+  isLessonFeedbackPart,
   isLessonPartWithAnswer,
+  isOpenTalkPart,
   LessonPartState,
   LessonPartWithUserAnswer,
   LessonResults,
@@ -34,7 +36,10 @@ export const isLessonCompletedToday = (
   if (store.lastCompletedAtIso && isSameLocalDay(store.lastCompletedAtIso, now)) {
     return true;
   }
-  if (store.currentLesson?.completedAtIso && isSameLocalDay(store.currentLesson.completedAtIso, now)) {
+  if (
+    store.currentLesson?.completedAtIso &&
+    isSameLocalDay(store.currentLesson.completedAtIso, now)
+  ) {
     return true;
   }
   return store.history.some(
@@ -116,15 +121,15 @@ export const listRecentLessonForms = (
 export const summarizeOpenTalks = (lessons: InteractiveLesson[], limit = 5): string => {
   return lessons
     .map((lesson) => {
-      const lastPart = lesson.parts[lesson.parts.length - 1];
-      if (!lastPart || lastPart.type !== 'speech' || !isLessonPartWithAnswer(lastPart)) {
+      const openTalk = lesson.parts.find((_, index) => isOpenTalkPart(lesson.parts, index));
+      if (!openTalk || openTalk.type !== 'speech' || !isLessonPartWithAnswer(openTalk)) {
         return '';
       }
-      if (lastPart.userVoiceTranscript.trim().length < 40) return '';
+      if (openTalk.userVoiceTranscript.trim().length < 40) return '';
       return [
         `Lesson: ${lesson.title}`,
-        `Prompt: ${lastPart.contentMD}`,
-        `Open talk:\n${lastPart.userVoiceTranscript}`,
+        `Prompt: ${openTalk.contentMD}`,
+        `Open talk:\n${openTalk.userVoiceTranscript}`,
       ].join('\n');
     })
     .filter(Boolean)
@@ -138,8 +143,14 @@ export const summarizeFinishedLessons = (lessons: InteractiveLesson[], limit = 5
     .slice(0, limit)
     .map((lesson) => {
       const answered = lesson.parts
-        .filter(isLessonPartWithAnswer)
-        .map((part) => `- Prompt: ${part.contentMD}\n  Answer: ${part.userVoiceTranscript}\n  Feedback: ${part.aiResultToUser}`)
+        .filter(
+          (part): part is LessonPartWithUserAnswer =>
+            isLessonPartWithAnswer(part) && !isLessonFeedbackPart(part),
+        )
+        .map(
+          (part) =>
+            `- Prompt: ${part.contentMD}\n  Answer: ${part.userVoiceTranscript}\n  Feedback: ${part.aiResultToUser}`,
+        )
         .join('\n');
       return [
         `Title: ${lesson.title}`,
@@ -155,8 +166,23 @@ export const summarizeFinishedLessons = (lessons: InteractiveLesson[], limit = 5
     .join('\n\n---\n\n');
 };
 
+export const summarizeLessonFeedback = (lessons: InteractiveLesson[], limit = 3): string => {
+  return lessons
+    .map((lesson) => {
+      const note = lesson.parts.find((part) => isLessonFeedbackPart(part));
+      if (!note || !isLessonPartWithAnswer(note)) return '';
+      const transcript = note.userVoiceTranscript.trim();
+      if (transcript.length < LESSON_FEEDBACK_MIN_CHARS) return '';
+      return [`Lesson: ${lesson.title}`, `Note:\n${transcript}`].join('\n');
+    })
+    .filter(Boolean)
+    .slice(0, limit)
+    .join('\n\n');
+};
+
 export const formatLessonAnswersForAi = (parts: LessonPartState[]): string => {
   return parts
+    .filter((part) => !isLessonFeedbackPart(part))
     .map((part, index) => {
       const answer = isLessonPartWithAnswer(part)
         ? `Learner said: ${part.userVoiceTranscript}\nFeedback given: ${part.aiResultToUser}`

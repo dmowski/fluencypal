@@ -13,6 +13,7 @@ export const LessonPartSection = ({
   isEvaluating,
   isOpenTalk,
   isReadAloud,
+  isLessonFeedback,
   onPrepareSpeechAudio,
   onSubmitSpeech,
 }: {
@@ -21,14 +22,13 @@ export const LessonPartSection = ({
   isEvaluating: boolean;
   isOpenTalk: boolean;
   isReadAloud?: boolean;
+  isLessonFeedback?: boolean;
   onPrepareSpeechAudio: (partIndex: number, blob: Blob) => void;
   onSubmitSpeech: (partIndex: number, transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
   return (
     <Stack sx={{ width: '100%' }} data-testid={`interactive-lesson-part-${partIndex}`}>
-      {partIndex > 0 && (
-        <Divider sx={lessonSx.divider} />
-      )}
+      {partIndex > 0 && <Divider sx={lessonSx.divider} />}
       <Stack
         sx={{
           gap: '4px',
@@ -50,6 +50,7 @@ export const LessonPartSection = ({
           isEvaluating={isEvaluating}
           isOpenTalk={isOpenTalk}
           isReadAloud={isReadAloud}
+          isLessonFeedback={isLessonFeedback}
           onAudioReady={(blob) => onPrepareSpeechAudio(partIndex, blob)}
           onSubmit={(transcript, blob) => onSubmitSpeech(partIndex, transcript, blob)}
         />

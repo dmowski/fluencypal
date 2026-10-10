@@ -25,6 +25,7 @@ export interface SpeechAnswerPanelViewProps {
   needMoreText: boolean;
   isOpenTalk?: boolean;
   isReadAloud?: boolean;
+  isLessonFeedback?: boolean;
   autoPlayFeedback?: boolean;
   onToggleRecord: () => void;
   onCancelRecord: () => void;
@@ -44,6 +45,7 @@ export const SpeechAnswerPanelView = ({
   needMoreText,
   isOpenTalk,
   isReadAloud,
+  isLessonFeedback,
   autoPlayFeedback = false,
   onToggleRecord,
   onCancelRecord,
@@ -74,6 +76,13 @@ export const SpeechAnswerPanelView = ({
             {i18n._('Speak for about 2–3 minutes. This talk helps us pick your next lesson.')}
           </Typography>
         )}
+        {isLessonFeedback && !answered && (
+          <Typography variant="body2" sx={lessonSx.textSecondary}>
+            {i18n._(
+              'This is not a language test. Say how this lesson felt and what you want next. We use this for the next lesson.',
+            )}
+          </Typography>
+        )}
 
         <VoiceRecordControl
           isRecording={isRecording}
@@ -84,10 +93,14 @@ export const SpeechAnswerPanelView = ({
             answered
               ? isReadAloud
                 ? i18n._('Read again')
-                : i18n._('Answer again')
+                : isLessonFeedback
+                  ? i18n._('Record again')
+                  : i18n._('Answer again')
               : isReadAloud
                 ? i18n._('Read aloud')
-                : i18n._('Record answer')
+                : isLessonFeedback
+                  ? i18n._('Record feedback')
+                  : i18n._('Record answer')
           }
           idleAppearance={answered ? 'ghost' : 'outlined'}
           onToggle={onToggleRecord}
@@ -100,11 +113,13 @@ export const SpeechAnswerPanelView = ({
 
         {needMoreText && (
           <Typography variant="caption" sx={lessonSx.warningText}>
-            {isOpenTalk
-              ? i18n._('Please talk a bit longer — aim for about two minutes.')
-              : isReadAloud
-                ? i18n._('Please read more of the text.')
-                : i18n._('Please record a longer answer — a few words is enough.')}
+            {isLessonFeedback
+              ? i18n._('Say a little more about how the lesson felt or what you want next.')
+              : isOpenTalk
+                ? i18n._('Please talk a bit longer — aim for about two minutes.')
+                : isReadAloud
+                  ? i18n._('Please read more of the text.')
+                  : i18n._('Please record a longer answer — a few words is enough.')}
           </Typography>
         )}
       </Stack>
@@ -133,7 +148,11 @@ export const SpeechAnswerPanelView = ({
             >
               <Stack>
                 <Typography variant="caption" sx={lessonSx.cardCaption}>
-                  {isReadAloud ? i18n._('Your reading') : i18n._('Your answer')}
+                  {isReadAloud
+                    ? i18n._('Your reading')
+                    : isLessonFeedback
+                      ? i18n._('Your note')
+                      : i18n._('Your answer')}
                 </Typography>
                 <Typography
                   variant="body1"

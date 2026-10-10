@@ -2,9 +2,13 @@ import { READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
 
 export type LessonPartType = 'read' | 'speech';
 
+export type LessonPartRole = 'lessonFeedback';
+
 export interface LessonPart {
   contentMD: string;
   type: LessonPartType;
+  /** Set on the closing note. Absent on language-practice parts and older lessons. */
+  role?: LessonPartRole;
 }
 
 export interface LessonResults {
@@ -69,6 +73,8 @@ export interface LessonGenerationContext {
   userGoalText: string;
   previousLessonsSummary: string;
   openTalkSummary: string;
+  /** How the lesson felt and what they want next. Newest first. */
+  lessonFeedbackSummary: string;
   recentFormsSummary: string;
 }
 
@@ -76,8 +82,20 @@ export const isLessonPartWithAnswer = (part: LessonPartState): part is LessonPar
   return 'userVoiceTranscript' in part;
 };
 
+export const isLessonFeedbackPart = (part: LessonPartState | undefined): boolean => {
+  return part?.role === 'lessonFeedback';
+};
+
+/** Last speech part that is not the closing feedback note. Older lessons have no note, so the last speech part stays the open talk. */
 export const isOpenTalkPart = (parts: LessonPartState[], partIndex: number): boolean => {
-  return parts[partIndex]?.type === 'speech' && partIndex === parts.length - 1;
+  if (parts[partIndex]?.type !== 'speech' || isLessonFeedbackPart(parts[partIndex])) return false;
+
+  for (let index = parts.length - 1; index >= 0; index -= 1) {
+    const part = parts[index];
+    if (part?.type !== 'speech' || isLessonFeedbackPart(part)) continue;
+    return index === partIndex;
+  }
+  return false;
 };
 
 export const isReadAloudPart = (parts: LessonPartState[], partIndex: number): boolean => {

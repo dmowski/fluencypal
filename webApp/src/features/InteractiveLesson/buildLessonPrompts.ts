@@ -7,7 +7,8 @@ const lessonShape = `Return JSON:
   "subTitle": "5-7 words: the form they must use",
   "parts": [
     { "type": "read" | "speech", "contentMD": "markdown the learner reads or reads aloud" }
-  ]
+  ],
+  "feedbackPromptMD": "short invitation, in the target language, to record a note about this lesson"
 }`;
 
 const lessonDesignRules = `Design a 10-15 minute speaking lesson around ONE specific, checkable language point.
@@ -62,11 +63,17 @@ Typical flow:
   form should be needed more than once. Start with one line in the target
   language telling them to say the passage in the target language, then the
   native passage itself.
-- LAST part (required): an open talk. type must be "speech". Ask them to speak
+- LAST part inside "parts" (required): an open talk. type must be "speech". Ask them to speak
   for 2-3 minutes on a concrete, everyday or slightly random topic (a recent day,
   a person, a place, a plan, a story). One inviting question, not a quiz item,
   not "use this form in one sentence". The goal is a long sample of their real
   language so later lessons have mistakes and gaps to teach from.
+  Do NOT put a feedback question in "parts". The open talk stays the last item there.
+- "feedbackPromptMD" (required): a separate short prompt in the TARGET language, 2-4 sentences.
+  Ask them to say how this lesson felt (too hard, too easy, boring, or useful) and what
+  they want in the next lesson (a form, a topic, or something to change or skip).
+  Tell them their own language is fine. This is not a grammar drill and must not
+  ask them to use today's form. Do not repeat the open-talk question.
 
 Form-check speech prompts other than the translation stay short (15-40 seconds)
 and invite the form. The translation is longer: about 5 native sentences to say
@@ -157,7 +164,19 @@ ${context.openTalkSummary || 'No open talks yet. Use the short answers and resul
 Previous lesson results and short answers:
 ${context.previousLessonsSummary || 'No previous results.'}
 
-The last part of THIS lesson must again be a new 2-3 minute open talk on a different topic.`;
+Learner notes about how the lesson felt and what they want next (newest first).
+This is a preference, not a language sample. Do not correct it or teach from its grammar.
+${context.lessonFeedbackSummary || 'None yet.'}
+
+When a note names a preference, follow it:
+- A requested form, topic, or situation becomes this lesson, unless that form is banned above.
+- Too hard → an easier form. Too easy → a harder one.
+- Boring, or "something different" → a new scene and a new open-talk topic.
+- If the request is a banned form, keep the topic they asked for and change the language category.
+- A vague or empty note does not change the choice you would make from the open talks.
+
+The last part of THIS lesson must again be a new 2-3 minute open talk on a different topic.
+Also write feedbackPromptMD for this new lesson.`;
 };
 
 export const buildSpeechFeedbackSystemPrompt = (params: {
@@ -165,7 +184,22 @@ export const buildSpeechFeedbackSystemPrompt = (params: {
   nativeLanguageName: string;
   isOpenTalk?: boolean;
   isReadAloud?: boolean;
+  isLessonFeedback?: boolean;
 }): string => {
+  if (params.isLessonFeedback) {
+    return `You acknowledge a short note about a language lesson.
+Target language: ${params.targetLanguageName}.
+Native language: ${params.nativeLanguageName}.
+The learner said how the lesson felt and what they want next. They may have used their native language.
+This is not a language test.
+Rules:
+- 1-2 short sentences in the target language, so they can hear the reply.
+- Thank them and restate the preference you heard (easier, harder, a topic, a form, a change).
+- Do not correct grammar, score the note, or start a new drill.
+- If the note is vague, thank them and say the next lesson will change.
+Return JSON: { "aiResultToUser": "short markdown, 1-2 sentences" }`;
+  }
+
   if (params.isOpenTalk) {
     return `You react to a 2-3 minute open talk in a language lesson.
 Target language: ${params.targetLanguageName}.
@@ -223,7 +257,18 @@ export const buildSpeechFeedbackUserPrompt = (params: {
   partContentMD: string;
   userVoiceTranscript: string;
   isReadAloud?: boolean;
+  isLessonFeedback?: boolean;
 }): string => {
+  if (params.isLessonFeedback) {
+    return `They were asked:
+${params.partContentMD}
+
+Note they recorded (native language is allowed):
+${params.userVoiceTranscript}
+
+Restate the preference. Do not judge the language.`;
+  }
+
   if (params.isReadAloud) {
     return `The learner was asked to read this text aloud:
 ${params.partContentMD}

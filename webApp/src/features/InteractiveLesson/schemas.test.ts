@@ -26,6 +26,9 @@ users must see first. I kept the demo and the page about that same thing.
 On Friday I watched the demo one more time. The story was simple, and the
 landing page finally matched it. That one thing stayed clear all week.`;
 
+const feedbackPromptMD =
+  'Powiedz, jak ci poszła ta lekcja i czego chcesz następnym razem. Możesz mówić po polsku.';
+
 describe('generatedLessonSchema', () => {
   it('requires a read explanation, pattern drill, long read-aloud, then a last open talk', () => {
     const parsed = generatedLessonSchema.parse({
@@ -37,9 +40,11 @@ describe('generatedLessonSchema', () => {
         { type: 'speech', contentMD: longReadAloud },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],
+      feedbackPromptMD,
     });
 
     expect(parsed.parts).toHaveLength(4);
+    expect(parsed.feedbackPromptMD).toBe(feedbackPromptMD);
   });
 
   it('rejects a second part that is still a read section', () => {
@@ -52,6 +57,7 @@ describe('generatedLessonSchema', () => {
         { type: 'speech', contentMD: longReadAloud },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],
+      feedbackPromptMD,
     });
 
     expect(result.success).toBe(false);
@@ -65,6 +71,22 @@ describe('generatedLessonSchema', () => {
         { type: 'read', contentMD: 'How to use the.' },
         { type: 'speech', contentMD: shortPatternDrill },
         { type: 'speech', contentMD: 'Read this text aloud.\n\nI watched the demo.' },
+        { type: 'speech', contentMD: 'Talk about yesterday.' },
+      ],
+      feedbackPromptMD,
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejects a missing feedback prompt', () => {
+    const result = generatedLessonSchema.safeParse({
+      title: 'Articles',
+      subTitle: 'Use the with one thing',
+      parts: [
+        { type: 'read', contentMD: 'How to use the.' },
+        { type: 'speech', contentMD: shortPatternDrill },
+        { type: 'speech', contentMD: longReadAloud },
         { type: 'speech', contentMD: 'Talk about yesterday.' },
       ],
     });

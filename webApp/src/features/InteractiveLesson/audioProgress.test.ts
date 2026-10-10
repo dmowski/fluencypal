@@ -69,6 +69,43 @@ describe('audioProgress', () => {
     expect(afterOpenTalk.first[0]?.id).toBe('audio-3');
   });
 
+  it('does not sample the feedback note that follows the open talk', () => {
+    const parts: LessonPartState[] = [
+      { type: 'read', contentMD: 'How to use the past simple.' },
+      makeAnsweredSpeech('Talk for two minutes.', 'Yesterday I walked to the park.', 'open-talk'),
+      {
+        ...makeAnsweredSpeech('How did this lesson feel?', 'Too easy.', 'feedback'),
+        role: 'lessonFeedback',
+      },
+    ];
+
+    const afterOpenTalk = recordOpenTalkAudio(emptyAudioProgress(), parts, 1, makeRecord(1));
+    const afterNote = recordOpenTalkAudio(afterOpenTalk, parts, 2, makeRecord(2));
+
+    expect(afterOpenTalk.totalCount).toBe(1);
+    expect(afterNote.totalCount).toBe(1);
+    expect(
+      collectLessonAudios([
+        {
+          id: 'lesson-1',
+          title: 'Past Simple',
+          subTitle: 'Talk about yesterday',
+          createdAtIso: '2026-08-29T10:00:00.000Z',
+          completedAtIso: '2026-08-29T11:00:00.000Z',
+          parts,
+          lessonResults: null,
+        },
+      ]),
+    ).toEqual([
+      {
+        id: 'lesson-1-1',
+        audioUrl: '/api/uploadFile?path=open-talk',
+        transcript: 'Yesterday I walked to the park.',
+        recordedAtIso: '2026-08-29T11:00:00.000Z',
+      },
+    ]);
+  });
+
   it('backfills only open talks from existing lessons', () => {
     const lesson: InteractiveLesson = {
       id: 'lesson-1',

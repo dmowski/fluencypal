@@ -344,6 +344,34 @@ test('speech panel – idle', async () => {
     .toMatchScreenshot('speech-idle');
 });
 
+test('speech panel – lesson feedback note', async () => {
+  resetRecorder();
+  await renderInShell(
+    <div style={{ width: 720, padding: 16, ...lessonSurfaceStyle }}>
+      <SpeechAnswerPanel
+        part={{
+          type: 'speech',
+          role: 'lessonFeedback',
+          contentMD: 'Say how this lesson felt, and what you want next. Your own language is fine.',
+        }}
+        partIndex={4}
+        isEvaluating={false}
+        isLessonFeedback
+        onAudioReady={noop}
+        onSubmit={noopAsync}
+      />
+    </div>,
+  );
+
+  await expect.element(page.getByRole('button', { name: 'Record feedback' })).toBeVisible();
+  await expect
+    .element(page.getByText('This is not a language test.', { exact: false }))
+    .toBeVisible();
+  await expect
+    .element(page.getByTestId('interactive-lesson-speech-4'))
+    .toMatchScreenshot('speech-feedback-idle');
+});
+
 test('speech panel – recording', async () => {
   resetRecorder();
   recorderMock.isRecording = true;
@@ -550,7 +578,9 @@ test('opening a history lesson scrolls to its title', async () => {
   );
 
   await userEvent.click(page.getByTestId('interactive-lesson-history-open-lesson-b'));
-  await expect.element(page.getByTestId('interactive-lesson-history-open-lesson-b')).toHaveTextContent('Hide');
+  await expect
+    .element(page.getByTestId('interactive-lesson-history-open-lesson-b'))
+    .toHaveTextContent('Hide');
 
   await expect
     .poll(async () => {

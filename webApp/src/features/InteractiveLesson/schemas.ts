@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
+import { LESSON_FEEDBACK_PROMPT_MIN_CHARS, READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
 
 export const generatedLessonSchema = z.object({
   title: z.string().min(1),
@@ -28,6 +28,7 @@ export const generatedLessonSchema = z.object({
     .refine((parts) => parts[parts.length - 1]?.type === 'speech', {
       message: 'The last part must be an open speech task',
     }),
+  feedbackPromptMD: z.string().min(LESSON_FEEDBACK_PROMPT_MIN_CHARS).max(800),
 });
 
 export const speechFeedbackSchema = z.object({

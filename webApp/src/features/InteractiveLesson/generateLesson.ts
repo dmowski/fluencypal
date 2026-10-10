@@ -1,7 +1,11 @@
 import { TextAiContextType } from '@/features/Ai/types';
 import { SupportedLanguage, fullEnglishLanguageName } from '@/features/Lang/lang';
 import { NativeLangCode } from '@/libs/language/type';
-import { LESSON_AI_MODEL } from './constants';
+import {
+  LESSON_AI_MODEL,
+  LESSON_FEEDBACK_FALLBACK_MD,
+  LESSON_FEEDBACK_PROMPT_MIN_CHARS,
+} from './constants';
 import { createLessonId } from './createLessonId';
 import {
   buildFirstLessonUserPrompt,
@@ -15,17 +19,31 @@ export const toInteractiveLesson = (draft: {
   title: string;
   subTitle: string;
   parts: { contentMD: string; type: 'read' | 'speech' }[];
+  feedbackPromptMD: string;
 }): InteractiveLesson => {
+  const feedbackPrompt = draft.feedbackPromptMD.trim();
+  const feedbackContentMD =
+    feedbackPrompt.length >= LESSON_FEEDBACK_PROMPT_MIN_CHARS
+      ? feedbackPrompt
+      : LESSON_FEEDBACK_FALLBACK_MD;
+
   return {
     id: createLessonId(),
     title: draft.title.trim(),
     subTitle: draft.subTitle.trim(),
     createdAtIso: new Date().toISOString(),
     completedAtIso: null,
-    parts: draft.parts.map((part) => ({
-      contentMD: part.contentMD.trim(),
-      type: part.type,
-    })),
+    parts: [
+      ...draft.parts.map((part) => ({
+        contentMD: part.contentMD.trim(),
+        type: part.type,
+      })),
+      {
+        type: 'speech' as const,
+        role: 'lessonFeedback' as const,
+        contentMD: feedbackContentMD,
+      },
+    ],
     lessonResults: null,
   };
 };

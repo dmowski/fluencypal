@@ -12,6 +12,12 @@ export const MAX_HISTORY_LESSONS = 40;
 export const PROGRESS_AUDIO_SAMPLE = 10;
 export const PROGRESS_MIN_AUDIO_COUNT = 100;
 export const OPEN_TALK_MIN_CHARS = 80;
+export const LESSON_FEEDBACK_MIN_CHARS = 8;
+/** Model-written feedback prompt must be at least this long before we keep it. */
+export const LESSON_FEEDBACK_PROMPT_MIN_CHARS = 40;
+export const LESSON_FEEDBACK_FALLBACK_MD = `How did this lesson feel, and what should we change next time?
+
+Say if it was too hard, too easy, boring, or useful. Then say what you want in the next lesson: a grammar form, a topic, or anything to skip. Your own language is fine.`;
 export const READ_ALOUD_MIN_CHARS = 50;
 /** Generated long read-aloud passage (third part), not the spoken-transcript floor. */
 export const READ_ALOUD_MIN_CONTENT_CHARS = 700;

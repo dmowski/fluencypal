@@ -1,5 +1,5 @@
 import { READ_ALOUD_MIN_CONTENT_CHARS } from './constants';
-import { isOpenTalkPart, isReadAloudPart, LessonPartState } from './types';
+import { isLessonFeedbackPart, isOpenTalkPart, isReadAloudPart, LessonPartState } from './types';
 
 const longPassage = `${'The form shows up again. '.repeat(Math.ceil(READ_ALOUD_MIN_CONTENT_CHARS / 24))}`;
 
@@ -42,5 +42,21 @@ describe('lesson part helpers', () => {
 
     expect(isReadAloudPart(oldParts, 1)).toBe(false);
     expect(isOpenTalkPart(oldParts, 2)).toBe(true);
+  });
+
+  it('keeps the open talk when a feedback note is appended', () => {
+    const withNote: LessonPartState[] = [
+      ...parts,
+      {
+        type: 'speech',
+        role: 'lessonFeedback',
+        contentMD: 'Say how this lesson felt.',
+      },
+    ];
+
+    expect(isOpenTalkPart(withNote, 4)).toBe(true);
+    expect(isOpenTalkPart(withNote, 5)).toBe(false);
+    expect(isLessonFeedbackPart(withNote[5])).toBe(true);
+    expect(isReadAloudPart(withNote, 5)).toBe(false);
   });
 });

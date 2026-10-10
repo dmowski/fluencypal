@@ -13,6 +13,7 @@ const context = (overrides: Partial<LessonGenerationContext> = {}): LessonGenera
   userGoalText: '',
   previousLessonsSummary: '',
   openTalkSummary: '',
+  lessonFeedbackSummary: '',
   recentFormsSummary: '- This week: present continuous — Use I’m ...-ing for now',
   ...overrides,
 });
@@ -24,6 +25,18 @@ describe('buildLessonPrompts', () => {
     expect(prompt).toContain('Already covered (banned)');
     expect(prompt).toContain('This week: present continuous');
     expect(prompt).toContain('close variant');
+    expect(prompt).toContain('preference, not a language sample');
+  });
+
+  it('passes the learner note into the next lesson', () => {
+    const prompt = buildNextLessonUserPrompt(
+      context({
+        lessonFeedbackSummary: 'Lesson: Articles\nNote:\nToo hard. Next time past tense, please.',
+      }),
+    );
+
+    expect(prompt).toContain('Too hard. Next time past tense');
+    expect(prompt).toContain('Too hard → an easier form');
   });
 
   it('bans recent forms on the first lesson too', () => {
@@ -49,6 +62,28 @@ describe('buildLessonPrompts', () => {
     expect(prompt).toContain('THIRD part');
     expect(prompt).toContain('5 connected sentences');
     expect(prompt).toContain('not one short sentence');
+    expect(prompt).toContain('feedbackPromptMD');
+    expect(prompt).toContain('their own language is fine');
+  });
+
+  it('acknowledges a lesson note without grading it', () => {
+    const system = buildSpeechFeedbackSystemPrompt({
+      targetLanguageName: 'English',
+      nativeLanguageName: 'Polish',
+      isLessonFeedback: true,
+      isOpenTalk: true,
+    });
+    const user = buildSpeechFeedbackUserPrompt({
+      partContentMD: 'Say how this lesson felt.',
+      userVoiceTranscript: 'Too easy. I want past tense next.',
+      isLessonFeedback: true,
+    });
+
+    expect(system).toContain('not a language test');
+    expect(system).toContain('Do not correct grammar');
+    expect(system).not.toContain('This is not a quiz item');
+    expect(user).toContain('Do not judge the language');
+    expect(user).toContain('Too easy. I want past tense next.');
   });
 
   it('checks a native-to-target translation against the whole passage', () => {

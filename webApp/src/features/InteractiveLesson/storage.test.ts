@@ -31,6 +31,31 @@ describe('interactive lesson storage', () => {
     });
   });
 
+  it('keeps the feedback role on a spoken note', () => {
+    const lesson = parseInteractiveLesson({
+      id: 'abc',
+      title: 'Articles',
+      subTitle: 'A vs the',
+      createdAtIso: '2026-08-29T10:00:00.000Z',
+      completedAtIso: null,
+      lessonResults: null,
+      parts: [
+        {
+          type: 'speech',
+          role: 'lessonFeedback',
+          contentMD: 'How did this lesson feel?',
+          userVoiceTranscript: 'A bit hard. More past tense next time.',
+          aiResultToUser: 'We will try past tense next.',
+        },
+      ],
+    });
+
+    expect(lesson?.parts[0]).toMatchObject({
+      role: 'lessonFeedback',
+      userVoiceTranscript: 'A bit hard. More past tense next time.',
+    });
+  });
+
   it('backfills audio progress from stored lesson answers', () => {
     const store = parseInteractiveLessonStore({
       currentLesson: null,

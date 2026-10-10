@@ -7,6 +7,7 @@ import {
   listRecentLessonForms,
   isSameLocalDay,
   promoteFinishedLesson,
+  summarizeLessonFeedback,
   summarizeOpenTalks,
 } from './lessonState';
 import { InteractiveLesson } from './types';
@@ -123,6 +124,36 @@ describe('lessonState', () => {
     expect(summary).toContain('Past stories');
     expect(summary).toContain('Last Saturday');
     expect(summary).not.toContain('Articles');
+  });
+
+  it('reads the open talk when a feedback note is the last part', () => {
+    const lesson = makeLesson({
+      title: 'Past stories',
+      parts: [
+        {
+          type: 'speech',
+          contentMD: 'Tell me about a weekend you remember.',
+          userVoiceTranscript:
+            'Last Saturday I woke up late and then I walked to the market with my sister.',
+          aiResultToUser: 'Watch past simple.',
+        },
+        {
+          type: 'speech',
+          role: 'lessonFeedback',
+          contentMD: 'How did this lesson feel?',
+          userVoiceTranscript: 'Too hard. I want something easier about food.',
+          aiResultToUser: 'Next time we will make it easier.',
+        },
+      ],
+    });
+
+    const openTalks = summarizeOpenTalks([lesson]);
+    expect(openTalks).toContain('Last Saturday');
+    expect(openTalks).not.toContain('Too hard');
+
+    const notes = summarizeLessonFeedback([lesson]);
+    expect(notes).toContain('Too hard. I want something easier about food.');
+    expect(notes).not.toContain('Last Saturday');
   });
 
   it('lists recent forms and drops duplicate titles', () => {

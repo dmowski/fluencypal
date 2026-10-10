@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { useConversationAudio } from '@/features/Audio/useConversationAudio';
 import { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
-import { OPEN_TALK_MIN_CHARS, READ_ALOUD_MIN_CHARS } from './constants';
+import { LESSON_FEEDBACK_MIN_CHARS, OPEN_TALK_MIN_CHARS, READ_ALOUD_MIN_CHARS } from './constants';
 import { isLessonPartWithAnswer, LessonPartState } from './types';
 
 export { SpeechAnswerPanelView } from './SpeechAnswerPanelView';
@@ -16,6 +16,7 @@ export const SpeechAnswerPanel = ({
   isEvaluating,
   isOpenTalk = false,
   isReadAloud = false,
+  isLessonFeedback = false,
   onAudioReady,
   onSubmit,
 }: {
@@ -24,6 +25,7 @@ export const SpeechAnswerPanel = ({
   isEvaluating: boolean;
   isOpenTalk?: boolean;
   isReadAloud?: boolean;
+  isLessonFeedback?: boolean;
   onAudioReady: (blob: Blob) => void;
   onSubmit: (transcript: string, blob: Blob | null) => Promise<void>;
 }) => {
@@ -32,7 +34,13 @@ export const SpeechAnswerPanel = ({
   const submittedRef = useRef('');
   const cancelledRef = useRef(false);
   const [autoPlayFeedback, setAutoPlayFeedback] = useState(false);
-  const minChars = isOpenTalk ? OPEN_TALK_MIN_CHARS : isReadAloud ? READ_ALOUD_MIN_CHARS : 4;
+  const minChars = isLessonFeedback
+    ? LESSON_FEEDBACK_MIN_CHARS
+    : isOpenTalk
+      ? OPEN_TALK_MIN_CHARS
+      : isReadAloud
+        ? READ_ALOUD_MIN_CHARS
+        : 4;
   const needMoreText = !!recorder.transcription && recorder.transcription.trim().length < minChars;
 
   useEffect(() => {
@@ -81,6 +89,7 @@ export const SpeechAnswerPanel = ({
       needMoreText={needMoreText}
       isOpenTalk={isOpenTalk}
       isReadAloud={isReadAloud}
+      isLessonFeedback={isLessonFeedback}
       autoPlayFeedback={autoPlayFeedback}
       onToggleRecord={() => {
         void conversationAudio.initAudio();

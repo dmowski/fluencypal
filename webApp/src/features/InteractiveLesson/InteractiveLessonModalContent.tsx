@@ -13,7 +13,7 @@ import { LessonPartSection } from './LessonPartSection';
 import { LessonResultsView } from './LessonResultsView';
 import { LessonScrollProgress } from './LessonScrollProgress';
 import { ThinkingProgress } from './ThinkingProgress';
-import { InteractiveLesson, isOpenTalkPart, isReadAloudPart } from './types';
+import { InteractiveLesson, isLessonFeedbackPart, isOpenTalkPart, isReadAloudPart } from './types';
 import { NativeLangCode } from '@/libs/language/type';
 import { isLessonUserError } from './lessonErrors';
 import { findScrollParent } from './findScrollParent';
@@ -176,6 +176,7 @@ export const InteractiveLessonModalContent = ({
                   isEvaluating={evaluatingPartIndex === index}
                   isOpenTalk={isOpenTalkPart(lesson.parts, index)}
                   isReadAloud={isReadAloudPart(lesson.parts, index)}
+                  isLessonFeedback={isLessonFeedbackPart(part)}
                   onPrepareSpeechAudio={onPrepareSpeechAudio}
                   onSubmitSpeech={onSubmitSpeech}
                 />
