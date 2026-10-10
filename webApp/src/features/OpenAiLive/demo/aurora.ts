@@ -61,16 +61,27 @@ export const startAurora = (canvas: HTMLCanvasElement): AuroraController => {
   let micLevel = 0;
   let outMeter: (() => number) | null = null;
   let energy = 0.34;
+  let shown = energy;
   let burst = 0;
   let t = 0;
   let last = 0;
   let raf = 0;
   let colors: Rgb[] = PALETTES.idle.map(hex);
 
+  let resizing = false;
   const resize = () => {
+    if (resizing) return;
     const rect = canvas.getBoundingClientRect();
-    canvas.width = Math.max(64, Math.round(rect.width / 3));
-    canvas.height = Math.max(32, Math.round(rect.height / 3));
+    const width = Math.max(64, Math.round(rect.width / 3));
+    const height = Math.max(32, Math.round(rect.height / 3));
+    if (canvas.width === width && canvas.height === height) return;
+    // Setting the bitmap size clears the canvas. Redraw before paint so the
+    // previous frame is not stretched across the new height.
+    resizing = true;
+    canvas.width = width;
+    canvas.height = height;
+    draw(shown);
+    resizing = false;
   };
 
   const draw = (level: number) => {
@@ -134,7 +145,8 @@ export const startAurora = (canvas: HTMLCanvasElement): AuroraController => {
     const want = Math.min(1.1, rest + gain * voice + breathe);
     energy += (want - energy) * Math.min(1, dt * (want > energy ? 10 : 3));
     burst = Math.max(0, burst - dt * 0.75);
-    draw(Math.min(1.4, energy + burst * 1.1));
+    shown = Math.min(1.4, energy + burst * 1.1);
+    draw(shown);
   };
 
   const resume = () => {

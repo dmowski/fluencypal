@@ -76,10 +76,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         pb: 6,
         background: 'radial-gradient(ellipse at top, #30204c, #08080c 75%)',
         color: '#fff',
-        paddingTop: !inCall && !ended ? '120px' : '20px',
-        '@media (max-height: 600px)': {
-          paddingTop: '20px',
-        },
+        paddingTop: '30px',
       }}
     >
       {inCall || showStartBar ? null : <DemoAurora mode={auroraMode} />}
@@ -185,7 +182,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
             padding: '20px 0 10px 0',
           }}
         >
-          <DemoAurora mode={auroraMode} placement="bar" />
+          <DemoAurora mode={auroraMode} />
           <Stack sx={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 640, gap: 1 }}>
             <Button
               variant="contained"

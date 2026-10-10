@@ -8,12 +8,10 @@ export const DemoAurora = ({
   mode,
   burstOnMount = false,
   zIndex = 1,
-  placement = 'screen',
 }: {
   mode: AuroraMode;
   burstOnMount?: boolean;
   zIndex?: number;
-  placement?: 'screen' | 'bar';
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const auroraRef = useRef<AuroraController | null>(null);
