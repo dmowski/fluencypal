@@ -4,27 +4,22 @@ import { FormEvent, useId, useState } from 'react';
 import { Box, Button, IconButton, InputBase, Stack, Typography } from '@mui/material';
 import { ArrowUp } from 'lucide-react';
 import { useLingui } from '@lingui/react';
-import { FluencyCallMessageRow } from './FluencyCallMessageRow';
+import { Message } from '@/features/Chat/Message/Message';
+import { ThreadsMessage } from '@/features/Chat/type';
 import { narrow, textButtonSx, token } from './styles';
-import { FLUENCY_CALL_CHAT_PAGE, FluencyCallCardMessage } from './types';
+import { FLUENCY_CALL_CHAT_PAGE } from './types';
 
 export const FluencyCallChatPanel = ({
   messages,
   initialExpanded,
   alert,
   onSendMessage,
-  onEditMessage,
-  onDeleteMessage,
-  onTranslate,
   onError,
 }: {
-  messages: FluencyCallCardMessage[];
+  messages: ThreadsMessage[];
   initialExpanded: boolean;
   alert: string;
   onSendMessage: (text: string) => Promise<void>;
-  onEditMessage?: (messageId: string, text: string) => Promise<void>;
-  onDeleteMessage?: (messageId: string) => Promise<void>;
-  onTranslate?: (text: string) => Promise<string>;
   onError: (message: string) => void;
 }) => {
   const { i18n } = useLingui();
@@ -107,38 +102,22 @@ export const FluencyCallChatPanel = ({
         </Button>
       ) : null}
 
-      <Stack id={messagesId} data-testid="fluency-call-messages">
-        {visibleMessages.map((message) => (
-          <FluencyCallMessageRow
+      <Stack
+        id={messagesId}
+        data-testid="fluency-call-messages"
+        sx={{
+          marginLeft: '-13px',
+        }}
+      >
+        {visibleMessages.map((message, index, all) => (
+          <Message
             key={message.id}
             message={message}
-            onEdit={
-              message.isMine && onEditMessage
-                ? async (text) => {
-                    onError('');
-                    try {
-                      await onEditMessage(message.id, text);
-                    } catch {
-                      onError(i18n._('Could not update your message. Please try again.'));
-                      throw new Error('edit failed');
-                    }
-                  }
-                : undefined
-            }
-            onDelete={
-              message.isMine && onDeleteMessage
-                ? async () => {
-                    onError('');
-                    try {
-                      await onDeleteMessage(message.id);
-                    } catch {
-                      onError(i18n._('Could not update your message. Please try again.'));
-                      throw new Error('delete failed');
-                    }
-                  }
-                : undefined
-            }
-            onTranslate={onTranslate}
+            isFullContentByDefault
+            hideComments
+            preventOpen
+            backgroundColor="transparent"
+            isChain={index < all.length - 1}
           />
         ))}
         {messages.length === 0 ? (
@@ -156,16 +135,19 @@ export const FluencyCallChatPanel = ({
         onSubmit={(event) => {
           void send(event);
         }}
-        sx={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          border: `1px solid ${token.line}`,
-          borderRadius: '11px',
-          padding: '5px',
-          backgroundColor: token.soft,
-          gap: '8px',
-        }}
+        sx={{ paddingTop: '6px' }}
       >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            border: `1px solid ${token.line}`,
+            borderRadius: '11px',
+            padding: '5px',
+            backgroundColor: token.soft,
+            gap: '8px',
+          }}
+        >
           <InputBase
             fullWidth
             multiline
@@ -174,46 +156,47 @@ export const FluencyCallChatPanel = ({
             value={draft}
             disabled={sending}
             onChange={(event) => setDraft(event.target.value)}
-          placeholder={i18n._('Say hello or ask a question...')}
-          slotProps={{
-            input: {
-              'aria-label': i18n._('Message the group'),
-              maxLength: 4000,
-            },
-          }}
-          sx={{
-            color: token.text,
-            font: 'inherit',
-            padding: '0 8px',
-            '& .MuiInputBase-input': {
+            placeholder={i18n._('Say hello or ask a question...')}
+            slotProps={{
+              input: {
+                'aria-label': i18n._('Message the group'),
+                maxLength: 4000,
+              },
+            }}
+            sx={{
               color: token.text,
-              fontSize: '14px',
-              lineHeight: '20px',
-              padding: '6px 0',
-              [narrow]: { fontSize: '16px' },
-            },
-            '& .MuiInputBase-input::placeholder': { color: token.muted, opacity: 1 },
-            '& .MuiInputBase-input.Mui-disabled': {
-              color: token.disabled,
-              WebkitTextFillColor: token.disabled,
-            },
-          }}
-        />
-        <IconButton
-          type="submit"
-          color="info"
-          data-testid="fluency-call-send"
-          disabled={sending || !draft.trim()}
-          aria-label={sending ? i18n._('Sending message') : i18n._('Send message')}
-          sx={{
-            backgroundColor: token.bg,
-            borderRadius: '7px',
-            '&:hover': { backgroundColor: 'rgba(41, 182, 246, 0.12)' },
-            '&.Mui-disabled': { color: token.disabled },
-          }}
-        >
-          <ArrowUp size={18} />
-        </IconButton>
+              font: 'inherit',
+              padding: '0 8px',
+              '& .MuiInputBase-input': {
+                color: token.text,
+                fontSize: '14px',
+                lineHeight: '20px',
+                padding: '6px 0',
+                [narrow]: { fontSize: '16px' },
+              },
+              '& .MuiInputBase-input::placeholder': { color: token.muted, opacity: 1 },
+              '& .MuiInputBase-input.Mui-disabled': {
+                color: token.disabled,
+                WebkitTextFillColor: token.disabled,
+              },
+            }}
+          />
+          <IconButton
+            type="submit"
+            color="info"
+            data-testid="fluency-call-send"
+            disabled={sending || !draft.trim()}
+            aria-label={sending ? i18n._('Sending message') : i18n._('Send message')}
+            sx={{
+              backgroundColor: token.bg,
+              borderRadius: '7px',
+              '&:hover': { backgroundColor: 'rgba(41, 182, 246, 0.12)' },
+              '&.Mui-disabled': { color: token.disabled },
+            }}
+          >
+            <ArrowUp size={18} />
+          </IconButton>
+        </Box>
       </Box>
       {alert ? (
         <Typography

@@ -1,17 +1,94 @@
 import React from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
+import { ThreadsMessage } from '@/features/Chat/type';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import {
   FLUENCY_CALL_CHAT_PAGE,
   FluencyCallCardCall,
-  FluencyCallCardMessage,
   FluencyCallCardView,
   FluencyCallCardViewProps,
 } from './FluencyCallCardView';
 import { FluencyCallConductModal } from './FluencyCallConductModal';
+
+dayjs.extend(relativeTime);
+
+const chatSpies = vi.hoisted(() => ({
+  onOpen: vi.fn(),
+}));
+
+vi.mock('@/features/Chat/useChat', () => ({
+  useChat: () => ({
+    onOpen: chatSpies.onOpen,
+    viewMessage: vi.fn(),
+    editMessage: vi.fn(),
+    deleteMessage: vi.fn(),
+    deleteMessageAttachment: vi.fn(),
+    reportMessage: vi.fn(),
+    commentsInfo: {},
+    messagesLikes: {},
+    toggleLike: vi.fn(),
+    setActiveCommentMessageId: vi.fn(),
+  }),
+}));
+
+vi.mock('@/features/Auth/useAuth', () => ({
+  useAuth: () => ({ uid: 'me' }),
+}));
+
+vi.mock('@/features/Game/useGame', () => ({
+  useGame: () => ({
+    getUserName: (userId: string) =>
+      userId === 'long-name'
+        ? 'A very long display name that should wrap onto another line'
+        : 'Maria',
+    getUserAvatarUrl: () => '',
+    showUserInModal: () => {},
+    gameLastVisit: null,
+    userNames: {},
+    myUserName: null,
+    stats: [],
+  }),
+}));
+
+vi.mock('@/features/Translation/useTranslate', () => ({
+  useTranslate: () => ({
+    isTranslateAvailable: true,
+    translateText: async ({ text }: { text: string }) => text,
+  }),
+}));
+
+vi.mock('next/image', () => ({
+  __esModule: true,
+  default: function MockNextImage({
+    src,
+    alt,
+    style,
+  }: {
+    src: string;
+    alt: string;
+    style?: React.CSSProperties;
+  }) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        style={{
+          ...style,
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
+      />
+    );
+  },
+}));
 
 const call = (
   overrides: Partial<FluencyCallCardCall> & Pick<FluencyCallCardCall, 'id'>,
@@ -25,13 +102,19 @@ const call = (
 });
 
 const message = (
-  overrides: Partial<FluencyCallCardMessage> & Pick<FluencyCallCardMessage, 'id' | 'text'>,
-): FluencyCallCardMessage => ({
-  authorName: 'Maria',
-  createdAt: '2026-10-03T12:30:00.000Z',
-  timeLabel: '14:30',
-  ...overrides,
-});
+  overrides: Partial<ThreadsMessage> & Pick<ThreadsMessage, 'id' | 'content'>,
+): ThreadsMessage => {
+  const createdAtIso = new Date().toISOString();
+  return {
+    senderId: 'maria',
+    parentMessageId: '',
+    createdAtIso,
+    createdAtUtc: Date.now(),
+    updatedAtIso: createdAtIso,
+    isReported: null,
+    ...overrides,
+  };
+};
 
 const cardProps: FluencyCallCardViewProps = {
   calls: [
@@ -48,8 +131,8 @@ const cardProps: FluencyCallCardViewProps = {
   timeZoneLabel: 'Warsaw',
   meetUrl: 'https://meet.example.com/room',
   messages: [
-    message({ id: 'older', text: 'See you next time' }),
-    message({ id: 'latest', text: 'Hi everyone' }),
+    message({ id: 'older', content: 'See you next time' }),
+    message({ id: 'latest', content: 'Hi everyone' }),
   ],
   onToggleJoining: async () => {},
   onSendMessage: async () => {},
@@ -95,7 +178,7 @@ test('the card shows the next call and keeps the others behind Other times', asy
     .toBeVisible();
   await expect.element(page.getByTestId('fluency-call-other-thu')).toBeVisible();
   await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
-  await expect.element(page.getByTestId('fluency-call-message-latest')).toBeInTheDocument();
+  await expect.element(page.getByText('Hi everyone')).toBeVisible();
 
   await userEvent.keyboard('{Escape}');
   await expect.element(page.getByTestId('fluency-call-schedule-modal')).not.toBeInTheDocument();
@@ -172,7 +255,7 @@ test('show older reveals history and hide older collapses it', async () => {
 
 test('load more reveals messages above the first page', async () => {
   const messages = Array.from({ length: FLUENCY_CALL_CHAT_PAGE + 1 }, (_, index) =>
-    message({ id: `m-${index}`, text: `Message ${index}` }),
+    message({ id: `m-${index}`, content: `Message ${index}` }),
   );
   await renderCard({ messages });
 
@@ -185,17 +268,28 @@ test('load more reveals messages above the first page', async () => {
 test('a message keeps its line breaks', async () => {
   const onSendMessage = vi.fn(async () => {});
   await renderCard({
-    messages: [message({ id: 'story', text: 'First line\n\nSecond line' })],
+    messages: [message({ id: 'story', content: 'First line\n\nSecond line' })],
     onSendMessage,
   });
 
-  const shown = (await page.getByTestId('fluency-call-message-story').element()).textContent ?? '';
-  expect(shown).toContain('First line\n\nSecond line');
+  const shown = await page.getByTestId('fluency-call-messages').element();
+  const paragraphs = [...shown.querySelectorAll('p')]
+    .map((paragraph) => paragraph.textContent?.trim())
+    .filter((text) => text === 'First line' || text === 'Second line');
+  expect(paragraphs).toEqual(['First line', 'Second line']);
 
   const draft = page.getByRole('textbox', { name: 'Message the group' });
   await userEvent.fill(draft, 'Line one\nLine two');
   await userEvent.click(page.getByTestId('fluency-call-send'));
   expect(onSendMessage).toHaveBeenCalledWith('Line one\nLine two');
+});
+
+test('clicking a message stays on the card', async () => {
+  chatSpies.onOpen.mockClear();
+  await renderCard();
+
+  await userEvent.click(page.getByText('Hi everyone'));
+  expect(chatSpies.onOpen).not.toHaveBeenCalled();
 });
 
 test('a failed reply keeps the draft', async () => {
@@ -212,77 +306,6 @@ test('a failed reply keeps the draft', async () => {
 
   await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
   await expect.element(draft).toHaveValue('Hello there');
-});
-
-test('you can edit your own message and a failure keeps the draft', async () => {
-  const onEditMessage = vi.fn(async () => {
-    throw new Error('offline');
-  });
-  await renderCard({
-    messages: [message({ id: 'mine', text: 'Hi everyone', isMine: true })],
-    onEditMessage,
-  });
-
-  await expect.element(page.getByTestId('fluency-call-edit-mine')).not.toBeInTheDocument();
-  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
-  await userEvent.click(page.getByTestId('fluency-call-edit-mine'));
-  const editor = page.getByRole('textbox', { name: 'Edit message' });
-  await userEvent.fill(editor, 'Hi again');
-  await userEvent.click(page.getByTestId('fluency-call-edit-save-mine'));
-
-  expect(onEditMessage).toHaveBeenCalledWith('mine', 'Hi again');
-  await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
-  await expect.element(editor).toHaveValue('Hi again');
-
-  await userEvent.click(page.getByTestId('fluency-call-edit-cancel-mine'));
-  await expect.element(page.getByText('Hi everyone')).toBeVisible();
-});
-
-test('translate replaces the message and a second choice restores it', async () => {
-  const onTranslate = vi.fn(async (text: string) => `ES: ${text}`);
-  await renderCard({
-    messages: [message({ id: 'theirs', text: 'Hi everyone' })],
-    onTranslate,
-  });
-
-  await userEvent.click(page.getByTestId('fluency-call-message-menu-theirs'));
-  await userEvent.click(page.getByTestId('fluency-call-translate-theirs'));
-  await expect.element(page.getByText('ES: Hi everyone')).toBeVisible();
-  expect(onTranslate).toHaveBeenCalledWith('Hi everyone');
-
-  await userEvent.click(page.getByTestId('fluency-call-message-menu-theirs'));
-  await expect.element(page.getByText('See original')).toBeVisible();
-  await userEvent.click(page.getByTestId('fluency-call-translate-theirs'));
-  await expect.element(page.getByText('Hi everyone')).toBeVisible();
-  await expect.element(page.getByText('ES: Hi everyone')).not.toBeInTheDocument();
-  expect(onTranslate).toHaveBeenCalledTimes(1);
-});
-
-test('you can delete your own message and someone else cannot', async () => {
-  const onDeleteMessage = vi.fn(async () => {});
-  await renderCard({
-    messages: [
-      message({ id: 'theirs', text: 'See you next time' }),
-      message({ id: 'mine', text: 'Hi everyone', isMine: true }),
-    ],
-    onDeleteMessage,
-    initialChatExpanded: true,
-  });
-
-  await expect.element(page.getByTestId('fluency-call-message-menu-theirs')).not.toBeInTheDocument();
-
-  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
-  await userEvent.click(page.getByTestId('fluency-call-delete-mine'));
-  await expect
-    .element(page.getByText('Are you sure you want to delete this message?'))
-    .toBeVisible();
-  await userEvent.click(page.getByRole('button', { name: 'Cancel' }));
-  expect(onDeleteMessage).not.toHaveBeenCalled();
-
-  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
-  await userEvent.click(page.getByTestId('fluency-call-delete-mine'));
-  await userEvent.click(page.getByTestId('fluency-call-delete-confirm-mine'));
-  expect(onDeleteMessage).toHaveBeenCalledWith('mine');
 });
 
 test('a failed RSVP stays on I will join', async () => {
@@ -324,8 +347,8 @@ test('a long message stays inside the card', async () => {
       messages: [
         message({
           id: 'long',
-          authorName: 'A very long display name that should wrap onto another line',
-          text: 'supercalifragilistic'.repeat(12),
+          senderId: 'long-name',
+          content: 'supercalifragilistic'.repeat(12),
         }),
       ],
     },
@@ -333,7 +356,7 @@ test('a long message stays inside the card', async () => {
   );
 
   const card = await box('fluency-call-card');
-  const body = await box('fluency-call-message-long');
+  const body = (await page.getByText(/supercalifragilistic/).element()).getBoundingClientRect();
   expect(body.right).toBeLessThanOrEqual(card.right + 1);
   expect(body.left).toBeGreaterThanOrEqual(card.left);
 });

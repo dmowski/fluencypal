@@ -15,7 +15,6 @@ export {
   FLUENCY_CALL_CHAT_PAGE,
   FLUENCY_CALL_WELCOME_VIDEO_SRC,
   type FluencyCallCardCall,
-  type FluencyCallCardMessage,
   type FluencyCallCardViewProps,
 } from './card/types';
 
@@ -28,9 +27,6 @@ export const FluencyCallCardView = ({
   messages,
   onToggleJoining,
   onSendMessage,
-  onEditMessage,
-  onDeleteMessage,
-  onTranslate,
   canJoin,
   requestedAtLabel,
   paidNotice,
@@ -110,9 +106,6 @@ export const FluencyCallCardView = ({
         initialExpanded={initialChatExpanded}
         alert={alert}
         onSendMessage={onSendMessage}
-        onEditMessage={onEditMessage}
-        onDeleteMessage={onDeleteMessage}
-        onTranslate={onTranslate}
         onError={setError}
       />
 

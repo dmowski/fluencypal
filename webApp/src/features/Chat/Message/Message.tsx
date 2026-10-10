@@ -43,6 +43,7 @@ interface MessageProps {
   isFullContentByDefault?: boolean;
   hideComments?: boolean;
   preventOpen?: boolean;
+  backgroundColor?: string;
 }
 
 export function Message({
@@ -52,6 +53,7 @@ export function Message({
   isFullContentByDefault = false,
   hideComments,
   preventOpen = false,
+  backgroundColor,
 }: MessageProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(message.content);
@@ -217,7 +219,8 @@ export function Message({
       sx={{
         padding: isDeleted ? '20px 0' : '10px',
 
-        backgroundColor: isDeleted ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.01)',
+        backgroundColor:
+          backgroundColor ?? (isDeleted ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.01)'),
 
         position: 'relative',
         width: '100%',
@@ -532,7 +535,7 @@ export function Message({
         </Stack>
       )}
 
-      {!isEditing && (
+      {!isEditing && !preventOpen && (
         <Stack
           component={'button'}
           onClick={() => chat.onOpen(message.id)}

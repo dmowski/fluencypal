@@ -11,7 +11,11 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 ### Plan for video
 
+- Update Chat messages
+
 [deploy]
+
+- Make hello video more user friendly to play. Now it's feels like invitation to call
 
 - Better UI for Demo call: Better finish screen and redirection to the App
 

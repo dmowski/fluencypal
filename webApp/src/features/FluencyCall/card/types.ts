@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ThreadsMessage } from '@/features/Chat/type';
 import { SupportedLanguage } from '@/features/Lang/lang';
 
 export const FLUENCY_CALL_CHAT_PAGE = 20;
@@ -15,18 +16,6 @@ export type FluencyCallCardCall = {
   isLive: boolean;
 };
 
-export type FluencyCallCardMessage = {
-  id: string;
-  authorName: string;
-  avatarUrl?: string;
-  text: string;
-  createdAt: string;
-  timeLabel: string;
-  extra?: ReactNode;
-  /** The signed-in viewer wrote this message. */
-  isMine?: boolean;
-};
-
 export type FluencyCallCardViewProps = {
   /** Featured call first, then the other listed calls, earliest first. */
   calls: FluencyCallCardCall[];
@@ -35,13 +24,9 @@ export type FluencyCallCardViewProps = {
   timeZoneLabel: string;
   /** Real Meet URL, or null when this language has no saved link. */
   meetUrl: string | null;
-  messages: FluencyCallCardMessage[];
+  messages: ThreadsMessage[];
   onToggleJoining: (callId: string, joining: boolean) => Promise<void>;
   onSendMessage: (text: string) => Promise<void>;
-  onEditMessage?: (messageId: string, text: string) => Promise<void>;
-  onDeleteMessage?: (messageId: string) => Promise<void>;
-  /** Same translator as the main chat. Omitted when translation is not available. */
-  onTranslate?: (text: string) => Promise<string>;
   canJoin: boolean;
   requestedAtLabel: string | null;
   paidNotice: boolean;

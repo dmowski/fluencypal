@@ -11,18 +11,13 @@ import { defaultAvatar } from '@/features/Game/avatars';
 import { useGame } from '@/features/Game/useGame';
 import { fullLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
-import { AttachmentAudio } from '@/features/Chat/Message/AttachmentAudio';
-import { Attachments } from '@/features/Chat/Message/Attachments';
-import { ThreadsMessageAttachment } from '@/features/Chat/type';
 import { ChatProvider, useChat } from '@/features/Chat/useChat';
 import { useUrlState } from '@/features/Url/useUrlState';
-import { useTranslate } from '@/features/Translation/useTranslate';
 import { fluencyCallLanguageCode } from './callLanguage';
 import {
   fluencyCallRowTitle,
   formatCallDateLine,
   formatCallLabel,
-  formatChatTimeLabel,
   selectFeaturedCall,
   selectListedCalls,
   selectPersistentMeetLink,
@@ -107,9 +102,7 @@ const FluencyCallDashboardBody = ({
   const { i18n } = useLingui();
   const auth = useAuth();
   const settings = useSettings();
-  const game = useGame();
   const chat = useChat();
-  const translator = useTranslate();
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [pendingJoinId, setPendingJoinId] = useState<string | null>(null);
   const [conductSaving, setConductSaving] = useState(false);
@@ -252,28 +245,7 @@ const FluencyCallDashboardBody = ({
         !message.isDeleted &&
         (message.content.trim().length > 0 || (message.attachments?.length ?? 0) > 0),
     )
-    .sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso))
-    .map((message) => {
-      const clock = formatChatTimeLabel(message.createdAtIso, now, locale, timeZone);
-      const timeLabel = !clock
-        ? ''
-        : clock.relative === 'today'
-          ? clock.time
-          : clock.relative === 'yesterday'
-            ? i18n._('Yesterday')
-            : `${clock.weekday} · ${clock.time}`;
-      const avatarUrl = game.getUserAvatarUrl(message.senderId);
-      return {
-        id: message.id,
-        authorName: game.getUserName(message.senderId),
-        avatarUrl: avatarUrl || undefined,
-        text: message.content,
-        createdAt: message.createdAtIso,
-        timeLabel,
-        isMine: message.senderId === auth.uid,
-        extra: <FluencyCallMessageExtras attachments={message.attachments} />,
-      };
-    });
+    .sort((a, b) => a.createdAtIso.localeCompare(b.createdAtIso));
 
   return (
     <>
@@ -314,17 +286,6 @@ const FluencyCallDashboardBody = ({
             attachments: [],
           });
         }}
-        onEditMessage={async (messageId, text) => {
-          await chat.editMessage(messageId, text);
-        }}
-        onDeleteMessage={async (messageId) => {
-          await chat.deleteMessage(messageId);
-        }}
-        onTranslate={
-          translator.isTranslateAvailable
-            ? (text) => translator.translateText({ text })
-            : undefined
-        }
         canJoin
         requestedAtLabel={requestedLabel}
         paidNotice={paidNotice}
@@ -334,24 +295,6 @@ const FluencyCallDashboardBody = ({
         callPeople={(call) => <FluencyCallPeople callId={call.id} callTitle={call.title} />}
         welcomeVideoSrc={FLUENCY_CALL_WELCOME_VIDEO_SRC}
       />
-    </>
-  );
-};
-
-const FluencyCallMessageExtras = ({
-  attachments,
-}: {
-  attachments?: ThreadsMessageAttachment[];
-}) => {
-  if (!attachments?.length) return null;
-  const media = attachments.filter((item) => item.type === 'image' || item.type === 'video');
-  const audio = attachments.filter((item) => item.type === 'user-audio-recording');
-  return (
-    <>
-      {media.length > 0 ? <Attachments attachments={media} /> : null}
-      {audio.map((item) => (
-        <AttachmentAudio key={item.url} url={item.url} />
-      ))}
     </>
   );
 };
