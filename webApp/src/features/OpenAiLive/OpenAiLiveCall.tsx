@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import MicIcon from '@mui/icons-material/Mic';
@@ -27,6 +27,7 @@ export const OpenAiLiveCall = ({
   onClose,
   onUnlockAudio,
   showStatus = false,
+  glow,
 }: {
   title: string;
   showStatus?: boolean;
@@ -43,6 +44,7 @@ export const OpenAiLiveCall = ({
   onToggleMute: () => void;
   onClose: () => void;
   onUnlockAudio: () => void;
+  glow?: ReactNode;
 }) => {
   const { i18n } = useLingui();
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -168,6 +170,7 @@ export const OpenAiLiveCall = ({
         ) : null}
       </Stack>
 
+      {glow}
       <Stack
         sx={{
           position: 'fixed',

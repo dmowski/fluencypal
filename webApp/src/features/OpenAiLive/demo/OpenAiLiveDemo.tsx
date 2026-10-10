@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Alert, Button, Checkbox, FormControlLabel, Stack, Typography, Link } from '@mui/material';
+import { Alert, Button, Stack, Typography, Link } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { AuthWall } from '@/features/Auth/AuthWall';
@@ -13,17 +13,30 @@ import { formatElapsedMs } from '../formatBalance';
 import { useDemoCall } from './useDemoCall';
 import { LiveTranscriptLine } from '../transcripts';
 import { demoRequest } from './api';
+import { DemoAurora } from './DemoAurora';
+import { AuroraMode } from './aurora';
+
+const demoAuroraMode = (
+  phase: 'idle' | 'connecting' | 'live' | 'ended',
+  muted: boolean,
+  latest: LiveTranscriptLine | undefined,
+): AuroraMode => {
+  if (phase === 'connecting') return 'thinking';
+  if (phase === 'live' && latest && !latest.closed && latest.role === 'assistant') return 'alex';
+  if (phase === 'live' && muted) return 'muted';
+  if (phase === 'live' && latest && !latest.closed) return 'you';
+  if (phase === 'live') return 'listening';
+  return 'idle';
+};
 
 export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
   const call = useDemoCall();
   const [language, setLanguage] = useState<SupportedLanguage>('en');
-  const [consent, setConsent] = useState(false);
   const startedRef = useRef(false);
   const startConversation = () => {
     startedRef.current = true;
-    setConsent(true);
     void call.start(language);
   };
   const [savedLines, setSavedLines] = useState<LiveTranscriptLine[]>([]);
@@ -49,6 +62,9 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
   }, []);
   const reviewLines = call.lines.length ? call.lines : savedLines;
   const ended = used || call.phase === 'ended';
+  const inCall = call.phase === 'connecting' || call.phase === 'live';
+  const showStartBar = !ended && !join && call.phase === 'idle';
+  const auroraMode = demoAuroraMode(call.phase, call.muted, call.lines[call.lines.length - 1]);
   return (
     <Stack
       component="main"
@@ -57,13 +73,14 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         minHeight: '100dvh',
         alignItems: 'center',
         px: 3,
-        pt: { xs: 4, md: 9 },
-        pb: !ended && !join ? 'calc(160px + env(safe-area-inset-bottom))' : 6,
+        pt: { xs: 4 },
+        pb: 6,
         background: 'radial-gradient(ellipse at top, #30204c, #08080c 75%)',
         color: '#fff',
       }}
     >
-      <Stack sx={{ width: '100%', maxWidth: 640, gap: 3 }}>
+      {inCall || showStartBar ? null : <DemoAurora mode={auroraMode} />}
+      <Stack sx={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: 640, gap: 3 }}>
         <Typography variant="overline">FluencyPal · {i18n._('Speaking practice')}</Typography>
         <Typography
           component="h1"
@@ -83,52 +100,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         {call.error || statusError ? (
           <Alert severity="error">{call.error || statusError}</Alert>
         ) : null}
-        {!ended && !join ? (
-          <>
-            <DemoLanguageCards language={language} onChange={setLanguage} />
-            <Typography>
-              {i18n._(
-                'Your teacher will start with an easy question. The timer begins when you connect, and we will let you know when 30 seconds remain.',
-              )}
-            </Typography>
-            <Stack sx={{ gap: 1 }}>
-              <FormControlLabel
-                control={
-                  <Checkbox checked={consent} onChange={(_, checked) => setConsent(checked)} />
-                }
-                label={
-                  <span>
-                    {i18n._('I am 13 or older and agree to the')}{' '}
-                    <Link
-                      href={`${getLandingUrlStart(pageLanguage)}terms`}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {i18n._('Terms of Use')}
-                    </Link>{' '}
-                    {i18n._('and')}{' '}
-                    <Link
-                      href={`${getLandingUrlStart(pageLanguage)}privacy`}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {i18n._('Privacy Policy')}
-                    </Link>
-                    .{' '}
-                    {i18n._(
-                      'My voice is processed by AI and my transcript is saved for this practice session.',
-                    )}
-                  </span>
-                }
-              />
-            </Stack>
-            <Typography variant="body2" sx={{ opacity: 0.65 }}>
-              {i18n._(
-                'Microphone access is requested only when you start. After the demo, create an account to explore FluencyPal. Continued AI speaking uses credits; paid options are available.',
-              )}
-            </Typography>
-          </>
-        ) : null}
+        {!ended && !join ? <DemoLanguageCards language={language} onChange={setLanguage} /> : null}
         {ended && !join ? (
           <Button variant="contained" size="large" onClick={() => setJoin(true)}>
             {auth.isIdentified ? i18n._('Continue to FluencyPal') : i18n._('Create my account')}
@@ -174,26 +146,19 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
           </Stack>
         ) : null}
       </Stack>
-      {!ended && !join && call.phase === 'idle' ? (
+      {showStartBar ? (
         <Stack
           data-testid="demo-start-bar"
           sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 1100,
+            overflow: 'visible',
+            bottom: '0px',
             alignItems: 'center',
-            px: 3,
-            pt: 2,
-            pb: 'calc(16px + env(safe-area-inset-bottom))',
-            background: 'rgba(14, 11, 21, .96)',
-            backdropFilter: 'blur(20px)',
-            borderTop: '1px solid rgba(211,183,255,.12)',
-            boxShadow: '0 -12px 40px rgba(8,8,12,.35)',
+            width: '100%',
+            padding: '20px 0 10px 0',
           }}
         >
-          <Stack sx={{ width: '100%', maxWidth: 640, gap: 1 }}>
+          <DemoAurora mode={auroraMode} placement="bar" />
+          <Stack sx={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 640, gap: 1 }}>
             <Button
               variant="contained"
               size="large"
@@ -209,7 +174,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
                 fontWeight: 700,
                 background: '#d5b7ff',
                 color: '#21122f',
-                boxShadow: '0 4px 24px rgba(173,115,245,.16)',
+                boxShadow: '0 4px 24px rgba(173,115,245,.16), 2px 2px 16px rgba(0,0,0,0.3)',
                 '&:hover': { background: '#e2ceff' },
                 '&.Mui-disabled': { background: '#332a40', color: '#afa2be' },
               }}
@@ -219,11 +184,45 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
             <Typography sx={{ textAlign: 'center', fontSize: 12, color: '#b8abc7' }}>
               {i18n._('3 minutes free · No account or card needed')}
             </Typography>
+            <Typography
+              sx={{ textAlign: 'center', fontSize: 12, lineHeight: 1.45, color: '#b8abc7' }}
+            >
+              {[
+                i18n._('By starting this call, you confirm you are 13 or older and agree to the'),
+                ' ',
+                <Link
+                  key="terms"
+                  href={`${getLandingUrlStart(pageLanguage)}terms`}
+                  target="_blank"
+                  rel="noopener"
+                  sx={{ color: '#e2ceff' }}
+                >
+                  {i18n._('Terms of Use')}
+                </Link>,
+                ' ',
+                i18n._('and'),
+                ' ',
+                <Link
+                  key="privacy"
+                  href={`${getLandingUrlStart(pageLanguage)}privacy`}
+                  target="_blank"
+                  rel="noopener"
+                  sx={{ color: '#e2ceff' }}
+                >
+                  {i18n._('Privacy Policy')}
+                </Link>,
+                '. ',
+                i18n._(
+                  'Your voice is processed by AI and your transcript is saved for this practice session.',
+                ),
+              ]}
+            </Typography>
           </Stack>
         </Stack>
       ) : null}
       {call.phase === 'connecting' || call.phase === 'live' ? (
         <OpenAiLiveCall
+          glow={<DemoAurora mode={auroraMode} burstOnMount zIndex={-1} />}
           showStatus
           title={
             call.remaining <= 30_000
