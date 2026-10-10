@@ -83,11 +83,67 @@ export function selectVisibleCall(calls: FluencyCall[], now: Date): FluencyCall 
 const LOCAL_DATE_TIME = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/;
 const WARSAW_TIME_ZONE = 'Europe/Warsaw';
 
-export function formatCallStartLabel(iso: string): string {
+export function formatCallStartLabel(iso: string, timeZone?: string): string {
+  if (timeZone) return formatCallStartInZone(iso, timeZone);
   const date = dayjs(iso);
   if (!date.isValid()) return '';
   // ISO strings are UTC. dayjs prints them in the viewer's local timezone.
   return date.format('dddd, D MMM, HH:mm');
+}
+
+/** Places an admin can use when reading the All calls list. Canada is several zones. */
+export const ADMIN_CALL_TIME_ZONES: Array<{ timeZone: string; label: string }> = [
+  { timeZone: 'Europe/Berlin', label: 'Germany (Berlin)' },
+  { timeZone: 'America/Halifax', label: 'Canada (Halifax)' },
+  { timeZone: 'America/Toronto', label: 'Canada (Toronto)' },
+  { timeZone: 'America/Winnipeg', label: 'Canada (Winnipeg)' },
+  { timeZone: 'America/Edmonton', label: 'Canada (Edmonton)' },
+  { timeZone: 'America/Vancouver', label: 'Canada (Vancouver)' },
+  { timeZone: 'America/St_Johns', label: 'Canada (Newfoundland)' },
+  { timeZone: 'Europe/London', label: 'United Kingdom (London)' },
+  { timeZone: 'Europe/Warsaw', label: 'Poland (Warsaw)' },
+  { timeZone: 'America/New_York', label: 'United States (New York)' },
+  { timeZone: 'America/Chicago', label: 'United States (Chicago)' },
+  { timeZone: 'America/Los_Angeles', label: 'United States (Los Angeles)' },
+  { timeZone: 'UTC', label: 'UTC' },
+];
+
+/** Viewer zone first, then the other places. A zone that matches the viewer is not listed twice. */
+export function adminCallTimeZoneOptions(
+  viewerZone: string,
+): Array<{ timeZone: string; label: string }> {
+  const local = viewerZone || 'UTC';
+  const places = [...ADMIN_CALL_TIME_ZONES]
+    .filter((option) => option.timeZone !== local)
+    .sort((a, b) => a.label.localeCompare(b.label));
+  return [{ timeZone: local, label: `My timezone (${timeZoneCity(local)})` }, ...places];
+}
+
+function formatCallStartInZone(iso: string, timeZone: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  try {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone,
+      weekday: 'long',
+      day: 'numeric',
+      month: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(date);
+    const part = (type: Intl.DateTimeFormatPartTypes) =>
+      parts.find((item) => item.type === type)?.value ?? '';
+    const weekday = part('weekday');
+    const day = part('day');
+    const month = part('month');
+    const hour = part('hour');
+    const minute = part('minute');
+    if (!weekday || !day || !month || !hour || !minute) return '';
+    return `${weekday}, ${Number(day)} ${month}, ${hour}:${minute}`;
+  } catch {
+    return '';
+  }
 }
 
 export function toDatetimeLocalValue(iso: string): string {

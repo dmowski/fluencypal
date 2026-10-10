@@ -5,6 +5,7 @@ import {
   buildCallRequestTelegramMessage,
   communityCallChosenTitle,
   fluencyCallRowTitle,
+  adminCallTimeZoneOptions,
   formatCallStartLabel,
   formatCallDateLine,
   formatCallLabel,
@@ -55,6 +56,25 @@ describe('formatCallStartLabel', () => {
   it('uses the full weekday in local time', () => {
     const iso = new Date(2026, 9, 3, 18, 0, 0, 0).toISOString();
     expect(formatCallStartLabel(iso)).toBe('Saturday, 3 Oct, 18:00');
+  });
+
+  it('prints the same instant in Germany and Canada', () => {
+    const iso = '2026-10-03T16:00:00.000Z';
+    expect(formatCallStartLabel(iso, 'Europe/Berlin')).toBe('Saturday, 3 Oct, 18:00');
+    expect(formatCallStartLabel(iso, 'America/Toronto')).toBe('Saturday, 3 Oct, 12:00');
+    expect(formatCallStartLabel(iso, 'America/Vancouver')).toBe('Saturday, 3 Oct, 09:00');
+    expect(formatCallStartLabel(iso, 'America/St_Johns')).toBe('Saturday, 3 Oct, 13:30');
+  });
+});
+
+describe('adminCallTimeZoneOptions', () => {
+  it('starts with the viewer zone and still offers Germany and Canada', () => {
+    const options = adminCallTimeZoneOptions('Europe/Warsaw');
+    expect(options[0]).toEqual({ timeZone: 'Europe/Warsaw', label: 'My timezone (Warsaw)' });
+    expect(options.filter((option) => option.timeZone === 'Europe/Warsaw')).toHaveLength(1);
+    expect(options.map((option) => option.label)).toEqual(
+      expect.arrayContaining(['Germany (Berlin)', 'Canada (Toronto)', 'Canada (Vancouver)']),
+    );
   });
 });
 

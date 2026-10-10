@@ -140,6 +140,7 @@ const cardProps: FluencyCallCardViewProps = {
   requestedAtLabel: null,
   paidNotice: false,
   onInitiateCall: () => {},
+  welcomeVideoSrc: '/group_call/intro2.webm',
 };
 
 function renderCard(overrides: Partial<FluencyCallCardViewProps> = {}, width = 640) {
@@ -173,9 +174,7 @@ test('the card shows the next call and keeps the others behind Other times', asy
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-calls');
 
   await userEvent.click(page.getByTestId('fluency-call-other-times'));
-  await expect
-    .element(page.getByRole('heading', { name: 'Upcoming conversations' }))
-    .toBeVisible();
+  await expect.element(page.getByRole('heading', { name: 'Upcoming conversations' })).toBeVisible();
   await expect.element(page.getByTestId('fluency-call-other-thu')).toBeVisible();
   await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
   await expect.element(page.getByText('Hi everyone')).toBeVisible();
@@ -199,6 +198,22 @@ test('a narrow card keeps the meeting and the reply inside the card', async () =
   expect(join.top).toBeGreaterThanOrEqual(meet.bottom - 1);
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-narrow');
+});
+
+test('a phone-width viewport shows the host video above the next conversation', async () => {
+  await page.viewport(390, 844);
+  try {
+    await renderCard({}, 360);
+
+    const video = await box('muted-preview-video');
+    const title = await page.getByRole('heading', { name: 'Tomorrow · 19:00' }).element();
+    const titleBox = title.getBoundingClientRect();
+
+    expect(video.bottom).toBeLessThanOrEqual(titleBox.top);
+    expect(video.left).toBeGreaterThanOrEqual((await box('fluency-call-card')).left);
+  } finally {
+    await page.viewport(1280, 900);
+  }
 });
 
 test('a joined call stays on the card', async () => {
@@ -416,7 +431,9 @@ test('a sent request shows the time inside other times', async () => {
   await expect.element(page.getByTestId('fluency-call-request-sent')).toBeVisible();
   await userEvent.click(page.getByTestId('fluency-call-change-time'));
   expect(onInitiateCall).toHaveBeenCalledTimes(1);
-  await expect.element(page.getByTestId('fluency-call-schedule-modal')).toMatchScreenshot('request-sent');
+  await expect
+    .element(page.getByTestId('fluency-call-schedule-modal'))
+    .toMatchScreenshot('request-sent');
 });
 
 test('the language menu names the chosen language', async () => {

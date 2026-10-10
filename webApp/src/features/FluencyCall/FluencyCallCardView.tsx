@@ -9,7 +9,7 @@ import { FluencyCallNextConversation } from './card/FluencyCallNextConversation'
 import { FluencyCallScheduleModal } from './card/FluencyCallScheduleModal';
 import { narrow, token } from './card/styles';
 import { FluencyCallCardCall, FluencyCallCardViewProps } from './card/types';
-import { FluencyCallWelcomeButton, FluencyCallWelcomeModal } from './card/FluencyCallWelcome';
+import { MutedPreviewVideo } from '../uiKit/Video/MutedPreviewVideo';
 
 export {
   FLUENCY_CALL_CHAT_PAGE,
@@ -34,7 +34,7 @@ export const FluencyCallCardView = ({
   initialChatExpanded = false,
   notice = null,
   callPeople,
-  welcomeVideoSrc = null,
+  welcomeVideoSrc,
 }: FluencyCallCardViewProps) => {
   const { i18n } = useLingui();
   const uid = useId();
@@ -87,18 +87,44 @@ export const FluencyCallCardView = ({
           canJoin={canJoin}
           paidNotice={paidNotice}
         />
-        <FluencyCallWelcomeButton
-          welcomeVideoSrc={welcomeVideoSrc}
-          onOpen={() => setModal('welcome')}
-        />
-        <FluencyCallNextConversation
-          next={calls[0]}
-          timeZoneLabel={timeZoneLabel}
-          meetUrl={meetUrl}
-          pendingCallId={pendingCall}
-          onToggle={toggle}
-          onOpenSchedule={() => setModal('schedule')}
-        />
+        <Stack
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
+            gridTemplateAreas: '"conversation video"',
+            alignItems: 'center',
+            gap: '30px',
+            padding: '20px 0 0px 0',
+            '@media (max-width: 600px)': {
+              gridTemplateColumns: '1fr',
+              gridTemplateAreas: '"video" "conversation"',
+              alignItems: 'center',
+              gap: '20px',
+              padding: '20px 0',
+            },
+          }}
+        >
+          <Stack sx={{ gridArea: 'conversation' }}>
+            <FluencyCallNextConversation
+              next={calls[0]}
+              timeZoneLabel={timeZoneLabel}
+              meetUrl={meetUrl}
+              pendingCallId={pendingCall}
+              onToggle={toggle}
+              onOpenSchedule={() => setModal('schedule')}
+            />
+          </Stack>
+          <Stack
+            sx={{
+              gridArea: 'video',
+              alignItems: 'flex-start',
+              padding: '10px 10px 0px 0px',
+              width: '100%',
+            }}
+          >
+            <MutedPreviewVideo src={welcomeVideoSrc} muteSize="150px" playSize="280px" />
+          </Stack>
+        </Stack>
       </Stack>
 
       <FluencyCallChatPanel
@@ -109,11 +135,6 @@ export const FluencyCallCardView = ({
         onError={setError}
       />
 
-      <FluencyCallWelcomeModal
-        open={modal === 'welcome'}
-        welcomeVideoSrc={welcomeVideoSrc}
-        onClose={() => setModal(null)}
-      />
       <FluencyCallScheduleModal
         open={modal === 'schedule'}
         calls={calls}

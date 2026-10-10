@@ -69,7 +69,12 @@ export const FluencyCallChatPanel = ({
         <Box sx={{ minWidth: 0 }}>
           <Typography
             component="h4"
-            sx={{ margin: 0, color: token.text, fontSize: '15px', fontWeight: 600 }}
+            sx={{
+              color: token.text,
+              fontSize: '20px',
+              fontWeight: 500,
+              overflowWrap: 'anywhere',
+            }}
           >
             {i18n._('Conversation chat')}
           </Typography>
@@ -106,7 +111,7 @@ export const FluencyCallChatPanel = ({
         id={messagesId}
         data-testid="fluency-call-messages"
         sx={{
-          marginLeft: '-13px',
+          marginLeft: '-9px',
         }}
       >
         {visibleMessages.map((message, index, all) => (
@@ -116,8 +121,9 @@ export const FluencyCallChatPanel = ({
             isFullContentByDefault
             hideComments
             preventOpen
+            isContentWide
             backgroundColor="transparent"
-            isChain={index < all.length - 1}
+            isChain={false}
           />
         ))}
         {messages.length === 0 ? (

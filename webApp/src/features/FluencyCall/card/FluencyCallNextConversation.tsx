@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, Plus } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { FluencyCallJoinButton } from './FluencyCallJoinButton';
 import { FluencyCallMeetButton } from './FluencyCallMeetButton';
@@ -26,48 +26,20 @@ export const FluencyCallNextConversation = ({
   const { i18n } = useLingui();
 
   return (
-    <>
-      <Stack
-        direction="row"
-        sx={{
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '12px',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: '12px',
-            color: token.muted,
-            fontWeight: 600,
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-          }}
-        >
-          {i18n._('Next conversation')}
-        </Typography>
-        <Button
-          data-testid="fluency-call-other-times"
-          color="inherit"
-          endIcon={<ArrowRight size={16} />}
-          onClick={onOpenSchedule}
-          sx={{ ...textButtonSx, padding: '0 10px' }}
-        >
-          {i18n._('Other times')}
-        </Button>
-      </Stack>
-
+    <Stack
+      sx={{
+        gap: '20px',
+      }}
+    >
       {next ? (
         <Stack sx={{ gap: '4px', minWidth: 0 }}>
           <Stack direction="row" sx={{ alignItems: 'center', gap: '8px', minWidth: 0 }}>
             <Typography
-              component="h3"
+              component="h4"
               sx={{
-                margin: '4px 0',
                 color: token.text,
-                fontSize: '22px',
-                fontWeight: 600,
+                fontSize: '20px',
+                fontWeight: 500,
                 overflowWrap: 'anywhere',
               }}
             >
@@ -88,7 +60,7 @@ export const FluencyCallNextConversation = ({
           </Stack>
           <Typography
             data-testid={`fluency-call-join-count-${next.id}`}
-            sx={{ margin: '0 0 20px', color: token.muted, fontSize: '13px' }}
+            sx={{ color: token.muted, fontSize: '13px' }}
           >
             {next.dateLabel} · {timeZoneLabel} ·{' '}
             {i18n._('{count} joining', { count: next.participantCount })}
@@ -108,23 +80,56 @@ export const FluencyCallNextConversation = ({
         </Stack>
       )}
 
-      <Stack
-        direction="row"
-        sx={{
-          alignItems: 'center',
-          gap: '18px',
-          flexWrap: 'wrap',
-          [narrow]: { gap: '8px' },
-        }}
-      >
-        <FluencyCallMeetButton meetUrl={meetUrl} />
-        {next ? (
-          <FluencyCallJoinButton call={next} pendingCallId={pendingCallId} onToggle={onToggle} />
-        ) : null}
+      <Stack>
+        <Stack
+          sx={{
+            gap: '12px',
+            flexWrap: 'wrap',
+            alignItems: 'flex-start',
+            [narrow]: { gap: '8px' },
+          }}
+        >
+          <FluencyCallMeetButton meetUrl={meetUrl} />
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '12px',
+            }}
+          >
+            {next ? (
+              <Button
+                data-testid={`fluency-call-join-${next.id}`}
+                data-analytics="community-call-rsvp"
+                aria-pressed={next.isJoining}
+                color="inherit"
+                disabled={pendingCallId !== null}
+                onClick={() => {
+                  void onToggle(next);
+                }}
+                startIcon={next.isJoining ? <Check size={16} /> : <Plus size={16} />}
+                sx={{ ...textButtonSx, padding: '0 10px' }}
+              >
+                {pendingCallId === next.id
+                  ? i18n._('Updating...')
+                  : next.isJoining
+                    ? i18n._("I'm joining")
+                    : i18n._("I'll join")}
+              </Button>
+            ) : null}
+
+            <Button
+              data-testid="fluency-call-other-times"
+              color="inherit"
+              endIcon={<ArrowRight size={16} />}
+              onClick={onOpenSchedule}
+              sx={{ ...textButtonSx, padding: '0 10px' }}
+            >
+              {i18n._('Other times')}
+            </Button>
+          </Stack>
+        </Stack>
       </Stack>
-      <Typography sx={{ margin: '10px 0 0', color: token.muted, fontSize: '12px' }}>
-        {i18n._('Speak when you are ready. You can listen first.')}
-      </Typography>
-    </>
+    </Stack>
   );
 };

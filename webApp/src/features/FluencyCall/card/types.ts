@@ -37,5 +37,5 @@ export type FluencyCallCardViewProps = {
   /** Names for one listed call, shown under that time in Upcoming conversations. */
   callPeople?: (call: FluencyCallCardCall) => ReactNode;
   /** Real host intro. Omitted when the app has no video file. */
-  welcomeVideoSrc?: string | null;
+  welcomeVideoSrc: string;
 };

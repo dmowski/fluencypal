@@ -20,12 +20,14 @@ import { fluencyCallLanguageCode, fluencyCallLanguageOptions } from './callLangu
 import { CallDatePicker, CallTimePicker } from './CallDateTimePickers';
 import {
   FLUENCY_CALL_LIST_LOOKBACK_MS,
+  adminCallTimeZoneOptions,
   formatCallStartLabel,
   fromDatetimeLocalValue,
   getCallCountdown,
   isHttpUrl,
   suggestedCallSlot,
   toDatetimeLocalValue,
+  viewerTimeZone,
 } from './callTime';
 import {
   createFluencyCall,
@@ -62,6 +64,8 @@ export const CallsAdmin = () => {
   const [meetLink, setMeetLink] = useState('');
   const [rejecting, setRejecting] = useState<FluencyCallRequest | null>(null);
   const [showOldCalls, setShowOldCalls] = useState(false);
+  const [listTimeZone, setListTimeZone] = useState(() => viewerTimeZone());
+  const timeZoneOptions = adminCallTimeZoneOptions(viewerTimeZone());
 
   const serverStartsAt = editingCall ? toDatetimeLocalValue(editingCall.startsAtIso) : '';
   const serverLink = editingCall?.link ?? '';
@@ -253,7 +257,9 @@ export const CallsAdmin = () => {
             editingCall?.id === item.id ? 'rgba(47, 128, 237, 0.16)' : cardSx.backgroundColor,
         }}
       >
-        <Typography sx={{ fontWeight: 700 }}>{formatCallStartLabel(item.startsAtIso)}</Typography>
+        <Typography sx={{ fontWeight: 700 }}>
+          {formatCallStartLabel(item.startsAtIso, listTimeZone)}
+        </Typography>
         <Typography sx={{ opacity: 0.8 }}>
           {fullEnglishLanguageName[fluencyCallLanguageCode(item.languageCode)]}
         </Typography>
@@ -367,6 +373,21 @@ export const CallsAdmin = () => {
           <Typography variant="h6" sx={{ fontWeight: 700 }}>
             All calls
           </Typography>
+          <TextField
+            select
+            size="small"
+            label="Timezone"
+            value={listTimeZone}
+            onChange={(event) => setListTimeZone(event.target.value)}
+            fullWidth
+            data-testid="fluency-calls-admin-timezone"
+          >
+            {timeZoneOptions.map((option) => (
+              <MenuItem key={option.timeZone} value={option.timeZone}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           {loading ? <Typography>Loading...</Typography> : null}
           {!loading && sortedCalls.length === 0 ? (
             <Typography sx={{ opacity: 0.8 }}>No calls yet.</Typography>
