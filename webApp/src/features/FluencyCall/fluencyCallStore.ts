@@ -1,6 +1,6 @@
 import { deleteDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/features/Firebase/firebaseDb';
-import { ensureFluencyCallChat } from './fluencyCallChat';
+import { ensureFluencyCallCommunityChat } from './fluencyCallChat';
 import { fluencyCallLanguageCode } from './callLanguage';
 import { FluencyCall, FluencyCallRequestStatus } from './types';
 
@@ -28,7 +28,7 @@ export async function createFluencyCall({
     stoppedAtIso: null,
   };
   await setDoc(ref, call);
-  await ensureFluencyCallChat(userId, ref.id);
+  await ensureFluencyCallCommunityChat(userId);
   return call;
 }
 

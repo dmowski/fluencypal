@@ -163,7 +163,7 @@ msgstr "2. 무료 플랜으로 시작하세요"
 msgid "3 AI hours"
 msgstr "3 AI 시간"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:213
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:210
 #. js-lingui-explicit-id
 msgid "3 minutes free · No account or card needed"
 msgstr "3분 무료 · 계정이나 카드 필요 없음"
@@ -179,7 +179,7 @@ msgstr "3. 아무것도 지불하지 마세요"
 msgid "30 minutes"
 msgstr "30분"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:257
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:254
 #. js-lingui-explicit-id
 msgid "30 seconds left — one last thought"
 msgstr "30초 남았습니다 — 마지막 생각"
@@ -243,6 +243,13 @@ msgid ""
 "without saying the word itself!"
 msgstr "2-20명의 플레이어를 위한 재미있는 단어 추측 게임. 단어 자체를 말하지 않고 팀원들에게 단어를 설명하세요!"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:908
+#. js-lingui-explicit-id
+msgid "A hello from Alex"
+msgstr ""
+"\n"
+"알렉스의 인사\n"
+
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
 #. js-lingui-explicit-id
 msgid ""
@@ -265,10 +272,15 @@ msgstr "가벼운 하루도 의미가 있습니다. 오늘의 작업을 완료�
 msgid "A little about you"
 msgstr "당신에 대한 간단한 소개"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:94
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:91
 #. js-lingui-explicit-id
 msgid "A little conversation. A lot more confidence."
 msgstr "작은 대화. 훨씬 더 많은 자신감."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:516
+#. js-lingui-explicit-id
+msgid "A little practice. A few friendly faces."
+msgstr "약간의 연습. 몇몇 친근한 얼굴들."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:27
 #. js-lingui-explicit-id
@@ -341,6 +353,11 @@ msgid ""
 "A short call to get to know each other. Alex writes you after this, and you "
 "pick a time."
 msgstr "서로 알아가기 위한 짧은 통화입니다. 이후 알렉스가 귀하에게 메시지를 보내며, 귀하는 시간을 선택합니다."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:598
+#. js-lingui-explicit-id
+msgid "A short hello from Alex · What to expect"
+msgstr "알렉스의 짧은 인사 · 기대할 사항"
 
 #: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:24
 #. js-lingui-explicit-id
@@ -882,7 +899,7 @@ msgstr "모든 소스 코드는 공개되어 있으며 누구나 이용할 수 �
 msgid "All time"
 msgstr "항상"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#: src/features/FluencyCall/FluencyCallCardView.tsx:926
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr "{zone} 내 모든 시간"
@@ -966,7 +983,7 @@ msgid "Analyzing..."
 msgstr "분석 중..."
 
 #: src/features/Auth/AuthSignInStep.tsx:238
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:231
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
 msgid "and"
@@ -1085,6 +1102,7 @@ msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "이 채팅을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
 
 #: src/features/Chat/Message/Message.tsx:105
+#: src/features/FluencyCall/FluencyCallCardView.tsx:284
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "이 메시지를 삭제하시겠습니까?"
@@ -1337,6 +1355,11 @@ msgstr "직업 면접을 준비하세요"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "당신의 역할에 대해 구체적으로 설명하세요."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:823
+#. js-lingui-explicit-id
+msgid "Be the first to say hello."
+msgstr "첫인사를 건네보세요."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
 #. js-lingui-explicit-id
@@ -1624,7 +1647,7 @@ msgstr "계속 진행하면, 귀하는 당사의 것에 동의하게 됩니다."
 msgid "By continuing, you agree to the"
 msgstr "계속함으로써, 당신은 다음에 동의합니다."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:219
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:216
 #. js-lingui-explicit-id
 msgid "By starting this call, you confirm you are 13 or older and agree to the"
 msgstr "이 전화를 시작함으로써 귀하는 만 13세 이상이며 이에 동의함을 확인합니다."
@@ -1724,6 +1747,8 @@ msgstr "스마트폰에서 사용할 수 있나요?"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
+#: src/features/FluencyCall/FluencyCallCardView.tsx:277
+#: src/features/FluencyCall/FluencyCallCardView.tsx:304
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
 #: src/features/Reader/components/AddBookModal.tsx:426
@@ -1794,7 +1819,7 @@ msgstr "도전적인"
 msgid "Change plan"
 msgstr "플랜 변경"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:401
+#: src/features/FluencyCall/FluencyCallCardView.tsx:1006
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "시간 변경"
@@ -2499,7 +2524,7 @@ msgstr "브라우저에서 app.fluencypal.com 옆의 공유 버튼을 클릭하�
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:686
-#: src/features/FluencyCall/FluencyCallConductModal.tsx:75
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:76
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -2934,7 +2959,7 @@ msgstr "지난 에세이 계속 녹음하기"
 msgid "Continue to confirmation"
 msgstr "확인으로 계속"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:119
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:116
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:63
 #. js-lingui-explicit-id
 msgid "Continue to FluencyPal"
@@ -3018,6 +3043,7 @@ msgstr "대화"
 msgid "Conversation 10"
 msgstr "대화 10"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:754
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Conversation chat"
@@ -3185,6 +3211,18 @@ msgstr "시험을 시작할 수 없습니다. 다시 시도해 주세요."
 msgid "Could not start your account. Please try again."
 msgstr "계정을 시작할 수 없습니다. 다시 시도해 보십시오."
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:797
+#: src/features/FluencyCall/FluencyCallCardView.tsx:810
+#. js-lingui-explicit-id
+msgid "Could not update your message. Please try again."
+msgstr "메시지를 업데이트할 수 없습니다. 다시 시도해 주세요."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:412
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:230
+#. js-lingui-explicit-id
+msgid "Could not update your plans. Please try again."
+msgstr "계획을 업데이트할 수 없습니다. 다시 시도해 주세요."
+
 #: src/features/Dashboard/CreatePersonalPlanModal.tsx:183
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
@@ -3319,7 +3357,7 @@ msgstr "계정 만들기"
 msgid "Create an account"
 msgstr "계정을 생성하세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:126
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:123
 #. js-lingui-explicit-id
 msgid "Create an account to save your progress. Continued AI speaking uses credits."
 msgstr "계정을 만들어 진행 상황을 저장하세요. AI 말하기를 계속 사용하려면 크레딧이 필요합니다."
@@ -3331,7 +3369,7 @@ msgid ""
 "that account."
 msgstr "이메일과 비밀번호로 계정을 생성하세요. 연습 내용이 해당 계정에 저장됩니다."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:119
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:116
 #. js-lingui-explicit-id
 msgid "Create my account"
 msgstr "내 계정 생성"
@@ -3954,6 +3992,8 @@ msgid "Decrease paragraph gap"
 msgstr "문단 간격 감소"
 
 #: src/features/Chat/Message/Message.tsx:423
+#: src/features/FluencyCall/FluencyCallCardView.tsx:296
+#: src/features/FluencyCall/FluencyCallCardView.tsx:362
 #: src/features/Reader/components/Cards.tsx:270
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
@@ -4509,6 +4549,7 @@ msgstr "쉬움"
 #: src/features/Chat/Message/Message.tsx:411
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:61
 #: src/features/Essay/EssayText.tsx:405
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -4518,6 +4559,11 @@ msgstr "편집"
 #. js-lingui-explicit-id
 msgid "Edit Community Space"
 msgstr "커뮤니티 공간 편집"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:220
+#. js-lingui-explicit-id
+msgid "Edit message"
+msgstr "메시지 편집"
 
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
 #. js-lingui-explicit-id
@@ -5340,6 +5386,11 @@ msgstr "완료된 수업. 답변을 다시 들으려면 하나를 열어보세�
 #. js-lingui-explicit-id
 msgid "First talk"
 msgstr "첫 대화"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:595
+#. js-lingui-explicit-id
+msgid "First time? Meet your host"
+msgstr "첫 방문이신가요? 호스트를 만나보세요."
 
 #: src/features/Tasks/useDailyPlans.ts:201
 #. js-lingui-explicit-id
@@ -6168,7 +6219,7 @@ msgid ""
 "with AI until the call."
 msgstr "그룹 통화는 무료입니다. 예약된 시간을 확인하고 계정을 생성하여 통화 전까지 AI와 연습하세요."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:294
+#: src/features/FluencyCall/FluencyCallCardView.tsx:504
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
 #. js-lingui-explicit-id
@@ -6390,6 +6441,16 @@ msgstr "숨기기"
 #. js-lingui-explicit-id
 msgid "Hide forever"
 msgstr "영구적으로 숨기기"
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:396
+#. js-lingui-explicit-id
+msgid "Hide names"
+msgstr "이름 숨기기"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:769
+#. js-lingui-explicit-id
+msgid "Hide older"
+msgstr "이전 항목 숨기기"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
@@ -6817,10 +6878,15 @@ msgstr "메모리 내 캐싱을 추가하고 데이터베이스 리소스를 증
 msgid "I'd add retries with a longer timeout."
 msgstr "재시도를 추가하고 더 긴 시간 제한을 설정하겠습니다."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:237
+#: src/features/FluencyCall/FluencyCallCardView.tsx:451
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "가입할게요"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:450
+#. js-lingui-explicit-id
+msgid "I'm joining"
+msgstr "참여하기"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -7390,7 +7456,6 @@ msgid "Job Interview Skills"
 msgstr "취업 면접 기술"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/FluencyCall/FluencyCallCardView.tsx:220
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "가입하기"
@@ -7417,7 +7482,7 @@ msgstr "그룹 대화 참여하기 | FluencyPal"
 msgid "Join candidates who transformed their interview performance"
 msgstr "인터뷰 성과를 변환한 지원자들과 함께하세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:98
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:95
 #. js-lingui-explicit-id
 msgid "Join FluencyPal to build a speaking habit and keep your progress."
 msgstr "FluencyPal에 가입하여 말하기 습관을 기르고 진도를 유지하세요."
@@ -7426,16 +7491,6 @@ msgstr "FluencyPal에 가입하여 말하기 습관을 기르고 진도를 유�
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "특정 주제에 대해 다른 회원들과 토론하기 위해 방에 참여하세요"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:312
-#. js-lingui-explicit-id
-msgid "Join the conversations that fit your week."
-msgstr "당신의 주에 맞는 대화에 참여하세요."
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:237
-#. js-lingui-explicit-id
-msgid "Joined"
-msgstr "가입됨"
 
 #: src/features/Landing/LandingPage.tsx:368
 #: src/features/Landing/PlanLandingBlock.tsx:585
@@ -7509,7 +7564,7 @@ msgstr "간결하고 관련성을 유지하세요"
 msgid "Keep practicing"
 msgstr "계속 연습하세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:125
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:122
 #. js-lingui-explicit-id
 msgid "Keep the conversation going"
 msgstr "대화를 계속하세요"
@@ -7539,7 +7594,7 @@ msgstr "한국어 학습 계획"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "첫 개발자 직업을 얻는 것은 생각보다 어렵다"
 
-#: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:35
+#: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:37
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:117
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
@@ -7747,7 +7802,7 @@ msgstr "공유 도서 나가기"
 msgid "Leave your message"
 msgstr "당신의 메시지를 남겨주세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:262
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:259
 #. js-lingui-explicit-id
 msgid "left"
 msgstr "왼쪽"
@@ -7863,6 +7918,11 @@ msgstr "더 보기"
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "로드 더보기"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:781
+#. js-lingui-explicit-id
+msgid "Load more messages"
+msgstr "메시지 더 불러오기"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -8152,6 +8212,11 @@ msgstr "정책 위반으로 인해 메시지가 숨겨졌습니다."
 msgid "Message options"
 msgstr "메시지 옵션"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:851
+#. js-lingui-explicit-id
+msgid "Message the group"
+msgstr "그룹에 메시지 보내기"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:101
 #. js-lingui-explicit-id
 msgid "Messages"
@@ -8331,6 +8396,11 @@ msgstr "월간 플랜"
 msgid "More"
 msgstr "더 보기"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:677
+#. js-lingui-explicit-id
+msgid "More conversations soon"
+msgstr "더 많은 대화가 곧 이루어집니다."
+
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:55
 #. js-lingui-explicit-id
 msgid "More improvements"
@@ -8345,6 +8415,7 @@ msgstr "더 자연스러운 대화. 자신의 의견을 표현할 더 많은 공
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
+#: src/features/FluencyCall/FluencyCallCardView.tsx:314
 #. js-lingui-explicit-id
 msgid "More options"
 msgstr "더 많은 옵션"
@@ -8512,6 +8583,11 @@ msgstr "다음"
 msgid "Next article"
 msgstr "다음 기사"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:622
+#. js-lingui-explicit-id
+msgid "Next conversation"
+msgstr "다음 대화"
+
 #: src/features/InteractiveLesson/LessonResultsView.tsx:98
 #. js-lingui-explicit-id
 msgid "Next lesson"
@@ -8601,11 +8677,6 @@ msgstr "이용 가능한 챕터가 없습니다"
 #. js-lingui-explicit-id
 msgid "No charge will be made"
 msgstr "결제가 발생하지 않습니다"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:372
-#. js-lingui-explicit-id
-msgid "No conversation scheduled yet."
-msgstr "아직 예약된 대화가 없습니다."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -8710,6 +8781,11 @@ msgstr "아직 아무도 참여하지 않을 것입니다."
 #. js-lingui-explicit-id
 msgid "No original file found for this book."
 msgstr "이 책에 대한 원본 파일을 찾을 수 없습니다."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:969
+#. js-lingui-explicit-id
+msgid "No other calls scheduled yet."
+msgstr "아직 다른 통화가 일정에 잡혀 있지 않습니다."
 
 #: src/features/Router/BlockedAccess.tsx:370
 #. js-lingui-explicit-id
@@ -8965,8 +9041,7 @@ msgstr "알림"
 #: src/features/Alias/components/Scoreboard.tsx:147
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:90
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:33
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:87
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:167
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "지금"
@@ -9065,6 +9140,11 @@ msgstr "하나의 패턴. 실제 말하기 연습."
 msgid "One payment. No automatic renewal."
 msgstr "일회성 결제. 자동 갱신 없음."
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:757
+#. js-lingui-explicit-id
+msgid "One shared chat for all calls"
+msgstr "모든 통화를 위한 공동 채팅"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -9129,6 +9209,12 @@ msgstr "대시보드 열기"
 msgid "Open Dev Panel"
 msgstr "개발 패널 열기"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:708
+#: src/features/FluencyCall/FluencyCallCardView.tsx:721
+#. js-lingui-explicit-id
+msgid "Open Google Meet"
+msgstr "Google Meet 열기"
+
 #: src/features/Usage/UsageStatsCards.tsx:632
 #. js-lingui-explicit-id
 msgid "Open history"
@@ -9144,7 +9230,7 @@ msgstr "브라우저에서 열기"
 msgid "Open in Telegram"
 msgstr "텔레그램에서 열기"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:131
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:128
 #. js-lingui-explicit-id
 msgid "Open my practice dashboard"
 msgstr "연습 대시보드 열기"
@@ -9246,6 +9332,11 @@ msgstr "결제 의무가 있는 주문 {amount}"
 #. js-lingui-explicit-id
 msgid "Other languages"
 msgstr "다른 언어들"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:631
+#. js-lingui-explicit-id
+msgid "Other times"
+msgstr "다른 시간"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:21
 #. js-lingui-explicit-id
@@ -9449,12 +9540,12 @@ msgstr "결제 내역"
 msgid "Payment option"
 msgstr "결제 옵션"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:320
+#: src/features/FluencyCall/FluencyCallCardView.tsx:523
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "결제가 완료되었습니다. 잠시 후 참여하실 수 있습니다."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:319
+#: src/features/FluencyCall/FluencyCallCardView.tsx:522
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "결제가 완료되었습니다. 그룹 대화에 참여할 수 있습니다."
@@ -9580,11 +9671,6 @@ msgstr "귀하의 그룹에 맞는 난이도를 선택하세요."
 msgid "Pick a level to start playing!"
 msgstr "게임을 시작하려면 레벨을 선택하세요!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:375
-#. js-lingui-explicit-id
-msgid "Pick a time and we'll set one up."
-msgstr "시간을 선택하면 저희가 설정해드리겠습니다."
-
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:73
 #. js-lingui-explicit-id
 msgid "Pick a username and an avatar. Other people will see them."
@@ -9668,6 +9754,11 @@ msgstr "역할을 수행하세요"
 #. js-lingui-explicit-id
 msgid "Play With AI"
 msgstr "AI와 함께 놀기"
+
+#: src/features/uiKit/Video/MutedPreviewVideo.tsx:65
+#. js-lingui-explicit-id
+msgid "Play with sound"
+msgstr "소리와 함께 재생"
 
 #: src/features/Alias/components/GameEnd.tsx:119
 #: src/features/Alias/components/GamePlay.tsx:78
@@ -10200,11 +10291,6 @@ msgstr "연습, 개선, 반복"
 msgid "Practice, plus a block of advanced conversation"
 msgstr "연습, 고급 회화 블록 포함"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:310
-#. js-lingui-explicit-id
-msgid "Practise speaking with other learners."
-msgstr "다른 학습자들과 함께 말하기 연습하세요."
-
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
 msgid "Precise, actionable insights about APIs, data, and resiliency"
@@ -10353,7 +10439,7 @@ msgstr "우선 지원"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:116
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:37
 #: src/features/Landing/Footer.tsx:189
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:240
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:237
 #: src/features/PayWall/CardValidator.tsx:118
 #: src/features/Router/BlockedAccess.tsx:170
 #: src/features/Router/BlockedAccess.tsx:321
@@ -10490,7 +10576,7 @@ msgstr "발음 소스"
 msgid "Pronounce translations"
 msgstr "번역 발음"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:389
+#: src/features/FluencyCall/FluencyCallCardView.tsx:995
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11121,7 +11207,7 @@ msgstr "사용자 신고"
 msgid "Request failed. Please try again."
 msgstr "요청이 실패했습니다. 다시 시도해 주세요."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:362
+#: src/features/FluencyCall/FluencyCallCardView.tsx:978
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11206,7 +11292,7 @@ msgstr "물품을 상점에 반품하기"
 msgid "Review and edit what the AI remembers"
 msgstr "AI가 기억하는 내용을 검토하고 편집하세요."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:142
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:139
 #. js-lingui-explicit-id
 msgid ""
 "Review what you practiced. Your teacher’s suggestions appear in the "
@@ -11366,6 +11452,7 @@ msgstr "새로운 WebSocket 음성 서버를 통한 동일한 Just Talk 레슨."
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
 #: src/features/Essay/EssayText.tsx:281
+#: src/features/FluencyCall/FluencyCallCardView.tsx:265
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -11404,6 +11491,16 @@ msgstr "자신의 말로 몇 문장을 말해보세요. 아래 예시는 아이�
 #. js-lingui-explicit-id
 msgid "Say a little more about how the lesson felt or what you want next."
 msgstr "수업이 어땠는지 조금 더 말해 주세요, 또는 다음에 원하는 것이 무엇인가요?"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:680
+#. js-lingui-explicit-id
+msgid "Say hello in the chat while we plan the next call."
+msgstr "다음 전화를 계획하는 동안 채팅에서 인사하세요."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:848
+#. js-lingui-explicit-id
+msgid "Say hello or ask a question..."
+msgstr "인사하거나 질문을 하세요..."
 
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
@@ -11563,6 +11660,11 @@ msgstr "링크 보내기"
 msgid "Send me email notifications"
 msgstr "이메일 알림을 보내주세요"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:876
+#. js-lingui-explicit-id
+msgid "Send message"
+msgstr "메시지 보내기"
+
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
@@ -11610,6 +11712,11 @@ msgstr "답변을 보내서 계속 진행하세요."
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "전체 접근을 해제하려면 {messagesNeeded}개의 메시지를 보내세요"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:876
+#. js-lingui-explicit-id
+msgid "Sending message"
+msgstr "메시지 전송"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:327
@@ -11807,11 +11914,6 @@ msgstr "모든 문법 개선 사항을 표시합니다."
 msgid "Show all {count} voices"
 msgstr "모든 {count}개의 목소리 보기"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:200
-#. js-lingui-explicit-id
-msgid "Show chat"
-msgstr "채팅 표시"
-
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:309
 #. js-lingui-explicit-id
 msgid "Show fewer voices"
@@ -11830,6 +11932,11 @@ msgstr "덜 보기"
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "더 보여주기"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:769
+#. js-lingui-explicit-id
+msgid "Show older"
+msgstr "이전 보기"
 
 #: src/features/Chat/ShowPreviousMessagesButton.tsx:61
 #. js-lingui-explicit-id
@@ -12193,7 +12300,7 @@ msgid "Speaking"
 msgstr "말하기"
 
 #: src/features/Landing/LandingPage.tsx:205
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:84
 #. js-lingui-explicit-id
 msgid "Speaking practice"
 msgstr "스피킹 연습"
@@ -12308,7 +12415,7 @@ msgstr "수업 시작"
 msgid "Start Monthly Plan"
 msgstr "월간 플랜 시작"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:210
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:207
 #. js-lingui-explicit-id
 msgid "Start my free conversation"
 msgstr "내 무료 대화 시작하기"
@@ -12847,12 +12954,17 @@ msgstr "백엔드 준비 테스트를 보세요"
 msgid "Take the Interview Readiness Test"
 msgstr "면접 준비 테스트를 받으세요"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:727
+#. js-lingui-explicit-id
+msgid "Take your time speaking. You can listen first."
+msgstr "말할 때 천천히 하세요. 먼저 들을 수 있습니다."
+
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
 msgid "Talk about what you want to bring up in the conversation."
 msgstr "대화에서 꺼내고 싶은 주제에 대해 이야기하세요."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:99
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:96
 #. js-lingui-explicit-id
 msgid ""
 "Talk with a friendly AI teacher for three minutes. No account. No card. "
@@ -13495,7 +13607,7 @@ msgstr "서비스 약관"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:121
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:42
 #: src/features/Landing/Footer.tsx:179
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:225
 #: src/features/Router/BlockedAccess.tsx:174
 #: src/features/Router/BlockedAccess.tsx:329
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:45
@@ -14317,8 +14429,7 @@ msgstr ""
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:88
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:31
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:49
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:85
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:165
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14351,8 +14462,7 @@ msgstr "TOEFL 스피킹 과제들"
 
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:89
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:32
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:86
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:166
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "내일"
@@ -14720,10 +14830,15 @@ msgstr "음소거 해제"
 msgid "Upcoming calls"
 msgstr "다가오는 통화"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:341
+#: src/features/FluencyCall/FluencyCallCardView.tsx:925
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "다가오는 대화"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:448
+#. js-lingui-explicit-id
+msgid "Updating..."
+msgstr "업데이트 중..."
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15150,10 +15265,19 @@ msgstr "로그인 링크를 이메일로 보내드리겠습니다."
 msgid "We'll get back to you with a confirmation."
 msgstr "우리는 확인과 함께 다시 연락드리겠습니다."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallCardView.tsx:983
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "곧 답변 드리겠습니다."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:909
+#. js-lingui-explicit-id
+msgid ""
+"We'll say hello and start with something simple, like how your week is "
+"going. Take your time — we're all here to practise."
+msgstr ""
+"안녕하세요라고 인사부터 하고, 그런 다음에 간단한 것으로 시작해볼게요, 예를 들어 이번 주에 어떻게 지내셨는지 말이죠. 천천히 하세요 "
+"— 우리는 모두 연습하러 여기 왔으니까요."
 
 #: src/features/Plan/LessonStartModal.tsx:566
 #. js-lingui-explicit-id
@@ -15457,6 +15581,11 @@ msgstr "AI는 누구여야 할까요?"
 #. js-lingui-explicit-id
 msgid "Who this is for"
 msgstr "이 대상은 누구인가"
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:396
+#. js-lingui-explicit-id
+msgid "Who's joining"
+msgstr "누가 참여하나요"
 
 #: src/features/Quiz/components/QuestionFeedback.tsx:77
 #. js-lingui-explicit-id
@@ -15828,12 +15957,13 @@ msgid ""
 msgstr "네. SQL 대 NoSQL 결정, 격리 수준, EF Core 팁, 캐싱 및 데이터 일관성 패턴을 연습하게 됩니다."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:156
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:261
 #. js-lingui-explicit-id
 msgid "Yesterday"
 msgstr "어제"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:166
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:163
 #: src/features/OpenAiLive/OpenAiLiveCall.tsx:145
 #. js-lingui-explicit-id
 msgid "You"
@@ -16225,7 +16355,7 @@ msgstr "당신의 일관성이 결실을 맺고 있습니다. 오늘의 작업�
 msgid "Your consistency is paying off. Try today’s tasks."
 msgstr "당신의 꾸준함이 성과를 내고 있습니다. 오늘의 과제를 시도해 보세요."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:139
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:136
 #. js-lingui-explicit-id
 msgid "Your conversation"
 msgstr "당신의 대화"
@@ -16247,7 +16377,7 @@ msgstr "당신의 냉소적인 친구"
 msgid "Your experience"
 msgstr "당신의 경험"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:258
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:255
 #. js-lingui-explicit-id
 msgid "Your free conversation"
 msgstr "당신의 자유로운 대화"
@@ -16305,6 +16435,11 @@ msgstr "당신의 한계는 오직 당신의 상상력입니다."
 msgid "Your Message"
 msgstr "당신의 메시지"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:428
+#. js-lingui-explicit-id
+msgid "Your message was not sent. Please try again."
+msgstr "메시지를 보내지 못했습니다. 다시 시도해 주십시오."
+
 #: src/features/Conversation/ConversationCanvas.tsx:622
 #. js-lingui-explicit-id
 msgid "Your message..."
@@ -16315,7 +16450,7 @@ msgstr "당신의 메시지..."
 msgid "Your Native Language:"
 msgstr "당신의 모국어:"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:93
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:90
 #. js-lingui-explicit-id
 msgid "Your next conversation starts here."
 msgstr "당신의 다음 대화는 여기서 시작됩니다."
@@ -16422,7 +16557,7 @@ msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩
 msgid "Your turn"
 msgstr "당신의 차례"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:243
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:240
 #. js-lingui-explicit-id
 msgid ""
 "Your voice is processed by AI and your transcript is saved for this "
@@ -16511,7 +16646,8 @@ msgstr "{count} 시간"
 msgid "{count} hours"
 msgstr "{count} 시간"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:167
+#: src/features/FluencyCall/FluencyCallCardView.tsx:668
+#: src/features/FluencyCall/FluencyCallCardView.tsx:956
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{count} 참가 중"

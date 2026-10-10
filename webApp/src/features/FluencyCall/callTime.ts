@@ -40,6 +40,33 @@ export function selectListedCalls(calls: FluencyCall[], now: Date): FluencyCall[
     .sort((a, b) => a.startsAtIso.localeCompare(b.startsAtIso));
 }
 
+/** The call the card features: an ongoing listed call, otherwise the next upcoming one. */
+export function selectFeaturedCall(calls: FluencyCall[], now: Date): FluencyCall | null {
+  return selectVisibleCall(selectListedCalls(calls, now), now);
+}
+
+/**
+ * Meet links are stored on each call. The open button uses the featured call's link.
+ * When nothing is listed, it keeps the latest real link saved for that language,
+ * including an older or stopped call, so the room stays reachable. It never invents a URL.
+ */
+export function selectPersistentMeetLink(
+  calls: FluencyCall[],
+  languageCode: string | null | undefined,
+  featured: FluencyCall | null,
+): string | null {
+  if (featured && isHttpUrl(featured.link)) return featured.link;
+
+  const language = fluencyCallLanguageCode(languageCode);
+  const saved = calls
+    .filter((call) => fluencyCallLanguageCode(call.languageCode) === language)
+    .filter((call) => isHttpUrl(call.link))
+    .sort((a, b) =>
+      (b.updatedAtIso || b.startsAtIso).localeCompare(a.updatedAtIso || a.startsAtIso),
+    );
+  return saved[0]?.link ?? null;
+}
+
 export function selectVisibleCall(calls: FluencyCall[], now: Date): FluencyCall | null {
   const open = calls.filter((call) => call.status === 'scheduled');
   if (open.length === 0) return null;
@@ -241,6 +268,54 @@ export function communityCallChosenTitle(
   if (!label) return null;
   const live = new Date(startsAtIso).getTime() <= now.getTime();
   return fluencyCallRowTitle(label, live, words);
+}
+
+/** Long calendar date in the viewer's zone, such as "Saturday, 10 October". */
+export function formatCallDateLine(
+  iso: string,
+  locale = 'en',
+  timeZone = viewerTimeZone(),
+): string | null {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat(locale || 'en', {
+    timeZone,
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(date);
+}
+
+export type ChatClockRelative = 'today' | 'yesterday' | 'other';
+
+export interface ChatClockLabel {
+  relative: ChatClockRelative;
+  time: string;
+  weekday: string;
+}
+
+/** Clock label for a chat message. Today and yesterday stay as codes for translation. */
+export function formatChatTimeLabel(
+  iso: string,
+  now: Date,
+  locale = 'en',
+  timeZone = viewerTimeZone(),
+): ChatClockLabel | null {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return null;
+  const label = formatCallLabel(iso, now, locale, timeZone);
+  if (!label) return null;
+
+  const todayKey = zonedDateKey(now, timeZone);
+  const messageKey = zonedDateKey(date, timeZone);
+  const relative: ChatClockRelative =
+    messageKey === todayKey
+      ? 'today'
+      : messageKey === addCalendarDays(todayKey, -1)
+        ? 'yesterday'
+        : 'other';
+
+  return { relative, time: label.time, weekday: label.weekday };
 }
 
 export function fluencyCallRowTitle(

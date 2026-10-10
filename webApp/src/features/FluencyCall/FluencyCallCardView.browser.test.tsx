@@ -1,224 +1,368 @@
 import React from 'react';
-import { setupI18n } from '@lingui/core';
-import { I18nProvider } from '@lingui/react';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
 import {
+  FLUENCY_CALL_CHAT_PAGE,
+  FluencyCallCardCall,
+  FluencyCallCardMessage,
   FluencyCallCardView,
   FluencyCallCardViewProps,
-  FluencyCallRowView,
-  FluencyCallRowViewProps,
 } from './FluencyCallCardView';
-import { formatCallLabel } from './callTime';
 import { FluencyCallConductModal } from './FluencyCallConductModal';
 
-const row = (
-  overrides: Partial<FluencyCallRowViewProps> & Pick<FluencyCallRowViewProps, 'callId'>,
-): FluencyCallRowViewProps => ({
-  month: 'OCT',
-  day: '4',
+const call = (
+  overrides: Partial<FluencyCallCardCall> & Pick<FluencyCallCardCall, 'id'>,
+): FluencyCallCardCall => ({
   title: 'Tomorrow · 19:00',
-  joinCount: 6,
+  dateLabel: 'Sunday, 4 October',
+  participantCount: 6,
   isJoining: false,
   isLive: false,
-  canOpenCall: false,
-  unreadCount: 0,
-  isJoinPending: false,
-  onToggleJoin: () => {},
-  onShowChat: () => {},
-  onOpenCall: () => {},
   ...overrides,
 });
 
-const upcomingRows = [
-  row({ callId: 'tue', day: '4', title: 'Tomorrow · 19:00', joinCount: 6 }),
-  row({ callId: 'thu', day: '6', title: 'Tuesday · 18:00', joinCount: 4 }),
-  row({ callId: 'sat', day: '8', title: 'Thursday · 19:00', joinCount: 9 }),
-];
+const message = (
+  overrides: Partial<FluencyCallCardMessage> & Pick<FluencyCallCardMessage, 'id' | 'text'>,
+): FluencyCallCardMessage => ({
+  authorName: 'Maria',
+  createdAt: '2026-10-03T12:30:00.000Z',
+  timeLabel: '14:30',
+  ...overrides,
+});
 
 const cardProps: FluencyCallCardViewProps = {
-  hasCalls: true,
-  canJoin: true,
+  calls: [
+    call({ id: 'tue' }),
+    call({
+      id: 'thu',
+      title: 'Tuesday · 18:00',
+      dateLabel: 'Tuesday, 6 October',
+      participantCount: 4,
+    }),
+  ],
   languageCode: 'en',
+  onLanguageChange: () => {},
+  timeZoneLabel: 'Warsaw',
+  meetUrl: 'https://meet.example.com/room',
+  messages: [
+    message({ id: 'older', text: 'See you next time' }),
+    message({ id: 'latest', text: 'Hi everyone' }),
+  ],
+  onToggleJoining: async () => {},
+  onSendMessage: async () => {},
+  canJoin: true,
   requestedAtLabel: null,
   paidNotice: false,
-  timeZoneLabel: 'Warsaw',
-  onLanguageChange: () => {},
   onInitiateCall: () => {},
 };
 
-function renderCard(
-  overrides: Partial<FluencyCallCardViewProps> = {},
-  rows: FluencyCallRowViewProps[] = upcomingRows,
-  width = 640,
-) {
+function renderCard(overrides: Partial<FluencyCallCardViewProps> = {}, width = 640) {
   const props = { ...cardProps, ...overrides };
   return render(
     <BrowserAppShell>
-      <div
-        data-testid="fluency-call-shot"
-        style={{ width, background: 'rgb(10, 18, 30)', padding: 16 }}
-      >
-        <FluencyCallCardView {...props}>
-          {props.hasCalls
-            ? rows.map((item) => <FluencyCallRowView key={item.callId} {...item} />)
-            : null}
-        </FluencyCallCardView>
-      </div>
+      <WindowSizesProvider>
+        <div
+          data-testid="fluency-call-shot"
+          style={{ width, background: 'rgb(10, 18, 30)', padding: 16 }}
+        >
+          <FluencyCallCardView {...props} />
+        </div>
+      </WindowSizesProvider>
     </BrowserAppShell>,
   );
 }
-
-const ruCallCopy = setupI18n({
-  locale: 'ru',
-  messages: {
-    ru: {
-      "I'll join": ['Я присоединюсь'],
-      '{count} joining': [['count'], ' присоединяется'],
-      'Show chat': ['Показать чат'],
-    },
-  },
-});
 
 async function box(testId: string) {
   const element = await page.getByTestId(testId).element();
   return element.getBoundingClientRect();
 }
 
-test('upcoming calls list the week in Warsaw', async () => {
+test('the card shows the next call and keeps the others behind Other times', async () => {
   await renderCard();
 
+  await expect.element(page.getByText('Tomorrow · 19:00')).toBeVisible();
+  await expect.element(page.getByText('Tuesday · 18:00')).not.toBeInTheDocument();
+  await expect.element(page.getByText('Hi everyone')).toBeVisible();
+  await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-calls');
+
+  await userEvent.click(page.getByTestId('fluency-call-other-times'));
+  await expect
+    .element(page.getByRole('heading', { name: 'Upcoming conversations' }))
+    .toBeVisible();
+  await expect.element(page.getByTestId('fluency-call-other-thu')).toBeVisible();
+  await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
+  await expect.element(page.getByTestId('fluency-call-message-latest')).toBeInTheDocument();
+
+  await userEvent.keyboard('{Escape}');
+  await expect.element(page.getByTestId('fluency-call-schedule-modal')).not.toBeInTheDocument();
+  await expect.element(page.getByText('Tuesday · 18:00')).not.toBeInTheDocument();
 });
 
-test('a Vietnamese month stays on one line inside the date badge', async () => {
-  const label = formatCallLabel(
-    '2026-10-06T16:00:00.000Z',
-    new Date('2026-10-03T16:00:00.000Z'),
-    'vi',
-    'Europe/Warsaw',
-  );
-  await renderCard({}, [
-    row({
-      callId: 'vi',
-      month: label?.month ?? '',
-      day: label?.day ?? '',
-      title: 'Thứ Ba · 18:00',
-      joinCount: 1,
-    }),
-  ]);
-
-  const badge = await box('fluency-call-date-vi');
-  const month = (await page.getByText('T10').element()).getBoundingClientRect();
-  const day = (await page.getByText('6', { exact: true }).element()).getBoundingClientRect();
-
-  expect(month.width).toBeLessThanOrEqual(badge.width);
-  expect(month.height).toBeLessThan(16);
-  expect(month.top).toBeGreaterThanOrEqual(badge.top);
-  expect(month.bottom).toBeLessThanOrEqual(day.top);
-  expect(day.bottom).toBeLessThanOrEqual(badge.bottom + 1);
-});
-
-test('a narrow card stacks the join actions under the call', async () => {
-  await render(
-    <BrowserAppShell>
-      <I18nProvider i18n={ruCallCopy}>
-        <div
-          data-testid="fluency-call-shot"
-          style={{ width: 340, background: 'rgb(10, 18, 30)', padding: 0 }}
-        >
-          <FluencyCallCardView {...cardProps} timeZoneLabel="Europe/Warsaw">
-            <FluencyCallRowView
-              {...row({
-                callId: 'tue',
-                month: 'ОКТ',
-                day: '4',
-                title: 'Сегодня · 19:00',
-                joinCount: 0,
-              })}
-            />
-          </FluencyCallCardView>
-        </div>
-      </I18nProvider>
-    </BrowserAppShell>,
-  );
+test('a narrow card keeps the meeting and the reply inside the card', async () => {
+  await renderCard({}, 320);
 
   const card = await box('fluency-call-card');
-  const title = (await page.getByText('Сегодня · 19:00').element()).getBoundingClientRect();
-  const count = await box('fluency-call-join-count-tue');
+  const meet = await box('fluency-call-open');
   const join = await box('fluency-call-join-tue');
-  const chat = await box('fluency-call-show-chat-tue');
 
+  expect(meet.right).toBeLessThanOrEqual(card.right + 1);
+  expect(meet.left).toBeGreaterThanOrEqual(card.left);
   expect(join.right).toBeLessThanOrEqual(card.right + 1);
   expect(join.left).toBeGreaterThanOrEqual(card.left);
-  expect(chat.left).toBeGreaterThanOrEqual(card.left);
-  expect(join.top).toBeGreaterThanOrEqual(title.bottom - 1);
-  expect(join.top).toBeGreaterThanOrEqual(count.bottom - 1);
-  expect(Math.abs(chat.top - join.top)).toBeLessThan(4);
+  expect(join.top).toBeGreaterThanOrEqual(meet.bottom - 1);
 
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-narrow');
 });
 
-test('a joined call stays on the list', async () => {
-  await renderCard({}, [
-    row({ callId: 'tue', isJoining: true, joinCount: 6, title: 'Tomorrow · 19:00' }),
-  ]);
+test('a joined call stays on the card', async () => {
+  await renderCard({
+    calls: [call({ id: 'tue', isJoining: true })],
+    messages: [],
+  });
 
+  await expect
+    .element(page.getByTestId('fluency-call-join-tue'))
+    .toHaveAttribute('aria-pressed', 'true');
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('upcoming-joined');
 });
 
-test('a live call offers the meeting', async () => {
-  await renderCard({}, [
-    row({
-      callId: 'now',
-      day: '3',
-      title: 'Now · 19:00',
-      isLive: true,
-      canOpenCall: true,
-      isJoining: true,
-      joinCount: 8,
-    }),
-  ]);
+test('Google Meet stays available before the call starts and does not change the RSVP', async () => {
+  const onToggleJoining = vi.fn(async () => {});
+  await renderCard({ onToggleJoining });
 
+  const link = page.getByTestId('fluency-call-open');
+  await expect.element(link).toHaveAttribute('href', 'https://meet.example.com/room');
+  const element = await link.element();
+  element.addEventListener('click', (event) => event.preventDefault());
+  await userEvent.click(link);
+
+  expect(onToggleJoining).not.toHaveBeenCalled();
+});
+
+test('a live call still opens the same meeting', async () => {
+  await renderCard({
+    calls: [
+      call({ id: 'now', title: 'Now · 19:00', isLive: true, isJoining: true, participantCount: 8 }),
+    ],
+    messages: [],
+  });
+
+  await expect
+    .element(page.getByTestId('fluency-call-open'))
+    .toHaveAttribute('href', 'https://meet.example.com/room');
+  await expect.element(page.getByTestId('fluency-call-live-now')).toBeVisible();
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('happening-now');
 });
 
-test('show chat carries the unread count', async () => {
-  await renderCard({}, [row({ callId: 'tue', unreadCount: 3 })]);
+test('show older reveals history and hide older collapses it', async () => {
+  await renderCard();
 
-  await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('unread-chat');
+  await userEvent.click(page.getByTestId('fluency-call-show-older'));
+  await expect.element(page.getByText('See you next time')).toBeVisible();
+  await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('chat-older');
+
+  await userEvent.click(page.getByTestId('fluency-call-show-older'));
+  await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
+  await expect.element(page.getByText('Hi everyone')).toBeVisible();
 });
 
-test('join and chat buttons notify the row', async () => {
-  const onToggleJoin = vi.fn();
-  const onShowChat = vi.fn();
-  await renderCard({}, [row({ callId: 'tue', onToggleJoin, onShowChat })]);
+test('load more reveals messages above the first page', async () => {
+  const messages = Array.from({ length: FLUENCY_CALL_CHAT_PAGE + 1 }, (_, index) =>
+    message({ id: `m-${index}`, text: `Message ${index}` }),
+  );
+  await renderCard({ messages });
+
+  await userEvent.click(page.getByTestId('fluency-call-show-older'));
+  await expect.element(page.getByText('Message 0')).not.toBeInTheDocument();
+  await userEvent.click(page.getByTestId('fluency-call-load-older'));
+  await expect.element(page.getByText('Message 0')).toBeVisible();
+});
+
+test('a failed reply keeps the draft', async () => {
+  await renderCard({
+    messages: [],
+    onSendMessage: async () => {
+      throw new Error('offline');
+    },
+  });
+
+  const draft = page.getByRole('textbox', { name: 'Message the group' });
+  await userEvent.fill(draft, 'Hello there');
+  await userEvent.click(page.getByTestId('fluency-call-send'));
+
+  await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
+  await expect.element(draft).toHaveValue('Hello there');
+});
+
+test('you can edit your own message and a failure keeps the draft', async () => {
+  const onEditMessage = vi.fn(async () => {
+    throw new Error('offline');
+  });
+  await renderCard({
+    messages: [message({ id: 'mine', text: 'Hi everyone', isMine: true })],
+    onEditMessage,
+  });
+
+  await expect.element(page.getByTestId('fluency-call-edit-mine')).not.toBeInTheDocument();
+  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
+  await userEvent.click(page.getByTestId('fluency-call-edit-mine'));
+  const editor = page.getByRole('textbox', { name: 'Edit message' });
+  await userEvent.fill(editor, 'Hi again');
+  await userEvent.click(page.getByTestId('fluency-call-edit-save-mine'));
+
+  expect(onEditMessage).toHaveBeenCalledWith('mine', 'Hi again');
+  await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
+  await expect.element(editor).toHaveValue('Hi again');
+
+  await userEvent.click(page.getByTestId('fluency-call-edit-cancel-mine'));
+  await expect.element(page.getByText('Hi everyone')).toBeVisible();
+});
+
+test('you can delete your own message and someone else cannot', async () => {
+  const onDeleteMessage = vi.fn(async () => {});
+  await renderCard({
+    messages: [
+      message({ id: 'theirs', text: 'See you next time' }),
+      message({ id: 'mine', text: 'Hi everyone', isMine: true }),
+    ],
+    onDeleteMessage,
+    initialChatExpanded: true,
+  });
+
+  await expect.element(page.getByTestId('fluency-call-message-menu-theirs')).not.toBeInTheDocument();
+
+  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
+  await userEvent.click(page.getByTestId('fluency-call-delete-mine'));
+  await expect
+    .element(page.getByText('Are you sure you want to delete this message?'))
+    .toBeVisible();
+  await userEvent.click(page.getByRole('button', { name: 'Cancel' }));
+  expect(onDeleteMessage).not.toHaveBeenCalled();
+
+  await userEvent.click(page.getByTestId('fluency-call-message-menu-mine'));
+  await userEvent.click(page.getByTestId('fluency-call-delete-mine'));
+  await userEvent.click(page.getByTestId('fluency-call-delete-confirm-mine'));
+  expect(onDeleteMessage).toHaveBeenCalledWith('mine');
+});
+
+test('a failed RSVP stays on I will join', async () => {
+  await renderCard({
+    messages: [],
+    calls: [call({ id: 'tue' })],
+    onToggleJoining: async () => {
+      throw new Error('offline');
+    },
+  });
 
   await userEvent.click(page.getByTestId('fluency-call-join-tue'));
-  await userEvent.click(page.getByTestId('fluency-call-show-chat-tue'));
-
-  expect(onToggleJoin).toHaveBeenCalledTimes(1);
-  expect(onShowChat).toHaveBeenCalledTimes(1);
+  await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
+  await expect
+    .element(page.getByTestId('fluency-call-join-tue'))
+    .toHaveAttribute('aria-pressed', 'false');
 });
 
-test('no call offers a proposal', async () => {
-  await renderCard({ hasCalls: false });
+test('an RSVP shows a pending label until it finishes', async () => {
+  let finish = () => {};
+  const pending = new Promise<void>((resolve) => {
+    finish = resolve;
+  });
+  await renderCard({
+    messages: [],
+    calls: [call({ id: 'tue' })],
+    onToggleJoining: () => pending,
+  });
 
+  await userEvent.click(page.getByTestId('fluency-call-join-tue'));
+  await expect.element(page.getByText('Updating...')).toBeVisible();
+  finish();
+  await expect.element(page.getByText("I'll join")).toBeVisible();
+});
+
+test('a long message stays inside the card', async () => {
+  await renderCard(
+    {
+      messages: [
+        message({
+          id: 'long',
+          authorName: 'A very long display name that should wrap onto another line',
+          text: 'supercalifragilistic'.repeat(12),
+        }),
+      ],
+    },
+    320,
+  );
+
+  const card = await box('fluency-call-card');
+  const body = await box('fluency-call-message-long');
+  expect(body.right).toBeLessThanOrEqual(card.right + 1);
+  expect(body.left).toBeGreaterThanOrEqual(card.left);
+});
+
+test('no call still offers the meeting and a proposal', async () => {
+  const onInitiateCall = vi.fn();
+  await renderCard({ calls: [], messages: [], onInitiateCall });
+
+  await expect
+    .element(page.getByTestId('fluency-call-open'))
+    .toHaveAttribute('href', 'https://meet.example.com/room');
+  await expect.element(page.getByTestId('fluency-call-chat-empty')).toBeVisible();
   await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('no-call');
+
+  await userEvent.click(page.getByTestId('fluency-call-other-times'));
+  await expect.element(page.getByTestId('fluency-call-no-other')).toBeVisible();
+  await userEvent.click(page.getByTestId('fluency-call-initiate'));
+  expect(onInitiateCall).toHaveBeenCalledTimes(1);
 });
 
-test('a sent request shows the time and a reply note', async () => {
-  await renderCard({ hasCalls: false, requestedAtLabel: 'Tomorrow · 18:00' });
+test('the meeting control stays when there is no saved link', async () => {
+  await renderCard({ calls: [], messages: [], meetUrl: null });
 
-  await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('request-sent');
+  const meet = page.getByTestId('fluency-call-open');
+  await expect.element(meet).toBeDisabled();
+  const element = await meet.element();
+  expect(element.getAttribute('href')).toBeNull();
 });
 
-test('the language dropdown filters by the chosen language', async () => {
+test('who is joining sits on that call', async () => {
+  await renderCard({
+    messages: [],
+    callPeople: (item) => (
+      <span data-testid={`fluency-call-people-${item.id}`}>{`Who's joining · ${item.title}`}</span>
+    ),
+  });
+
+  await userEvent.click(page.getByTestId('fluency-call-other-times'));
+
+  const next = await page.getByTestId('fluency-call-other-tue').element();
+  const later = await page.getByTestId('fluency-call-other-thu').element();
+  expect(next.textContent).toContain("Who's joining · Tomorrow · 19:00");
+  expect(later.textContent).toContain("Who's joining · Tuesday · 18:00");
+  expect(next.querySelector('[data-testid="fluency-call-people-thu"]')).toBeNull();
+});
+
+test('a sent request shows the time inside other times', async () => {
+  const onInitiateCall = vi.fn();
+  await renderCard({
+    calls: [call({ id: 'tue' })],
+    messages: [],
+    requestedAtLabel: 'English · Tomorrow · 18:00',
+    onInitiateCall,
+  });
+
+  await userEvent.click(page.getByTestId('fluency-call-other-times'));
+  await expect.element(page.getByTestId('fluency-call-request-sent')).toBeVisible();
+  await userEvent.click(page.getByTestId('fluency-call-change-time'));
+  expect(onInitiateCall).toHaveBeenCalledTimes(1);
+  await expect.element(page.getByTestId('fluency-call-schedule-modal')).toMatchScreenshot('request-sent');
+});
+
+test('the language menu names the chosen language', async () => {
   const onLanguageChange = vi.fn();
-  await renderCard({ onLanguageChange });
+  await renderCard({ onLanguageChange, messages: [] });
 
   await userEvent.click(page.getByTestId('fluency-call-language-filter'));
   await userEvent.click(page.getByRole('option', { name: /Español/ }));
@@ -226,35 +370,37 @@ test('the language dropdown filters by the chosen language', async () => {
   expect(onLanguageChange).toHaveBeenCalledWith('es');
 });
 
-test('listed calls still offer a proposal', async () => {
-  const onInitiateCall = vi.fn();
-  await renderCard({ onInitiateCall });
+test('the welcome note has no video player', async () => {
+  await renderCard({ messages: [], calls: [call({ id: 'tue' })] });
 
-  await userEvent.click(page.getByTestId('fluency-call-initiate'));
-  expect(onInitiateCall).toHaveBeenCalledTimes(1);
+  await userEvent.click(page.getByTestId('fluency-call-welcome'));
+  await expect.element(page.getByRole('heading', { name: 'A hello from Alex' })).toBeVisible();
+  expect(document.querySelector('video')).toBeNull();
+
+  await userEvent.keyboard('{Escape}');
+  await expect.element(page.getByTestId('fluency-call-welcome-modal')).not.toBeInTheDocument();
 });
 
-test('a listed call keeps a sent request editable', async () => {
-  const onInitiateCall = vi.fn();
-  await renderCard({ onInitiateCall, requestedAtLabel: 'Tomorrow · 18:00' });
+test('the host intro uses the muted preview of the real video', async () => {
+  await renderCard({
+    messages: [],
+    calls: [call({ id: 'tue' })],
+    welcomeVideoSrc: '/group_call/intro.webm',
+  });
 
-  await expect.element(page.getByTestId('fluency-call-request-sent')).toBeVisible();
-  await userEvent.click(page.getByTestId('fluency-call-change-time'));
-  expect(onInitiateCall).toHaveBeenCalledTimes(1);
-});
+  const preview = (await page
+    .getByTestId('fluency-call-welcome-preview')
+    .element()) as HTMLVideoElement;
+  expect(preview.getAttribute('src')).toBe('/group_call/intro.webm');
+  expect(preview.muted).toBe(true);
+  expect(preview.loop).toBe(true);
 
-test('propose and change time notify the card', async () => {
-  const onInitiateCall = vi.fn();
-  await renderCard({ hasCalls: false, onInitiateCall });
-  await userEvent.click(page.getByTestId('fluency-call-initiate'));
-  expect(onInitiateCall).toHaveBeenCalledTimes(1);
-});
-
-test('change time notifies the card', async () => {
-  const onInitiateCall = vi.fn();
-  await renderCard({ hasCalls: false, onInitiateCall, requestedAtLabel: 'Tomorrow · 18:00' });
-  await userEvent.click(page.getByTestId('fluency-call-change-time'));
-  expect(onInitiateCall).toHaveBeenCalledTimes(1);
+  await userEvent.click(page.getByTestId('fluency-call-welcome'));
+  const video = (await page.getByTestId('muted-preview-video').element()) as HTMLVideoElement;
+  expect(video.getAttribute('src')).toBe('/group_call/intro.webm');
+  expect(video.muted).toBe(true);
+  await expect.element(page.getByTestId('muted-preview-unmute')).toBeVisible();
+  await expect.element(page.getByRole('heading', { name: 'A hello from Alex' })).toBeVisible();
 });
 
 const renderConductModal = (props: {

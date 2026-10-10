@@ -7,8 +7,6 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Better UI/UX for group calls
-
 - Better UI for Demo call: Better finish screen and redirection to the App
 
 - Create ad for Quebec

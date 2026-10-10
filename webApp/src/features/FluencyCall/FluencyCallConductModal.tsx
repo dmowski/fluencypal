@@ -67,6 +67,7 @@ export const FluencyCallConductModal = ({
           </Button>
           <Button
             variant="text"
+            color="info"
             data-testid="fluency-call-conduct-close"
             data-analytics="community-call-conduct-close"
             onClick={onClose}

@@ -6,7 +6,11 @@ import {
   communityCallChosenTitle,
   fluencyCallRowTitle,
   formatCallStartLabel,
+  formatCallDateLine,
   formatCallLabel,
+  formatChatTimeLabel,
+  selectFeaturedCall,
+  selectPersistentMeetLink,
   timeZoneCity,
   formatWarsawDateTime,
   buildMonthGrid,
@@ -161,6 +165,97 @@ describe('call labels in a timezone', () => {
     const now = new Date('2026-10-04T17:30:00.000Z');
     const label = formatCallLabel('2026-10-04T17:00:00.000Z', now, 'en', warsaw);
     expect(label && fluencyCallRowTitle(label, true, words)).toBe('Now · 19:00');
+  });
+});
+
+describe('selectFeaturedCall', () => {
+  const now = new Date('2026-10-03T12:00:00.000Z');
+
+  it('features a call that started inside the lookback, not one from the day before', () => {
+    const recent = call({ id: 'recent', startsAtIso: '2026-10-03T11:00:00.000Z' });
+    const stale = call({ id: 'stale', startsAtIso: '2026-10-02T20:00:00.000Z' });
+    const upcoming = call({ id: 'next', startsAtIso: '2026-10-04T17:00:00.000Z' });
+    expect(selectFeaturedCall([stale, upcoming, recent], now)?.id).toBe('recent');
+  });
+
+  it('features the earliest upcoming call when none are underway', () => {
+    const later = call({ id: 'later', startsAtIso: '2026-10-08T17:00:00.000Z' });
+    const sooner = call({ id: 'sooner', startsAtIso: '2026-10-04T17:00:00.000Z' });
+    expect(selectFeaturedCall([later, sooner], now)?.id).toBe('sooner');
+  });
+});
+
+describe('selectPersistentMeetLink', () => {
+  const featured = call({
+    id: 'next',
+    startsAtIso: '2026-10-04T17:00:00.000Z',
+    link: 'https://meet.example.com/next',
+    languageCode: 'en',
+  });
+
+  it('uses the featured call link even when an older call was updated later', () => {
+    const older = call({
+      id: 'older',
+      startsAtIso: '2026-09-01T17:00:00.000Z',
+      updatedAtIso: '2026-10-09T00:00:00.000Z',
+      link: 'https://meet.example.com/old',
+      languageCode: 'en',
+    });
+    expect(selectPersistentMeetLink([older, featured], 'en', featured)).toBe(
+      'https://meet.example.com/next',
+    );
+  });
+
+  it('keeps the latest saved link for that language when nothing is featured', () => {
+    const stopped = call({
+      id: 'stopped',
+      startsAtIso: '2026-09-01T17:00:00.000Z',
+      updatedAtIso: '2026-10-02T00:00:00.000Z',
+      status: 'stopped',
+      link: 'https://meet.example.com/stopped',
+      languageCode: 'en',
+    });
+    const spanish = call({
+      id: 'es',
+      startsAtIso: '2026-10-08T17:00:00.000Z',
+      updatedAtIso: '2026-10-09T00:00:00.000Z',
+      link: 'https://meet.example.com/es',
+      languageCode: 'es',
+    });
+    expect(selectPersistentMeetLink([spanish, stopped], 'en', null)).toBe(
+      'https://meet.example.com/stopped',
+    );
+  });
+
+  it('returns null when that language has no real link', () => {
+    const blank = call({
+      id: 'blank',
+      startsAtIso: '2026-10-04T17:00:00.000Z',
+      link: 'not a url',
+      languageCode: 'en',
+    });
+    expect(selectPersistentMeetLink([blank], 'en', blank)).toBeNull();
+  });
+});
+
+describe('chat and call dates across a timezone boundary', () => {
+  const now = new Date('2026-10-04T10:00:00.000Z');
+  const messageAt = '2026-10-03T23:00:00.000Z';
+
+  it('calls the same instant today in Warsaw and yesterday in New York', () => {
+    expect(formatChatTimeLabel(messageAt, now, 'en', 'Europe/Warsaw')).toMatchObject({
+      relative: 'today',
+      time: '01:00',
+    });
+    expect(formatChatTimeLabel(messageAt, now, 'en', 'America/New_York')).toMatchObject({
+      relative: 'yesterday',
+      time: '19:00',
+    });
+  });
+
+  it('moves the calendar date with the zone', () => {
+    expect(formatCallDateLine('2026-10-04T22:30:00.000Z', 'en', 'Europe/Warsaw')).toContain('5');
+    expect(formatCallDateLine('2026-10-04T22:30:00.000Z', 'en', 'America/New_York')).toContain('4');
   });
 });
 

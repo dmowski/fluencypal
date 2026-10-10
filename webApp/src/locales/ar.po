@@ -169,7 +169,7 @@ msgstr "2. ابدأ بالخطة المجانية"
 msgid "3 AI hours"
 msgstr "3 ساعات من الذكاء الاصطناعي"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:213
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:210
 #. js-lingui-explicit-id
 msgid "3 minutes free · No account or card needed"
 msgstr "3 دقائق مجاناً · لا حاجة لحساب أو بطاقة"
@@ -185,7 +185,7 @@ msgstr "3. لا تدفع أي شيء"
 msgid "30 minutes"
 msgstr "30 دقيقة"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:257
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:254
 #. js-lingui-explicit-id
 msgid "30 seconds left — one last thought"
 msgstr ""
@@ -255,6 +255,11 @@ msgstr ""
 "لعبة تخمين الكلمات الممتعة لـ 2-20 لاعبًا. اشرح الكلمات لزملائك في الفريق "
 "دون قول الكلمة نفسها!"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:908
+#. js-lingui-explicit-id
+msgid "A hello from Alex"
+msgstr "تحية من أليكس"
+
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
 #. js-lingui-explicit-id
 msgid ""
@@ -279,10 +284,15 @@ msgstr "يوم خفيف لا يزال يُحتسب. أكمل مهام اليوم
 msgid "A little about you"
 msgstr "قليلاً عنك"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:94
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:91
 #. js-lingui-explicit-id
 msgid "A little conversation. A lot more confidence."
 msgstr "قليل من المحادثة. الكثير من الثقة."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:516
+#. js-lingui-explicit-id
+msgid "A little practice. A few friendly faces."
+msgstr "قليل من الممارسة. بعض الوجوه الودودة."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:27
 #. js-lingui-explicit-id
@@ -359,6 +369,11 @@ msgid ""
 "A short call to get to know each other. Alex writes you after this, and you "
 "pick a time."
 msgstr "مكالمة قصيرة للتعرف على بعضنا البعض. يكتب لك أليكس بعد ذلك، وأنت تحدد وقتًا."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:598
+#. js-lingui-explicit-id
+msgid "A short hello from Alex · What to expect"
+msgstr "تحية قصيرة من أليكس · ما الذي يمكن توقعه"
 
 #: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:24
 #. js-lingui-explicit-id
@@ -922,7 +937,7 @@ msgstr ""
 msgid "All time"
 msgstr "طوال الوقت"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:350
+#: src/features/FluencyCall/FluencyCallCardView.tsx:926
 #. js-lingui-explicit-id
 msgid "All times in {zone}"
 msgstr ""
@@ -1010,7 +1025,7 @@ msgid "Analyzing..."
 msgstr "جار التحليل..."
 
 #: src/features/Auth/AuthSignInStep.tsx:238
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:231
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
 msgid "and"
@@ -1131,6 +1146,7 @@ msgid "Are you sure you want to delete this chat? This action cannot be undone."
 msgstr "هل أنت متأكد أنك تريد حذف هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء."
 
 #: src/features/Chat/Message/Message.tsx:105
+#: src/features/FluencyCall/FluencyCallCardView.tsx:284
 #. js-lingui-explicit-id
 msgid "Are you sure you want to delete this message?"
 msgstr "هل أنت متأكد أنك تريد حذف هذه الرسالة؟"
@@ -1383,6 +1399,11 @@ msgstr "استعد لمقابلة العمل الخاصة بك"
 #. js-lingui-explicit-id
 msgid "Be specific about your role"
 msgstr "كن محددًا بشأن دورك"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:823
+#. js-lingui-explicit-id
+msgid "Be the first to say hello."
+msgstr "كن أول من يقول مرحبًا."
 
 #: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
 #. js-lingui-explicit-id
@@ -1680,7 +1701,7 @@ msgstr "بالاستمرار، فإنك توافق على شروطنا"
 msgid "By continuing, you agree to the"
 msgstr "من خلال المتابعة، فإنك توافق على الـ"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:219
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:216
 #. js-lingui-explicit-id
 msgid "By starting this call, you confirm you are 13 or older and agree to the"
 msgstr "عند بدء هذه المكالمة، تؤكد أنك تبلغ من العمر 13 عامًا أو أكثر وتوافق على الـ"
@@ -1780,6 +1801,8 @@ msgstr "هل يمكنني استخدامه على الهاتف الذكي؟"
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
 #: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
+#: src/features/FluencyCall/FluencyCallCardView.tsx:277
+#: src/features/FluencyCall/FluencyCallCardView.tsx:304
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
 #: src/features/Reader/components/AddBookModal.tsx:426
@@ -1852,7 +1875,7 @@ msgstr "تحدي"
 msgid "Change plan"
 msgstr "تغيير الخطة"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:401
+#: src/features/FluencyCall/FluencyCallCardView.tsx:1006
 #. js-lingui-explicit-id
 msgid "Change time"
 msgstr "تغيير الوقت"
@@ -2563,7 +2586,7 @@ msgstr "اضغط على زر المشاركة بجانب app.fluencypal.com في
 #: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
 #: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:686
-#: src/features/FluencyCall/FluencyCallConductModal.tsx:75
+#: src/features/FluencyCall/FluencyCallConductModal.tsx:76
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
@@ -3004,7 +3027,7 @@ msgstr "استمر في تسجيل المقالة الأخيرة"
 msgid "Continue to confirmation"
 msgstr "استمرار إلى التأكيد"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:119
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:116
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:63
 #. js-lingui-explicit-id
 msgid "Continue to FluencyPal"
@@ -3088,6 +3111,7 @@ msgstr "محادثة"
 msgid "Conversation 10"
 msgstr "المحادثة 10"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:754
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Conversation chat"
@@ -3271,6 +3295,18 @@ msgstr "تعذّر بدء الامتحان. الرجاء المحاولة مرة
 msgid "Could not start your account. Please try again."
 msgstr "تعذر بدء حسابك. يرجى المحاولة مرة أخرى."
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:797
+#: src/features/FluencyCall/FluencyCallCardView.tsx:810
+#. js-lingui-explicit-id
+msgid "Could not update your message. Please try again."
+msgstr "تعذر تحديث رسالتك. يرجى المحاولة مرة أخرى."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:412
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:230
+#. js-lingui-explicit-id
+msgid "Could not update your plans. Please try again."
+msgstr "تعذر تحديث خططك. يرجى المحاولة مرة أخرى."
+
 #: src/features/Dashboard/CreatePersonalPlanModal.tsx:183
 #: src/features/Goal/Quiz/QuizPage2.tsx:254
 #. js-lingui-explicit-id
@@ -3420,7 +3456,7 @@ msgstr "إنشاء حساب"
 msgid "Create an account"
 msgstr "إنشاء حساب"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:126
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:123
 #. js-lingui-explicit-id
 msgid "Create an account to save your progress. Continued AI speaking uses credits."
 msgstr "إنشاء حساب لحفظ تقدمك. استمرار استخدام الذكاء الاصطناعي للتحدث يتطلب أرصدة."
@@ -3434,7 +3470,7 @@ msgstr ""
 "قم بإنشاء حساب باستخدام بريدك الإلكتروني وكلمة مرور. ستظل ممارستك على ذلك "
 "الحساب."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:119
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:116
 #. js-lingui-explicit-id
 msgid "Create my account"
 msgstr "إنشاء حسابي"
@@ -4048,6 +4084,8 @@ msgid "Decrease paragraph gap"
 msgstr "تقليل الفجوة بين الفقرات"
 
 #: src/features/Chat/Message/Message.tsx:423
+#: src/features/FluencyCall/FluencyCallCardView.tsx:296
+#: src/features/FluencyCall/FluencyCallCardView.tsx:362
 #: src/features/Reader/components/Cards.tsx:270
 #: src/features/User/AiKnowledgeModal.tsx:120
 #. js-lingui-explicit-id
@@ -4629,6 +4667,7 @@ msgstr "سهل"
 #: src/features/Chat/Message/Message.tsx:411
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:61
 #: src/features/Essay/EssayText.tsx:405
+#: src/features/FluencyCall/FluencyCallCardView.tsx:350
 #: src/features/User/AiKnowledgeModal.tsx:122
 #. js-lingui-explicit-id
 msgid "Edit"
@@ -4638,6 +4677,11 @@ msgstr "تحرير"
 #. js-lingui-explicit-id
 msgid "Edit Community Space"
 msgstr "تحرير مساحة المجتمع"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:220
+#. js-lingui-explicit-id
+msgid "Edit message"
+msgstr "تحرير الرسالة"
 
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:95
 #. js-lingui-explicit-id
@@ -5489,6 +5533,11 @@ msgstr "الدروس المكتملة. افتح واحدًا لتسمع إجاب
 #. js-lingui-explicit-id
 msgid "First talk"
 msgstr "أول محادثة"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:595
+#. js-lingui-explicit-id
+msgid "First time? Meet your host"
+msgstr "أول مرة؟ تعرف على مضيفك"
 
 #: src/features/Tasks/useDailyPlans.ts:201
 #. js-lingui-explicit-id
@@ -6373,7 +6422,7 @@ msgstr ""
 "المكالمات الجماعية مجانية. اطلع على الأوقات القادمة، أنشئ حسابًا، وتدرب مع "
 "الذكاء الاصطناعي حتى المكالمة."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:294
+#: src/features/FluencyCall/FluencyCallCardView.tsx:504
 #: src/features/Header/PaymentHistoryModal.tsx:31
 #: src/features/Usage/Subscription/PaidAccessChooser.tsx:21
 #. js-lingui-explicit-id
@@ -6601,6 +6650,16 @@ msgstr "إخفاء"
 #. js-lingui-explicit-id
 msgid "Hide forever"
 msgstr "إخفاء إلى الأبد"
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:396
+#. js-lingui-explicit-id
+msgid "Hide names"
+msgstr "إخفاء الأسماء"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:769
+#. js-lingui-explicit-id
+msgid "Hide older"
+msgstr "إخفاء الأقدم"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:161
 #. js-lingui-explicit-id
@@ -7059,10 +7118,15 @@ msgstr ""
 "\n"
 "سأضيف محاولات إعادة مع وقت انتظار أطول.\n"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:237
+#: src/features/FluencyCall/FluencyCallCardView.tsx:451
 #. js-lingui-explicit-id
 msgid "I'll join"
 msgstr "سأنضم"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:450
+#. js-lingui-explicit-id
+msgid "I'm joining"
+msgstr "أنا أنضم"
 
 #: src/features/Landing/Contact/ContactsPage.tsx:137
 #. js-lingui-explicit-id
@@ -7661,7 +7725,6 @@ msgid "Job Interview Skills"
 msgstr "مهارات المقابلة الوظيفية"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/FluencyCall/FluencyCallCardView.tsx:220
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "انضم"
@@ -7688,7 +7751,7 @@ msgstr "انضم لمحادثة جماعية | FluencyPal"
 msgid "Join candidates who transformed their interview performance"
 msgstr "انضم إلى المرشحين الذين طوروا أدائهم في المقابلات"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:98
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:95
 #. js-lingui-explicit-id
 msgid "Join FluencyPal to build a speaking habit and keep your progress."
 msgstr "انضم إلى FluencyPal لبناء عادة التحدث والحفاظ على تقدمك."
@@ -7697,16 +7760,6 @@ msgstr "انضم إلى FluencyPal لبناء عادة التحدث والحفا
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
 msgstr "انضم إلى الغرف لمناقشة مواضيع محددة مع الأعضاء الآخرين"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:312
-#. js-lingui-explicit-id
-msgid "Join the conversations that fit your week."
-msgstr "انضم إلى المحادثات التي تناسب أسبوعك."
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:237
-#. js-lingui-explicit-id
-msgid "Joined"
-msgstr "انضمَّ"
 
 #: src/features/Landing/LandingPage.tsx:368
 #: src/features/Landing/PlanLandingBlock.tsx:585
@@ -7782,7 +7835,7 @@ msgstr "اجعلها مختصرة وذات صلة"
 msgid "Keep practicing"
 msgstr "استمر في الممارسة"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:125
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:122
 #. js-lingui-explicit-id
 msgid "Keep the conversation going"
 msgstr "استمر في المحادثة"
@@ -7814,7 +7867,7 @@ msgstr "خطة تعلم الكورية"
 msgid "Landing Your First Dev Job Is Harder Than It Should Be"
 msgstr "النجاح في الحصول على أول وظيفة تطوير أصعب مما ينبغي"
 
-#: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:35
+#: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:37
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:117
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:310
@@ -8028,7 +8081,7 @@ msgstr "اترك الكتاب المشترك"
 msgid "Leave your message"
 msgstr "اترك رسالتك"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:262
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:259
 #. js-lingui-explicit-id
 msgid "left"
 msgstr "يسار"
@@ -8146,6 +8199,11 @@ msgstr "تحميل المزيد"
 #. js-lingui-explicit-id
 msgid "Load More"
 msgstr "تحميل المزيد"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:781
+#. js-lingui-explicit-id
+msgid "Load more messages"
+msgstr "تحميل المزيد من الرسائل"
 
 #: src/features/News/NewsFeedModal.tsx:160
 #. js-lingui-explicit-id
@@ -8440,6 +8498,11 @@ msgstr "الرسالة مخفية بسبب انتهاك السياسة."
 msgid "Message options"
 msgstr "خيارات الرسائل"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:851
+#. js-lingui-explicit-id
+msgid "Message the group"
+msgstr "راسل المجموعة"
+
 #: src/features/Navigation/AppNotificationsButton.tsx:101
 #. js-lingui-explicit-id
 msgid "Messages"
@@ -8635,6 +8698,11 @@ msgstr "خطة شهرية"
 msgid "More"
 msgstr "أكثر"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:677
+#. js-lingui-explicit-id
+msgid "More conversations soon"
+msgstr "المزيد من المحادثات قريبًا"
+
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:55
 #. js-lingui-explicit-id
 msgid "More improvements"
@@ -8651,6 +8719,7 @@ msgstr ""
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:105
 #: src/features/Conversation/AliasGamePanel.tsx:175
+#: src/features/FluencyCall/FluencyCallCardView.tsx:314
 #. js-lingui-explicit-id
 msgid "More options"
 msgstr "المزيد من الخيارات"
@@ -8818,6 +8887,11 @@ msgstr "التالي"
 msgid "Next article"
 msgstr "المقالة التالية"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:622
+#. js-lingui-explicit-id
+msgid "Next conversation"
+msgstr "المحادثة التالية"
+
 #: src/features/InteractiveLesson/LessonResultsView.tsx:98
 #. js-lingui-explicit-id
 msgid "Next lesson"
@@ -8915,11 +8989,6 @@ msgid "No charge will be made"
 msgstr ""
 "\n"
 "لن يتم فرض أي رسوم\n"
-
-#: src/features/FluencyCall/FluencyCallCardView.tsx:372
-#. js-lingui-explicit-id
-msgid "No conversation scheduled yet."
-msgstr "لم يتم جدولة أي محادثة حتى الآن."
 
 #: src/features/Usage/UsageStatsCards.tsx:251
 #. js-lingui-explicit-id
@@ -9034,6 +9103,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "No original file found for this book."
 msgstr "لم يتم العثور على ملف أصلي لهذا الكتاب."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:969
+#. js-lingui-explicit-id
+msgid "No other calls scheduled yet."
+msgstr "لم يتم جدولة مكالمات أخرى بعد."
 
 #: src/features/Router/BlockedAccess.tsx:370
 #. js-lingui-explicit-id
@@ -9307,8 +9381,7 @@ msgstr "إشعارات"
 #: src/features/Alias/components/Scoreboard.tsx:147
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:90
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:33
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:51
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:87
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:167
 #. js-lingui-explicit-id
 msgid "Now"
 msgstr "الآن"
@@ -9413,6 +9486,11 @@ msgstr "نمط واحد. ممارسة حقيقية للتحدث."
 msgid "One payment. No automatic renewal."
 msgstr "دفعة واحدة. بدون تجديد تلقائي."
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:757
+#. js-lingui-explicit-id
+msgid "One shared chat for all calls"
+msgstr "غرفة دردشة مشتركة لجميع المكالمات"
+
 #: src/features/Dashboard/BrainCard.tsx:431
 #. js-lingui-explicit-id
 msgid "One thing left to do"
@@ -9477,6 +9555,12 @@ msgstr "افتح لوحة التحكم"
 msgid "Open Dev Panel"
 msgstr "افتح لوحة التطوير"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:708
+#: src/features/FluencyCall/FluencyCallCardView.tsx:721
+#. js-lingui-explicit-id
+msgid "Open Google Meet"
+msgstr "افتح Google Meet"
+
 #: src/features/Usage/UsageStatsCards.tsx:632
 #. js-lingui-explicit-id
 msgid "Open history"
@@ -9492,7 +9576,7 @@ msgstr "افتح في المتصفح"
 msgid "Open in Telegram"
 msgstr "افتح في تيليجرام"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:131
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:128
 #. js-lingui-explicit-id
 msgid "Open my practice dashboard"
 msgstr "افتح لوحة التحكم الخاصة بممارستي"
@@ -9596,6 +9680,11 @@ msgstr "اطلب مع الالتزام بالدفع {amount}"
 #. js-lingui-explicit-id
 msgid "Other languages"
 msgstr "لغات أخرى"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:631
+#. js-lingui-explicit-id
+msgid "Other times"
+msgstr "أوقات أخرى"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:21
 #. js-lingui-explicit-id
@@ -9802,12 +9891,12 @@ msgstr "سجل الدفعات"
 msgid "Payment option"
 msgstr "خيار الدفع"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:320
+#: src/features/FluencyCall/FluencyCallCardView.tsx:523
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "تم استلام الدفع. يمكنك الانضمام في لحظة."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:319
+#: src/features/FluencyCall/FluencyCallCardView.tsx:522
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "تم استلام الدفع. يمكنك الانضمام إلى محادثات المجموعة."
@@ -9933,11 +10022,6 @@ msgstr "اختر مستوى صعوبة يتناسب مع مجموعتك."
 msgid "Pick a level to start playing!"
 msgstr "اختر مستوى لبدء اللعب!"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:375
-#. js-lingui-explicit-id
-msgid "Pick a time and we'll set one up."
-msgstr "اختر وقتًا وسنقوم بتحديد موعد."
-
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:73
 #. js-lingui-explicit-id
 msgid "Pick a username and an avatar. Other people will see them."
@@ -10023,6 +10107,11 @@ msgstr "قم بدور"
 #. js-lingui-explicit-id
 msgid "Play With AI"
 msgstr "العب مع الذكاء الاصطناعي"
+
+#: src/features/uiKit/Video/MutedPreviewVideo.tsx:65
+#. js-lingui-explicit-id
+msgid "Play with sound"
+msgstr "العب مع الصوت"
 
 #: src/features/Alias/components/GameEnd.tsx:119
 #: src/features/Alias/components/GamePlay.tsx:78
@@ -10585,11 +10674,6 @@ msgstr "ممارسة، تحسين، تكرار"
 msgid "Practice, plus a block of advanced conversation"
 msgstr "تمرن، بالإضافة إلى كتلة من المحادثة المتقدمة"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:310
-#. js-lingui-explicit-id
-msgid "Practise speaking with other learners."
-msgstr "مارس التحدث مع متعلمين آخرين."
-
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:11
 #. js-lingui-explicit-id
 msgid "Precise, actionable insights about APIs, data, and resiliency"
@@ -10742,7 +10826,7 @@ msgstr "الدعم ذو الأولوية"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:116
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:37
 #: src/features/Landing/Footer.tsx:189
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:240
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:237
 #: src/features/PayWall/CardValidator.tsx:118
 #: src/features/Router/BlockedAccess.tsx:170
 #: src/features/Router/BlockedAccess.tsx:321
@@ -10879,7 +10963,7 @@ msgstr "نطق المصدر"
 msgid "Pronounce translations"
 msgstr "انطق الترجمات"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:389
+#: src/features/FluencyCall/FluencyCallCardView.tsx:995
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:108
 #. js-lingui-explicit-id
 msgid "Propose a conversation"
@@ -11528,7 +11612,7 @@ msgstr "الإبلاغ عن المستخدم"
 msgid "Request failed. Please try again."
 msgstr "فشل الطلب. يرجى المحاولة مرة أخرى."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:362
+#: src/features/FluencyCall/FluencyCallCardView.tsx:978
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Request sent"
@@ -11617,7 +11701,7 @@ msgstr "إرجاع عنصر إلى المتجر"
 msgid "Review and edit what the AI remembers"
 msgstr "راجع وعدّل ما تتذكره الذكاء الاصطناعي"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:142
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:139
 #. js-lingui-explicit-id
 msgid ""
 "Review what you practiced. Your teacher’s suggestions appear in the "
@@ -11779,6 +11863,7 @@ msgstr "نفس درس Just Talk عبر خادم الصوت WebSocket الجدي�
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
 #: src/features/Essay/EssayText.tsx:281
+#: src/features/FluencyCall/FluencyCallCardView.tsx:265
 #: src/features/User/AiKnowledgeModal.tsx:119
 #. js-lingui-explicit-id
 msgid "Save"
@@ -11817,6 +11902,16 @@ msgstr "قل بضع جمل بكلماتك الخاصة. الأمثلة أدنا�
 #. js-lingui-explicit-id
 msgid "Say a little more about how the lesson felt or what you want next."
 msgstr "قل المزيد عن شعورك تجاه الدرس أو ما تريده بعد ذلك."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:680
+#. js-lingui-explicit-id
+msgid "Say hello in the chat while we plan the next call."
+msgstr "قل مرحباً في الدردشة بينما نخطط للمكالمة التالية."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:848
+#. js-lingui-explicit-id
+msgid "Say hello or ask a question..."
+msgstr "قل مرحباً أو اطرح سؤالاً..."
 
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
@@ -11984,6 +12079,11 @@ msgstr "أرسل الرابط"
 msgid "Send me email notifications"
 msgstr "أرسل لي إشعارات البريد الإلكتروني"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:876
+#. js-lingui-explicit-id
+msgid "Send message"
+msgstr "إرسال رسالة"
+
 #: src/features/Chat/SubmitForm.tsx:246
 #: src/features/Chat/SubmitForm.tsx:327
 #. js-lingui-explicit-id
@@ -12033,6 +12133,11 @@ msgstr "أرسل إجابتك للمتابعة."
 #. js-lingui-explicit-id
 msgid "Send {messagesNeeded} messages to unlock full access"
 msgstr "إرسال {messagesNeeded} رسائل لفتح الوصول الكامل"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:876
+#. js-lingui-explicit-id
+msgid "Sending message"
+msgstr "جارٍ إرسال الرسالة"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:327
@@ -12232,11 +12337,6 @@ msgstr "اعرض كل تحسينات القواعد الخاصة بك."
 msgid "Show all {count} voices"
 msgstr "اعرض جميع الأصوات {count}"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:200
-#. js-lingui-explicit-id
-msgid "Show chat"
-msgstr "عرض المحادثة"
-
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:309
 #. js-lingui-explicit-id
 msgid "Show fewer voices"
@@ -12255,6 +12355,11 @@ msgstr "عرض أقل"
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "أظهر المزيد"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:769
+#. js-lingui-explicit-id
+msgid "Show older"
+msgstr "عرض الأقدم"
 
 #: src/features/Chat/ShowPreviousMessagesButton.tsx:61
 #. js-lingui-explicit-id
@@ -12632,7 +12737,7 @@ msgid "Speaking"
 msgstr "التحدث"
 
 #: src/features/Landing/LandingPage.tsx:205
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:84
 #. js-lingui-explicit-id
 msgid "Speaking practice"
 msgstr "ممارسة التحدث"
@@ -12747,7 +12852,7 @@ msgstr "ابدأ الدرس"
 msgid "Start Monthly Plan"
 msgstr "ابدأ الخطة الشهرية"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:210
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:207
 #. js-lingui-explicit-id
 msgid "Start my free conversation"
 msgstr "ابدأ محادثتي المجانية"
@@ -13303,12 +13408,17 @@ msgstr "خذ اختبار جاهزية الخلفية"
 msgid "Take the Interview Readiness Test"
 msgstr "خذ اختبار جاهزية المقابلة"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:727
+#. js-lingui-explicit-id
+msgid "Take your time speaking. You can listen first."
+msgstr "خذ وقتك في الكلام. يمكنك الاستماع أولاً."
+
 #: src/features/FluencyCall/FluencyCallChatModal.tsx:66
 #. js-lingui-explicit-id
 msgid "Talk about what you want to bring up in the conversation."
 msgstr "تحدث عما ترغب في التحدث عنه في المحادثة."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:99
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:96
 #. js-lingui-explicit-id
 msgid ""
 "Talk with a friendly AI teacher for three minutes. No account. No card. "
@@ -13975,7 +14085,7 @@ msgstr "شروط الخدمة"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:121
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:42
 #: src/features/Landing/Footer.tsx:179
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:225
 #: src/features/Router/BlockedAccess.tsx:174
 #: src/features/Router/BlockedAccess.tsx:329
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:45
@@ -14840,8 +14950,7 @@ msgstr ""
 #: src/features/Dashboard/DailyQuestionDashboardCard.tsx:41
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:88
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:31
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:49
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:85
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:165
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:82
 #. js-lingui-explicit-id
 msgid "Today"
@@ -14874,8 +14983,7 @@ msgstr "مهام الكلام في TOEFL"
 
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:89
 #: src/features/FluencyCall/CommunityCallScheduleStep.tsx:32
-#: src/features/FluencyCall/FluencyCallConnectedRow.tsx:50
-#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:86
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:166
 #. js-lingui-explicit-id
 msgid "Tomorrow"
 msgstr "غدًا"
@@ -15256,10 +15364,15 @@ msgstr ""
 msgid "Upcoming calls"
 msgstr "المكالمات القادمة"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:341
+#: src/features/FluencyCall/FluencyCallCardView.tsx:925
 #. js-lingui-explicit-id
 msgid "Upcoming conversations"
 msgstr "محادثات قادمة"
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:448
+#. js-lingui-explicit-id
+msgid "Updating..."
+msgstr "قيد التحديث..."
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15706,10 +15819,19 @@ msgstr "سنرسل لك رابط تسجيل الدخول عبر البريد ا�
 msgid "We'll get back to you with a confirmation."
 msgstr "سوف نعود إليك بتأكيد."
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:365
+#: src/features/FluencyCall/FluencyCallCardView.tsx:983
 #. js-lingui-explicit-id
 msgid "We'll reply soon."
 msgstr "سنرد عليك قريبًا."
+
+#: src/features/FluencyCall/FluencyCallCardView.tsx:909
+#. js-lingui-explicit-id
+msgid ""
+"We'll say hello and start with something simple, like how your week is "
+"going. Take your time — we're all here to practise."
+msgstr ""
+"سنقول مرحباً ونبدأ بشيء بسيط، مثل كيف تسير أسبوعك. خذ وقتك - نحن جميعاً هنا "
+"لنتدرب."
 
 #: src/features/Plan/LessonStartModal.tsx:566
 #. js-lingui-explicit-id
@@ -16020,6 +16142,11 @@ msgstr "من يجب أن يكون الذكاء الاصطناعي؟"
 #. js-lingui-explicit-id
 msgid "Who this is for"
 msgstr "لمن هذا موجه"
+
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:396
+#. js-lingui-explicit-id
+msgid "Who's joining"
+msgstr "من سينضم"
 
 #: src/features/Quiz/components/QuestionFeedback.tsx:77
 #. js-lingui-explicit-id
@@ -16418,12 +16545,13 @@ msgstr ""
 "والتخزين المؤقت، وأنماط اتساق البيانات."
 
 #: src/features/Dashboard/StreaksDaysBadge.tsx:156
+#: src/features/FluencyCall/FluencyCallDashboardCard.tsx:261
 #. js-lingui-explicit-id
 msgid "Yesterday"
 msgstr "أمس"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:166
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:163
 #: src/features/OpenAiLive/OpenAiLiveCall.tsx:145
 #. js-lingui-explicit-id
 msgid "You"
@@ -16847,7 +16975,7 @@ msgstr "تفانيك يؤتي ثماره. إليك مهام اليوم."
 msgid "Your consistency is paying off. Try today’s tasks."
 msgstr "اتساقك يحقق النتائج المرجوة. حاول تنفيذ مهام اليوم."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:139
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:136
 #. js-lingui-explicit-id
 msgid "Your conversation"
 msgstr "محادثتك"
@@ -16869,7 +16997,7 @@ msgstr "صديقك الساخر"
 msgid "Your experience"
 msgstr "تجربتك"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:258
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:255
 #. js-lingui-explicit-id
 msgid "Your free conversation"
 msgstr "محادثتك المجانية"
@@ -16927,6 +17055,11 @@ msgstr "حدودك هي فقط خيالك."
 msgid "Your Message"
 msgstr "رسالتك"
 
+#: src/features/FluencyCall/FluencyCallCardView.tsx:428
+#. js-lingui-explicit-id
+msgid "Your message was not sent. Please try again."
+msgstr "تم إرسال رسالتك. حاول مرة أخرى."
+
 #: src/features/Conversation/ConversationCanvas.tsx:622
 #. js-lingui-explicit-id
 msgid "Your message..."
@@ -16937,7 +17070,7 @@ msgstr "رسالتك..."
 msgid "Your Native Language:"
 msgstr "لغتك الأم:"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:93
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:90
 #. js-lingui-explicit-id
 msgid "Your next conversation starts here."
 msgstr "ابدأ محادثتك التالية هنا."
@@ -17052,7 +17185,7 @@ msgstr "يتم تخزين النصوص الخاصة بك بشكل آمن في خ
 msgid "Your turn"
 msgstr "دورك"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:243
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:240
 #. js-lingui-explicit-id
 msgid ""
 "Your voice is processed by AI and your transcript is saved for this "
@@ -17143,7 +17276,8 @@ msgstr "{count} ساعة"
 msgid "{count} hours"
 msgstr "{count} ساعات"
 
-#: src/features/FluencyCall/FluencyCallCardView.tsx:167
+#: src/features/FluencyCall/FluencyCallCardView.tsx:668
+#: src/features/FluencyCall/FluencyCallCardView.tsx:956
 #. js-lingui-explicit-id
 msgid "{count} joining"
 msgstr "{عدد} ينضمون"
