@@ -405,19 +405,19 @@ test('the host intro uses the muted preview of the real video', async () => {
   await renderCard({
     messages: [],
     calls: [call({ id: 'tue' })],
-    welcomeVideoSrc: '/group_call/intro.webm',
+    welcomeVideoSrc: '/group_call/intro2.webm',
   });
 
   const preview = (await page
     .getByTestId('fluency-call-welcome-preview')
     .element()) as HTMLVideoElement;
-  expect(preview.getAttribute('src')).toBe('/group_call/intro.webm');
+  expect(preview.getAttribute('src')).toBe('/group_call/intro2.webm');
   expect(preview.muted).toBe(true);
   expect(preview.loop).toBe(true);
 
   await userEvent.click(page.getByTestId('fluency-call-welcome'));
   const video = (await page.getByTestId('muted-preview-video').element()) as HTMLVideoElement;
-  expect(video.getAttribute('src')).toBe('/group_call/intro.webm');
+  expect(video.getAttribute('src')).toBe('/group_call/intro2.webm');
   expect(video.muted).toBe(true);
   await expect.element(page.getByTestId('muted-preview-unmute')).toBeVisible();
   await expect.element(page.getByRole('heading', { name: 'A hello from Alex' })).toBeVisible();

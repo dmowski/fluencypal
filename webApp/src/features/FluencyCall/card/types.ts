@@ -4,7 +4,7 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 export const FLUENCY_CALL_CHAT_PAGE = 20;
 
 /** Alex's group-call intro. Same clip as the landing page. */
-export const FLUENCY_CALL_WELCOME_VIDEO_SRC = '/group_call/intro.webm';
+export const FLUENCY_CALL_WELCOME_VIDEO_SRC = '/group_call/intro2.webm';
 
 export type FluencyCallCardCall = {
   id: string;

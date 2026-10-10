@@ -9,7 +9,11 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 - Record better video for group calls
 
-- Write better message for Group Chat
+### Plan for video
+
+- Write chat message for Group Chat
+
+[deploy]
 
 - Better UI for Demo call: Better finish screen and redirection to the App
 

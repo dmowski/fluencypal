@@ -1,59 +1,31 @@
 # FluencyPal Calls
 
-Scheduled group calls on Google Meet, with a chat for people who joined. This is not the Talk with AI voice feature (`OpenAiLive`).
+Scheduled group calls on Google Meet, with one shared chat. This is not Talk with AI (`OpenAiLive`).
 
 Applies to `webApp/src/features/FluencyCall/**`.
 
 ## Product rules
 
-| Topic                       | Decision                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Who sees the dashboard card | Signed-in users. The card hides while calls, access, or the user's request are loading.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Who can join                | Every signed-in user. Parental-consent blocks still hide the card. A subscription, a game win, and the old month pass are not required.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Price                       | Free. The old `fluency-call` Stripe product is no longer offered. Past payments stay in Payment History and can still be withdrawn. New Practice, Conversation, and Conversation 10 checkouts do not grant or advertise a group-call pass.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Onboarding                  | The first "I'll join" opens "Before you join". Agree saves the time on the user document, joins, and sends Telegram. Close does not join and does not notify. Later joins skip the modal and send Telegram. Leaving a call does not notify. Ad traffic uses `/community-call`: upcoming English calls, native language, page language only when that language is not a site language, email and password, then the practice dashboard. There is no language step and no payment step. An old `?step=language` link opens the calls list. An old `?step=membership` or `?step=waiting` link opens the practice dashboard. This path does not collect a date. The landing hero, Show more, and footer open `/community-call` with no step. That is the calls list. A schedule row opens `?step=native&call=<id>`, and the native step names that time. English is the call language, so the URL does not carry `learn`. On the calls list, tapping a row does the same. An empty list still has Continue. |
-| Request                     | One request per user, for people who can join. The form asks which language to practise. The choices are `supportedLanguagesToLearn`. It starts on the user's target language when that language is in the list, otherwise English, and they can change it. The propose action stays on the card when conversations are already listed. The API writes it and sends Telegram. Admins accept or reject.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Schedule                    | Admins create each call, the Meet link, and the start time. Members do not write the call document.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| Visible calls               | Every `scheduled` call that is upcoming, or that started within the last 12 hours. `stopped` calls stay hidden. The card shows the next one: an ongoing listed call, otherwise the earliest upcoming call. Other listed calls open from "Other times" in a `CustomModal`. That list includes the next call. Each time has its own "Who's joining", labeled with that time. The card's top-right language menu filters that list. On a narrow card the closed control shows only the flag; the open menu still names each language. A call with no language code is English. A person can join more than one.                                                                                                                                                                                                                                                                                                                                                                                            |
-| Live                        | A listed call is live when `startsAtIso` is in the past. "Open Google Meet" uses that call's link and stays available before the start. Opening it does not RSVP and does not send Telegram. When no call is listed, the button uses the latest real link saved on a call in the selected language, including an older or stopped call. If that language has no link, the button stays visible and disabled. Stopping the call is a separate admin action.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Chat                        | One shared chat for every call, space id `fluencyCall_community`. It is not keyed by call id or language. The card shows the latest message; "Show older" reveals history and "Load more messages" pages the subscribed list. Sending, editing, and deleting use the existing chat writer. A person can edit or delete only their own messages, from the menu on that message. Translate is in that same menu for every message and uses the main chat translator: the translation replaces the text, and See original restores the message. Reuse that chat data layer. Do not build a second messenger. Old per-call rooms stay in Firestore and are not shown. "First time? Meet your host" shows a small circular muted loop of Alex's intro, and opens the full clip at `/group_call/intro.webm` in a circle, with the text welcome under it. The full clip plays muted until the viewer turns the sound on.                                                                                                                                                                                                                                                     |
-| Times                       | Stored as UTC ISO. The card shows the viewer's timezone. Telegram uses Warsaw.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+- **Who sees the card.** Signed-in users. Hide it while calls, access, or the user's request are loading. Parental-consent blocks hide it too.
+- **Who can join.** Every signed-in user. A subscription, a game win, and the old month pass are not required.
+- **Price.** Free. The old `fluency-call` Stripe product is no longer offered. Past payments stay in Payment History and can still be withdrawn. New Practice, Conversation, and Conversation 10 checkouts do not grant or advertise a group-call pass.
+- **First join.** The first "I'll join" opens "Before you join". Agree saves the choice, joins, and sends Telegram. Close does not join and does not notify. Later joins skip that note and still send Telegram. Leaving a call does not notify.
+- **Ad onboarding.** `/community-call` shows upcoming English calls, then native language, then an account, then the practice dashboard. Page language is asked only when the native language is not a site language. There is no language-to-learn step, no payment step, and no date step. An empty list still continues. A schedule row names that time on the native step. English is the call language. The landing hero, Show more, and footer open the calls list. An old `?step=language` link opens the calls list. An old `?step=membership` or `?step=waiting` link opens the practice dashboard.
+- **Request.** One request per user, for people who can join. It asks which language to practise, starting from the user's target language when that language can be taught here, otherwise English. Proposing a time stays available when calls are already listed. The API saves it and sends Telegram. Admins accept or reject.
+- **Schedule.** Admins create each call, its Meet link, and its start time. Members do not write the call document.
+- **Visible calls.** Every scheduled call that is upcoming, or that started within the last 12 hours. Stopped calls stay hidden. The card features an ongoing listed call, otherwise the earliest upcoming one. The other-times list includes that featured call. Each time has its own "Who's joining". The language menu filters the list. A call with no language is English. A person can join more than one.
+- **Meet.** A listed call is live once its start time has passed. Opening Google Meet does not RSVP and does not send Telegram, and the link stays available before the start. When nothing is listed, use the latest real link saved for the selected language, including an older or stopped call. If that language has no link, the button stays visible and disabled. Stopping a call is a separate admin action.
+- **Chat.** One room for every call and language: `fluencyCall_community`. The card shows the latest message, and older messages can be opened and paged. A person can edit or delete only their own messages. Translate replaces the text in place and can be turned back to the original. Reuse the existing chat writer. Do not build a second messenger. Old per-call rooms stay stored and are not shown.
+- **Host intro.** The card can play a short intro from the host. It starts muted, and the viewer can turn the sound on and off.
+- **Times.** Stored as UTC. The card shows the viewer's timezone. Telegram uses Warsaw.
 
-## Architecture
+## Data
 
-```
-FluencyCall/
-├── FluencyCallDashboardCard.tsx   # list, conduct, chat
-├── CommunityCallOnboarding.tsx    # ad path: English calls, account, then practice
-├── CommunityCallScheduleStep.tsx  # upcoming calls before the account
-├── CommunityCallNativeStep.tsx    # native language
-├── communityCallSteps.ts          # which steps this visitor still needs
-├── FluencyCallCardView.tsx        # composes the card
-├── card/                          # header, next call, chat, welcome, schedule
-├── FluencyCallConductModal.tsx    # one-time note before the first join
-├── FluencyCallChatModal.tsx       # unused by the card; per-call chat kept for the old room
-├── CallsAdmin.tsx                 # schedule, start, stop, accept requests
-├── fluencyCallStore.ts            # call and RSVP writes
-├── fluencyCallChat.ts             # shared room fluencyCall_community
-├── pricing.ts                     # $2, month extension
-├── callTime.ts                    # listed calls, viewer timezone labels
-└── types.ts
-```
-
-API routes stay thin:
-
-| Route                             | Who                   | What                                                           |
-| --------------------------------- | --------------------- | -------------------------------------------------------------- |
-| `POST /api/fluency-call/request`  | Someone who can join  | Save the request, notify Telegram                              |
-| `POST /api/fluency-call/joiners`  | `DEV_EMAILS`          | Resolve joiner emails for the admin list                       |
-| `POST /api/fluency-call/checkout` | Unused by the product | Old Stripe Checkout for one month. Do not link it from the UI. |
-
-The Stripe webhook credits `users/{uid}/fluencyCall/account` and writes `users/{uid}/payments/{paymentId}` so Payment History and contract withdrawal can reverse the pass. It does not add practice hours.
-
-## Firestore
-
-| Path                                          | Who writes                                                         |
+| Route or path                                 | Who writes                                                         |
 | --------------------------------------------- | ------------------------------------------------------------------ |
+| `POST /api/fluency-call/request`              | Someone who can join. Saves the request and notifies Telegram.     |
+| `POST /api/fluency-call/joiners`              | `DEV_EMAILS`. Resolves joiner emails for the admin list.           |
+| `POST /api/fluency-call/checkout`             | Unused. Old Stripe Checkout for one month. Do not link it.         |
 | `fluencyCalls/{callId}`                       | Admin (`isBlogAdmin`)                                              |
 | `fluencyCalls/{callId}/rsvps/{userId}`        | That user only                                                     |
 | `fluencyCallRequests/{userId}`                | API creates. Admin updates or deletes. Clients cannot create.      |
@@ -61,21 +33,19 @@ The Stripe webhook credits `users/{uid}/fluencyCall/account` and writes `users/{
 | `users/{uid}/fluencyCallPayments/{paymentId}` | Admin SDK. The owner can read.                                     |
 | `users/{uid}.fluencyCallConductAgreedAtIso`   | That user, once they press Agree                                   |
 
-Chat metadata lives at `users/{uid}/chats/fluencyCall_{callId}` with `type: 'fluencyCall'`.
+The Stripe webhook credits the month pass and writes the payment so Payment History and contract withdrawal can reverse it. It does not add practice hours.
 
-## UI entry
+## Where it appears
 
-- Dashboard: `FluencyCallDashboardCard` in `Dashboard.tsx`.
-- Ad onboarding: `/community-call`. The last step opens the dashboard with `?communityCall=ready`.
-- Chat: on the card. An old `?callChatId=` link opens that shared chat expanded. It does not switch rooms.
-- Old Stripe return: `?fluencyCall=paid` still shows the payment note. `?fluencyCall=buy` does not open a paywall.
-- Admin: `CallsAdmin`.
+- Practice dashboard, for a signed-in user.
+- Ad onboarding at `/community-call`. The last step opens the dashboard with `?communityCall=ready`.
+- Chat on the card. An old `?callChatId=` link opens that same chat. It does not switch rooms.
+- `?fluencyCall=paid` still shows the payment note. `?fluencyCall=buy` does not open a paywall.
+- Admin schedule and requests.
 
 ## Testing
 
 ```bash
-cd webApp && pnpm exec jest src/features/FluencyCall/callTime.test.ts src/features/FluencyCall/pricing.test.ts src/features/FluencyCall/communityCallSteps.test.ts src/features/FluencyCall/fluencyCallChat.test.ts src/features/FluencyCall/notifyFluencyCallJoin.test.ts
+cd webApp && pnpm test:unit src/features/FluencyCall
 cd webApp && pnpm exec vitest --config vitest.browser.config.ts --run src/features/FluencyCall
 ```
-
-Browser tests cover the call list, empty state, request form, conduct modal, chat tabs, and the date picker. Screenshots are in `screenshots/`.

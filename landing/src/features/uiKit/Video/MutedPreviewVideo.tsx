@@ -1,22 +1,29 @@
 'use client';
 
-import { IconButton, Stack } from '@mui/material';
+import { Box, ButtonBase } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Volume2 } from 'lucide-react';
+import { VolumeX } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 /**
- * Plays muted until the viewer asks for sound.
- * That click restarts the clip and shows the native controls.
+ * A muted loop until the viewer clicks the circle.
+ * A second click mutes it again. The browser controls stay hidden.
  */
 export const MutedPreviewVideo = ({ src }: { src: string }) => {
   const { i18n } = useLingui();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [soundOn, setSoundOn] = useState(false);
 
-  const playWithSound = () => {
+  const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
+    if (soundOn) {
+      video.muted = true;
+      video.loop = true;
+      setSoundOn(false);
+      void video.play();
+      return;
+    }
     video.pause();
     try {
       video.currentTime = 0;
@@ -24,21 +31,28 @@ export const MutedPreviewVideo = ({ src }: { src: string }) => {
       // Playback still starts at the beginning once metadata is ready.
     }
     video.muted = false;
+    video.loop = false;
     setSoundOn(true);
     void video.play();
   };
 
   return (
-    <Stack
+    <ButtonBase
+      disableRipple
+      onClick={toggleSound}
+      aria-label={soundOn ? i18n._('Mute') : i18n._('Unmute')}
+      data-testid="muted-preview-unmute"
       sx={{
         position: 'relative',
-        width: 'min(380px, 100%)',
-        aspectRatio: '464 / 848',
-        maxHeight: '72vh',
-        borderRadius: '28px',
+        width: 'min(280px, 70vw)',
+        height: 'min(280px, 70vw)',
+        aspectRatio: '1',
+        borderRadius: '50%',
         overflow: 'hidden',
         backgroundColor: '#041018',
         border: '1px solid rgba(125, 222, 170, 0.28)',
+        cursor: 'pointer',
+        padding: 0,
       }}
     >
       <video
@@ -48,7 +62,7 @@ export const MutedPreviewVideo = ({ src }: { src: string }) => {
         autoPlay
         muted={!soundOn}
         loop={!soundOn}
-        controls={soundOn}
+        controls={false}
         playsInline
         preload="auto"
         style={{
@@ -56,33 +70,32 @@ export const MutedPreviewVideo = ({ src }: { src: string }) => {
           height: '100%',
           objectFit: 'cover',
           display: 'block',
+          pointerEvents: 'none',
           backgroundColor: '#041018',
         }}
       />
       {soundOn ? null : (
-        <IconButton
-          onClick={playWithSound}
-          aria-label={i18n._('Play with sound')}
-          data-testid="muted-preview-unmute"
+        <Box
+          aria-hidden
+          data-testid="muted-preview-muted-icon"
           sx={{
             position: 'absolute',
-            top: '50%',
+            top: '10px',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '96px',
-            height: '96px',
+            transform: 'translateX(-50%)',
+            display: 'grid',
+            placeItems: 'center',
+            width: '36px',
+            height: '36px',
             borderRadius: '50%',
             color: '#fff',
-            backgroundColor: 'rgba(4, 16, 24, 0.55)',
-            border: '1px solid rgba(255, 255, 255, 0.75)',
-            '&:hover': {
-              backgroundColor: 'rgba(4, 16, 24, 0.75)',
-            },
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            pointerEvents: 'none',
           }}
         >
-          <Volume2 size={40} />
-        </IconButton>
+          <VolumeX size={18} />
+        </Box>
       )}
-    </Stack>
+    </ButtonBase>
   );
 };

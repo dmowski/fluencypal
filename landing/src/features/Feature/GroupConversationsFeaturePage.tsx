@@ -161,7 +161,7 @@ export const GroupConversationsFeaturePage = ({
                 )}
               </Typography>
             </Stack>
-            <MutedPreviewVideo src="/group_call/intro.webm" />
+            <MutedPreviewVideo src="/group_call/intro2.webm" />
             <Stack
               sx={{
                 width: '100%',

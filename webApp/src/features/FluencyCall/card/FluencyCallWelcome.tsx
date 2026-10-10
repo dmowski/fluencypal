@@ -117,7 +117,11 @@ export const FluencyCallWelcomeModal = ({
       data-testid="fluency-call-welcome-modal"
     >
       <Stack sx={{ width: '100%', maxWidth: '600px', gap: '20px' }}>
-        {welcomeVideoSrc ? <MutedPreviewVideo src={welcomeVideoSrc} /> : null}
+        {welcomeVideoSrc ? (
+          <Stack sx={{ alignItems: 'center', width: '100%' }}>
+            <MutedPreviewVideo src={welcomeVideoSrc} />
+          </Stack>
+        ) : null}
         <ModalHeader
           title={i18n._('A hello from Alex')}
           subtitle={i18n._(
