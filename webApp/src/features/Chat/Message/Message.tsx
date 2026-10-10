@@ -13,7 +13,7 @@ import {
   Divider,
 } from '@mui/material';
 import { ThreadsMessage } from '../type';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
@@ -32,6 +32,7 @@ import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
 import { ReportMessageModal } from './ReportMessageModal';
 import { ViewsContent } from '../MessageViewsIcon';
+import { useMarkMessageViewed } from '../useMarkMessageViewed';
 
 const limitMessages = 900;
 
@@ -78,16 +79,11 @@ export function Message({
   const myUserId = auth.uid;
   const isOwnMessage = message.senderId === myUserId;
   const chat = useChat();
+  const messageRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (message.id) {
-        chat.viewMessage(message);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [message.id, auth.uid]);
+  useMarkMessageViewed(messageRef, message.id, myUserId, () => {
+    void chat.viewMessage(message);
+  });
 
   const updatedAgo = dayjs(message.updatedAtIso).fromNow();
 
@@ -216,6 +212,7 @@ export function Message({
 
   return (
     <Stack
+      ref={messageRef}
       sx={{
         padding: isDeleted ? '20px 0' : '10px',
 

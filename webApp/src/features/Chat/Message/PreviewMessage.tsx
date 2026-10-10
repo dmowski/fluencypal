@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useAuth } from '../../Auth/useAuth';
 import { useGame } from '../../Game/useGame';
 import { UserName } from '../../User/UserName';
@@ -10,6 +10,7 @@ import { useChat } from '../useChat';
 import { Avatar } from '../../User/Avatar';
 import { MessageContent } from './MessageContent';
 import { MessageFooter } from './MessageFooter';
+import { useMarkMessageViewed } from '../useMarkMessageViewed';
 
 export const PreviewMessage = ({
   message,
@@ -29,20 +30,17 @@ export const PreviewMessage = ({
 
   const chat = useChat();
   const auth = useAuth();
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (message.id) {
-        chat.viewMessage(message);
-      }
-    }, 1000);
+  const messageRef = useRef<HTMLDivElement>(null);
 
-    return () => clearTimeout(timer);
-  }, [message.id, auth.uid]);
+  useMarkMessageViewed(messageRef, message.id, auth.uid, () => {
+    void chat.viewMessage(message);
+  });
 
   const ago = dayjs(message.createdAtIso).fromNow();
 
   return (
     <Stack
+      ref={messageRef}
       key={message.id}
       onClick={() => onOpen(message.id)}
       sx={{
