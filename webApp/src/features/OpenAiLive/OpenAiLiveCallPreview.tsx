@@ -84,7 +84,17 @@ export const OpenAiLiveCallPreview = () => {
     <Stack sx={{ minHeight: '100dvh', backgroundColor: '#0c0c0f' }}>
       <Stack
         direction="row"
-        sx={{ gap: '8px', padding: '12px 16px', flexWrap: 'wrap', alignItems: 'center' }}
+        sx={{
+          gap: '8px',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 10000000,
+          padding: '12px 16px',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+        }}
       >
         <Typography sx={{ color: '#fff', opacity: 0.75, marginRight: '8px' }}>
           {i18n._('Preview. This does not start a real call.')}
@@ -175,7 +185,6 @@ export const OpenAiLiveCallPreview = () => {
         </Stack>
       ) : (
         <OpenAiLiveCall
-          variant="fill"
           title={i18n._('Fix my grammar')}
           muted={muted}
           lines={scene === 'connecting' ? [] : lines}

@@ -7,19 +7,14 @@ import MicIcon from '@mui/icons-material/Mic';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { FooterButton } from '@/features/Conversation/CallMode/FooterButton';
-import { formatElapsedMs, TalkTime } from './formatBalance';
+import { TalkTime } from './formatBalance';
 import { LiveTranscriptLine } from './transcripts';
-import { OpenAiLiveBalanceText } from './OpenAiLiveBalanceText';
 
 export const OpenAiLiveCall = ({
   title,
-  variant = 'overlay',
   muted,
   lines,
   elapsedLabel,
-  balanceUsd,
-  balanceLocal,
-  talkTime,
   error,
   phase,
   needsUnlock,
@@ -31,7 +26,6 @@ export const OpenAiLiveCall = ({
 }: {
   title: string;
   showStatus?: boolean;
-  variant?: 'overlay' | 'fill';
   muted: boolean;
   lines: LiveTranscriptLine[];
   elapsedLabel: string;
@@ -48,7 +42,6 @@ export const OpenAiLiveCall = ({
 }) => {
   const { i18n } = useLingui();
   const listRef = useRef<HTMLDivElement | null>(null);
-  const overlay = variant === 'overlay';
 
   useEffect(() => {
     const list = listRef.current;
@@ -57,7 +50,6 @@ export const OpenAiLiveCall = ({
   }, [lines]);
 
   useEffect(() => {
-    if (!overlay) return;
     const scrollY = window.scrollY;
     const { body, documentElement: html } = document;
     const previous = {
@@ -80,39 +72,46 @@ export const OpenAiLiveCall = ({
       body.style.width = previous.bodyWidth;
       window.scrollTo(0, scrollY);
     };
-  }, [overlay]);
+  }, []);
 
   return (
     <Stack
       data-testid="open-ai-live-call"
-      role={overlay ? 'dialog' : undefined}
-      aria-modal={overlay ? true : undefined}
+      role="dialog"
+      aria-modal
       sx={{
-        position: overlay ? 'fixed' : 'relative',
-        inset: overlay ? 0 : undefined,
-        zIndex: overlay ? 1500 : undefined,
-        flex: overlay ? undefined : 1,
-        minHeight: overlay ? undefined : 0,
+        position: 'fixed',
+        inset: 0,
+        zIndex: 1500,
         background: 'linear-gradient(180deg, rgb(20, 10, 40) 0%, rgb(8, 8, 12) 100%)',
         color: '#fff',
-        padding: '24px 16px 0',
         overflow: 'hidden',
         overscrollBehavior: 'none',
-        height: overlay ? '100dvh' : undefined,
+        height: '100dvh',
+        width: '100%',
       }}
     >
       <Stack
         sx={{
           width: '100%',
-          maxWidth: '720px',
-          margin: '0 auto',
           flex: 1,
           minHeight: 0,
           gap: '16px',
+          alignItems: 'center',
         }}
       >
         {showStatus ? (
-          <Stack direction="row" sx={{ justifyContent: 'space-between', gap: 2 }}>
+          <Stack
+            direction="row"
+            sx={{
+              justifyContent: 'space-between',
+              gap: 2,
+              width: '100%',
+              maxWidth: '720px',
+              padding: '20px 16px 0',
+              opacity: '0.6',
+            }}
+          >
             <Typography>{title}</Typography>
             <Typography data-testid="demo-countdown" sx={{ whiteSpace: 'nowrap' }}>
               {elapsedLabel}
@@ -127,48 +126,66 @@ export const OpenAiLiveCall = ({
             minHeight: 0,
             overflow: 'auto',
             overscrollBehavior: 'contain',
-            gap: '38px',
             padding: '38px 0 120px',
+            width: '100%',
+            alignItems: 'center',
           }}
         >
-          {lines.length === 0 ? (
-            <Typography sx={{ opacity: 0.7, fontSize: '20px', lineHeight: 1.25 }}>
-              {phase === 'connecting'
-                ? i18n._('Connecting…')
-                : i18n._('Your teacher is getting ready to speak…')}
-            </Typography>
-          ) : (
-            lines.map((line) => (
-              <Stack key={line.id} sx={{ gap: '4px' }}>
-                <Typography sx={{ fontSize: '12px', opacity: 0.6, textTransform: 'uppercase' }}>
-                  {line.role === 'assistant' ? i18n._('Teacher') : i18n._('You')}
-                </Typography>
-                <Typography sx={{ fontSize: '24px', lineHeight: 1.25 }}>{line.text}</Typography>
-              </Stack>
-            ))
-          )}
+          <Stack sx={{ width: '100%', gap: '38px', maxWidth: '720px', padding: '24px 16px 0' }}>
+            {lines.length === 0 ? (
+              <Typography sx={{ opacity: 0.7, fontSize: '20px', lineHeight: 1.25 }}>
+                {phase === 'connecting'
+                  ? i18n._('Connecting…')
+                  : i18n._('Your teacher is getting ready to speak…')}
+              </Typography>
+            ) : (
+              lines.map((line) => (
+                <Stack key={line.id} sx={{ gap: '4px' }}>
+                  <Typography sx={{ fontSize: '12px', opacity: 0.6, textTransform: 'uppercase' }}>
+                    {line.role === 'assistant' ? i18n._('Teacher') : i18n._('You')}
+                  </Typography>
+                  <Typography sx={{ fontSize: '24px', lineHeight: 1.25 }}>{line.text}</Typography>
+                </Stack>
+              ))
+            )}
+          </Stack>
         </Stack>
-
-        {error ? (
-          <Typography sx={{ color: '#ffb4b4', fontSize: '16px' }}>{error}</Typography>
-        ) : null}
-
-        {needsUnlock ? (
-          <Button
-            data-testid="open-ai-live-hear"
-            variant="outlined"
-            onClick={onUnlockAudio}
-            sx={{
-              alignSelf: 'center',
-              textTransform: 'none',
-              color: '#fff',
-              borderColor: 'rgba(255,255,255,0.4)',
-            }}
-          >
-            {i18n._('Tap to hear the teacher')}
-          </Button>
-        ) : null}
       </Stack>
+
+      {error || needsUnlock ? (
+        <Stack
+          sx={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: '96px',
+            zIndex: 3,
+            alignItems: 'center',
+            gap: '8px',
+            padding: '0 16px',
+          }}
+        >
+          {error ? (
+            <Typography sx={{ color: '#ffb4b4', fontSize: '16px', textAlign: 'center' }}>
+              {error}
+            </Typography>
+          ) : null}
+          {needsUnlock ? (
+            <Button
+              data-testid="open-ai-live-hear"
+              variant="outlined"
+              onClick={onUnlockAudio}
+              sx={{
+                textTransform: 'none',
+                color: '#fff',
+                borderColor: 'rgba(255,255,255,0.4)',
+              }}
+            >
+              {i18n._('Tap to hear the teacher')}
+            </Button>
+          ) : null}
+        </Stack>
+      ) : null}
 
       {glow}
       <Stack

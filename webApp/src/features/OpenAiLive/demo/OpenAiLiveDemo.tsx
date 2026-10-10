@@ -73,10 +73,13 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         minHeight: '100dvh',
         alignItems: 'center',
         px: 3,
-        pt: { xs: 4 },
         pb: 6,
         background: 'radial-gradient(ellipse at top, #30204c, #08080c 75%)',
         color: '#fff',
+        paddingTop: !inCall && !ended ? '120px' : '20px',
+        '@media (max-height: 600px)': {
+          paddingTop: '20px',
+        },
       }}
     >
       {inCall || showStartBar ? null : <DemoAurora mode={auroraMode} />}
@@ -102,7 +105,17 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         ) : null}
         {!ended && !join ? <DemoLanguageCards language={language} onChange={setLanguage} /> : null}
         {ended && !join ? (
-          <Button variant="contained" size="large" onClick={() => setJoin(true)}>
+          <Button
+            variant="contained"
+            color="info"
+            endIcon={<ArrowRight size={19} />}
+            sx={{
+              padding: '12px 16px',
+              width: 'max-content',
+            }}
+            size="large"
+            onClick={() => setJoin(true)}
+          >
             {auth.isIdentified ? i18n._('Continue to FluencyPal') : i18n._('Create my account')}
           </Button>
         ) : null}
@@ -122,27 +135,42 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
 
         {reviewLines.length > 0 && ended ? (
           <Stack sx={{ gap: 1, mt: 2 }}>
-            <Typography component="h2" variant="h5">
+            <Typography component="h2" variant="h5" sx={{ fontWeight: 700 }}>
               {i18n._('Your conversation')}
             </Typography>
-            <Typography variant="body2">
+            <Typography sx={{ fontSize: 16, opacity: 0.8 }}>
               {i18n._(
                 'Review what you practiced. Your teacher’s suggestions appear in the conversation below.',
               )}
             </Typography>
-            {reviewLines.map((line) => (
-              <Typography
-                key={line.id}
-                sx={{
-                  p: 2,
-                  borderRadius: 2,
-                  bgcolor: line.role === 'user' ? '#28233b' : '#15131d',
-                }}
-              >
-                <strong>{line.role === 'user' ? i18n._('You') : 'Marin'}: </strong>
-                {line.text}
-              </Typography>
-            ))}
+            <Stack
+              sx={{
+                borderRadius: '3px',
+                overflow: 'hidden',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
+            >
+              {reviewLines.map((line) => (
+                <Stack
+                  key={line.id}
+                  sx={{
+                    padding: '12px 16px',
+                    backgroundColor: line.role === 'user' ? '#150F20' : '#191327',
+                  }}
+                >
+                  <Typography
+                    component="span"
+                    variant="caption"
+                    sx={{ fontWeight: 700, opacity: 0.8 }}
+                  >
+                    {line.role === 'user' ? i18n._('You') : 'Marin'}:{' '}
+                  </Typography>
+                  <Typography component="span" sx={{ fontSize: 18, opacity: 0.8 }}>
+                    {line.text}
+                  </Typography>
+                </Stack>
+              ))}
+            </Stack>
           </Stack>
         ) : null}
       </Stack>

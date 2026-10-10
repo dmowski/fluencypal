@@ -7,13 +7,13 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Demo conversation: fix scrollable width
+- Demo conversation: fix scrollable width: Validate
+
+- [deploy]
 
 - Better UI/UX for group calls
 
-- Better UI for Demo call
-  - Better first screen
-  - Better finish screen and redirection to app
+- Better UI for Demo call: Better finish screen and redirection to the App
 
 - Create ad for Quebec
 
