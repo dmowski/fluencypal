@@ -7,9 +7,6 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Make hello video more user friendly to play.
-  Now it's feels like invitation to call
-
 - Reddit post that I am looking speaking partners
 
 - Better UI for Demo call: Better finish screen and redirection to the App

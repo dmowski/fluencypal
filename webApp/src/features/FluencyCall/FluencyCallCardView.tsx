@@ -65,13 +65,11 @@ export const FluencyCallCardView = ({
         containerType: 'inline-size',
         containerName: 'fluency-call-card',
         width: '100%',
-        maxWidth: 660,
-        margin: '0 auto',
         overflow: 'hidden',
         color: token.text,
         backgroundColor: token.bg,
-        border: `1px solid ${token.line}`,
-        borderRadius: '24px',
+        border: `1px solid rgba(255, 255, 255, 0.08)`,
+        borderRadius: '16px',
         font: 'inherit',
         '& :focus-visible': {
           outline: `2px solid ${token.accent}`,
@@ -79,7 +77,7 @@ export const FluencyCallCardView = ({
         },
       }}
     >
-      <Stack sx={{ padding: '28px', gap: 0, [narrow]: { padding: '20px' } }}>
+      <Stack sx={{ padding: '24px 20px 20px 20px', gap: 0, [narrow]: { padding: '20px' } }}>
         <FluencyCallCardHeader
           titleId={`${uid}-title`}
           languageCode={languageCode}

@@ -51,7 +51,7 @@ export const FluencyCallChatPanel = ({
     <Stack
       sx={{
         borderTop: `1px solid ${token.line}`,
-        padding: '22px 28px',
+        padding: '20px',
         backgroundColor: token.bg,
         gap: '8px',
         [narrow]: { padding: '20px' },
@@ -152,6 +152,9 @@ export const FluencyCallChatPanel = ({
             padding: '5px',
             backgroundColor: token.soft,
             gap: '8px',
+            ':has(.MuiInputBase-input:focus-visible)': {
+              border: `1px solid rgba(255, 255, 255, 0.3)`,
+            },
           }}
         >
           <InputBase
@@ -173,12 +176,16 @@ export const FluencyCallChatPanel = ({
               color: token.text,
               font: 'inherit',
               padding: '0 8px',
+
               '& .MuiInputBase-input': {
                 color: token.text,
                 fontSize: '14px',
                 lineHeight: '20px',
                 padding: '6px 0',
                 [narrow]: { fontSize: '16px' },
+                '&:focus-visible': {
+                  outline: 'none',
+                },
               },
               '& .MuiInputBase-input::placeholder': { color: token.muted, opacity: 1 },
               '& .MuiInputBase-input.Mui-disabled': {
