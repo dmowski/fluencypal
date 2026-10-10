@@ -28,7 +28,8 @@ FluencyCall/
 ├── CommunityCallScheduleStep.tsx  # upcoming calls before the account
 ├── CommunityCallNativeStep.tsx    # native language
 ├── communityCallSteps.ts          # which steps this visitor still needs
-├── FluencyCallCardView.tsx        # next call, Meet, shared chat
+├── FluencyCallCardView.tsx        # composes the card
+├── card/                          # header, next call, chat, welcome, schedule
 ├── FluencyCallConductModal.tsx    # one-time note before the first join
 ├── FluencyCallChatModal.tsx       # unused by the card; per-call chat kept for the old room
 ├── CallsAdmin.tsx                 # schedule, start, stop, accept requests

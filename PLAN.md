@@ -7,6 +7,9 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
+- Record better video for group calls
+- Write better message for Group Chat
+
 - Better UI for Demo call: Better finish screen and redirection to the App
 
 - Create ad for Quebec
