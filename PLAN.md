@@ -7,8 +7,6 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Better UI for Demo call: Better finish screen and redirection to the App
-
 - One idea: post, video, twit - about social networks
 
 - Reddit post that I am looking speaking partners
