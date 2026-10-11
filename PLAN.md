@@ -7,7 +7,15 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- One idea: post, video, twit - about social networks
+- Write 2 people:
+  https://www.reddit.com/r/learnEnglishOnline/comments/1x33gkf/looking_for_someone_to_practise_with/
+
+- One idea about social networks. Ideas
+  -- Create doc with ideas
+  -- Brainstorm some
+  -- Plan
+
+====
 
 - Reddit post that I am looking speaking partners
 

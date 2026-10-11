@@ -452,13 +452,13 @@ export default function LandingPage({ lang }: LandingPageProps) {
                 category: i18n._(`Live calls`),
                 title: i18n._(`Talk with other learners`),
                 description: i18n._(
-                  `Join a live call on Google Meet. See the next times for where you live, and talk with AI until it starts.`,
+                  `Tell me what you want to talk about and how to reach you. I will find people and arrange a free call.`,
                 ),
                 img: '/landing/community-calls.jpg',
-                imgAlt: i18n._('A list of upcoming group conversation calls'),
+                imgAlt: i18n._('People practicing English together on a call'),
                 href: `${getUrlStart(lang)}features/group-conversations`,
                 analyticsId: 'community-call-feature',
-                actionButtonTitle: i18n._(`See upcoming calls`),
+                actionButtonTitle: i18n._(`Request a call`),
               },
               {
                 category: i18n._(`Daily lesson`),

@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material';
-import { Clock, Languages, Video } from 'lucide-react';
+import { Clock, Languages, Users } from 'lucide-react';
 import { getI18nInstance } from '@/appRouterI18n';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { HeaderStatic } from '@/features/Header/HeaderStatic';
@@ -9,8 +9,7 @@ import { MutedPreviewVideo } from '@/features/uiKit/Video/MutedPreviewVideo';
 import { buttonStyle, maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
 import { englishGroupCallOnboardingHref, talkWithAlexHref } from './groupCallOnboardingHref';
 import { GroupConversationJoinButton } from './GroupConversationJoinButton';
-import { GroupConversationSchedule } from './GroupConversationSchedule';
-import { FeatureData } from './types';
+import { FeatureData } from '../types';
 
 export const GroupConversationsFeaturePage = ({
   lang,
@@ -24,7 +23,7 @@ export const GroupConversationsFeaturePage = ({
   const alexHref = talkWithAlexHref(lang);
   const expectations = [
     {
-      icon: <Video size={22} />,
+      icon: <Users size={22} />,
       title: i18n._('Other learners'),
       body: i18n._('You talk together on Google Meet. There is no teacher and no set topic.'),
     },
@@ -37,31 +36,31 @@ export const GroupConversationsFeaturePage = ({
     },
     {
       icon: <Clock size={22} />,
-      title: i18n._('Your pace'),
+      title: i18n._('A time that fits'),
       body: i18n._(
-        'Join when the call starts. Leave when you need to. You can see how many people plan to come.',
+        'I look for people who fit, then we pick a time that is comfortable for everyone.',
       ),
     },
   ];
   const steps = [
     {
-      title: i18n._('Find a call'),
-      body: i18n._('Choose a time that works for you. The calls are free.'),
+      title: i18n._('Tell me about you'),
+      body: i18n._('Share your interests, your English level, and how I can reach you.'),
     },
     {
-      title: i18n._('Create an account'),
-      body: i18n._('Sign up to save your place. There is no payment.'),
+      title: i18n._('I look for people'),
+      body: i18n._('I will write once I find people who fit. Group calls are free.'),
     },
     {
-      title: i18n._('Join on Google Meet'),
-      body: i18n._('Open the call when it starts.'),
+      title: i18n._('We pick a time'),
+      body: i18n._('We discuss a time slot and arrange a call that works for each person.'),
     },
   ];
   const questions = [
     {
       question: i18n._('Do the calls cost money?'),
       answer: i18n._(
-        'No. Group conversations are free. Create an account, then join when the call starts.',
+        'No. Group conversations are free. There is no payment and no account required to request one.',
       ),
     },
     {
@@ -71,11 +70,16 @@ export const GroupConversationsFeaturePage = ({
       ),
     },
     {
-      question: i18n._('How often are calls?'),
+      question: i18n._('When is the call?'),
       answer: i18n._(
-        'When one is on the schedule. Open it to see the next English calls in your local time zone.',
+        'After I find a good group, I write you. We choose a time that is comfortable for everyone.',
       ),
     },
+  ];
+  const nextSteps = [
+    i18n._('Tell me your interests, your level, and how to reach you.'),
+    i18n._('I will write once I find people who fit.'),
+    i18n._('We pick a time that is comfortable for everyone. Group calls are free.'),
   ];
 
   return (
@@ -127,7 +131,29 @@ export const GroupConversationsFeaturePage = ({
               <GroupConversationJoinButton href={appHref} />
             </Stack>
 
-            <GroupConversationSchedule moreHref={appHref} />
+            <Stack
+              data-testid="group-conversations-whats-next"
+              sx={{
+                gap: '16px',
+                borderRadius: '20px',
+                border: '1px solid rgba(148, 145, 255, 0.22)',
+                backgroundColor: '#16181e',
+                boxShadow: '0 12px 45px #00000040',
+                padding: '24px',
+              }}
+            >
+              <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
+                {i18n._("What's next")}
+              </Typography>
+              {nextSteps.map((step, index) => (
+                <Stack key={step} direction="row" sx={{ gap: '12px', alignItems: 'flex-start' }}>
+                  <Typography sx={{ fontWeight: 800, color: '#7DDEAA', minWidth: '1.2rem' }}>
+                    {index + 1}
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(244, 247, 251, 0.78)' }}>{step}</Typography>
+                </Stack>
+              ))}
+            </Stack>
           </Stack>
 
           <Stack
@@ -157,7 +183,7 @@ export const GroupConversationsFeaturePage = ({
               </Typography>
               <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>
                 {i18n._(
-                  'Group calls are with other learners. You can ask people to speak slowly, and you can leave when you want. If a group feels like a lot, talk with Alex first.',
+                  'Group calls are free, with other learners. I arrange a time that works for the people on the call. While you wait, you can practice with AI, or talk with Alex first.',
                 )}
               </Typography>
             </Stack>
@@ -188,7 +214,7 @@ export const GroupConversationsFeaturePage = ({
                     fontWeight: 800,
                   }}
                 >
-                  {i18n._('Join a group call')}
+                  {i18n._('Request a group call')}
                 </Button>
                 <Typography
                   sx={{
@@ -197,7 +223,7 @@ export const GroupConversationsFeaturePage = ({
                     fontSize: '0.95rem',
                   }}
                 >
-                  {i18n._('Other learners on Google Meet')}
+                  {i18n._('I will write when I find a good group')}
                 </Typography>
               </Stack>
               <Stack sx={{ gap: '8px', alignItems: 'center' }}>
@@ -267,7 +293,7 @@ export const GroupConversationsFeaturePage = ({
 
           <Stack sx={{ gap: '18px', paddingTop: '68px' }}>
             <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
-              {i18n._('How you join')}
+              {i18n._('How a call is arranged')}
             </Typography>
             <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)', maxWidth: '720px' }}>
               {i18n._('Want to warm up before your call? Practice with AI first.')}
@@ -316,8 +342,8 @@ export const GroupConversationsFeaturePage = ({
         </Stack>
       </Stack>
       <CtaBlock
-        title={i18n._('See the next English call')}
-        actionButtonTitle={i18n._('See upcoming calls')}
+        title={i18n._('Request a free group call')}
+        actionButtonTitle={i18n._('Send a request')}
         actionButtonLink={appHref}
         actionButtonId="community-call-cta-footer"
         buttonBackgroundColor="#7DDEAA"

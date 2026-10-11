@@ -644,11 +644,11 @@ Join a conversation about your learning goals or your latest practice session.`,
       id: 'group-conversations',
       title: i18n._('Practice English with Other Learners'),
       subTitle: i18n._(
-        'Join live group conversations on Google Meet and build confidence speaking English.',
+        'Tell me what you want to talk about. I will find people and arrange a free call that works for everyone.',
       ),
       metaTitle: i18n._('Group English Conversation Calls | FluencyPal'),
       metaDescription: i18n._(
-        'Practice English on a free live group call with other learners. See upcoming Google Meet times in your time zone and join.',
+        'Request a free English group call. Share your interests and English level, and I will arrange a time that works for everyone.',
       ),
       keywords: [
         'group English conversation',
@@ -658,19 +658,17 @@ Join a conversation about your learning goals or your latest practice session.`,
       content: i18n._(
         `## Practice English with other learners
 
-Group conversations are free live English calls on Google Meet. You talk with other learners. There is no teacher and no set topic.
+Group conversations are free live English calls on Google Meet. You talk with other learners. There is no teacher and no set topic. There is no payment, and you do not need an account to request a call.
 
-Beginners can speak slowly. Advanced learners practice too. A correction comes only if someone asks. Join when the call starts, and leave when you need to. You can see how many people plan to come. Each call also has a text chat in FluencyPal for the people on it.
+Beginners can speak slowly. Advanced learners practice too. A correction comes only if someone asks. Each call also has a text chat in FluencyPal for the people on it.
 
-## How you join
+## How a call is arranged
 
-1. Find a call. Times are in your local time zone.
-2. Create an account. There is no payment.
-3. Open the Google Meet when the call starts.
+1. Tell me your interests, your English level, and how to reach you.
+2. I write once I find people who fit.
+3. We pick a time that is comfortable for everyone.
 
-Want to warm up before your call? Practice with AI first.
-
-Calls appear when they are on the schedule.`,
+Want to warm up before your call? Practice with AI while you wait.`,
       ),
     },
     {

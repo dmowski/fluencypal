@@ -24,7 +24,7 @@ export const GroupConversationJoinButton = ({ href }: { href: string }) => {
       data-testid="group-conversations-cta"
       sx={{ ...ctaButtonSx, marginTop: '8px' }}
     >
-      {i18n._('See schedule')}
+      {i18n._('Request a call')}
     </Button>
   );
 };

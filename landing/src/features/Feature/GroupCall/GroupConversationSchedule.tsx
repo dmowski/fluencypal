@@ -86,7 +86,7 @@ export const GroupConversationSchedule = ({ moreHref }: { moreHref: string }) =>
             <Stack
               key={call.id}
               component="a"
-              href={groupCallChoiceHref(moreHref, call.id)}
+              href={groupCallChoiceHref(moreHref)}
               direction="row"
               data-analytics="community-call-schedule-row"
               data-testid="group-conversations-schedule-row"

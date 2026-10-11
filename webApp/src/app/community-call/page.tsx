@@ -6,9 +6,9 @@ import { CommunityCallOnboarding } from '@/features/FluencyCall/CommunityCallOnb
 export async function generateMetadata(): Promise<Metadata> {
   const i18n = getI18nInstance('en');
   return {
-    title: i18n._('Join a group conversation | FluencyPal'),
+    title: i18n._('Request a group conversation | FluencyPal'),
     description: i18n._(
-      'Group calls are free. See upcoming times, create an account, and practice with AI until the call.',
+      'Group calls are free. Share your interests and how to reach you. I will write once I find a good group.',
     ),
   };
 }

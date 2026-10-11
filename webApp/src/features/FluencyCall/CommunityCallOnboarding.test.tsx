@@ -1,0 +1,68 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import '@testing-library/jest-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { I18nWrapper } from '@/features/Alias/test-utils/i18nTestHelper';
+import { CommunityCallOnboarding } from './CommunityCallOnboarding';
+import { sendCommunityCallRequest } from './sendCommunityCallRequest';
+
+jest.mock('./sendCommunityCallRequest', () => ({
+  sendCommunityCallRequest: jest.fn(),
+}));
+
+const send = sendCommunityCallRequest as jest.Mock;
+
+describe('CommunityCallOnboarding', () => {
+  beforeEach(() => {
+    send.mockReset();
+    send.mockResolvedValue(undefined);
+  });
+
+  it('sends interests and contact, then offers AI practice', async () => {
+    render(
+      <I18nWrapper>
+        <CommunityCallOnboarding lang="en" />
+      </I18nWrapper>,
+    );
+
+    expect(screen.getByTestId('community-call-whats-next')).toHaveTextContent(
+      'Group calls are free.',
+    );
+    expect(screen.getByText(/No account needed/)).toBeInTheDocument();
+    fireEvent.change(screen.getByTestId('community-call-interests'), {
+      target: { value: 'Travel, beginner' },
+    });
+    fireEvent.change(screen.getByTestId('community-call-contact'), {
+      target: { value: 'ada@example.com' },
+    });
+    fireEvent.click(screen.getByTestId('community-call-submit'));
+
+    expect(await screen.findByTestId('community-call-sent')).toBeInTheDocument();
+    expect(screen.getByTestId('community-call-practice')).toHaveAttribute('href', '/quiz');
+    expect(send).toHaveBeenCalledWith('Travel, beginner', 'ada@example.com');
+  });
+
+  it('keeps the form when the note cannot be sent', async () => {
+    send.mockRejectedValue(new Error('offline'));
+    render(
+      <I18nWrapper>
+        <CommunityCallOnboarding lang="ko" />
+      </I18nWrapper>,
+    );
+
+    fireEvent.change(screen.getByTestId('community-call-interests'), {
+      target: { value: 'Work' },
+    });
+    fireEvent.change(screen.getByTestId('community-call-contact'), {
+      target: { value: '@ada' },
+    });
+    fireEvent.click(screen.getByTestId('community-call-submit'));
+
+    expect(await screen.findByTestId('community-call-error')).toHaveTextContent(
+      'Could not send that. Please try again.',
+    );
+    expect(screen.getByTestId('community-call-form')).toBeInTheDocument();
+  });
+});

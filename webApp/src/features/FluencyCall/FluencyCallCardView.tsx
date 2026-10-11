@@ -2,13 +2,11 @@
 
 import { useId, useState } from 'react';
 import { Box, Stack } from '@mui/material';
-import { useLingui } from '@lingui/react';
 import { FluencyCallCardHeader } from './card/FluencyCallCardHeader';
 import { FluencyCallChatPanel } from './card/FluencyCallChatPanel';
-import { FluencyCallNextConversation } from './card/FluencyCallNextConversation';
-import { FluencyCallScheduleModal } from './card/FluencyCallScheduleModal';
+import { FluencyCallRequestSection } from './card/FluencyCallRequestSection';
 import { narrow, token } from './card/styles';
-import { FluencyCallCardCall, FluencyCallCardViewProps } from './card/types';
+import { FluencyCallCardViewProps } from './card/types';
 import { MutedPreviewVideo } from '../uiKit/Video/MutedPreviewVideo';
 
 export {
@@ -18,42 +16,24 @@ export {
   type FluencyCallCardViewProps,
 } from './card/types';
 
+const stackColumns = {
+  gridTemplateColumns: '1fr',
+  gridTemplateAreas: '"video" "request"',
+  alignItems: 'center',
+  gap: '20px',
+  padding: '20px 0',
+};
+
 export const FluencyCallCardView = ({
-  calls,
-  languageCode,
-  onLanguageChange,
-  timeZoneLabel,
-  meetUrl,
   messages,
-  onToggleJoining,
   onSendMessage,
   canJoin,
-  requestedAtLabel,
   paidNotice,
-  onInitiateCall,
   initialChatExpanded = false,
-  notice = null,
-  callPeople,
   welcomeVideoSrc,
 }: FluencyCallCardViewProps) => {
-  const { i18n } = useLingui();
   const uid = useId();
-  const [modal, setModal] = useState<'schedule' | 'welcome' | null>(null);
-  const [pendingCall, setPendingCall] = useState<string | null>(null);
   const [error, setError] = useState('');
-  const alert = error || notice || '';
-
-  const toggle = async (call: FluencyCallCardCall) => {
-    setPendingCall(call.id);
-    setError('');
-    try {
-      await onToggleJoining(call.id, !call.isJoining);
-    } catch {
-      setError(i18n._('Could not update your plans. Please try again.'));
-    } finally {
-      setPendingCall(null);
-    }
-  };
 
   return (
     <Box
@@ -80,38 +60,21 @@ export const FluencyCallCardView = ({
       <Stack sx={{ padding: '24px 20px 20px 20px', gap: 0, [narrow]: { padding: '20px' } }}>
         <FluencyCallCardHeader
           titleId={`${uid}-title`}
-          languageCode={languageCode}
-          onLanguageChange={onLanguageChange}
           canJoin={canJoin}
           paidNotice={paidNotice}
         />
         <Stack
           sx={{
             display: 'grid',
-            gridTemplateColumns: '1fr auto',
-            gridTemplateAreas: '"conversation video"',
+            gridTemplateColumns: 'auto 1fr',
+            gridTemplateAreas: '"video request"',
             alignItems: 'center',
             gap: '30px',
             padding: '20px 0 0px 0',
-            '@media (max-width: 600px)': {
-              gridTemplateColumns: '1fr',
-              gridTemplateAreas: '"video" "conversation"',
-              alignItems: 'center',
-              gap: '20px',
-              padding: '20px 0',
-            },
+            '@media (max-width: 600px)': stackColumns,
+            '@container fluency-call-card (max-width: 560px)': stackColumns,
           }}
         >
-          <Stack sx={{ gridArea: 'conversation' }}>
-            <FluencyCallNextConversation
-              next={calls[0]}
-              timeZoneLabel={timeZoneLabel}
-              meetUrl={meetUrl}
-              pendingCallId={pendingCall}
-              onToggle={toggle}
-              onOpenSchedule={() => setModal('schedule')}
-            />
-          </Stack>
           <Stack
             sx={{
               gridArea: 'video',
@@ -122,29 +85,18 @@ export const FluencyCallCardView = ({
           >
             <MutedPreviewVideo src={welcomeVideoSrc} muteSize="150px" playSize="280px" />
           </Stack>
+          <Stack sx={{ gridArea: 'request', minWidth: 0 }}>
+            <FluencyCallRequestSection />
+          </Stack>
         </Stack>
       </Stack>
 
       <FluencyCallChatPanel
         messages={messages}
         initialExpanded={initialChatExpanded}
-        alert={alert}
+        alert={error}
         onSendMessage={onSendMessage}
         onError={setError}
-      />
-
-      <FluencyCallScheduleModal
-        open={modal === 'schedule'}
-        calls={calls}
-        timeZoneLabel={timeZoneLabel}
-        callPeople={callPeople}
-        canJoin={canJoin}
-        requestedAtLabel={requestedAtLabel}
-        pendingCallId={pendingCall}
-        alert={alert}
-        onClose={() => setModal(null)}
-        onToggle={toggle}
-        onInitiateCall={onInitiateCall}
       />
     </Box>
   );

@@ -1,4 +1,4 @@
-import { fetchGroupConversationSchedule } from '@/features/Feature/safeGroupCalls';
+import { fetchGroupConversationSchedule } from '@/features/Feature/GroupCall/safeGroupCalls';
 
 export async function GET() {
   try {

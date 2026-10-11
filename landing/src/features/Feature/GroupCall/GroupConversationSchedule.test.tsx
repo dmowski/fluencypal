@@ -34,8 +34,8 @@ describe('english group-call links', () => {
     expect(englishGroupCallOnboardingHref('ko')).toBe(
       'https://app.fluencypal.com/ko/community-call',
     );
-    expect(groupCallChoiceHref(englishGroupCallOnboardingHref('en'), 'sat-21')).toBe(
-      'https://app.fluencypal.com/community-call?step=native&call=sat-21',
+    expect(groupCallChoiceHref(englishGroupCallOnboardingHref('en'))).toBe(
+      'https://app.fluencypal.com/community-call',
     );
     expect(talkWithAlexHref('en')).toBe('https://app.fluencypal.com/talk-with-alex');
     expect(talkWithAlexHref('ko')).toBe('https://app.fluencypal.com/ko/talk-with-alex');
@@ -66,17 +66,17 @@ describe('group conversation times', () => {
 
     const rows = await screen.findAllByTestId('group-conversations-schedule-row');
     expect(rows).toHaveLength(2);
-    expect(rows[0]).toHaveAttribute('href', groupCallChoiceHref(href, 'sooner'));
+    expect(rows[0]).toHaveAttribute('href', groupCallChoiceHref(href));
     expect(rows[0]).toHaveAttribute('data-analytics', 'community-call-schedule-row');
-    expect(rows[1]).toHaveAttribute('href', groupCallChoiceHref(href, 'later'));
+    expect(rows[1]).toHaveAttribute('href', groupCallChoiceHref(href));
     expect(screen.getByTestId('group-conversations-show-more')).toHaveAttribute('href', href);
     expect(screen.queryByText('9')).not.toBeInTheDocument();
   });
 
-  it('labels the hero button See schedule', () => {
+  it('labels the hero button Request a call', () => {
     render(renderWithI18n(<GroupConversationJoinButton href={href} />));
 
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See schedule');
+    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('Request a call');
     expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute('href', href);
     expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute(
       'data-analytics',
@@ -101,7 +101,7 @@ describe('group conversation times', () => {
     );
 
     expect(await screen.findByTestId('group-conversations-schedule-empty')).toBeInTheDocument();
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('See schedule');
+    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('Request a call');
     expect(screen.queryByTestId('group-conversations-schedule-row')).not.toBeInTheDocument();
   });
 });

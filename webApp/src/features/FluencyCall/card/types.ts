@@ -1,6 +1,4 @@
-import { ReactNode } from 'react';
 import { ThreadsMessage } from '@/features/Chat/type';
-import { SupportedLanguage } from '@/features/Lang/lang';
 
 export const FLUENCY_CALL_CHAT_PAGE = 20;
 
@@ -17,25 +15,12 @@ export type FluencyCallCardCall = {
 };
 
 export type FluencyCallCardViewProps = {
-  /** Featured call first, then the other listed calls, earliest first. */
-  calls: FluencyCallCardCall[];
-  languageCode: SupportedLanguage;
-  onLanguageChange: (language: SupportedLanguage) => void;
-  timeZoneLabel: string;
-  /** Real Meet URL, or null when this language has no saved link. */
-  meetUrl: string | null;
   messages: ThreadsMessage[];
-  onToggleJoining: (callId: string, joining: boolean) => Promise<void>;
   onSendMessage: (text: string) => Promise<void>;
   canJoin: boolean;
-  requestedAtLabel: string | null;
   paidNotice: boolean;
-  onInitiateCall: () => void;
   /** Opens the shared chat expanded. Used by an old chat link. */
   initialChatExpanded?: boolean;
-  notice?: string | null;
-  /** Names for one listed call, shown under that time in Upcoming conversations. */
-  callPeople?: (call: FluencyCallCardCall) => ReactNode;
-  /** Real host intro. Omitted when the app has no video file. */
+  /** Real host intro. */
   welcomeVideoSrc: string;
 };
