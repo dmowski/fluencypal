@@ -76,12 +76,6 @@ export const GroupConversationsFeaturePage = ({
       ),
     },
   ];
-  const nextSteps = [
-    i18n._('Tell me your interests, your level, and how to reach you.'),
-    i18n._('I will write once I find people who fit.'),
-    i18n._('We pick a time that is comfortable for everyone. Group calls are free.'),
-  ];
-
   return (
     <>
       <HeaderStatic lang={lang} />
@@ -103,7 +97,7 @@ export const GroupConversationsFeaturePage = ({
                 display: 'grid',
                 gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' },
                 gap: { xs: '28px', md: '48px' },
-                alignItems: 'center',
+                alignItems: { xs: 'flex-start', md: 'center' },
               }}
             >
               <Stack sx={{ gap: '18px', alignItems: 'flex-start' }}>
@@ -138,7 +132,7 @@ export const GroupConversationsFeaturePage = ({
 
               <Stack
                 data-testid="group-conversations-video"
-                sx={{ alignItems: 'center', justifyContent: 'center' }}
+                sx={{ alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'center' }}
               >
                 <MutedPreviewVideo src="/group_call/intro2.webm" />
               </Stack>
@@ -147,123 +141,97 @@ export const GroupConversationsFeaturePage = ({
             <Stack
               data-testid="group-conversations-whats-next"
               sx={{
-                gap: '16px',
-                maxWidth: { md: '640px' },
-                borderRadius: '20px',
-                border: '1px solid rgba(148, 145, 255, 0.22)',
-                backgroundColor: '#16181e',
-                boxShadow: '0 12px 45px #00000040',
-                padding: '24px',
+                gap: '22px',
+                padding: { xs: '0', md: '100px 0 30px 0' },
               }}
             >
-              <Typography sx={{ fontWeight: 800, fontSize: '1.15rem' }}>
-                {i18n._("What's next")}
-              </Typography>
-              {nextSteps.map((step, index) => (
-                <Stack key={step} direction="row" sx={{ gap: '12px', alignItems: 'flex-start' }}>
-                  <Typography sx={{ fontWeight: 800, color: '#7DDEAA', minWidth: '1.2rem' }}>
-                    {index + 1}
-                  </Typography>
-                  <Typography sx={{ color: 'rgba(244, 247, 251, 0.78)' }}>{step}</Typography>
-                </Stack>
-              ))}
-            </Stack>
-          </Stack>
-
-          <Stack
-            sx={{
-              gap: '22px',
-              alignItems: 'center',
-            }}
-          >
-            <Stack
-              sx={{ gap: '10px', alignItems: 'center', textAlign: 'center', maxWidth: '640px' }}
-            >
-              <Typography
-                sx={{
-                  color: '#7DDEAA',
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  fontSize: '0.85rem',
-                }}
-              >
-                {i18n._('From Alex')}
-              </Typography>
-              <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
-                {i18n._('Talk with the group, or just with Alex')}
-              </Typography>
-              <Typography sx={{ color: 'rgba(244, 247, 251, 0.75)' }}>
-                {i18n._(
-                  'Group calls are free, with other learners. I arrange a time that works for the people on the call. While you wait, you can practice with AI, or talk with Alex first.',
-                )}
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{
-                width: '100%',
-                maxWidth: '640px',
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                gap: '16px',
-              }}
-            >
-              <Stack sx={{ gap: '8px', alignItems: 'center' }}>
-                <Button
-                  href={appHref}
-                  variant="outlined"
-                  size="large"
-                  data-analytics="community-call-video"
-                  data-testid="group-conversations-join-group"
-                  sx={{
-                    ...buttonStyle,
-                    width: '100%',
-                    padding: '12px 24px',
-                    color: '#f4f7fb',
-                    backgroundColor: 'transparent',
-                    border: '1px solid rgba(125, 222, 170, 0.7)',
-                    fontWeight: 800,
-                  }}
-                >
-                  {i18n._('Request a group call')}
-                </Button>
+              <Stack sx={{ gap: '10px', maxWidth: '1240px' }}>
                 <Typography
                   sx={{
-                    color: 'rgba(244, 247, 251, 0.7)',
-                    textAlign: 'center',
-                    fontSize: '0.95rem',
+                    color: '#7DDEAA',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    fontSize: '0.85rem',
                   }}
                 >
-                  {i18n._('I will write when I find a good group')}
+                  {i18n._("What's next")}
+                </Typography>
+                <Typography component="h2" variant="h2" sx={{ fontWeight: 800 }}>
+                  {i18n._('Talk with the group, or just with Alex')}
+                </Typography>
+                <Typography sx={{ maxWidth: '640px', color: 'rgba(244, 247, 251, 0.75)' }}>
+                  {i18n._(
+                    'Group calls are free, with other learners. I arrange a time that works for the people on the call. While you wait, you can practice with AI, or talk with Alex first.',
+                  )}
                 </Typography>
               </Stack>
-              <Stack sx={{ gap: '8px', alignItems: 'center' }}>
-                <Button
-                  href={alexHref}
-                  variant="contained"
-                  size="large"
-                  data-analytics="talk-with-alex-cta"
-                  data-testid="group-conversations-talk-with-alex"
-                  sx={{
-                    ...buttonStyle,
-                    width: '100%',
-                    padding: '12px 24px',
-                    color: '#041018',
-                    backgroundColor: '#7DDEAA',
-                    fontWeight: 800,
-                  }}
-                >
-                  {i18n._('Talk with Alex')}
-                </Button>
-                <Typography
-                  sx={{
-                    color: 'rgba(244, 247, 251, 0.7)',
-                    textAlign: 'center',
-                    fontSize: '0.95rem',
-                  }}
-                >
-                  {i18n._('A short call so we can get to know each other')}
-                </Typography>
+              <Stack
+                sx={{
+                  width: '100%',
+                  maxWidth: '640px',
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                  gap: '16px',
+                }}
+              >
+                <Stack sx={{ gap: '8px', alignItems: 'center' }}>
+                  <Button
+                    href={appHref}
+                    variant="outlined"
+                    size="large"
+                    data-analytics="community-call-video"
+                    data-testid="group-conversations-join-group"
+                    sx={{
+                      ...buttonStyle,
+                      width: '100%',
+                      padding: '12px 24px',
+                      color: '#f4f7fb',
+                      backgroundColor: 'transparent',
+                      border: '1px solid rgba(125, 222, 170, 0.7)',
+                      fontWeight: 800,
+                    }}
+                  >
+                    {i18n._('Request a group call')}
+                  </Button>
+                  <Typography
+                    sx={{
+                      color: 'rgba(244, 247, 251, 0.7)',
+                      textAlign: 'center',
+                      fontSize: '0.95rem',
+                    }}
+                  >
+                    {i18n._('I will write when I find a good group')}
+                  </Typography>
+                </Stack>
+                <Stack sx={{ gap: '8px', alignItems: 'center' }}>
+                  <Button
+                    href={alexHref}
+                    variant="contained"
+                    size="large"
+                    data-analytics="talk-with-alex-cta"
+                    data-testid="group-conversations-talk-with-alex"
+                    sx={{
+                      ...buttonStyle,
+                      width: '100%',
+                      padding: '12px 24px',
+                      color: '#041018',
+                      backgroundColor: '#7DDEAA',
+                      fontWeight: 800,
+                    }}
+                  >
+                    {i18n._('Talk with Alex')}
+                  </Button>
+                  <Typography
+                    sx={{
+                      color: 'rgba(244, 247, 251, 0.7)',
+                      textAlign: 'center',
+                      fontSize: '0.95rem',
+                    }}
+                  >
+                    {i18n._('A short call so we can get to know each other')}
+                  </Typography>
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
