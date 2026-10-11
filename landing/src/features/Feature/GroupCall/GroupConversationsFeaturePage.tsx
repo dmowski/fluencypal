@@ -97,44 +97,58 @@ export const GroupConversationsFeaturePage = ({
         }}
       >
         <Stack sx={{ width: '100%', maxWidth: maxLandingWidth, gap: { xs: '56px', md: '80px' } }}>
-          <Stack
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' },
-              gap: { xs: '28px', md: '48px' },
-              alignItems: 'center',
-            }}
-          >
-            <Stack sx={{ gap: '18px', alignItems: 'flex-start' }}>
-              <Typography
-                sx={{
-                  color: '#7DDEAA',
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase',
-                  fontSize: '0.85rem',
-                }}
+          <Stack sx={{ gap: { xs: '28px', md: '40px' } }}>
+            <Stack
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' },
+                gap: { xs: '28px', md: '48px' },
+                alignItems: 'center',
+              }}
+            >
+              <Stack sx={{ gap: '18px', alignItems: 'flex-start' }}>
+                <Typography
+                  sx={{
+                    color: '#7DDEAA',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase',
+                    fontSize: '0.85rem',
+                  }}
+                >
+                  {i18n._('Group conversations')}
+                </Typography>
+                <Typography
+                  component="h1"
+                  sx={{ ...titleFontStyle, color: '#fff', fontSize: { xs: '2.1rem', md: '3rem' } }}
+                >
+                  {i18n._('Practice English with other learners')}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '1.15rem',
+                    color: 'rgba(244, 247, 251, 0.78)',
+                    maxWidth: '520px',
+                  }}
+                >
+                  {feature.subTitle}
+                </Typography>
+                <GroupConversationJoinButton href={appHref} />
+              </Stack>
+
+              <Stack
+                data-testid="group-conversations-video"
+                sx={{ alignItems: 'center', justifyContent: 'center' }}
               >
-                {i18n._('Group conversations')}
-              </Typography>
-              <Typography
-                component="h1"
-                sx={{ ...titleFontStyle, color: '#fff', fontSize: { xs: '2.1rem', md: '3rem' } }}
-              >
-                {i18n._('Practice English with other learners')}
-              </Typography>
-              <Typography
-                sx={{ fontSize: '1.15rem', color: 'rgba(244, 247, 251, 0.78)', maxWidth: '520px' }}
-              >
-                {feature.subTitle}
-              </Typography>
-              <GroupConversationJoinButton href={appHref} />
+                <MutedPreviewVideo src="/group_call/intro2.webm" />
+              </Stack>
             </Stack>
 
             <Stack
               data-testid="group-conversations-whats-next"
               sx={{
                 gap: '16px',
+                maxWidth: { md: '640px' },
                 borderRadius: '20px',
                 border: '1px solid rgba(148, 145, 255, 0.22)',
                 backgroundColor: '#16181e',
@@ -157,11 +171,9 @@ export const GroupConversationsFeaturePage = ({
           </Stack>
 
           <Stack
-            data-testid="group-conversations-video"
             sx={{
               gap: '22px',
               alignItems: 'center',
-              paddingTop: { xs: '12px', md: '8px' },
             }}
           >
             <Stack
@@ -187,7 +199,6 @@ export const GroupConversationsFeaturePage = ({
                 )}
               </Typography>
             </Stack>
-            <MutedPreviewVideo src="/group_call/intro2.webm" />
             <Stack
               sx={{
                 width: '100%',
