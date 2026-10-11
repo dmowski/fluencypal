@@ -40,7 +40,7 @@ describe('CommunityCallOnboarding', () => {
     fireEvent.click(screen.getByTestId('community-call-submit'));
 
     expect(await screen.findByTestId('community-call-sent')).toBeInTheDocument();
-    expect(screen.getByTestId('community-call-practice')).toHaveAttribute('href', '/quiz');
+    expect(screen.getByTestId('community-call-practice')).toHaveAttribute('href', '/practice');
     expect(send).toHaveBeenCalledWith('Travel, beginner', 'ada@example.com');
   });
 

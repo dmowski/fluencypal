@@ -682,44 +682,40 @@ msgid ""
 "## Practice English with other learners\n"
 "\n"
 "Group conversations are free live English calls on Google Meet. You talk "
-"with other learners. There is no teacher and no set topic.\n"
+"with other learners. There is no teacher and no set topic. There is no "
+"payment, and you do not need an account to request a call.\n"
 "\n"
 "Beginners can speak slowly. Advanced learners practice too. A correction "
-"comes only if someone asks. Join when the call starts, and leave when you "
-"need to. You can see how many people plan to come. Each call also has a "
-"text chat in FluencyPal for the people on it.\n"
+"comes only if someone asks. Each call also has a text chat in FluencyPal "
+"for the people on it.\n"
 "\n"
-"## How you join\n"
+"## How a call is arranged\n"
 "\n"
-"1. Find a call. Times are in your local time zone.\n"
-"2. Create an account. There is no payment.\n"
-"3. Open the Google Meet when the call starts.\n"
+"1. Tell me your interests, your English level, and how to reach you.\n"
+"2. I write once I find people who fit.\n"
+"3. We pick a time that is comfortable for everyone.\n"
 "\n"
-"Want to warm up before your call? Practice with AI first.\n"
-"\n"
-"Calls appear when they are on the schedule."
+"Want to warm up before your call? Practice with AI while you wait."
 msgstr ""
-"## Luyện nói tiếng Anh với người học khác\n"
+"## Luyện tập tiếng Anh với các học viên khác\n"
 "\n"
-"Các buổi trò chuyện nhóm là các cuộc gọi tiếng Anh miễn phí qua Google "
-"Meet. Bạn sẽ nói chuyện với những người học khác. Không có giáo viên và "
-"không có chủ đề cố định.\n"
+"Cuộc trò chuyện nhóm là các cuộc gọi tiếng Anh miễn phí trên Google Meet. "
+"Bạn trò chuyện với các học viên khác. Không có giáo viên và không có chủ đề "
+"cố định. Không cần thanh toán, và bạn không cần tài khoản để yêu cầu một "
+"cuộc gọi.\n"
 "\n"
-"Người mới bắt đầu có thể nói chậm rãi. Người học nâng cao cũng thực hành. "
-"Sẽ chỉ có chỉnh sửa khi có người yêu cầu. Tham gia khi cuộc gọi bắt đầu, và "
-"rời đi khi bạn cần. Bạn có thể xem có bao nhiêu người dự định tham gia. Mỗi "
-"cuộc gọi cũng có một hộp trò chuyện văn bản trong FluencyPal cho những "
-"người tham gia.\n"
+"Người mới bắt đầu có thể nói chậm. Học viên nâng cao cũng có thể luyện tập. "
+"Sửa lỗi chỉ khi có người hỏi. Mỗi cuộc gọi cũng có phần trò chuyện văn bản "
+"trong FluencyPal cho những người tham gia.\n"
 "\n"
-"## Cách tham gia\n"
+"## Cách sắp xếp một cuộc gọi\n"
 "\n"
-"1. Tìm một cuộc gọi. Giờ được tính theo múi giờ địa phương của bạn.\n"
-"2. Tạo một tài khoản. Không có thanh toán.\n"
-"3. Mở Google Meet khi cuộc gọi bắt đầu.\n"
+"1. Cho tôi biết sở thích của bạn, trình độ tiếng Anh của bạn và cách liên "
+"hệ với bạn.\n"
+"2. Tôi sẽ liên hệ khi tìm được những người phù hợp.\n"
+"3. Chúng tôi sẽ chọn một thời gian thuận tiện cho mọi người.\n"
 "\n"
-"Muốn khởi động trước cuộc gọi của bạn? Hãy thực hành với AI trước.\n"
-"\n"
-"Các cuộc gọi xuất hiện khi có trong lịch trình."
+"Muốn chuẩn bị trước cuộc gọi của bạn? Luyện tập với AI trong khi chờ đợi."
 
 #: src/features/Feature/featuresData.ts:455
 #. js-lingui-explicit-id
@@ -1102,7 +1098,7 @@ msgstr ""
 "- lập luận\n"
 "- sự tự tin trong tiếng Anh nói"
 
-#: src/features/Feature/featuresData.ts:691
+#: src/features/Feature/featuresData.ts:689
 #. js-lingui-explicit-id
 msgid ""
 "## Turn regular English practice into leaderboard points\n"
@@ -1608,12 +1604,6 @@ msgstr ""
 "Một trò chơi đoán chữ vui nhộn dành cho 2-20 người chơi. Giải thích các từ "
 "cho đồng đội của bạn mà không nói từ đó!"
 
-#: src/features/Landing/LandingPage.tsx:458
-#: src/features/LearnLanding/LearnLanguagePage.tsx:327
-#. js-lingui-explicit-id
-msgid "A list of upcoming group conversation calls"
-msgstr "Danh sách các cuộc gọi hội thoại nhóm sắp tới"
-
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
 msgid "A method focused on clarity and reliability"
@@ -1640,7 +1630,7 @@ msgstr "Một phương pháp đã được chứng minh mang lại kết quả c
 msgid "a sequence of events:"
 msgstr "một chuỗi các sự kiện:"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:228
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:254
 #. js-lingui-explicit-id
 msgid "A short call so we can get to know each other"
 msgstr "Một cuộc gọi ngắn để chúng ta có thể làm quen với nhau"
@@ -2593,6 +2583,11 @@ msgstr ""
 "tiết sẽ được cung cấp sau cuộc phỏng vấn để cuộc trò chuyện duy trì sự thực "
 "tế."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:39
+#. js-lingui-explicit-id
+msgid "A time that fits"
+msgstr "Một thời điểm phù hợp"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:186
 #. js-lingui-explicit-id
 msgid "A vs an"
@@ -2695,6 +2690,15 @@ msgstr "Giá cả phải chăng để học ngôn ngữ bằng AI"
 #. js-lingui-explicit-id
 msgid "After a preposition, English wants **-ing**:"
 msgstr "Sau một giới từ, tiếng Anh cần dạng **-ing**:"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"After I find a good group, I write you. We choose a time that is "
+"comfortable for everyone."
+msgstr ""
+"Sau khi tìm được một nhóm tốt, tôi sẽ viết cho bạn. Chúng ta chọn một thời "
+"gian thoải mái cho mọi người."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:281
 #. js-lingui-explicit-id
@@ -3170,7 +3174,7 @@ msgstr ""
 "Người mới bắt đầu đến thành thạo · Sử dụng micro của bạn · Hoạt động trong "
 "trình duyệt của bạn"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:34
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "Beginners can speak slowly. Advanced learners practice too. A correction "
@@ -6347,7 +6351,7 @@ msgstr ""
 "Tập trung vào việc rõ ràng và cụ thể. Bạn không cần kiến thức kỹ thuật nâng "
 "cao hoặc ngữ pháp hoàn hảo để có một cuộc trò chuyện hỗ trợ thành công."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:68
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:67
 #. js-lingui-explicit-id
 msgid "Can a beginner keep up?"
 msgstr "Người mới bắt đầu có theo kịp không?"
@@ -6921,11 +6925,6 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Trung"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:49
-#. js-lingui-explicit-id
-msgid "Choose a time that works for you. The calls are free."
-msgstr "Chọn thời gian phù hợp với bạn. Các cuộc gọi là miễn phí."
-
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -7373,11 +7372,6 @@ msgstr ""
 "tiết. AI sẽ sau đó tạo một cuộc hội thoại theo cài đặt của bạn và hành xử "
 "theo giọng điệu và độ khó mà bạn đã chọn."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:52
-#. js-lingui-explicit-id
-msgid "Create an account"
-msgstr "Tạo một tài khoản"
-
 #: src/features/Feature/featuresData.ts:270
 #. js-lingui-explicit-id
 msgid "Create Your Own English Role Play Scenario"
@@ -7794,7 +7788,7 @@ msgstr "Đừng nhầm lẫn điều này với quá khứ thực sự:"
 msgid "Do not say this"
 msgstr "Không nói điều này"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:62
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:61
 #. js-lingui-explicit-id
 msgid "Do the calls cost money?"
 msgstr "Các cuộc gọi có tốn tiền không?"
@@ -7863,7 +7857,7 @@ msgstr ""
 "chính xác gây cho bạn khó khăn nhất, biến lỗi lầm của bạn thành thực hành "
 "nói có mục tiêu."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:239
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:265
 #. js-lingui-explicit-id
 msgid "Each call also has a text chat in FluencyPal for the people on it."
 msgstr ""
@@ -7875,7 +7869,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Quyền truy cập sớm vào công cụ mới"
 
-#: src/features/Feature/featuresData.ts:683
+#: src/features/Feature/featuresData.ts:681
 #. js-lingui-explicit-id
 msgid ""
 "Earn points for English conversations, story quizzes, daily questions, and "
@@ -7886,7 +7880,7 @@ msgstr ""
 "ngày và trò chơi. Theo dõi vị trí của bạn trên bảng xếp hạng của FluencyPal "
 "và phấn đấu giành phần thưởng."
 
-#: src/features/Feature/featuresData.ts:679
+#: src/features/Feature/featuresData.ts:677
 #. js-lingui-explicit-id
 msgid ""
 "Earn points from your learning activities and work toward leaderboard "
@@ -9050,7 +9044,7 @@ msgstr ""
 "Các kỹ sư chuyển từ vai trò trung cấp lên cấp cao và cần những câu chuyện "
 "hành vi mạnh mẽ hơn"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:125
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:125
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "Tiếng Anh"
@@ -9164,12 +9158,12 @@ msgstr "Trò chơi học tiếng Anh cho từ vựng và câu"
 msgid "English Learning Games Online | FluencyPal"
 msgstr "Trò chơi học tiếng Anh trực tuyến | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:682
+#: src/features/Feature/featuresData.ts:680
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard and Rewards | FluencyPal"
 msgstr "Bảng xếp hạng và Phần thưởng học tiếng Anh | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:678
+#: src/features/Feature/featuresData.ts:676
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard: Earn Practice Points"
 msgstr "Bảng xếp hạng học tiếng Anh: Kiếm điểm luyện tập"
@@ -9267,12 +9261,12 @@ msgstr "Luyện Từ Vựng Tiếng Anh Để Nói"
 msgid "English Vocabulary Practice with AI | FluencyPal"
 msgstr "Luyện Từ Vựng Tiếng Anh với AI | FluencyPal"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:122
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:122
 #. js-lingui-explicit-id
 msgid "English · 1 person"
 msgstr "Tiếng Anh · 1 người"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:124
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:124
 #. js-lingui-explicit-id
 msgid "English · {count} people"
 msgstr "Tiếng Anh · {count} người"
@@ -9762,11 +9756,6 @@ msgstr "Điểm Cuối cùng: {winnerScore}"
 msgid "Final Standings"
 msgstr "Bảng Xếp Hạng Cuối Cùng"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:48
-#. js-lingui-explicit-id
-msgid "Find a call"
-msgstr "Tìm cuộc gọi"
-
 #: src/features/RolePlay/fullArticles/alias/AliasLandingPage.tsx:123
 #. js-lingui-explicit-id
 msgid "Find out whether your explanation worked and review your feedback."
@@ -10177,7 +10166,7 @@ msgstr "Kế Hoạch Học Tiếng Pháp"
 msgid "Friendly"
 msgstr "Thân thiện"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:153
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:179
 #. js-lingui-explicit-id
 msgid "From Alex"
 msgstr "Từ Alex"
@@ -10453,18 +10442,18 @@ msgstr "Xem Trước Sửa Ngữ Pháp"
 msgid "Grocery Store"
 msgstr "Cửa hàng tạp hóa"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:159
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:185
 #. js-lingui-explicit-id
 msgid ""
-"Group calls are with other learners. You can ask people to speak slowly, "
-"and you can leave when you want. If a group feels like a lot, talk with "
-"Alex first."
+"Group calls are free, with other learners. I arrange a time that works for "
+"the people on the call. While you wait, you can practice with AI, or talk "
+"with Alex first."
 msgstr ""
-"Cuộc gọi nhóm là với những người học khác. Bạn có thể yêu cầu mọi người nói "
-"chậm, và bạn có thể rời đi khi bạn muốn. Nếu một nhóm cảm thấy quá nhiều, "
-"hãy nói chuyện với Alex trước."
+"Cuộc gọi nhóm là miễn phí, với các người học khác. Tôi sắp xếp một thời "
+"gian phù hợp cho những người trong cuộc gọi. Trong khi chờ đợi, bạn có thể "
+"thực hành với AI hoặc nói chuyện với Alex trước."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:114
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:118
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Các cuộc trò chuyện nhóm"
@@ -10598,6 +10587,11 @@ msgstr "Cuộc trò chuyện khi nhận phòng khách sạn"
 msgid "Hours added to your advanced conversation balance"
 msgstr "Số giờ được thêm vào số dư cuộc trò chuyện nâng cao của bạn"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:296
+#. js-lingui-explicit-id
+msgid "How a call is arranged"
+msgstr "Cách sắp xếp một cuộc gọi"
+
 #: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid "How can I track my progress?"
@@ -10691,11 +10685,6 @@ msgstr "Cách Nó Hoạt Động"
 msgid "How it Works"
 msgstr "Cách Thức Hoạt Động"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:74
-#. js-lingui-explicit-id
-msgid "How often are calls?"
-msgstr "Cuộc gọi diễn ra bao lâu một lần?"
-
 #: src/features/Blog/blogData.tsx:369
 #. js-lingui-explicit-id
 msgid ""
@@ -10761,11 +10750,6 @@ msgid ""
 msgstr ""
 "Làm thế nào bạn sẽ cấu trúc quản lý trạng thái cho một ứng dụng phức tạp "
 "với các thành phần lồng nhau và dữ liệu không đồng bộ?"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:270
-#. js-lingui-explicit-id
-msgid "How you join"
-msgstr "Cách bạn tham gia"
 
 #: src/features/Blog/blogData.tsx:144
 #. js-lingui-explicit-id
@@ -11134,6 +11118,20 @@ msgstr ""
 msgid "I have a memory of it."
 msgstr "Tôi có một ký ức về điều đó."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:51
+#. js-lingui-explicit-id
+msgid "I look for people"
+msgstr "Tôi tìm kiếm người khác"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:40
+#. js-lingui-explicit-id
+msgid ""
+"I look for people who fit, then we pick a time that is comfortable for "
+"everyone."
+msgstr ""
+"Tôi tìm kiếm những người phù hợp, sau đó chúng tôi chọn một thời gian thuận "
+"tiện cho tất cả mọi người."
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:322
 #. js-lingui-explicit-id
 msgid "I paused another activity in order to check."
@@ -11226,6 +11224,21 @@ msgid ""
 msgstr ""
 "Tôi đã tự tin và rõ ràng — FluencyPal đã chuẩn bị cho tôi tốt hơn bất kỳ "
 "huấn luyện viên nào trong các cuộc thảo luận kỹ thuật về quản lý trạng thái."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:81
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit."
+msgstr "Tôi sẽ viết khi tôi tìm thấy những người phù hợp."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:52
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit. Group calls are free."
+msgstr "Mình sẽ viết khi tìm được những người phù hợp. Cuộc gọi nhóm là miễn phí."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:226
+#. js-lingui-explicit-id
+msgid "I will write when I find a good group"
+msgstr "Tôi sẽ viết khi tôi tìm thấy một nhóm tốt."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:343
 #. js-lingui-explicit-id
@@ -12139,49 +12152,11 @@ msgstr "mẹo phỏng vấn xin việc"
 msgid "Join"
 msgstr "Tham gia"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:191
-#. js-lingui-explicit-id
-msgid "Join a group call"
-msgstr "Tham gia cuộc gọi nhóm"
-
-#: src/features/Landing/LandingPage.tsx:454
-#: src/features/LearnLanding/LearnLanguagePage.tsx:323
-#. js-lingui-explicit-id
-msgid ""
-"Join a live call on Google Meet. See the next times for where you live, and "
-"talk with AI until it starts."
-msgstr ""
-"Tham gia cuộc gọi trực tiếp trên Google Meet. Xem thời gian cho nơi bạn "
-"sống và nói chuyện với AI cho đến khi bắt đầu."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Join candidates who transformed their interview performance"
 msgstr "Tham gia cùng các ứng viên đã cải thiện hiệu suất phỏng vấn của họ"
-
-#: src/features/Feature/featuresData.ts:646
-#. js-lingui-explicit-id
-msgid ""
-"Join live group conversations on Google Meet and build confidence speaking "
-"English."
-msgstr ""
-"Tham gia các cuộc trò chuyện nhóm trực tiếp trên Google Meet và xây dựng sự "
-"tự tin khi nói tiếng Anh."
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:56
-#. js-lingui-explicit-id
-msgid "Join on Google Meet"
-msgstr "Tham gia trên Google Meet"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:41
-#. js-lingui-explicit-id
-msgid ""
-"Join when the call starts. Leave when you need to. You can see how many "
-"people plan to come."
-msgstr ""
-"Tham gia khi cuộc gọi bắt đầu. Rời đi khi bạn cần. Bạn có thể thấy có bao "
-"nhiêu người dự định tham gia."
 
 #: src/features/Landing/LandingPage.tsx:386
 #: src/features/LearnLanding/LearnLanguagePage.tsx:255
@@ -12555,7 +12530,7 @@ msgstr "câu điều kiện hỗn hợp"
 msgid "Mixed conditionals (what you hear at work)"
 msgstr "Mixed conditionals (những gì bạn nghe thấy ở nơi làm việc)"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:33
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:32
 #. js-lingui-explicit-id
 msgid "Mixed levels"
 msgstr "Trình độ hỗn hợp"
@@ -12798,7 +12773,7 @@ msgstr "Không tìm thấy blog"
 msgid "No correct words yet."
 msgstr "Chưa có từ nào đúng."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:75
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:75
 #. js-lingui-explicit-id
 msgid "No English calls yet. New times will show up here."
 msgstr "Chưa có cuộc gọi tiếng Anh nào. Lịch mới sẽ xuất hiện tại đây."
@@ -12857,14 +12832,14 @@ msgstr ""
 "và quyền truy cập trả phí theo tuần, tháng hoặc năm. Bạn có thể thử nói "
 "trước khi nâng cấp."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:63
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:62
 #. js-lingui-explicit-id
 msgid ""
-"No. Group conversations are free. Create an account, then join when the "
-"call starts."
+"No. Group conversations are free. There is no payment and no account "
+"required to request one."
 msgstr ""
-"Không. Các cuộc trò chuyện nhóm là miễn phí. Tạo tài khoản, sau đó tham gia "
-"khi cuộc gọi bắt đầu."
+"Không. Các cuộc trò chuyện nhóm là miễn phí. Không cần thanh toán và không "
+"cần tài khoản để yêu cầu tham gia."
 
 #: src/features/Landing/Price/PricePage.tsx:81
 #. js-lingui-explicit-id
@@ -12933,7 +12908,7 @@ msgstr "Bây giờ"
 msgid "Now start speaking it."
 msgstr "Bây giờ bắt đầu nói nó."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:118
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:118
 #. js-lingui-explicit-id
 msgid "Now · {time}"
 msgstr "Bây giờ · {time}"
@@ -13012,11 +12987,6 @@ msgstr "Mở"
 msgid "Open Dashboard"
 msgstr "Mở Bảng Điều Khiển"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:57
-#. js-lingui-explicit-id
-msgid "Open the call when it starts."
-msgstr "Mở cuộc gọi khi nó bắt đầu."
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -13033,15 +13003,10 @@ msgstr ""
 "Đặt đồ ăn, lên lịch hẹn, thành công trong các buổi phỏng vấn, và nhiều hơn "
 "thế nữa—tất cả với sự hướng dẫn từ gia sư AI của bạn."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:28
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:27
 #. js-lingui-explicit-id
 msgid "Other learners"
 msgstr "Người học khác"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:200
-#. js-lingui-explicit-id
-msgid "Other learners on Google Meet"
-msgstr "Những người học khác trên Google Meet"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:21
 #. js-lingui-explicit-id
@@ -13134,6 +13099,12 @@ msgstr "Tạm dừng để thực hiện X"
 #. js-lingui-explicit-id
 msgid "People often mix times on purpose."
 msgstr "Mọi người thường cố ý trộn lẫn các mốc thời gian."
+
+#: src/features/Landing/LandingPage.tsx:458
+#: src/features/LearnLanding/LearnLanguagePage.tsx:327
+#. js-lingui-explicit-id
+msgid "People practicing English together on a call"
+msgstr "Những người cùng luyện tập tiếng Anh qua cuộc gọi"
 
 #: src/features/Case/data/frontend-junior/techStackSection.ts:40
 #: src/features/Case/data/frontend-senior/techStackSection.ts:40
@@ -13489,15 +13460,6 @@ msgstr ""
 "bạn. Học với những giải thích rõ ràng, ví dụ, bài kiểm tra ngắn và hội "
 "thoại AI."
 
-#: src/features/Feature/featuresData.ts:650
-#. js-lingui-explicit-id
-msgid ""
-"Practice English on a free live group call with other learners. See "
-"upcoming Google Meet times in your time zone and join."
-msgstr ""
-"Thực hành tiếng Anh qua cuộc gọi nhóm trực tiếp miễn phí với các người học "
-"khác. Xem thời gian Google Meet sắp tới theo múi giờ của bạn và tham gia."
-
 #: src/features/SEO/metadata.ts:248
 #. js-lingui-explicit-id
 msgid "Practice English Online"
@@ -13529,15 +13491,15 @@ msgstr ""
 "và nói. Hoàn thành các thử thách tương tác và kiếm điểm cho câu trả lời "
 "đúng."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:120
-#. js-lingui-explicit-id
-msgid "Practice English with other learners"
-msgstr "Luyện tập tiếng Anh với các học viên khác"
-
 #: src/features/Feature/featuresData.ts:645
 #. js-lingui-explicit-id
 msgid "Practice English with Other Learners"
 msgstr "Luyện tập tiếng Anh với người học khác"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:124
+#. js-lingui-explicit-id
+msgid "Practice English with other learners"
+msgstr "Luyện tập tiếng Anh với các học viên khác"
 
 #: src/features/Feature/featuresData.ts:446
 #. js-lingui-explicit-id
@@ -14020,7 +13982,7 @@ msgstr "Xuất bản vào"
 msgid "Question"
 msgstr "Câu hỏi"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:307
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:333
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "Câu hỏi"
@@ -14387,6 +14349,32 @@ msgstr "Nhắc nhở"
 msgid "Rendering Performance"
 msgstr "Hiệu Suất Kết Xuất"
 
+#: src/features/Feature/GroupCall/GroupConversationJoinButton.tsx:27
+#: src/features/Landing/LandingPage.tsx:461
+#: src/features/LearnLanding/LearnLanguagePage.tsx:330
+#. js-lingui-explicit-id
+msgid "Request a call"
+msgstr "Yêu cầu cuộc gọi"
+
+#: src/features/Feature/featuresData.ts:650
+#. js-lingui-explicit-id
+msgid ""
+"Request a free English group call. Share your interests and English level, "
+"and I will arrange a time that works for everyone."
+msgstr ""
+"Yêu cầu một cuộc gọi nhóm tiếng Anh miễn phí. Chia sẻ sở thích và trình độ "
+"tiếng Anh của bạn, và tôi sẽ sắp xếp thời gian phù hợp cho mọi người."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:345
+#. js-lingui-explicit-id
+msgid "Request a free group call"
+msgstr "Yêu cầu một cuộc gọi nhóm miễn phí"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:217
+#. js-lingui-explicit-id
+msgid "Request a group call"
+msgstr "Yêu cầu một cuộc gọi nhóm"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
 msgid "Resiliency & Observability"
@@ -14603,11 +14591,6 @@ msgstr "Điều Kiện Loại Hai vs Điều Kiện Loại Ba: If I Were vs If I
 msgid "See How It Works"
 msgstr "Xem Cách Hoạt Động"
 
-#: src/features/Feature/GroupConversationJoinButton.tsx:27
-#. js-lingui-explicit-id
-msgid "See schedule"
-msgstr "Xem lịch trình"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -14623,11 +14606,6 @@ msgstr "Xem dự đoán của AI"
 msgid "See the AI’s Guess"
 msgstr "Xem Dự Đoán của AI"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:319
-#. js-lingui-explicit-id
-msgid "See the next English call"
-msgstr "Xem cuộc gọi tiếng Anh tiếp theo"
-
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:10
 #. js-lingui-explicit-id
 msgid "See the type of backend feedback you'll get"
@@ -14638,13 +14616,6 @@ msgstr "Xem loại phản hồi backend mà bạn sẽ nhận được"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Xem loại phản hồi bạn sẽ nhận được"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:320
-#: src/features/Landing/LandingPage.tsx:461
-#: src/features/LearnLanding/LearnLanguagePage.tsx:330
-#. js-lingui-explicit-id
-msgid "See upcoming calls"
-msgstr "Xem các cuộc gọi sắp tới"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -14670,6 +14641,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:346
+#. js-lingui-explicit-id
+msgid "Send a request"
+msgstr "Gửi yêu cầu"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -14721,6 +14697,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Chia sẻ những gì bạn đang học hiện tại"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:48
+#. js-lingui-explicit-id
+msgid "Share your interests, your English level, and how I can reach you."
+msgstr ""
+"Chia sẻ sở thích của bạn, trình độ tiếng Anh của bạn và cách tôi có thể "
+"liên hệ với bạn."
 
 #: src/features/RolePlay/scenarios/cynical-friend.ts:51
 #. js-lingui-explicit-id
@@ -15454,7 +15437,7 @@ msgstr "truyện ngắn"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Từ ngắn hơn và từ vựng quen thuộc"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:152
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:152
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Hiển thị thêm"
@@ -15486,11 +15469,6 @@ msgstr "Ví dụ so sánh song song"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Đăng Nhập"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Sign up to save your place. There is no payment."
-msgstr "Đăng ký để giữ chỗ của bạn. Không cần thanh toán."
 
 #: src/features/Alias/components/LanguageLevel.tsx:59
 #. js-lingui-explicit-id
@@ -15593,7 +15571,7 @@ msgstr ""
 msgid "Spanish Learning Plan"
 msgstr "Kế Hoạch Học Tiếng Tây Ban Nha"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:69
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:68
 #. js-lingui-explicit-id
 msgid ""
 "Speak even when the words come slowly. Mistakes are welcome. Nobody "
@@ -15998,7 +15976,7 @@ msgstr ""
 "Nói chuyện với gia sư tiếng Anh AI, gửi tin nhắn thoại, hoặc chuyển sang "
 "văn bản khi bạn cần."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:219
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Talk with Alex"
 msgstr "Nói chuyện với Alex"
@@ -16009,7 +15987,7 @@ msgstr "Nói chuyện với Alex"
 msgid "Talk with other learners"
 msgstr "Trò chuyện với người học khác"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:156
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Talk with the group, or just with Alex"
 msgstr "Nói chuyện với nhóm hoặc chỉ với Alex"
@@ -17782,6 +17760,37 @@ msgstr ""
 "Hãy kể về một lần bạn bị mắc kẹt với một lỗi. Bạn đã tìm ra nguyên nhân và "
 "khắc phục nó như thế nào?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:47
+#. js-lingui-explicit-id
+msgid "Tell me about you"
+msgstr "Hãy cho tôi biết về bạn."
+
+#: src/features/Landing/LandingPage.tsx:454
+#: src/features/LearnLanding/LearnLanguagePage.tsx:323
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about and how to reach you. I will find "
+"people and arrange a free call."
+msgstr ""
+"Hãy cho tôi biết bạn muốn nói về điều gì và cách để liên hệ với bạn. Tôi sẽ "
+"tìm người và sắp xếp một cuộc gọi miễn phí."
+
+#: src/features/Feature/featuresData.ts:646
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about. I will find people and arrange a free "
+"call that works for everyone."
+msgstr ""
+"Hãy cho tôi biết bạn muốn nói về điều gì. Tôi sẽ tìm người và sắp xếp một "
+"cuộc gọi miễn phí phù hợp cho mọi người."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:80
+#. js-lingui-explicit-id
+msgid "Tell me your interests, your level, and how to reach you."
+msgstr ""
+"Hãy cho tôi biết sở thích của bạn, trình độ của bạn, và cách liên hệ với "
+"bạn."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:155
 #. js-lingui-explicit-id
 msgid ""
@@ -17985,7 +17994,7 @@ msgstr ""
 "Phản hồi cá nhân hóa đã chỉ cho tôi chính xác những gì tôi làm sai trong "
 "các giải thích kỹ thuật của mình. Thay đổi cục diện."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:66
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:66
 #. js-lingui-explicit-id
 msgid "The schedule is not available right now."
 msgstr "Lịch trình hiện không có sẵn."
@@ -18438,7 +18447,7 @@ msgstr "Thời gian còn lại"
 msgid "Timed"
 msgstr "Được hẹn giờ"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:61
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:61
 #. js-lingui-explicit-id
 msgid "Times are shown in your local time zone."
 msgstr "Thời gian được hiển thị theo múi giờ địa phương của bạn."
@@ -18637,7 +18646,7 @@ msgstr ""
 "Thì hiện tại không thật so với thì quá khứ không thật — quy tắc rõ ràng, "
 "các ví dụ nói, và các dạng hỗn hợp bạn nghe thấy ở nơi làm việc."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:58
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:58
 #. js-lingui-explicit-id
 msgid "Upcoming calls"
 msgstr "Cuộc gọi sắp tới"
@@ -18941,7 +18950,7 @@ msgstr ""
 "tự tin cần thiết để thành công. Tại sao không bắt đầu thực hành ngay hôm "
 "nay?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:273
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:299
 #. js-lingui-explicit-id
 msgid "Want to warm up before your call? Practice with AI first."
 msgstr "Bạn muốn khởi động trước khi bắt đầu cuộc gọi? Hãy luyện tập với AI trước."
@@ -18976,6 +18985,25 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "We both know which one"
 msgstr "Chúng ta đều biết cái nào."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:56
+#. js-lingui-explicit-id
+msgid "We discuss a time slot and arrange a call that works for each person."
+msgstr ""
+"Chúng tôi thảo luận về khung thời gian và sắp xếp một cuộc gọi phù hợp cho "
+"mỗi người."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:55
+#. js-lingui-explicit-id
+msgid "We pick a time"
+msgstr "Chúng ta chọn một thời gian"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:82
+#. js-lingui-explicit-id
+msgid "We pick a time that is comfortable for everyone. Group calls are free."
+msgstr ""
+"Chúng tôi chọn một thời gian phù hợp cho tất cả mọi người. Cuộc gọi nhóm là "
+"miễn phí."
 
 #: src/features/Legal/CookieBanner.tsx:86
 #. js-lingui-explicit-id
@@ -19156,7 +19184,7 @@ msgstr "Tôi nên có trình độ nói như thế nào?"
 msgid "What situation do you want to practice?"
 msgstr "Bạn muốn thực hành tình huống nào?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:236
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:262
 #. js-lingui-explicit-id
 msgid "What to expect"
 msgstr "Những gì bạn có thể mong đợi"
@@ -19184,6 +19212,11 @@ msgstr "Bạn sẽ đạt được gì?"
 msgid "What's included"
 msgstr "Những gì bao gồm trong sản phẩm"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:146
+#. js-lingui-explicit-id
+msgid "What's next"
+msgstr "Bước tiếp theo là gì?"
+
 #: src/features/Landing/LandingPage.tsx:56
 #: src/features/LearnLanding/LearnLanguagePage.tsx:39
 #. js-lingui-explicit-id
@@ -19195,19 +19228,15 @@ msgstr "Giá bao nhiêu?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Khi nào bạn sử dụng AsNoTracking và các đánh đổi là gì?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:73
+#. js-lingui-explicit-id
+msgid "When is the call?"
+msgstr "Cuộc gọi diễn ra khi nào?"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:212
 #. js-lingui-explicit-id
 msgid "When not to use the"
 msgstr "Khi không sử dụng the"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:75
-#. js-lingui-explicit-id
-msgid ""
-"When one is on the schedule. Open it to see the next English calls in your "
-"local time zone."
-msgstr ""
-"Khi có một lịch trình. Mở nó để xem các cuộc gọi tiếng Anh tiếp theo theo "
-"múi giờ địa phương của bạn."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:83
 #. js-lingui-explicit-id
@@ -19631,7 +19660,7 @@ msgstr ""
 "Bạn luyện nói bằng ngôn ngữ bạn đang học trong FluencyPal. Các ngôn ngữ học "
 "được hỗ trợ bao gồm"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:29
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:28
 #. js-lingui-explicit-id
 msgid "You talk together on Google Meet. There is no teacher and no set topic."
 msgstr ""
@@ -19696,11 +19725,6 @@ msgstr "Kinh nghiệm của bạn"
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Mức độ ngôn ngữ của bạn"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:40
-#. js-lingui-explicit-id
-msgid "Your pace"
-msgstr "Tốc độ của bạn"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:11
 #: src/features/Case/data/frontend-senior/faqSection.ts:11

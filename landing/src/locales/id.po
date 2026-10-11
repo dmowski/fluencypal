@@ -697,45 +697,40 @@ msgid ""
 "## Practice English with other learners\n"
 "\n"
 "Group conversations are free live English calls on Google Meet. You talk "
-"with other learners. There is no teacher and no set topic.\n"
+"with other learners. There is no teacher and no set topic. There is no "
+"payment, and you do not need an account to request a call.\n"
 "\n"
 "Beginners can speak slowly. Advanced learners practice too. A correction "
-"comes only if someone asks. Join when the call starts, and leave when you "
-"need to. You can see how many people plan to come. Each call also has a "
-"text chat in FluencyPal for the people on it.\n"
+"comes only if someone asks. Each call also has a text chat in FluencyPal "
+"for the people on it.\n"
 "\n"
-"## How you join\n"
+"## How a call is arranged\n"
 "\n"
-"1. Find a call. Times are in your local time zone.\n"
-"2. Create an account. There is no payment.\n"
-"3. Open the Google Meet when the call starts.\n"
+"1. Tell me your interests, your English level, and how to reach you.\n"
+"2. I write once I find people who fit.\n"
+"3. We pick a time that is comfortable for everyone.\n"
 "\n"
-"Want to warm up before your call? Practice with AI first.\n"
-"\n"
-"Calls appear when they are on the schedule."
+"Want to warm up before your call? Practice with AI while you wait."
 msgstr ""
-"## Latihan Bahasa Inggris dengan Sesama Pembelajar\n"
+"## Berlatih Bahasa Inggris dengan Sesama Pembelajar\n"
 "\n"
-"Percakapan kelompok adalah panggilan bahasa Inggris langsung gratis di "
-"Google Meet. Anda berbicara dengan sesama pembelajar. Tidak ada pengajar "
-"dan tidak ada topik yang ditetapkan.\n"
+"Percakapan kelompok adalah panggilan bahasa Inggris gratis di Google Meet. "
+"Anda berbicara dengan sesama pembelajar. Tidak ada guru dan tidak ada topik "
+"tertentu. Tidak ada pembayaran, dan Anda tidak perlu akun untuk meminta "
+"panggilan.\n"
 "\n"
-"Pemula dapat berbicara dengan lambat. Pembelajar tingkat lanjut juga "
-"berlatih. Koreksi hanya datang jika seseorang meminta. Bergabunglah saat "
-"panggilan dimulai, dan tinggalkan saat Anda perlu. Anda dapat melihat "
-"berapa banyak orang yang berencana datang. Setiap panggilan juga memiliki "
-"obrolan teks di FluencyPal untuk para pesertanya.\n"
+"Pemula bisa berbicara dengan pelan. Pembelajar tingkat lanjut juga "
+"berlatih. Koreksi hanya diberikan jika seseorang meminta. Setiap panggilan "
+"juga memiliki obrolan teks di FluencyPal untuk para peserta.\n"
 "\n"
-"## Cara Anda Bergabung\n"
+"## Cara mengatur panggilan\n"
 "\n"
-"1. Temukan panggilan. Waktu sudah disesuaikan dengan zona waktu lokal Anda.\n"
-"2. Buat akun. Tidak ada pembayaran.\n"
-"3. Buka Google Meet saat panggilan dimulai.\n"
+"1. Beritahu saya minat Anda, tingkat Bahasa Inggris Anda, dan cara "
+"menghubungi Anda.\n"
+"2. Saya akan menulis ketika saya menemukan orang yang cocok.\n"
+"3. Kita memilih waktu yang nyaman untuk semua orang.\n"
 "\n"
-"Ingin pemanasan sebelum panggilan Anda? Berlatihlah dengan AI terlebih "
-"dahulu.\n"
-"\n"
-"Panggilan muncul ketika mereka ada dalam jadwal."
+"Ingin pemanasan sebelum panggilan Anda? Berlatih dengan AI sambil menunggu."
 
 #: src/features/Feature/featuresData.ts:455
 #. js-lingui-explicit-id
@@ -1117,7 +1112,7 @@ msgstr ""
 "- argumentasi\n"
 "- kepercayaan diri dalam berbicara bahasa Inggris"
 
-#: src/features/Feature/featuresData.ts:691
+#: src/features/Feature/featuresData.ts:689
 #. js-lingui-explicit-id
 msgid ""
 "## Turn regular English practice into leaderboard points\n"
@@ -1624,12 +1619,6 @@ msgstr ""
 "Permainan menebak kata yang menyenangkan untuk 2-20 pemain. Jelaskan "
 "kata-kata kepada rekan tim Anda tanpa menyebutkan kata itu sendiri!"
 
-#: src/features/Landing/LandingPage.tsx:458
-#: src/features/LearnLanding/LearnLanguagePage.tsx:327
-#. js-lingui-explicit-id
-msgid "A list of upcoming group conversation calls"
-msgstr "Daftar panggilan percakapan kelompok yang akan datang"
-
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
 msgid "A method focused on clarity and reliability"
@@ -1656,7 +1645,7 @@ msgstr "Metode yang terbukti memberikan hasil yang terukur"
 msgid "a sequence of events:"
 msgstr "urutan peristiwa:"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:228
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:254
 #. js-lingui-explicit-id
 msgid "A short call so we can get to know each other"
 msgstr "Sebuah panggilan singkat agar kita bisa saling mengenal"
@@ -2616,6 +2605,11 @@ msgstr ""
 "lanjutan atau menantang jawaban yang tidak jelas. Umpan balik yang rinci "
 "akan diberikan setelah wawancara sehingga percakapan tetap realistis."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:39
+#. js-lingui-explicit-id
+msgid "A time that fits"
+msgstr "Waktu yang sesuai"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:186
 #. js-lingui-explicit-id
 msgid "A vs an"
@@ -2720,6 +2714,15 @@ msgstr "Pembelajaran Bahasa AI Terjangkau"
 #. js-lingui-explicit-id
 msgid "After a preposition, English wants **-ing**:"
 msgstr "Setelah preposisi, bahasa Inggris menginginkan bentuk **-ing**:"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"After I find a good group, I write you. We choose a time that is "
+"comfortable for everyone."
+msgstr ""
+"Setelah saya menemukan grup yang bagus, saya akan menulis kepada Anda. Kami "
+"memilih waktu yang nyaman untuk semua orang."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:281
 #. js-lingui-explicit-id
@@ -3205,7 +3208,7 @@ msgstr "Sebelum kita mulai"
 msgid "Beginner to fluent · Uses your microphone · Works in your browser"
 msgstr "Pemula hingga lancar · Menggunakan mikrofon Anda · Bekerja di browser Anda"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:34
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "Beginners can speak slowly. Advanced learners practice too. A correction "
@@ -6409,7 +6412,7 @@ msgstr ""
 "teknis tingkat lanjut atau tata bahasa yang sempurna untuk memiliki "
 "percakapan dukungan yang sukses."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:68
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:67
 #. js-lingui-explicit-id
 msgid "Can a beginner keep up?"
 msgstr "Bisakah pemula mengikuti?"
@@ -6980,11 +6983,6 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Rencana Belajar Bahasa China"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:49
-#. js-lingui-explicit-id
-msgid "Choose a time that works for you. The calls are free."
-msgstr "Pilih waktu yang sesuai untuk Anda. Panggilan ini gratis."
-
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -7441,11 +7439,6 @@ msgstr ""
 "mengikuti pengaturan Anda dan berperilaku sesuai dengan nada dan kesulitan "
 "yang Anda pilih."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:52
-#. js-lingui-explicit-id
-msgid "Create an account"
-msgstr "Buat akun"
-
 #: src/features/Feature/featuresData.ts:270
 #. js-lingui-explicit-id
 msgid "Create Your Own English Role Play Scenario"
@@ -7858,7 +7851,7 @@ msgstr "Jangan bingung ini dengan past yang sebenarnya:"
 msgid "Do not say this"
 msgstr "Jangan katakan ini"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:62
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:61
 #. js-lingui-explicit-id
 msgid "Do the calls cost money?"
 msgstr "Apakah panggilan tersebut berbayar?"
@@ -7928,7 +7921,7 @@ msgstr ""
 "Anda kesulitan terbesar, mengubah kesalahan Anda menjadi latihan berbicara "
 "yang terfokus."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:239
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:265
 #. js-lingui-explicit-id
 msgid "Each call also has a text chat in FluencyPal for the people on it."
 msgstr ""
@@ -7940,7 +7933,7 @@ msgstr ""
 msgid "Early access to new tools"
 msgstr "Akses awal ke alat baru"
 
-#: src/features/Feature/featuresData.ts:683
+#: src/features/Feature/featuresData.ts:681
 #. js-lingui-explicit-id
 msgid ""
 "Earn points for English conversations, story quizzes, daily questions, and "
@@ -7951,7 +7944,7 @@ msgstr ""
 "harian, dan permainan. Ikuti posisi Anda di papan peringkat FluencyPal dan "
 "bekerja menuju hadiah."
 
-#: src/features/Feature/featuresData.ts:679
+#: src/features/Feature/featuresData.ts:677
 #. js-lingui-explicit-id
 msgid ""
 "Earn points from your learning activities and work toward leaderboard "
@@ -9037,7 +9030,7 @@ msgstr ""
 "Insinyur yang beralih dari peran tingkat menengah ke peran senior dan "
 "membutuhkan cerita perilaku yang lebih kuat"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:125
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:125
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "Bahasa Inggris"
@@ -9152,12 +9145,12 @@ msgstr "Permainan Belajar Bahasa Inggris untuk Kosa Kata dan Kalimat"
 msgid "English Learning Games Online | FluencyPal"
 msgstr "Permainan Pembelajaran Bahasa Inggris Online | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:682
+#: src/features/Feature/featuresData.ts:680
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard and Rewards | FluencyPal"
 msgstr "Papan Peringkat Pembelajaran Bahasa Inggris dan Hadiah | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:678
+#: src/features/Feature/featuresData.ts:676
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard: Earn Practice Points"
 msgstr "Papan Peringkat Pembelajaran Bahasa Inggris: Dapatkan Poin Latihan"
@@ -9255,12 +9248,12 @@ msgstr "Latihan Kosakata Bahasa Inggris untuk Berbicara"
 msgid "English Vocabulary Practice with AI | FluencyPal"
 msgstr "Latihan Kosakata Bahasa Inggris dengan AI | FluencyPal"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:122
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:122
 #. js-lingui-explicit-id
 msgid "English · 1 person"
 msgstr "Inggris · 1 orang"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:124
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:124
 #. js-lingui-explicit-id
 msgid "English · {count} people"
 msgstr "Inggris · {count} orang"
@@ -9756,11 +9749,6 @@ msgstr "Skor Akhir: {winnerScore}"
 msgid "Final Standings"
 msgstr "Peringkat Akhir"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:48
-#. js-lingui-explicit-id
-msgid "Find a call"
-msgstr "Temukan panggilan"
-
 #: src/features/RolePlay/fullArticles/alias/AliasLandingPage.tsx:123
 #. js-lingui-explicit-id
 msgid "Find out whether your explanation worked and review your feedback."
@@ -10175,7 +10163,7 @@ msgstr "Rencana Belajar Prancis"
 msgid "Friendly"
 msgstr "Ramah"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:153
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:179
 #. js-lingui-explicit-id
 msgid "From Alex"
 msgstr "Dari Alex"
@@ -10450,19 +10438,18 @@ msgstr "Pratinjau Koreksi Tata Bahasa"
 msgid "Grocery Store"
 msgstr "Toko Kelontong"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:159
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:185
 #. js-lingui-explicit-id
 msgid ""
-"Group calls are with other learners. You can ask people to speak slowly, "
-"and you can leave when you want. If a group feels like a lot, talk with "
-"Alex first."
+"Group calls are free, with other learners. I arrange a time that works for "
+"the people on the call. While you wait, you can practice with AI, or talk "
+"with Alex first."
 msgstr ""
-"Panggilan kelompok dilakukan dengan pelajar lain. Anda dapat meminta "
-"orang-orang untuk berbicara perlahan, dan Anda dapat pergi kapan saja Anda "
-"mau. Jika kelompok terasa terlalu banyak, bicaralah dengan Alex terlebih "
-"dahulu."
+"Panggilan kelompok gratis, dengan pelajar lainnya. Saya mengatur waktu yang "
+"sesuai untuk orang-orang di panggilan tersebut. Sambil menunggu, Anda bisa "
+"berlatih dengan AI, atau berbicara terlebih dahulu dengan Alex."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:114
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:118
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Percakapan kelompok"
@@ -10600,6 +10587,11 @@ msgstr "Percakapan Check-In Hotel"
 msgid "Hours added to your advanced conversation balance"
 msgstr "Jam ditambahkan ke saldo percakapan lanjutan Anda"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:296
+#. js-lingui-explicit-id
+msgid "How a call is arranged"
+msgstr "Bagaimana panggilan diatur"
+
 #: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid "How can I track my progress?"
@@ -10693,11 +10685,6 @@ msgstr "Bagaimana Cara Kerjanya"
 msgid "How it Works"
 msgstr "Cara Kerjanya"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:74
-#. js-lingui-explicit-id
-msgid "How often are calls?"
-msgstr "Seberapa sering panggilannya?"
-
 #: src/features/Blog/blogData.tsx:369
 #. js-lingui-explicit-id
 msgid ""
@@ -10765,11 +10752,6 @@ msgid ""
 msgstr ""
 "Bagaimana Anda akan menyusun manajemen state untuk aplikasi yang kompleks "
 "dengan komponen bersarang dan data asinkron?"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:270
-#. js-lingui-explicit-id
-msgid "How you join"
-msgstr "Cara Bergabung"
 
 #: src/features/Blog/blogData.tsx:144
 #. js-lingui-explicit-id
@@ -11144,6 +11126,20 @@ msgstr ""
 msgid "I have a memory of it."
 msgstr "Saya punya kenangan tentang itu."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:51
+#. js-lingui-explicit-id
+msgid "I look for people"
+msgstr "Saya mencari orang-orang"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:40
+#. js-lingui-explicit-id
+msgid ""
+"I look for people who fit, then we pick a time that is comfortable for "
+"everyone."
+msgstr ""
+"Saya mencari orang yang sesuai, kemudian kami memilih waktu yang nyaman "
+"untuk semua orang."
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:322
 #. js-lingui-explicit-id
 msgid "I paused another activity in order to check."
@@ -11237,6 +11233,21 @@ msgid ""
 msgstr ""
 "Saya percaya diri dan jelas — FluencyPal mempersiapkan saya lebih baik "
 "daripada pelatih mana pun untuk diskusi teknis tentang manajemen status."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:81
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit."
+msgstr "Saya akan menulis setelah menemukan orang yang sesuai."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:52
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit. Group calls are free."
+msgstr "Saya akan menulis setelah menemukan orang yang cocok. Panggilan grup gratis."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:226
+#. js-lingui-explicit-id
+msgid "I will write when I find a good group"
+msgstr "Saya akan menulis ketika menemukan kelompok yang bagus"
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:343
 #. js-lingui-explicit-id
@@ -12172,49 +12183,11 @@ msgstr "tips wawancara kerja"
 msgid "Join"
 msgstr "Bergabung"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:191
-#. js-lingui-explicit-id
-msgid "Join a group call"
-msgstr "Bergabunglah dalam panggilan grup"
-
-#: src/features/Landing/LandingPage.tsx:454
-#: src/features/LearnLanding/LearnLanguagePage.tsx:323
-#. js-lingui-explicit-id
-msgid ""
-"Join a live call on Google Meet. See the next times for where you live, and "
-"talk with AI until it starts."
-msgstr ""
-"Bergabunglah dalam panggilan langsung di Google Meet. Lihat waktu berikut "
-"untuk zona tempat tinggal Anda, dan berbicaralah dengan AI sampai dimulai."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
 msgid "Join candidates who transformed their interview performance"
 msgstr "Bergabunglah dengan kandidat yang telah mengubah kinerja wawancara mereka"
-
-#: src/features/Feature/featuresData.ts:646
-#. js-lingui-explicit-id
-msgid ""
-"Join live group conversations on Google Meet and build confidence speaking "
-"English."
-msgstr ""
-"Bergabunglah dalam percakapan kelompok langsung di Google Meet dan "
-"tingkatkan kepercayaan diri Anda dalam berbicara bahasa Inggris."
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:56
-#. js-lingui-explicit-id
-msgid "Join on Google Meet"
-msgstr "Bergabung di Google Meet"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:41
-#. js-lingui-explicit-id
-msgid ""
-"Join when the call starts. Leave when you need to. You can see how many "
-"people plan to come."
-msgstr ""
-"Bergabunglah saat panggilan dimulai. Tinggalkan jika perlu. Anda bisa "
-"melihat berapa banyak orang yang berencana datang."
 
 #: src/features/Landing/LandingPage.tsx:386
 #: src/features/LearnLanding/LearnLanguagePage.tsx:255
@@ -12587,7 +12560,7 @@ msgstr "kondisional campuran"
 msgid "Mixed conditionals (what you hear at work)"
 msgstr "Kondisional campuran (apa yang Anda dengar di tempat kerja)"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:33
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:32
 #. js-lingui-explicit-id
 msgid "Mixed levels"
 msgstr "Beragam tingkat kemampuan"
@@ -12833,7 +12806,7 @@ msgstr "Tidak ada blog yang ditemukan"
 msgid "No correct words yet."
 msgstr "Belum ada kata yang benar."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:75
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:75
 #. js-lingui-explicit-id
 msgid "No English calls yet. New times will show up here."
 msgstr "Belum ada panggilan bahasa Inggris. Waktu baru akan muncul di sini."
@@ -12892,14 +12865,14 @@ msgstr ""
 "dan akses berbayar untuk seminggu, sebulan, atau setahun. Anda dapat "
 "mencoba berbicara sebelum melakukan peningkatan."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:63
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:62
 #. js-lingui-explicit-id
 msgid ""
-"No. Group conversations are free. Create an account, then join when the "
-"call starts."
+"No. Group conversations are free. There is no payment and no account "
+"required to request one."
 msgstr ""
-"Tidak. Percakapan kelompok gratis. Buat akun, lalu bergabung ketika "
-"panggilan dimulai."
+"Tidak. Percakapan kelompok gratis. Tidak ada pembayaran dan tidak "
+"diperlukan akun untuk memintanya."
 
 #: src/features/Landing/Price/PricePage.tsx:81
 #. js-lingui-explicit-id
@@ -12968,7 +12941,7 @@ msgstr "Sekarang"
 msgid "Now start speaking it."
 msgstr "Sekarang mulailah mengucapkannya."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:118
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:118
 #. js-lingui-explicit-id
 msgid "Now · {time}"
 msgstr "Sekarang · {time}"
@@ -13047,11 +13020,6 @@ msgstr "Buka"
 msgid "Open Dashboard"
 msgstr "Buka Dasbor"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:57
-#. js-lingui-explicit-id
-msgid "Open the call when it starts."
-msgstr "Buka panggilan saat dimulai."
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -13070,15 +13038,10 @@ msgstr ""
 "Pesan makanan, jadwalkan janji temu, sukses dalam wawancara kerja, dan "
 "lainnya—semua dengan bimbingan dari tutor AI Anda."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:28
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:27
 #. js-lingui-explicit-id
 msgid "Other learners"
 msgstr "Pelajar lainnya"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:200
-#. js-lingui-explicit-id
-msgid "Other learners on Google Meet"
-msgstr "Pembelajar lain di Google Meet"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:21
 #. js-lingui-explicit-id
@@ -13173,6 +13136,12 @@ msgstr "Berhenti sejenak untuk melakukan X"
 #. js-lingui-explicit-id
 msgid "People often mix times on purpose."
 msgstr "Orang sering kali mencampur waktu dengan sengaja."
+
+#: src/features/Landing/LandingPage.tsx:458
+#: src/features/LearnLanding/LearnLanguagePage.tsx:327
+#. js-lingui-explicit-id
+msgid "People practicing English together on a call"
+msgstr "Orang-orang berlatih bahasa Inggris bersama dalam panggilan telepon"
 
 #: src/features/Case/data/frontend-junior/techStackSection.ts:40
 #: src/features/Case/data/frontend-senior/techStackSection.ts:40
@@ -13532,16 +13501,6 @@ msgstr ""
 "Anda. Belajar dengan penjelasan yang jelas, contoh, kuis singkat, dan "
 "percakapan dengan AI."
 
-#: src/features/Feature/featuresData.ts:650
-#. js-lingui-explicit-id
-msgid ""
-"Practice English on a free live group call with other learners. See "
-"upcoming Google Meet times in your time zone and join."
-msgstr ""
-"Berlatih bahasa Inggris dalam panggilan grup langsung gratis dengan peserta "
-"lain. Lihat jadwal Google Meet yang akan datang di zona waktu Anda dan "
-"bergabunglah."
-
 #: src/features/SEO/metadata.ts:248
 #. js-lingui-explicit-id
 msgid "Practice English Online"
@@ -13573,15 +13532,15 @@ msgstr ""
 "membaca, dan berbicara. Selesaikan tantangan interaktif dan dapatkan poin "
 "untuk jawaban yang benar."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:120
-#. js-lingui-explicit-id
-msgid "Practice English with other learners"
-msgstr "Berlatih bahasa Inggris dengan pelajar lain"
-
 #: src/features/Feature/featuresData.ts:645
 #. js-lingui-explicit-id
 msgid "Practice English with Other Learners"
 msgstr "Berlatih Bahasa Inggris dengan Pembelajar Lain"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:124
+#. js-lingui-explicit-id
+msgid "Practice English with other learners"
+msgstr "Berlatih bahasa Inggris dengan pelajar lain"
 
 #: src/features/Feature/featuresData.ts:446
 #. js-lingui-explicit-id
@@ -14075,7 +14034,7 @@ msgstr "Diterbitkan pada"
 msgid "Question"
 msgstr "Pertanyaan"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:307
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:333
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "Pertanyaan"
@@ -14444,6 +14403,33 @@ msgstr "Pengingat"
 msgid "Rendering Performance"
 msgstr "Kinerja Rendering"
 
+#: src/features/Feature/GroupCall/GroupConversationJoinButton.tsx:27
+#: src/features/Landing/LandingPage.tsx:461
+#: src/features/LearnLanding/LearnLanguagePage.tsx:330
+#. js-lingui-explicit-id
+msgid "Request a call"
+msgstr "Minta panggilan"
+
+#: src/features/Feature/featuresData.ts:650
+#. js-lingui-explicit-id
+msgid ""
+"Request a free English group call. Share your interests and English level, "
+"and I will arrange a time that works for everyone."
+msgstr ""
+"Minta panggilan grup bahasa Inggris gratis. Bagikan minat dan tingkat "
+"bahasa Inggris Anda, dan saya akan mengatur waktu yang cocok untuk semua "
+"orang."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:345
+#. js-lingui-explicit-id
+msgid "Request a free group call"
+msgstr "Minta panggilan grup gratis"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:217
+#. js-lingui-explicit-id
+msgid "Request a group call"
+msgstr "Meminta panggilan grup"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
 msgid "Resiliency & Observability"
@@ -14657,11 +14643,6 @@ msgstr "Kondisional Kedua vs Kondisional Ketiga: If I Were vs If I Had"
 msgid "See How It Works"
 msgstr "Lihat Bagaimana Cara Kerjanya"
 
-#: src/features/Feature/GroupConversationJoinButton.tsx:27
-#. js-lingui-explicit-id
-msgid "See schedule"
-msgstr "Lihat jadwal"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -14677,11 +14658,6 @@ msgstr "Lihat tebakan AI"
 msgid "See the AI’s Guess"
 msgstr "Lihat Tebakan AI"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:319
-#. js-lingui-explicit-id
-msgid "See the next English call"
-msgstr "Lihat panggilan Bahasa Inggris berikutnya"
-
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:10
 #. js-lingui-explicit-id
 msgid "See the type of backend feedback you'll get"
@@ -14692,13 +14668,6 @@ msgstr "Lihat jenis umpan balik backend yang akan Anda dapatkan"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Lihat jenis umpan balik yang akan Anda dapatkan"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:320
-#: src/features/Landing/LandingPage.tsx:461
-#: src/features/LearnLanding/LearnLanguagePage.tsx:330
-#. js-lingui-explicit-id
-msgid "See upcoming calls"
-msgstr "Lihat panggilan mendatang"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -14724,6 +14693,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Semantic HTML"
 msgstr "Semantic HTML"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:346
+#. js-lingui-explicit-id
+msgid "Send a request"
+msgstr "Kirim permintaan"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -14773,6 +14747,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Bagikan apa yang sedang Anda pelajari"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:48
+#. js-lingui-explicit-id
+msgid "Share your interests, your English level, and how I can reach you."
+msgstr ""
+"Bagikan minat Anda, tingkat bahasa Inggris Anda, dan bagaimana saya bisa "
+"menghubungi Anda."
 
 #: src/features/RolePlay/scenarios/cynical-friend.ts:51
 #. js-lingui-explicit-id
@@ -15512,7 +15493,7 @@ msgstr "cerita pendek"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Kata yang lebih pendek dan kosakata yang dikenal"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:152
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:152
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Tampilkan lebih banyak"
@@ -15544,11 +15525,6 @@ msgstr "Contoh berdampingan"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Masuk"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Sign up to save your place. There is no payment."
-msgstr "Daftar untuk menyimpan tempat Anda. Tidak ada pembayaran."
 
 #: src/features/Alias/components/LanguageLevel.tsx:59
 #. js-lingui-explicit-id
@@ -15650,7 +15626,7 @@ msgstr ""
 msgid "Spanish Learning Plan"
 msgstr "Rencana Belajar Spanyol"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:69
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:68
 #. js-lingui-explicit-id
 msgid ""
 "Speak even when the words come slowly. Mistakes are welcome. Nobody "
@@ -16055,7 +16031,7 @@ msgstr ""
 "Berbicara dengan tutor AI bahasa Inggris, kirim pesan suara, atau beralih "
 "ke teks ketika Anda membutuhkannya."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:219
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Talk with Alex"
 msgstr "Berbicara dengan Alex"
@@ -16066,7 +16042,7 @@ msgstr "Berbicara dengan Alex"
 msgid "Talk with other learners"
 msgstr "Berbicara dengan pelajar lain"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:156
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Talk with the group, or just with Alex"
 msgstr "Berbicaralah dengan grup, atau hanya dengan Alex"
@@ -17855,6 +17831,35 @@ msgstr ""
 "Beritahu tentang suatu waktu ketika Anda terjebak dalam sebuah bug. "
 "Bagaimana Anda menemukan penyebabnya dan memperbaikinya?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:47
+#. js-lingui-explicit-id
+msgid "Tell me about you"
+msgstr "Ceritakan tentang Anda"
+
+#: src/features/Landing/LandingPage.tsx:454
+#: src/features/LearnLanding/LearnLanguagePage.tsx:323
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about and how to reach you. I will find "
+"people and arrange a free call."
+msgstr ""
+"Beri tahu saya topik yang ingin Anda bicarakan dan cara menghubungi Anda. "
+"Saya akan menemukan orang yang tepat dan mengatur panggilan gratis."
+
+#: src/features/Feature/featuresData.ts:646
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about. I will find people and arrange a free "
+"call that works for everyone."
+msgstr ""
+"Beri tahu saya topik yang ingin Anda bicarakan. Saya akan mencari orang dan "
+"mengatur panggilan gratis yang cocok untuk semua orang."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:80
+#. js-lingui-explicit-id
+msgid "Tell me your interests, your level, and how to reach you."
+msgstr "Ceritakan minat Anda, tingkat Anda, dan cara menghubungi Anda."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:155
 #. js-lingui-explicit-id
 msgid ""
@@ -18060,7 +18065,7 @@ msgstr ""
 "Umpan balik yang dipersonalisasi menunjukkan kepada saya dengan tepat apa "
 "yang saya lakukan salah dalam penjelasan teknis saya. Mengubah permainan."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:66
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:66
 #. js-lingui-explicit-id
 msgid "The schedule is not available right now."
 msgstr "Jadwal tidak tersedia saat ini."
@@ -18511,7 +18516,7 @@ msgstr "Waktu tersisa"
 msgid "Timed"
 msgstr "Waktu Terbatas"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:61
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:61
 #. js-lingui-explicit-id
 msgid "Times are shown in your local time zone."
 msgstr "Waktu ditampilkan dalam zona waktu lokal Anda."
@@ -18712,7 +18717,7 @@ msgstr ""
 "Present unreal vs unreal past — aturan yang jelas, contoh percakapan, dan "
 "bentuk campuran yang sering Anda dengar di tempat kerja."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:58
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:58
 #. js-lingui-explicit-id
 msgid "Upcoming calls"
 msgstr "Panggilan mendatang"
@@ -19020,7 +19025,7 @@ msgstr ""
 "Anda dan mendapatkan kepercayaan diri yang Anda butuhkan untuk berhasil. "
 "Kenapa tidak mulai berlatih hari ini?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:273
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:299
 #. js-lingui-explicit-id
 msgid "Want to warm up before your call? Practice with AI first."
 msgstr ""
@@ -19057,6 +19062,23 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "We both know which one"
 msgstr "Kita berdua tahu yang mana."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:56
+#. js-lingui-explicit-id
+msgid "We discuss a time slot and arrange a call that works for each person."
+msgstr ""
+"Kami mendiskusikan jadwal waktu dan mengatur panggilan yang sesuai untuk "
+"setiap orang."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:55
+#. js-lingui-explicit-id
+msgid "We pick a time"
+msgstr "Kami memilih waktu"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:82
+#. js-lingui-explicit-id
+msgid "We pick a time that is comfortable for everyone. Group calls are free."
+msgstr "Kami memilih waktu yang nyaman untuk semua orang. Panggilan grup gratis."
 
 #: src/features/Legal/CookieBanner.tsx:86
 #. js-lingui-explicit-id
@@ -19237,7 +19259,7 @@ msgstr "Tingkat berbicara seperti apa yang harus saya miliki?"
 msgid "What situation do you want to practice?"
 msgstr "Apa situasi yang ingin Anda latih?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:236
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:262
 #. js-lingui-explicit-id
 msgid "What to expect"
 msgstr "Apa yang akan Anda dapatkan"
@@ -19265,6 +19287,11 @@ msgstr "Apa yang akan Anda capai"
 msgid "What's included"
 msgstr "Apa Saja yang Termasuk di Dalamnya"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:146
+#. js-lingui-explicit-id
+msgid "What's next"
+msgstr "Apa selanjutnya?"
+
 #: src/features/Landing/LandingPage.tsx:56
 #: src/features/LearnLanding/LearnLanguagePage.tsx:39
 #. js-lingui-explicit-id
@@ -19276,19 +19303,15 @@ msgstr "Berapa harganya?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Kapan Anda menggunakan AsNoTracking dan apa saja perdagangannya?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:73
+#. js-lingui-explicit-id
+msgid "When is the call?"
+msgstr "Kapan panggilan itu?"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:212
 #. js-lingui-explicit-id
 msgid "When not to use the"
 msgstr "Kapan tidak menggunakan the"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:75
-#. js-lingui-explicit-id
-msgid ""
-"When one is on the schedule. Open it to see the next English calls in your "
-"local time zone."
-msgstr ""
-"Ketika seseorang ada dalam jadwal. Buka untuk melihat panggilan bahasa "
-"Inggris berikutnya di zona waktu lokal Anda."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:83
 #. js-lingui-explicit-id
@@ -19720,7 +19743,7 @@ msgstr ""
 "Anda berlatih berbicara dalam bahasa yang sedang Anda pelajari di "
 "FluencyPal. Bahasa pembelajaran yang didukung meliputi"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:29
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:28
 #. js-lingui-explicit-id
 msgid "You talk together on Google Meet. There is no teacher and no set topic."
 msgstr ""
@@ -19787,11 +19810,6 @@ msgstr "Pengalaman Anda"
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Tingkat Bahasa Anda"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:40
-#. js-lingui-explicit-id
-msgid "Your pace"
-msgstr "Kecepatan Anda"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:11
 #: src/features/Case/data/frontend-senior/faqSection.ts:11

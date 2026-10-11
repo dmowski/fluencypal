@@ -699,44 +699,41 @@ msgid ""
 "## Practice English with other learners\n"
 "\n"
 "Group conversations are free live English calls on Google Meet. You talk "
-"with other learners. There is no teacher and no set topic.\n"
+"with other learners. There is no teacher and no set topic. There is no "
+"payment, and you do not need an account to request a call.\n"
 "\n"
 "Beginners can speak slowly. Advanced learners practice too. A correction "
-"comes only if someone asks. Join when the call starts, and leave when you "
-"need to. You can see how many people plan to come. Each call also has a "
-"text chat in FluencyPal for the people on it.\n"
+"comes only if someone asks. Each call also has a text chat in FluencyPal "
+"for the people on it.\n"
 "\n"
-"## How you join\n"
+"## How a call is arranged\n"
 "\n"
-"1. Find a call. Times are in your local time zone.\n"
-"2. Create an account. There is no payment.\n"
-"3. Open the Google Meet when the call starts.\n"
+"1. Tell me your interests, your English level, and how to reach you.\n"
+"2. I write once I find people who fit.\n"
+"3. We pick a time that is comfortable for everyone.\n"
 "\n"
-"Want to warm up before your call? Practice with AI first.\n"
-"\n"
-"Calls appear when they are on the schedule."
+"Want to warm up before your call? Practice with AI while you wait."
 msgstr ""
-"## Englisch mit anderen Lernenden üben\n"
+"## Übe Englisch mit anderen Lernenden\n"
 "\n"
-"Gruppengespräche sind kostenlose Live-Englischgespräche über Google Meet. "
-"Du sprichst mit anderen Lernenden. Es gibt keinen Lehrer und kein festes "
-"Thema.\n"
+"Gruppengespräche sind kostenlose, live stattfindende Englisch-Anrufe über "
+"Google Meet. Du sprichst mit anderen Lernenden. Es gibt keinen Lehrer und "
+"kein festes Thema. Es fallen keine Kosten an, und du benötigst kein Konto, "
+"um einen Anruf anzufordern.\n"
 "\n"
-"Anfänger können langsam sprechen. Fortgeschrittene üben auch. Eine "
-"Korrektur erfolgt nur, wenn jemand danach fragt. Tritt bei, wenn der Anruf "
-"beginnt, und verlasse ihn, wenn du möchtest. Du kannst sehen, wie viele "
-"Leute teilnehmen möchten. Jeder Anruf hat auch einen Textchat in FluencyPal "
-"für die Teilnehmer.\n"
+"Anfänger können langsam sprechen. Fortgeschrittene Lernende üben ebenfalls. "
+"Eine Korrektur erfolgt nur, wenn jemand darum bittet. Jeder Anruf hat auch "
+"einen Text-Chat in FluencyPal für die Teilnehmer.\n"
 "\n"
-"## So nimmst du teil\n"
+"## Wie ein Anruf arrangiert wird\n"
 "\n"
-"1. Finde einen Anruf. Die Zeiten sind in deiner lokalen Zeitzone.\n"
-"2. Erstelle ein Konto. Es gibt keine Kosten.\n"
-"3. Öffne Google Meet, wenn der Anruf beginnt.\n"
+"1. Teile mir deine Interessen, dein Englischniveau und deine "
+"Kontaktmöglichkeit mit.\n"
+"2. Ich melde mich, sobald ich passende Personen gefunden habe.\n"
+"3. Wir wählen eine Zeit, die für alle angenehm ist.\n"
 "\n"
-"Möchtest du dich vor deinem Anruf aufwärmen? Übe zuerst mit der KI.\n"
-"\n"
-"Anrufe erscheinen, wenn sie im Zeitplan stehen."
+"Möchtest du dich vor deinem Anruf aufwärmen? Übe mit der AI, während du "
+"wartest."
 
 #: src/features/Feature/featuresData.ts:455
 #. js-lingui-explicit-id
@@ -1125,7 +1122,7 @@ msgstr ""
 "- Argumentation\n"
 "- Selbstvertrauen im gesprochenen Englisch"
 
-#: src/features/Feature/featuresData.ts:691
+#: src/features/Feature/featuresData.ts:689
 #. js-lingui-explicit-id
 msgid ""
 "## Turn regular English practice into leaderboard points\n"
@@ -1641,12 +1638,6 @@ msgstr ""
 "Ein lustiges Wort-Ratespiel für 2-20 Spieler. Erkläre deinen Teamkollegen "
 "Wörter, ohne das Wort selbst zu sagen!"
 
-#: src/features/Landing/LandingPage.tsx:458
-#: src/features/LearnLanding/LearnLanguagePage.tsx:327
-#. js-lingui-explicit-id
-msgid "A list of upcoming group conversation calls"
-msgstr "Eine Liste der bevorstehenden Gruppengesprächsrunden"
-
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
 msgid "A method focused on clarity and reliability"
@@ -1673,7 +1664,7 @@ msgstr "Eine bewährte Methode, die messbare Ergebnisse liefert"
 msgid "a sequence of events:"
 msgstr "eine Abfolge von Ereignissen:"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:228
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:254
 #. js-lingui-explicit-id
 msgid "A short call so we can get to know each other"
 msgstr "Ein kurzes Telefonat, damit wir uns kennenlernen können."
@@ -2640,6 +2631,11 @@ msgstr ""
 "detailliertes Feedback bereitgestellt, damit das Gespräch realistisch "
 "bleibt."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:39
+#. js-lingui-explicit-id
+msgid "A time that fits"
+msgstr "Eine passende Zeit"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:186
 #. js-lingui-explicit-id
 msgid "A vs an"
@@ -2746,6 +2742,15 @@ msgstr "Erschwingliches KI-Sprachenlernen"
 #. js-lingui-explicit-id
 msgid "After a preposition, English wants **-ing**:"
 msgstr "Nach einer Präposition verwendet man im Englischen **-ing**:"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:74
+#. js-lingui-explicit-id
+msgid ""
+"After I find a good group, I write you. We choose a time that is "
+"comfortable for everyone."
+msgstr ""
+"Nachdem ich eine gute Gruppe gefunden habe, schreibe ich dir. Wir wählen "
+"eine Uhrzeit, die für alle angenehm ist."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:281
 #. js-lingui-explicit-id
@@ -3231,7 +3236,7 @@ msgstr ""
 "Anfänger bis fließend · Verwendet Ihr Mikrofon · Funktioniert in Ihrem "
 "Browser"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:34
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:33
 #. js-lingui-explicit-id
 msgid ""
 "Beginners can speak slowly. Advanced learners practice too. A correction "
@@ -6470,7 +6475,7 @@ msgstr ""
 "kein fortgeschrittenes technisches Wissen oder perfekte Grammatik, um ein "
 "erfolgreiches Support-Gespräch zu führen."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:68
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:67
 #. js-lingui-explicit-id
 msgid "Can a beginner keep up?"
 msgstr "Kann ein Anfänger mithalten?"
@@ -7046,11 +7051,6 @@ msgstr ""
 msgid "Chinese Learning Plan"
 msgstr "Chinesischer Lernplan"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:49
-#. js-lingui-explicit-id
-msgid "Choose a time that works for you. The calls are free."
-msgstr "Wählen Sie eine Uhrzeit, die Ihnen passt. Die Anrufe sind kostenlos."
-
 #: src/features/Alias/components/RoundSettings.tsx:110
 #. js-lingui-explicit-id
 msgid "Choose how long each turn lasts and how many rounds to play."
@@ -7512,11 +7512,6 @@ msgstr ""
 "Gespräch, das Ihrer Einrichtung folgt und sich gemäß dem von Ihnen "
 "ausgewählten Ton und Schwierigkeitsgrad verhält."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:52
-#. js-lingui-explicit-id
-msgid "Create an account"
-msgstr "Ein Konto erstellen"
-
 #: src/features/Feature/featuresData.ts:270
 #. js-lingui-explicit-id
 msgid "Create Your Own English Role Play Scenario"
@@ -7936,7 +7931,7 @@ msgstr "Verwechseln Sie dies nicht mit einer wirklichen Vergangenheit:"
 msgid "Do not say this"
 msgstr "Sagen Sie dies nicht"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:62
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:61
 #. js-lingui-explicit-id
 msgid "Do the calls cost money?"
 msgstr "Kostet das Anrufe Geld?"
@@ -8006,7 +8001,7 @@ msgstr ""
 "Schwierigkeiten bereiten, und Ihre Fehler in gezielte Sprechübungen zu "
 "verwandeln."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:239
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:265
 #. js-lingui-explicit-id
 msgid "Each call also has a text chat in FluencyPal for the people on it."
 msgstr "Jeder Anruf hat auch einen Textchat in FluencyPal für die Teilnehmer."
@@ -8016,7 +8011,7 @@ msgstr "Jeder Anruf hat auch einen Textchat in FluencyPal für die Teilnehmer."
 msgid "Early access to new tools"
 msgstr "Früher Zugang zu neuen Tools"
 
-#: src/features/Feature/featuresData.ts:683
+#: src/features/Feature/featuresData.ts:681
 #. js-lingui-explicit-id
 msgid ""
 "Earn points for English conversations, story quizzes, daily questions, and "
@@ -8027,7 +8022,7 @@ msgstr ""
 "Fragen und Spiele. Verfolgen Sie Ihren Platz auf der FluencyPal-Bestenliste "
 "und arbeiten Sie auf Belohnungen hin."
 
-#: src/features/Feature/featuresData.ts:679
+#: src/features/Feature/featuresData.ts:677
 #. js-lingui-explicit-id
 msgid ""
 "Earn points from your learning activities and work toward leaderboard "
@@ -9211,7 +9206,7 @@ msgstr ""
 "Ingenieure, die von mittleren in Senior-Rollen wechseln und stärkere "
 "Verhaltensgeschichten benötigen"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:125
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:125
 #. js-lingui-explicit-id
 msgid "English"
 msgstr "Englisch"
@@ -9327,12 +9322,12 @@ msgstr "Englisch-Lernspiele für Vokabeln und Sätze"
 msgid "English Learning Games Online | FluencyPal"
 msgstr "Online Englisch-Lernspiele | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:682
+#: src/features/Feature/featuresData.ts:680
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard and Rewards | FluencyPal"
 msgstr "Englisch-Lern-Rangliste und Belohnungen | FluencyPal"
 
-#: src/features/Feature/featuresData.ts:678
+#: src/features/Feature/featuresData.ts:676
 #. js-lingui-explicit-id
 msgid "English Learning Leaderboard: Earn Practice Points"
 msgstr "Englisch-Lern-Bestenliste: Sammeln Sie Übungspunkte"
@@ -9430,12 +9425,12 @@ msgstr "Englisch-Vokabeltraining für das Sprechen"
 msgid "English Vocabulary Practice with AI | FluencyPal"
 msgstr "Englischer Wortschatz üben mit KI | FluencyPal"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:122
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:122
 #. js-lingui-explicit-id
 msgid "English · 1 person"
 msgstr "Englisch · 1 Person"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:124
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:124
 #. js-lingui-explicit-id
 msgid "English · {count} people"
 msgstr "Englisch · {count} Personen"
@@ -9936,11 +9931,6 @@ msgstr "Endpunktzahl: {winnerScore}"
 msgid "Final Standings"
 msgstr "Endstand"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:48
-#. js-lingui-explicit-id
-msgid "Find a call"
-msgstr "Einen Anruf finden"
-
 #: src/features/RolePlay/fullArticles/alias/AliasLandingPage.tsx:123
 #. js-lingui-explicit-id
 msgid "Find out whether your explanation worked and review your feedback."
@@ -10355,7 +10345,7 @@ msgstr "Französischer Lernplan"
 msgid "Friendly"
 msgstr "Freundlich"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:153
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:179
 #. js-lingui-explicit-id
 msgid "From Alex"
 msgstr "Von Alex"
@@ -10635,18 +10625,18 @@ msgstr "Grammatik-Korrekturvorschau"
 msgid "Grocery Store"
 msgstr "Lebensmittelgeschäft"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:159
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:185
 #. js-lingui-explicit-id
 msgid ""
-"Group calls are with other learners. You can ask people to speak slowly, "
-"and you can leave when you want. If a group feels like a lot, talk with "
-"Alex first."
+"Group calls are free, with other learners. I arrange a time that works for "
+"the people on the call. While you wait, you can practice with AI, or talk "
+"with Alex first."
 msgstr ""
-"Gruppenanrufe finden mit anderen Lernenden statt. Du kannst die Leute "
-"bitten, langsam zu sprechen, und du kannst gehen, wann du möchtest. Wenn "
-"dir eine Gruppe zu viel erscheint, sprich zuerst mit Alex."
+"Gruppenanrufe sind kostenlos, zusammen mit anderen Lernenden. Ich "
+"arrangiere eine Zeit, die für die Teilnehmer des Anrufs passt. Während Sie "
+"warten, können Sie mit der KI üben oder zuerst mit Alex sprechen."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:114
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:118
 #. js-lingui-explicit-id
 msgid "Group conversations"
 msgstr "Gruppengespräche"
@@ -10786,6 +10776,11 @@ msgstr "Hotel Check-In Gespräch"
 msgid "Hours added to your advanced conversation balance"
 msgstr "Stunden zu Ihrem Guthaben für fortgeschrittene Gespräche hinzugefügt"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:296
+#. js-lingui-explicit-id
+msgid "How a call is arranged"
+msgstr "Wie ein Anruf arrangiert wird"
+
 #: src/features/Landing/LandingPage.tsx:146
 #. js-lingui-explicit-id
 msgid "How can I track my progress?"
@@ -10877,11 +10872,6 @@ msgstr "Wie es funktioniert"
 msgid "How it Works"
 msgstr "Wie es funktioniert"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:74
-#. js-lingui-explicit-id
-msgid "How often are calls?"
-msgstr "Wie oft gibt es Anrufe?"
-
 #: src/features/Blog/blogData.tsx:369
 #. js-lingui-explicit-id
 msgid ""
@@ -10949,11 +10939,6 @@ msgid ""
 msgstr ""
 "Wie würden Sie das Zustandsmanagement für eine komplexe Anwendung mit "
 "verschachtelten Komponenten und asynchronen Daten strukturieren?"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:270
-#. js-lingui-explicit-id
-msgid "How you join"
-msgstr "Wie man beitritt"
 
 #: src/features/Blog/blogData.tsx:144
 #. js-lingui-explicit-id
@@ -11330,6 +11315,20 @@ msgstr ""
 msgid "I have a memory of it."
 msgstr "Ich habe eine Erinnerung daran."
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:51
+#. js-lingui-explicit-id
+msgid "I look for people"
+msgstr "Ich suche nach Leuten"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:40
+#. js-lingui-explicit-id
+msgid ""
+"I look for people who fit, then we pick a time that is comfortable for "
+"everyone."
+msgstr ""
+"Ich suche nach Personen, die passen, dann vereinbaren wir eine Zeit, die "
+"für alle angenehm ist."
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:322
 #. js-lingui-explicit-id
 msgid "I paused another activity in order to check."
@@ -11422,6 +11421,23 @@ msgid ""
 msgstr ""
 "Ich war selbstbewusst und klar — FluencyPal hat mich besser als jeder Coach "
 "auf technische Diskussionen über Zustandsverwaltung vorbereitet."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:81
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit."
+msgstr "Ich werde schreiben, sobald ich Personen finde, die passen."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:52
+#. js-lingui-explicit-id
+msgid "I will write once I find people who fit. Group calls are free."
+msgstr ""
+"Ich werde schreiben, sobald ich Leute finde, die passen. Gruppentelefonate "
+"sind kostenlos."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:226
+#. js-lingui-explicit-id
+msgid "I will write when I find a good group"
+msgstr "Ich werde schreiben, wenn ich eine gute Gruppe finde."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:343
 #. js-lingui-explicit-id
@@ -12367,21 +12383,6 @@ msgstr "Tipps für Vorstellungsgespräche"
 msgid "Join"
 msgstr "Beitreten"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:191
-#. js-lingui-explicit-id
-msgid "Join a group call"
-msgstr "Teilnehmen an einem Gruppenanruf"
-
-#: src/features/Landing/LandingPage.tsx:454
-#: src/features/LearnLanding/LearnLanguagePage.tsx:323
-#. js-lingui-explicit-id
-msgid ""
-"Join a live call on Google Meet. See the next times for where you live, and "
-"talk with AI until it starts."
-msgstr ""
-"Nehmen Sie an einem Live-Anruf bei Google Meet teil. Sehen Sie die nächsten "
-"Zeiten für Ihren Wohnort und sprechen Sie mit der KI, bis es beginnt."
-
 #: src/features/Case/data/frontend-junior/reviewSection.ts:11
 #: src/features/Case/data/frontend-senior/reviewSection.ts:11
 #. js-lingui-explicit-id
@@ -12389,29 +12390,6 @@ msgid "Join candidates who transformed their interview performance"
 msgstr ""
 "Schließen Sie sich Kandidat:innen an, die ihre Interviewleistung "
 "transformiert haben"
-
-#: src/features/Feature/featuresData.ts:646
-#. js-lingui-explicit-id
-msgid ""
-"Join live group conversations on Google Meet and build confidence speaking "
-"English."
-msgstr ""
-"Nehmen Sie an Live-Gruppengesprächen auf Google Meet teil und gewinnen Sie "
-"Selbstvertrauen beim Englischsprechen."
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:56
-#. js-lingui-explicit-id
-msgid "Join on Google Meet"
-msgstr "Google Meet beitreten"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:41
-#. js-lingui-explicit-id
-msgid ""
-"Join when the call starts. Leave when you need to. You can see how many "
-"people plan to come."
-msgstr ""
-"Trete bei, wenn der Anruf beginnt. Verlasse, wenn du musst. Du kannst "
-"sehen, wie viele Leute planen, zu kommen."
 
 #: src/features/Landing/LandingPage.tsx:386
 #: src/features/LearnLanding/LearnLanguagePage.tsx:255
@@ -12785,7 +12763,7 @@ msgstr "gemischte Konditionalsätze"
 msgid "Mixed conditionals (what you hear at work)"
 msgstr "Gemischte Konditionalsätze (was Sie bei der Arbeit hören)"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:33
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:32
 #. js-lingui-explicit-id
 msgid "Mixed levels"
 msgstr "Gemischte Niveaus"
@@ -13031,7 +13009,7 @@ msgstr "Keine Blogs gefunden"
 msgid "No correct words yet."
 msgstr "Noch keine korrekten Wörter."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:75
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:75
 #. js-lingui-explicit-id
 msgid "No English calls yet. New times will show up here."
 msgstr "Noch keine Englisch-Anrufe. Neue Zeiten werden hier angezeigt."
@@ -13091,14 +13069,14 @@ msgstr ""
 "oder ein Jahr. Sie können das Sprechen ausprobieren, bevor Sie ein Upgrade "
 "durchführen."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:63
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:62
 #. js-lingui-explicit-id
 msgid ""
-"No. Group conversations are free. Create an account, then join when the "
-"call starts."
+"No. Group conversations are free. There is no payment and no account "
+"required to request one."
 msgstr ""
-"Nein. Gruppengespräche sind kostenlos. Erstellen Sie ein Konto und nehmen "
-"Sie teil, wenn der Anruf beginnt."
+"Nein. Gruppengespräche sind kostenlos. Es ist keine Zahlung und kein Konto "
+"erforderlich, um eines anzufordern."
 
 #: src/features/Landing/Price/PricePage.tsx:81
 #. js-lingui-explicit-id
@@ -13167,7 +13145,7 @@ msgstr "Jetzt"
 msgid "Now start speaking it."
 msgstr "Fangen Sie jetzt an, es zu sprechen."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:118
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:118
 #. js-lingui-explicit-id
 msgid "Now · {time}"
 msgstr "Jetzt · {time}"
@@ -13246,11 +13224,6 @@ msgstr "Öffnen"
 msgid "Open Dashboard"
 msgstr "Dashboard öffnen"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:57
-#. js-lingui-explicit-id
-msgid "Open the call when it starts."
-msgstr "Öffnen Sie den Anruf, wenn er beginnt."
-
 #: src/features/RolePlay/scenarios/custom-conversation.ts:105
 #. js-lingui-explicit-id
 msgid ""
@@ -13269,15 +13242,10 @@ msgstr ""
 "Bestellen Sie Essen, planen Sie Termine, meistern Sie Vorstellungsgespräche "
 "und mehr – alles mit Unterstützung Ihres KI-Tutors."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:28
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:27
 #. js-lingui-explicit-id
 msgid "Other learners"
 msgstr "Andere Lernende"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:200
-#. js-lingui-explicit-id
-msgid "Other learners on Google Meet"
-msgstr "Andere Lernende bei Google Meet"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:21
 #. js-lingui-explicit-id
@@ -13375,6 +13343,12 @@ msgstr "Pause, um X zu tun"
 #. js-lingui-explicit-id
 msgid "People often mix times on purpose."
 msgstr "Menschen mischen oft absichtlich Zeiten."
+
+#: src/features/Landing/LandingPage.tsx:458
+#: src/features/LearnLanding/LearnLanguagePage.tsx:327
+#. js-lingui-explicit-id
+msgid "People practicing English together on a call"
+msgstr "Menschen, die gemeinsam Englisch in einem Anruf üben"
 
 #: src/features/Case/data/frontend-junior/techStackSection.ts:40
 #: src/features/Case/data/frontend-senior/techStackSection.ts:40
@@ -13737,16 +13711,6 @@ msgstr ""
 "Schreibfehlern. Lernen Sie mit klaren Erklärungen, Beispielen, kurzen "
 "Quizfragen und KI-Konversationen."
 
-#: src/features/Feature/featuresData.ts:650
-#. js-lingui-explicit-id
-msgid ""
-"Practice English on a free live group call with other learners. See "
-"upcoming Google Meet times in your time zone and join."
-msgstr ""
-"Übe Englisch in einem kostenlosen Live-Gruppenanruf mit anderen Lernenden. "
-"Sieh dir die bevorstehenden Google Meet-Zeiten in deiner Zeitzone an und "
-"nimm teil."
-
 #: src/features/SEO/metadata.ts:248
 #. js-lingui-explicit-id
 msgid "Practice English Online"
@@ -13778,14 +13742,14 @@ msgstr ""
 "Schließen Sie interaktive Herausforderungen ab und sammeln Sie Punkte für "
 "richtige Antworten."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:120
-#. js-lingui-explicit-id
-msgid "Practice English with other learners"
-msgstr "Englisch mit anderen Lernenden üben"
-
 #: src/features/Feature/featuresData.ts:645
 #. js-lingui-explicit-id
 msgid "Practice English with Other Learners"
+msgstr "Englisch mit anderen Lernenden üben"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:124
+#. js-lingui-explicit-id
+msgid "Practice English with other learners"
 msgstr "Englisch mit anderen Lernenden üben"
 
 #: src/features/Feature/featuresData.ts:446
@@ -14276,7 +14240,7 @@ msgstr "Veröffentlicht am"
 msgid "Question"
 msgstr "Frage"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:307
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:333
 #. js-lingui-explicit-id
 msgid "Questions"
 msgstr "Fragen"
@@ -14645,6 +14609,33 @@ msgstr "Erinnerung"
 msgid "Rendering Performance"
 msgstr "Renderleistung"
 
+#: src/features/Feature/GroupCall/GroupConversationJoinButton.tsx:27
+#: src/features/Landing/LandingPage.tsx:461
+#: src/features/LearnLanding/LearnLanguagePage.tsx:330
+#. js-lingui-explicit-id
+msgid "Request a call"
+msgstr "Einen Anruf anfordern"
+
+#: src/features/Feature/featuresData.ts:650
+#. js-lingui-explicit-id
+msgid ""
+"Request a free English group call. Share your interests and English level, "
+"and I will arrange a time that works for everyone."
+msgstr ""
+"Beantragen Sie einen kostenlosen englischen Gruppencall. Teilen Sie Ihre "
+"Interessen und Ihr Englischniveau mit, und ich werde eine Zeit arrangieren, "
+"die für alle passt."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:345
+#. js-lingui-explicit-id
+msgid "Request a free group call"
+msgstr "Fordern Sie einen kostenlosen Gruppenanruf an"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:217
+#. js-lingui-explicit-id
+msgid "Request a group call"
+msgstr "Eine Gruppenkonferenz anfordern"
+
 #: src/features/Case/data/backendCSharp/scorePreviewSection.ts:29
 #. js-lingui-explicit-id
 msgid "Resiliency & Observability"
@@ -14856,11 +14847,6 @@ msgstr "Zweiter vs. Dritter Bedingungssatz: If I Were vs If I Had"
 msgid "See How It Works"
 msgstr "Sehen Sie, wie es funktioniert"
 
-#: src/features/Feature/GroupConversationJoinButton.tsx:27
-#. js-lingui-explicit-id
-msgid "See schedule"
-msgstr "Zeitplan anzeigen"
-
 #: src/features/Case/data/backendCSharp/quizData.ts:55
 #. js-lingui-explicit-id
 msgid "See strengths and gaps across core backend topics."
@@ -14876,11 +14862,6 @@ msgstr "Sieh dir die Vermutung der KI an"
 msgid "See the AI’s Guess"
 msgstr "Sehen Sie den Tipp des KI"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:319
-#. js-lingui-explicit-id
-msgid "See the next English call"
-msgstr "Siehe den nächsten englischen Anruf"
-
 #: src/features/Case/data/backendCSharp/demoSnippetSection.ts:10
 #. js-lingui-explicit-id
 msgid "See the type of backend feedback you'll get"
@@ -14891,13 +14872,6 @@ msgstr "Sieh dir die Art von Backend-Feedback an, die du erhalten wirst"
 #. js-lingui-explicit-id
 msgid "See the type of feedback you'll get"
 msgstr "Sehen Sie, welche Art von Feedback Sie erhalten werden"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:320
-#: src/features/Landing/LandingPage.tsx:461
-#: src/features/LearnLanding/LearnLanguagePage.tsx:330
-#. js-lingui-explicit-id
-msgid "See upcoming calls"
-msgstr "Bevorstehende Anrufe ansehen"
 
 #: src/features/Alias/components/CategorySelection.tsx:62
 #. js-lingui-explicit-id
@@ -14923,6 +14897,11 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Semantic HTML"
 msgstr "Semantisches HTML"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:346
+#. js-lingui-explicit-id
+msgid "Send a request"
+msgstr "Eine Anfrage senden"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -14974,6 +14953,13 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Share what you're currently learning"
 msgstr "Teilen Sie, was Sie derzeit lernen"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:48
+#. js-lingui-explicit-id
+msgid "Share your interests, your English level, and how I can reach you."
+msgstr ""
+"Teilen Sie Ihre Interessen, Ihr Englischniveau und wie ich Sie erreichen "
+"kann."
 
 #: src/features/RolePlay/scenarios/cynical-friend.ts:51
 #. js-lingui-explicit-id
@@ -15719,7 +15705,7 @@ msgstr "Kurzgeschichte"
 msgid "Shorter words and familiar vocabulary"
 msgstr "Kürzere Wörter und vertrautes Vokabular"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:152
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:152
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Mehr anzeigen"
@@ -15751,13 +15737,6 @@ msgstr "Beispiele nebeneinander"
 #. js-lingui-explicit-id
 msgid "Sign In"
 msgstr "Anmelden"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:53
-#. js-lingui-explicit-id
-msgid "Sign up to save your place. There is no payment."
-msgstr ""
-"Melden Sie sich an, um Ihren Platz zu sichern. Es ist keine Zahlung "
-"erforderlich."
 
 #: src/features/Alias/components/LanguageLevel.tsx:59
 #. js-lingui-explicit-id
@@ -15859,7 +15838,7 @@ msgstr ""
 msgid "Spanish Learning Plan"
 msgstr "Spanisch Lernplan"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:69
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:68
 #. js-lingui-explicit-id
 msgid ""
 "Speak even when the words come slowly. Mistakes are welcome. Nobody "
@@ -16268,7 +16247,7 @@ msgstr ""
 "Unterhalte dich mit einem KI-basierten Englischlehrer, sende "
 "Sprachnachrichten oder wechsle zu Text, wenn du es benötigst."
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:219
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:245
 #. js-lingui-explicit-id
 msgid "Talk with Alex"
 msgstr "Mit Alex sprechen"
@@ -16279,7 +16258,7 @@ msgstr "Mit Alex sprechen"
 msgid "Talk with other learners"
 msgstr "Mit anderen Lernenden sprechen"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:156
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:182
 #. js-lingui-explicit-id
 msgid "Talk with the group, or just with Alex"
 msgstr "Mit der Gruppe sprechen oder nur mit Alex"
@@ -18086,6 +18065,37 @@ msgstr ""
 "Erzählen Sie von einer Zeit, in der Sie an einem Fehler hängen geblieben "
 "sind. Wie haben Sie die Ursache gefunden und behoben?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:47
+#. js-lingui-explicit-id
+msgid "Tell me about you"
+msgstr "Erzähl mir von dir."
+
+#: src/features/Landing/LandingPage.tsx:454
+#: src/features/LearnLanding/LearnLanguagePage.tsx:323
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about and how to reach you. I will find "
+"people and arrange a free call."
+msgstr ""
+"Sag mir, worüber du sprechen möchtest und wie ich dich erreichen kann. Ich "
+"finde die passenden Gesprächspartner und arrangiere einen kostenlosen Anruf."
+
+#: src/features/Feature/featuresData.ts:646
+#. js-lingui-explicit-id
+msgid ""
+"Tell me what you want to talk about. I will find people and arrange a free "
+"call that works for everyone."
+msgstr ""
+"Sagen Sie mir, worüber Sie sprechen möchten. Ich werde Personen finden und "
+"einen kostenlosen Anruf organisieren, der für alle passt."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:80
+#. js-lingui-explicit-id
+msgid "Tell me your interests, your level, and how to reach you."
+msgstr ""
+"Teilen Sie mir Ihre Interessen, Ihr Niveau und wie man Sie erreichen kann, "
+"mit."
+
 #: src/features/Case/data/frontend-senior/quizData.ts:155
 #. js-lingui-explicit-id
 msgid ""
@@ -18289,7 +18299,7 @@ msgstr ""
 "Das personalisierte Feedback hat mir genau gezeigt, was ich bei meinen "
 "technischen Erklärungen falsch gemacht habe. Ein echter Wendepunkt."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:66
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:66
 #. js-lingui-explicit-id
 msgid "The schedule is not available right now."
 msgstr "Der Zeitplan ist momentan nicht verfügbar."
@@ -18747,7 +18757,7 @@ msgstr "Verbleibende Zeit"
 msgid "Timed"
 msgstr "Zeitgesteuert"
 
-#: src/features/Feature/GroupConversationSchedule.tsx:61
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:61
 #. js-lingui-explicit-id
 msgid "Times are shown in your local time zone."
 msgstr "Zeiten werden in Ihrer lokalen Zeitzone angezeigt."
@@ -18946,7 +18956,7 @@ msgstr ""
 "Irreale Gegenwart vs. irreale Vergangenheit — klare Regeln, gesprochene "
 "Beispiele und die gemischten Formen, die Sie bei der Arbeit hören."
 
-#: src/features/Feature/GroupConversationSchedule.tsx:58
+#: src/features/Feature/GroupCall/GroupConversationSchedule.tsx:58
 #. js-lingui-explicit-id
 msgid "Upcoming calls"
 msgstr "Bevorstehende Anrufe"
@@ -19258,7 +19268,7 @@ msgstr ""
 "Antworten zu perfektionieren und das Selbstvertrauen zu gewinnen, das Sie "
 "zum Erfolg brauchen. Warum beginnen Sie nicht heute mit dem Üben?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:273
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:299
 #. js-lingui-explicit-id
 msgid "Want to warm up before your call? Practice with AI first."
 msgstr "Möchten Sie sich vor Ihrem Anruf aufwärmen? Üben Sie zuerst mit KI."
@@ -19293,6 +19303,25 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "We both know which one"
 msgstr "Wir beide wissen, welches."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:56
+#. js-lingui-explicit-id
+msgid "We discuss a time slot and arrange a call that works for each person."
+msgstr ""
+"Wir besprechen ein Zeitfenster und vereinbaren einen Anruf, der für jede "
+"Person passt."
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:55
+#. js-lingui-explicit-id
+msgid "We pick a time"
+msgstr "Wir wählen eine Zeit aus"
+
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:82
+#. js-lingui-explicit-id
+msgid "We pick a time that is comfortable for everyone. Group calls are free."
+msgstr ""
+"Wir wählen eine Zeit, die für alle angenehm ist. Gruppentelefonate sind "
+"kostenlos."
 
 #: src/features/Legal/CookieBanner.tsx:86
 #. js-lingui-explicit-id
@@ -19474,7 +19503,7 @@ msgstr "Welches Sprachniveau sollte ich haben?"
 msgid "What situation do you want to practice?"
 msgstr "Welche Situation möchten Sie üben?"
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:236
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:262
 #. js-lingui-explicit-id
 msgid "What to expect"
 msgstr "Was Sie erwartet"
@@ -19502,6 +19531,11 @@ msgstr "Was Sie erreichen werden"
 msgid "What's included"
 msgstr "Was ist enthalten?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:146
+#. js-lingui-explicit-id
+msgid "What's next"
+msgstr "Was kommt als Nächstes?"
+
 #: src/features/Landing/LandingPage.tsx:56
 #: src/features/LearnLanding/LearnLanguagePage.tsx:39
 #. js-lingui-explicit-id
@@ -19513,19 +19547,15 @@ msgstr "Was kostet es?"
 msgid "When do you use AsNoTracking and what are the trade-offs?"
 msgstr "Wann verwendet man AsNoTracking und welche Kompromisse gibt es?"
 
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:73
+#. js-lingui-explicit-id
+msgid "When is the call?"
+msgstr "Wann ist der Anruf?"
+
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:212
 #. js-lingui-explicit-id
 msgid "When not to use the"
 msgstr "Wann man the nicht verwenden sollte"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:75
-#. js-lingui-explicit-id
-msgid ""
-"When one is on the schedule. Open it to see the next English calls in your "
-"local time zone."
-msgstr ""
-"Wenn man im Zeitplan ist. Öffnen Sie es, um die nächsten Englischanrufe in "
-"Ihrer Zeitzone zu sehen."
 
 #: src/features/Blog/Articles/grammarSpeakingPracticePosts.ts:83
 #. js-lingui-explicit-id
@@ -19954,7 +19984,7 @@ msgstr ""
 "Sie üben das Sprechen in der Sprache, die Sie in FluencyPal lernen. "
 "Unterstützte Lernsprachen umfassen "
 
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:29
+#: src/features/Feature/GroupCall/GroupConversationsFeaturePage.tsx:28
 #. js-lingui-explicit-id
 msgid "You talk together on Google Meet. There is no teacher and no set topic."
 msgstr ""
@@ -20021,11 +20051,6 @@ msgstr "Ihre Erfahrung"
 #. js-lingui-explicit-id
 msgid "Your Language Level"
 msgstr "Ihr Sprachniveau"
-
-#: src/features/Feature/GroupConversationsFeaturePage.tsx:40
-#. js-lingui-explicit-id
-msgid "Your pace"
-msgstr "Ihr Tempo"
 
 #: src/features/Case/data/frontend-junior/faqSection.ts:11
 #: src/features/Case/data/frontend-senior/faqSection.ts:11

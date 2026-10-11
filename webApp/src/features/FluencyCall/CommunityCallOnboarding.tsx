@@ -67,7 +67,7 @@ export const CommunityCallOnboarding = ({
             {i18n._('Practice with AI while you wait.')}
           </Typography>
           <Button
-            href={`${getUrlStart(lang)}quiz`}
+            href={`${getUrlStart(lang)}practice`}
             variant="contained"
             size="large"
             data-testid="community-call-practice"
