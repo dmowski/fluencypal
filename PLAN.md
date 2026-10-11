@@ -7,9 +7,6 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Write 2 people:
-  https://www.reddit.com/r/learnEnglishOnline/comments/1x33gkf/looking_for_someone_to_practise_with/
-
 - One idea about social networks. Ideas
   -- Create doc with ideas
   -- Brainstorm some
