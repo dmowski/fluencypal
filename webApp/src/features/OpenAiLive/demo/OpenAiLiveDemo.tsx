@@ -2,8 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, Stack, Typography, Link } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { useAuth } from '@/features/Auth/useAuth';
-import { AuthWall } from '@/features/Auth/AuthWall';
 import { supportedLanguages, SupportedLanguage } from '@/features/Lang/lang';
 import { getUrlStart, getLandingUrlStart } from '@/features/Lang/getUrlStart';
 import { DemoLanguageCards } from './DemoLanguageCards';
@@ -31,7 +29,6 @@ const demoAuroraMode = (
 
 export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: SupportedLanguage }) => {
   const { i18n } = useLingui();
-  const auth = useAuth();
   const call = useDemoCall();
   const [language, setLanguage] = useState<SupportedLanguage>('en');
   const startedRef = useRef(false);
@@ -42,7 +39,6 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
   const [savedLines, setSavedLines] = useState<LiveTranscriptLine[]>([]);
   const [used, setUsed] = useState(false);
   const [statusError, setStatusError] = useState('');
-  const [join, setJoin] = useState(false);
   useEffect(() => {
     let cancelled = false;
     void demoRequest<{ used: boolean; language: SupportedLanguage; lines: LiveTranscriptLine[] }>()
@@ -63,7 +59,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
   const reviewLines = call.lines.length ? call.lines : savedLines;
   const ended = used || call.phase === 'ended';
   const inCall = call.phase === 'connecting' || call.phase === 'live';
-  const showStartBar = !ended && !join && call.phase === 'idle';
+  const showStartBar = !ended && call.phase === 'idle';
   const auroraMode = demoAuroraMode(call.phase, call.muted, call.lines[call.lines.length - 1]);
   return (
     <Stack
@@ -100,34 +96,29 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
         {call.error || statusError ? (
           <Alert severity="error">{call.error || statusError}</Alert>
         ) : null}
-        {!ended && !join ? <DemoLanguageCards language={language} onChange={setLanguage} /> : null}
-        {ended && !join ? (
+        {!ended ? <DemoLanguageCards language={language} onChange={setLanguage} /> : null}
+        {ended ? (
           <Button
             variant="contained"
-            color="info"
+            size="large"
+            href={`${getUrlStart(pageLanguage)}practice`}
+            data-testid="demo-open-practice"
+            data-analytics="demo-open-practice"
             endIcon={<ArrowRight size={19} />}
             sx={{
-              padding: '12px 16px',
-              width: 'max-content',
+              minHeight: 56,
+              borderRadius: '16px',
+              textTransform: 'none',
+              fontSize: 16,
+              fontWeight: 700,
+              background: '#d5b7ff',
+              color: '#21122f',
+              boxShadow: '0 4px 24px rgba(173,115,245,.16), 2px 2px 16px rgba(0,0,0,0.3)',
+              '&:hover': { background: '#e2ceff' },
             }}
-            size="large"
-            onClick={() => setJoin(true)}
           >
-            {auth.isIdentified ? i18n._('Continue to FluencyPal') : i18n._('Create my account')}
+            {i18n._('Open my practice dashboard')}
           </Button>
-        ) : null}
-        {join ? (
-          <AuthWall
-            startOnAuth
-            signInTitle={i18n._('Keep the conversation going')}
-            singInSubTitle={i18n._(
-              'Create an account to save your progress. Continued AI speaking uses credits.',
-            )}
-          >
-            <Button variant="contained" href={`${getUrlStart(pageLanguage)}practice`}>
-              {i18n._('Open my practice dashboard')}
-            </Button>
-          </AuthWall>
         ) : null}
 
         {reviewLines.length > 0 && ended ? (

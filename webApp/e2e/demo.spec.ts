@@ -82,7 +82,7 @@ const installDemo = async (
   );
 };
 
-test('demo starts on the first tap, counts down and offers signup', async ({ page }) => {
+test('demo starts on the first tap, counts down and opens practice', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await installDemo(page);
@@ -101,10 +101,9 @@ test('demo starts on the first tap, counts down and offers signup', async ({ pag
   await expect(page.getByText('30 seconds left — one last thought')).toBeVisible();
   await page.clock.fastForward(30_000);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Create my account' })).toBeVisible();
+  await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
+  await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByText('I enjoy reading books.')).toBeVisible();
-  await page.getByRole('button', { name: 'Create my account' }).click();
-  await expect(page.getByText('Keep the conversation going')).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -132,12 +131,13 @@ test('used demo restores the review and does not offer another start', async ({ 
     }),
   );
   await page.goto('/demo');
-  await expect(page.getByRole('button', { name: 'Create my account' })).toBeVisible();
+  await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
+  await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('demo-start')).toHaveCount(0);
   await expect(page.getByText('Lubię książki.')).toBeVisible();
 });
 
-test('server quota rejection offers signup without reopening the trial', async ({ page }) => {
+test('server quota rejection opens practice without reopening the trial', async ({ page }) => {
   await installDemo(page);
   await page.route('**/api/openAiLive/demo', (route) => {
     const body = route.request().postDataJSON();
@@ -149,19 +149,21 @@ test('server quota rejection offers signup without reopening the trial', async (
   });
   await page.goto('/demo');
   await page.getByTestId('demo-start').click();
-  await expect(page.getByRole('button', { name: 'Create my account' })).toBeVisible();
+  await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
+  await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
   await expect(page.getByTestId('demo-start')).toHaveCount(0);
 });
 
-test('mobile visitors can end a call early and see signup', async ({ page }) => {
+test('mobile visitors can end a call early and open practice', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await installDemo(page);
   await page.goto('/demo');
   await page.getByTestId('demo-start').click();
   await expect(page.getByText('I enjoy reading books.')).toBeVisible();
   await page.getByTestId('open-ai-live-close').click();
-  await expect(page.getByRole('button', { name: 'Create my account' })).toBeVisible();
+  await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
+  await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
 });
 

@@ -7,11 +7,15 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 # Plan
 
-- Reddit post that I am looking speaking partners
-
 - Better UI for Demo call: Better finish screen and redirection to the App
 
+- One idea: post, video, twit - about social networks
+
+- Reddit post that I am looking speaking partners
+
 - Create ad for Quebec
+
+- Separate landing page for Interactive Lessons
 
 - Setup better AD for Demo
 
