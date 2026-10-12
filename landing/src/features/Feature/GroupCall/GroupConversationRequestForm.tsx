@@ -8,6 +8,8 @@ import { SupportedLanguage } from '@/features/Lang/lang';
 import { buttonStyle } from '@/features/Landing/landingSettings';
 import { sendGroupConversationRequest } from './sendGroupConversationRequest';
 
+const scrollClearance = { xs: '112px', md: '140px' };
+
 const fieldSx = {
   '& .MuiInputBase-root': {
     color: '#f4f7fb',
@@ -58,7 +60,7 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
       <Stack
         id="group-call-request"
         data-testid="group-conversations-request-sent"
-        sx={{ width: '100%', maxWidth: '520px', gap: '12px' }}
+        sx={{ width: '100%', maxWidth: '520px', gap: '12px', scrollMarginTop: scrollClearance }}
       >
         <Typography sx={{ fontWeight: 800, fontSize: '1.35rem', color: '#fff' }}>
           {i18n._('I will contact you soon')}
@@ -96,7 +98,7 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
         event.preventDefault();
         void submit();
       }}
-      sx={{ width: '100%', maxWidth: '520px', gap: '14px' }}
+      sx={{ width: '100%', maxWidth: '520px', gap: '14px', scrollMarginTop: scrollClearance }}
     >
       <Typography sx={{ color: 'rgba(244, 247, 251, 0.78)' }}>
         {i18n._('No account needed. Group calls are free.')}
