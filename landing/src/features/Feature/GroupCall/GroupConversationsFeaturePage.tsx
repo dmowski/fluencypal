@@ -7,8 +7,8 @@ import { Footer } from '@/features/Landing/Footer';
 import { CtaBlock } from '@/features/Landing/ctaBlock';
 import { MutedPreviewVideo } from '@/features/uiKit/Video/MutedPreviewVideo';
 import { buttonStyle, maxLandingWidth, titleFontStyle } from '@/features/Landing/landingSettings';
-import { englishGroupCallOnboardingHref, talkWithAlexHref } from './groupCallOnboardingHref';
-import { GroupConversationJoinButton } from './GroupConversationJoinButton';
+import { talkWithAlexHref } from './groupCallOnboardingHref';
+import { GroupConversationRequestForm } from './GroupConversationRequestForm';
 import { FeatureData } from '../types';
 
 export const GroupConversationsFeaturePage = ({
@@ -19,7 +19,6 @@ export const GroupConversationsFeaturePage = ({
   feature: FeatureData;
 }) => {
   const i18n = getI18nInstance(lang);
-  const appHref = englishGroupCallOnboardingHref(lang);
   const alexHref = talkWithAlexHref(lang);
   const expectations = [
     {
@@ -127,7 +126,7 @@ export const GroupConversationsFeaturePage = ({
                 >
                   {feature.subTitle}
                 </Typography>
-                <GroupConversationJoinButton href={appHref} />
+                <GroupConversationRequestForm lang={lang} />
               </Stack>
 
               <Stack
@@ -177,7 +176,7 @@ export const GroupConversationsFeaturePage = ({
               >
                 <Stack sx={{ gap: '8px', alignItems: 'center' }}>
                   <Button
-                    href={appHref}
+                    href="#group-call-request"
                     variant="outlined"
                     size="large"
                     data-analytics="community-call-video"
@@ -323,7 +322,7 @@ export const GroupConversationsFeaturePage = ({
       <CtaBlock
         title={i18n._('Request a free group call')}
         actionButtonTitle={i18n._('Send a request')}
-        actionButtonLink={appHref}
+        actionButtonLink="#group-call-request"
         actionButtonId="community-call-cta-footer"
         buttonBackgroundColor="#7DDEAA"
         buttonColor="#041018"

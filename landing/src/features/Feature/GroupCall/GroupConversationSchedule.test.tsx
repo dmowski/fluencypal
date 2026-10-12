@@ -10,7 +10,6 @@ import {
   groupCallChoiceHref,
   talkWithAlexHref,
 } from './groupCallOnboardingHref';
-import { GroupConversationJoinButton } from './GroupConversationJoinButton';
 import { GroupConversationSchedule } from './GroupConversationSchedule';
 import { resetEnglishGroupCallsCache } from './useEnglishGroupCalls';
 
@@ -73,35 +72,16 @@ describe('group conversation times', () => {
     expect(screen.queryByText('9')).not.toBeInTheDocument();
   });
 
-  it('labels the hero button Request a call', () => {
-    render(renderWithI18n(<GroupConversationJoinButton href={href} />));
-
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('Request a call');
-    expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute('href', href);
-    expect(screen.getByTestId('group-conversations-cta')).toHaveAttribute(
-      'data-analytics',
-      'community-call-cta',
-    );
-  });
-
-  it('keeps the hero button usable when the schedule is empty', async () => {
+  it('shows an empty schedule without time rows', async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
       json: async () => ({ calls: [] }),
     }) as unknown as typeof fetch;
     resetEnglishGroupCallsCache();
 
-    render(
-      renderWithI18n(
-        <>
-          <GroupConversationJoinButton href={href} />
-          <GroupConversationSchedule moreHref={href} />
-        </>,
-      ),
-    );
+    render(renderWithI18n(<GroupConversationSchedule moreHref={href} />));
 
     expect(await screen.findByTestId('group-conversations-schedule-empty')).toBeInTheDocument();
-    expect(screen.getByTestId('group-conversations-cta')).toHaveTextContent('Request a call');
     expect(screen.queryByTestId('group-conversations-schedule-row')).not.toBeInTheDocument();
   });
 });
