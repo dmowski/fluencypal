@@ -1,14 +1,16 @@
 'use client';
 import { sendSpeechStart } from '@/features/Analytics/Custom/sendSpeechStart';
 import { sendAnalyticsEvent } from '@/features/Analytics/Custom/sendAnalyticsEvent';
+import { sendCallState, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
+import * as Sentry from '@sentry/nextjs';
 import { useEffect, useRef, useState } from 'react';
 import { connectOpenAiLiveCall, LiveSocket } from '../connectLiveCall';
 import { appendLiveTranscript, LiveTranscriptLine } from '../transcripts';
 import { unlockTeacherAudio } from '../teacherPlayback';
 import { OpenAiLiveApiError } from '../api';
 import { demoRequest } from './api';
+import { DemoConnectStage, demoTimeoutReason, describeDemoFailure } from './demoStartFailure';
 import { DEMO_DURATION_MS, DEMO_CONNECT_MS } from './policy';
-import { sendCallState, sendUiError } from '@/features/Analytics/Custom/sendOutcomeEvents';
 
 type DemoRun = {
   controller: AbortController;
@@ -16,7 +18,20 @@ type DemoRun = {
   sessionId?: string;
   deadline: number;
   ready: boolean;
+  stage: DemoConnectStage;
   timer?: ReturnType<typeof setInterval>;
+};
+
+const logDemoFailure = (label: string, cause: unknown, errorCode: string) => {
+  console.error(`[open-ai-live] ${label}`, {
+    code: errorCode,
+    name: cause instanceof Error ? cause.name : typeof cause,
+    status: cause instanceof OpenAiLiveApiError ? cause.status : undefined,
+    message: cause instanceof Error ? cause.message : '',
+  });
+  Sentry.captureException(cause, {
+    tags: { area: 'open-ai-live-demo', demoFailure: errorCode },
+  });
 };
 
 export const useDemoCall = () => {
@@ -66,6 +81,7 @@ export const useDemoCall = () => {
       controller: new AbortController(),
       deadline: Date.now() + 60_000,
       ready: false,
+      stage: 'mic',
     };
     run.current = active;
     setError(null);
@@ -80,9 +96,11 @@ export const useDemoCall = () => {
       const left = Math.max(0, active.deadline - Date.now());
       if (active.ready) setRemaining(left);
       if (!left) {
-        if (!active.ready)
+        if (!active.ready) {
           setError('Could not connect. Check microphone access and your connection.');
-        end(active.ready ? 'demo-limit' : 'demo-connection-timeout');
+          console.error('[open-ai-live] demo connect timed out', { stage: active.stage });
+        }
+        end(active.ready ? 'demo-limit' : demoTimeoutReason(active.stage));
       }
     }, 250);
     try {
@@ -137,10 +155,13 @@ export const useDemoCall = () => {
                 reason: 'demo',
               });
             })
-            .catch(() => {
+            .catch((readyError: unknown) => {
               if (run.current !== active) return;
+              const failure = describeDemoFailure(readyError, 'ready');
+              logDemoFailure('demo ready failed', readyError, failure.errorCode);
               setError('The demo could not connect. Please try the learning plan instead.');
-              end('demo-ready-failed');
+              sendUiError(failure.errorCode);
+              end(failure.callReason);
             });
         },
         onRemoteClosed: () => {
@@ -149,12 +170,17 @@ export const useDemoCall = () => {
         onNeedsUnlock: () => {
           if (run.current === active) setNeedsUnlock(true);
         },
+        onStage: (stage) => {
+          active.stage = stage;
+        },
       });
     } catch (cause) {
       if (run.current !== active) return;
+      const failure = describeDemoFailure(cause, 'start');
+      logDemoFailure('demo start failed', cause, failure.errorCode);
       setError(cause instanceof Error ? cause.message : 'Could not start the demo.');
-      sendUiError('demo-start-failed');
-      end('demo-start-failed');
+      sendUiError(failure.errorCode);
+      end(failure.callReason);
       if (cause instanceof OpenAiLiveApiError && cause.status === 429) setPhase('ended');
     }
   };

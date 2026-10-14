@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import { after } from 'next/server';
 import { getDB, validateAuthToken } from '@/app/api/config/firebase';
 import {
@@ -6,6 +7,7 @@ import {
   SupportedLanguage,
 } from '@/features/Lang/lang';
 import { createOpenAiLiveSession } from '@/features/OpenAiLive/backend/createLiveSession';
+import { OpenAiLiveProviderError } from '@/features/OpenAiLive/backend/providerError';
 import { openAiLiveErrorResponse } from '@/features/OpenAiLive/backend/requireUser';
 import { buildOpenAiLiveInstructions } from '@/features/OpenAiLive/instructions';
 import { demoRef, DemoLimitError, readDemo, reserveDemo } from '@/features/OpenAiLive/demo/backend';
@@ -94,6 +96,13 @@ export async function POST(request: Request) {
   } catch (error) {
     if (error instanceof DemoLimitError)
       return Response.json({ error: error.message }, { status: 429 });
+    Sentry.captureException(error, {
+      tags: {
+        area: 'open-ai-live-demo',
+        ...(error instanceof OpenAiLiveProviderError ? { providerCode: error.code } : {}),
+      },
+      extra: error instanceof OpenAiLiveProviderError ? { detail: error.detail } : undefined,
+    });
     return openAiLiveErrorResponse(error);
   }
 }
@@ -111,8 +120,7 @@ export async function GET(request: Request) {
           .get()
       : null;
     const messages = conversation?.data()?.messages as
-      | { id: string; text: string; isBot: boolean }[]
-      | undefined;
+      { id: string; text: string; isBot: boolean }[] | undefined;
     return Response.json(
       {
         used: !!session,

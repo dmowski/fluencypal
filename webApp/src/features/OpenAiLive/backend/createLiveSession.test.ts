@@ -1,15 +1,14 @@
 import { createOpenAiLiveSession } from './createLiveSession';
+import { OpenAiLiveProviderError } from './providerError';
 const originalFetch = global.fetch;
 const originalKey = process.env.OPENAI_API_KEY;
 let fetchMock: jest.Mock;
 beforeEach(() => {
   process.env.OPENAI_API_KEY = 'test-key';
-  fetchMock = jest
-    .fn()
-    .mockResolvedValue({
-      ok: true,
-      json: async () => ({ session: { id: 'live_test' }, transport: { sdp: 'answer' } }),
-    });
+  fetchMock = jest.fn().mockResolvedValue({
+    ok: true,
+    json: async () => ({ session: { id: 'live_test' }, transport: { sdp: 'answer' } }),
+  });
   global.fetch = fetchMock;
 });
 afterAll(() => {
@@ -31,4 +30,15 @@ test('demo browsers cannot change prompts or invoke backend model work directly'
 test('paid conversations retain their existing data channel permissions', async () => {
   await createOpenAiLiveSession(input);
   expect(JSON.parse(fetchMock.mock.calls[0][1].body).session.client).toBeUndefined();
+});
+test('a provider rejection keeps a short code and the response detail off the message', async () => {
+  fetchMock.mockResolvedValue({
+    ok: false,
+    status: 429,
+    text: async () => 'rate limited',
+  });
+  await expect(createOpenAiLiveSession(input)).rejects.toEqual(
+    expect.objectContaining({ code: 'openai-429', message: 'Could not start the live session' }),
+  );
+  await expect(createOpenAiLiveSession(input)).rejects.toBeInstanceOf(OpenAiLiveProviderError);
 });

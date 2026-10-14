@@ -1,3 +1,4 @@
+import { sendPermission } from '@/features/Analytics/Custom/sendOutcomeEvents';
 import { buildOpenAiLiveGreeting } from './instructions';
 import { playTeacherStream, stopTeacherAudio, unlockTeacherAudio } from './teacherPlayback';
 import { OpenAiLiveMode } from './types';
@@ -71,6 +72,7 @@ export const connectOpenAiLiveCall = async ({
   onStarted,
   onRemoteClosed,
   onNeedsUnlock,
+  onStage,
   signal,
   greet = true,
 }: {
@@ -83,6 +85,7 @@ export const connectOpenAiLiveCall = async ({
   onStarted: () => void;
   onRemoteClosed: () => void;
   onNeedsUnlock: () => void;
+  onStage?: (stage: 'mic' | 'ice' | 'offer' | 'answer') => void;
 }): Promise<LiveSocket> => {
   const connection = new RTCPeerConnection();
   let silenceContext: AudioContext | null = null;
@@ -158,7 +161,20 @@ export const connectOpenAiLiveCall = async ({
       void playTeacherStream(remoteStream).catch(() => onNeedsUnlock());
     });
 
-    microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
+    onStage?.('mic');
+    sendPermission({ kind: 'mic', state: 'prompt' });
+    try {
+      microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (micError) {
+      if (
+        micError instanceof DOMException &&
+        (micError.name === 'NotAllowedError' || micError.name === 'SecurityError')
+      ) {
+        sendPermission({ kind: 'mic', state: 'denied' });
+      }
+      throw micError;
+    }
+    sendPermission({ kind: 'mic', state: 'granted' });
     if (signal?.aborted) {
       microphone.getTracks().forEach((track) => track.stop());
       throw new DOMException('Cancelled', 'AbortError');
@@ -195,14 +211,17 @@ export const connectOpenAiLiveCall = async ({
 
     const description = await connection.createOffer();
     await connection.setLocalDescription(description);
+    onStage?.('ice');
     await waitForIce(connection);
     const sdp = connection.localDescription?.sdp;
     if (!sdp) throw new Error('Missing local SDP offer');
 
+    onStage?.('offer');
     const created = await offer(sdp);
     if (signal?.aborted) throw new DOMException('Cancelled', 'AbortError');
     socket.sessionId = created.sessionId;
     onBind(socket);
+    onStage?.('answer');
     await connection.setRemoteDescription({ type: 'answer', sdp: created.sdp });
     return socket;
   } catch (error) {

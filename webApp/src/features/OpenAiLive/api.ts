@@ -7,11 +7,13 @@ import {
 
 export class OpenAiLiveApiError extends Error {
   readonly status: number;
+  readonly code: string | null;
 
-  constructor(message: string, status: number) {
+  constructor(message: string, status: number, code?: string | null) {
     super(message);
     this.name = 'OpenAiLiveApiError';
     this.status = status;
+    this.code = code || null;
   }
 }
 

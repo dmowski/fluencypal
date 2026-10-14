@@ -3,6 +3,7 @@ import {
   buildOpenAiLiveDelegationInstructions,
   OPEN_AI_LIVE_DELEGATION_MODEL,
 } from '../instructions';
+import { OpenAiLiveProviderError } from './providerError';
 
 type CreatedLiveSession = {
   sessionId: string;
@@ -68,7 +69,7 @@ export const createOpenAiLiveSession = async ({
   if (!response.ok) {
     const detail = await response.text();
     console.error('GPT-Live session creation failed', response.status, detail.slice(0, 500));
-    throw new Error('Could not start the live session');
+    throw new OpenAiLiveProviderError(`openai-${response.status}`, detail);
   }
 
   const payload = (await response.json()) as {
@@ -78,7 +79,7 @@ export const createOpenAiLiveSession = async ({
   const sessionId = payload.session?.id;
   const answerSdp = payload.transport?.sdp;
   if (!sessionId || !answerSdp) {
-    throw new Error('Could not start the live session');
+    throw new OpenAiLiveProviderError('openai-empty', 'missing session payload');
   }
 
   return { sessionId, sdp: answerSdp };

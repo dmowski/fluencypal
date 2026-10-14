@@ -16,6 +16,17 @@ export class OpenAiLiveNoBalanceError extends Error {
   }
 }
 
+const failureCode = (error: unknown): string | null => {
+  if (!error || typeof error !== 'object' || !('code' in error)) return null;
+  const code = (error as { code?: unknown }).code;
+  if (typeof code !== 'string') return null;
+  const safe = code
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '')
+    .slice(0, 32);
+  return safe || null;
+};
+
 export const requireOpenAiLiveUser = async (request: Request) => {
   const user = await validateAuthToken(request);
   if (!user.uid || !isIdentifiedAuthUser(user)) {
@@ -34,6 +45,7 @@ export const openAiLiveErrorResponse = (error: unknown): Response => {
     return Response.json({ error: 'no_balance' }, { status: 402 });
   }
   const message = error instanceof Error ? error.message : 'Request failed';
-  console.error('OpenAI Live request failed', message);
-  return Response.json({ error: message }, { status: 400 });
+  const code = failureCode(error);
+  console.error('OpenAI Live request failed', code || message);
+  return Response.json(code ? { error: message, code } : { error: message }, { status: 400 });
 };

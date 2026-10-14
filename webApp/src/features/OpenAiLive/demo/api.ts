@@ -14,9 +14,13 @@ export const demoRequest = async <T>(body?: Record<string, unknown>): Promise<T>
       ...(body ? { body: JSON.stringify(body) } : {}),
       signal: controller.signal,
     });
-    const data = await response.json();
+    const data = (await response.json()) as { error?: string; code?: unknown };
     if (!response.ok)
-      throw new OpenAiLiveApiError(data.error || 'Could not start the demo.', response.status);
+      throw new OpenAiLiveApiError(
+        data.error || 'Could not start the demo.',
+        response.status,
+        typeof data.code === 'string' ? data.code : null,
+      );
     return data as T;
   } finally {
     clearTimeout(timeout);
