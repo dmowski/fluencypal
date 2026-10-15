@@ -101,6 +101,7 @@ test('demo starts on the first tap, counts down and opens practice', async ({ pa
   await expect(page.getByText('30 seconds left — one last thought')).toBeVisible();
   await page.clock.fastForward(30_000);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
+  await expect(page.getByTestId('demo-continue')).toHaveAttribute('href', '/practice');
   await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
   await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByText('I enjoy reading books.')).toBeVisible();
@@ -131,6 +132,7 @@ test('used demo restores the review and does not offer another start', async ({ 
     }),
   );
   await page.goto('/demo');
+  await expect(page.getByTestId('demo-continue')).toHaveAttribute('href', '/practice');
   await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
   await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('demo-start')).toHaveCount(0);
@@ -149,6 +151,7 @@ test('server quota rejection opens practice without reopening the trial', async 
   });
   await page.goto('/demo');
   await page.getByTestId('demo-start').click();
+  await expect(page.getByTestId('demo-continue')).toHaveAttribute('href', '/practice');
   await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
   await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);
@@ -162,6 +165,7 @@ test('mobile visitors can end a call early and open practice', async ({ page }) 
   await page.getByTestId('demo-start').click();
   await expect(page.getByText('I enjoy reading books.')).toBeVisible();
   await page.getByTestId('open-ai-live-close').click();
+  await expect(page.getByTestId('demo-continue')).toHaveAttribute('href', '/practice');
   await expect(page.getByTestId('demo-open-practice')).toHaveAttribute('href', '/practice');
   await expect(page.getByRole('button', { name: 'Create my account' })).toHaveCount(0);
   await expect(page.getByTestId('open-ai-live-call')).toHaveCount(0);

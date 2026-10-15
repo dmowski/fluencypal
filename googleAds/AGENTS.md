@@ -23,7 +23,17 @@ From `googleAds/`:
 - `pnpm ads create-search` — search campaign, budget, ad group, keywords, and ad
 - `pnpm ads pause` / `stop` / `enable` / `remove`
 
-`state` and `history` write JSON under `snapshots/`. That directory is gitignored. The journal at `history/operations.jsonl` is the shared record of changes made from this repo; commit it when it changes. Never commit `.env` or `.secrets/`.
+`state` and `history` write JSON under `snapshots/`. That directory is gitignored. Never commit `.env` or `.secrets/`.
+
+## Experiments and results
+
+Write the test down when it starts, and write the numbers when they come back. Commit these files.
+
+- `history/experiments.md` — why the test ran, what changed, and the result
+- `ads/<name>/` — creative pack for that test (`copy.json`, images, and a short README)
+- `history/operations.jsonl` — mutations applied from this CLI. `pnpm ads note --text "..."` appends a decision here. `pnpm ads history` merges this file with Google's 30-day change log.
+
+`snapshots/` is only the latest pull from Google. It is not the experiment record.
 
 ## Safety
 

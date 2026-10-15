@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Alert, Button, Stack, Typography, Link } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { supportedLanguages, SupportedLanguage } from '@/features/Lang/lang';
-import { getUrlStart, getLandingUrlStart } from '@/features/Lang/getUrlStart';
+import { getLandingUrlStart } from '@/features/Lang/getUrlStart';
+import { DemoContinueOffer } from './DemoContinueOffer';
 import { DemoLanguageCards } from './DemoLanguageCards';
 import { Mic, ArrowRight } from 'lucide-react';
 import { OpenAiLiveCall } from '../OpenAiLiveCall';
@@ -83,43 +84,21 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
           sx={{ fontSize: { xs: 36, md: 56 }, lineHeight: 1.1, fontWeight: 700 }}
         >
           {ended
-            ? i18n._('Your next conversation starts here.')
+            ? i18n._('Keep talking with Marin.')
             : i18n._('A little conversation. A lot more confidence.')}
         </Typography>
-        <Typography sx={{ fontSize: 20, opacity: 0.8 }}>
-          {ended
-            ? i18n._('Join FluencyPal to build a speaking habit and keep your progress.')
-            : i18n._(
-                'Talk with a friendly AI teacher for three minutes. No account. No card. Just you and a conversation.',
-              )}
-        </Typography>
+        {ended ? null : (
+          <Typography sx={{ fontSize: 20, opacity: 0.8 }}>
+            {i18n._(
+              'Talk with a friendly AI teacher for three minutes. Continue after that for $6 an hour.',
+            )}
+          </Typography>
+        )}
         {call.error || statusError ? (
           <Alert severity="error">{call.error || statusError}</Alert>
         ) : null}
         {!ended ? <DemoLanguageCards language={language} onChange={setLanguage} /> : null}
-        {ended ? (
-          <Button
-            variant="contained"
-            size="large"
-            href={`${getUrlStart(pageLanguage)}practice`}
-            data-testid="demo-open-practice"
-            data-analytics="demo-open-practice"
-            endIcon={<ArrowRight size={19} />}
-            sx={{
-              minHeight: 56,
-              borderRadius: '16px',
-              textTransform: 'none',
-              fontSize: 16,
-              fontWeight: 700,
-              background: '#d5b7ff',
-              color: '#21122f',
-              boxShadow: '0 4px 24px rgba(173,115,245,.16), 2px 2px 16px rgba(0,0,0,0.3)',
-              '&:hover': { background: '#e2ceff' },
-            }}
-          >
-            {i18n._('Open my practice dashboard')}
-          </Button>
-        ) : null}
+        {ended ? <DemoContinueOffer pageLanguage={pageLanguage} /> : null}
 
         {reviewLines.length > 0 && ended ? (
           <Stack sx={{ gap: 1, mt: 2 }}>
@@ -180,6 +159,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
               size="large"
               onClick={startConversation}
               data-testid="demo-start"
+              data-analytics="demo-start"
               startIcon={<Mic size={19} />}
               endIcon={<ArrowRight size={19} />}
               sx={{
@@ -198,7 +178,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
               {i18n._('Start my free conversation')}
             </Button>
             <Typography sx={{ textAlign: 'center', fontSize: 12, color: '#b8abc7' }}>
-              {i18n._('3 minutes free · No account or card needed')}
+              {i18n._('3 minutes free · Continue from $6 an hour')}
             </Typography>
             <Typography
               sx={{ textAlign: 'center', fontSize: 12, lineHeight: 1.45, color: '#b8abc7' }}
