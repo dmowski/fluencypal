@@ -166,10 +166,10 @@ msgstr "2. เริ่มต้นด้วยแผนฟรี"
 msgid "3 AI hours"
 msgstr "3 ชั่วโมง AI"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:201
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:181
 #. js-lingui-explicit-id
-msgid "3 minutes free · No account or card needed"
-msgstr "3 นาทีฟรี · ไม่จำเป็นต้องใช้บัญชีหรือบัตร"
+msgid "3 minutes free · Continue from $6 an hour"
+msgstr "3 นาทีฟรี · ต่อเนื่องเริ่มต้นที่ $6 ต่อชั่วโมง"
 
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
@@ -182,7 +182,7 @@ msgstr "3. ไม่ต้องจ่ายอะไรทั้งสิ้น
 msgid "30 minutes"
 msgstr "30 นาที"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:245
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:225
 #. js-lingui-explicit-id
 msgid "30 seconds left — one last thought"
 msgstr "30 วินาทีสุดท้าย — ความคิดสุดท้าย"
@@ -274,7 +274,7 @@ msgstr ""
 msgid "A little about you"
 msgstr "เกี่ยวกับคุณเล็กน้อย"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:88
 #. js-lingui-explicit-id
 msgid "A little conversation. A lot more confidence."
 msgstr "การสนทนาเล็กๆ แต่สร้างความมั่นใจได้มาก."
@@ -1017,7 +1017,7 @@ msgid "Analyzing..."
 msgstr "กำลังวิเคราะห์..."
 
 #: src/features/Auth/AuthSignInStep.tsx:238
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:219
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:199
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
 msgid "and"
@@ -1696,7 +1696,7 @@ msgstr "ต่อไป คุณยอมรับข้อกำหนดแ�
 msgid "By continuing, you agree to the"
 msgstr "โดยการดำเนินการต่อ คุณยอมรับใน"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:207
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:187
 #. js-lingui-explicit-id
 msgid "By starting this call, you confirm you are 13 or older and agree to the"
 msgstr ""
@@ -3004,6 +3004,11 @@ msgstr "บริบท (หัวข้อ, ผู้ชม, เป้าหม
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "ต่อไป"
+
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:53
+#. js-lingui-explicit-id
+msgid "Continue for {price}"
+msgstr "ดำเนินการต่อในราคา {price}"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:197
 #. js-lingui-explicit-id
@@ -7771,11 +7776,6 @@ msgstr "เข้าร่วมการโทรกับผู้สอน AI
 msgid "Join candidates who transformed their interview performance"
 msgstr "เข้าร่วมกับผู้สมัครที่ได้รับการเปลี่ยนแปลงในการแสดงผลสัมภาษณ์ของพวกเขา"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:91
-#. js-lingui-explicit-id
-msgid "Join FluencyPal to build a speaking habit and keep your progress."
-msgstr "เข้าร่วม FluencyPal เพื่อสร้างนิสัยในการพูดและรักษาความก้าวหน้าของคุณ"
-
 #: src/features/Dashboard/CommunityDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
@@ -7856,6 +7856,11 @@ msgstr "เก็บให้กระชับและเกี่ยวข้
 #. js-lingui-explicit-id
 msgid "Keep practicing"
 msgstr "ฝึกฝนอย่างต่อเนื่อง"
+
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#. js-lingui-explicit-id
+msgid "Keep talking with Marin."
+msgstr "คุยต่อไปกับมารีน"
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
@@ -8098,7 +8103,7 @@ msgstr "ออกจากหนังสือที่แชร์"
 msgid "Leave your message"
 msgstr "ฝากข้อความของคุณ"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:250
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:230
 #. js-lingui-explicit-id
 msgid "left"
 msgstr "ซ้าย"
@@ -9553,7 +9558,7 @@ msgstr "เปิดในเบราว์เซอร์"
 msgid "Open in Telegram"
 msgstr "เปิดใน Telegram"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:120
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:62
 #. js-lingui-explicit-id
 msgid "Open my practice dashboard"
 msgstr "เปิดแดชบอร์ดการฝึกฝนของฉัน"
@@ -10813,7 +10818,7 @@ msgstr "การสนับสนุนลำดับความสำคั
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:116
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:37
 #: src/features/Landing/Footer.tsx:189
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:208
 #: src/features/PayWall/CardValidator.tsx:118
 #: src/features/Router/BlockedAccess.tsx:170
 #: src/features/Router/BlockedAccess.tsx:321
@@ -11812,7 +11817,7 @@ msgstr "การคืนสินค้ากลับไปยังร้า
 msgid "Review and edit what the AI remembers"
 msgstr "ตรวจสอบและแก้ไขสิ่งที่ AI จำได้"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:130
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #. js-lingui-explicit-id
 msgid ""
 "Review what you practiced. Your teacher’s suggestions appear in the "
@@ -12850,7 +12855,7 @@ msgid "Speaking"
 msgstr "การพูด"
 
 #: src/features/Landing/LandingPage.tsx:205
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:80
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:81
 #. js-lingui-explicit-id
 msgid "Speaking practice"
 msgstr "การฝึกพูด"
@@ -12965,7 +12970,7 @@ msgstr "เริ่มบทเรียน"
 msgid "Start Monthly Plan"
 msgstr "เริ่มแผนรายเดือน"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:198
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:178
 #. js-lingui-explicit-id
 msgid "Start my free conversation"
 msgstr "เริ่มการสนทนาฟรีของฉัน"
@@ -13546,11 +13551,11 @@ msgstr "พูดคุยเกี่ยวกับสิ่งที่คุ
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:92
 #. js-lingui-explicit-id
 msgid ""
-"Talk with a friendly AI teacher for three minutes. No account. No card. "
-"Just you and a conversation."
+"Talk with a friendly AI teacher for three minutes. Continue after that for "
+"$6 an hour."
 msgstr ""
-"พูดคุยกับครู AI เป็นมิตรเป็นเวลา 3 นาที ไม่ต้องมีบัญชี ไม่ต้องใช้บัตร "
-"แค่คุณและบทสนทนา"
+"พูดคุยกับครู AI ที่เป็นมิตรเป็นเวลา 3 นาที "
+"หลังจากนั้นสามารถดำเนินการต่อได้ในราคา $6 ต่อชั่วโมง"
 
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
@@ -14220,7 +14225,7 @@ msgstr "ข้อกำหนดในการให้บริการ"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:121
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:42
 #: src/features/Landing/Footer.tsx:179
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:216
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:196
 #: src/features/Router/BlockedAccess.tsx:174
 #: src/features/Router/BlockedAccess.tsx:329
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:45
@@ -16657,7 +16662,7 @@ msgid "Yesterday"
 msgstr "เมื่อวาน"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:154
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:133
 #: src/features/OpenAiLive/OpenAiLiveCall.tsx:145
 #. js-lingui-explicit-id
 msgid "You"
@@ -16957,6 +16962,15 @@ msgstr "คุณกำหนดความเร็วได้ ขอให�
 msgid "You speak"
 msgstr "คุณพูด"
 
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"You used the free 3 minutes. The next hour with Marin is {price}. That is "
+"the same conversation, without the timer."
+msgstr ""
+"คุณใช้บริการฟรี 3 นาทีเรียบร้อยแล้ว ราคาสำหรับชั่วโมงถัดไปกับ Marin คือ "
+"{price} ซึ่งเป็นการสนทนาเดียวกันโดยไม่มีการจับเวลา"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
 msgid ""
@@ -17081,7 +17095,7 @@ msgstr "ความสม่ำเสมอของคุณกำลังใ
 msgid "Your consistency is paying off. Try today’s tasks."
 msgstr "ความสม่ำเสมอของคุณกำลังให้ผลลัพธ์ ลองทำภารกิจของวันนี้"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:127
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:106
 #. js-lingui-explicit-id
 msgid "Your conversation"
 msgstr "บทสนทนาของคุณ"
@@ -17105,7 +17119,7 @@ msgstr "เพื่อนเหยียดหยามของคุณ"
 msgid "Your experience"
 msgstr "ประสบการณ์ของคุณ"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:246
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:226
 #. js-lingui-explicit-id
 msgid "Your free conversation"
 msgstr "บทสนทนาฟรีของคุณ"
@@ -17182,11 +17196,6 @@ msgstr "ข้อความของคุณ..."
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "ภาษาแม่ของคุณ:"
-
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:86
-#. js-lingui-explicit-id
-msgid "Your next conversation starts here."
-msgstr "บทสนทนาถัดไปของคุณเริ่มต้นที่นี่"
 
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:154
 #. js-lingui-explicit-id
@@ -17296,7 +17305,7 @@ msgstr "บันทึกการสนทนาของคุณถูกจ
 msgid "Your turn"
 msgstr "ถึงตาคุณ"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:231
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:211
 #. js-lingui-explicit-id
 msgid ""
 "Your voice is processed by AI and your transcript is saved for this "

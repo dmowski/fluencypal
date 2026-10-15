@@ -163,10 +163,10 @@ msgstr "2. 무료 플랜으로 시작하세요"
 msgid "3 AI hours"
 msgstr "3 AI 시간"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:201
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:181
 #. js-lingui-explicit-id
-msgid "3 minutes free · No account or card needed"
-msgstr "3분 무료 · 계정이나 카드 필요 없음"
+msgid "3 minutes free · Continue from $6 an hour"
+msgstr "3분 무료 · 시간당 $6부터 계속"
 
 #: src/features/PayWall/CardValidatorWall.tsx:137
 #. js-lingui-explicit-id
@@ -179,7 +179,7 @@ msgstr "3. 아무것도 지불하지 마세요"
 msgid "30 minutes"
 msgstr "30분"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:245
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:225
 #. js-lingui-explicit-id
 msgid "30 seconds left — one last thought"
 msgstr "30초 남았습니다 — 마지막 생각"
@@ -265,7 +265,7 @@ msgstr "가벼운 하루도 의미가 있습니다. 오늘의 작업을 완료�
 msgid "A little about you"
 msgstr "당신에 대한 간단한 소개"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:88
 #. js-lingui-explicit-id
 msgid "A little conversation. A lot more confidence."
 msgstr "작은 대화. 훨씬 더 많은 자신감."
@@ -978,7 +978,7 @@ msgid "Analyzing..."
 msgstr "분석 중..."
 
 #: src/features/Auth/AuthSignInStep.tsx:238
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:219
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:199
 #: src/features/PayWall/CardValidator.tsx:111
 #. js-lingui-explicit-id
 msgid "and"
@@ -1641,7 +1641,7 @@ msgstr "계속 진행하면, 귀하는 당사의 것에 동의하게 됩니다."
 msgid "By continuing, you agree to the"
 msgstr "계속함으로써, 당신은 다음에 동의합니다."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:207
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:187
 #. js-lingui-explicit-id
 msgid "By starting this call, you confirm you are 13 or older and agree to the"
 msgstr "이 전화를 시작함으로써 귀하는 만 13세 이상이며 이에 동의함을 확인합니다."
@@ -2923,6 +2923,11 @@ msgstr "문맥 (주제, 대상, 목표...)"
 #. js-lingui-explicit-id
 msgid "Continue"
 msgstr "계속"
+
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:53
+#. js-lingui-explicit-id
+msgid "Continue for {price}"
+msgstr "{price}로 계속하기"
 
 #: src/features/Conversation/ConversationReviewModal.tsx:197
 #. js-lingui-explicit-id
@@ -7440,11 +7445,6 @@ msgstr "우리의 AI 튜터와 함께 이 규칙을 연습하기 위해 통화�
 msgid "Join candidates who transformed their interview performance"
 msgstr "인터뷰 성과를 변환한 지원자들과 함께하세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:91
-#. js-lingui-explicit-id
-msgid "Join FluencyPal to build a speaking habit and keep your progress."
-msgstr "FluencyPal에 가입하여 말하기 습관을 기르고 진도를 유지하세요."
-
 #: src/features/Dashboard/CommunityDashboardCard.tsx:99
 #. js-lingui-explicit-id
 msgid "Join rooms to discuss specific topics with other members"
@@ -7521,6 +7521,11 @@ msgstr "간결하고 관련성을 유지하세요"
 #. js-lingui-explicit-id
 msgid "Keep practicing"
 msgstr "계속 연습하세요"
+
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:87
+#. js-lingui-explicit-id
+msgid "Keep talking with Marin."
+msgstr "Marin과 계속 대화하세요."
 
 #: src/features/Chat/Message/ReportMessageModal.tsx:83
 #. js-lingui-explicit-id
@@ -7755,7 +7760,7 @@ msgstr "공유 도서 나가기"
 msgid "Leave your message"
 msgstr "당신의 메시지를 남겨주세요"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:250
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:230
 #. js-lingui-explicit-id
 msgid "left"
 msgstr "왼쪽"
@@ -9159,7 +9164,7 @@ msgstr "브라우저에서 열기"
 msgid "Open in Telegram"
 msgstr "텔레그램에서 열기"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:120
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:62
 #. js-lingui-explicit-id
 msgid "Open my practice dashboard"
 msgstr "연습 대시보드 열기"
@@ -10368,7 +10373,7 @@ msgstr "우선 지원"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:116
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:37
 #: src/features/Landing/Footer.tsx:189
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:228
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:208
 #: src/features/PayWall/CardValidator.tsx:118
 #: src/features/Router/BlockedAccess.tsx:170
 #: src/features/Router/BlockedAccess.tsx:321
@@ -11230,7 +11235,7 @@ msgstr "물품을 상점에 반품하기"
 msgid "Review and edit what the AI remembers"
 msgstr "AI가 기억하는 내용을 검토하고 편집하세요."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:130
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:109
 #. js-lingui-explicit-id
 msgid ""
 "Review what you practiced. Your teacher’s suggestions appear in the "
@@ -12240,7 +12245,7 @@ msgid "Speaking"
 msgstr "말하기"
 
 #: src/features/Landing/LandingPage.tsx:205
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:80
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:81
 #. js-lingui-explicit-id
 msgid "Speaking practice"
 msgstr "스피킹 연습"
@@ -12355,7 +12360,7 @@ msgstr "수업 시작"
 msgid "Start Monthly Plan"
 msgstr "월간 플랜 시작"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:198
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:178
 #. js-lingui-explicit-id
 msgid "Start my free conversation"
 msgstr "내 무료 대화 시작하기"
@@ -12901,9 +12906,9 @@ msgstr "대화에서 꺼내고 싶은 주제에 대해 이야기하세요."
 #: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:92
 #. js-lingui-explicit-id
 msgid ""
-"Talk with a friendly AI teacher for three minutes. No account. No card. "
-"Just you and a conversation."
-msgstr "친근한 AI 선생님과 3분 동안 대화하세요. 계정 필요 없음. 카드 필요 없음. 그냥 당신과 대화만 있으시면 됩니다."
+"Talk with a friendly AI teacher for three minutes. Continue after that for "
+"$6 an hour."
+msgstr "친절한 AI 선생님과 3분 동안 대화하세요. 그 후로는 시간당 $6에 계속됩니다."
 
 #: src/features/Usage/UsageStatsCards.tsx:94
 #. js-lingui-explicit-id
@@ -13546,7 +13551,7 @@ msgstr "서비스 약관"
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:121
 #: src/features/Goal/Quiz/QuizRecordingConsentStep.tsx:42
 #: src/features/Landing/Footer.tsx:179
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:216
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:196
 #: src/features/Router/BlockedAccess.tsx:174
 #: src/features/Router/BlockedAccess.tsx:329
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:45
@@ -15852,7 +15857,7 @@ msgid "Yesterday"
 msgstr "어제"
 
 #: src/features/Conversation/CallMode/CameraCanvas.tsx:234
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:154
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:133
 #: src/features/OpenAiLive/OpenAiLiveCall.tsx:145
 #. js-lingui-explicit-id
 msgid "You"
@@ -16126,6 +16131,13 @@ msgstr "당신이 속도를 정합니다. 그에게 천천히 말하도록 요�
 msgid "You speak"
 msgstr "당신은 말합니다"
 
+#: src/features/OpenAiLive/demo/DemoContinueOffer.tsx:36
+#. js-lingui-explicit-id
+msgid ""
+"You used the free 3 minutes. The next hour with Marin is {price}. That is "
+"the same conversation, without the timer."
+msgstr "무료 3분을 사용했습니다. Marin과의 다음 한 시간은 {price}입니다. 타이머 없이 동일한 대화입니다."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:14
 #. js-lingui-explicit-id
 msgid ""
@@ -16244,7 +16256,7 @@ msgstr "당신의 일관성이 결실을 맺고 있습니다. 오늘의 작업�
 msgid "Your consistency is paying off. Try today’s tasks."
 msgstr "당신의 꾸준함이 성과를 내고 있습니다. 오늘의 과제를 시도해 보세요."
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:127
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:106
 #. js-lingui-explicit-id
 msgid "Your conversation"
 msgstr "당신의 대화"
@@ -16266,7 +16278,7 @@ msgstr "당신의 냉소적인 친구"
 msgid "Your experience"
 msgstr "당신의 경험"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:246
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:226
 #. js-lingui-explicit-id
 msgid "Your free conversation"
 msgstr "당신의 자유로운 대화"
@@ -16343,11 +16355,6 @@ msgstr "당신의 메시지..."
 #. js-lingui-explicit-id
 msgid "Your Native Language:"
 msgstr "당신의 모국어:"
-
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:86
-#. js-lingui-explicit-id
-msgid "Your next conversation starts here."
-msgstr "당신의 다음 대화는 여기서 시작됩니다."
 
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:154
 #. js-lingui-explicit-id
@@ -16451,7 +16458,7 @@ msgstr "당신의 성적 증명서는 저희 서비스에 안전하게 저장됩
 msgid "Your turn"
 msgstr "당신의 차례"
 
-#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:231
+#: src/features/OpenAiLive/demo/OpenAiLiveDemo.tsx:211
 #. js-lingui-explicit-id
 msgid ""
 "Your voice is processed by AI and your transcript is saved for this "
