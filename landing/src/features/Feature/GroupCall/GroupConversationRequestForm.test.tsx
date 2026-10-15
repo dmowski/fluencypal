@@ -28,6 +28,9 @@ describe('group conversation request form', () => {
       'data-analytics',
       'community-call-request-submit',
     );
+    expect(screen.getByTestId('group-conversations-interests')).toHaveValue(
+      'Travel and daily conversations, intermediate',
+    );
     fireEvent.change(screen.getByTestId('group-conversations-interests'), {
       target: { value: 'Travel, beginner' },
     });
@@ -48,13 +51,31 @@ describe('group conversation request form', () => {
     expect(send).toHaveBeenCalledWith('Travel, beginner', 'ada@example.com');
   });
 
-  it('asks for a topic before sending', () => {
+  it('sends the default interest when they only add a contact', async () => {
+    render(renderWithI18n(<GroupConversationRequestForm lang="en" />));
+
+    fireEvent.change(screen.getByTestId('group-conversations-interests'), {
+      target: { value: '   ' },
+    });
+    fireEvent.change(screen.getByTestId('group-conversations-contact'), {
+      target: { value: 'ada@example.com' },
+    });
+    fireEvent.click(screen.getByTestId('group-conversations-request-submit'));
+
+    expect(await screen.findByTestId('group-conversations-request-sent')).toBeInTheDocument();
+    expect(send).toHaveBeenCalledWith(
+      'Travel and daily conversations, intermediate',
+      'ada@example.com',
+    );
+  });
+
+  it('asks for a contact before sending', () => {
     render(renderWithI18n(<GroupConversationRequestForm lang="en" />));
 
     fireEvent.submit(screen.getByTestId('group-conversations-request-form'));
 
     expect(screen.getByTestId('group-conversations-request-error')).toHaveTextContent(
-      'Add what you want to talk about.',
+      'Add an email, Telegram, Instagram, or WhatsApp.',
     );
     expect(send).not.toHaveBeenCalled();
   });

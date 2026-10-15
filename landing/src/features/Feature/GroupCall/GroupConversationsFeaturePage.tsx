@@ -99,7 +99,7 @@ export const GroupConversationsFeaturePage = ({
                 alignItems: { xs: 'flex-start', md: 'center' },
               }}
             >
-              <Stack sx={{ gap: '18px', alignItems: 'flex-start' }}>
+              <Stack sx={{ gap: { xs: '12px', md: '18px' }, alignItems: 'flex-start' }}>
                 <Typography
                   sx={{
                     color: '#7DDEAA',
@@ -117,6 +117,7 @@ export const GroupConversationsFeaturePage = ({
                 >
                   {i18n._('Practice English with other learners')}
                 </Typography>
+                <GroupConversationRequestForm lang={lang} />
                 <Typography
                   sx={{
                     fontSize: '1.15rem',
@@ -126,7 +127,6 @@ export const GroupConversationsFeaturePage = ({
                 >
                   {feature.subTitle}
                 </Typography>
-                <GroupConversationRequestForm lang={lang} />
               </Stack>
 
               <Stack

@@ -27,17 +27,14 @@ const fieldSx = {
 
 export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage }) => {
   const { i18n } = useLingui();
-  const [interests, setInterests] = useState('');
+  const defaultInterest = i18n._('Travel and daily conversations, intermediate');
+  const [interests, setInterests] = useState(defaultInterest);
   const [contact, setContact] = useState('');
   const [error, setError] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
   const submit = async () => {
-    if (!interests.trim()) {
-      setError(i18n._('Add what you want to talk about.'));
-      return;
-    }
     if (!contact.trim()) {
       setError(i18n._('Add an email, Telegram, Instagram, or WhatsApp.'));
       return;
@@ -45,7 +42,7 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
     setError('');
     setIsSending(true);
     try {
-      await sendGroupConversationRequest(interests, contact);
+      await sendGroupConversationRequest(interests.trim() || defaultInterest, contact.trim());
       setIsSent(true);
     } catch (sendError) {
       console.error(sendError);
@@ -98,7 +95,7 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
         event.preventDefault();
         void submit();
       }}
-      sx={{ width: '100%', maxWidth: '520px', gap: '14px', scrollMarginTop: scrollClearance }}
+      sx={{ width: '100%', maxWidth: '520px', gap: '10px', scrollMarginTop: scrollClearance }}
     >
       <Typography sx={{ color: 'rgba(244, 247, 251, 0.78)' }}>
         {i18n._('No account needed. Group calls are free.')}
@@ -109,13 +106,13 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
           setInterests(event.target.value);
           setError('');
         }}
-        required
         fullWidth
         multiline
-        minRows={3}
+        minRows={2}
+        size="small"
         name="interests"
         label={i18n._('Interests')}
-        placeholder={i18n._('Your goal, what you want to talk about, and your English level')}
+        placeholder={defaultInterest}
         disabled={isSending}
         sx={fieldSx}
         slotProps={{
@@ -130,6 +127,7 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
         }}
         required
         fullWidth
+        size="small"
         name="contact"
         autoComplete="email"
         label={i18n._('Contact')}
@@ -154,8 +152,8 @@ export const GroupConversationRequestForm = ({ lang }: { lang: SupportedLanguage
         data-analytics="community-call-request-submit"
         sx={{
           ...buttonStyle,
-          alignSelf: 'flex-start',
-          marginTop: '4px',
+          width: '100%',
+          marginTop: '2px',
           color: '#041018',
           backgroundColor: '#7DDEAA',
           fontWeight: 800,
