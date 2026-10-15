@@ -1,7 +1,9 @@
+import { validateAuthToken } from '@/app/api/config/firebase';
 import { sentSupportTelegramMessage } from '@/app/api/telegram/sendTelegramMessage';
 import {
   communityCallTelegramMessage,
   readCommunityCallRequest,
+  readCommunityCallUserId,
 } from '@/features/FluencyCall/communityCallRequest';
 
 export async function POST(request: Request) {
@@ -17,8 +19,10 @@ export async function POST(request: Request) {
     return Response.json({ error: parsed.error }, { status: 400 });
   }
 
+  const userId = await readCommunityCallUserId(request, validateAuthToken);
   await sentSupportTelegramMessage({
     message: communityCallTelegramMessage(parsed.interests, parsed.contact),
+    ...(userId ? { userId } : {}),
   });
 
   return Response.json({ error: '' });

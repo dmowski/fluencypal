@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { useAuth } from '@/features/Auth/useAuth';
 import { getUrlStart } from '@/features/Lang/getUrlStart';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { sendCommunityCallRequest } from './sendCommunityCallRequest';
@@ -15,6 +16,7 @@ export const CommunityCallOnboarding = ({
   signedIn?: boolean;
 }) => {
   const { i18n } = useLingui();
+  const auth = useAuth();
   const [interests, setInterests] = useState('');
   const [contact, setContact] = useState('');
   const [error, setError] = useState('');
@@ -33,7 +35,8 @@ export const CommunityCallOnboarding = ({
     setError('');
     setIsSending(true);
     try {
-      await sendCommunityCallRequest(interests, contact);
+      const token = await auth.getToken();
+      await sendCommunityCallRequest(interests, contact, token || undefined);
       setIsSent(true);
     } catch (sendError) {
       console.error(sendError);

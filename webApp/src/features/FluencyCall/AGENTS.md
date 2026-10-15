@@ -11,7 +11,7 @@ Applies to `webApp/src/features/FluencyCall/**`.
 - **Price.** Free. The old `fluency-call` Stripe product is no longer offered. Past payments stay in Payment History and can still be withdrawn. New Practice, Conversation, and Conversation 10 checkouts do not grant or advertise a group-call pass.
 - **First join.** The first "I'll join" opens "Before you join". Agree saves the choice, joins, and sends Telegram. Close does not join and does not notify. Later joins skip that note and still send Telegram. Leaving a call does not notify.
 - **Ad onboarding.** `/community-call` is a request form. No account. Two fields: interests (goal, topic, English level) and contact. A "What's next" note says Alex writes once he finds people who fit, then they pick a time that is comfortable for everyone, and that group calls are free. Submit sends Telegram. The confirmation says Alex will write soon and links to AI practice (`/quiz`). Old `?step=` links open this same form.
-- **Request.** The public form does not save a Firestore request and does not require sign-in. `POST /api/community-call/request` sends Telegram. The signed-in time-slot API `POST /api/fluency-call/request` still exists for admins and is not the form on `/community-call`.
+- **Request.** The public form does not save a Firestore request and does not require sign-in. `POST /api/community-call/request` sends Telegram. A signed-in sender's Firebase account is included on that note. Guests stay unnamed. The signed-in time-slot API `POST /api/fluency-call/request` still exists for admins and is not the form on `/community-call`.
 - **Dashboard card.** Signed-in practice dashboard shows the host video beside "Want to practice with people?" and **Open Request Form**. That button opens the same request form in a modal, without the "No account needed" line. It does not leave the dashboard. The card does not list the next call and has no language selector. Chat stays on the card.
 - **Schedule.** Admins create each call, its Meet link, and its start time. Members do not write the call document. The practice card does not show that list.
 - **Meet.** Opening Google Meet does not RSVP and does not send Telegram. Stopping a call is a separate admin action. The practice card does not show the Meet button.
@@ -23,7 +23,7 @@ Applies to `webApp/src/features/FluencyCall/**`.
 
 | Route or path                                 | Who writes                                                         |
 | --------------------------------------------- | ------------------------------------------------------------------ |
-| `POST /api/community-call/request`            | Anyone. No account. Sends interests and contact to Telegram.       |
+| `POST /api/community-call/request`            | Anyone. No account required. Sends interests and contact to Telegram, and the signed-in account when the app has one. |
 | `POST /api/fluency-call/request`              | Someone who can join. Saves a time-slot request and notifies Telegram. Not linked from the card. |
 | `POST /api/fluency-call/joiners`              | `DEV_EMAILS`. Resolves joiner emails for the admin list.           |
 | `POST /api/fluency-call/checkout`             | Unused. Old Stripe Checkout for one month. Do not link it.         |

@@ -36,7 +36,10 @@ vi.mock('@/features/Chat/useChat', () => ({
 }));
 
 vi.mock('@/features/Auth/useAuth', () => ({
-  useAuth: () => ({ uid: 'me' }),
+  useAuth: () => ({
+    uid: 'me',
+    getToken: async () => 'signed-in-token',
+  }),
 }));
 
 vi.mock('@/features/Game/useGame', () => ({

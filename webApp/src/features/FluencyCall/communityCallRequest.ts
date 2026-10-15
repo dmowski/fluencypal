@@ -31,3 +31,21 @@ export function communityCallTelegramMessage(interests: string, contact: string)
     `Contact: ${contact}`,
   ].join('\n');
 }
+
+/** Signed-in senders attach a Firebase ID token. Guests omit it and stay unnamed. */
+export async function readCommunityCallUserId(
+  request: Request,
+  readUser: (request: Request) => Promise<{ uid: string }>,
+): Promise<string | undefined> {
+  const header = request.headers.get('authorization');
+  const token = header?.startsWith('Bearer ') ? header.slice('Bearer '.length).trim() : '';
+  if (!token) return undefined;
+  try {
+    const user = await readUser(request);
+    const uid = user.uid.trim();
+    return uid || undefined;
+  } catch {
+    console.warn('Community call request auth token could not be read');
+    return undefined;
+  }
+}
