@@ -74,7 +74,7 @@ export const useDemoCall = () => {
     };
   }, []);
 
-  const start = async (language: string) => {
+  const start = async (language: string, options?: { micAlreadyGranted?: boolean }) => {
     if (run.current) return;
     unlockTeacherAudio();
     const active: DemoRun = {
@@ -107,6 +107,7 @@ export const useDemoCall = () => {
       await connectOpenAiLiveCall({
         mode: 'talk',
         greet: false,
+        micAlreadyGranted: Boolean(options?.micAlreadyGranted),
         signal: active.controller.signal,
         offer: async (sdp) => {
           const created = await demoRequest<{ sessionId: string; sdp: string }>({

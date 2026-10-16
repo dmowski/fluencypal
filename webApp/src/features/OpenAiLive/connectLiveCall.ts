@@ -75,10 +75,13 @@ export const connectOpenAiLiveCall = async ({
   onStage,
   signal,
   greet = true,
+  micAlreadyGranted = false,
 }: {
   mode: OpenAiLiveMode;
   signal?: AbortSignal;
   greet?: boolean;
+  /** The start click already showed the explanation and the browser prompt. */
+  micAlreadyGranted?: boolean;
   offer: (sdp: string) => Promise<{ sessionId: string; sdp: string }>;
   onEvent: (event: Record<string, unknown>) => void;
   onBind: (socket: LiveSocket) => void;
@@ -162,7 +165,7 @@ export const connectOpenAiLiveCall = async ({
     });
 
     onStage?.('mic');
-    sendPermission({ kind: 'mic', state: 'prompt' });
+    if (!micAlreadyGranted) sendPermission({ kind: 'mic', state: 'prompt' });
     try {
       microphone = await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch (micError) {

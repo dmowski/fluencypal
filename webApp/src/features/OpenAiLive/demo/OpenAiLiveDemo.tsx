@@ -8,8 +8,10 @@ import { DemoContinueOffer } from './DemoContinueOffer';
 import { DemoLanguageCards } from './DemoLanguageCards';
 import { Mic, ArrowRight } from 'lucide-react';
 import { OpenAiLiveCall } from '../OpenAiLiveCall';
+import { unlockTeacherAudio } from '../teacherPlayback';
 import { formatElapsedMs } from '../formatBalance';
 import { useDemoCall } from './useDemoCall';
+import { useDemoMicrophonePrep } from './useDemoMicrophonePrep';
 import { LiveTranscriptLine } from '../transcripts';
 import { demoRequest } from './api';
 import { DemoAurora } from './DemoAurora';
@@ -31,11 +33,17 @@ const demoAuroraMode = (
 export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: SupportedLanguage }) => {
   const { i18n } = useLingui();
   const call = useDemoCall();
+  const microphone = useDemoMicrophonePrep(unlockTeacherAudio);
   const [language, setLanguage] = useState<SupportedLanguage>('en');
   const startedRef = useRef(false);
   const startConversation = () => {
     startedRef.current = true;
-    void call.start(language);
+    unlockTeacherAudio();
+    void (async () => {
+      const granted = await microphone.ensureMicrophone();
+      if (!granted) return;
+      void call.start(language, { micAlreadyGranted: true });
+    })();
   };
   const [savedLines, setSavedLines] = useState<LiveTranscriptLine[]>([]);
   const [used, setUsed] = useState(false);
@@ -216,6 +224,7 @@ export const OpenAiLiveDemo = ({ pageLanguage = 'en' }: { pageLanguage?: Support
           </Stack>
         </Stack>
       ) : null}
+      {microphone.modal}
       {call.phase === 'connecting' || call.phase === 'live' ? (
         <OpenAiLiveCall
           glow={<DemoAurora mode={auroraMode} burstOnMount zIndex={-1} />}
