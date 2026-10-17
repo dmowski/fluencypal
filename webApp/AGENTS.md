@@ -38,13 +38,22 @@ Needs Java 11+. `pnpm dev` clears ports `3000`, `3001`, `4000`, `4400`, `8080`, 
 
 The sign-in UI is **Google popup** or **email magic link**. Neither works in the agent browser. Do not try to complete Google/email there.
 
-Use a password user on the Auth emulator (same path as Playwright `e2e/libs/books/auth.ts`):
+Use a password user on the Auth emulator. Google and magic-link sign-in do not work in the agent browser.
+
+For real product checks, create the three personas and follow `EMULATOR_TESTING.md`:
 
 ```bash
-cd webApp && pnpm emulator:test-user
+cd webApp && pnpm emulator:personas
+cd webApp && pnpm emulator:review-fixture
 ```
 
-Default: `agent-test@example.com` / `TestPassword123!`. The script seeds `users/{uid}` (`languageCode: en`, `teacherVoice: marin`) so `/practice` skips the language picker.
+| Command | Who | Access |
+| --- | --- | --- |
+| `pnpm emulator:alex` | Alex (`dmowski.alex@gmail.com`, fixed uid) | Full. Reviews alex-only rooms. |
+| `pnpm emulator:full` | `full-access@example.com` | Paid for a year. |
+| `pnpm emulator:free` | `free-user@example.com` | No subscription, not a game winner. |
+
+`pnpm emulator:test-user` still creates `agent-test@example.com` / `TestPassword123!` for older Playwright helpers. It does not set Alex, paid, or free.
 
 Then open `/practice` and sign in in page JS (only exists when `NEXT_PUBLIC_IS_FIREBASE_EMULATOR=true`):
 

@@ -53,6 +53,10 @@ Private audio lives under `speakingClubs/audio/…`.
 
 ## Testing
 
+Browser checks that need Auth and Firestore: `webApp/EMULATOR_TESTING.md`.
+
+`pnpm emulator:review-fixture` puts a waiting person in `review-alex` (Alex only) and `review-together` (everyone in the room). Sign in as Alex, open the People tab, and use **Welcome them**.
+
 ```bash
 cd webApp && pnpm lint
 cd webApp && pnpm test:unit -- --testPathPattern=VoiceChat/notificationRules

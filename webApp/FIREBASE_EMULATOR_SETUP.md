@@ -1,5 +1,7 @@
 # Firebase Emulator Setup Guide
 
+Day-to-day testing with sign-in personas is in `EMULATOR_TESTING.md`. This file is the emulator install reference.
+
 This guide explains how to set up and use the Firebase Emulator Suite for local development.
 
 ## Prerequisites

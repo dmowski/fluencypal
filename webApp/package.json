@@ -52,6 +52,11 @@
     "firestore:indexes": "node scripts/deployFirestoreIndexes.mjs",
     "analytics:export": "node scripts/exportCustomAnalytics.mjs",
     "emulator:test-user": "node scripts/createEmulatorTestUser.mjs",
+    "emulator:personas": "node scripts/emulatorPersonas.mjs",
+    "emulator:alex": "node scripts/emulatorPersonas.mjs alex",
+    "emulator:full": "node scripts/emulatorPersonas.mjs full",
+    "emulator:free": "node scripts/emulatorPersonas.mjs free",
+    "emulator:review-fixture": "node scripts/emulatorReviewFixture.mjs",
     "prod": "pnpm lang && node scripts/prod.mjs"
   },
   "dependencies": {

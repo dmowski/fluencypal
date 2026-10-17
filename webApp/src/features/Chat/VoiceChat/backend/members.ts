@@ -12,7 +12,10 @@ const asStatus = (value: unknown): RoomMembershipStatus => {
   return 'pending';
 };
 
-export const toRoomMember = (data: DocumentData): RoomMember => {
+const withoutUndefined = (value: object): Record<string, unknown> =>
+  Object.fromEntries(Object.entries(value).filter(([, field]) => field !== undefined));
+
+export const toRoomMember = (data: DocumentData, docId = ''): RoomMember => {
   const approvals: Record<string, ReviewDecision> = {};
   if (data.approvals && typeof data.approvals === 'object') {
     for (const [userId, decision] of Object.entries(data.approvals as Record<string, unknown>)) {
@@ -20,7 +23,7 @@ export const toRoomMember = (data: DocumentData): RoomMember => {
     }
   }
   return {
-    userId: typeof data.userId === 'string' ? data.userId : '',
+    userId: typeof data.userId === 'string' && data.userId ? data.userId : docId,
     status: asStatus(data.status),
     username: typeof data.username === 'string' ? data.username : 'Learner',
     avatarUrl: typeof data.avatarUrl === 'string' ? data.avatarUrl : '',
@@ -39,13 +42,13 @@ export const toRoomMember = (data: DocumentData): RoomMember => {
 export const getRoomMember = async (roomId: string, userId: string): Promise<RoomMember | null> => {
   const snap = await members(roomId).doc(userId).get();
   if (!snap.exists) return null;
-  return toRoomMember(snap.data() || {});
+  return toRoomMember(snap.data() || {}, snap.id);
 };
 
 export const listRoomMembers = async (roomId: string): Promise<RoomMember[]> => {
   const snap = await members(roomId).get();
   return snap.docs
-    .map((doc) => toRoomMember(doc.data()))
+    .map((doc) => toRoomMember(doc.data(), doc.id))
     .sort((a, b) => a.username.localeCompare(b.username));
 };
 
@@ -143,9 +146,11 @@ export const decideJoinRequest = async (params: {
     ...target,
     approvals,
     status,
-    decidedAtIso: status === 'pending' ? undefined : now,
+    ...(status === 'pending' ? {} : { decidedAtIso: now }),
   };
-  await members(params.room.id).doc(target.userId).set(next);
+  await members(params.room.id)
+    .doc(target.userId || params.targetUserId)
+    .set(withoutUndefined(next));
   if (status === 'approved') {
     const approvedCount = (await listRoomMembers(params.room.id)).filter(
       (member) => member.status === 'approved',

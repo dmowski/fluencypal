@@ -9,17 +9,20 @@ import { RoomMember } from '../types';
 export const MembersPanel = ({
   members,
   canReview,
+  currentUserId,
   onDecide,
   onPlayIntro,
 }: {
   members: RoomMember[];
   canReview: boolean;
-  onDecide: (userId: string, decision: 'approved' | 'rejected') => void;
+  currentUserId: string;
+  onDecide: (userId: string, decision: 'approved' | 'rejected') => Promise<void> | void;
   onPlayIntro: (userId: string) => Promise<string>;
 }) => {
   const { i18n } = useLingui();
   const [nowMs] = useState(() => Date.now());
   const [audioByUser, setAudioByUser] = useState<Record<string, string>>({});
+  const [busyUserId, setBusyUserId] = useState<string | null>(null);
   const approved = members.filter((member) => member.status === 'approved');
   const pending = members.filter((member) => member.status === 'pending');
 
@@ -69,20 +72,37 @@ export const MembersPanel = ({
                   {i18n._('Play introduction')}
                 </Button>
               )}
-              {canReview ? (
+              {canReview && member.approvals[currentUserId] === 'approved' ? (
+                <Typography data-testid={`voice-room-welcomed-${member.userId}`}>
+                  {i18n._('You welcomed them. Waiting for the other people in the room.')}
+                </Typography>
+              ) : null}
+              {canReview && member.approvals[currentUserId] !== 'approved' ? (
                 <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
                   <Button
                     data-testid={`voice-room-approve-${member.userId}`}
                     variant="contained"
                     color="info"
-                    onClick={() => onDecide(member.userId, 'approved')}
+                    disabled={busyUserId === member.userId}
+                    onClick={() => {
+                      setBusyUserId(member.userId);
+                      void Promise.resolve(onDecide(member.userId, 'approved')).finally(() =>
+                        setBusyUserId(null),
+                      );
+                    }}
                     sx={{ textTransform: 'none' }}
                   >
                     {i18n._('Welcome them')}
                   </Button>
                   <Button
                     variant="outlined"
-                    onClick={() => onDecide(member.userId, 'rejected')}
+                    disabled={busyUserId === member.userId}
+                    onClick={() => {
+                      setBusyUserId(member.userId);
+                      void Promise.resolve(onDecide(member.userId, 'rejected')).finally(() =>
+                        setBusyUserId(null),
+                      );
+                    }}
                     sx={{ textTransform: 'none' }}
                   >
                     {i18n._('Not this time')}

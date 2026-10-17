@@ -24,7 +24,7 @@ export const SpeakingClubList = ({
         width: '100%',
         maxWidth: 880,
         margin: '0 auto',
-        padding: '40px 16px 80px',
+        padding: '140px 16px 80px',
         gap: '16px',
       }}
     >
@@ -94,7 +94,7 @@ export const SpeakingClubDetail = ({
         width: '100%',
         maxWidth: 880,
         margin: '0 auto',
-        padding: '40px 16px 80px',
+        padding: '140px 16px 80px',
         gap: '16px',
       }}
     >

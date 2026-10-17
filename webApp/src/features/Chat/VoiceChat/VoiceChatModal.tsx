@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { SubmitRecording } from '@/features/Chat/SubmitForm';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
 import { CustomModal } from '@/features/uiKit/Modal/CustomModal';
@@ -31,7 +32,14 @@ import { RoomListView } from './components/RoomListView';
 import { RoomThread } from './components/RoomThread';
 import { VoiceComposer } from './components/VoiceComposer';
 import { clearRoomDraft, readRoomDraft, writeRoomDraft } from './roomDraft';
-import { emptyRoomDraft, RoomDraft, RoomListItem, RoomMember, SpeakingRoom } from './types';
+import {
+  emptyRoomDraft,
+  ReviewDecision,
+  RoomDraft,
+  RoomListItem,
+  RoomMember,
+  SpeakingRoom,
+} from './types';
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
 
 type RoomSettingsTab = 'settings' | 'notifications' | 'members';
@@ -189,6 +197,131 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       : roomMenuTab || 'notifications';
   const visibleRooms = rooms.filter((item) => item.room.languageCode === selectedLanguage);
 
+  const startCreatingRoom = () => {
+    setError('');
+    setDraft((current) =>
+      current.title.trim() ? current : { ...current, languageCode: selectedLanguage },
+    );
+    setScreen('create');
+  };
+
+  const openRoomSettings = () => {
+    if (!detail) return;
+    void setVoiceRoomTab(
+      reviewCount > 0 ? 'members' : detail.isAdmin ? 'settings' : 'notifications',
+    );
+  };
+
+  const removeMessage = (messageId: string) => {
+    if (!detail) return;
+    void (async () => {
+      const token = await auth.getToken();
+      if (!token) return;
+      await deleteRoomMessage(token, detail.room.id, messageId);
+      setDetail({
+        ...detail,
+        messages: detail.messages.filter((message) => message.id !== messageId),
+      });
+    })().catch(showError);
+  };
+
+  const sendVoiceMessage = async (params: {
+    blob: Blob;
+    durationSec: number;
+    transcript: string;
+    correctedTranscript: string;
+  }) => {
+    if (!detail) return;
+    setIsSaving(true);
+    try {
+      const token = await auth.getToken();
+      if (!token) return;
+      const { message } = await sendRoomVoiceMessage(token, detail.room.id, params);
+      const url = await fetchSpeakingAudio(token, messageAudioPath(detail.room.id, message.id));
+      setAudioUrls((current) => ({ ...current, [message.id]: url }));
+      setDetail({ ...detail, messages: [...detail.messages, message] });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const submitJoinRecording = async (recording: SubmitRecording) => {
+    if (!detail) return;
+    setIsSaving(true);
+    try {
+      const token = await auth.getToken();
+      if (!token) return;
+      const { member } = await submitRoomJoin(token, detail.room.id, {
+        blob: recording.blob,
+        durationSec: recording.durationSec,
+        transcript: recording.transcript,
+        suggestion: recording.suggestion,
+      });
+      setDetail({ ...detail, membership: member });
+      setJoinSent(true);
+    } catch (reason) {
+      showError(reason);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const createRoom = () => {
+    setIsSaving(true);
+    setError('');
+    void (async () => {
+      try {
+        const token = await auth.getToken();
+        if (!token) return;
+        const { room } = await createSpeakingRoom(token, draft);
+        clearRoomDraft();
+        setDraft(emptyRoomDraft());
+        await openRoom(room.id);
+      } catch (reason) {
+        showError(reason);
+      } finally {
+        setIsSaving(false);
+      }
+    })();
+  };
+
+  const saveRoomSettings = () => {
+    if (!detail || !editDraft) return;
+    setIsSaving(true);
+    void (async () => {
+      try {
+        const token = await auth.getToken();
+        if (!token) return;
+        const { room } = await updateSpeakingRoom(token, detail.room.id, editDraft);
+        setDetail({ ...detail, room });
+        void setVoiceRoomTab('');
+      } catch (reason) {
+        showError(reason);
+      } finally {
+        setIsSaving(false);
+      }
+    })();
+  };
+
+  const playMemberIntro = async (userId: string) => {
+    if (!detail) return '';
+    const token = await auth.getToken();
+    if (!token) return '';
+    return fetchSpeakingAudio(token, introAudioPath(detail.room.id, userId));
+  };
+
+  const decideMember = async (userId: string, decision: ReviewDecision) => {
+    if (!detail) return;
+    try {
+      const token = await auth.getToken();
+      if (!token) return;
+      await reviewRoomMember(token, detail.room.id, userId, decision);
+      await openRoom(detail.room.id);
+    } catch (reason) {
+      showError(reason);
+    }
+  };
+
   return (
     <CustomModal
       isOpen
@@ -209,13 +342,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
           onOpenRoom={(roomId) => {
             void openRoom(roomId).catch(showError);
           }}
-          onCreate={() => {
-            setError('');
-            setDraft((current) =>
-              current.title.trim() ? current : { ...current, languageCode: selectedLanguage },
-            );
-            setScreen('create');
-          }}
+          onCreate={startCreatingRoom}
           onOpenSettings={() => {
             void setVoiceNotifications(true);
           }}
@@ -247,47 +374,9 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   audioUrls={audioUrls}
                   currentUserId={auth.uid || ''}
                   reviewCount={reviewCount}
-                  onOpenSettings={() => {
-                    void setVoiceRoomTab(
-                      reviewCount > 0 ? 'members' : detail.isAdmin ? 'settings' : 'notifications',
-                    );
-                  }}
-                  onRemove={(messageId) => {
-                    void (async () => {
-                      const token = await auth.getToken();
-                      if (!token) return;
-                      await deleteRoomMessage(token, detail.room.id, messageId);
-                      setDetail({
-                        ...detail,
-                        messages: detail.messages.filter((message) => message.id !== messageId),
-                      });
-                    })().catch(showError);
-                  }}
-                  composer={
-                    <VoiceComposer
-                      isSending={isSaving}
-                      onSend={async (params) => {
-                        setIsSaving(true);
-                        try {
-                          const token = await auth.getToken();
-                          if (!token) return;
-                          const { message } = await sendRoomVoiceMessage(
-                            token,
-                            detail.room.id,
-                            params,
-                          );
-                          const url = await fetchSpeakingAudio(
-                            token,
-                            messageAudioPath(detail.room.id, message.id),
-                          );
-                          setAudioUrls((current) => ({ ...current, [message.id]: url }));
-                          setDetail({ ...detail, messages: [...detail.messages, message] });
-                        } finally {
-                          setIsSaving(false);
-                        }
-                      }}
-                    />
-                  }
+                  onOpenSettings={openRoomSettings}
+                  onRemove={removeMessage}
+                  composer={<VoiceComposer isSending={isSaving} onSend={sendVoiceMessage} />}
                 />
               ) : null}
               {detail && detail.membership?.status !== 'approved' ? (
@@ -295,25 +384,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   room={detail.room}
                   isPending={detail.membership?.status === 'pending'}
                   isSending={isSaving}
-                  onSubmitRecording={async (recording) => {
-                    setIsSaving(true);
-                    try {
-                      const token = await auth.getToken();
-                      if (!token) return;
-                      const { member } = await submitRoomJoin(token, detail.room.id, {
-                        blob: recording.blob,
-                        durationSec: recording.durationSec,
-                        transcript: recording.transcript,
-                        suggestion: recording.suggestion,
-                      });
-                      setDetail({ ...detail, membership: member });
-                      setJoinSent(true);
-                    } catch (reason) {
-                      showError(reason);
-                    } finally {
-                      setIsSaving(false);
-                    }
-                  }}
+                  onSubmitRecording={submitJoinRecording}
                 />
               ) : null}
               {error ? <Typography color="error">{error}</Typography> : null}
@@ -354,24 +425,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 writeRoomDraft(next);
               });
             }}
-            onSubmit={() => {
-              setIsSaving(true);
-              setError('');
-              void (async () => {
-                try {
-                  const token = await auth.getToken();
-                  if (!token) return;
-                  const { room } = await createSpeakingRoom(token, draft);
-                  clearRoomDraft();
-                  setDraft(emptyRoomDraft());
-                  await openRoom(room.id);
-                } catch (reason) {
-                  showError(reason);
-                } finally {
-                  setIsSaving(false);
-                }
-              })();
-            }}
+            onSubmit={createRoom}
           />
         </CustomModal>
       ) : null}
@@ -428,45 +482,23 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 onChange={setEditDraft}
                 onCreatePictures={() => void addPictures(editDraft, setEditDraft)}
                 onShowMore={() => void addPictures(editDraft, setEditDraft)}
-                onSubmit={() => {
-                  setIsSaving(true);
-                  void (async () => {
-                    try {
-                      const token = await auth.getToken();
-                      if (!token) return;
-                      const { room } = await updateSpeakingRoom(token, detail.room.id, editDraft);
-                      setDetail({ ...detail, room });
-                      void setVoiceRoomTab('');
-                    } catch (reason) {
-                      showError(reason);
-                    } finally {
-                      setIsSaving(false);
-                    }
-                  })();
-                }}
+                onSubmit={saveRoomSettings}
               />
             ) : null}
             {visibleRoomTab === 'notifications' ? (
               <SpeakingNotificationSettings roomId={detail.room.id} />
             ) : null}
             {visibleRoomTab === 'members' ? (
-              <MembersPanel
-                members={detail.members}
-                canReview={detail.canReview}
-                onPlayIntro={async (userId) => {
-                  const token = await auth.getToken();
-                  if (!token) return '';
-                  return fetchSpeakingAudio(token, introAudioPath(detail.room.id, userId));
-                }}
-                onDecide={(userId, decision) => {
-                  void (async () => {
-                    const token = await auth.getToken();
-                    if (!token) return;
-                    await reviewRoomMember(token, detail.room.id, userId, decision);
-                    await openRoom(detail.room.id);
-                  })().catch(showError);
-                }}
-              />
+              <>
+                {error ? <Typography color="error">{error}</Typography> : null}
+                <MembersPanel
+                  members={detail.members}
+                  canReview={detail.canReview}
+                  currentUserId={auth.uid || ''}
+                  onPlayIntro={playMemberIntro}
+                  onDecide={decideMember}
+                />
+              </>
             ) : null}
           </Stack>
         </CustomModal>
