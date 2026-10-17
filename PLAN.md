@@ -11,4 +11,6 @@ Voice Chat Open questions:
 
 - How to make people talking?. Invite my friends, start talking, invite users directly
 
+- Tune landing page
+
 - Check GDPR compliance, what we need to implement. some reports, ability to report user
