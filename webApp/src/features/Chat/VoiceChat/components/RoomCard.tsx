@@ -58,10 +58,27 @@ export const RoomCard = ({ item, onOpen }: { item: RoomListItem; onOpen: () => v
         </Stack>
         <Typography sx={{ opacity: 0.92 }}>{item.room.subtitle}</Typography>
         <Stack direction="row" sx={{ gap: '6px', alignItems: 'center' }}>
-          {item.memberPreviews.map((member) => (
-            <VoiceUserAvatar key={member.userId} userId={member.userId} size="28px" />
+          {item.memberPreviews.map((member, index) => (
+            <Stack
+              key={member.userId}
+              sx={{
+                position: 'relative',
+                marginLeft: index > 0 ? '-20px' : 0,
+                boxShadow: '0 0 0 1px #fff, 0 0 0 3px rgba(0, 0, 0, 0.2)',
+                zIndex: index,
+                borderRadius: '50%',
+                overflow: 'hidden',
+                width: '28px',
+                height: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <VoiceUserAvatar userId={member.userId} size="28px" />
+            </Stack>
           ))}
-          <Typography sx={{ fontSize: '13px', opacity: 0.86 }}>
+          <Typography sx={{ fontSize: '13px', opacity: 0.86, paddingLeft: '5px' }}>
             {item.room.memberCount === 1
               ? i18n._('1 person')
               : i18n._('{count} people', { count: item.room.memberCount })}

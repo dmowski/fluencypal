@@ -529,7 +529,8 @@ msgstr "Bir e-posta, Telegram veya telefon numarası ekleyin."
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "2 ile 20 oyuncu ekleyin. Düzenlemek için bir isme dokunun."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:157
 #. js-lingui-explicit-id
 msgid "Add bio"
 msgstr "Biyografi ekle"
@@ -1499,7 +1500,7 @@ msgstr "Tutarlı gelişim için en iyi değer."
 msgid "Beta"
 msgstr "Beta"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:50
 #. js-lingui-explicit-id
 msgid "Bio"
 msgstr "Biyografi"
@@ -2592,7 +2593,7 @@ msgid ""
 "rambling."
 msgstr "Sistem tasarımı için net yapı. Sonunda tavizleri dolandırmadan açıkladım."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:159
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "Daha Net: {text}"
@@ -3485,8 +3486,8 @@ msgstr "Yeni Alan Oluştur"
 msgid "Create pictures"
 msgstr "Resim oluştur"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:565
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "Oda oluştur"
@@ -5587,7 +5588,7 @@ msgstr ""
 msgid "Finish with what you learned"
 msgstr "Ne öğrendiysen tamamla"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:107
 #. js-lingui-explicit-id
 msgid "Finish your profile"
 msgstr "Profilinizi tamamlayın"
@@ -7718,8 +7719,8 @@ msgstr "Mülakatçılar sadece temiz kod değil, **mimari düşünce** beklerler
 msgid "Introduce Yourself"
 msgstr "Kendinizi Tanıtın"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:142
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:55
 #. js-lingui-explicit-id
 msgid "Introduce yourself and tell people what you're into."
 msgstr "Kendinizi tanıtın ve insanların ilgilendiğiniz şeyleri bilmesini sağlayın."
@@ -7870,7 +7871,7 @@ msgid "Job Interview Skills"
 msgstr "İş Görüşmesi Becerileri"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:539
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Katıl"
@@ -8286,7 +8287,7 @@ msgid "Library"
 msgstr "Kütüphane"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:101
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Beğen"
@@ -8390,12 +8391,12 @@ msgstr "Kütüphane yükleniyor..."
 msgid "Loading quiz..."
 msgstr "Yarışma yükleniyor..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:498
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr "Oda yükleniyor..."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:167
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "Odalar yükleniyor..."
@@ -8646,7 +8647,7 @@ msgstr "Menü"
 msgid "Message hidden due to policy violation."
 msgstr "İleti, politika ihlali nedeniyle gizlendi."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:125
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Mesaj seçenekleri"
@@ -8891,8 +8892,7 @@ msgstr "Puanlarım:"
 msgid "My Position:"
 msgstr "Benim Pozisyonum:"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:605
 #. js-lingui-explicit-id
 msgid "My profile"
 msgstr "Profilim"
@@ -8964,7 +8964,7 @@ msgstr "Yeni Dilbilgisi Kuralları"
 msgid "New people"
 msgstr "Yeni insanlar"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:191
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "Yeni oda"
@@ -9201,6 +9201,11 @@ msgstr "Hiçbir vurgulama mevcut değil"
 msgid "No interviews found"
 msgstr "Mülakat bulunamadı"
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:179
+#. js-lingui-explicit-id
+msgid "No introduction yet"
+msgstr "Henüz bir giriş yok"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -9211,7 +9216,7 @@ msgstr "Henüz mesaj yok"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Henüz mesaj yok. Düşüncelerinizi paylaşan ilk kişi olun!"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:60
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "Henüz mesaj yok. İlkini siz bırakabilirsiniz."
@@ -9294,7 +9299,7 @@ msgstr "Hiçbir hatırlatma yok"
 msgid "No results found"
 msgstr "Sonuç bulunamadı"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:170
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "Bu dil için henüz oda yok. Bir tane başlatabilirsiniz."
@@ -9511,8 +9516,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Bildirim dev ekibine gönderildi. Bunun için özür dileriz..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:604
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:632
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9712,7 +9717,7 @@ msgstr "Uygulama panomu aç"
 msgid "Open news settings"
 msgstr "Haber ayarlarını aç"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:720
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "Bildirim ayarlarını aç"
@@ -9973,7 +9978,7 @@ msgstr ""
 "CV'nizi yapıştırın veya deneyiminiz, becerileriniz ve başarılarınızın kısa "
 "bir özetini yazın."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -10046,13 +10051,13 @@ msgstr "Ödeme alındı. Bakiyeniz bir an içinde güncellenecektir."
 msgid "Payment successful!"
 msgstr "Ödeme başarılı!"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:638
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:641
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "İnsanlar"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
 #. js-lingui-explicit-id
 msgid "People in a room see your picture, your name, and this introduction."
 msgstr "Bir odadaki kişiler sizin resminizi, adınızı ve bu tanıtımı görüyor."
@@ -10244,7 +10249,7 @@ msgstr "Planlar ve erişim"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -11546,7 +11551,7 @@ msgid "Record"
 msgstr "Kaydet"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:60
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Bir mesaj kaydet"
@@ -11560,7 +11565,7 @@ msgstr ""
 "Topluluk Sohbetinde bir mesaj kaydedin ve liderlik tablosunda {points} puan "
 "kazanın"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:96
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11680,7 +11685,7 @@ msgstr "Sayfayı yeniden yükle"
 msgid "Reloading conversation..."
 msgstr "Sohbet yeniden yükleniyor..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:149
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -11976,7 +11981,7 @@ msgstr "Oda adı"
 msgid "Room rules"
 msgstr "Oda kuralları"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:49
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "Oda ayarları"
@@ -12053,8 +12058,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Aynı Just Talk dersi yeni WebSocket ses sunucusu aracılığıyla."
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:652
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -12088,7 +12093,7 @@ msgid "Saving book…"
 msgstr "Kitap kaydediliyor..."
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "Kaydediliyor..."
@@ -12331,7 +12336,7 @@ msgstr "Oturum açma bağlantısını gönder"
 msgid "Send to Kindle"
 msgstr "Kindle'a Gönder"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #. js-lingui-explicit-id
 msgid "Send voice message"
 msgstr "Sesli mesaj gönder"
@@ -12353,7 +12358,7 @@ msgstr "Mesaj gönderiliyor"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:369
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12436,7 +12441,7 @@ msgstr "Öğrenme hedefinizi belirleyin"
 msgid "Set translate language in Settings"
 msgstr "Ayarlar'dan çeviri dilini ayarla"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:631
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12907,7 +12912,7 @@ msgstr ""
 "Bir şeyler ters gitti. Alex bilgilendirildi. Eğer sorunu çözemezse, lütfen "
 "genel sohbette yazın."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -13342,7 +13347,7 @@ msgstr "Adımlar:"
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:341
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -15336,7 +15341,7 @@ msgstr "Çevriliyor..."
 msgid "Transcript"
 msgstr "Transkript"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:140
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "Transkripsiyon"
@@ -15461,7 +15466,7 @@ msgstr "Altyazıları aç"
 msgid "Turn on notifications"
 msgstr "Bildirimleri aç"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:709
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "Cevabı kaçırmamak için bildirimleri açın."
@@ -15741,7 +15746,7 @@ msgstr "Öğrenme dilinizi kullanın ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "Tam bir konuşma çok fazla geldiğinde faydalıdır."
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:44
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -16004,7 +16009,7 @@ msgid "We are ready to craft your plan."
 msgstr "Planınızı oluşturmaya hazırız."
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:527
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -16661,7 +16666,7 @@ msgstr "{minWords} ve {maxWords} kelime arasında yazın."
 msgid "Write your report here"
 msgstr "Raporunuzu buraya yazın"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:59
 #. js-lingui-explicit-id
 msgid "Writing down what you said..."
 msgstr "Ne söylediğinizi yazıyorum..."
@@ -17375,7 +17380,7 @@ msgstr "Girişiniz"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "Bu sefer {room}‘a girişiniz kabul edilmedi."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:706
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "Tanıtımınız gönderildi"
@@ -17654,7 +17659,7 @@ msgstr "{count} aylık grup sohbetleri"
 msgid "{count} people"
 msgstr "{count} kişi"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} sn"
@@ -17700,7 +17705,7 @@ msgstr "{hours} saat"
 msgid "{hours} hours of conversation"
 msgstr "{hours} saatlik konuşma"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:49
 #. js-lingui-explicit-id
 msgid "{name} joined the room."
 msgstr "{name} odaya katıldı."

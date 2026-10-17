@@ -538,7 +538,8 @@ msgstr "Tambahkan email, Telegram, atau nomor telepon."
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "Tambahkan antara 2 dan 20 pemain. Ketuk nama untuk mengeditnya."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:157
 #. js-lingui-explicit-id
 msgid "Add bio"
 msgstr "Tambahkan bio"
@@ -1514,7 +1515,7 @@ msgstr "Nilai terbaik untuk peningkatan yang konsisten."
 msgid "Beta"
 msgstr "Beta"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:50
 #. js-lingui-explicit-id
 msgid "Bio"
 msgstr "Bio"
@@ -2610,7 +2611,7 @@ msgstr ""
 "Struktur yang jelas untuk desain sistem. Saya akhirnya menjelaskan "
 "trade-off tanpa berbelit-belit."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:159
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "Lebih Jelas: {text}"
@@ -3506,8 +3507,8 @@ msgstr "Buat Ruang Baru"
 msgid "Create pictures"
 msgstr "Buat gambar-gambar"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:565
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "Buat ruang"
@@ -5635,7 +5636,7 @@ msgstr ""
 msgid "Finish with what you learned"
 msgstr "Selesaikan dengan apa yang Anda pelajari"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:107
 #. js-lingui-explicit-id
 msgid "Finish your profile"
 msgstr "Lengkapi profil Anda"
@@ -7805,8 +7806,8 @@ msgstr ""
 msgid "Introduce Yourself"
 msgstr "Perkenalkan Diri Anda"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:142
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:55
 #. js-lingui-explicit-id
 msgid "Introduce yourself and tell people what you're into."
 msgstr "Perkenalkan diri Anda dan beri tahu orang-orang apa yang Anda minati."
@@ -7962,7 +7963,7 @@ msgid "Job Interview Skills"
 msgstr "Keterampilan Wawancara Kerja"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:539
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Bergabung"
@@ -8392,7 +8393,7 @@ msgid "Library"
 msgstr "Perpustakaan"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:101
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Suka"
@@ -8498,12 +8499,12 @@ msgstr "Memuat perpustakaan..."
 msgid "Loading quiz..."
 msgstr "Memuat kuis..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:498
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr "Memuat ruang..."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:167
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "Memuat ruangan..."
@@ -8757,7 +8758,7 @@ msgstr "Menu"
 msgid "Message hidden due to policy violation."
 msgstr "Pesan disembunyikan karena pelanggaran kebijakan."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:125
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Opsi pesan"
@@ -9005,8 +9006,7 @@ msgstr "Poin Saya:"
 msgid "My Position:"
 msgstr "Posisi Saya:"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:605
 #. js-lingui-explicit-id
 msgid "My profile"
 msgstr "Profil saya"
@@ -9078,7 +9078,7 @@ msgstr "Aturan Tata Bahasa Baru"
 msgid "New people"
 msgstr "Orang baru"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:191
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "Ruang baru"
@@ -9319,6 +9319,11 @@ msgstr "Tidak ada sorotan tersedia"
 msgid "No interviews found"
 msgstr "Tidak ada wawancara ditemukan"
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:179
+#. js-lingui-explicit-id
+msgid "No introduction yet"
+msgstr "Belum ada pengantar"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -9329,7 +9334,7 @@ msgstr "Belum ada pesan"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Belum ada pesan. Jadilah yang pertama berbagi pemikiran Anda!"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:60
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "Belum ada pesan. Anda bisa meninggalkan yang pertama."
@@ -9414,7 +9419,7 @@ msgstr ""
 "\n"
 "Tidak ditemukan hasil\n"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:170
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "Belum ada ruangan untuk bahasa ini. Anda bisa memulai satu."
@@ -9634,8 +9639,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Notifikasi telah dikirim ke tim pengembang. Maaf atas hal ini..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:604
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:632
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9839,7 +9844,7 @@ msgstr "Buka dasbor latihan saya"
 msgid "Open news settings"
 msgstr "Buka pengaturan berita"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:720
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "Buka pengaturan notifikasi"
@@ -10100,7 +10105,7 @@ msgstr ""
 "Tempelkan CV Anda atau tuliskan ringkasan singkat tentang pengalaman, "
 "keterampilan, dan pencapaian Anda."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -10173,13 +10178,13 @@ msgstr "Pembayaran diterima. Saldo Anda akan diperbarui sebentar lagi."
 msgid "Payment successful!"
 msgstr "Pembayaran berhasil!"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:638
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:641
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "Orang-orang"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
 #. js-lingui-explicit-id
 msgid "People in a room see your picture, your name, and this introduction."
 msgstr ""
@@ -10373,7 +10378,7 @@ msgstr "Paket & akses"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -11701,7 +11706,7 @@ msgid "Record"
 msgstr "Rekam"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:60
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Rekam pesan"
@@ -11715,7 +11720,7 @@ msgstr ""
 "Rekam pesan di Obrolan Komunitas dan dapatkan {points} poin di papan "
 "peringkat"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:96
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11839,7 +11844,7 @@ msgstr "Muat ulang halaman"
 msgid "Reloading conversation..."
 msgstr "Memuat ulang percakapan..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:149
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -12133,7 +12138,7 @@ msgstr "Nama ruangan"
 msgid "Room rules"
 msgstr "Aturan ruang"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:49
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "Pengaturan ruangan"
@@ -12210,8 +12215,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Pelajaran Just Talk yang sama melalui server suara WebSocket baru."
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:652
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -12245,7 +12250,7 @@ msgid "Saving book…"
 msgstr "Menyimpan buku…"
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "Menyimpan..."
@@ -12489,7 +12494,7 @@ msgstr "Kirim tautan masuk"
 msgid "Send to Kindle"
 msgstr "Kirim ke Kindle"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #. js-lingui-explicit-id
 msgid "Send voice message"
 msgstr "Kirim pesan suara"
@@ -12511,7 +12516,7 @@ msgstr "Mengirim pesan"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:369
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12596,7 +12601,7 @@ msgstr "Tetapkan tujuan pembelajaran Anda"
 msgid "Set translate language in Settings"
 msgstr "Atur bahasa terjemahan di Pengaturan"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:631
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -13072,7 +13077,7 @@ msgstr ""
 "Terjadi kesalahan. Alex telah diberitahu. Jika dia tidak memperbaikinya, "
 "silakan tulis di obrolan global."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -13509,7 +13514,7 @@ msgstr "Langkah-langkah:"
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:341
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -15539,7 +15544,7 @@ msgstr "Mentranskripsi..."
 msgid "Transcript"
 msgstr "Transkrip"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:140
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "Transkripsi"
@@ -15666,7 +15671,7 @@ msgstr "Nyalakan teks otomatis "
 msgid "Turn on notifications"
 msgstr "Aktifkan notifikasi"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:709
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "Aktifkan notifikasi agar Anda tidak melewatkan jawabannya."
@@ -15956,7 +15961,7 @@ msgstr "Gunakan bahasa belajar Anda ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "Berguna ketika percakapan penuh terasa seperti terlalu banyak"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:44
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -16226,7 +16231,7 @@ msgid "We are ready to craft your plan."
 msgstr "Kami siap merancang rencana Anda."
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:527
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -16909,7 +16914,7 @@ msgstr "Tulis antara {minWords} dan {maxWords} kata."
 msgid "Write your report here"
 msgstr "Tulis laporan Anda di sini"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:59
 #. js-lingui-explicit-id
 msgid "Writing down what you said..."
 msgstr "Menulis apa yang Anda katakan..."
@@ -17635,7 +17640,7 @@ msgstr "Perkenalan Anda"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "Perkenalan Anda ke {room} tidak diterima kali ini"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:706
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "Pengantar Anda telah dikirimkan"
@@ -17919,7 +17924,7 @@ msgstr "{count} bulan percakapan kelompok"
 msgid "{count} people"
 msgstr "{count} orang"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} detik"
@@ -17965,7 +17970,7 @@ msgstr "{hours} jam"
 msgid "{hours} hours of conversation"
 msgstr "{hours} jam percakapan"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:49
 #. js-lingui-explicit-id
 msgid "{name} joined the room."
 msgstr "{name} bergabung ke dalam ruangan."

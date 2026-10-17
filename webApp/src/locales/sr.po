@@ -528,7 +528,8 @@ msgstr "Dodajte email, Telegram ili broj telefona."
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "Dodajte između 2 i 20 igrača. Dodirnite ime da biste ga uredili."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:157
 #. js-lingui-explicit-id
 msgid "Add bio"
 msgstr "Dodaj biografiju"
@@ -1505,7 +1506,7 @@ msgstr "Najbolja vrednost za dosledno unapređenje."
 msgid "Beta"
 msgstr "Бета"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:50
 #. js-lingui-explicit-id
 msgid "Bio"
 msgstr "Биографија"
@@ -2599,7 +2600,7 @@ msgstr ""
 "Jasna struktura za dizajn sistema. Konačno sam objasnio kompromise bez "
 "zbrke."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:159
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "Jasnije: {text}"
@@ -3492,8 +3493,8 @@ msgstr "Kreiraj Novi Prostor"
 msgid "Create pictures"
 msgstr "Kreiraj slike"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:565
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "Kreiraj sobu"
@@ -5594,7 +5595,7 @@ msgstr ""
 msgid "Finish with what you learned"
 msgstr "Završi sa onim što si naučio"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:107
 #. js-lingui-explicit-id
 msgid "Finish your profile"
 msgstr "Dovršite profil"
@@ -7713,8 +7714,8 @@ msgstr "Intervjueri očekuju **razmišljanje o arhitekturi**, a ne samo čist ko
 msgid "Introduce Yourself"
 msgstr "Predstavite se"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:142
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:55
 #. js-lingui-explicit-id
 msgid "Introduce yourself and tell people what you're into."
 msgstr "Predstavite se i kažite ljudima šta vas zanima."
@@ -7866,7 +7867,7 @@ msgid "Job Interview Skills"
 msgstr "Veštine za intervju za posao"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:539
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "Pridruži se"
@@ -8289,7 +8290,7 @@ msgid "Library"
 msgstr "Библиотека"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:101
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "Sviđa mi se"
@@ -8393,12 +8394,12 @@ msgstr "Učitavanje biblioteke..."
 msgid "Loading quiz..."
 msgstr "Učitavanje kviza..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:498
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr "Učitavanje sobe..."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:167
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "Učitavanje soba..."
@@ -8651,7 +8652,7 @@ msgstr "Meni"
 msgid "Message hidden due to policy violation."
 msgstr "Poruka skrivena zbog kršenja pravila."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:125
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Opcije poruka"
@@ -8902,8 +8903,7 @@ msgstr "Moji Poeni:"
 msgid "My Position:"
 msgstr "Moja pozicija:"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:605
 #. js-lingui-explicit-id
 msgid "My profile"
 msgstr "Moj profil"
@@ -8975,7 +8975,7 @@ msgstr "Nova pravila gramatike"
 msgid "New people"
 msgstr "Novi ljudi"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:191
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "Nova soba"
@@ -9214,6 +9214,11 @@ msgstr "Nema dostupnih istaknutih stavki"
 msgid "No interviews found"
 msgstr "Нема пронађених интервјуа"
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:179
+#. js-lingui-explicit-id
+msgid "No introduction yet"
+msgstr "Још увек нема уводног текста"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -9224,7 +9229,7 @@ msgstr "Нема још порука"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Još nema poruka. Budite prvi koji će podeliti svoja razmišljanja!"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:60
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "Још увек нема порука. Можете оставити прву."
@@ -9309,7 +9314,7 @@ msgstr "Без подсетника"
 msgid "No results found"
 msgstr "Nema rezultata"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:170
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "Nema soba za ovaj jezik još. Možete započeti jednu."
@@ -9527,8 +9532,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Обавештење је послато развојном тиму. Извините због тога..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:604
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:632
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9727,7 +9732,7 @@ msgstr "Otvorite moju kontrolnu tablu za vežbanje"
 msgid "Open news settings"
 msgstr "Otvorite podešavanja vesti"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:720
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "Otvorite podešavanja obaveštenja"
@@ -9986,7 +9991,7 @@ msgstr ""
 "Nalepite svoj CV ili napišite kratku biografiju o vašem iskustvu, veštinama "
 "i dostignućima."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -10059,13 +10064,13 @@ msgstr "Isplata primljena. Vaš saldo će biti ažuriran za trenutak."
 msgid "Payment successful!"
 msgstr "Uspešno plaćanje!"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:638
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:641
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "Ljudi"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
 #. js-lingui-explicit-id
 msgid "People in a room see your picture, your name, and this introduction."
 msgstr "Ljudi u prostoriji vide vašu sliku, vaše ime i ovaj uvod."
@@ -10257,7 +10262,7 @@ msgstr "Planovi i pristup"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -11564,7 +11569,7 @@ msgid "Record"
 msgstr "Zapis"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:60
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Zabeleži poruku"
@@ -11576,7 +11581,7 @@ msgid ""
 "leaderboard"
 msgstr "Zabeležite poruku u Zajedničkom četu i osvojite {poeni} poena na rang-listi"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:96
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11698,7 +11703,7 @@ msgstr "Ponovo učitaj stranicu"
 msgid "Reloading conversation..."
 msgstr "Ponovno učitavanje razgovora..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:149
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -11992,7 +11997,7 @@ msgstr "Ime prostorije"
 msgid "Room rules"
 msgstr "Pravila sobe"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:49
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "Podešavanja sobe"
@@ -12067,8 +12072,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Ista lekcija Just Talk preko novog WebSocket servera za glas."
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:652
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -12102,7 +12107,7 @@ msgid "Saving book…"
 msgstr "Čuvanje knjige…"
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "Čuvanje..."
@@ -12341,7 +12346,7 @@ msgstr "Pošalji link za prijavu"
 msgid "Send to Kindle"
 msgstr "Pošalji na Kindle"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #. js-lingui-explicit-id
 msgid "Send voice message"
 msgstr "Pošalji glasovnu poruku"
@@ -12363,7 +12368,7 @@ msgstr "Slanje poruke"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:369
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -12444,7 +12449,7 @@ msgstr "Postavite cilj vašeg učenja"
 msgid "Set translate language in Settings"
 msgstr "Подесите језик превода у Подешавањима"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:631
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12915,7 +12920,7 @@ msgstr ""
 "Nešto je pošlo po zlu. Alex je obavešten. Ako to ne reši, molimo vas da "
 "pišete u globalni čet."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -13345,7 +13350,7 @@ msgstr "Koraci:"
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:341
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -15336,7 +15341,7 @@ msgstr "Transkribovanje..."
 msgid "Transcript"
 msgstr "Препис"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:140
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "Транскрипција"
@@ -15463,7 +15468,7 @@ msgstr "Uključite titlove"
 msgid "Turn on notifications"
 msgstr "Uključite obaveštenja"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:709
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "Uključite obaveštenja da ne biste propustili odgovor."
@@ -15746,7 +15751,7 @@ msgstr "Koristite vaš jezik za učenje ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "Korisno kada pun razgovor deluje kao previše"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:44
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -16010,7 +16015,7 @@ msgid "We are ready to craft your plan."
 msgstr "Спремни смо да саставимо ваш план."
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:527
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -16665,7 +16670,7 @@ msgstr "Напишите између {minWords} и {maxWords} речи."
 msgid "Write your report here"
 msgstr "Napišite vaš izveštaj ovde"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:59
 #. js-lingui-explicit-id
 msgid "Writing down what you said..."
 msgstr "Zapisujem ono što ste rekli..."
@@ -17365,7 +17370,7 @@ msgstr "Vaše predstavljanje"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "Vaše predstavljanje {room} nije prihvaćeno ovog puta."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:706
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "Ваш увод је послат"
@@ -17640,7 +17645,7 @@ msgstr "{count} meseci grupnih razgovora"
 msgid "{count} people"
 msgstr "{count} ljudi"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} секунди"
@@ -17686,7 +17691,7 @@ msgstr "{hours} sati"
 msgid "{hours} hours of conversation"
 msgstr "{hours} sati razgovora"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:49
 #. js-lingui-explicit-id
 msgid "{name} joined the room."
 msgstr "{name} se pridružio/la sobi."

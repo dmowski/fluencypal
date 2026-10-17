@@ -502,7 +502,8 @@ msgstr "添加电子邮件、Telegram 或电话号码。"
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "添加2到20名玩家。点击名字进行编辑。"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:157
 #. js-lingui-explicit-id
 msgid "Add bio"
 msgstr "新增简介"
@@ -1442,7 +1443,7 @@ msgstr "最佳价值，持续提升。"
 msgid "Beta"
 msgstr "测试版"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:50
 #. js-lingui-explicit-id
 msgid "Bio"
 msgstr "个人简介"
@@ -2506,7 +2507,7 @@ msgid ""
 "rambling."
 msgstr "清晰的系统设计结构。我终于在解释权衡时没有东拉西扯。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:159
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "更清晰: {text}"
@@ -3360,8 +3361,8 @@ msgstr "创建新空间"
 msgid "Create pictures"
 msgstr "创建图片"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:565
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:566
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "创建房间"
@@ -5345,7 +5346,7 @@ msgstr "完成今天课程中的最后一个口语任务。我们会保存那些
 msgid "Finish with what you learned"
 msgstr "完成您所学的内容"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:107
 #. js-lingui-explicit-id
 msgid "Finish your profile"
 msgstr "完成您的个人资料"
@@ -7275,8 +7276,8 @@ msgstr "面试官期待**架构思维**，而不仅仅是干净的代码"
 msgid "Introduce Yourself"
 msgstr "自我介绍"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:142
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:55
 #. js-lingui-explicit-id
 msgid "Introduce yourself and tell people what you're into."
 msgstr "介绍你自己，并告诉大家你的兴趣所在。"
@@ -7421,7 +7422,7 @@ msgid "Job Interview Skills"
 msgstr "工作面试技巧"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:539
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "加入"
@@ -7828,7 +7829,7 @@ msgid "Library"
 msgstr "图书馆"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:101
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "喜欢"
@@ -7934,12 +7935,12 @@ msgstr "正在加载库..."
 msgid "Loading quiz..."
 msgstr "加载测验中..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:498
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr "正在加载房间..."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:167
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "正在加载房间..."
@@ -8187,7 +8188,7 @@ msgstr "菜单"
 msgid "Message hidden due to policy violation."
 msgstr "由于违反政策，消息已隐藏。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:125
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "消息选项"
@@ -8420,8 +8421,7 @@ msgstr "我的积分:"
 msgid "My Position:"
 msgstr "我的职位："
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:605
 #. js-lingui-explicit-id
 msgid "My profile"
 msgstr "我的资料"
@@ -8493,7 +8493,7 @@ msgstr "新的语法规则"
 msgid "New people"
 msgstr "新学员"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:191
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "新房间"
@@ -8720,6 +8720,11 @@ msgstr "没有可用的亮点"
 msgid "No interviews found"
 msgstr "未找到面试"
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:179
+#. js-lingui-explicit-id
+msgid "No introduction yet"
+msgstr "尚未介绍"
+
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -8730,7 +8735,7 @@ msgstr "尚无消息"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "暂无消息。快来分享你的想法吧！"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:60
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "还没有消息。您可以留下第一条消息。"
@@ -8809,7 +8814,7 @@ msgstr "没有提醒"
 msgid "No results found"
 msgstr "找不到结果"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:170
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "目前还没有此语言的房间。您可以创建一个。"
@@ -9002,8 +9007,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "通知已发送至开发团队。对此我们深感抱歉..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:604
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:632
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9192,7 +9197,7 @@ msgstr "打开我的练习仪表板"
 msgid "Open news settings"
 msgstr "打开新闻设置"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:720
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "打开通知设置"
@@ -9439,7 +9444,7 @@ msgid ""
 "achievements."
 msgstr "粘贴您的简历或写一段关于您的经验、技能和成就的简短总结。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -9512,13 +9517,13 @@ msgstr "付款已收到。您的余额稍后更新。"
 msgid "Payment successful!"
 msgstr "支付成功！"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:638
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:641
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "人们"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
 #. js-lingui-explicit-id
 msgid "People in a room see your picture, your name, and this introduction."
 msgstr "在房间里的人会看到你的照片、名字和这个介绍。"
@@ -9700,7 +9705,7 @@ msgstr "计划与访问"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:61
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -10944,7 +10949,7 @@ msgid "Record"
 msgstr "记录"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:60
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "录制消息"
@@ -10956,7 +10961,7 @@ msgid ""
 "leaderboard"
 msgstr "在社区聊天中录制一条信息，并在排行榜中获得 {points} 点数"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:96
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11076,7 +11081,7 @@ msgstr "重新加载页面"
 msgid "Reloading conversation..."
 msgstr "重新加载对话..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:149
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -11360,7 +11365,7 @@ msgstr "房间名称"
 msgid "Room rules"
 msgstr "房间规则"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:49
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "房间设置"
@@ -11435,8 +11440,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "通过新的 WebSocket 语音服务器进行相同的 Just Talk 课程。"
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:652
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -11470,7 +11475,7 @@ msgid "Saving book…"
 msgstr "正在保存书籍…"
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:67
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "正在保存..."
@@ -11702,7 +11707,7 @@ msgstr "发送登录链接"
 msgid "Send to Kindle"
 msgstr "发送到 Kindle"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #. js-lingui-explicit-id
 msgid "Send voice message"
 msgstr "发送语音消息"
@@ -11724,7 +11729,7 @@ msgstr "发送消息"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
 #: src/features/Chat/SubmitForm.tsx:369
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:84
 #: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
@@ -11803,7 +11808,7 @@ msgstr "设置你的学习目标"
 msgid "Set translate language in Settings"
 msgstr "在设置中设置翻译语言"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:631
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12258,7 +12263,7 @@ msgid ""
 "in the global chat."
 msgstr "发生了一些错误。Alex 已收到通知。如果他没有修复，请在全局聊天中留言。"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:108
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -12668,7 +12673,7 @@ msgstr "步骤:"
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
 #: src/features/Chat/SubmitForm.tsx:341
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -14517,7 +14522,7 @@ msgstr "转录中..."
 msgid "Transcript"
 msgstr "成绩单"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:140
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "转录"
@@ -14642,7 +14647,7 @@ msgstr "打开字幕"
 msgid "Turn on notifications"
 msgstr "打开通知"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:709
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "打开通知，以免错过答案。"
@@ -14918,7 +14923,7 @@ msgstr "使用您正在学习的语言 ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "当进行完整的对话感觉过于繁重时，这很有用"
 
-#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:44
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -15171,7 +15176,7 @@ msgid "We are ready to craft your plan."
 msgstr "我们准备好为您制定计划。"
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:527
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -15798,7 +15803,7 @@ msgstr "在 {minWords} 到 {maxWords} 个单词之间写。"
 msgid "Write your report here"
 msgstr "在此处撰写您的报告"
 
-#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:59
 #. js-lingui-explicit-id
 msgid "Writing down what you said..."
 msgstr "正在记录您所说的内容..."
@@ -16424,7 +16429,7 @@ msgstr "您的介绍"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "您对{room}的介绍此次未获接受"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:706
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "您的简介已发送"
@@ -16691,7 +16696,7 @@ msgstr "{count} 个月的小组对话"
 msgid "{count} people"
 msgstr "{count} 人"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} 秒"
@@ -16737,7 +16742,7 @@ msgstr "{hours} 小时"
 msgid "{hours} hours of conversation"
 msgstr "{hours} 小时的对话"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:49
 #. js-lingui-explicit-id
 msgid "{name} joined the room."
 msgstr "{name} 加入了房间。"
