@@ -1,3 +1,5 @@
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
+
 const APP_ORIGIN = process.env.FLUENCY_APP_ORIGIN || 'https://app.fluencypal.com';
 
 export type PublicSpeakingClub = {
@@ -9,9 +11,13 @@ export type PublicSpeakingClub = {
   joinPromptMarkdown: string;
   rulesMarkdown: string;
   discussMarkdown: string;
+  languageCode: SupportedLanguage;
   memberCount: number;
   messagesLast7Days: number;
 };
+
+const asLanguage = (value: unknown): SupportedLanguage =>
+  supportedLanguages.includes(value as SupportedLanguage) ? (value as SupportedLanguage) : 'en';
 
 const isSlug = (value: string) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) && value.length <= 60;
 
@@ -34,6 +40,7 @@ export const toPublicSpeakingClub = (value: unknown): PublicSpeakingClub | null 
     joinPromptMarkdown: asText(row.joinPromptMarkdown, 8000),
     rulesMarkdown: asText(row.rulesMarkdown, 8000),
     discussMarkdown: asText(row.discussMarkdown, 8000),
+    languageCode: asLanguage(row.languageCode),
     memberCount:
       typeof row.memberCount === 'number' && Number.isFinite(row.memberCount)
         ? Math.max(0, Math.min(5000, Math.floor(row.memberCount)))

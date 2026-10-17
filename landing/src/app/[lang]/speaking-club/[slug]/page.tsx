@@ -3,6 +3,7 @@ import { HeaderStatic } from '@/features/Header/HeaderStatic';
 import { supportedLanguages } from '@/features/Lang/lang';
 import { SpeakingClubDetail } from '@/features/SpeakingClub/SpeakingClubPages';
 import { fetchPublicSpeakingClub } from '@/features/SpeakingClub/publicClubs';
+import { fullEnglishLanguageName } from '@/features/Lang/lang';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -13,9 +14,14 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const club = await fetchPublicSpeakingClub((await props.params).slug);
   if (!club) return { title: 'Speaking clubs', robots: { index: false, follow: true } };
+  const language = fullEnglishLanguageName[club.languageCode] || 'English';
+  const summary = club.subtitle.replace(/\s+/g, ' ').trim();
   return {
-    title: `${club.title} speaking club`,
-    description: club.subtitle || club.discussMarkdown.slice(0, 160),
+    title: `${club.title} — ${language} speaking club | FluencyPal`,
+    description: `${summary} Practice ${language} out loud with ${club.memberCount} ${club.memberCount === 1 ? 'person' : 'people'}.`.slice(
+      0,
+      160,
+    ),
   };
 }
 

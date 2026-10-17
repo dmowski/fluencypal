@@ -9,8 +9,9 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Speaking clubs',
-    description: 'Practice English out loud with a small group.',
+    title: 'Speaking clubs for language practice | FluencyPal',
+    description:
+      'Find a speaking club, see what people talk about this week, and join with a short voice introduction.',
   };
 }
 

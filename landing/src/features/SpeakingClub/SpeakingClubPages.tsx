@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import { getI18nInstance } from '@/appRouterI18n';
 import { getAppUrlStart, getUrlStart } from '@/features/Lang/getUrlStart';
-import { SupportedLanguage } from '@/features/Lang/lang';
+import { fullLanguageName, SupportedLanguage } from '@/features/Lang/lang';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { PublicSpeakingClub } from './publicClubs';
 
@@ -33,7 +33,7 @@ export const SpeakingClubList = ({
       </Typography>
       <Typography sx={{ opacity: 0.8 }}>
         {i18n._(
-          'Practice out loud with a small group. Listen first, then speak when you are ready.',
+          'Practice a language out loud with a small group. Read what the room talks about, then join with a short voice introduction.',
         )}
       </Typography>
       {clubs.length === 0 ? (
@@ -62,6 +62,8 @@ export const SpeakingClubList = ({
           <Typography sx={{ fontSize: '24px', fontWeight: 800 }}>{club.title}</Typography>
           <Typography>{club.subtitle}</Typography>
           <Typography sx={{ fontSize: '14px', opacity: 0.85 }}>
+            {fullLanguageName[club.languageCode]}
+            {' · '}
             {club.memberCount === 1
               ? i18n._('1 person')
               : i18n._('{count} people', { count: club.memberCount })}
@@ -112,6 +114,11 @@ export const SpeakingClubDetail = ({
         {club.title}
       </Typography>
       <Typography sx={{ opacity: 0.85 }}>{club.subtitle}</Typography>
+      <Typography sx={{ fontWeight: 700 }}>
+        {i18n._('{language} speaking club', {
+          language: fullLanguageName[club.languageCode],
+        })}
+      </Typography>
       <Typography>
         {club.memberCount === 1
           ? i18n._('1 person')
