@@ -7,6 +7,7 @@ import {
   speakingClubErrorResponse,
 } from '@/features/Chat/VoiceChat/backend/http';
 import { notifyNewRoom } from '@/features/Chat/VoiceChat/backend/notifications';
+import { assertSpeakingRate } from '@/features/Chat/VoiceChat/backend/rateLimit';
 import { createSpeakingRoom, listRoomsForUser } from '@/features/Chat/VoiceChat/backend/rooms';
 
 export async function GET(request: Request) {
@@ -24,6 +25,7 @@ export async function POST(request: Request) {
   try {
     const user = await requireSpeakingUser(request);
     const input = parseRoomDraft(asRecord(await readJson(request)));
+    await assertSpeakingRate(user.uid, 'room');
     const profile = await loadSpeakingProfile(user.uid);
     const room = await createSpeakingRoom({
       creatorId: user.uid,

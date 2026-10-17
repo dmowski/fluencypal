@@ -2,6 +2,7 @@
 
 import { ButtonBase, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
+import { coverImageCss } from '../backend/guards';
 import { RoomListItem } from '../types';
 import { VoiceUserAvatar } from './VoiceUserAvatar';
 
@@ -29,8 +30,8 @@ export const RoomCard = ({ item, onOpen }: { item: RoomListItem; onOpen: () => v
         alignItems: 'stretch',
         justifyContent: 'flex-start',
         backgroundColor: '#243044',
-        backgroundImage: item.room.previewImageUrl
-          ? `linear-gradient(180deg, rgba(10,14,22,0.15), rgba(10,14,22,0.82)), url(${item.room.previewImageUrl})`
+        backgroundImage: coverImageCss(item.room.previewImageUrl)
+          ? `linear-gradient(180deg, rgba(10,14,22,0.15), rgba(10,14,22,0.82)), ${coverImageCss(item.room.previewImageUrl)}`
           : 'linear-gradient(160deg, #31425c, #1b2433)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

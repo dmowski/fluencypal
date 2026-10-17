@@ -1,4 +1,6 @@
 import { getBucket } from '@/app/api/config/firebase';
+import { normalizeAudioType } from './guards';
+import { SpeakingClubError } from './http';
 
 const extensionFromContentType = (contentType: string): string => {
   if (contentType.includes('webm')) return 'webm';
@@ -15,7 +17,8 @@ export const saveSpeakingAudio = async (params: {
   buffer: Buffer;
   contentType: string;
 }): Promise<{ audioPath: string; contentType: string }> => {
-  const contentType = params.contentType || 'audio/webm';
+  const contentType = normalizeAudioType(params.contentType);
+  if (!contentType) throw new SpeakingClubError('That recording format is not supported.');
   const extension = extensionFromContentType(contentType);
   const audioPath = `speakingClubs/audio/${params.folder}/${params.id}.${extension}`;
   const file = getBucket().file(audioPath);
@@ -46,6 +49,12 @@ export const readSpeakingAudio = async (
   const [metadata] = await file.getMetadata();
   return {
     buffer,
-    contentType: metadata.contentType || 'audio/webm',
+    contentType: normalizeAudioType(metadata.contentType || '') || 'audio/webm',
   };
 };
+
+export const audioResponseHeaders = (contentType: string): Record<string, string> => ({
+  'Content-Type': normalizeAudioType(contentType) || 'audio/webm',
+  'Cache-Control': 'private, max-age=3600',
+  'X-Content-Type-Options': 'nosniff',
+});

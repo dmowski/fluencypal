@@ -6,6 +6,7 @@ import { useLingui } from '@lingui/react';
 import { Mic } from 'lucide-react';
 import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
 import { ProcessUserInput } from '@/features/Conversation/ProcessUserInput';
+import { VoiceNotice } from './VoiceNotice';
 
 export const VoiceComposer = ({
   onSend,
@@ -97,6 +98,7 @@ export const VoiceComposer = ({
           </Button>
         </Stack>
       )}
+      <VoiceNotice kind="message" />
       {recorder.error ? <Typography color="error">{recorder.error}</Typography> : null}
     </Stack>
   );

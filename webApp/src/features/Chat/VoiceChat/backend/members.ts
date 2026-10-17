@@ -3,6 +3,7 @@ import { DocumentData } from 'firebase-admin/firestore';
 import { ReviewDecision, RoomMember, RoomMembershipStatus, SpeakingRoom } from '../types';
 import { isAlexAccount, SpeakingProfile } from './access';
 import { SpeakingClubError } from './http';
+import { deleteSpeakingAudio } from './storage';
 
 const members = (roomId: string) =>
   getDB().collection('speakingRooms').doc(roomId).collection('members');
@@ -86,9 +87,18 @@ export const removeRoomMember = async (params: {
   if (!target || target.status !== 'approved') {
     throw new SpeakingClubError('That person is not in the room.', 404);
   }
-  await members(params.room.id)
-    .doc(target.userId)
-    .set({ status: 'rejected', decidedAtIso: new Date().toISOString() }, { merge: true });
+  await deleteSpeakingAudio(target.introAudioPath);
+  await members(params.room.id).doc(target.userId).set(
+    {
+      status: 'rejected',
+      decidedAtIso: new Date().toISOString(),
+      introAudioPath: '',
+      introTranscript: '',
+      introSuggestion: '',
+      description: '',
+    },
+    { merge: true },
+  );
   const approvedCount = (await listRoomMembers(params.room.id)).filter(
     (member) => member.status === 'approved',
   ).length;
@@ -160,45 +170,50 @@ export const decideJoinRequest = async (params: {
   targetUserId: string;
   decision: ReviewDecision;
 }): Promise<RoomMember> => {
-  const actor = await getRoomMember(params.room.id, params.actorId);
-  if (
-    !canReviewMember({
-      room: params.room,
-      actorId: params.actorId,
-      actorEmail: params.actorEmail,
-      actorStatus: actor?.status || null,
-    })
-  ) {
-    throw new SpeakingClubError('You cannot review people for this room.', 403);
-  }
-  const target = await getRoomMember(params.room.id, params.targetUserId);
-  if (!target || target.status === 'approved') {
-    throw new SpeakingClubError('That introduction is not waiting anymore.', 404);
-  }
-  const now = new Date().toISOString();
-  const approvals = { ...target.approvals, [params.actorId]: params.decision };
-  let status: RoomMembershipStatus = 'pending';
-  if (params.decision === 'rejected' || params.room.reviewMode === 'alexOnly') {
-    status = params.decision;
-  } else {
-    const approvedMembers = (await listRoomMembers(params.room.id)).filter(
-      (member) => member.status === 'approved',
-    );
-    const everyoneApproved =
-      approvedMembers.length > 0 &&
-      approvedMembers.every((member) => approvals[member.userId] === 'approved');
-    if (everyoneApproved) status = 'approved';
-  }
-  const next: RoomMember = {
-    ...target,
-    approvals,
-    status,
-    ...(status === 'pending' ? {} : { decidedAtIso: now }),
-  };
-  await members(params.room.id)
-    .doc(target.userId || params.targetUserId)
-    .set(withoutUndefined(next));
-  if (status === 'approved') {
+  const targetRef = members(params.room.id).doc(params.targetUserId);
+  const next = await getDB().runTransaction(async (tx) => {
+    const targetSnap = await tx.get(targetRef);
+    const actorSnap = await tx.get(members(params.room.id).doc(params.actorId));
+    const approvedSnap = await tx.get(members(params.room.id).where('status', '==', 'approved'));
+    if (!targetSnap.exists) {
+      throw new SpeakingClubError('That introduction is not waiting anymore.', 404);
+    }
+    const target = toRoomMember(targetSnap.data() || {}, targetSnap.id);
+    if (target.status === 'approved') {
+      throw new SpeakingClubError('That introduction is not waiting anymore.', 404);
+    }
+    const actor = actorSnap.exists ? toRoomMember(actorSnap.data() || {}, actorSnap.id) : null;
+    if (
+      !canReviewMember({
+        room: params.room,
+        actorId: params.actorId,
+        actorEmail: params.actorEmail,
+        actorStatus: actor?.status || null,
+      })
+    ) {
+      throw new SpeakingClubError('You cannot review people for this room.', 403);
+    }
+    const approvals = { ...target.approvals, [params.actorId]: params.decision };
+    let status: RoomMembershipStatus = 'pending';
+    if (params.decision === 'rejected' || params.room.reviewMode === 'alexOnly') {
+      status = params.decision;
+    } else {
+      const approvedMembers = approvedSnap.docs.map((doc) => toRoomMember(doc.data(), doc.id));
+      const everyoneApproved =
+        approvedMembers.length > 0 &&
+        approvedMembers.every((member) => approvals[member.userId] === 'approved');
+      if (everyoneApproved) status = 'approved';
+    }
+    const decided: RoomMember = {
+      ...target,
+      approvals,
+      status,
+      ...(status === 'pending' ? {} : { decidedAtIso: new Date().toISOString() }),
+    };
+    tx.set(targetRef, withoutUndefined(decided));
+    return decided;
+  });
+  if (next.status === 'approved') {
     const approvedCount = (await listRoomMembers(params.room.id)).filter(
       (member) => member.status === 'approved',
     ).length;

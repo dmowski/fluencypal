@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { deleteAuthUser, validateAuthToken } from '../config/firebase';
 import { deleteDoc } from '../config/deleteDoc';
 import { deleteGameUserById } from '@/features/Game/api/statsResources';
+import { deleteSpeakingData } from '@/features/Chat/VoiceChat/backend/erasure';
 
 export async function POST(request: NextRequest) {
   const user = await validateAuthToken(request);
@@ -10,6 +11,7 @@ export async function POST(request: NextRequest) {
     return new Response('Unauthorized', { status: 401 });
   }
 
+  await deleteSpeakingData(userId);
   await deleteGameUserById(userId);
   await deleteDoc('users', userId);
   await deleteAuthUser(userId);

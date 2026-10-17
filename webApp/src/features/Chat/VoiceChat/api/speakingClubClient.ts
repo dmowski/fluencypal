@@ -181,6 +181,32 @@ export const toggleRoomMessageLike = (token: string, roomId: string, messageId: 
     { method: 'POST' },
   );
 
+export const downloadSpeakingData = async (token: string): Promise<void> => {
+  const response = await fetch('/api/speaking-clubs/me', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!response.ok) throw new Error(await readError(response));
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'fluencypal-voice.json';
+  link.click();
+  URL.revokeObjectURL(url);
+};
+
+export const deleteSpeakingData = (token: string) =>
+  authedJson<{ ok: true }>('/api/speaking-clubs/me', token, { method: 'DELETE' });
+
+export const reportSpeakingContent = (
+  token: string,
+  body: { roomId: string; messageId?: string; targetUserId?: string; note?: string },
+) =>
+  authedJson<{ ok: true }>('/api/speaking-clubs/reports', token, {
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
+
 export const removeRoomMember = (token: string, roomId: string, userId: string) =>
   authedJson<{ ok: true }>(`/api/speaking-clubs/${roomId}/members/${userId}`, token, {
     method: 'DELETE',

@@ -2,13 +2,11 @@ import { getDB, validateAuthToken } from '@/app/api/config/firebase';
 import { AuthUserInfo } from '@/app/api/config/type';
 import { UserSettings } from '@/features/Settings/userSettings';
 import { parseRoomNarrowing, parseSpeakingNotificationPrefs } from '../notificationRules';
-import {
-  RoomNotificationNarrowing,
-  SPEAKING_CLUB_ALEX_EMAIL,
-  SPEAKING_CLUB_FOUNDER_UID,
-  SpeakingNotificationPrefs,
-} from '../types';
+import { RoomNotificationNarrowing, SpeakingNotificationPrefs } from '../types';
+import { isAlexAccount } from './guards';
 import { SpeakingClubError } from './http';
+
+export { isAlexAccount };
 
 export interface SpeakingProfile {
   userId: string;
@@ -19,9 +17,6 @@ export interface SpeakingProfile {
   prefs: SpeakingNotificationPrefs;
   emailAllowedByApp: boolean;
 }
-
-export const isAlexAccount = (user: { uid: string; email?: string | null }): boolean =>
-  user.uid === SPEAKING_CLUB_FOUNDER_UID || user.email === SPEAKING_CLUB_ALEX_EMAIL;
 
 export const requireSpeakingUser = async (request: Request): Promise<AuthUserInfo> => {
   const user = await validateAuthToken(request);
@@ -42,6 +37,13 @@ export const loadSpeakingProfile = async (userId: string): Promise<SpeakingProfi
     prefs: parseSpeakingNotificationPrefs(data?.speakingNotifications),
     emailAllowedByApp: data?.isSendEmailNotifications !== false,
   };
+};
+
+export const markVoiceNoticeSeen = async (userId: string): Promise<void> => {
+  await getDB()
+    .collection('users')
+    .doc(userId)
+    .set({ voiceNoticeSeenAtIso: new Date().toISOString() }, { merge: true });
 };
 
 export const saveSpeakingBio = async (userId: string, bio: string): Promise<string> => {

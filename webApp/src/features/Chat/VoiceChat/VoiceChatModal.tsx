@@ -28,6 +28,9 @@ import {
   submitRoomJoin,
   updateSpeakingRoom,
   deleteRoomMessage,
+  deleteSpeakingData,
+  downloadSpeakingData,
+  reportSpeakingContent,
 } from './api/speakingClubClient';
 import { JoinRoomView } from './components/JoinRoomView';
 import { MembersPanel } from './components/MembersPanel';
@@ -48,6 +51,7 @@ import {
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
 import { useLiveRoomMessages } from './useLiveRoomMessages';
 import { VoiceProfileForm } from './components/VoiceProfileForm';
+import { VoiceReportDialog } from './components/VoiceReportDialog';
 
 type RoomSettingsTab = 'settings' | 'notifications' | 'members';
 
@@ -95,6 +99,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [editDraft, setEditDraft] = useState<RoomDraft | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const [reportTarget, setReportTarget] = useState<{
+    messageId?: string;
+    targetUserId?: string;
+  } | null>(null);
   const [isCreatingPictures, setIsCreatingPictures] = useState(false);
   const [error, setError] = useState('');
   const [joinSent, setJoinSent] = useState(false);
@@ -245,7 +253,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   useLiveRoomMessages({
     roomId: liveRoomId,
     viewerId: auth.uid || '',
-    enabled: Boolean(liveRoomId),
+    enabled: Boolean(liveRoomId) && canHearLive,
     onMessages: (sourceRoomId, messages) => {
       setDetail((current) => {
         if (!current || current.room.id !== sourceRoomId) return current;
@@ -254,6 +262,29 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       attachNewAudio(sourceRoomId, messages);
     },
   });
+
+  useEffect(() => {
+    if (!liveRoomId || canHearLive) return;
+    const roomId = liveRoomId;
+    const timer = window.setInterval(() => {
+      void (async () => {
+        const token = await auth.getToken();
+        if (!token) return;
+        const next = await fetchRoomDetail(token, roomId);
+        setDetail((current) => {
+          if (!current || current.room.id !== roomId) return current;
+          if (current.membership?.status === 'approved') return current;
+          return {
+            ...current,
+            messages: next.messages,
+            members: next.members,
+            membership: next.membership,
+          };
+        });
+      })().catch(() => {});
+    }, 20000);
+    return () => window.clearInterval(timer);
+  }, [auth, canHearLive, liveRoomId]);
 
   const roomMenuOpen = roomMenuTab !== '' && Boolean(detail);
   const nestedOpen =
@@ -283,6 +314,33 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     void setVoiceRoomTab(
       reviewCount > 0 ? 'members' : detail.isAdmin ? 'settings' : 'notifications',
     );
+  };
+
+  const downloadVoiceData = async () => {
+    const token = await auth.getToken();
+    if (!token) return;
+    await downloadSpeakingData(token);
+  };
+
+  const eraseVoiceData = async () => {
+    const token = await auth.getToken();
+    if (!token) return;
+    await deleteSpeakingData(token);
+    setDetail(null);
+    setScreen('list');
+    await loadList();
+  };
+
+  const sendReport = async (note: string) => {
+    if (!detail || !reportTarget) return;
+    const token = await auth.getToken();
+    if (!token) return;
+    await reportSpeakingContent(token, {
+      roomId: detail.room.id,
+      messageId: reportTarget.messageId,
+      targetUserId: reportTarget.targetUserId,
+      note,
+    });
   };
 
   const removeMessage = (messageId: string) => {
@@ -507,6 +565,8 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   onOpenSettings={openRoomSettings}
                   onRemove={removeMessage}
                   onLike={toggleLike}
+                  canModerate={detail.isAdmin}
+                  onReport={(messageId) => setReportTarget({ messageId })}
                   composer={<VoiceComposer isSending={isSaving} onSend={sendVoiceMessage} />}
                 />
               ) : null}
@@ -605,7 +665,13 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
               <Tab value="profile" label={i18n._('My profile')} />
             </Tabs>
             {String(voiceSettings) === 'profile' ? (
-              <VoiceProfileForm bio={bio} isSaving={isSaving} onSave={saveProfile} />
+              <VoiceProfileForm
+                bio={bio}
+                isSaving={isSaving}
+                onSave={saveProfile}
+                onDownload={() => downloadVoiceData().catch(showError)}
+                onDelete={() => eraseVoiceData().catch(showError)}
+              />
             ) : (
               <SpeakingNotificationSettings />
             )}
@@ -670,6 +736,11 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   onPlayIntro={playMemberIntro}
                   onDecide={decideMember}
                   onRemove={removeMember}
+                  onReport={
+                    detail.membership?.status === 'approved'
+                      ? (userId) => setReportTarget({ targetUserId: userId })
+                      : undefined
+                  }
                 />
               </>
             ) : null}
@@ -722,6 +793,18 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
           </Stack>
         </CustomModal>
       ) : null}
+      <VoiceReportDialog
+        open={Boolean(reportTarget)}
+        onClose={() => setReportTarget(null)}
+        onSubmit={async (note) => {
+          try {
+            await sendReport(note);
+          } catch (reason) {
+            showError(reason);
+            throw reason;
+          }
+        }}
+      />
     </CustomModal>
   );
 };

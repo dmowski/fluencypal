@@ -1,5 +1,6 @@
 import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { RoomDraft, RoomReviewMode } from '../types';
+import { normalizeAudioType, trustedDurationSec } from './guards';
 import { readOptionalText, readText, SpeakingClubError } from './http';
 
 export const parseRoomDraft = (body: Record<string, unknown>): RoomDraft => {
@@ -33,12 +34,11 @@ export const readAudioFile = async (
   if (!(audio instanceof File)) throw new SpeakingClubError('Add a recording first.');
   if (audio.size > 15 * 1024 * 1024) throw new SpeakingClubError('That recording is too large.');
   if (audio.size < 100) throw new SpeakingClubError('That recording is too short.');
+  const contentType = normalizeAudioType(audio.type || '');
+  if (!contentType) throw new SpeakingClubError('That recording format is not supported.');
   const buffer = Buffer.from(await audio.arrayBuffer());
-  return { buffer, contentType: audio.type || 'audio/webm', fields: form };
+  return { buffer, contentType, fields: form };
 };
 
-export const readDuration = (value: FormDataEntryValue | null): number => {
-  const seconds = Number(value);
-  if (!Number.isFinite(seconds) || seconds < 0) return 0;
-  return Math.min(600, Math.round(seconds));
-};
+export const readDuration = (value: FormDataEntryValue | null, byteLength: number): number =>
+  trustedDurationSec(value, byteLength);

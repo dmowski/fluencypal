@@ -29,7 +29,7 @@ webApp/src/features/Chat/VoiceChat/
 
 API routes under `webApp/src/app/api/speaking-clubs/*` stay thin.
 
-Firestore writes go through the Admin SDK. Clients may read room documents, their own notification notes, and mark a note read.
+Firestore writes go through the Admin SDK. A signed-in client may subscribe to messages only after they have joined that room. Room documents, member documents, transcripts for visitors, and audio files stay on the server.
 
 | Path                                          | Purpose                     |
 | --------------------------------------------- | --------------------------- |
@@ -48,8 +48,10 @@ Private audio lives under `speakingClubs/audio/…`.
 - After the signed-in request form is sent, **Open voice chat** is offered.
 - Modal: `?voiceChat=true`. A room: `?voiceRoom={slug}`. Anonymous visitors do not see it.
 - Avatars and usernames come from the game. A bio is `users/{uid}.speakingBio`.
-- Visitors see the last 7 days of messages and cannot play them. Older messages are removed.
-- An open room listens to `speakingRooms/{roomId}/messages`, so a message from someone else shows up immediately. Audio is fetched only for approved members.
+- Visitors see the last 7 days as a preview: name, length, and like count. They do not get the transcript or the recording. The preview refreshes every 20 seconds.
+- An approved member listens to `speakingRooms/{roomId}/messages`, so a message from someone else shows up immediately. Audio is fetched only for approved members.
+- Messages older than 7 days are deleted when the room is opened and by the hourly `/api/speaking-clubs/retention` job. Introduction audio is deleted 30 days after a decision.
+- My profile can download a text file of your voice data, or delete it. Deleting the FluencyPal account deletes it too.
 - Notification settings: `?voiceNotifications=true`. Profile tab: `?voiceSettings=profile`.
 - Room settings tab: `?voiceRoomTab=settings|notifications|members`. Pending reviews open `members`.
 - The review email uses that People link: `voiceChat=true&voiceRoom={slug}&voiceRoomTab=members`.

@@ -85,6 +85,8 @@ export interface AppNotification {
   roomId: string;
   roomTitle: string;
   actorName: string;
+  /** Present on notes sent after voice-chat erasure support. */
+  actorId?: string;
   /** Set when a review has been decided. */
   decision?: ReviewDecision;
   /** Who this note is for. */

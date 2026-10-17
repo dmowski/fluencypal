@@ -8,6 +8,8 @@ type MdVariantVariant = 'small' | 'normal' | 'blog';
 export interface MarkdownProps {
   children: string;
   variant?: MdVariantVariant;
+  /** Room text is written by members. Keep markdown, drop raw HTML. */
+  safe?: boolean;
   onWordClick?: (word: string, element: HTMLElement) => void;
 }
 
@@ -234,7 +236,7 @@ const styleVariationMap: Record<MdVariantVariant, MarkdownToJSX.Overrides> = {
   blog: markdownComponentsBlog,
 };
 
-export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant }) => {
+export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, variant, safe }) => {
   const variantToUse = variant || 'normal';
   const styleComponents = styleVariationMap[variantToUse];
 
@@ -263,7 +265,9 @@ export const Markdown: React.FC<MarkdownProps> = ({ children, onWordClick, varia
           : undefined
       }
     >
-      <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+      <MarkdownTool options={{ overrides: styleComponents, disableParsingRawHTML: Boolean(safe) }}>
+        {children}
+      </MarkdownTool>
     </Stack>
   );
 };

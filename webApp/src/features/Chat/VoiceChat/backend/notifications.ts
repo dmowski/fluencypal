@@ -5,6 +5,7 @@ import { allowsSpeakingNotification } from '../notificationRules';
 import { AppNotification, ReviewDecision, RoomMember, SpeakingRoom } from '../types';
 import { SPEAKING_CLUB_FOUNDER_UID } from '../types';
 import { loadRoomNarrowing, loadSpeakingProfile, SpeakingProfile } from './access';
+import { escapeHtml } from './guards';
 import { listRoomMembers } from './members';
 
 const notifications = (userId: string) =>
@@ -39,7 +40,7 @@ const emailNote = async (
       emailTo: profile.email,
       title,
       messageText: `${body}\n\n${href}`,
-      messageHtml: `<p>${body}</p><p><a href="${href}">${linkLabel}</a></p>`,
+      messageHtml: `<p>${escapeHtml(body)}</p><p><a href="${escapeHtml(href)}">${escapeHtml(linkLabel)}</a></p>`,
     });
   } catch (error) {
     console.error('Speaking club email failed', error);
@@ -110,6 +111,7 @@ export const notifyNewMessage = async (params: {
           roomId: params.room.id,
           roomTitle: params.room.title,
           actorName: params.senderName,
+          actorId: params.senderId,
           audience: 'member',
           createdAtIso: new Date().toISOString(),
         },
@@ -159,6 +161,7 @@ export const notifyReviewers = async (params: {
           roomId: params.room.id,
           roomTitle: params.room.title,
           actorName: params.applicant.username,
+          actorId: params.applicant.userId,
           audience: 'reviewer',
           createdAtIso: new Date().toISOString(),
         },

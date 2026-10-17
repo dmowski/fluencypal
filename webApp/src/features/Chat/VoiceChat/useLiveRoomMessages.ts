@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import { firestore } from '@/features/Firebase/init';
 import { RoomMessage } from './types';
 
@@ -52,8 +52,10 @@ export const useLiveRoomMessages = ({
 
   useEffect(() => {
     if (!enabled || !roomId || !viewerId) return;
+    const cutoff = new Date(Date.now() - WEEK_MS).toISOString();
     const messagesQuery = query(
       collection(firestore, 'speakingRooms', roomId, 'messages'),
+      where('createdAtIso', '>=', cutoff),
       orderBy('createdAtIso', 'asc'),
     );
     return onSnapshot(

@@ -20,14 +20,18 @@ import { listRoomMessages } from '@/features/Chat/VoiceChat/backend/messages';
 import { getSpeakingRoom, updateSpeakingRoom } from '@/features/Chat/VoiceChat/backend/rooms';
 import { RoomMember } from '@/features/Chat/VoiceChat/types';
 
-const visibleMember = (member: RoomMember, includeIntro: boolean): RoomMember => {
-  if (includeIntro) return member;
+const visibleMember = (
+  member: RoomMember,
+  access: 'visitor' | 'member' | 'reviewer',
+): RoomMember => {
+  if (access === 'reviewer') return member;
   return {
     ...member,
     introAudioPath: '',
-    introTranscript: '',
     introSuggestion: '',
     approvals: {},
+    introTranscript: access === 'member' ? member.introTranscript : '',
+    description: access === 'member' ? member.description : '',
   };
 };
 
@@ -47,12 +51,18 @@ export async function GET(request: Request, context: { params: Promise<{ roomId:
       actorEmail: user.email,
       actorStatus: membership?.status || null,
     });
+    const approved = membership?.status === 'approved';
     const members = (await listRoomMembers(roomId))
       .filter(
         (member) => member.status === 'approved' || (canReview && member.status === 'pending'),
       )
-      .map((member) => visibleMember(member, canReview && member.status === 'pending'));
-    const messages = await listRoomMessages(roomId, user.uid);
+      .map((member) =>
+        visibleMember(
+          member,
+          canReview && member.status === 'pending' ? 'reviewer' : approved ? 'member' : 'visitor',
+        ),
+      );
+    const messages = await listRoomMessages(roomId, user.uid, { includePrivate: approved });
     return NextResponse.json({ room, membership, members, messages, isAdmin, canReview });
   } catch (error) {
     return speakingClubErrorResponse(error);

@@ -11,6 +11,8 @@ type MdVariantVariant = 'small' | 'normal' | 'conversation' | 'blog' | 'chat' | 
 export interface MarkdownProps {
   children: string;
   variant?: MdVariantVariant;
+  /** Room text is written by members. Keep markdown, drop raw HTML. */
+  safe?: boolean;
   onWordClick?: (word: string, element: HTMLElement) => void;
   onSentenceClick?: (sentence: string, element: HTMLElement) => void;
   sentenceIcon?: IconName;
@@ -761,6 +763,7 @@ export const Markdown: React.FC<MarkdownProps> = ({
   onSentenceClick,
   sentenceIcon,
   variant,
+  safe,
 }) => {
   const variantToUse = variant || 'normal';
   const styleComponents = styleVariationMap[variantToUse];
@@ -811,7 +814,11 @@ export const Markdown: React.FC<MarkdownProps> = ({
       }
     >
       <MarkdownWrapOptionsContext.Provider value={{ onSentenceClick, sentenceIcon }}>
-        <MarkdownTool options={{ overrides: styleComponents }}>{children}</MarkdownTool>
+        <MarkdownTool
+          options={{ overrides: styleComponents, disableParsingRawHTML: Boolean(safe) }}
+        >
+          {children}
+        </MarkdownTool>
       </MarkdownWrapOptionsContext.Provider>
     </Stack>
   );

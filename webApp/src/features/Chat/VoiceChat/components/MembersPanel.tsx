@@ -15,6 +15,7 @@ export const MembersPanel = ({
   onDecide,
   onPlayIntro,
   onRemove,
+  onReport,
 }: {
   members: RoomMember[];
   canReview: boolean;
@@ -23,6 +24,7 @@ export const MembersPanel = ({
   onDecide: (userId: string, decision: 'approved' | 'rejected') => Promise<void> | void;
   onPlayIntro: (userId: string) => Promise<string>;
   onRemove?: (userId: string) => void;
+  onReport?: (userId: string) => void;
 }) => {
   const { i18n } = useLingui();
   const [nowMs] = useState(() => Date.now());
@@ -145,7 +147,7 @@ export const MembersPanel = ({
               {lastSeen(member.lastOnlineIso)}
             </Typography>
           </Stack>
-          {canRemove && member.userId !== currentUserId ? (
+          {(canRemove || onReport) && member.userId !== currentUserId ? (
             <IconButton
               aria-label={i18n._('Person options')}
               data-testid={`voice-room-member-menu-${member.userId}`}
@@ -157,15 +159,28 @@ export const MembersPanel = ({
         </Stack>
       ))}
       <Menu anchorEl={menu?.anchor} open={Boolean(menu)} onClose={() => setMenu(null)}>
-        <MenuItem
-          onClick={() => {
-            const userId = menu?.userId;
-            setMenu(null);
-            if (userId) onRemove?.(userId);
-          }}
-        >
-          {i18n._('Remove from the room')}
-        </MenuItem>
+        {onReport ? (
+          <MenuItem
+            onClick={() => {
+              const userId = menu?.userId;
+              setMenu(null);
+              if (userId) onReport(userId);
+            }}
+          >
+            {i18n._('Report')}
+          </MenuItem>
+        ) : null}
+        {canRemove ? (
+          <MenuItem
+            onClick={() => {
+              const userId = menu?.userId;
+              setMenu(null);
+              if (userId) onRemove?.(userId);
+            }}
+          >
+            {i18n._('Remove from the room')}
+          </MenuItem>
+        ) : null}
       </Menu>
     </Stack>
   );

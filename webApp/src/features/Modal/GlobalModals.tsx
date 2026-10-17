@@ -6,6 +6,8 @@ import { UserProfileModal } from '@/features/Game/UserProfileModal';
 import { useUsage } from '@/features/Usage/useUsage';
 import { SubscriptionPaymentModal } from '@/features/Usage/Subscription/SubscriptionPaymentModal';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useSettings } from '@/features/Settings/useSettings';
+import { useAccess } from '@/features/Usage/useAccess';
 import { TeacherVoiceModal } from './TeacherVoiceModal';
 import { ReportModal } from '@/features/User/ReportModal';
 import { useStories } from '@/features/Sentence/useStories';
@@ -27,6 +29,8 @@ export const GlobalModals: React.FC = () => {
   const game = useGame();
   const usage = useUsage();
   const auth = useAuth();
+  const settings = useSettings();
+  const access = useAccess();
   const stories = useStories();
   const battles = useBattle();
   const globalModals = useGlobalModals();
@@ -53,9 +57,12 @@ export const GlobalModals: React.FC = () => {
       )}
 
       {globalModals.isShowPublicChat && <PublicChatModal onClose={globalModals.closeAllModels} />}
-      {auth.isIdentified && globalModals.isShowVoiceChat && (
+      {auth.isIdentified &&
+      globalModals.isShowVoiceChat &&
+      !settings.loading &&
+      !access.isBlockedByAge ? (
         <VoiceChatModal onClose={globalModals.closeAllModels} />
-      )}
+      ) : null}
       {globalModals.isShowDailyQuestions && (
         <DailyQuestionModal onClose={globalModals.closeAllModels} />
       )}

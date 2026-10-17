@@ -212,6 +212,8 @@ test('profile form edits picture, name, and bio', async () => {
       onSave={(next) => {
         saved = next.bio;
       }}
+      onDownload={() => {}}
+      onDelete={() => {}}
     />,
   );
   await expect.element(page.getByRole('textbox', { name: 'Username' })).toHaveValue('Alex');
@@ -279,6 +281,7 @@ test('a visitor sees messages without being able to play them', async () => {
   await expect.element(page.getByTestId('voice-chat-player')).toBeDisabled();
   await expect.element(page.getByTestId('voice-chat-like')).toBeDisabled();
   await expect.element(page.getByTestId('voice-chat-message-menu')).toBeDisabled();
+  await expect.element(page.getByText('vote was close')).not.toBeInTheDocument();
   await expect.element(page.getByText('2')).toBeVisible();
 });
 
@@ -361,6 +364,7 @@ test('join form explains the room before recording', async () => {
   await document.fonts.ready;
   await expect.element(page.getByText('We talk about the news without shouting.')).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Record introduction' })).toBeVisible();
+  await expect.element(page.getByText('Privacy policy')).toBeVisible();
   await expect.element(page.getByTestId('voice-room-join')).toMatchScreenshot('join-room');
 });
 

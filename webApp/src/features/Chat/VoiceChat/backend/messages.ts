@@ -6,6 +6,7 @@ import { SpeakingClubError } from './http';
 import { getRoomMember } from './members';
 import { notifyNewMessage } from './notifications';
 import { deleteSpeakingAudio } from './storage';
+import { messageForVisitor } from './guards';
 import { recountRecentMessages } from './rooms';
 
 const messages = (roomId: string) =>
@@ -65,7 +66,11 @@ const dropOldMessages = async (roomId: string): Promise<void> => {
   );
 };
 
-export const listRoomMessages = async (roomId: string, viewerId = ''): Promise<RoomMessage[]> => {
+export const listRoomMessages = async (
+  roomId: string,
+  viewerId = '',
+  options?: { includePrivate?: boolean },
+): Promise<RoomMessage[]> => {
   await dropOldMessages(roomId).catch((error) => {
     console.error('Could not remove old speaking club messages', error);
   });
@@ -74,7 +79,10 @@ export const listRoomMessages = async (roomId: string, viewerId = ''): Promise<R
     .orderBy('createdAtIso', 'asc')
     .limit(200)
     .get();
-  return snap.docs.map((doc) => toRoomMessage(doc.id, roomId, doc.data(), viewerId));
+  return snap.docs.map((doc) => {
+    const message = toRoomMessage(doc.id, roomId, doc.data(), viewerId);
+    return options?.includePrivate ? message : messageForVisitor(message);
+  });
 };
 
 export const getRoomMessage = async (
@@ -168,17 +176,28 @@ export const toggleMessageLike = async (params: {
   return toRoomMessage(snap.id, params.roomId, { ...data, likes, likeCount }, params.userId);
 };
 
-export const deleteOwnRoomMessage = async (params: {
+export const deleteRoomMessage = async (params: {
   roomId: string;
   messageId: string;
-  userId: string;
+  actorId: string;
+  asModerator: boolean;
 }): Promise<void> => {
   const message = await getRoomMessage(params.roomId, params.messageId);
   if (!message) throw new SpeakingClubError('That message is already gone.', 404);
-  if (message.senderId !== params.userId) {
+  const ownsIt = message.senderId === params.actorId;
+  if (!ownsIt && !params.asModerator) {
     throw new SpeakingClubError('You can only remove your own message.', 403);
   }
   await messages(params.roomId).doc(params.messageId).delete();
   await deleteSpeakingAudio(message.audioPath);
+  if (!ownsIt) {
+    await getDB().collection('speakingModeration').add({
+      action: 'deleteMessage',
+      actorId: params.actorId,
+      roomId: params.roomId,
+      messageId: params.messageId,
+      createdAtIso: new Date().toISOString(),
+    });
+  }
   await recountRecentMessages(params.roomId);
 };

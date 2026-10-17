@@ -11,6 +11,7 @@ import {
   SpeakingRoom,
 } from '../types';
 import { isAlexAccount } from './access';
+import { isAllowedPreviewUrl } from './guards';
 import { SpeakingClubError } from './http';
 
 const rooms = () => getDB().collection('speakingRooms');
@@ -54,14 +55,7 @@ export const toPublicClub = (room: SpeakingRoom): PublicSpeakingClub => ({
   messagesLast7Days: room.messagesLast7Days,
 });
 
-const isPictureUrl = (value: string): boolean => {
-  try {
-    const url = new URL(value);
-    return (url.protocol === 'https:' || url.protocol === 'http:') && value.length <= 800;
-  } catch {
-    return false;
-  }
-};
+const isPictureUrl = (value: string): boolean => isAllowedPreviewUrl(value);
 
 export const assertRoomInput = (input: RoomDraft): void => {
   if (input.title.trim().length < 2) throw new SpeakingClubError('Add a room name.');

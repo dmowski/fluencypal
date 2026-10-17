@@ -17,6 +17,8 @@ export const RoomThread = ({
   onOpenSettings,
   onRemove,
   onLike,
+  onReport,
+  canModerate,
   composer,
 }: {
   room: SpeakingRoom;
@@ -29,6 +31,8 @@ export const RoomThread = ({
   onOpenSettings: () => void;
   onRemove: (messageId: string) => void;
   onLike?: (messageId: string) => void;
+  onReport?: (messageId: string) => void;
+  canModerate?: boolean;
   composer: React.ReactNode;
 }) => {
   const { i18n } = useLingui();
@@ -75,12 +79,15 @@ export const RoomThread = ({
                 key={message.id}
                 message={message}
                 audioUrl={audioUrls[message.id] || null}
-                canRemove={!locked && message.senderId === currentUserId}
+                canRemove={!locked && (message.senderId === currentUserId || Boolean(canModerate))}
                 canLike={!locked}
                 locked={locked}
-                senderBio={sender?.bio || sender?.introTranscript || ''}
+                senderBio={
+                  locked ? sender?.bio || '' : sender?.bio || sender?.introTranscript || ''
+                }
                 onRemove={() => onRemove(message.id)}
                 onLike={() => onLike?.(message.id)}
+                onReport={!locked && onReport ? () => onReport(message.id) : undefined}
               />
             );
           })}

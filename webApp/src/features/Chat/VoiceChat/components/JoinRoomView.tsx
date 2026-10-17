@@ -4,7 +4,9 @@ import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { SubmitForm, SubmitRecording } from '@/features/Chat/SubmitForm';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
+import { coverImageCss } from '../backend/guards';
 import { SpeakingRoom } from '../types';
+import { VoiceNotice } from './VoiceNotice';
 
 export const JoinRoomView = ({
   room,
@@ -45,8 +47,8 @@ export const JoinRoomView = ({
           height: 180,
           borderRadius: '16px',
           backgroundColor: '#243044',
-          backgroundImage: room.previewImageUrl
-            ? `linear-gradient(180deg, rgba(10,14,22,0.1), rgba(10,14,22,0.55)), url(${room.previewImageUrl})`
+          backgroundImage: coverImageCss(room.previewImageUrl)
+            ? `linear-gradient(180deg, rgba(10,14,22,0.1), rgba(10,14,22,0.55)), ${coverImageCss(room.previewImageUrl)}`
             : undefined,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -78,15 +80,15 @@ export const JoinRoomView = ({
 
         <Stack sx={{ gap: '10px' }}>
           <Typography variant="h5">{i18n._('What we usually talk about')}</Typography>
-          <Markdown>{room.discussMarkdown}</Markdown>
+          <Markdown safe>{room.discussMarkdown}</Markdown>
         </Stack>
         <Stack sx={{ gap: '10px' }}>
           <Typography variant="h5">{i18n._('Room rules')}</Typography>
-          <Markdown>{room.rulesMarkdown}</Markdown>
+          <Markdown safe>{room.rulesMarkdown}</Markdown>
         </Stack>
         <Stack sx={{ gap: '10px' }}>
           <Typography variant="h5">{i18n._('Your introduction')}</Typography>
-          <Markdown>{room.joinPromptMarkdown}</Markdown>
+          <Markdown safe>{room.joinPromptMarkdown}</Markdown>
         </Stack>
       </Stack>
       <Stack
@@ -98,6 +100,7 @@ export const JoinRoomView = ({
           padding: '0px',
         }}
       >
+        <VoiceNotice kind="intro" />
         <SubmitForm
           onSubmit={async () => {}}
           onSubmitRecording={onSubmitRecording}

@@ -469,17 +469,19 @@ service cloud.firestore {
     }
 
     // Speaking rooms (voice chat). Writes go through the API.
+    // Room and member documents stay on the server. Only people in the room
+    // can subscribe to messages, and that is how a new recording shows up live.
     match /speakingRooms/{roomId} {
-      allow read: if isSignedIn();
+      allow read: if false;
       allow write: if false;
 
       match /members/{memberId} {
-        allow read: if isSignedIn();
-        allow write: if false;
+        allow read, write: if false;
       }
 
       match /messages/{messageId} {
-        allow read: if isSignedIn();
+        allow read: if isSignedIn()
+          && get(/databases/$(database)/documents/speakingRooms/$(roomId)/members/$(request.auth.uid)).data.status == 'approved';
         allow write: if false;
       }
     }

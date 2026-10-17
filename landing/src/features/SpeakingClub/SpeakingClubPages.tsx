@@ -8,6 +8,20 @@ import { PublicSpeakingClub } from './publicClubs';
 const cardLink = (lang: SupportedLanguage, slug: string) =>
   `${getUrlStart(lang)}speaking-club/${slug}`;
 
+const coverImage = (value: string): string | undefined => {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || /[\s()"']/.test(value)) return undefined;
+    const hostOk =
+      url.hostname === 'storage.googleapis.com' ||
+      url.hostname === 'firebasestorage.googleapis.com';
+    if (!hostOk || !decodeURIComponent(url.pathname).includes('publicImages')) return undefined;
+    return `url("${value}")`;
+  } catch {
+    return undefined;
+  }
+};
+
 export const SpeakingClubList = ({
   lang,
   clubs,
@@ -52,8 +66,8 @@ export const SpeakingClubList = ({
             textDecoration: 'none',
             justifyContent: 'flex-end',
             backgroundColor: '#243044',
-            backgroundImage: club.previewImageUrl
-              ? `linear-gradient(180deg, rgba(10,14,22,0.2), rgba(10,14,22,0.82)), url(${club.previewImageUrl})`
+            backgroundImage: coverImage(club.previewImageUrl)
+              ? `linear-gradient(180deg, rgba(10,14,22,0.2), rgba(10,14,22,0.82)), ${coverImage(club.previewImageUrl)}`
               : undefined,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -105,7 +119,7 @@ export const SpeakingClubDetail = ({
           height: 220,
           borderRadius: '16px',
           backgroundColor: '#243044',
-          backgroundImage: club.previewImageUrl ? `url(${club.previewImageUrl})` : undefined,
+          backgroundImage: coverImage(club.previewImageUrl),
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -130,11 +144,11 @@ export const SpeakingClubDetail = ({
       <Typography variant="h5" sx={{ fontWeight: 800 }}>
         {i18n._('What we usually talk about')}
       </Typography>
-      <Markdown>{club.discussMarkdown}</Markdown>
+      <Markdown safe>{club.discussMarkdown}</Markdown>
       <Typography variant="h5" sx={{ fontWeight: 800 }}>
         {i18n._('Room rules')}
       </Typography>
-      <Markdown>{club.rulesMarkdown}</Markdown>
+      <Markdown safe>{club.rulesMarkdown}</Markdown>
       <Button
         href={`${getAppUrlStart(lang)}practice?voiceChat=true&voiceRoom=${club.slug}`}
         variant="contained"

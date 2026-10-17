@@ -11,13 +11,18 @@ export const VoiceProfileForm = ({
   bio,
   isSaving,
   onSave,
+  onDownload,
+  onDelete,
 }: {
   bio: string;
   isSaving: boolean;
   onSave: (next: { username: string; bio: string; avatarUrl: string }) => void;
+  onDownload?: () => Promise<void> | void;
+  onDelete?: () => Promise<void> | void;
 }) => {
   const { i18n } = useLingui();
   const game = useGame();
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const [username, setUsername] = useState(game.myUserName || '');
   const [about, setAbout] = useState(bio);
   const [avatarUrl, setAvatarUrl] = useState(game.myAvatar || defaultAvatar);
@@ -66,6 +71,37 @@ export const VoiceProfileForm = ({
       >
         {isSaving ? i18n._('Saving...') : i18n._('Save')}
       </Button>
+      <Stack sx={{ gap: '6px', paddingTop: '8px' }}>
+        <Typography sx={{ fontSize: '13px', opacity: 0.7 }}>
+          {i18n._('A text file of your bio, introductions, and messages.')}
+        </Typography>
+        <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
+          <Button
+            variant="text"
+            disabled={!onDownload || isSaving}
+            onClick={() => void onDownload?.()}
+            sx={{ textTransform: 'none' }}
+          >
+            {i18n._('Download my voice data')}
+          </Button>
+          <Button
+            variant="text"
+            color="inherit"
+            disabled={!onDelete || isSaving}
+            onClick={() => {
+              if (!confirmDelete) {
+                setConfirmDelete(true);
+                return;
+              }
+              setConfirmDelete(false);
+              void onDelete?.();
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            {confirmDelete ? i18n._('Yes, delete my recordings') : i18n._('Delete my voice data')}
+          </Button>
+        </Stack>
+      </Stack>
     </Stack>
   );
 };

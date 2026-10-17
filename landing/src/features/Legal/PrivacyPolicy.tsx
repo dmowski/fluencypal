@@ -13,7 +13,7 @@ export const PrivacyPolicy = ({ lang }: PageProps) => {
   return (
     <LegalContainer page="privacy" lang={lang}>
       <Typography variant="h1">{i18n._(`Privacy Policy`)}</Typography>
-      <Typography>Effective Date: Mar 17, 2025</Typography>
+      <Typography>Effective Date: Oct 17, 2026</Typography>
       <Stack
         sx={{
           fontSize: '20px',
@@ -90,10 +90,22 @@ During the term of the contract, when providing services, we come into possessio
   G. Right to object \- you may object to the processing of your data if the basis for the use of data is our legitimate interest \- article 21 of the Regulation. In such a situation, after examining your request, we will no longer be able to process the personal data subject to the objection on this basis, unless we demonstrate the existence of legitimate grounds for the processing that are considered to override your interests, rights and freedoms;  
   
   H. If, in your opinion, the processing of personal data violates the provisions of the Regulation, you have the right to lodge a complaint with the supervisory authority, i.e. President of the Personal Data Protection Office.  
-     
+
 7. **Contact**
 
-If you need any additional information related to the personal data protection or would like to exercise your rights, please contact us at the e-mail address: **rodo@twojstartup.pl** 
+If you need any additional information related to the personal data protection or would like to exercise your rights, please contact us at the e-mail address: **rodo@twojstartup.pl**
+
+8. **Speaking clubs**
+
+If you join a speaking club, we store your voice recording, a text version of it, your name, and your bio so the people in that room can hear you and understand you.
+
+OpenAI writes down what you said and can suggest a clearer sentence. The recording and the text are stored in Firebase. Email about the room is sent with Resend. These companies process that data for us.
+
+A room message is deleted after 7 days, including the recording. An introduction recording is deleted 30 days after the room decides, or sooner if you are removed. The short text of an introduction can stay visible to people in the room until you delete your voice data.
+
+In voice chat, under My profile, you can download a text file of your bio, introductions, and messages, or delete your voice data without deleting the rest of your account. Deleting your FluencyPal account also deletes this voice data. You can report a message or a person from the message menu.
+
+A parent has to allow an account before a child can open voice chat. 
 
 
 `}

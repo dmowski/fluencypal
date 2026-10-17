@@ -18,6 +18,7 @@ export const VoiceMessageRow = ({
   senderBio,
   onRemove,
   onLike,
+  onReport,
 }: {
   message: RoomMessage;
   audioUrl: string | null;
@@ -27,6 +28,7 @@ export const VoiceMessageRow = ({
   senderBio?: string;
   onRemove: () => void;
   onLike?: () => void;
+  onReport?: () => void;
 }) => {
   const { i18n } = useLingui();
   const [menu, setMenu] = useState<HTMLElement | null>(null);
@@ -163,6 +165,17 @@ export const VoiceMessageRow = ({
           >
             {i18n._('Transcription')}
           </MenuItem>
+          {onReport && !locked ? (
+            <MenuItem
+              data-testid="voice-chat-report"
+              onClick={() => {
+                setMenu(null);
+                onReport();
+              }}
+            >
+              {i18n._('Report')}
+            </MenuItem>
+          ) : null}
           {canRemove ? (
             <MenuItem
               onClick={() => {
