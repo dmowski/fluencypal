@@ -86,6 +86,29 @@ export const RoomListView = ({
           <Typography sx={{ opacity: 0.75 }}>
             {i18n._('Pick a room, listen, and leave a voice message when you are ready.')}
           </Typography>
+
+          <Typography
+            sx={{
+              opacity: 0.75,
+              border: '1px solid #333',
+              borderRadius: '16px',
+              padding: '10px',
+              backgroundColor: 'rgba(36, 48, 68, 0.1)',
+              fontSize: '14px',
+              lineHeight: 1.5,
+              fontWeight: 400,
+              fontFamily: 'inherit',
+              fontStyle: 'inherit',
+              fontVariant: 'inherit',
+              fontStretch: 'inherit',
+              fontDisplay: 'inherit',
+              maxWidth: '400px',
+            }}
+          >
+            {i18n._(
+              'That feature is in development. So it might be buggy or not work as expected. But you can try it and let me know what you think.',
+            )}
+          </Typography>
         </Stack>
         <IconButton
           aria-label={i18n._('Notification settings')}
