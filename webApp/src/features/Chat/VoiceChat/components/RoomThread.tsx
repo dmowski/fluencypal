@@ -26,7 +26,7 @@ export const RoomThread = ({
   const { i18n } = useLingui();
 
   return (
-    <Stack data-testid="voice-room-thread" sx={{ width: '100%', maxWidth: 760, gap: '16px' }}>
+    <Stack data-testid="voice-room-thread" sx={{ width: '100%', maxWidth: 700, gap: '16px' }}>
       <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Typography variant="h4" sx={{ fontWeight: 800 }}>
           {room.title}

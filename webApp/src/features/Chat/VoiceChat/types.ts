@@ -1,3 +1,4 @@
+import { SupportedLanguage } from '@/features/Lang/lang';
 import { SpeakingNotificationSettings } from '@/features/Settings/userSettings';
 
 export const SPEAKING_CLUB_FOUNDER_UID = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
@@ -33,6 +34,7 @@ export interface SpeakingRoom {
   isPublic: boolean;
   rulesMarkdown: string;
   discussMarkdown: string;
+  languageCode: SupportedLanguage;
   creatorId: string;
   createdAtIso: string;
   updatedAtIso: string;
@@ -108,6 +110,7 @@ export interface PublicSpeakingClub {
   joinPromptMarkdown: string;
   rulesMarkdown: string;
   discussMarkdown: string;
+  languageCode: SupportedLanguage;
   memberCount: number;
   messagesLast7Days: number;
 }
@@ -120,6 +123,7 @@ export interface RoomDraft {
   isPublic: boolean;
   rulesMarkdown: string;
   discussMarkdown: string;
+  languageCode: SupportedLanguage;
   previewUrls: string[];
   selectedPreviewUrl: string;
 }
@@ -128,13 +132,13 @@ export const DEFAULT_JOIN_PROMPT = `Please tell us a little about yourself.
 
 Where are you from, and what do you enjoy about this topic? A recording of about three minutes helps everyone get a real sense of who you are.`;
 
-export const DEFAULT_RULES = `Be kind.
+export const DEFAULT_RULES = `Listen to the whole message before you answer.
 
-One person speaks at a time. It is fine to listen first. Disagree with ideas, not with people.`;
+Talk about the topic. Be patient when someone is looking for a word.`;
 
 export const DEFAULT_DISCUSS = `We talk about everyday things connected to this topic.
 
-You do not need perfect English. Come as you are, listen first if you like, and speak when you feel ready.`;
+You do not need perfect grammar. Come as you are, listen first if you like, and leave a message when you feel ready.`;
 
 export const emptyRoomDraft = (): RoomDraft => ({
   title: '',
@@ -144,6 +148,7 @@ export const emptyRoomDraft = (): RoomDraft => ({
   isPublic: false,
   rulesMarkdown: DEFAULT_RULES,
   discussMarkdown: DEFAULT_DISCUSS,
+  languageCode: 'en',
   previewUrls: [],
   selectedPreviewUrl: '',
 });

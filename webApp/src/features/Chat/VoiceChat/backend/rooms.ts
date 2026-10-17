@@ -1,4 +1,5 @@
 import { getDB } from '@/app/api/config/firebase';
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { DocumentData } from 'firebase-admin/firestore';
 import { isRoomSlug, slugifyRoomTitle } from '../slug';
 import {
@@ -17,6 +18,9 @@ const rooms = () => getDB().collection('speakingRooms');
 const asReviewMode = (value: unknown): RoomReviewMode =>
   value === 'alexOnly' ? 'alexOnly' : 'allMembers';
 
+const asLanguage = (value: unknown): SupportedLanguage =>
+  supportedLanguages.includes(value as SupportedLanguage) ? (value as SupportedLanguage) : 'en';
+
 export const toSpeakingRoom = (id: string, data: DocumentData): SpeakingRoom => ({
   id,
   slug: typeof data.slug === 'string' ? data.slug : id,
@@ -28,6 +32,7 @@ export const toSpeakingRoom = (id: string, data: DocumentData): SpeakingRoom => 
   isPublic: data.isPublic === true,
   rulesMarkdown: typeof data.rulesMarkdown === 'string' ? data.rulesMarkdown : '',
   discussMarkdown: typeof data.discussMarkdown === 'string' ? data.discussMarkdown : '',
+  languageCode: asLanguage(data.languageCode),
   creatorId: typeof data.creatorId === 'string' ? data.creatorId : '',
   createdAtIso: typeof data.createdAtIso === 'string' ? data.createdAtIso : '',
   updatedAtIso: typeof data.updatedAtIso === 'string' ? data.updatedAtIso : '',
@@ -44,6 +49,7 @@ export const toPublicClub = (room: SpeakingRoom): PublicSpeakingClub => ({
   joinPromptMarkdown: room.joinPromptMarkdown,
   rulesMarkdown: room.rulesMarkdown,
   discussMarkdown: room.discussMarkdown,
+  languageCode: room.languageCode,
   memberCount: room.memberCount,
   messagesLast7Days: room.messagesLast7Days,
 });
@@ -98,6 +104,7 @@ export const createSpeakingRoom = async (params: {
     isPublic: params.input.isPublic,
     rulesMarkdown: params.input.rulesMarkdown.trim(),
     discussMarkdown: params.input.discussMarkdown.trim(),
+    languageCode: params.input.languageCode,
     creatorId: params.creatorId,
     createdAtIso: now,
     updatedAtIso: now,
@@ -149,6 +156,7 @@ export const updateSpeakingRoom = async (params: {
     isPublic: params.input.isPublic,
     rulesMarkdown: params.input.rulesMarkdown.trim(),
     discussMarkdown: params.input.discussMarkdown.trim(),
+    languageCode: params.input.languageCode,
     updatedAtIso: new Date().toISOString(),
   };
   await ref.set(next);

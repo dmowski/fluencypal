@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { MoreVertical, Pause, Play } from 'lucide-react';
 import { Avatar } from '@/features/User/Avatar';
 import { RoomMessage } from '../types';
+import { VoiceWaveform } from './VoiceWaveform';
 
 export const VoiceMessageRow = ({
   message,
@@ -22,6 +23,7 @@ export const VoiceMessageRow = ({
   const [menu, setMenu] = useState<HTMLElement | null>(null);
   const [showTranscript, setShowTranscript] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   return (
     <Stack
@@ -37,29 +39,19 @@ export const VoiceMessageRow = ({
             aria-label={isPlaying ? i18n._('Pause') : i18n._('Play')}
             data-testid="voice-chat-player"
             disabled={!audioUrl}
-            onClick={(event) => {
-              const audio = event.currentTarget.parentElement?.querySelector('audio');
+            onClick={() => {
+              const audio = audioRef.current;
               if (!audio) return;
-              if (audio.paused) {
-                void audio.play();
-              } else {
-                audio.pause();
-              }
+              if (audio.paused) void audio.play();
+              else audio.pause();
             }}
           >
             {isPlaying ? <Pause size={18} /> : <Play size={18} />}
           </IconButton>
-          <Typography sx={{ opacity: 0.75 }}>
+          <VoiceWaveform audioUrl={audioUrl} audioRef={audioRef} onPlayingChange={setIsPlaying} />
+          <Typography sx={{ opacity: 0.75, flexShrink: 0 }}>
             {i18n._('{count} sec', { count: message.durationSec })}
           </Typography>
-          {audioUrl ? (
-            <audio
-              src={audioUrl}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onEnded={() => setIsPlaying(false)}
-            />
-          ) : null}
           <IconButton
             aria-label={i18n._('Message options')}
             data-testid="voice-chat-message-menu"

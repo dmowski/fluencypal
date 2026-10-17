@@ -36,9 +36,7 @@ export const FluencyCallCardHeader = ({
       </Typography>
 
       <Typography sx={{ margin: '6px 0', color: token.muted }}>
-        {i18n._(
-          'A short practice. A few friendly people. Speak when you are ready. You can listen first.',
-        )}
+        {i18n._('A short practice. Speak when you are ready. You can listen first.')}
       </Typography>
 
       {paidNotice ? (

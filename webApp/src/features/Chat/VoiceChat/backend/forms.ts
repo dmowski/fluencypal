@@ -1,3 +1,4 @@
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { RoomDraft, RoomReviewMode } from '../types';
 import { readOptionalText, readText, SpeakingClubError } from './http';
 
@@ -11,8 +12,11 @@ export const parseRoomDraft = (body: Record<string, unknown>): RoomDraft => {
     isPublic: body.isPublic === true,
     rulesMarkdown: readOptionalText(body.rulesMarkdown, 8000),
     discussMarkdown: readOptionalText(body.discussMarkdown, 8000),
+    languageCode: supportedLanguages.includes(body.languageCode as SupportedLanguage)
+      ? (body.languageCode as SupportedLanguage)
+      : 'en',
     previewUrls: [],
-    selectedPreviewUrl: readText(body.selectedPreviewUrl, 500, 'Picture'),
+    selectedPreviewUrl: readText(body.selectedPreviewUrl, 800, 'Picture'),
   };
 };
 

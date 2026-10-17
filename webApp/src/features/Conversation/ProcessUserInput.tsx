@@ -22,12 +22,14 @@ export const ProcessUserInput = ({
   userMessage,
   transcriptionBlob,
   previousBotMessage,
+  onAnalyzed,
 }: {
   isTranscribing: boolean;
   userMessage: string;
   transcriptionBlob: Blob | null;
   previousBotMessage: string;
   isRecording: boolean;
+  onAnalyzed?: (result: AnalyzeUserMessageOutput) => void;
 }) => {
   const { i18n } = useLingui();
   const translator = useTranslate();
@@ -63,6 +65,7 @@ export const ProcessUserInput = ({
         isNeedCorrection: isBad,
         error: '',
       };
+      onAnalyzed?.(aiSummary);
       setResults((prevResults) => ({
         ...prevResults,
         [usersNewMessage]: result,

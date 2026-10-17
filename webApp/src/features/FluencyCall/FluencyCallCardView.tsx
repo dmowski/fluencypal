@@ -20,7 +20,7 @@ const stackColumns = {
   gridTemplateAreas: '"video" "request"',
   alignItems: 'center',
   gap: '20px',
-  padding: '20px 0',
+  padding: '0 0 10px 0',
 };
 
 export const FluencyCallCardView = ({
@@ -54,15 +54,14 @@ export const FluencyCallCardView = ({
       }}
     >
       <Stack sx={{ padding: '24px 20px 20px 20px', gap: 0, [narrow]: { padding: '20px' } }}>
-        <FluencyCallCardHeader titleId={`${uid}-title`} canJoin={canJoin} paidNotice={paidNotice} />
         <Stack
           sx={{
             display: 'grid',
             gridTemplateColumns: 'auto 1fr',
-            gridTemplateAreas: '"video request"',
+            gridTemplateAreas: '"request video"',
             alignItems: 'center',
             gap: '30px',
-            padding: '20px 0 0px 0',
+            padding: '0',
             '@media (max-width: 600px)': stackColumns,
             '@container fluency-call-card (max-width: 560px)': stackColumns,
           }}

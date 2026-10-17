@@ -1,3 +1,4 @@
+import { SupportedLanguage, supportedLanguages } from '@/features/Lang/lang';
 import { emptyRoomDraft, ROOM_DRAFT_STORAGE_KEY, RoomDraft, RoomReviewMode } from './types';
 
 const isReviewMode = (value: unknown): value is RoomReviewMode =>
@@ -30,6 +31,9 @@ export const readRoomDraft = (): RoomDraft => {
         typeof parsed.discussMarkdown === 'string'
           ? parsed.discussMarkdown.slice(0, 8000)
           : base.discussMarkdown,
+      languageCode: supportedLanguages.includes(parsed.languageCode as SupportedLanguage)
+        ? (parsed.languageCode as SupportedLanguage)
+        : base.languageCode,
       previewUrls,
       selectedPreviewUrl:
         typeof parsed.selectedPreviewUrl === 'string' &&

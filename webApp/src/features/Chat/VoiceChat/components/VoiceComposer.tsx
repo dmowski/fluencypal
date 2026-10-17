@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Mic } from 'lucide-react';
-import { useVoiceTake } from '../useVoiceTake';
+import { useAudioRecorder } from '@/features/Audio/useAudioRecorder';
+import { ProcessUserInput } from '@/features/Conversation/ProcessUserInput';
 
 export const VoiceComposer = ({
   onSend,
@@ -18,10 +20,23 @@ export const VoiceComposer = ({
   isSending: boolean;
 }) => {
   const { i18n } = useLingui();
-  const { recorder, transcript, corrected, suggestion, durationSec } = useVoiceTake();
+  const recorder = useAudioRecorder();
+  const [corrected, setCorrected] = useState('');
+  const transcript = recorder.transcription || '';
+  const showCorrection = recorder.isTranscribing || transcript.length > 0;
 
   return (
-    <Stack data-testid="voice-chat-recorder" sx={{ width: '100%', gap: '10px' }}>
+    <Stack data-testid="voice-chat-recorder" sx={{ width: '100%', gap: '12px' }}>
+      {showCorrection ? (
+        <ProcessUserInput
+          isTranscribing={recorder.isTranscribing}
+          isRecording={recorder.isRecording}
+          userMessage={transcript}
+          previousBotMessage=""
+          transcriptionBlob={recorder.transcriptionBlob}
+          onAnalyzed={(result) => setCorrected(result.correctedMessage || result.sourceMessage)}
+        />
+      ) : null}
       {recorder.visualizerComponent}
       {!transcript ? (
         <Button
@@ -42,46 +57,41 @@ export const VoiceComposer = ({
               : i18n._('Record a message')}
         </Button>
       ) : (
-        <Stack sx={{ gap: '8px' }}>
-          <Typography sx={{ fontWeight: 700 }}>{i18n._('What we heard')}</Typography>
-          <Typography>{transcript}</Typography>
-          {corrected && corrected.trim() !== transcript.trim() ? (
-            <>
-              <Typography sx={{ fontWeight: 700 }}>{i18n._('A clearer version')}</Typography>
-              <Typography>{corrected}</Typography>
-            </>
-          ) : null}
-          {suggestion ? <Typography sx={{ opacity: 0.8 }}>{suggestion}</Typography> : null}
-          <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
-            <Button
-              data-testid="voice-chat-send"
-              variant="contained"
-              color="info"
-              disabled={isSending || !recorder.transcriptionBlob}
-              onClick={() => {
-                if (!recorder.transcriptionBlob) return;
-                void onSend({
-                  blob: recorder.transcriptionBlob,
-                  durationSec,
-                  transcript,
-                  correctedTranscript: corrected || transcript,
-                }).then(() => recorder.removeTranscript());
-              }}
-              sx={{ textTransform: 'none' }}
-            >
-              {isSending ? i18n._('Sending...') : i18n._('Send voice message')}
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => {
+        <Stack direction="row" sx={{ gap: '8px', flexWrap: 'wrap' }}>
+          <Button
+            data-testid="voice-chat-send"
+            variant="contained"
+            color="info"
+            disabled={isSending || recorder.isTranscribing || !recorder.transcriptionBlob}
+            onClick={() => {
+              if (!recorder.transcriptionBlob) return;
+              const durationSec = Math.max(1, Math.round(recorder.recordingMilliSeconds / 1000));
+              void onSend({
+                blob: recorder.transcriptionBlob,
+                durationSec,
+                transcript,
+                correctedTranscript: corrected || transcript,
+              }).then(() => {
+                setCorrected('');
                 recorder.removeTranscript();
-                void recorder.startRecording();
-              }}
-              sx={{ textTransform: 'none' }}
-            >
-              {i18n._('Record again')}
-            </Button>
-          </Stack>
+              });
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            {isSending ? i18n._('Sending...') : i18n._('Send voice message')}
+          </Button>
+          <Button
+            variant="outlined"
+            disabled={recorder.isTranscribing}
+            onClick={() => {
+              setCorrected('');
+              recorder.removeTranscript();
+              void recorder.startRecording();
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            {i18n._('Record again')}
+          </Button>
         </Stack>
       )}
       {recorder.error ? <Typography color="error">{recorder.error}</Typography> : null}

@@ -1,10 +1,23 @@
 'use client';
 
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Plus, Settings } from 'lucide-react';
+import {
+  emojiLanguageName,
+  fullLanguageName,
+  SupportedLanguage,
+  supportedLanguagesToLearn,
+} from '@/features/Lang/lang';
 import { RoomListItem } from '../types';
 import { RoomCard } from './RoomCard';
+
+const languageChoices = (selected: SupportedLanguage): SupportedLanguage[] => {
+  const choices = [...supportedLanguagesToLearn];
+  if (!choices.includes(selected)) choices.unshift(selected);
+  return choices;
+};
 
 export const RoomListView = ({
   rooms,
@@ -13,6 +26,8 @@ export const RoomListView = ({
   onOpenRoom,
   onCreate,
   onOpenSettings,
+  language,
+  onLanguageChange,
 }: {
   rooms: RoomListItem[];
   isLoading: boolean;
@@ -20,16 +35,54 @@ export const RoomListView = ({
   onOpenRoom: (roomId: string) => void;
   onCreate: () => void;
   onOpenSettings: () => void;
+  language: SupportedLanguage;
+  onLanguageChange: (language: SupportedLanguage) => void;
 }) => {
   const { i18n } = useLingui();
+  const [languageMenu, setLanguageMenu] = useState<HTMLElement | null>(null);
 
   return (
     <Stack data-testid="voice-chat-modal" sx={{ width: '100%', maxWidth: 760, gap: '16px' }}>
       <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
         <Stack sx={{ gap: '4px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 800 }}>
-            {i18n._('Voice chat')}
-          </Typography>
+          <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
+            <Typography variant="h4" sx={{ fontWeight: 800 }}>
+              {i18n._('Voice chat')}
+            </Typography>
+            <Button
+              data-testid="voice-room-list-language"
+              aria-label={fullLanguageName[language]}
+              aria-haspopup="listbox"
+              onClick={(event) => setLanguageMenu(event.currentTarget)}
+              sx={{
+                minWidth: 0,
+                padding: '0 2px',
+                fontSize: '28px',
+                lineHeight: 1,
+                color: 'inherit',
+              }}
+            >
+              {emojiLanguageName[language]}
+            </Button>
+            <Menu
+              anchorEl={languageMenu}
+              open={Boolean(languageMenu)}
+              onClose={() => setLanguageMenu(null)}
+            >
+              {languageChoices(language).map((code) => (
+                <MenuItem
+                  key={code}
+                  selected={code === language}
+                  onClick={() => {
+                    onLanguageChange(code);
+                    setLanguageMenu(null);
+                  }}
+                >
+                  {emojiLanguageName[code]} {fullLanguageName[code]}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Stack>
           <Typography sx={{ opacity: 0.75 }}>
             {i18n._('Pick a room, listen, and leave a voice message when you are ready.')}
           </Typography>
@@ -50,7 +103,7 @@ export const RoomListView = ({
       {isLoading ? <Typography>{i18n._('Loading rooms...')}</Typography> : null}
       {!isLoading && rooms.length === 0 ? (
         <Typography data-testid="voice-chat-empty">
-          {i18n._('No rooms yet. You can start one.')}
+          {i18n._('No rooms for this language yet. You can start one.')}
         </Typography>
       ) : null}
       <Stack sx={{ gap: '12px' }}>

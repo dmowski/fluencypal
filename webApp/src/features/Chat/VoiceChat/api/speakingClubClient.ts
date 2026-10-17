@@ -49,6 +49,7 @@ export const createSpeakingRoom = (token: string, draft: RoomDraft) =>
       isPublic: draft.isPublic,
       rulesMarkdown: draft.rulesMarkdown,
       discussMarkdown: draft.discussMarkdown,
+      languageCode: draft.languageCode,
       selectedPreviewUrl: draft.selectedPreviewUrl,
     }),
   });
@@ -64,6 +65,7 @@ export const updateSpeakingRoom = (token: string, roomId: string, draft: RoomDra
       isPublic: draft.isPublic,
       rulesMarkdown: draft.rulesMarkdown,
       discussMarkdown: draft.discussMarkdown,
+      languageCode: draft.languageCode,
       selectedPreviewUrl: draft.selectedPreviewUrl,
     }),
   });

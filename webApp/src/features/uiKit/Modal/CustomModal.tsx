@@ -70,7 +70,10 @@ export const CustomModal = ({
               color: 'rgba(255, 255, 255, 1)',
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
             }}
-            onClick={() => onClose()}
+            onClick={(event) => {
+              event.stopPropagation();
+              onClose();
+            }}
             size="large"
           >
             <X strokeWidth={'3px'} />
