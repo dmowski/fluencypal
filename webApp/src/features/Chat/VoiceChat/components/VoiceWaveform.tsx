@@ -24,20 +24,33 @@ const peaksFromBuffer = (buffer: AudioBuffer): number[] => {
   return peaks.map((peak) => peak / loudest);
 };
 
+const previewPeaks = (seed: string): number[] => {
+  let hash = 0;
+  for (const char of seed) hash = (hash * 33 + char.charCodeAt(0)) >>> 0;
+  return Array.from({ length: BAR_COUNT }, (_, index) => {
+    hash = (hash * 1664525 + 1013904223 + index) >>> 0;
+    return (hash % 100) / 100;
+  });
+};
+
 export const VoiceWaveform = ({
   audioUrl,
   audioRef,
   onPlayingChange,
+  previewSeed,
 }: {
   audioUrl: string | null;
   audioRef: React.RefObject<HTMLAudioElement | null>;
   onPlayingChange?: (isPlaying: boolean) => void;
+  previewSeed?: string;
 }) => {
-  const [peaks, setPeaks] = useState<number[]>([]);
+  const [peaks, setPeaks] = useState<number[]>(() =>
+    previewSeed ? previewPeaks(previewSeed) : [],
+  );
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (!audioUrl) return;
+    if (previewSeed || !audioUrl) return;
     let cancelled = false;
     const load = async () => {
       const response = await fetch(audioUrl);
@@ -56,7 +69,7 @@ export const VoiceWaveform = ({
     return () => {
       cancelled = true;
     };
-  }, [audioUrl]);
+  }, [audioUrl, previewSeed]);
 
   const seek = (clientX: number, element: HTMLDivElement) => {
     const audio = audioRef.current;
@@ -75,6 +88,7 @@ export const VoiceWaveform = ({
       data-testid="voice-chat-waveform"
       direction="row"
       onPointerDown={(event) => {
+        if (previewSeed) return;
         event.currentTarget.setPointerCapture(event.pointerId);
         seek(event.clientX, event.currentTarget);
       }}
@@ -88,7 +102,7 @@ export const VoiceWaveform = ({
         height: 32,
         alignItems: 'center',
         justifyContent: 'space-between',
-        cursor: 'pointer',
+        cursor: previewSeed ? 'default' : 'pointer',
         touchAction: 'none',
       }}
     >
@@ -107,20 +121,22 @@ export const VoiceWaveform = ({
           />
         );
       })}
-      <Stack
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: `${progress * 100}%`,
-          width: 12,
-          height: 12,
-          marginLeft: '-6px',
-          marginTop: '-6px',
-          borderRadius: '50%',
-          backgroundColor: '#2f80ed',
-          pointerEvents: 'none',
-        }}
-      />
+      {previewSeed ? null : (
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: `${progress * 100}%`,
+            width: 12,
+            height: 12,
+            marginLeft: '-6px',
+            marginTop: '-6px',
+            borderRadius: '50%',
+            backgroundColor: '#2f80ed',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
       {audioUrl ? (
         <audio
           ref={audioRef}

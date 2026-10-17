@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     const user = await requireSpeakingUser(request);
     const rooms = await listRoomsForUser({ userId: user.uid, email: user.email });
     const profile = await loadSpeakingProfile(user.uid);
-    return NextResponse.json({ rooms, prefs: profile.prefs });
+    return NextResponse.json({ rooms, prefs: profile.prefs, bio: profile.bio });
   } catch (error) {
     return speakingClubErrorResponse(error);
   }

@@ -7,6 +7,7 @@ import {
   speakingClubErrorResponse,
 } from '@/features/Chat/VoiceChat/backend/http';
 import { decideJoinRequest } from '@/features/Chat/VoiceChat/backend/members';
+import { createJoinNotice } from '@/features/Chat/VoiceChat/backend/messages';
 import { notifyApplicant } from '@/features/Chat/VoiceChat/backend/notifications';
 import { getSpeakingRoom } from '@/features/Chat/VoiceChat/backend/rooms';
 import { ReviewDecision } from '@/features/Chat/VoiceChat/types';
@@ -29,6 +30,9 @@ export async function POST(request: Request, context: { params: Promise<{ roomId
     });
     if (member.status === 'approved' || member.status === 'rejected') {
       await notifyApplicant({ room, applicantId: member.userId, decision: member.status });
+    }
+    if (member.status === 'approved') {
+      await createJoinNotice({ room, userId: member.userId, username: member.username });
     }
     return NextResponse.json({ member });
   } catch (error) {

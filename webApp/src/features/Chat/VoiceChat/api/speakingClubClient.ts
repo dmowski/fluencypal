@@ -33,10 +33,16 @@ const authedJson = async <T>(path: string, token: string, init?: RequestInit): P
 };
 
 export const fetchSpeakingRooms = (token: string) =>
-  authedJson<{ rooms: RoomListItem[]; prefs: SpeakingNotificationPrefs }>(
+  authedJson<{ rooms: RoomListItem[]; prefs: SpeakingNotificationPrefs; bio: string }>(
     '/api/speaking-clubs',
     token,
   );
+
+export const saveSpeakingBio = (token: string, bio: string) =>
+  authedJson<{ bio: string }>('/api/speaking-clubs/profile', token, {
+    method: 'PATCH',
+    body: JSON.stringify({ bio }),
+  });
 
 export const createSpeakingRoom = (token: string, draft: RoomDraft) =>
   authedJson<{ room: SpeakingRoom }>('/api/speaking-clubs', token, {
@@ -166,6 +172,18 @@ export const reviewRoomMember = (
   authedJson<{ member: RoomMember }>(`/api/speaking-clubs/${roomId}/review`, token, {
     method: 'POST',
     body: JSON.stringify({ targetUserId, decision }),
+  });
+
+export const toggleRoomMessageLike = (token: string, roomId: string, messageId: string) =>
+  authedJson<{ message: RoomMessage }>(
+    `/api/speaking-clubs/${roomId}/messages/${messageId}/like`,
+    token,
+    { method: 'POST' },
+  );
+
+export const removeRoomMember = (token: string, roomId: string, userId: string) =>
+  authedJson<{ ok: true }>(`/api/speaking-clubs/${roomId}/members/${userId}`, token, {
+    method: 'DELETE',
   });
 
 export const markSpeakingRoomRead = (token: string, roomId: string) =>

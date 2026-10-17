@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { MoreVertical } from 'lucide-react';
 import { useLingui } from '@lingui/react';
 import { RoomMember } from '../types';
 import { VoiceUserAvatar } from './VoiceUserAvatar';
@@ -9,20 +10,25 @@ import { VoiceUserAvatar } from './VoiceUserAvatar';
 export const MembersPanel = ({
   members,
   canReview,
+  canRemove,
   currentUserId,
   onDecide,
   onPlayIntro,
+  onRemove,
 }: {
   members: RoomMember[];
   canReview: boolean;
+  canRemove?: boolean;
   currentUserId: string;
   onDecide: (userId: string, decision: 'approved' | 'rejected') => Promise<void> | void;
   onPlayIntro: (userId: string) => Promise<string>;
+  onRemove?: (userId: string) => void;
 }) => {
   const { i18n } = useLingui();
   const [nowMs] = useState(() => Date.now());
   const [audioByUser, setAudioByUser] = useState<Record<string, string>>({});
   const [busyUserId, setBusyUserId] = useState<string | null>(null);
+  const [menu, setMenu] = useState<{ anchor: HTMLElement; userId: string } | null>(null);
   const approved = members.filter((member) => member.status === 'approved');
   const pending = members.filter((member) => member.status === 'pending');
 
@@ -123,17 +129,44 @@ export const MembersPanel = ({
               member.lastOnlineIso && nowMs - Date.parse(member.lastOnlineIso) < 3 * 60 * 1000,
             )}
           />
-          <Stack sx={{ minWidth: 0 }}>
+          <Stack sx={{ minWidth: 0, flex: 1 }}>
             <Typography sx={{ fontWeight: 700 }}>{member.username}</Typography>
-            {member.description ? (
-              <Typography sx={{ opacity: 0.8 }}>{member.description}</Typography>
+            {member.bio ? (
+              <Typography sx={{ opacity: 0.8 }}>{member.bio}</Typography>
+            ) : member.introTranscript ? (
+              <>
+                <Typography sx={{ fontSize: '13px', opacity: 0.65 }}>
+                  {i18n._('First intro message')}
+                </Typography>
+                <Typography sx={{ opacity: 0.8 }}>{member.introTranscript}</Typography>
+              </>
             ) : null}
             <Typography sx={{ fontSize: '13px', opacity: 0.7 }}>
               {lastSeen(member.lastOnlineIso)}
             </Typography>
           </Stack>
+          {canRemove && member.userId !== currentUserId ? (
+            <IconButton
+              aria-label={i18n._('Person options')}
+              data-testid={`voice-room-member-menu-${member.userId}`}
+              onClick={(event) => setMenu({ anchor: event.currentTarget, userId: member.userId })}
+            >
+              <MoreVertical size={18} />
+            </IconButton>
+          ) : null}
         </Stack>
       ))}
+      <Menu anchorEl={menu?.anchor} open={Boolean(menu)} onClose={() => setMenu(null)}>
+        <MenuItem
+          onClick={() => {
+            const userId = menu?.userId;
+            setMenu(null);
+            if (userId) onRemove?.(userId);
+          }}
+        >
+          {i18n._('Remove from the room')}
+        </MenuItem>
+      </Menu>
     </Stack>
   );
 };

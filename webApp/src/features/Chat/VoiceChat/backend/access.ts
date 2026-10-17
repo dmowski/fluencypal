@@ -15,6 +15,7 @@ export interface SpeakingProfile {
   email: string;
   username: string;
   avatarUrl: string;
+  bio: string;
   prefs: SpeakingNotificationPrefs;
   emailAllowedByApp: boolean;
 }
@@ -37,9 +38,16 @@ export const loadSpeakingProfile = async (userId: string): Promise<SpeakingProfi
     email: data?.email?.trim() || '',
     username,
     avatarUrl: data?.photoUrl?.trim() || '',
+    bio: data?.speakingBio?.trim() || '',
     prefs: parseSpeakingNotificationPrefs(data?.speakingNotifications),
     emailAllowedByApp: data?.isSendEmailNotifications !== false,
   };
+};
+
+export const saveSpeakingBio = async (userId: string, bio: string): Promise<string> => {
+  const clean = bio.trim().slice(0, 500);
+  await getDB().collection('users').doc(userId).set({ speakingBio: clean }, { merge: true });
+  return clean;
 };
 
 export const loadRoomNarrowing = async (

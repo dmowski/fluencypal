@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
+import { useGame } from '@/features/Game/useGame';
 import { SubmitRecording } from '@/features/Chat/SubmitForm';
 import { SupportedLanguage } from '@/features/Lang/lang';
 import { useSettings } from '@/features/Settings/useSettings';
@@ -19,8 +20,11 @@ import {
   markSpeakingRoomRead,
   messageAudioPath,
   reviewRoomMember,
+  removeRoomMember,
   RoomDetail,
+  saveSpeakingBio,
   sendRoomVoiceMessage,
+  toggleRoomMessageLike,
   submitRoomJoin,
   updateSpeakingRoom,
   deleteRoomMessage,
@@ -41,6 +45,7 @@ import {
   SpeakingRoom,
 } from './types';
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
+import { VoiceProfileForm } from './components/VoiceProfileForm';
 
 type RoomSettingsTab = 'settings' | 'notifications' | 'members';
 
@@ -67,6 +72,7 @@ const draftFromRoom = (room: SpeakingRoom): RoomDraft => ({
 export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
+  const game = useGame();
   const settings = useSettings();
   const [chosenLanguage, setChosenLanguage] = useState<SupportedLanguage | null>(null);
   const selectedLanguage = chosenLanguage || settings.languageCode || 'en';
@@ -76,8 +82,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     false,
     false,
   );
+  const [voiceSettings, setVoiceSettings] = useUrlState('voiceSettings', '', false);
   const [voiceRoomTab, setVoiceRoomTab] = useUrlState('voiceRoomTab', '', false);
   const [rooms, setRooms] = useState<RoomListItem[]>([]);
+  const [bio, setBio] = useState('');
   const [detail, setDetail] = useState<RoomDetail | null>(null);
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
   const [screen, setScreen] = useState<'list' | 'create' | 'room'>('list');
@@ -88,6 +96,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [isCreatingPictures, setIsCreatingPictures] = useState(false);
   const [error, setError] = useState('');
   const [joinSent, setJoinSent] = useState(false);
+  const [joinFormOpen, setJoinFormOpen] = useState(false);
   const notificationsOpen = String(voiceNotifications) === 'true';
   const rawRoomTab = String(voiceRoomTab);
   const roomMenuTab: RoomSettingsTab | '' = isRoomSettingsTab(rawRoomTab) ? rawRoomTab : '';
@@ -103,6 +112,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     if (!token) return;
     const data = await fetchSpeakingRooms(token);
     setRooms(data.rooms);
+    setBio(data.bio || '');
   };
 
   const openRoom = async (roomId: string) => {
@@ -118,7 +128,12 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       await markSpeakingRoomRead(token, roomId);
       const urls: Record<string, string> = {};
       for (const message of next.messages) {
-        urls[message.id] = await fetchSpeakingAudio(token, messageAudioPath(roomId, message.id));
+        if (message.kind === 'join') continue;
+        try {
+          urls[message.id] = await fetchSpeakingAudio(token, messageAudioPath(roomId, message.id));
+        } catch (reason) {
+          console.error('Could not load a voice message', reason);
+        }
       }
       setAudioUrls(urls);
       setRooms((current) =>
@@ -136,6 +151,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         const data = await fetchSpeakingRooms(token);
         if (cancelled) return;
         setRooms(data.rooms);
+        setBio(data.bio || '');
         const params = new URLSearchParams(window.location.search);
         const roomFromUrl = params.get('voiceRoom');
         if (roomFromUrl) await openRoom(roomFromUrl);
@@ -183,13 +199,19 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     setScreen('list');
     setVoiceRoom('');
     setDetail(null);
+    setJoinFormOpen(false);
     void setVoiceRoomTab('');
     void loadList().catch(showError);
   };
 
   const roomMenuOpen = roomMenuTab !== '' && Boolean(detail);
   const nestedOpen =
-    screen === 'create' || screen === 'room' || notificationsOpen || roomMenuOpen || joinSent;
+    screen === 'create' ||
+    screen === 'room' ||
+    notificationsOpen ||
+    roomMenuOpen ||
+    joinSent ||
+    joinFormOpen;
   const reviewCount = detail ? pendingReviewCount(detail.members, detail.canReview) : 0;
   const visibleRoomTab: RoomSettingsTab =
     roomMenuTab === 'settings' && detail && !detail.isAdmin
@@ -259,8 +281,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       });
       setDetail({ ...detail, membership: member });
       setJoinSent(true);
+      return true;
     } catch (reason) {
       showError(reason);
+      return false;
     } finally {
       setIsSaving(false);
     }
@@ -322,6 +346,49 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     }
   };
 
+  const removeMember = (userId: string) => {
+    if (!detail) return;
+    void (async () => {
+      const token = await auth.getToken();
+      if (!token) return;
+      await removeRoomMember(token, detail.room.id, userId);
+      await openRoom(detail.room.id);
+    })().catch(showError);
+  };
+
+  const toggleLike = (messageId: string) => {
+    if (!detail) return;
+    void (async () => {
+      const token = await auth.getToken();
+      if (!token) return;
+      const { message } = await toggleRoomMessageLike(token, detail.room.id, messageId);
+      setDetail({
+        ...detail,
+        messages: detail.messages.map((item) => (item.id === message.id ? message : item)),
+      });
+    })().catch(showError);
+  };
+
+  const saveProfile = (next: { username: string; bio: string; avatarUrl: string }) => {
+    setIsSaving(true);
+    void (async () => {
+      try {
+        if (next.avatarUrl) game.setAvatar(next.avatarUrl);
+        if (next.username) await game.updateUsername(next.username);
+        const token = await auth.getToken();
+        if (!token) return;
+        const saved = await saveSpeakingBio(token, next.bio);
+        setBio(saved.bio);
+        void setVoiceNotifications(false);
+        void setVoiceSettings('');
+      } catch (reason) {
+        showError(reason);
+      } finally {
+        setIsSaving(false);
+      }
+    })();
+  };
+
   return (
     <CustomModal
       isOpen
@@ -343,15 +410,21 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
             void openRoom(roomId).catch(showError);
           }}
           onCreate={startCreatingRoom}
+          hasBio={bio.trim().length > 0}
+          onEditProfile={() => {
+            void setVoiceNotifications(true);
+            void setVoiceSettings('profile');
+          }}
           onOpenSettings={() => {
             void setVoiceNotifications(true);
+            void setVoiceSettings('notifications');
           }}
         />
         {screen === 'room' ? (
           <CustomModal
             isOpen
             onClose={() => {
-              if (roomMenuOpen || joinSent) return;
+              if (roomMenuOpen || joinSent || joinFormOpen) return;
               backToList();
             }}
             zIndex={1250}
@@ -376,15 +449,39 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   reviewCount={reviewCount}
                   onOpenSettings={openRoomSettings}
                   onRemove={removeMessage}
+                  onLike={toggleLike}
                   composer={<VoiceComposer isSending={isSaving} onSend={sendVoiceMessage} />}
                 />
               ) : null}
               {detail && detail.membership?.status !== 'approved' ? (
-                <JoinRoomView
+                <RoomThread
                   room={detail.room}
-                  isPending={detail.membership?.status === 'pending'}
-                  isSending={isSaving}
-                  onSubmitRecording={submitJoinRecording}
+                  messages={detail.messages}
+                  audioUrls={{}}
+                  currentUserId={auth.uid || ''}
+                  reviewCount={0}
+                  locked
+                  onOpenSettings={openRoomSettings}
+                  onRemove={() => {}}
+                  composer={
+                    detail.membership?.status === 'pending' ? (
+                      <Typography data-testid="voice-room-pending">
+                        {i18n._(
+                          'We are reviewing your introduction. You will get a note when there is an answer.',
+                        )}
+                      </Typography>
+                    ) : (
+                      <Button
+                        data-testid="voice-room-join-button"
+                        variant="contained"
+                        color="info"
+                        onClick={() => setJoinFormOpen(true)}
+                        sx={{ alignSelf: 'flex-start', textTransform: 'none', fontWeight: 700 }}
+                      >
+                        {i18n._('Join')}
+                      </Button>
+                    )
+                  }
                 />
               ) : null}
               {error ? <Typography color="error">{error}</Typography> : null}
@@ -434,11 +531,27 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
           isOpen
           onClose={() => {
             void setVoiceNotifications(false);
+            void setVoiceSettings('');
           }}
           zIndex={1300}
           data-testid="voice-notification-modal"
         >
-          <SpeakingNotificationSettings />
+          <Stack sx={{ width: '100%', maxWidth: 760, gap: '12px' }}>
+            <Tabs
+              value={String(voiceSettings) === 'profile' ? 'profile' : 'notifications'}
+              onChange={(_event, value: 'notifications' | 'profile') => {
+                void setVoiceSettings(value);
+              }}
+            >
+              <Tab value="notifications" label={i18n._('Notifications')} />
+              <Tab value="profile" label={i18n._('My profile')} />
+            </Tabs>
+            {String(voiceSettings) === 'profile' ? (
+              <VoiceProfileForm bio={bio} isSaving={isSaving} onSave={saveProfile} />
+            ) : (
+              <SpeakingNotificationSettings />
+            )}
+          </Stack>
         </CustomModal>
       ) : null}
       {roomMenuOpen && detail ? (
@@ -495,12 +608,32 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   members={detail.members}
                   canReview={detail.canReview}
                   currentUserId={auth.uid || ''}
+                  canRemove={detail.isAdmin}
                   onPlayIntro={playMemberIntro}
                   onDecide={decideMember}
+                  onRemove={removeMember}
                 />
               </>
             ) : null}
           </Stack>
+        </CustomModal>
+      ) : null}
+      {joinFormOpen && detail ? (
+        <CustomModal
+          isOpen
+          onClose={() => setJoinFormOpen(false)}
+          zIndex={1350}
+          data-testid="voice-room-join-modal"
+        >
+          <JoinRoomView
+            room={detail.room}
+            isPending={false}
+            isSending={isSaving}
+            onSubmitRecording={async (recording) => {
+              const sent = await submitJoinRecording(recording);
+              if (sent) setJoinFormOpen(false);
+            }}
+          />
         </CustomModal>
       ) : null}
       {joinSent ? (

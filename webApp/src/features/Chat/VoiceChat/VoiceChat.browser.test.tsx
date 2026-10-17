@@ -4,11 +4,17 @@ import type { ReactNode } from 'react';
 
 vi.mock('@/features/Game/avatars', () => ({
   defaultAvatar: '',
+  avatars: [
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==',
+    'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs=',
+  ],
 }));
 
 vi.mock('@/features/Game/useGame', () => ({
   useGame: () => ({
     getUserAvatarUrl: () => '',
+    myUserName: 'Alex',
+    myAvatar: '',
   }),
 }));
 
@@ -83,10 +89,12 @@ import { RoomForm } from './components/RoomForm';
 import { RoomListView } from './components/RoomListView';
 import { RoomThread } from './components/RoomThread';
 import { JoinRoomView } from './components/JoinRoomView';
+import { MembersPanel } from './components/MembersPanel';
 import { VoiceMessageRow } from './components/VoiceMessageRow';
+import { VoiceProfileForm } from './components/VoiceProfileForm';
 import { NotificationSettingsForm } from './components/NotificationSettingsForm';
 import { defaultRoomNarrowing, defaultSpeakingNotificationPrefs } from './notificationRules';
-import { emptyRoomDraft, RoomListItem, RoomMessage, SpeakingRoom } from './types';
+import { emptyRoomDraft, RoomListItem, RoomMember, RoomMessage, SpeakingRoom } from './types';
 
 const room: SpeakingRoom = {
   id: 'politics',
@@ -121,6 +129,7 @@ const item: RoomListItem = {
 const message: RoomMessage = {
   id: 'm1',
   roomId: 'politics',
+  kind: 'voice',
   senderId: 'maria',
   senderName: 'Maria',
   senderAvatarUrl: '',
@@ -129,6 +138,35 @@ const message: RoomMessage = {
   transcript: 'I think the vote was close.',
   correctedTranscript: 'I think the vote was close.',
   createdAtIso: '2026-10-16T00:00:00.000Z',
+  likeCount: 2,
+  likedByMe: false,
+};
+
+const member = (patch: Partial<RoomMember>): RoomMember => ({
+  userId: 'maria',
+  status: 'approved',
+  username: 'Maria',
+  avatarUrl: '',
+  description: '',
+  introAudioPath: '',
+  introTranscript: '',
+  introSuggestion: '',
+  introDurationSec: 0,
+  bio: '',
+  requestedAtIso: '2026-10-01T00:00:00.000Z',
+  approvals: {},
+  ...patch,
+});
+
+const joined: RoomMessage = {
+  ...message,
+  id: 'join-1',
+  kind: 'join',
+  senderName: 'Amigos',
+  durationSec: 0,
+  transcript: '',
+  correctedTranscript: '',
+  likeCount: 0,
 };
 
 const shell = (node: ReactNode) =>
@@ -163,6 +201,104 @@ test('room list shows a room card and a way to start one', async () => {
   await userEvent.click(page.getByTestId('voice-room-list-language'));
   await userEvent.click(page.getByRole('menuitem', { name: 'English' }));
   expect(language).toBe('en');
+});
+
+test('unfinished profile asks for a bio', async () => {
+  await shell(
+    <RoomListView
+      rooms={[item]}
+      isLoading={false}
+      error=""
+      onOpenRoom={() => {}}
+      onCreate={() => {}}
+      onOpenSettings={() => {}}
+      language="en"
+      onLanguageChange={() => {}}
+      hasBio={false}
+      onEditProfile={() => {}}
+    />,
+  );
+  await expect.element(page.getByText('Finish your profile')).toBeVisible();
+  await expect.element(page.getByText('Add bio')).toBeVisible();
+  await expect
+    .element(page.getByTestId('voice-finish-profile'))
+    .toMatchScreenshot('room-list-bio');
+});
+
+test('profile form edits picture, name, and bio', async () => {
+  let saved = '';
+  await shell(
+    <VoiceProfileForm
+      bio=""
+      isSaving={false}
+      onSave={(next) => {
+        saved = next.bio;
+      }}
+    />,
+  );
+  await expect.element(page.getByRole('textbox', { name: 'Username' })).toHaveValue('Alex');
+  await page.getByRole('textbox', { name: 'Bio' }).fill('I like cooking and long walks.');
+  await userEvent.click(page.getByTestId('voice-profile-save'));
+  expect(saved).toBe('I like cooking and long walks.');
+  await expect.element(page.getByTestId('voice-profile-form')).toMatchScreenshot('voice-profile');
+});
+
+test('people list shows a bio, an introduction, and a way to remove someone', async () => {
+  let removed = '';
+  await shell(
+    <MembersPanel
+      members={[
+        member({ userId: 'maria', username: 'Maria', bio: 'I cook on Sundays.' }),
+        member({
+          userId: 'ken',
+          username: 'Ken',
+          bio: '',
+          introTranscript: 'I am Ken and I like the news.',
+        }),
+      ]}
+      canReview={false}
+      canRemove
+      currentUserId="me"
+      onDecide={() => {}}
+      onPlayIntro={async () => ''}
+      onRemove={(userId) => {
+        removed = userId;
+      }}
+    />,
+  );
+  await expect.element(page.getByText('I cook on Sundays.')).toBeVisible();
+  await expect.element(page.getByText('First intro message')).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-members')).toMatchScreenshot('room-people');
+
+  await userEvent.click(page.getByTestId('voice-room-member-menu-ken'));
+  await userEvent.click(page.getByRole('menuitem', { name: 'Remove from the room' }));
+  expect(removed).toBe('ken');
+});
+
+test('a visitor sees messages without being able to play them', async () => {
+  await shell(
+    <RoomThread
+      room={room}
+      messages={[joined, message]}
+      audioUrls={{}}
+      currentUserId="me"
+      reviewCount={0}
+      locked
+      onOpenSettings={() => {}}
+      onRemove={() => {}}
+      composer={
+        <button type="button" data-testid="voice-room-join-button">
+          Join
+        </button>
+      }
+    />,
+  );
+  await expect.element(page.getByText('Amigos joined the room.')).toBeVisible();
+  await expect.element(page.getByTestId('voice-chat-player')).toBeDisabled();
+  await expect.element(page.getByTestId('voice-chat-like')).toBeDisabled();
+  await expect.element(page.getByText('2')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Room settings' })).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-thread')).toMatchScreenshot('room-preview');
 });
 
 test('an empty room list invites the first room', async () => {

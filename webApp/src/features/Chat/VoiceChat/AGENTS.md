@@ -46,8 +46,10 @@ Private audio lives under `speakingClubs/audio/…`.
 
 - Practice dashboard group card: **Request a call** and **Open voice chat**.
 - After the signed-in request form is sent, **Open voice chat** is offered.
-- Modal: `?voiceChat=true`. A room: `?voiceRoom={slug}`.
-- Notification settings: `?voiceNotifications=true`.
+- Modal: `?voiceChat=true`. A room: `?voiceRoom={slug}`. Anonymous visitors do not see it.
+- Avatars and usernames come from the game. A bio is `users/{uid}.speakingBio`.
+- Visitors see the last 7 days of messages and cannot play them. Older messages are removed.
+- Notification settings: `?voiceNotifications=true`. Profile tab: `?voiceSettings=profile`.
 - Room settings tab: `?voiceRoomTab=settings|notifications|members`. Pending reviews open `members`.
 - The review email uses that People link: `voiceChat=true&voiceRoom={slug}&voiceRoomTab=members`.
 

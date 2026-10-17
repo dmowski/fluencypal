@@ -52,7 +52,7 @@ export async function GET(request: Request, context: { params: Promise<{ roomId:
         (member) => member.status === 'approved' || (canReview && member.status === 'pending'),
       )
       .map((member) => visibleMember(member, canReview && member.status === 'pending'));
-    const messages = membership?.status === 'approved' ? await listRoomMessages(roomId) : [];
+    const messages = await listRoomMessages(roomId, user.uid);
     return NextResponse.json({ room, membership, members, messages, isAdmin, canReview });
   } catch (error) {
     return speakingClubErrorResponse(error);

@@ -2,7 +2,7 @@
 
 import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Ellipsis } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { RoomMessage, SpeakingRoom } from '../types';
 import { VoiceMessageRow } from './VoiceMessageRow';
 
@@ -12,8 +12,10 @@ export const RoomThread = ({
   audioUrls,
   currentUserId,
   reviewCount,
+  locked,
   onOpenSettings,
   onRemove,
+  onLike,
   composer,
 }: {
   room: SpeakingRoom;
@@ -21,8 +23,10 @@ export const RoomThread = ({
   audioUrls: Record<string, string>;
   currentUserId: string;
   reviewCount: number;
+  locked?: boolean;
   onOpenSettings: () => void;
   onRemove: (messageId: string) => void;
+  onLike?: (messageId: string) => void;
   composer: React.ReactNode;
 }) => {
   const { i18n } = useLingui();
@@ -44,7 +48,7 @@ export const RoomThread = ({
             data-testid="voice-room-more"
             onClick={onOpenSettings}
           >
-            <Ellipsis />
+            <Settings />
           </IconButton>
         </Badge>
       </Stack>
@@ -60,8 +64,11 @@ export const RoomThread = ({
               key={message.id}
               message={message}
               audioUrl={audioUrls[message.id] || null}
-              canRemove={message.senderId === currentUserId}
+              canRemove={!locked && message.senderId === currentUserId}
+              canLike={!locked}
+              locked={locked}
               onRemove={() => onRemove(message.id)}
+              onLike={() => onLike?.(message.id)}
             />
           ))}
         </Stack>

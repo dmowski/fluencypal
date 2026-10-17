@@ -52,15 +52,19 @@ export interface RoomMember {
   introTranscript: string;
   introSuggestion: string;
   introDurationSec: number;
+  bio: string;
   requestedAtIso: string;
   decidedAtIso?: string;
   lastOnlineIso?: string;
   approvals: Record<string, ReviewDecision>;
 }
 
+export type RoomMessageKind = 'voice' | 'join';
+
 export interface RoomMessage {
   id: string;
   roomId: string;
+  kind: RoomMessageKind;
   senderId: string;
   senderName: string;
   senderAvatarUrl: string;
@@ -69,6 +73,8 @@ export interface RoomMessage {
   transcript: string;
   correctedTranscript: string;
   createdAtIso: string;
+  likeCount: number;
+  likedByMe: boolean;
 }
 
 export type AppNotificationKind = 'newMessage' | 'reviewJoiner' | 'newRoom';

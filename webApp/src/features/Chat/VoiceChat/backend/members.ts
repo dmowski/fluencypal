@@ -32,6 +32,7 @@ export const toRoomMember = (data: DocumentData, docId = ''): RoomMember => {
     introTranscript: typeof data.introTranscript === 'string' ? data.introTranscript : '',
     introSuggestion: typeof data.introSuggestion === 'string' ? data.introSuggestion : '',
     introDurationSec: typeof data.introDurationSec === 'number' ? data.introDurationSec : 0,
+    bio: typeof data.bio === 'string' ? data.bio : '',
     requestedAtIso: typeof data.requestedAtIso === 'string' ? data.requestedAtIso : '',
     decidedAtIso: typeof data.decidedAtIso === 'string' ? data.decidedAtIso : undefined,
     lastOnlineIso: typeof data.lastOnlineIso === 'string' ? data.lastOnlineIso : undefined,
@@ -45,11 +46,56 @@ export const getRoomMember = async (roomId: string, userId: string): Promise<Roo
   return toRoomMember(snap.data() || {}, snap.id);
 };
 
+const biosFor = async (userIds: string[]): Promise<Record<string, string>> => {
+  const unique = [...new Set(userIds)].filter(Boolean).slice(0, 40);
+  if (unique.length === 0) return {};
+  const snaps = await getDB().getAll(
+    ...unique.map((userId) => getDB().collection('users').doc(userId)),
+  );
+  const bios: Record<string, string> = {};
+  snaps.forEach((snap) => {
+    const bio = snap.data()?.speakingBio;
+    if (typeof bio === 'string' && bio.trim()) bios[snap.id] = bio.trim();
+  });
+  return bios;
+};
+
 export const listRoomMembers = async (roomId: string): Promise<RoomMember[]> => {
   const snap = await members(roomId).get();
-  return snap.docs
-    .map((doc) => toRoomMember(doc.data(), doc.id))
+  const people = snap.docs.map((doc) => toRoomMember(doc.data(), doc.id));
+  const bios = await biosFor(people.map((member) => member.userId));
+  return people
+    .map((member) => ({ ...member, bio: bios[member.userId] || member.bio }))
     .sort((a, b) => a.username.localeCompare(b.username));
+};
+
+export const removeRoomMember = async (params: {
+  room: SpeakingRoom;
+  actorId: string;
+  actorEmail: string | null;
+  targetUserId: string;
+}): Promise<void> => {
+  const isAdmin =
+    params.room.creatorId === params.actorId ||
+    isAlexAccount({ uid: params.actorId, email: params.actorEmail });
+  if (!isAdmin) throw new SpeakingClubError('Only the room host can remove someone.', 403);
+  if (params.targetUserId === params.actorId) {
+    throw new SpeakingClubError('You cannot remove yourself from the room.');
+  }
+  const target = await getRoomMember(params.room.id, params.targetUserId);
+  if (!target || target.status !== 'approved') {
+    throw new SpeakingClubError('That person is not in the room.', 404);
+  }
+  await members(params.room.id)
+    .doc(target.userId)
+    .set({ status: 'rejected', decidedAtIso: new Date().toISOString() }, { merge: true });
+  const approvedCount = (await listRoomMembers(params.room.id)).filter(
+    (member) => member.status === 'approved',
+  ).length;
+  await getDB()
+    .collection('speakingRooms')
+    .doc(params.room.id)
+    .set({ memberCount: approvedCount }, { merge: true });
 };
 
 const descriptionFromTranscript = (transcript: string): string => {
@@ -99,6 +145,7 @@ export const submitJoinRequest = async (params: {
     introTranscript: params.introTranscript.slice(0, 8000),
     introSuggestion: params.introSuggestion.slice(0, 2000),
     introDurationSec: params.introDurationSec,
+    bio: params.profile.bio,
     requestedAtIso: now,
     approvals: {},
   };

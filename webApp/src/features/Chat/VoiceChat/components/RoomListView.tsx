@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Button, ButtonBase, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Plus, Settings } from 'lucide-react';
 import {
@@ -28,6 +28,8 @@ export const RoomListView = ({
   onOpenSettings,
   language,
   onLanguageChange,
+  hasBio = true,
+  onEditProfile,
 }: {
   rooms: RoomListItem[];
   isLoading: boolean;
@@ -37,6 +39,8 @@ export const RoomListView = ({
   onOpenSettings: () => void;
   language: SupportedLanguage;
   onLanguageChange: (language: SupportedLanguage) => void;
+  hasBio?: boolean;
+  onEditProfile?: () => void;
 }) => {
   const { i18n } = useLingui();
   const [languageMenu, setLanguageMenu] = useState<HTMLElement | null>(null);
@@ -95,6 +99,30 @@ export const RoomListView = ({
           <Settings />
         </IconButton>
       </Stack>
+      {!hasBio ? (
+        <Stack data-testid="voice-finish-profile" sx={{ gap: '8px' }}>
+          <Typography sx={{ fontWeight: 800 }}>{i18n._('Finish your profile')}</Typography>
+          <ButtonBase
+            data-testid="voice-add-bio"
+            onClick={onEditProfile}
+            sx={{
+              width: '100%',
+              justifyContent: 'flex-start',
+              textAlign: 'left',
+              borderRadius: '16px',
+              padding: '14px 16px',
+              backgroundColor: 'rgba(255,255,255,0.06)',
+            }}
+          >
+            <Stack sx={{ gap: '4px' }}>
+              <Typography sx={{ fontWeight: 750 }}>{i18n._('Add bio')}</Typography>
+              <Typography sx={{ opacity: 0.75 }}>
+                {i18n._("Introduce yourself and tell people what you're into.")}
+              </Typography>
+            </Stack>
+          </ButtonBase>
+        </Stack>
+      ) : null}
       {error ? (
         <Typography color="error" data-testid="voice-chat-error">
           {error}

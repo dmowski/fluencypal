@@ -72,6 +72,8 @@ export interface UserSettings extends InitUserSettings {
 
   isSendEmailNotifications?: boolean | null;
   speakingNotifications?: SpeakingNotificationSettings | null;
+  /** Short public introduction for voice rooms. */
+  speakingBio?: string | null;
   teacherVoice: AiVoice | null;
   recentLearnLanguages?: SupportedLanguage[] | null;
 }
