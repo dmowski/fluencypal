@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, ButtonBase, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Plus, Settings } from 'lucide-react';
 import {
@@ -100,27 +100,32 @@ export const RoomListView = ({
         </IconButton>
       </Stack>
       {!hasBio ? (
-        <Stack data-testid="voice-finish-profile" sx={{ gap: '8px' }}>
+        <Stack data-testid="voice-finish-profile" sx={{ gap: '8px', width: 640 }}>
           <Typography sx={{ fontWeight: 800 }}>{i18n._('Finish your profile')}</Typography>
-          <ButtonBase
+          <Stack
             data-testid="voice-add-bio"
+            role="button"
+            tabIndex={0}
             onClick={onEditProfile}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') onEditProfile?.();
+            }}
             sx={{
-              width: '100%',
-              justifyContent: 'flex-start',
+              width: 640,
+              alignItems: 'flex-start',
               textAlign: 'left',
               borderRadius: '16px',
               padding: '14px 16px',
               backgroundColor: 'rgba(255,255,255,0.06)',
+              cursor: 'pointer',
+              gap: '4px',
             }}
           >
-            <Stack sx={{ gap: '4px' }}>
-              <Typography sx={{ fontWeight: 750 }}>{i18n._('Add bio')}</Typography>
-              <Typography sx={{ opacity: 0.75 }}>
-                {i18n._("Introduce yourself and tell people what you're into.")}
-              </Typography>
-            </Stack>
-          </ButtonBase>
+            <Typography sx={{ fontWeight: 750 }}>{i18n._('Add bio')}</Typography>
+            <Typography sx={{ opacity: 0.75 }}>
+              {i18n._("Introduce yourself and tell people what you're into.")}
+            </Typography>
+          </Stack>
         </Stack>
       ) : null}
       {error ? (

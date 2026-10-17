@@ -506,6 +506,11 @@ msgstr "メールアドレス、Telegram、または電話番号を追加して�
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "2人から20人のプレイヤーを追加します。名前をタップして編集します。"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#. js-lingui-explicit-id
+msgid "Add bio"
+msgstr "バイオを追加"
+
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
@@ -1441,6 +1446,11 @@ msgstr "一貫した改善に最適な価値。"
 #. js-lingui-explicit-id
 msgid "Beta"
 msgstr "ベータ"
+
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#. js-lingui-explicit-id
+msgid "Bio"
+msgstr "バイオ"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -2502,7 +2512,7 @@ msgid ""
 "rambling."
 msgstr "システムデザインの明確な構造。ついに寄り道せずにトレードオフを説明しました。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "より明確にする: {text}"
@@ -3361,8 +3371,8 @@ msgstr "新しいスペースを作成"
 msgid "Create pictures"
 msgstr "画像を作成する"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:410
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:411
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "部屋を作成"
@@ -5358,10 +5368,20 @@ msgstr "今日のレッスンで、最後のスピーキングタスクを終わ
 msgid "Finish with what you learned"
 msgstr "学んだことを終える"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#. js-lingui-explicit-id
+msgid "Finish your profile"
+msgstr "プロフィールを完成させる"
+
 #: src/features/InteractiveLesson/LessonProgressView.tsx:146
 #. js-lingui-explicit-id
 msgid "Finished lessons. Open one to hear your answers again."
 msgstr "終了したレッスン。もう一度答えを聞くには、レッスンを開いてください。"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:139
+#. js-lingui-explicit-id
+msgid "First intro message"
+msgstr "最初の紹介メッセージ"
 
 #: src/features/Usage/UsageStatsCards.tsx:84
 #. js-lingui-explicit-id
@@ -6277,7 +6297,7 @@ msgstr "4月1日おめでとう！"
 msgid "Hard"
 msgstr "難しい"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:30
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:36
 #. js-lingui-explicit-id
 msgid "Has not visited yet"
 msgstr "まだ訪れていない"
@@ -6371,7 +6391,7 @@ msgstr "これらは、あなたの会話で最も使用された単語です。
 msgid "Here is the lesson plan for this session:"
 msgstr "このセッションのレッスンプランは次のとおりです。"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:32
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:38
 #. js-lingui-explicit-id
 msgid "Here now"
 msgstr "こちらにいます"
@@ -7308,6 +7328,12 @@ msgstr "面接官は綺麗なコードだけでなく、**アーキテクチャ�
 msgid "Introduce Yourself"
 msgstr "自己紹介"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#. js-lingui-explicit-id
+msgid "Introduce yourself and tell people what you're into."
+msgstr "自己紹介をして、興味のあることを伝えてください。"
+
 #: src/features/Case/data/backendCSharp/quizData.ts:27
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
@@ -7448,6 +7474,7 @@ msgid "Job Interview Skills"
 msgstr "就職面接スキル"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "参加する"
@@ -7649,17 +7676,17 @@ msgstr "過去30日間 vs 前の30日間 — あなたの指標がどのよう�
 msgid "Last 6 month"
 msgstr "過去6か月"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:36
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:42
 #. js-lingui-explicit-id
 msgid "Last seen earlier"
 msgstr "以前に最後に見た"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:34
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:40
 #. js-lingui-explicit-id
 msgid "Last seen recently"
 msgstr "最近オンライン"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:35
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:41
 #. js-lingui-explicit-id
 msgid "Last seen today"
 msgstr "本日最後の訪問日時"
@@ -7854,6 +7881,7 @@ msgid "Library"
 msgstr "ライブラリ"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "いいね"
@@ -7957,14 +7985,14 @@ msgstr "ライブラリを読み込んでいます…"
 msgid "Loading quiz..."
 msgstr "クイズを読み込み中..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:369
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr ""
 "\n"
 "部屋を読み込み中...\n"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:103
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "ルームを読み込み中..."
@@ -8214,7 +8242,7 @@ msgstr "メニュー"
 msgid "Message hidden due to policy violation."
 msgstr "ポリシー違反のためメッセージが非表示になっています。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "メッセージオプション"
@@ -8451,6 +8479,12 @@ msgstr "私のポイント:"
 msgid "My Position:"
 msgstr "私のポジション:"
 
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#. js-lingui-explicit-id
+msgid "My profile"
+msgstr "私のプロフィール"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:231
 #. js-lingui-explicit-id
 msgid "Name:"
@@ -8518,7 +8552,7 @@ msgstr "新しい文法ルール"
 msgid "New people"
 msgstr "新しい人々"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:127
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "新しい部屋"
@@ -8757,7 +8791,7 @@ msgstr "まだメッセージはありません"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "まだメッセージはありません。最初にあなたの考えを共有しましょう！"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:54
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "メッセージはまだありません。最初のメッセージを残すことができます。"
@@ -8836,7 +8870,7 @@ msgstr "リマインダーはありません"
 msgid "No results found"
 msgstr "結果が見つかりません"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:106
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "この言語のルームはまだありません。作成することができます。"
@@ -9014,7 +9048,7 @@ msgstr "サポートされていません"
 msgid "Not sure what to write? Try one of these:"
 msgstr "何を書けばいいかわからない？次のいずれかを試してみてください："
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:114
 #. js-lingui-explicit-id
 msgid "Not this time"
 msgstr "この度は違います。"
@@ -9024,7 +9058,7 @@ msgstr "この度は違います。"
 msgid "Notes inside the app"
 msgstr "アプリ内のメモ"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:91
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:95
 #. js-lingui-explicit-id
 msgid "Notification settings"
 msgstr "通知設定"
@@ -9035,7 +9069,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "デベロップメントチームに通知が送信されました。申し訳ありません..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:461
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9225,7 +9260,7 @@ msgstr "練習ダッシュボードを開く"
 msgid "Open news settings"
 msgstr "ニュース設定を開く"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:529
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "通知設定を開く"
@@ -9473,7 +9508,7 @@ msgid ""
 "achievements."
 msgstr "あなたの履歴書を貼り付けるか、経験、スキル、業績の短い要約を書いてください。"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -9546,13 +9581,18 @@ msgstr "支払いが受け付けられました。残高はまもなく更新さ
 msgid "Payment successful!"
 msgstr "支払いが成功しました！"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:467
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:470
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "人々"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:116
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#. js-lingui-explicit-id
+msgid "People in a room see your picture, your name, and this introduction."
+msgstr "部屋の中の人々は、あなたの写真、名前、そしてこの紹介文を見ます。"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:122
 #. js-lingui-explicit-id
 msgid "People in this room"
 msgstr "この部屋の人々"
@@ -9602,6 +9642,11 @@ msgstr "パフォーマンス、回復力、アーキテクチャパターン"
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "期間"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:150
+#. js-lingui-explicit-id
+msgid "Person options"
+msgstr "人のオプション"
 
 #: src/features/Landing/LandingPage.tsx:348
 #: src/features/Landing/PlanLandingBlock.tsx:429
@@ -9663,7 +9708,7 @@ msgstr "グループに合った難易度を選んでください。"
 msgid "Pick a level to start playing!"
 msgstr "プレイ開始のレベルを選んでください！"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:87
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:91
 #. js-lingui-explicit-id
 msgid "Pick a room, listen, and leave a voice message when you are ready."
 msgstr "部屋を選んで聴いて、準備ができたら音声メッセージを残してください。"
@@ -9724,7 +9769,7 @@ msgstr "プランとアクセス"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -9744,7 +9789,7 @@ msgstr "もう一度プレイ"
 msgid "Play and Learn"
 msgstr "プレイと学習"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:72
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Play introduction"
 msgstr "紹介を再生"
@@ -11110,12 +11155,17 @@ msgstr "ページを再読み込み"
 msgid "Reloading conversation..."
 msgstr "会話を再読み込みしています..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "削除"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:167
+#. js-lingui-explicit-id
+msgid "Remove from the room"
+msgstr "ルームから削除"
 
 #: src/features/TranslationPage/TranslationColumn.tsx:117
 #. js-lingui-explicit-id
@@ -11391,7 +11441,7 @@ msgstr "ルーム名"
 msgid "Room rules"
 msgstr "部屋のルール"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:43
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "ルーム設定"
@@ -11466,7 +11516,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "新しいWebSocket音声サーバーを介した同じJust Talkレッスン。"
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -11500,6 +11551,7 @@ msgid "Saving book…"
 msgstr "ブックを保存中…"
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "保存中..."
@@ -11834,7 +11886,7 @@ msgstr "あなたの学習の目標を設定します"
 msgid "Set translate language in Settings"
 msgstr "設定で翻訳言語を設定する"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:460
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12287,7 +12339,7 @@ msgid ""
 "in the global chat."
 msgstr "問題が発生しました。Alexに通知されました。彼が修正しない場合は、グローバルチャットに書き込んでください。"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:97
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -14560,7 +14612,7 @@ msgstr "書き起こしています..."
 msgid "Transcript"
 msgstr "文字起こし"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "転写"
@@ -14685,7 +14737,7 @@ msgstr "字幕をオンにする"
 msgid "Turn on notifications"
 msgstr "通知をオンにする"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:518
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "通知をオンにして、回答を見逃さないようにしましょう。"
@@ -14961,6 +15013,7 @@ msgstr "学習中の言語 ({lang}) を使う"
 msgid "Useful when a full conversation feels like too much"
 msgstr "会話全体が多すぎると感じるときに便利です"
 
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -15087,7 +15140,7 @@ msgstr "ボキャブラリー練習"
 msgid "Voice"
 msgstr "声"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:50
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:54
 #: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:54
 #. js-lingui-explicit-id
 msgid "Voice chat"
@@ -15142,7 +15195,7 @@ msgstr "音声速度"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:43
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:49
 #. js-lingui-explicit-id
 msgid "Waiting for a review"
 msgstr "レビューを待っています"
@@ -15213,6 +15266,7 @@ msgid "We are ready to craft your plan."
 msgstr "私たちはあなたのプランを作成する準備ができています。"
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -15358,7 +15412,7 @@ msgstr "週間"
 msgid "week"
 msgstr "週"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:95
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:101
 #. js-lingui-explicit-id
 msgid "Welcome them"
 msgstr "歓迎します"
@@ -16307,7 +16361,7 @@ msgid ""
 "the same conversation, without the timer."
 msgstr "無料の3分間を使用しました。Marinと過ごす次の1時間は{price}です。それはタイマーなしの同じ会話です。"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:77
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:83
 #. js-lingui-explicit-id
 msgid "You welcomed them. Waiting for the other people in the room."
 msgstr "あなたは彼らを歓迎しました。他の人たちが部屋に来るのを待っています。"
@@ -16482,7 +16536,7 @@ msgstr "あなたの紹介文"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "{room}へのあなたの紹介は今回は承認されませんでした"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:515
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "あなたの紹介が送信されました"
@@ -16749,7 +16803,7 @@ msgstr "{count} ヶ月のグループ会話"
 msgid "{count} people"
 msgstr "{count}人"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:53
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} 秒"
@@ -16794,6 +16848,11 @@ msgstr "{hours} 時間"
 #. js-lingui-explicit-id
 msgid "{hours} hours of conversation"
 msgstr "{hours} 時間の会話"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#. js-lingui-explicit-id
+msgid "{name} joined the room."
+msgstr "{name} がルームに参加しました。"
 
 #: src/features/Dashboard/ActivityAlertsCard.tsx:102
 #. js-lingui-explicit-id

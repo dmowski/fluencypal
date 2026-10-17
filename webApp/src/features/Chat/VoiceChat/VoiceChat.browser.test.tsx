@@ -203,28 +203,6 @@ test('room list shows a room card and a way to start one', async () => {
   expect(language).toBe('en');
 });
 
-test('unfinished profile asks for a bio', async () => {
-  await shell(
-    <RoomListView
-      rooms={[item]}
-      isLoading={false}
-      error=""
-      onOpenRoom={() => {}}
-      onCreate={() => {}}
-      onOpenSettings={() => {}}
-      language="en"
-      onLanguageChange={() => {}}
-      hasBio={false}
-      onEditProfile={() => {}}
-    />,
-  );
-  await expect.element(page.getByText('Finish your profile')).toBeVisible();
-  await expect.element(page.getByText('Add bio')).toBeVisible();
-  await expect
-    .element(page.getByTestId('voice-finish-profile'))
-    .toMatchScreenshot('room-list-bio');
-});
-
 test('profile form edits picture, name, and bio', async () => {
   let saved = '';
   await shell(
@@ -301,6 +279,27 @@ test('a visitor sees messages without being able to play them', async () => {
   await expect.element(page.getByTestId('voice-room-thread')).toMatchScreenshot('room-preview');
 });
 
+test('unfinished profile asks for a bio', async () => {
+  await shell(
+    <RoomListView
+      rooms={[]}
+      isLoading={false}
+      error=""
+      onOpenRoom={() => {}}
+      onCreate={() => {}}
+      onOpenSettings={() => {}}
+      language="en"
+      onLanguageChange={() => {}}
+      hasBio={false}
+      onEditProfile={() => {}}
+    />,
+  );
+  await document.fonts.ready;
+  await expect.element(page.getByText('Finish your profile')).toBeVisible();
+  await expect.element(page.getByText('Add bio')).toBeVisible();
+  await expect.element(page.getByTestId('voice-add-bio')).toMatchScreenshot('room-list-bio');
+});
+
 test('an empty room list invites the first room', async () => {
   await shell(
     <RoomListView
@@ -333,6 +332,7 @@ test('join form explains the room before recording', async () => {
       onSubmitRecording={async () => {}}
     />,
   );
+  await document.fonts.ready;
   await expect.element(page.getByText('We talk about the news without shouting.')).toBeVisible();
   await expect.element(page.getByRole('button', { name: 'Record introduction' })).toBeVisible();
   await expect.element(page.getByTestId('voice-room-join')).toMatchScreenshot('join-room');

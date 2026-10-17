@@ -506,6 +506,11 @@ msgstr "이메일, 텔레그램 또는 전화번호를 추가하세요."
 msgid "Add between 2 and 20 players. Tap a name to edit it."
 msgstr "2명에서 20명 사이의 플레이어를 추가하세요. 이름을 수정하려면 이름을 탭하세요."
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:124
+#. js-lingui-explicit-id
+msgid "Add bio"
+msgstr "바이오 추가"
+
 #: src/features/Chat/ChatReplyModal.tsx:38
 #. js-lingui-explicit-id
 msgid "Add Comment"
@@ -1446,6 +1451,11 @@ msgstr "일관된 향상에 대한 최고의 가치."
 #. js-lingui-explicit-id
 msgid "Beta"
 msgstr "베타"
+
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:52
+#. js-lingui-explicit-id
+msgid "Bio"
+msgstr "바이오"
 
 #: src/features/Header/HeaderStatic.tsx:24
 #: src/features/Landing/Footer.tsx:91
@@ -2510,7 +2520,7 @@ msgid ""
 "rambling."
 msgstr "명확한 시스템 설계 구조. 마침내 횡설수설하지 않고 트레이드오프를 설명했습니다."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:123
 #. js-lingui-explicit-id
 msgid "Clearer: {text}"
 msgstr "더 명확하게: {text}"
@@ -3369,8 +3379,8 @@ msgstr ""
 "Create pictures\n"
 "그림 생성"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:410
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:411
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:507
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:508
 #. js-lingui-explicit-id
 msgid "Create room"
 msgstr "방 만들기"
@@ -5393,10 +5403,20 @@ msgstr "오늘 레슨의 마지막 말하기 과제를 완료하세요. 우리�
 msgid "Finish with what you learned"
 msgstr "배운 내용을 마무리하세요"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:104
+#. js-lingui-explicit-id
+msgid "Finish your profile"
+msgstr "프로필을 완성하세요"
+
 #: src/features/InteractiveLesson/LessonProgressView.tsx:146
 #. js-lingui-explicit-id
 msgid "Finished lessons. Open one to hear your answers again."
 msgstr "완료된 수업. 답변을 다시 들으려면 하나를 열어보세요."
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:139
+#. js-lingui-explicit-id
+msgid "First intro message"
+msgstr "첫 번째 소개 메시지"
 
 #: src/features/Usage/UsageStatsCards.tsx:84
 #. js-lingui-explicit-id
@@ -6313,7 +6333,7 @@ msgstr "4월 1일을 축하합니다!"
 msgid "Hard"
 msgstr "어려움"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:30
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:36
 #. js-lingui-explicit-id
 msgid "Has not visited yet"
 msgstr "아직 방문하지 않았습니다"
@@ -6407,7 +6427,7 @@ msgstr "다음은 당신이 대화에서 가장 많이 사용한 단어들입니
 msgid "Here is the lesson plan for this session:"
 msgstr "이번 세션의 수업 계획은 다음과 같습니다:"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:32
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:38
 #. js-lingui-explicit-id
 msgid "Here now"
 msgstr "여기 지금"
@@ -7349,6 +7369,12 @@ msgstr "인터뷰어는 단순히 깔끔한 코드만이 아닌 **아키텍처 �
 msgid "Introduce Yourself"
 msgstr "자기소개하기"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:57
+#. js-lingui-explicit-id
+msgid "Introduce yourself and tell people what you're into."
+msgstr "자기소개를 하고 관심사를 이야기해주세요."
+
 #: src/features/Case/data/backendCSharp/quizData.ts:27
 #. js-lingui-explicit-id
 msgid "Introduce yourself as a backend engineer"
@@ -7491,6 +7517,7 @@ msgid "Job Interview Skills"
 msgstr "취업 면접 기술"
 
 #: src/features/Case/Landing/components/InterviewHeader.tsx:41
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
 #. js-lingui-explicit-id
 msgid "Join"
 msgstr "가입하기"
@@ -7692,17 +7719,17 @@ msgstr "지난 30일 vs 이전 30일 — 당신의 지표가 어떻게 변했는
 msgid "Last 6 month"
 msgstr "지난 6개월"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:36
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:42
 #. js-lingui-explicit-id
 msgid "Last seen earlier"
 msgstr "마지막으로 이전에 본 날짜"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:34
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:40
 #. js-lingui-explicit-id
 msgid "Last seen recently"
 msgstr "최근에 마지막으로 본 시점"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:35
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:41
 #. js-lingui-explicit-id
 msgid "Last seen today"
 msgstr "오늘 마지막으로 본 시간"
@@ -7897,6 +7924,7 @@ msgid "Library"
 msgstr "도서관"
 
 #: src/features/Chat/Message/MessageFooter.tsx:47
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
 #. js-lingui-explicit-id
 msgid "Like"
 msgstr "좋아요"
@@ -8000,12 +8028,12 @@ msgstr "라이브러리 로딩 중..."
 msgid "Loading quiz..."
 msgstr "퀴즈 로드 중..."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:369
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:442
 #. js-lingui-explicit-id
 msgid "Loading room..."
 msgstr "로딩 중..."
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:103
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:136
 #. js-lingui-explicit-id
 msgid "Loading rooms..."
 msgstr "객실 로딩 중..."
@@ -8254,7 +8282,7 @@ msgstr "메뉴"
 msgid "Message hidden due to policy violation."
 msgstr "정책 위반으로 인해 메시지가 숨겨졌습니다."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:89
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "메시지 옵션"
@@ -8489,6 +8517,12 @@ msgstr "내 포인트:"
 msgid "My Position:"
 msgstr "내 위치:"
 
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:29
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:547
+#. js-lingui-explicit-id
+msgid "My profile"
+msgstr "내 프로필"
+
 #: src/features/Header/WithdrawFromContractModal.tsx:231
 #. js-lingui-explicit-id
 msgid "Name:"
@@ -8556,7 +8590,7 @@ msgstr "새로운 문법 규칙"
 msgid "New people"
 msgstr "새로운 사람들"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:127
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:160
 #. js-lingui-explicit-id
 msgid "New room"
 msgstr "새 방"
@@ -8795,7 +8829,7 @@ msgstr "메시지가 아직 없습니다"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "아직 메시지가 없습니다. 가장 먼저 당신의 생각을 공유해보세요!"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:54
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:58
 #. js-lingui-explicit-id
 msgid "No messages yet. You can leave the first one."
 msgstr "메시지가 아직 없습니다. 첫 메시지를 남겨보세요."
@@ -8874,7 +8908,7 @@ msgstr "알림 없음"
 msgid "No results found"
 msgstr "결과를 찾을 수 없습니다"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:106
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:139
 #. js-lingui-explicit-id
 msgid "No rooms for this language yet. You can start one."
 msgstr "아직 이 언어에 대한 방이 없습니다. 새로운 방을 시작할 수 있습니다."
@@ -9056,7 +9090,7 @@ msgstr "지원되지 않음"
 msgid "Not sure what to write? Try one of these:"
 msgstr "무엇을 작성해야 할지 모르시겠나요? 아래 중 하나를 시도해보세요:"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:108
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:114
 #. js-lingui-explicit-id
 msgid "Not this time"
 msgstr "이번에는 아니다"
@@ -9066,7 +9100,7 @@ msgstr "이번에는 아니다"
 msgid "Notes inside the app"
 msgstr "앱 내부의 노트"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:91
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:95
 #. js-lingui-explicit-id
 msgid "Notification settings"
 msgstr "알림 설정"
@@ -9077,7 +9111,8 @@ msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "개발 팀에 알림이 전송되었습니다. 죄송합니다..."
 
 #: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:461
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:546
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:574
 #: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
@@ -9269,7 +9304,7 @@ msgstr "연습 대시보드 열기"
 msgid "Open news settings"
 msgstr "뉴스 설정 열기"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:529
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:662
 #. js-lingui-explicit-id
 msgid "Open notification settings"
 msgstr "알림 설정 열기"
@@ -9516,7 +9551,7 @@ msgid ""
 "achievements."
 msgstr "당신의 이력서를 붙여 넣거나 경험, 기술 및 성과에 대한 간략한 요약을 작성하세요."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -9589,13 +9624,18 @@ msgstr "결제가 접수되었습니다. 잔액이 곧 업데이트됩니다."
 msgid "Payment successful!"
 msgstr "결제가 완료되었습니다!"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:467
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:470
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:580
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:583
 #. js-lingui-explicit-id
 msgid "People"
 msgstr "사람들"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:116
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:32
+#. js-lingui-explicit-id
+msgid "People in a room see your picture, your name, and this introduction."
+msgstr "방에 있는 사람들이 당신의 사진, 이름 및 이 소개를 봅니다."
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:122
 #. js-lingui-explicit-id
 msgid "People in this room"
 msgstr "이 방의 사람들"
@@ -9645,6 +9685,11 @@ msgstr "성능, 회복력, 아키텍처 패턴"
 #. js-lingui-explicit-id
 msgid "Period"
 msgstr "기간 "
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:150
+#. js-lingui-explicit-id
+msgid "Person options"
+msgstr "사용자 옵션"
 
 #: src/features/Landing/LandingPage.tsx:348
 #: src/features/Landing/PlanLandingBlock.tsx:429
@@ -9706,7 +9751,7 @@ msgstr "귀하의 그룹에 맞는 난이도를 선택하세요."
 msgid "Pick a level to start playing!"
 msgstr "게임을 시작하려면 레벨을 선택하세요!"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:87
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:91
 #. js-lingui-explicit-id
 msgid "Pick a room, listen, and leave a voice message when you are ready."
 msgstr "방을 선택하고, 청취하고, 준비가 되면 음성 메시지를 남기세요."
@@ -9767,7 +9812,7 @@ msgstr "플랜 및 액세스"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -9787,7 +9832,7 @@ msgstr "다시 재생"
 msgid "Play and Learn"
 msgstr "플레이와 학습"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:72
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:78
 #. js-lingui-explicit-id
 msgid "Play introduction"
 msgstr "소개 재생하기"
@@ -11147,12 +11192,17 @@ msgstr "페이지 새로고침"
 msgid "Reloading conversation..."
 msgstr "대화를 다시 불러오는 중..."
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:112
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
 msgid "Remove"
 msgstr "제거"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:167
+#. js-lingui-explicit-id
+msgid "Remove from the room"
+msgstr "방에서 제거"
 
 #: src/features/TranslationPage/TranslationColumn.tsx:117
 #. js-lingui-explicit-id
@@ -11428,7 +11478,7 @@ msgstr "방 이름"
 msgid "Room rules"
 msgstr "방 규칙"
 
-#: src/features/Chat/VoiceChat/components/RoomThread.tsx:43
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:47
 #. js-lingui-explicit-id
 msgid "Room settings"
 msgstr "룸 설정"
@@ -11503,7 +11553,8 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "새로운 WebSocket 음성 서버를 통한 동일한 Just Talk 레슨."
 
 #: src/features/Chat/Message/Message.tsx:287
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:481
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:594
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -11537,6 +11588,7 @@ msgid "Saving book…"
 msgstr "책 저장 중…"
 
 #: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:68
 #. js-lingui-explicit-id
 msgid "Saving..."
 msgstr "저장 중..."
@@ -11873,7 +11925,7 @@ msgstr "학습의 목표를 설정하십시오"
 msgid "Set translate language in Settings"
 msgstr "설정에서 번역 언어 설정"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:460
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:573
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12326,7 +12378,7 @@ msgid ""
 "in the global chat."
 msgstr "문제가 발생했습니다. 알렉스에게 알림이 갔습니다. 그가 해결하지 않으면 글로벌 채팅에 글을 남겨주세요."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:97
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:106
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -14614,7 +14666,7 @@ msgstr "전사 중..."
 msgid "Transcript"
 msgstr "트랜스크립트"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:70
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:103
 #. js-lingui-explicit-id
 msgid "Transcription"
 msgstr "필사"
@@ -14739,7 +14791,7 @@ msgstr "자막 켜기"
 msgid "Turn on notifications"
 msgstr "알림 켜기"
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:518
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:651
 #. js-lingui-explicit-id
 msgid "Turn on notifications so you do not miss the answer."
 msgstr "답변을 놓치지 않도록 알림을 켜세요."
@@ -15017,6 +15069,7 @@ msgstr "당신의 학습 언어를 사용하세요 ({lang})"
 msgid "Useful when a full conversation feels like too much"
 msgstr "전체 대화가 너무 많다고 느껴질 때 유용합니다"
 
+#: src/features/Chat/VoiceChat/components/VoiceProfileForm.tsx:46
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:86
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:87
 #. js-lingui-explicit-id
@@ -15143,7 +15196,7 @@ msgstr "어휘 연습"
 msgid "Voice"
 msgstr "음성"
 
-#: src/features/Chat/VoiceChat/components/RoomListView.tsx:50
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:54
 #: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:54
 #. js-lingui-explicit-id
 msgid "Voice chat"
@@ -15198,7 +15251,7 @@ msgstr "음성 속도"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:43
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:49
 #. js-lingui-explicit-id
 msgid "Waiting for a review"
 msgstr "검토 대기 중"
@@ -15269,6 +15322,7 @@ msgid "We are ready to craft your plan."
 msgstr "귀하의 계획을 설계할 준비가 되었습니다."
 
 #: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:469
 #. js-lingui-explicit-id
 msgid ""
 "We are reviewing your introduction. You will get a note when there is an "
@@ -15414,7 +15468,7 @@ msgstr "주"
 msgid "week"
 msgstr "주"
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:95
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:101
 #. js-lingui-explicit-id
 msgid "Welcome them"
 msgstr "환영합니다"
@@ -16368,7 +16422,7 @@ msgid ""
 "the same conversation, without the timer."
 msgstr "무료 3분을 사용했습니다. Marin과의 다음 한 시간은 {price}입니다. 타이머 없이 동일한 대화입니다."
 
-#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:77
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:83
 #. js-lingui-explicit-id
 msgid "You welcomed them. Waiting for the other people in the room."
 msgstr "당신은 그들을 환영했습니다. 방 안의 다른 사람들을 기다리는 중입니다."
@@ -16543,7 +16597,7 @@ msgstr "당신의 소개"
 msgid "Your introduction to {room} was not accepted this time"
 msgstr "귀하의 {room} 소개가 이번에는 수락되지 않았습니다."
 
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:515
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:648
 #. js-lingui-explicit-id
 msgid "Your introduction was sent"
 msgstr "귀하의 소개가 전송되었습니다"
@@ -16808,7 +16862,7 @@ msgstr "{count}개월 동안의 그룹 대화"
 msgid "{count} people"
 msgstr "{count} 사람"
 
-#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:53
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:76
 #. js-lingui-explicit-id
 msgid "{count} sec"
 msgstr "{count} 초"
@@ -16853,6 +16907,11 @@ msgstr "{hours} 시간"
 #. js-lingui-explicit-id
 msgid "{hours} hours of conversation"
 msgstr "{hours} 시간의 대화"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:40
+#. js-lingui-explicit-id
+msgid "{name} joined the room."
+msgstr "{name}님이 방에 입장했습니다."
 
 #: src/features/Dashboard/ActivityAlertsCard.tsx:102
 #. js-lingui-explicit-id
