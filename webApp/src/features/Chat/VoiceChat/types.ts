@@ -1,158 +1,149 @@
-export const VOICE_CHAT_MESSAGE_TTL_DAYS = 4;
-export const VOICE_CHAT_REREQUEST_COOLDOWN_DAYS = 10;
-export const VOICE_CHAT_INTRO_MIN_SECONDS = 5;
-export const VOICE_CHAT_INTRO_TARGET_SECONDS = 30;
-export const VOICE_CHAT_FOUNDER_UID = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+import { SpeakingNotificationSettings } from '@/features/Settings/userSettings';
 
-export const VOICE_CHAT_PREVIEW_IMAGE_URL =
-  'https://storage.googleapis.com/dark-lang.firebasestorage.app/uploadedImages%2FMq2HfU3KrXTjNyOpPXqHSPg5izV2%2F1785015399032-Mq2HfU3KrXTjNyOpPXqHSPg5izV2.png';
+export const SPEAKING_CLUB_FOUNDER_UID = 'Mq2HfU3KrXTjNyOpPXqHSPg5izV2';
+export const SPEAKING_CLUB_ALEX_EMAIL = 'dmowski.alex@gmail.com';
 
-export type VoiceChatMemberStatus = 'pending' | 'approved' | 'rejected';
-export type VoiceChatDecision = 'approved' | 'rejected';
+export const ROOM_DRAFT_STORAGE_KEY = 'voice-chat-room-draft';
 
-export interface VoiceChatConfig {
-  approverIds: string[];
+export type RoomReviewMode = 'allMembers' | 'alexOnly';
+export type RoomMembershipStatus = 'pending' | 'approved' | 'rejected';
+export type ReviewDecision = 'approved' | 'rejected';
+
+export type SpeakingNotificationKind = 'newMessages' | 'reviewJoiners' | 'newRooms';
+
+export type SpeakingNotificationPrefs = SpeakingNotificationSettings;
+
+/** A room can only turn a global choice off. */
+export interface RoomNotificationNarrowing {
+  browserEnabled: boolean;
+  emailEnabled: boolean;
+  inAppEnabled: boolean;
+  newMessages: boolean;
+  reviewJoiners: boolean;
 }
 
-export interface VoiceChatEntitlement {
-  isPaid: boolean;
-  isGameWinner: boolean;
+export interface SpeakingRoom {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  previewImageUrl: string;
+  reviewMode: RoomReviewMode;
+  joinPromptMarkdown: string;
+  isPublic: boolean;
+  rulesMarkdown: string;
+  discussMarkdown: string;
+  creatorId: string;
+  createdAtIso: string;
   updatedAtIso: string;
+  memberCount: number;
+  messagesLast7Days: number;
 }
 
-export interface VoiceChatMember {
+export interface RoomMember {
   userId: string;
-  status: VoiceChatMemberStatus;
+  status: RoomMembershipStatus;
+  username: string;
+  avatarUrl: string;
+  description: string;
   introAudioPath: string;
+  introTranscript: string;
+  introSuggestion: string;
   introDurationSec: number;
-  introContentType: string;
   requestedAtIso: string;
   decidedAtIso?: string;
-  decidedBy?: string;
-  postedIntroMessageId?: string;
+  lastOnlineIso?: string;
+  approvals: Record<string, ReviewDecision>;
 }
 
-export interface VoiceChatMessage {
+export interface RoomMessage {
   id: string;
+  roomId: string;
   senderId: string;
-  parentMessageId: string;
+  senderName: string;
+  senderAvatarUrl: string;
   audioPath: string;
   durationSec: number;
-  contentType: string;
+  transcript: string;
+  correctedTranscript: string;
   createdAtIso: string;
-  createdAtUtc: number;
-  isIntro?: boolean;
 }
 
-export type VoiceChatReadMetadata = Record<string, boolean>;
+export type AppNotificationKind = 'newMessage' | 'reviewJoiner' | 'newRoom';
 
-export interface VoiceChatApiError {
-  error: string;
+export interface AppNotification {
+  id: string;
+  kind: AppNotificationKind;
+  roomId: string;
+  roomTitle: string;
+  actorName: string;
+  /** Set when a review has been decided. */
+  decision?: ReviewDecision;
+  /** Who this note is for. */
+  audience: 'applicant' | 'reviewer' | 'member';
+  createdAtIso: string;
+  read: boolean;
 }
 
-export interface VoiceChatOkResponse {
-  ok: true;
-}
-
-/** Route params: DELETE/GET `/messages/[messageId]` (+ `/audio`) */
-export interface VoiceChatMessageIdParams {
-  messageId: string;
-}
-
-/** Route params: GET `/pending/[userId]/intro-audio` */
-export interface VoiceChatPendingUserIdParams {
+export interface RoomMemberPreview {
   userId: string;
+  username: string;
+  avatarUrl: string;
 }
 
-export type VoiceChatMessageIdRouteContext = {
-  params: Promise<VoiceChatMessageIdParams>;
-};
-
-export type VoiceChatPendingUserIdRouteContext = {
-  params: Promise<VoiceChatPendingUserIdParams>;
-};
-
-/** POST `/decide` */
-export interface VoiceChatDecideRequest {
-  targetUserId: string;
-  decision: VoiceChatDecision;
-}
-
-export interface VoiceChatDecideResponse {
-  member: VoiceChatMember;
-}
-
-/** POST `/mark-listened` */
-export interface VoiceChatMarkListenedRequest {
-  messageId: string;
-}
-
-export type VoiceChatMarkListenedResponse = VoiceChatOkResponse;
-
-/** POST `/validate-paid` */
-export interface VoiceChatValidatePaidRequest {
-  userId?: string;
-}
-
-export interface VoiceChatValidatePaidResponse {
-  entitlement: VoiceChatEntitlement;
-}
-
-/** GET `/validate-paid` (cron batch reconcile) */
-export interface VoiceChatValidatePaidCronResponse {
-  paidUserIds: string[];
-}
-
-/** POST|GET `/validate-game-winner` */
-export interface VoiceChatValidateGameWinnerResponse {
-  winnerIds: string[];
-}
-
-/** GET `/status` */
-export interface VoiceChatStatusResponse {
-  isEntitled: boolean;
-  isPaid: boolean;
-  isGameWinner: boolean;
-  isApprover: boolean;
-  member: VoiceChatMember | null;
-  canRequestAccess: boolean;
-  reRequestAvailableAtIso: string | null;
+export interface RoomListItem {
+  room: SpeakingRoom;
   unreadCount: number;
-  pendingMembers: VoiceChatMember[];
+  membershipStatus: RoomMembershipStatus | null;
+  isAdmin: boolean;
+  memberPreviews: RoomMemberPreview[];
 }
 
-/** GET `/messages` */
-export interface VoiceChatListMessagesResponse {
-  messages: VoiceChatMessage[];
-  listenedMessageIds: string[];
-  memberUserIds: string[];
+export interface PublicSpeakingClub {
+  slug: string;
+  title: string;
+  subtitle: string;
+  previewImageUrl: string;
+  reviewMode: RoomReviewMode;
+  joinPromptMarkdown: string;
+  rulesMarkdown: string;
+  discussMarkdown: string;
+  memberCount: number;
+  messagesLast7Days: number;
 }
 
-/** POST `/messages` (multipart: audio, durationSec, parentMessageId) */
-export interface VoiceChatSendMessageForm {
-  audio: File;
-  durationSec: number;
-  parentMessageId: string;
+export interface RoomDraft {
+  title: string;
+  subtitle: string;
+  reviewMode: RoomReviewMode;
+  joinPromptMarkdown: string;
+  isPublic: boolean;
+  rulesMarkdown: string;
+  discussMarkdown: string;
+  previewUrls: string[];
+  selectedPreviewUrl: string;
 }
 
-export interface VoiceChatSendMessageResponse {
-  message: VoiceChatMessage;
-}
+export const DEFAULT_JOIN_PROMPT = `Please tell us a little about yourself.
 
-/** POST `/request-access` (multipart: audio, durationSec) */
-export interface VoiceChatRequestAccessForm {
-  audio: File;
-  durationSec: number;
-}
+Where are you from, and what do you enjoy about this topic? A recording of about three minutes helps everyone get a real sense of who you are.`;
 
-export interface VoiceChatRequestAccessResponse {
-  member: VoiceChatMember;
-}
+export const DEFAULT_RULES = `Be kind.
 
-/** DELETE `/messages/[messageId]` and GET `/cleanup` */
-export interface VoiceChatDeletedIdsResponse {
-  deletedIds: string[];
-}
+One person speaks at a time. It is fine to listen first. Disagree with ideas, not with people.`;
 
-export type VoiceChatDeleteMessageResponse = VoiceChatDeletedIdsResponse;
-export type VoiceChatCleanupResponse = VoiceChatDeletedIdsResponse;
+export const DEFAULT_DISCUSS = `We talk about everyday things connected to this topic.
+
+You do not need perfect English. Come as you are, listen first if you like, and speak when you feel ready.`;
+
+export const emptyRoomDraft = (): RoomDraft => ({
+  title: '',
+  subtitle: '',
+  reviewMode: 'allMembers',
+  joinPromptMarkdown: DEFAULT_JOIN_PROMPT,
+  isPublic: false,
+  rulesMarkdown: DEFAULT_RULES,
+  discussMarkdown: DEFAULT_DISCUSS,
+  previewUrls: [],
+  selectedPreviewUrl: '',
+});

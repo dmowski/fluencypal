@@ -1,40 +1,6 @@
 import React from 'react';
 import { expect, test, vi } from 'vitest';
-import { render } from 'vitest-browser-react';
-import { page, userEvent } from 'vitest/browser';
-import {
-  FIXTURE_CONVERSATION,
-  FIXTURE_CURRENT_USER,
-  FIXTURE_OTHER_USER,
-  FIXTURE_USER_PROFILES,
-  SILENT_AUDIO_DATA_URL,
-  VoiceChatDashboardFixture,
-  VoiceChatMessageListFixture,
-  VoiceChatModalShellFixture,
-  VoiceChatPlayerFixture,
-  VoiceChatRecorderFixture,
-} from './voiceChatBrowserFixtures';
-
-vi.mock('@/features/Game/useGame', () => ({
-  useGame: () => {
-    const now = new Date().toISOString();
-    return {
-      getUserName: (userId: string) => FIXTURE_USER_PROFILES[userId]?.name ?? 'Unknown',
-      getUserAvatarUrl: (userId: string) => FIXTURE_USER_PROFILES[userId]?.avatar ?? '',
-      gameLastVisit: {
-        [FIXTURE_CURRENT_USER]: now,
-        [FIXTURE_OTHER_USER]: now,
-      },
-    };
-  },
-}));
-
-vi.mock('@/features/Auth/useAuth', () => ({
-  useAuth: () => ({
-    uid: 'fixture-user',
-    getToken: async () => 'fixture-token',
-  }),
-}));
+import type { ReactNode } from 'react';
 
 vi.mock('next/image', () => ({
   __esModule: true,
@@ -47,146 +13,177 @@ vi.mock('next/image', () => ({
     alt: string;
     style?: React.CSSProperties;
   }) {
-    return (
-      <img
-        src={src}
-        alt={alt}
-        style={{
-          ...style,
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      />
-    );
+    return <img src={src} alt={alt} style={style} />;
   },
 }));
+import { render } from 'vitest-browser-react';
+import { page, userEvent } from 'vitest/browser';
+import { BrowserAppShell } from '@/test-utils/browserAppShell';
+import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
+import { RoomCard } from './components/RoomCard';
+import { RoomListView } from './components/RoomListView';
+import { JoinRoomView } from './components/JoinRoomView';
+import { VoiceMessageRow } from './components/VoiceMessageRow';
+import { NotificationSettingsForm } from './components/NotificationSettingsForm';
+import { defaultRoomNarrowing, defaultSpeakingNotificationPrefs } from './notificationRules';
+import { RoomListItem, RoomMessage, SpeakingRoom } from './types';
 
-test('message list – empty thread', async () => {
-  await render(<VoiceChatMessageListFixture messages={[]} listenedIds={new Set()} />);
+const room: SpeakingRoom = {
+  id: 'politics',
+  slug: 'politics',
+  title: 'Politics',
+  subtitle: 'News, opinions, and careful disagreement',
+  previewImageUrl: '',
+  reviewMode: 'allMembers',
+  joinPromptMarkdown: 'Tell us where you are from.',
+  isPublic: true,
+  rulesMarkdown: 'Be kind.',
+  discussMarkdown: 'We talk about the news without shouting.',
+  creatorId: 'alex',
+  createdAtIso: '2026-10-01T00:00:00.000Z',
+  updatedAtIso: '2026-10-01T00:00:00.000Z',
+  memberCount: 4,
+  messagesLast7Days: 12,
+};
 
-  await expect
-    .element(page.getByTestId('voice-chat-message-list-fixture'))
-    .toMatchScreenshot('message-list-empty');
-});
+const item: RoomListItem = {
+  room,
+  unreadCount: 2,
+  membershipStatus: null,
+  isAdmin: false,
+  memberPreviews: [
+    { userId: 'maria', username: 'Maria', avatarUrl: '' },
+    { userId: 'ken', username: 'Ken', avatarUrl: '' },
+  ],
+};
 
-test('message list – nested conversation with unread highlights', async () => {
-  await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
+const message: RoomMessage = {
+  id: 'm1',
+  roomId: 'politics',
+  senderId: 'maria',
+  senderName: 'Maria',
+  senderAvatarUrl: '',
+  audioPath: 'speakingClubs/audio/politics/m1.webm',
+  durationSec: 18,
+  transcript: 'I think the vote was close.',
+  correctedTranscript: 'I think the vote was close.',
+  createdAtIso: '2026-10-16T00:00:00.000Z',
+};
 
-  await expect
-    .element(page.getByTestId('voice-chat-message-list-fixture'))
-    .toMatchScreenshot('message-list-conversation');
-});
-
-test('message list – message options menu with recorded date', async () => {
-  await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
-
-  await userEvent.click(page.getByRole('button', { name: 'Message options' }).first());
-
-  await expect
-    .element(page.getByTestId('voice-chat-message-menu'))
-    .toMatchScreenshot('message-list-options-menu');
-});
-
-test('message list – reply recorder open', async () => {
-  await render(<VoiceChatMessageListFixture messages={FIXTURE_CONVERSATION} />);
-
-  await userEvent.click(page.getByRole('button', { name: 'Message options' }).first());
-  await userEvent.click(page.getByRole('menuitem', { name: 'Reply' }));
-
-  await expect
-    .element(page.getByTestId('voice-chat-message-list-fixture'))
-    .toMatchScreenshot('message-list-reply-recorder');
-});
-
-test('modal shell – conversation with root recorder', async () => {
-  await render(<VoiceChatModalShellFixture messages={FIXTURE_CONVERSATION} />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-modal-shell-fixture'))
-    .toMatchScreenshot('modal-shell-conversation');
-});
-
-test('modal shell – members dialog with Total / Online tabs', async () => {
-  await render(<VoiceChatModalShellFixture messages={FIXTURE_CONVERSATION} />);
-
-  await userEvent.click(page.getByTestId('voice-chat-members-stats'));
-
-  await expect
-    .element(page.getByTestId('voice-chat-members-dialog'))
-    .toMatchScreenshot('modal-members-dialog');
-});
-
-test('player – controls with silent audio loaded', async () => {
-  await render(<VoiceChatPlayerFixture />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-player-fixture'))
-    .toMatchScreenshot('player-controls');
-});
-
-test('recorder – idle before recording starts', async () => {
-  await render(<VoiceChatRecorderFixture />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-recorder-fixture'))
-    .toMatchScreenshot('recorder-idle');
-});
-
-test('dashboard – new user onboarding checklist', async () => {
-  await render(<VoiceChatDashboardFixture state="onboarding-new" />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-onboarding-new');
-});
-
-test('dashboard – intro submitted, waiting for approval', async () => {
-  await render(<VoiceChatDashboardFixture state="intro-pending" />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-intro-pending');
-});
-
-test('dashboard – rejected with cooldown copy', async () => {
-  await render(<VoiceChatDashboardFixture state="rejected" />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-rejected');
-});
-
-test('dashboard – approved member with unread badge', async () => {
-  await render(<VoiceChatDashboardFixture state="approved" unreadCount={3} />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-approved-unread');
-});
-
-test('dashboard – approver pending requests with intro player', async () => {
-  await render(<VoiceChatDashboardFixture state="approver-pending" />);
-
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-approver-pending');
-});
-
-test('dashboard – intro recorder panel expanded', async () => {
-  await render(
-    <VoiceChatDashboardFixture state="onboarding-new" showIntroRecorder={true} />,
+const shell = (node: ReactNode) =>
+  render(
+    <BrowserAppShell>
+      <WindowSizesProvider>
+        <div style={{ width: 720, background: '#12141a', padding: 16 }}>{node}</div>
+      </WindowSizesProvider>
+    </BrowserAppShell>,
   );
 
-  await expect
-    .element(page.getByTestId('voice-chat-dashboard-fixture'))
-    .toMatchScreenshot('dashboard-intro-recorder');
+test('room list shows a room card and a way to start one', async () => {
+  await shell(
+    <RoomListView
+      rooms={[item]}
+      isLoading={false}
+      error=""
+      onOpenRoom={() => {}}
+      onCreate={() => {}}
+      onOpenSettings={() => {}}
+    />,
+  );
+  await expect.element(page.getByText('Politics')).toBeVisible();
+  await expect.element(page.getByText('Everyone in the room reviews new people')).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-unread')).toHaveTextContent('2');
+  await expect.element(page.getByTestId('voice-chat-modal')).toMatchScreenshot('room-list');
 });
 
-test('dashboard – rules dialog open', async () => {
-  await render(<VoiceChatDashboardFixture state="approved" rulesOpen={true} />);
+test('an empty room list invites the first room', async () => {
+  await shell(
+    <RoomListView
+      rooms={[]}
+      isLoading={false}
+      error=""
+      onOpenRoom={() => {}}
+      onCreate={() => {}}
+      onOpenSettings={() => {}}
+    />,
+  );
+  await expect.element(page.getByTestId('voice-chat-empty')).toBeVisible();
+});
 
-  await expect.element(page.getByRole('dialog')).toMatchScreenshot('dashboard-rules-dialog');
+test('a room card opens when pressed', async () => {
+  let opened = '';
+  await shell(<RoomCard item={item} onOpen={() => (opened = 'politics')} />);
+  await userEvent.click(page.getByTestId('voice-room-card-politics'));
+  expect(opened).toBe('politics');
+});
+
+test('join form explains the room before recording', async () => {
+  await shell(
+    <JoinRoomView
+      room={room}
+      isRecording={false}
+      isTranscribing={false}
+      transcript=""
+      suggestion=""
+      corrected=""
+      onRecord={() => {}}
+      onSend={() => {}}
+      onRecordAgain={() => {}}
+      isSending={false}
+      isPending={false}
+    />,
+  );
+  await expect.element(page.getByText('We talk about the news without shouting.')).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-record-intro')).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-join')).toMatchScreenshot('join-room');
+});
+
+test('a short introduction warns before it is sent', async () => {
+  await shell(
+    <JoinRoomView
+      room={room}
+      isRecording={false}
+      isTranscribing={false}
+      transcript="Hello from home."
+      suggestion="Try one more sentence about what you like."
+      corrected="Hello from home."
+      onRecord={() => {}}
+      onSend={() => {}}
+      onRecordAgain={() => {}}
+      isSending={false}
+      isPending={false}
+    />,
+  );
+  await expect.element(page.getByTestId('voice-room-intro-short')).toBeVisible();
+  await expect.element(page.getByTestId('voice-room-send-intro')).toBeVisible();
+});
+
+test('transcription sits under the voice message', async () => {
+  await shell(
+    <VoiceMessageRow message={message} audioUrl={null} canRemove={false} onRemove={() => {}} />,
+  );
+  await userEvent.click(page.getByTestId('voice-chat-message-menu'));
+  await userEvent.click(page.getByTestId('voice-chat-transcription'));
+  await expect
+    .element(page.getByTestId('voice-chat-transcript'))
+    .toHaveTextContent('vote was close');
+});
+
+test('notification settings include quiet hours and new rooms off', async () => {
+  await shell(
+    <NotificationSettingsForm
+      prefs={defaultSpeakingNotificationPrefs()}
+      narrowing={defaultRoomNarrowing()}
+      roomScoped={false}
+      browserPermission="default"
+      onChangePrefs={() => {}}
+      onChangeNarrowing={() => {}}
+      onEnableBrowser={() => {}}
+    />,
+  );
+  await expect.element(page.getByText('Turn on notifications')).toBeVisible();
+  await expect.element(page.getByText('New rooms')).toBeVisible();
+  await expect
+    .element(page.getByTestId('voice-notification-settings'))
+    .toMatchScreenshot('notifications');
 });

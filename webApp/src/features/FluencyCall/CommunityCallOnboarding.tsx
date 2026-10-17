@@ -11,9 +11,11 @@ import { sendCommunityCallRequest } from './sendCommunityCallRequest';
 export const CommunityCallOnboarding = ({
   lang,
   signedIn = false,
+  onOpenVoiceChat,
 }: {
   lang: SupportedLanguage;
   signedIn?: boolean;
+  onOpenVoiceChat?: () => void;
 }) => {
   const { i18n } = useLingui();
   const auth = useAuth();
@@ -69,6 +71,17 @@ export const CommunityCallOnboarding = ({
           <Typography sx={{ opacity: 0.8 }}>
             {i18n._('Practice with AI while you wait.')}
           </Typography>
+          {onOpenVoiceChat ? (
+            <Button
+              variant="contained"
+              size="large"
+              data-testid="community-call-open-voice-chat"
+              onClick={onOpenVoiceChat}
+              sx={{ alignSelf: 'flex-start', borderRadius: '30px', fontWeight: 700 }}
+            >
+              {i18n._('Open voice chat')}
+            </Button>
+          ) : null}
           <Button
             href={`${getUrlStart(lang)}practice`}
             variant="contained"

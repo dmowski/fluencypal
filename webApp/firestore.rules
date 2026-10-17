@@ -307,6 +307,24 @@ service cloud.firestore {
         allow read, write: if isUser(userId);
       }
 
+      match /appNotifications/{notificationId} {
+        allow read: if isUser(userId);
+        allow create, delete: if false;
+        allow update: if isUser(userId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read'])
+          && request.resource.data.read == true;
+      }
+
+      match /speakingRoomReads/{roomId} {
+        allow read: if isUser(userId);
+        allow write: if false;
+      }
+
+      match /speakingRoomNotices/{roomId} {
+        allow read: if isUser(userId);
+        allow write: if false;
+      }
+
       // Deny all other unspecified documents under userId by default
       match /{document=**} {
         allow read, write: if false;
@@ -450,21 +468,22 @@ service cloud.firestore {
       allow update, delete: if isBlogAdmin();
     }
 
-    // Voice Chat: all mutations go through Admin SDK APIs.
-    // Clients may only read their own membership + entitlement docs.
-    match /voiceChat/{docId} {
+    // Speaking rooms (voice chat). Writes go through the API.
+    match /speakingRooms/{roomId} {
       allow read: if isSignedIn();
       allow write: if false;
-    }
 
-    match /voiceChatEntitlements/{userId} {
-      allow read: if isUser(userId);
-      allow write: if false;
-    }
+      match /members/{memberId} {
+        allow read: if isSignedIn();
+        allow write: if false;
+      }
 
-    match /voiceChatMembers/{userId} {
-      allow read: if isUser(userId);
-      allow write: if false;
+      match /messages/{messageId} {
+        allow read: if isSignedIn()
+          && exists(/databases/$(database)/documents/speakingRooms/$(roomId)/members/$(request.auth.uid))
+          && get(/databases/$(database)/documents/speakingRooms/$(roomId)/members/$(request.auth.uid)).data.status == 'approved';
+        allow write: if false;
+      }
     }
 
     // Custom analytics: client SDK has no access. Writes go through Admin SDK
@@ -477,8 +496,5 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    match /voiceChatMessages/{messageId} {
-      allow read, write: if false;
-    }
   }
 }

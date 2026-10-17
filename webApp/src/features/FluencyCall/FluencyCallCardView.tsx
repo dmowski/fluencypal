@@ -1,9 +1,8 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import { Box, Stack } from '@mui/material';
 import { FluencyCallCardHeader } from './card/FluencyCallCardHeader';
-import { FluencyCallChatPanel } from './card/FluencyCallChatPanel';
 import { FluencyCallRequestSection } from './card/FluencyCallRequestSection';
 import { narrow, token } from './card/styles';
 import { FluencyCallCardViewProps } from './card/types';
@@ -25,15 +24,12 @@ const stackColumns = {
 };
 
 export const FluencyCallCardView = ({
-  messages,
-  onSendMessage,
   canJoin,
   paidNotice,
-  initialChatExpanded = false,
   welcomeVideoSrc,
+  onOpenVoiceChat,
 }: FluencyCallCardViewProps) => {
   const uid = useId();
-  const [error, setError] = useState('');
 
   return (
     <Box
@@ -58,11 +54,7 @@ export const FluencyCallCardView = ({
       }}
     >
       <Stack sx={{ padding: '24px 20px 20px 20px', gap: 0, [narrow]: { padding: '20px' } }}>
-        <FluencyCallCardHeader
-          titleId={`${uid}-title`}
-          canJoin={canJoin}
-          paidNotice={paidNotice}
-        />
+        <FluencyCallCardHeader titleId={`${uid}-title`} canJoin={canJoin} paidNotice={paidNotice} />
         <Stack
           sx={{
             display: 'grid',
@@ -86,18 +78,10 @@ export const FluencyCallCardView = ({
             <MutedPreviewVideo src={welcomeVideoSrc} muteSize="150px" playSize="280px" />
           </Stack>
           <Stack sx={{ gridArea: 'request', minWidth: 0 }}>
-            <FluencyCallRequestSection />
+            <FluencyCallRequestSection onOpenVoiceChat={onOpenVoiceChat} />
           </Stack>
         </Stack>
       </Stack>
-
-      <FluencyCallChatPanel
-        messages={messages}
-        initialExpanded={initialChatExpanded}
-        alert={error}
-        onSendMessage={onSendMessage}
-        onError={setError}
-      />
     </Box>
   );
 };

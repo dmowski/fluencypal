@@ -11,10 +11,9 @@ test.describe('Voice Chat shell', () => {
     const user = await createEmulatorTestUser();
     await signInUserOnDashboard(page, user);
 
-    await expect(page.getByTestId('voice-chat-dashboard-card')).toHaveCount(0);
-
     await page.goto('/?voiceChat=true');
     await expect(page.getByTestId('voice-chat-modal')).toBeVisible();
     await expect(page.getByTestId('voice-chat-empty')).toBeVisible();
+    await expect(page.getByTestId('voice-chat-new-room')).toBeVisible();
   });
 });

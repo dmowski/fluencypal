@@ -24,7 +24,8 @@ import { InstallAppInstruction } from '../InstallApp/InstallAppInstruction';
 import { ExamsDashboardCard } from './Exams/ExamsDashboardCard';
 import { DashboardSectionContainer, MainDashboardContainer } from './Layout';
 import { LinkToStatsAdmin } from './LinkToStats';
-import { NewPrivateMessageCard } from './NewPrivateMessageCard';
+import { ActivityAlertsCard } from './ActivityAlertsCard';
+import { SpeakingBrowserNotifications } from '../Chat/VoiceChat/SpeakingBrowserNotifications';
 import { FluencyCallDashboardCard } from '../FluencyCall/FluencyCallDashboardCard';
 import { OpenAiLiveDashboardCard } from '../OpenAiLive/OpenAiLiveDashboardCard';
 
@@ -44,7 +45,8 @@ export function Dashboard({ lang }: { lang: SupportedLanguage }) {
       <DashboardSectionContainer>
         {appNavigation.currentPage === 'home' && (
           <MainDashboardContainer>
-            <NewPrivateMessageCard />
+            <SpeakingBrowserNotifications />
+            <ActivityAlertsCard />
             <DailyTasksDashboardCard />
             <FluencyCallDashboardCard />
             <JustTalkCard />

@@ -7,7 +7,7 @@ import { Users } from 'lucide-react';
 import { CommunityCallRequestModal } from '../CommunityCallRequestModal';
 import { primaryButtonSx, token } from './styles';
 
-export const FluencyCallRequestSection = () => {
+export const FluencyCallRequestSection = ({ onOpenVoiceChat }: { onOpenVoiceChat: () => void }) => {
   const { i18n } = useLingui();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,9 +41,33 @@ export const FluencyCallRequestSection = () => {
           textAlign: 'center',
         }}
       >
-        {i18n._('Open Request Form')}
+        {i18n._('Request a call')}
       </Button>
-      {isOpen ? <CommunityCallRequestModal onClose={() => setIsOpen(false)} /> : null}
+      <Button
+        data-testid="fluency-call-open-voice-chat"
+        data-analytics="voice-chat-open"
+        variant="outlined"
+        color="info"
+        onClick={onOpenVoiceChat}
+        sx={{
+          ...primaryButtonSx,
+          alignSelf: 'flex-start',
+          maxWidth: '100%',
+          whiteSpace: 'normal',
+          textAlign: 'center',
+        }}
+      >
+        {i18n._('Open voice chat')}
+      </Button>
+      {isOpen ? (
+        <CommunityCallRequestModal
+          onClose={() => setIsOpen(false)}
+          onOpenVoiceChat={() => {
+            setIsOpen(false);
+            onOpenVoiceChat();
+          }}
+        />
+      ) : null}
     </Stack>
   );
 };

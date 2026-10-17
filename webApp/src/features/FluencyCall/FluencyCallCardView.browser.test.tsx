@@ -4,14 +4,9 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { page, userEvent } from 'vitest/browser';
-import { ThreadsMessage } from '@/features/Chat/type';
 import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { BrowserAppShell } from '@/test-utils/browserAppShell';
-import {
-  FLUENCY_CALL_CHAT_PAGE,
-  FluencyCallCardView,
-  FluencyCallCardViewProps,
-} from './FluencyCallCardView';
+import { FluencyCallCardView, FluencyCallCardViewProps } from './FluencyCallCardView';
 import { FluencyCallConductModal } from './FluencyCallConductModal';
 
 dayjs.extend(relativeTime);
@@ -92,30 +87,11 @@ vi.mock('next/image', () => ({
   },
 }));
 
-const message = (
-  overrides: Partial<ThreadsMessage> & Pick<ThreadsMessage, 'id' | 'content'>,
-): ThreadsMessage => {
-  const createdAtIso = new Date().toISOString();
-  return {
-    senderId: 'maria',
-    parentMessageId: '',
-    createdAtIso,
-    createdAtUtc: Date.now(),
-    updatedAtIso: createdAtIso,
-    isReported: null,
-    ...overrides,
-  };
-};
-
 const cardProps: FluencyCallCardViewProps = {
-  messages: [
-    message({ id: 'older', content: 'See you next time' }),
-    message({ id: 'latest', content: 'Hi everyone' }),
-  ],
-  onSendMessage: async () => {},
   canJoin: true,
   paidNotice: false,
   welcomeVideoSrc: '/group_call/intro2.webm',
+  onOpenVoiceChat: () => {},
 };
 
 function renderCard(overrides: Partial<FluencyCallCardViewProps> = {}, width = 640) {
@@ -163,11 +139,9 @@ test('the card shows the host video beside a request for a group call', async ()
   await expect
     .element(page.getByRole('heading', { name: 'Want to practice with people?' }))
     .toBeVisible();
-  await expect
-    .element(page.getByTestId('fluency-call-open-request'))
-    .toBeVisible();
-  await expect.element(page.getByText('Hi everyone')).toBeVisible();
-  await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
+  await expect.element(page.getByTestId('fluency-call-open-request')).toBeVisible();
+  await expect.element(page.getByTestId('fluency-call-open-voice-chat')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Request a call' })).toBeVisible();
 
   const video = await box('muted-preview-video');
   const request = await box('fluency-call-request');
@@ -235,98 +209,17 @@ test('open request form stays on the card and shows the request modal', async ()
   await expect.element(page.getByTestId('community-call-request-modal')).not.toBeInTheDocument();
 });
 
-test('show older reveals history and hide older collapses it', async () => {
-  await renderCard();
-
-  await userEvent.click(page.getByTestId('fluency-call-show-older'));
-  await expect.element(page.getByText('See you next time')).toBeVisible();
-  await holdVideoFrame();
-  await expect.element(page.getByTestId('fluency-call-shot')).toMatchScreenshot('chat-older');
-
-  await userEvent.click(page.getByTestId('fluency-call-show-older'));
-  await expect.element(page.getByText('See you next time')).not.toBeInTheDocument();
-  await expect.element(page.getByText('Hi everyone')).toBeVisible();
-});
-
-test('load more reveals messages above the first page', async () => {
-  const messages = Array.from({ length: FLUENCY_CALL_CHAT_PAGE + 1 }, (_, index) =>
-    message({ id: `m-${index}`, content: `Message ${index}` }),
-  );
-  await renderCard({ messages });
-
-  await userEvent.click(page.getByTestId('fluency-call-show-older'));
-  await expect.element(page.getByText('Message 0')).not.toBeInTheDocument();
-  await userEvent.click(page.getByTestId('fluency-call-load-older'));
-  await expect.element(page.getByText('Message 0')).toBeVisible();
-});
-
-test('a message keeps its line breaks', async () => {
-  const onSendMessage = vi.fn(async () => {});
-  await renderCard({
-    messages: [message({ id: 'story', content: 'First line\n\nSecond line' })],
-    onSendMessage,
-  });
-
-  const shown = await page.getByTestId('fluency-call-messages').element();
-  const paragraphs = [...shown.querySelectorAll('p')]
-    .map((paragraph) => paragraph.textContent?.trim())
-    .filter((text) => text === 'First line' || text === 'Second line');
-  expect(paragraphs).toEqual(['First line', 'Second line']);
-
-  const draft = page.getByRole('textbox', { name: 'Message the group' });
-  await userEvent.fill(draft, 'Line one\nLine two');
-  await userEvent.click(page.getByTestId('fluency-call-send'));
-  expect(onSendMessage).toHaveBeenCalledWith('Line one\nLine two');
-});
-
-test('clicking a message stays on the card', async () => {
-  chatSpies.onOpen.mockClear();
-  await renderCard();
-
-  await userEvent.click(page.getByText('Hi everyone'));
-  expect(chatSpies.onOpen).not.toHaveBeenCalled();
-});
-
-test('a failed reply keeps the draft', async () => {
-  await renderCard({
-    messages: [],
-    onSendMessage: async () => {
-      throw new Error('offline');
-    },
-  });
-
-  const draft = page.getByRole('textbox', { name: 'Message the group' });
-  await userEvent.fill(draft, 'Hello there');
-  await userEvent.click(page.getByTestId('fluency-call-send'));
-
-  await expect.element(page.getByTestId('fluency-call-error')).toBeVisible();
-  await expect.element(draft).toHaveValue('Hello there');
-});
-
-test('a long message stays inside the card', async () => {
-  await renderCard(
-    {
-      messages: [
-        message({
-          id: 'long',
-          senderId: 'long-name',
-          content: 'supercalifragilistic'.repeat(12),
-        }),
-      ],
-    },
-    320,
-  );
-
-  const card = await box('fluency-call-card');
-  const body = (await page.getByText(/supercalifragilistic/).element()).getBoundingClientRect();
-  expect(body.right).toBeLessThanOrEqual(card.right + 1);
-  expect(body.left).toBeGreaterThanOrEqual(card.left);
+test('open voice chat uses the card callback', async () => {
+  const onOpenVoiceChat = vi.fn();
+  await renderCard({ onOpenVoiceChat });
+  await userEvent.click(page.getByTestId('fluency-call-open-voice-chat'));
+  expect(onOpenVoiceChat).toHaveBeenCalledTimes(1);
 });
 
 test('the host intro uses the muted preview of the real video', async () => {
   await renderCard({
-    messages: [],
     welcomeVideoSrc: '/group_call/intro2.webm',
+    onOpenVoiceChat: () => {},
   });
 
   const video = (await page.getByTestId('muted-preview-video').element()) as HTMLVideoElement;

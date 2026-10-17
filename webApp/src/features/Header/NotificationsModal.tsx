@@ -1,7 +1,8 @@
-import { Button, Checkbox, FormControlLabel, Stack, Switch, Typography } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, Stack, Typography } from '@mui/material';
 import { CustomModal } from '../uiKit/Modal/CustomModal';
 
 import { useLingui } from '@lingui/react';
+import { SpeakingNotificationSettings } from '../Chat/VoiceChat/SpeakingNotificationSettings';
 import { useSettings } from '../Settings/useSettings';
 
 interface NotificationsModalProps {
@@ -73,6 +74,7 @@ export const NotificationsModal = ({ onClose }: NotificationsModalProps) => {
                 {i18n._(`Close`)}
               </Button>
             </Stack>
+            <SpeakingNotificationSettings />
           </Stack>
         </Stack>
       </Stack>

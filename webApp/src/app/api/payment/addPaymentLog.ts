@@ -1,4 +1,3 @@
-import { validatePaidForUser } from '@/features/Chat/VoiceChat/backend/entitlements';
 import { PaymentLog, PaymentLogType } from '@/features/Usage/usage';
 import { getDB } from '../config/firebase';
 import { addToTotalBalance } from './addToTotalBalance';
@@ -88,11 +87,5 @@ export const addPaymentLog = async ({
       minutesCount,
       isAdvanced: type === 'advanced-hours',
     });
-  }
-
-  try {
-    await validatePaidForUser(userId);
-  } catch (error) {
-    console.error('Voice chat paid entitlement sync failed', error);
   }
 };

@@ -25,6 +25,22 @@ export interface ParentConsent {
   consentGivenAtIso: string;
 }
 
+/** Voice-chat notification choices stored on the user document. */
+export interface SpeakingNotificationSettings {
+  browserEnabled: boolean;
+  emailEnabled: boolean;
+  inAppEnabled: boolean;
+  /** Quiet hours in local time, "HH:mm". Empty means none. */
+  sleepStart: string;
+  sleepEnd: string;
+  /** `Date.getTimezoneOffset()` when the hours were saved. */
+  timezoneOffsetMinutes: number;
+  newMessages: boolean;
+  reviewJoiners: boolean;
+  /** Off until the person turns it on. */
+  newRooms: boolean;
+}
+
 export interface UserSettings extends InitUserSettings {
   languageCode: SupportedLanguage | null;
   pageLanguageCode: SupportedLanguage | null;
@@ -55,6 +71,7 @@ export interface UserSettings extends InitUserSettings {
   fluencyCallConductAgreedAtIso?: string | null;
 
   isSendEmailNotifications?: boolean | null;
+  speakingNotifications?: SpeakingNotificationSettings | null;
   teacherVoice: AiVoice | null;
   recentLearnLanguages?: SupportedLanguage[] | null;
 }

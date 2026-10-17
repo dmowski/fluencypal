@@ -1,5 +1,4 @@
 import { getBucket } from '@/app/api/config/firebase';
-import { voiceChatAudioObjectPath } from './paths';
 
 const extensionFromContentType = (contentType: string): string => {
   if (contentType.includes('webm')) return 'webm';
@@ -10,40 +9,36 @@ const extensionFromContentType = (contentType: string): string => {
   return 'webm';
 };
 
-export const saveVoiceChatAudio = async (params: {
+export const saveSpeakingAudio = async (params: {
+  folder: string;
   id: string;
   buffer: Buffer;
   contentType: string;
 }): Promise<{ audioPath: string; contentType: string }> => {
   const contentType = params.contentType || 'audio/webm';
   const extension = extensionFromContentType(contentType);
-  const audioPath = voiceChatAudioObjectPath(params.id, extension);
+  const audioPath = `speakingClubs/audio/${params.folder}/${params.id}.${extension}`;
   const file = getBucket().file(audioPath);
   await file.save(params.buffer, {
     contentType,
     resumable: false,
-    metadata: {
-      metadata: {
-        voiceChat: 'true',
-        uploadedAt: Date.now().toString(),
-      },
-    },
   });
   return { audioPath, contentType };
 };
 
-export const deleteVoiceChatAudio = async (audioPath: string): Promise<void> => {
-  if (!audioPath) return;
+export const deleteSpeakingAudio = async (audioPath: string): Promise<void> => {
+  if (!audioPath.startsWith('speakingClubs/audio/')) return;
   try {
     await getBucket().file(audioPath).delete({ ignoreNotFound: true });
   } catch (error) {
-    console.error('Failed to delete voice chat audio', audioPath, error);
+    console.error('Failed to delete speaking club audio', audioPath, error);
   }
 };
 
-export const readVoiceChatAudio = async (
+export const readSpeakingAudio = async (
   audioPath: string,
 ): Promise<{ buffer: Buffer; contentType: string } | null> => {
+  if (!audioPath.startsWith('speakingClubs/audio/')) return null;
   const file = getBucket().file(audioPath);
   const [exists] = await file.exists();
   if (!exists) return null;
