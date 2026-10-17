@@ -1,43 +1,23 @@
 'use client';
 
-import { Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Mic } from 'lucide-react';
+import { SubmitForm, SubmitRecording } from '@/features/Chat/SubmitForm';
 import { Markdown } from '@/features/uiKit/Markdown/Markdown';
 import { SpeakingRoom } from '../types';
 
-export const countWords = (text: string): number =>
-  text.trim().length === 0 ? 0 : text.trim().split(/\s+/).filter(Boolean).length;
-
-export const INTRO_SHORT_WORD_COUNT = 80;
-
 export const JoinRoomView = ({
   room,
-  isRecording,
-  isTranscribing,
-  transcript,
-  suggestion,
-  corrected,
-  onRecord,
-  onSend,
-  onRecordAgain,
   isSending,
   isPending,
+  onSubmitRecording,
 }: {
   room: SpeakingRoom;
-  isRecording: boolean;
-  isTranscribing: boolean;
-  transcript: string;
-  suggestion: string;
-  corrected: string;
-  onRecord: () => void;
-  onSend: () => void;
-  onRecordAgain: () => void;
   isSending: boolean;
   isPending: boolean;
+  onSubmitRecording: (recording: SubmitRecording) => Promise<void>;
 }) => {
   const { i18n } = useLingui();
-  const isShort = transcript.trim().length > 0 && countWords(transcript) < INTRO_SHORT_WORD_COUNT;
   const review =
     room.reviewMode === 'alexOnly'
       ? i18n._('Alex reviews new people')
@@ -72,85 +52,59 @@ export const JoinRoomView = ({
           backgroundPosition: 'center',
         }}
       />
-      <Typography variant="h4" sx={{ fontWeight: 800 }}>
-        {room.title}
-      </Typography>
-      <Typography sx={{ opacity: 0.8 }}>{room.subtitle}</Typography>
-      <Typography>
-        {room.memberCount === 1
-          ? i18n._('1 person')
-          : i18n._('{count} people', { count: room.memberCount })}
-        {' · '}
-        {i18n._('{count} messages this week', { count: room.messagesLast7Days })}
-      </Typography>
-      <Typography sx={{ fontWeight: 700 }}>{review}</Typography>
-      <Stack sx={{ gap: '6px' }}>
-        <Typography sx={{ fontWeight: 800 }}>{i18n._('What we usually talk about')}</Typography>
-        <Markdown>{room.discussMarkdown}</Markdown>
-      </Stack>
-      <Stack sx={{ gap: '6px' }}>
-        <Typography sx={{ fontWeight: 800 }}>{i18n._('Room rules')}</Typography>
-        <Markdown>{room.rulesMarkdown}</Markdown>
-      </Stack>
-      <Stack sx={{ gap: '6px' }}>
-        <Typography sx={{ fontWeight: 800 }}>{i18n._('Your introduction')}</Typography>
-        <Markdown>{room.joinPromptMarkdown}</Markdown>
-      </Stack>
-      {!transcript ? (
-        <Button
-          data-testid="voice-room-record-intro"
-          variant="contained"
-          color={isRecording ? 'error' : 'info'}
-          startIcon={<Mic size={18} />}
-          onClick={onRecord}
-          disabled={isTranscribing}
-          sx={{ alignSelf: 'flex-start', borderRadius: '12px', textTransform: 'none' }}
-        >
-          {isRecording
-            ? i18n._('Stop')
-            : isTranscribing
-              ? i18n._('Writing down what you said...')
-              : i18n._('Record introduction')}
-        </Button>
-      ) : (
-        <Stack data-testid="voice-room-intro-review" sx={{ gap: '10px' }}>
-          <Typography sx={{ fontWeight: 700 }}>{i18n._('What we heard')}</Typography>
-          <Typography>{transcript}</Typography>
-          {corrected && corrected.trim() !== transcript.trim() ? (
-            <>
-              <Typography sx={{ fontWeight: 700 }}>{i18n._('A clearer version')}</Typography>
-              <Typography>{corrected}</Typography>
-            </>
-          ) : null}
-          {suggestion ? <Typography sx={{ opacity: 0.85 }}>{suggestion}</Typography> : null}
-          {isShort ? (
-            <Typography data-testid="voice-room-intro-short" color="warning">
-              {i18n._(
-                'A longer introduction helps people get to know you. About three minutes is a good length.',
-              )}
+      <Stack sx={{ gap: '52px' }}>
+        <Stack sx={{ gap: '12px' }}>
+          <Stack>
+            <Typography variant="h3" sx={{ fontWeight: 800 }}>
+              {room.title}
             </Typography>
-          ) : null}
-          <Stack direction="row" sx={{ gap: '10px', flexWrap: 'wrap' }}>
-            <Button
-              data-testid="voice-room-send-intro"
-              variant="contained"
-              color="info"
-              disabled={isSending}
-              onClick={onSend}
-              sx={{ borderRadius: '12px', textTransform: 'none' }}
+            <Typography variant="body1" sx={{ opacity: 0.8 }}>
+              {room.subtitle}
+            </Typography>
+          </Stack>
+          <Stack>
+            <Typography
+              sx={{
+                opacity: 0.7,
+              }}
             >
-              {isSending ? i18n._('Sending...') : i18n._('Send for review')}
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={onRecordAgain}
-              sx={{ borderRadius: '12px', textTransform: 'none' }}
-            >
-              {i18n._('Record again')}
-            </Button>
+              {room.memberCount === 1
+                ? i18n._('1 person')
+                : i18n._('{count} people', { count: room.memberCount })}
+              {' · '}
+              {i18n._('{count} messages this week', { count: room.messagesLast7Days })}
+            </Typography>
+            <Typography sx={{ opacity: 0.7 }}>{review}</Typography>
           </Stack>
         </Stack>
-      )}
+
+        <Stack sx={{ gap: '10px' }}>
+          <Typography variant="h4" sx={{ fontWeight: 800 }}>
+            {i18n._('What we usually talk about')}
+          </Typography>
+          <Markdown>{room.discussMarkdown}</Markdown>
+        </Stack>
+        <Stack sx={{ gap: '10px' }}>
+          <Typography variant="h4" sx={{ fontWeight: 800 }}>
+            {i18n._('Room rules')}
+          </Typography>
+          <Markdown>{room.rulesMarkdown}</Markdown>
+        </Stack>
+        <Stack sx={{ gap: '10px' }}>
+          <Typography variant="h4" sx={{ fontWeight: 800 }}>
+            {i18n._('Your introduction')}
+          </Typography>
+          <Markdown>{room.joinPromptMarkdown}</Markdown>
+        </Stack>
+      </Stack>
+      <SubmitForm
+        onSubmit={async () => {}}
+        onSubmitRecording={onSubmitRecording}
+        isLoading={isSending}
+        recordMessageTitle={i18n._('Record introduction')}
+        setIsActiveRecording={() => {}}
+        previousBotMessage={room.joinPromptMarkdown}
+      />
     </Stack>
   );
 };

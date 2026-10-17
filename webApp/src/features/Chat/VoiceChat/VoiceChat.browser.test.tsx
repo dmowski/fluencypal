@@ -2,6 +2,44 @@ import React from 'react';
 import { expect, test, vi } from 'vitest';
 import type { ReactNode } from 'react';
 
+vi.mock('@/features/Chat/SubmitForm', () => ({
+  SubmitForm: ({ recordMessageTitle }: { recordMessageTitle: string }) => (
+    <button type="button">{recordMessageTitle}</button>
+  ),
+}));
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: () => {}, replace: () => {} }),
+  useSearchParams: () => new URLSearchParams(),
+  usePathname: () => '/',
+}));
+
+vi.mock('@/features/Audio/useAudioRecorder', () => ({
+  useAudioRecorder: () => ({
+    startRecording: () => {},
+    stopRecording: () => {},
+    cancelRecording: () => {},
+    removeTranscript: () => {},
+    isRecording: false,
+    isTranscribing: false,
+    transcription: null,
+    transcriptionBlob: null,
+    error: '',
+    recordingMilliSeconds: 0,
+    microphoneDeviceId: null,
+    setMicrophoneDeviceId: () => {},
+    visualizerComponent: null,
+  }),
+}));
+
+vi.mock('@/features/Auth/useAuth', () => ({
+  useAuth: () => ({ uid: 'me', getToken: async () => 'token' }),
+}));
+
+vi.mock('@/features/Ai/useTextAi', () => ({
+  useTextAi: () => ({ generate: async () => '' }),
+}));
+
 vi.mock('@/features/Chat/RichTextEditor', () => ({
   RichTextEditor: ({ value, onChange }: { value: string; onChange: (value: string) => void }) => (
     <textarea
@@ -143,41 +181,14 @@ test('join form explains the room before recording', async () => {
   await shell(
     <JoinRoomView
       room={room}
-      isRecording={false}
-      isTranscribing={false}
-      transcript=""
-      suggestion=""
-      corrected=""
-      onRecord={() => {}}
-      onSend={() => {}}
-      onRecordAgain={() => {}}
       isSending={false}
       isPending={false}
+      onSubmitRecording={async () => {}}
     />,
   );
   await expect.element(page.getByText('We talk about the news without shouting.')).toBeVisible();
-  await expect.element(page.getByTestId('voice-room-record-intro')).toBeVisible();
+  await expect.element(page.getByRole('button', { name: 'Record introduction' })).toBeVisible();
   await expect.element(page.getByTestId('voice-room-join')).toMatchScreenshot('join-room');
-});
-
-test('a short introduction warns before it is sent', async () => {
-  await shell(
-    <JoinRoomView
-      room={room}
-      isRecording={false}
-      isTranscribing={false}
-      transcript="Hello from home."
-      suggestion="Try one more sentence about what you like."
-      corrected="Hello from home."
-      onRecord={() => {}}
-      onSend={() => {}}
-      onRecordAgain={() => {}}
-      isSending={false}
-      isPending={false}
-    />,
-  );
-  await expect.element(page.getByTestId('voice-room-intro-short')).toBeVisible();
-  await expect.element(page.getByTestId('voice-room-send-intro')).toBeVisible();
 });
 
 test('transcription sits under the voice message', async () => {

@@ -32,7 +32,6 @@ import { RoomThread } from './components/RoomThread';
 import { VoiceComposer } from './components/VoiceComposer';
 import { clearRoomDraft, readRoomDraft, writeRoomDraft } from './roomDraft';
 import { emptyRoomDraft, RoomDraft, RoomListItem, SpeakingRoom } from './types';
-import { useVoiceTake } from './useVoiceTake';
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
 
 const draftFromRoom = (room: SpeakingRoom): RoomDraft => ({
@@ -70,7 +69,6 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [roomMenuOpen, setRoomMenuOpen] = useState(false);
   const [roomTab, setRoomTab] = useState<'settings' | 'notifications' | 'members'>('notifications');
   const [joinSent, setJoinSent] = useState(false);
-  const take = useVoiceTake();
 
   const showError = (reason: unknown) => {
     setError(
@@ -270,43 +268,25 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 <JoinRoomView
                   room={detail.room}
                   isPending={detail.membership?.status === 'pending'}
-                  isRecording={take.recorder.isRecording}
-                  isTranscribing={take.recorder.isTranscribing}
-                  transcript={take.transcript}
-                  suggestion={take.suggestion}
-                  corrected={take.corrected}
                   isSending={isSaving}
-                  onRecord={() => {
-                    if (take.recorder.isRecording) take.recorder.stopRecording();
-                    else void take.recorder.startRecording();
-                  }}
-                  onRecordAgain={() => {
-                    take.recorder.removeTranscript();
-                    void take.recorder.startRecording();
-                  }}
-                  onSend={() => {
-                    const blob = take.recorder.transcriptionBlob;
-                    if (!blob) return;
+                  onSubmitRecording={async (recording) => {
                     setIsSaving(true);
-                    void (async () => {
-                      try {
-                        const token = await auth.getToken();
-                        if (!token) return;
-                        const { member } = await submitRoomJoin(token, detail.room.id, {
-                          blob,
-                          durationSec: take.durationSec,
-                          transcript: take.transcript,
-                          suggestion: take.suggestion,
-                        });
-                        setDetail({ ...detail, membership: member });
-                        take.recorder.removeTranscript();
-                        setJoinSent(true);
-                      } catch (reason) {
-                        showError(reason);
-                      } finally {
-                        setIsSaving(false);
-                      }
-                    })();
+                    try {
+                      const token = await auth.getToken();
+                      if (!token) return;
+                      const { member } = await submitRoomJoin(token, detail.room.id, {
+                        blob: recording.blob,
+                        durationSec: recording.durationSec,
+                        transcript: recording.transcript,
+                        suggestion: recording.suggestion,
+                      });
+                      setDetail({ ...detail, membership: member });
+                      setJoinSent(true);
+                    } catch (reason) {
+                      showError(reason);
+                    } finally {
+                      setIsSaving(false);
+                    }
                   }}
                 />
               ) : null}

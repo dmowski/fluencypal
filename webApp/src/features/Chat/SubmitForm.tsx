@@ -6,7 +6,7 @@ import { useAudioRecorder } from '../Audio/useAudioRecorder';
 import SendIcon from '@mui/icons-material/Send';
 import StopIcon from '@mui/icons-material/Stop';
 import MicIcon from '@mui/icons-material/Mic';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ProcessUserInput } from '../Conversation/ProcessUserInput';
 import { Mic, Trash } from 'lucide-react';
 import { useTextAi } from '../Ai/useTextAi';
@@ -19,12 +19,22 @@ import { useAuth } from '../Auth/useAuth';
 import { sendUploadFileRequest } from '@/app/api/uploadFile/sendUploadFileRequest';
 import { SubmitFormMoreOptions } from './SubmitFormMoreOptions';
 
+export interface SubmitRecording {
+  transcript: string;
+  correctedTranscript: string;
+  suggestion: string;
+  blob: Blob;
+  durationSec: number;
+}
+
 interface SubmitFormProps {
   onSubmit: (message: string, attachments: ThreadsMessageAttachment[]) => Promise<void>;
   isLoading: boolean;
   recordMessageTitle: string;
   setIsActiveRecording: (isRecording: boolean) => void;
   previousBotMessage: string;
+  /** When set, the form stays on voice and hands the recording to the caller. */
+  onSubmitRecording?: (recording: SubmitRecording) => Promise<void>;
 }
 
 export function SubmitForm({
@@ -33,21 +43,49 @@ export function SubmitForm({
   recordMessageTitle,
   setIsActiveRecording,
   previousBotMessage,
+  onSubmitRecording,
 }: SubmitFormProps) {
   const { i18n } = useLingui();
   const auth = useAuth();
 
   const recorder = useAudioRecorder();
+  const recordedSeconds = useRef(1);
+  if (recorder.recordingMilliSeconds > 1000) {
+    recordedSeconds.current = Math.round(recorder.recordingMilliSeconds / 1000);
+  }
 
   const [attachments, setAttachments] = useState<ThreadsMessageAttachment[]>([]);
   const [attachVoiceRecording, setAttachVoiceRecording] = useState(false);
 
   const [isSending, setIsSending] = useState(false);
+  const [correctedTranscript, setCorrectedTranscript] = useState('');
+  const [suggestion, setSuggestion] = useState('');
   const ai = useTextAi();
 
   const submitTranscription = async () => {
     setIsSending(true);
     let finalAttachments = [...attachments];
+
+    if (recorder.recordingMilliSeconds > 1000) {
+      recordedSeconds.current = Math.round(recorder.recordingMilliSeconds / 1000);
+    }
+
+    if (onSubmitRecording && recorder.transcriptionBlob) {
+      await onSubmitRecording({
+        transcript: recorder.transcription || '',
+        correctedTranscript: correctedTranscript || recorder.transcription || '',
+        suggestion,
+        blob: recorder.transcriptionBlob,
+        durationSec: recordedSeconds.current,
+      });
+      setAttachments([]);
+      setCorrectedTranscript('');
+      setSuggestion('');
+      recorder.removeTranscript();
+      recorder.cancelRecording();
+      setIsSending(false);
+      return;
+    }
 
     if (attachVoiceRecording && recorder.transcriptionBlob) {
       const blob = recorder.transcriptionBlob;
@@ -193,11 +231,15 @@ Provide only the message user can send, without any additional explanation or co
             previousBotMessage={previousBotMessage}
             isRecording={recorder.isRecording}
             transcriptionBlob={recorder.transcriptionBlob}
+            onAnalyzed={(result) => {
+              setCorrectedTranscript(result.correctedMessage || result.sourceMessage);
+              setSuggestion(result.description || '');
+            }}
           />
         </Stack>
       )}
 
-      {isTextMode && (
+      {!onSubmitRecording && isTextMode && (
         <Stack
           sx={{
             gap: '10px',
@@ -341,17 +383,19 @@ Provide only the message user can send, without any additional explanation or co
                     {i18n._('Re-record')}
                   </Button>
                 </Stack>
-                <Stack>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={attachVoiceRecording}
-                        onChange={(_event, checked) => setAttachVoiceRecording(checked)}
-                      />
-                    }
-                    label={i18n._('Attach my voice recording')}
-                  />
-                </Stack>
+                {!onSubmitRecording ? (
+                  <Stack>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={attachVoiceRecording}
+                          onChange={(_event, checked) => setAttachVoiceRecording(checked)}
+                        />
+                      }
+                      label={i18n._('Attach my voice recording')}
+                    />
+                  </Stack>
+                ) : null}
               </Stack>
             )}
 
@@ -382,23 +426,26 @@ Provide only the message user can send, without any additional explanation or co
                     flexDirection: 'row',
                   }}
                 >
-                  {!recorder.transcription && !recorder.isTranscribing && !recorder.isRecording && (
-                    <SubmitFormMoreOptions
-                      isTextMode={isTextMode}
-                      onSwitchMode={() => setIsTextMode(true)}
-                      onAddImage={addImage}
-                      onAddVideo={addVideo}
-                      isModeSwitchDisabled={
-                        recorder.isRecording || recorder.isTranscribing || isLoading
-                      }
-                      microphoneDeviceId={recorder.microphoneDeviceId}
-                      onSelectMicrophone={recorder.setMicrophoneDeviceId}
-                    />
-                  )}
+                  {!onSubmitRecording &&
+                    !recorder.transcription &&
+                    !recorder.isTranscribing &&
+                    !recorder.isRecording && (
+                      <SubmitFormMoreOptions
+                        isTextMode={isTextMode}
+                        onSwitchMode={() => setIsTextMode(true)}
+                        onAddImage={addImage}
+                        onAddVideo={addVideo}
+                        isModeSwitchDisabled={
+                          recorder.isRecording || recorder.isTranscribing || isLoading
+                        }
+                        microphoneDeviceId={recorder.microphoneDeviceId}
+                        onSelectMicrophone={recorder.setMicrophoneDeviceId}
+                      />
+                    )}
                 </Stack>
               )}
 
-              {recorder.transcription && (
+              {!onSubmitRecording && recorder.transcription && (
                 <Stack
                   sx={{
                     width: '100%',
@@ -429,6 +476,16 @@ Provide only the message user can send, without any additional explanation or co
               )}
             </Stack>
           </Stack>
+
+          {onSubmitRecording &&
+            recorder.transcription &&
+            recorder.transcription.trim().split(/\s+/).filter(Boolean).length < 80 && (
+              <Typography data-testid="voice-room-intro-short" variant="caption" color="#ff8e86ff">
+                {i18n._(
+                  'A longer introduction helps people get to know you. About three minutes is a good length.',
+                )}
+              </Typography>
+            )}
 
           {recorder.transcription && needMoreText && (
             <>
