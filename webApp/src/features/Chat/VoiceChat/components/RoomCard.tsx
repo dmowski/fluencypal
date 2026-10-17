@@ -2,8 +2,8 @@
 
 import { ButtonBase, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Avatar } from '@/features/User/Avatar';
 import { RoomListItem } from '../types';
+import { VoiceUserAvatar } from './VoiceUserAvatar';
 
 export const RoomCard = ({ item, onOpen }: { item: RoomListItem; onOpen: () => void }) => {
   const { i18n } = useLingui();
@@ -59,7 +59,7 @@ export const RoomCard = ({ item, onOpen }: { item: RoomListItem; onOpen: () => v
         <Typography sx={{ opacity: 0.92 }}>{item.room.subtitle}</Typography>
         <Stack direction="row" sx={{ gap: '6px', alignItems: 'center' }}>
           {item.memberPreviews.map((member) => (
-            <Avatar key={member.userId} url={member.avatarUrl} avatarSize="28px" />
+            <VoiceUserAvatar key={member.userId} userId={member.userId} size="28px" />
           ))}
           <Typography sx={{ fontSize: '13px', opacity: 0.86 }}>
             {item.room.memberCount === 1

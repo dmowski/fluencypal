@@ -7,7 +7,11 @@ import { Users } from 'lucide-react';
 import { CommunityCallRequestModal } from '../CommunityCallRequestModal';
 import { narrow, primaryButtonSx, token } from './styles';
 
-export const FluencyCallRequestSection = ({ onOpenVoiceChat }: { onOpenVoiceChat: () => void }) => {
+export const FluencyCallRequestSection = ({
+  onOpenVoiceChat,
+}: {
+  onOpenVoiceChat?: () => void;
+}) => {
   const { i18n } = useLingui();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,9 +35,13 @@ export const FluencyCallRequestSection = ({ onOpenVoiceChat }: { onOpenVoiceChat
           {i18n._('Want to practice with people?')}
         </Typography>
         <Typography sx={{ margin: 0, color: token.muted }}>
-          {i18n._(
-            'Send more info about your interests, your English level and I will arrange a call that works for you. Or open voice chat and start talking with people by sending a voice message.',
-          )}
+          {onOpenVoiceChat
+            ? i18n._(
+                'Send more info about your interests, your English level and I will arrange a call that works for you. Or open voice chat and start talking with people by sending a voice message.',
+              )
+            : i18n._(
+                'Send more info about your interests, your English level and I will arrange a call that works for you.',
+              )}
         </Typography>
       </Stack>
       <Stack
@@ -60,30 +68,36 @@ export const FluencyCallRequestSection = ({ onOpenVoiceChat }: { onOpenVoiceChat
         >
           {i18n._('Request a call')}
         </Button>
-        <Button
-          data-testid="fluency-call-open-voice-chat"
-          data-analytics="voice-chat-open"
-          variant="outlined"
-          color="info"
-          onClick={onOpenVoiceChat}
-          sx={{
-            ...primaryButtonSx,
-            alignSelf: 'flex-start',
-            maxWidth: '100%',
-            whiteSpace: 'normal',
-            textAlign: 'center',
-          }}
-        >
-          {i18n._('Open voice chat')}
-        </Button>
+        {onOpenVoiceChat ? (
+          <Button
+            data-testid="fluency-call-open-voice-chat"
+            data-analytics="voice-chat-open"
+            variant="outlined"
+            color="info"
+            onClick={onOpenVoiceChat}
+            sx={{
+              ...primaryButtonSx,
+              alignSelf: 'flex-start',
+              maxWidth: '100%',
+              whiteSpace: 'normal',
+              textAlign: 'center',
+            }}
+          >
+            {i18n._('Open voice chat')}
+          </Button>
+        ) : null}
       </Stack>
       {isOpen ? (
         <CommunityCallRequestModal
           onClose={() => setIsOpen(false)}
-          onOpenVoiceChat={() => {
-            setIsOpen(false);
-            onOpenVoiceChat();
-          }}
+          onOpenVoiceChat={
+            onOpenVoiceChat
+              ? () => {
+                  setIsOpen(false);
+                  onOpenVoiceChat();
+                }
+              : undefined
+          }
         />
       ) : null}
     </Stack>

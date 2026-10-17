@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Avatar } from '@/features/User/Avatar';
 import { RoomMember } from '../types';
+import { VoiceUserAvatar } from './VoiceUserAvatar';
 
 export const MembersPanel = ({
   members,
@@ -53,7 +53,7 @@ export const MembersPanel = ({
               }}
             >
               <Stack direction="row" sx={{ gap: '10px', alignItems: 'center' }}>
-                <Avatar url={member.avatarUrl} avatarSize="42px" />
+                <VoiceUserAvatar userId={member.userId} size="42px" />
                 <Typography sx={{ fontWeight: 700 }}>{member.username}</Typography>
               </Stack>
               <Typography>{member.introTranscript}</Typography>
@@ -116,9 +116,9 @@ export const MembersPanel = ({
       <Typography sx={{ fontWeight: 800 }}>{i18n._('People in this room')}</Typography>
       {approved.map((member) => (
         <Stack key={member.userId} direction="row" sx={{ gap: '10px', alignItems: 'flex-start' }}>
-          <Avatar
-            url={member.avatarUrl}
-            avatarSize="42px"
+          <VoiceUserAvatar
+            userId={member.userId}
+            size="42px"
             isOnline={Boolean(
               member.lastOnlineIso && nowMs - Date.parse(member.lastOnlineIso) < 3 * 60 * 1000,
             )}

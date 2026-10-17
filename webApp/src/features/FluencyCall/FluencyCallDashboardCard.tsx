@@ -22,8 +22,8 @@ export const FluencyCallDashboardCard = () => {
   const callChatId = searchParams.get('callChatId');
 
   useEffect(() => {
-    if (callChatId) modals.openVoiceChat();
-  }, [callChatId]);
+    if (callChatId && auth.isIdentified) modals.openVoiceChat();
+  }, [callChatId, auth.isIdentified]);
 
   if (
     !auth.uid ||
@@ -40,7 +40,7 @@ export const FluencyCallDashboardCard = () => {
       canJoin
       paidNotice={searchParams.get('fluencyCall') === 'paid'}
       welcomeVideoSrc={FLUENCY_CALL_WELCOME_VIDEO_SRC}
-      onOpenVoiceChat={modals.openVoiceChat}
+      onOpenVoiceChat={auth.isIdentified ? modals.openVoiceChat : undefined}
     />
   );
 };

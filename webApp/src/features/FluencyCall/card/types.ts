@@ -16,5 +16,5 @@ export type FluencyCallCardViewProps = {
   canJoin: boolean;
   paidNotice: boolean;
   welcomeVideoSrc: string;
-  onOpenVoiceChat: () => void;
+  onOpenVoiceChat?: () => void;
 };

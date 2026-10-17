@@ -2,6 +2,16 @@ import React from 'react';
 import { expect, test, vi } from 'vitest';
 import type { ReactNode } from 'react';
 
+vi.mock('@/features/Game/avatars', () => ({
+  defaultAvatar: '',
+}));
+
+vi.mock('@/features/Game/useGame', () => ({
+  useGame: () => ({
+    getUserAvatarUrl: () => '',
+  }),
+}));
+
 vi.mock('@/features/Chat/SubmitForm', () => ({
   SubmitForm: ({ recordMessageTitle }: { recordMessageTitle: string }) => (
     <button type="button">{recordMessageTitle}</button>

@@ -4,8 +4,8 @@ import { useRef, useState } from 'react';
 import { IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { MoreVertical, Pause, Play } from 'lucide-react';
-import { Avatar } from '@/features/User/Avatar';
 import { RoomMessage } from '../types';
+import { VoiceUserAvatar } from './VoiceUserAvatar';
 import { VoiceWaveform } from './VoiceWaveform';
 
 export const VoiceMessageRow = ({
@@ -31,7 +31,7 @@ export const VoiceMessageRow = ({
       direction="row"
       sx={{ gap: '10px', alignItems: 'flex-start', width: '100%' }}
     >
-      <Avatar url={message.senderAvatarUrl} avatarSize="42px" />
+      <VoiceUserAvatar userId={message.senderId} size="42px" />
       <Stack sx={{ flex: 1, minWidth: 0, gap: '4px' }}>
         <Typography sx={{ fontWeight: 700 }}>{message.senderName}</Typography>
         <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>

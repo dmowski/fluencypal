@@ -53,7 +53,9 @@ export const GlobalModals: React.FC = () => {
       )}
 
       {globalModals.isShowPublicChat && <PublicChatModal onClose={globalModals.closeAllModels} />}
-      {globalModals.isShowVoiceChat && <VoiceChatModal onClose={globalModals.closeAllModels} />}
+      {auth.isIdentified && globalModals.isShowVoiceChat && (
+        <VoiceChatModal onClose={globalModals.closeAllModels} />
+      )}
       {globalModals.isShowDailyQuestions && (
         <DailyQuestionModal onClose={globalModals.closeAllModels} />
       )}

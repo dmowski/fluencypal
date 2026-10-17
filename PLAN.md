@@ -9,13 +9,19 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 Voice Chat
 
+Open questions:
+
 - How to ensure user uses correct user name and info about them?
 - How to make user do the first step and actually join the room?
-- SEO: How it looks like?
-
+  -- Show messages, but don't allow to play. Show random audio waves.
+  -- Instead of record message, show "Join" button
+  -- Add likes near messages, to show that people do like and participate it calls
 - How to make them talking?
 
-- Where to find Review list: Update email as well
-- Tune message player: Play icon should be big
+Todo:
+
+- SEO: How it looks like? Review content and update it to SEO friendly. Add room language
+- Where to find Review list: Update email as well (Validate)
+- Tune message player: Play icon should be Big
 - Review members: tune ui. Make preview player better
 - Tune typography
