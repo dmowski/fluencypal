@@ -35,7 +35,14 @@ export const RoomThread = ({
 
   return (
     <Stack data-testid="voice-room-thread" sx={{ width: '100%', maxWidth: 700, gap: '16px' }}>
-      <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          '@media (max-width: 600px)': { paddingRight: '56px' },
+        }}
+      >
         <Typography variant="h4" sx={{ fontWeight: 800 }}>
           {room.title}
         </Typography>

@@ -55,7 +55,7 @@ export const VoiceMessageRow = ({
     <Stack
       data-testid={`voice-chat-message-${message.id}`}
       direction="row"
-      sx={{ gap: '10px', alignItems: 'flex-start', width: '100%' }}
+      sx={{ gap: '6px', alignItems: 'flex-start', width: '100%', minWidth: 0 }}
     >
       <IconButton
         aria-label={isPlaying ? i18n._('Pause') : i18n._('Play')}
@@ -64,19 +64,41 @@ export const VoiceMessageRow = ({
         onClick={() => {
           const audio = audioRef.current;
           if (!audio) return;
-          if (audio.paused) void audio.play();
-          else audio.pause();
+          if (!audio.paused) {
+            audio.pause();
+            return;
+          }
+          const start = () => {
+            if (audio.currentTime < 0.05 && Number.isFinite(audio.duration)) {
+              audio.currentTime = 0.01;
+            }
+            void audio.play().catch((error) => {
+              console.error('Could not play the voice message', error);
+            });
+          };
+          if (audio.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+            start();
+            return;
+          }
+          audio.addEventListener('canplay', start, { once: true });
+          audio.load();
         }}
-        sx={{ width: 52, height: 52, backgroundColor: 'rgba(255,255,255,0.06)' }}
+        sx={{
+          width: 44,
+          height: 44,
+          flexShrink: 0,
+          backgroundColor: 'rgba(255,255,255,0.06)',
+        }}
       >
         {isPlaying ? <Pause size={20} /> : <Play size={20} />}
       </IconButton>
       <Stack sx={{ flex: 1, minWidth: 0, gap: '4px' }}>
-        <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
+        <Stack direction="row" sx={{ alignItems: 'center', gap: '2px', minWidth: 0 }}>
           <Stack
             sx={{
               flex: 1,
-              padding: '12px 0 0 10px',
+              minWidth: 0,
+              padding: '8px 0 0 4px',
             }}
           >
             <VoiceWaveform
@@ -100,9 +122,10 @@ export const VoiceMessageRow = ({
             <IconButton
               aria-label={i18n._('Like')}
               data-testid="voice-chat-like"
+              size="small"
               disabled={!canLike}
               onClick={onLike}
-              sx={{ color: message.likedByMe ? '#ff6b8a' : 'inherit' }}
+              sx={{ color: message.likedByMe ? '#ff6b8a' : 'inherit', flexShrink: 0 }}
             >
               <Heart size={22} fill={message.likedByMe ? '#ff6b8a' : 'none'} />
             </IconButton>
@@ -113,18 +136,18 @@ export const VoiceMessageRow = ({
             )}
           </Stack>
 
-          <Stack direction="row" sx={{ alignItems: 'center', gap: '14px' }}>
-            <VoiceUserAvatar
-              userId={message.senderId}
-              size="44px"
-              onClick={() => setShowProfile(true)}
-            />
-          </Stack>
+          <VoiceUserAvatar
+            userId={message.senderId}
+            size="36px"
+            onClick={() => setShowProfile(true)}
+          />
 
           <IconButton
             aria-label={i18n._('Message options')}
             data-testid="voice-chat-message-menu"
+            size="small"
             onClick={(event) => setMenu(event.currentTarget)}
+            sx={{ flexShrink: 0 }}
           >
             <MoreVertical size={18} />
           </IconButton>

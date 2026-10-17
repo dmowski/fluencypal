@@ -40,7 +40,7 @@ export const FluencyCallDashboardCard = () => {
       canJoin
       paidNotice={searchParams.get('fluencyCall') === 'paid'}
       welcomeVideoSrc={FLUENCY_CALL_WELCOME_VIDEO_SRC}
-      onOpenVoiceChat={auth.isIdentified ? modals.openVoiceChat : undefined}
+      onOpenVoiceChat={modals.openVoiceChat}
     />
   );
 };

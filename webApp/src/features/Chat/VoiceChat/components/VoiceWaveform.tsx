@@ -1,16 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Stack } from '@mui/material';
 
-const BAR_COUNT = 72;
+const SAMPLE_COUNT = 96;
 const SILENCE = 0.08;
+const BAR_WIDTH = 3;
+const BAR_GAP = 2;
 
 const peaksFromBuffer = (buffer: AudioBuffer): number[] => {
   const channel = buffer.getChannelData(0);
-  const block = Math.max(1, Math.floor(channel.length / BAR_COUNT));
+  const block = Math.max(1, Math.floor(channel.length / SAMPLE_COUNT));
   const peaks: number[] = [];
-  for (let index = 0; index < BAR_COUNT; index += 1) {
+  for (let index = 0; index < SAMPLE_COUNT; index += 1) {
     const start = index * block;
     let sum = 0;
     let samples = 0;
@@ -24,13 +26,29 @@ const peaksFromBuffer = (buffer: AudioBuffer): number[] => {
   return peaks.map((peak) => peak / loudest);
 };
 
-const previewPeaks = (seed: string): number[] => {
+const resample = (samples: number[], count: number): number[] => {
+  if (count <= 0) return [];
+  return Array.from({ length: count }, (_, index) => {
+    const start = Math.floor((index * samples.length) / count);
+    const end = Math.max(start + 1, Math.floor(((index + 1) * samples.length) / count));
+    let sum = 0;
+    for (let cursor = start; cursor < end; cursor += 1) sum += samples[cursor] || 0;
+    return sum / (end - start);
+  });
+};
+
+const previewPeaks = (seed: string, count: number): number[] => {
   let hash = 0;
   for (const char of seed) hash = (hash * 33 + char.charCodeAt(0)) >>> 0;
-  return Array.from({ length: BAR_COUNT }, (_, index) => {
+  return Array.from({ length: count }, (_, index) => {
     hash = (hash * 1664525 + 1013904223 + index) >>> 0;
     return (hash % 100) / 100;
   });
+};
+
+const barCountForWidth = (width: number): number => {
+  if (width <= 0) return 24;
+  return Math.max(8, Math.min(72, Math.floor((width + BAR_GAP) / (BAR_WIDTH + BAR_GAP))));
 };
 
 export const VoiceWaveform = ({
@@ -46,10 +64,23 @@ export const VoiceWaveform = ({
   onDuration?: (seconds: number) => void;
   previewSeed?: string;
 }) => {
-  const [peaks, setPeaks] = useState<number[]>(() =>
-    previewSeed ? previewPeaks(previewSeed) : [],
-  );
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [barCount, setBarCount] = useState(32);
+  const [samples, setSamples] = useState<number[]>([]);
   const [progress, setProgress] = useState(0);
+
+  useLayoutEffect(() => {
+    const node = trackRef.current;
+    if (!node) return;
+    const apply = () => {
+      const next = barCountForWidth(node.clientWidth);
+      setBarCount((current) => (current === next ? current : next));
+    };
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (previewSeed || !audioUrl) return;
@@ -60,7 +91,7 @@ export const VoiceWaveform = ({
       const context = new AudioContext();
       try {
         const decoded = await context.decodeAudioData(bytes.slice(0));
-        if (!cancelled) setPeaks(peaksFromBuffer(decoded));
+        if (!cancelled) setSamples(peaksFromBuffer(decoded));
       } catch (error) {
         console.error('Could not draw the voice waveform', error);
       } finally {
@@ -83,10 +114,15 @@ export const VoiceWaveform = ({
     setProgress(ratio);
   };
 
-  const bars = peaks.length > 0 ? peaks : Array.from({ length: BAR_COUNT }, () => 0);
+  const bars = useMemo(() => {
+    if (previewSeed) return previewPeaks(previewSeed, barCount);
+    if (samples.length > 0) return resample(samples, barCount);
+    return Array.from({ length: barCount }, () => 0);
+  }, [barCount, previewSeed, samples]);
 
   return (
     <Stack
+      ref={trackRef}
       data-testid="voice-chat-waveform"
       direction="row"
       onPointerDown={(event) => {
@@ -101,24 +137,28 @@ export const VoiceWaveform = ({
       sx={{
         position: 'relative',
         flex: 1,
-        height: 32,
+        minWidth: 0,
+        width: '100%',
+        height: 26,
         alignItems: 'center',
         justifyContent: 'space-between',
+        overflow: 'hidden',
         cursor: previewSeed ? 'default' : 'pointer',
         touchAction: 'none',
       }}
     >
       {bars.map((peak, index) => {
         const quiet = peak < SILENCE;
+        const barHeight = quiet ? 3 : Math.max(5, Math.round(peak * 22));
         return (
           <Stack
             key={index}
             sx={{
-              width: quiet ? 3 : 3,
-              height: quiet ? 3 : Math.max(6, Math.round(peak * 26)),
+              width: BAR_WIDTH,
+              flexShrink: 0,
+              height: barHeight,
               borderRadius: quiet ? '50%' : '2px',
               backgroundColor: quiet ? 'rgba(255,255,255,0.35)' : 'rgba(210,214,220,0.9)',
-              flexShrink: 0,
             }}
           />
         );
@@ -143,7 +183,15 @@ export const VoiceWaveform = ({
         <audio
           ref={audioRef}
           src={audioUrl}
-          style={{ display: 'none' }}
+          preload="auto"
+          playsInline
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            opacity: 0,
+            pointerEvents: 'none',
+          }}
           onLoadedMetadata={(event) => {
             const duration = event.currentTarget.duration;
             if (Number.isFinite(duration) && duration > 0) onDuration?.(duration);

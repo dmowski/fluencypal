@@ -35,13 +35,9 @@ export const FluencyCallRequestSection = ({
           {i18n._('Want to practice with people?')}
         </Typography>
         <Typography sx={{ margin: 0, color: token.muted }}>
-          {onOpenVoiceChat
-            ? i18n._(
-                'Send more info about your interests, your English level and I will arrange a call that works for you. Or open voice chat and start talking with people by sending a voice message.',
-              )
-            : i18n._(
-                'Send more info about your interests, your English level and I will arrange a call that works for you.',
-              )}
+          {i18n._(
+            'Send more info about your interests, your English level and I will arrange a call that works for you. Or open voice chat and start talking with people by sending a voice message.',
+          )}
         </Typography>
       </Stack>
       <Stack

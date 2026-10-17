@@ -47,7 +47,15 @@ export const RoomListView = ({
 
   return (
     <Stack data-testid="voice-chat-modal" sx={{ width: '100%', maxWidth: 760, gap: '16px' }}>
-      <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 1,
+          '@media (max-width: 600px)': { paddingRight: '56px' },
+        }}
+      >
         <Stack sx={{ gap: '4px' }}>
           <Stack direction="row" sx={{ alignItems: 'center', gap: '8px' }}>
             <Typography variant="h4" sx={{ fontWeight: 800 }}>

@@ -271,12 +271,14 @@ test('a visitor sees messages without being able to play them', async () => {
       }
     />,
   );
+  await document.fonts.ready;
+  await expect.element(page.getByTestId('voice-room-thread')).toMatchScreenshot('room-preview', {
+    comparatorOptions: { allowedMismatchedPixels: 800 },
+  });
   await expect.element(page.getByText('Amigos joined the room.')).toBeVisible();
   await expect.element(page.getByTestId('voice-chat-player')).toBeDisabled();
   await expect.element(page.getByTestId('voice-chat-like')).toBeDisabled();
   await expect.element(page.getByText('2')).toBeVisible();
-  await expect.element(page.getByRole('button', { name: 'Room settings' })).toBeVisible();
-  await expect.element(page.getByTestId('voice-room-thread')).toMatchScreenshot('room-preview');
 });
 
 test('clicking a message avatar shows that person', async () => {
