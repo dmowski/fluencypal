@@ -46,9 +46,9 @@ const translateBlock = async (blockText, lang) => {
     `You're a Translation Tool.`,
     `Translate the input into the ${lang} language.`,
     `This is a landing for AI english teacher related ui texts.`,
-    `Return the translation in a block with the same format as the original.`,
+    `Return only the translated text, in the same format as the original.`,
     `Ensure high-quality translation.`,
-    `Do not add or modify any text, and avoid wrapping the text unnecessarily.`,
+    `Do not add or modify any text. Do not wrap the result in \\block{}, quotes, code fences, or other markup.`,
     `Preserve all newline breaks (\\n symbols) exactly as they appear in the input.`,
   ].join(' ');
 
@@ -64,9 +64,17 @@ const translateBlock = async (blockText, lang) => {
 
   result = result?.startsWith('```') ? result.slice(3) : result || '';
   result = result.endsWith('```') ? result.slice(0, -3) : result;
+  result = unwrapBlockMarkup(result.trim());
 
   return result || blockText;
 };
+
+// Models sometimes follow "return a block" by wrapping the whole string in \block{...},
+// which is invalid Lingui message syntax.
+function unwrapBlockMarkup(text) {
+  const wrapped = text.match(/^\\block\{([\s\S]*)\}$/);
+  return wrapped ? wrapped[1].trim() : text;
+}
 
 async function translate(text, lang) {
   const translatedText = await translateBlock(text, lang);

@@ -118,6 +118,12 @@ msgstr "1 sat razgovora"
 msgid "1 month"
 msgstr "1 mesec"
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:70
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:66
+#. js-lingui-explicit-id
+msgid "1 person"
+msgstr "1 osoba"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
@@ -213,6 +219,16 @@ msgstr "5. Pobednici dobijaju pun pristup besplatno"
 msgid "A bit of polish goes a long way. Focus on today’s tasks."
 msgstr "Malo ulepšavanja može mnogo da postigne. Fokusirajte se na današnje zadatke."
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:116
+#. js-lingui-explicit-id
+msgid ""
+"A browser alert appears on this device. Email goes to your inbox. A note "
+"inside the app waits on your home screen until you open it."
+msgstr ""
+"Na ovom uređaju se pojavljuje obaveštenje u pregledaču. Email odlazi u vaš "
+"inbox. Beleška unutar aplikacije čeka na vašem početnom ekranu dok je ne "
+"otvorite."
+
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:14
 #. js-lingui-explicit-id
 msgid "A call with Alex"
@@ -248,15 +264,6 @@ msgstr ""
 "Забавна игра погађања речи за 2-20 играча. Објасните речи својим саиграчима "
 "без да изговорите саму реч!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
-#. js-lingui-explicit-id
-msgid ""
-"A host reviews your intro before you can listen and reply. This protects "
-"the group."
-msgstr ""
-"Domaćin pregleda vaš uvod pre nego što možete da slušate i odgovarate. Ovo "
-"štiti grupu."
-
 #: src/features/Dashboard/dailyTasksQuotes.ts:4
 #. js-lingui-explicit-id
 msgid "A journey of a thousand miles begins with a single step."
@@ -287,6 +294,15 @@ msgstr "Svaki mali napredak svakog dana sabira se do velikih rezultata."
 msgid "A little variety helps you grow. Here’s what to do today."
 msgstr "Malo raznovrsnosti pomaže vam da rastete. Evo šta treba da uradite danas."
 
+#: src/features/Chat/SubmitForm.tsx:484
+#. js-lingui-explicit-id
+msgid ""
+"A longer introduction helps people get to know you. About three minutes is "
+"a good length."
+msgstr ""
+"Duže predstavljanje pomaže ljudima da vas bolje upoznaju. Otprilike tri "
+"minuta je dobra dužina."
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
 msgid "A method focused on clarity and reliability"
@@ -301,6 +317,17 @@ msgstr "Greška je deo vežbe, a ne razlog za osudu"
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Месец дана учења је на дохват руке. Наставите даље данас."
+
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:58
+#: src/features/Dashboard/ActivityAlertsCard.tsx:88
+#. js-lingui-explicit-id
+msgid "A new room is open: {room}"
+msgstr "Otvorena je nova soba: {room}"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:261
+#. js-lingui-explicit-id
+msgid "A new room was opened"
+msgstr "Otvorena je nova soba"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:327
 #. js-lingui-explicit-id
@@ -359,12 +386,8 @@ msgstr ""
 
 #: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:39
 #. js-lingui-explicit-id
-msgid ""
-"A short practice. A few friendly people. Speak when you are ready. You can "
-"listen first."
-msgstr ""
-"Kratka vežba. Nekoliko prijateljski nastrojenih ljudi. Govorite kada budete "
-"spremni. Možete prvo slušati."
+msgid "A short practice. Speak when you are ready. You can listen first."
+msgstr "Kratka vežba. Govorite kada ste spremni. Možete prvo slušati."
 
 #: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:24
 #. js-lingui-explicit-id
@@ -379,11 +402,6 @@ msgid ""
 msgstr ""
 "Na vašem izvodu može se pojaviti mala privremena autorizacija i vaša banka "
 "će je automatski osloboditi."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:38
-#. js-lingui-explicit-id
-msgid "A small, voice-only room. No transcripts."
-msgstr "Mala prostorija samo za glasovne razgovore. Nema transkripata."
 
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:31
 #. js-lingui-explicit-id
@@ -485,12 +503,17 @@ msgstr "Додај"
 msgid "Add a book"
 msgstr "Dodaj knjigu"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:269
+#. js-lingui-explicit-id
+msgid "Add a name and a short description, then create pictures."
+msgstr "Dodajte ime i kratak opis, a zatim kreirajte slike."
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Dodajte odgovor"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:32
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:34
 #. js-lingui-explicit-id
 msgid "Add an email, Telegram, Instagram, or WhatsApp."
 msgstr "Dodajte email, Telegram, Instagram ili WhatsApp."
@@ -592,7 +615,7 @@ msgstr ""
 msgid "Add title..."
 msgstr "Dodaj naslov..."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:28
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:30
 #. js-lingui-explicit-id
 msgid "Add what you want to talk about."
 msgstr "Dodajte o čemu želite da razgovarate."
@@ -842,6 +865,17 @@ msgstr ""
 msgid "Alex Dmowski (Founder)"
 msgstr "Alex Dmowski (Osnivač)"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:192
+#. js-lingui-explicit-id
+msgid "Alex only"
+msgstr "Alex samo"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:23
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:14
+#. js-lingui-explicit-id
+msgid "Alex reviews new people"
+msgstr "Alex pregledava nove ljude"
+
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:50
 #. js-lingui-explicit-id
 msgid "Alex will write you"
@@ -976,7 +1010,7 @@ msgstr "Uvek slušamo. Nikad ne sudimo. Nikad ne odustajemo od tebe."
 msgid "Amount paid:"
 msgstr "Iznos plaćen:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:132
+#: src/features/Conversation/ProcessUserInput.tsx:135
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Došlo je do greške prilikom analize poruke. Molimo pokušajte ponovo."
@@ -1006,7 +1040,7 @@ msgstr "Analiziranje"
 msgid "Analyzing your inputs..."
 msgstr "Analiziram vaše unose..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:114
+#: src/features/Conversation/ProcessUserInput.tsx:117
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
@@ -1096,11 +1130,6 @@ msgstr "Uvidi u dizajn API-ja i modeliranje podataka"
 msgid "Appointment"
 msgstr "Zakazivanje"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:129
-#. js-lingui-explicit-id
-msgid "Approve"
-msgstr "Odobri"
-
 #: src/features/Lang/getLabels.tsx:16
 #. js-lingui-explicit-id
 msgid "Arabic Learning Plan"
@@ -1165,11 +1194,6 @@ msgstr "Да ли сте сигурни да желите да обришете 
 msgid "Are you sure you want to reject this battle?"
 msgstr "Да ли сте сигурни да желите да одбијете ову битку?"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:78
-#. js-lingui-explicit-id
-msgid "Are you sure you want to remove this message?"
-msgstr "Да ли сте сигурни да желите да уклоните ову поруку?"
-
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid ""
@@ -1230,7 +1254,7 @@ msgstr "Асистент"
 msgid "At least {minWords} words required"
 msgstr "Potrebno je najmanje {minWords} reči"
 
-#: src/features/Chat/SubmitForm.tsx:352
+#: src/features/Chat/SubmitForm.tsx:395
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Priložite moj glasovni zapis"
@@ -1385,11 +1409,6 @@ msgstr ""
 "Na osnovu vašeg uvođenja, FluencyPal će kreirati personalizovani plan "
 "učenja samo za vas."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:28
-#. js-lingui-explicit-id
-msgid "Be kind. This is a small voice-only space."
-msgstr "Будите љубазни. Ово је мали простор само за гласовну комуникацију."
-
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:71
 #. js-lingui-explicit-id
 msgid "Be prepared for your job interview"
@@ -1404,11 +1423,6 @@ msgstr "Budite specifični u vezi sa svojom ulogom"
 #. js-lingui-explicit-id
 msgid "Be the first to say hello."
 msgstr "Budite prvi koji će reći zdravo."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
-#. js-lingui-explicit-id
-msgid "Become a member"
-msgstr "Postanite član"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:79
 #. js-lingui-explicit-id
@@ -1590,6 +1604,11 @@ msgstr "Ukratko opišite vaše iskustvo sa C#, .NET i dizajniranjem API-jeva."
 #. js-lingui-explicit-id
 msgid "British"
 msgstr "Британски"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:145
+#. js-lingui-explicit-id
+msgid "Browser alerts"
+msgstr "Obaveštenja pretraživača"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1802,7 +1821,6 @@ msgstr "Mogu li ga koristiti na pametnom telefonu?"
 
 #: src/features/Chat/Message/Message.tsx:290
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -2571,6 +2589,11 @@ msgstr ""
 "Jasna struktura za dizajn sistema. Konačno sam objasnio kompromise bez "
 "zbrke."
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
+#. js-lingui-explicit-id
+msgid "Clearer: {text}"
+msgstr "Jasnije: {text}"
+
 #: src/features/Reader/components/SendToKindleModal.tsx:171
 #. js-lingui-explicit-id
 msgid "Click \"Add a new approved e-mail address\" and enter:"
@@ -2581,14 +2604,12 @@ msgstr "Kliknite na \"Dodaj novu odobrenu e-mail adresu\" i unesite:"
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "Kliknite na dugme za deljenje pored app.fluencypal.com u vašem pretraživaču."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:686
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:76
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
-#: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/NotificationsModal.tsx:74
 #: src/features/Header/WithdrawFromContractModal.tsx:306
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:65
 #: src/features/Quiz/components/QuizResultsScreen.tsx:80
@@ -2939,7 +2960,7 @@ msgstr ""
 msgid "Constructor"
 msgstr "Konstruktor"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:141
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:154
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:95
 #. js-lingui-explicit-id
 msgid "Contact"
@@ -3207,7 +3228,7 @@ msgstr ""
 "plaintext\n"
 "Ispravne reči ({count})\n"
 
-#: src/features/Conversation/ProcessUserInput.tsx:170
+#: src/features/Conversation/ProcessUserInput.tsx:173
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Ispravljeno"
@@ -3268,7 +3289,7 @@ msgstr "Nije moguće sačuvati vaše pitanje. Molimo vas da pokušate ponovo."
 msgid "Could not save your quiz on this account. Please try again."
 msgstr "Nije moguće sačuvati vaš kviz na ovom nalogu. Molimo vas da pokušate ponovo."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:43
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:45
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:40
 #. js-lingui-explicit-id
 msgid "Could not send that. Please try again."
@@ -3456,6 +3477,17 @@ msgstr ""
 msgid "Create New Space"
 msgstr "Kreiraj Novi Prostor"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:313
+#. js-lingui-explicit-id
+msgid "Create pictures"
+msgstr "Kreiraj slike"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:339
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:340
+#. js-lingui-explicit-id
+msgid "Create room"
+msgstr "Kreiraj sobu"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Create Space"
@@ -3475,6 +3507,16 @@ msgstr "Kreiraj Svoj Scenarij"
 #. js-lingui-explicit-id
 msgid "Creating account..."
 msgstr "Kreiranje naloga..."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:268
+#. js-lingui-explicit-id
+msgid "Creating pictures. This usually takes a few minutes."
+msgstr "Kreiranje slika. Ovo obično traje nekoliko minuta."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:311
+#. js-lingui-explicit-id
+msgid "Creating pictures..."
+msgstr "Kreiranje slika..."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
 #. js-lingui-explicit-id
@@ -4277,11 +4319,6 @@ msgstr ""
 msgid "Diagnosis"
 msgstr "Dijagnoza"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
-#. js-lingui-explicit-id
-msgid "Discard"
-msgstr "Odbaci"
-
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
@@ -4437,11 +4474,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discussions"
 msgstr "Diskusije"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:132
-#. js-lingui-explicit-id
-msgid "Dismiss"
-msgstr "Одустани"
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:81
 #. js-lingui-explicit-id
@@ -4606,6 +4638,17 @@ msgstr ""
 "poboljšate tačne gramatičke ili izražne obrasce koji vam stvaraju najviše "
 "poteškoća, pretvarajući vaše greške u ciljan govornički praktik."
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:178
+#. js-lingui-explicit-id
+msgid ""
+"During this stretch, browser alerts and email stay silent. Notes inside the "
+"app still wait for you. Leave both as “Not set” if you always want to be "
+"reached."
+msgstr ""
+"Tokom ovog perioda, upozorenja pretraživača i e-pošta ostaju tihi. Beleške "
+"unutar aplikacije i dalje čekaju na vas. Ostavite oba podešena na \"Nije "
+"postavljeno\" ako želite da vam uvek mogu prići."
+
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:135
 #. js-lingui-explicit-id
 msgid ""
@@ -4616,6 +4659,24 @@ msgstr ""
 "Сваки дан добијате кратку лекцију. Она укључује много читања, затим кажете "
 "оно што сте прочитали. Тако се граматика, самопоуздање и одговори на "
 "испитима јачају."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"Each new person records a short introduction before they can leave "
+"messages. Choose who listens to that introduction."
+msgstr ""
+"Svaka nova osoba snima kratak uvod pre nego što može ostaviti poruke. "
+"Izaberite ko će slušati taj uvod."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:222
+#. js-lingui-explicit-id
+msgid ""
+"Each switch is a kind of note. New rooms stay off until you ask for them, "
+"so a room someone else starts does not interrupt you."
+msgstr ""
+"Svaki prekidač je vrsta note. Nove sobe ostaju isključene dok ih ne "
+"zatražite, tako da vas soba koju neko drugi započne ne ometa."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:17
 #. js-lingui-explicit-id
@@ -4710,6 +4771,7 @@ msgstr "Ili ti vodiš dan, ili dan vodi tebe."
 
 #: src/features/Auth/AuthSignInStep.tsx:165
 #: src/features/Auth/EmailLinkConfirmForm.tsx:75
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:158
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4731,7 +4793,7 @@ msgstr "Email i lozinka"
 msgid "Email and password. Your practice stays on this account."
 msgstr "Email i lozinka. Vaša praksa ostaje na ovom nalogu."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:142
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:155
 #. js-lingui-explicit-id
 msgid "Email, Telegram, Instagram, or WhatsApp"
 msgstr "Imejl, Telegram, Instagram, ili WhatsApp"
@@ -5076,6 +5138,17 @@ msgstr ""
 "Ona će vam pomoći.  \n"
 "Samo će komentarisati čovečanstvo dok to radi."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:190
+#. js-lingui-explicit-id
+msgid "Everyone in the room"
+msgstr "Сви у соби"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:24
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:15
+#. js-lingui-explicit-id
+msgid "Everyone in the room reviews new people"
+msgstr "Svi u prostoriji pregledaju nove osobe"
+
 #: src/features/Case/data/reusable/priceSection.ts:12
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
@@ -5301,21 +5374,6 @@ msgstr "Nije uspelo generisanje kviza."
 #. js-lingui-explicit-id
 msgid "Failed to load conversation history"
 msgstr "Nije uspelo učitavanje istorije razgovora"
-
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:41
-#. js-lingui-explicit-id
-msgid "Failed to load messages"
-msgstr "Nije uspelo učitavanje poruka"
-
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Failed to load voice chat status"
-msgstr "Nije uspelo učitavanje statusa glasovnog ćaskanja"
-
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:109
-#. js-lingui-explicit-id
-msgid "Failed to play"
-msgstr "Neuspešno puštanje"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5941,6 +5999,11 @@ msgstr "Najčešće postavljana pitanja"
 msgid "Friendly"
 msgstr "Prijateljski"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:185
+#. js-lingui-explicit-id
+msgid "From"
+msgstr "Od"
+
 #: src/features/DailyQuestion/DailyQuestionFullCard.tsx:34
 #. js-lingui-explicit-id
 msgid "From a learner"
@@ -6421,7 +6484,7 @@ msgstr "Sjajno!"
 msgid "Grocery Store"
 msgstr "Продавница Намирница"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:153
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:166
 #. js-lingui-explicit-id
 msgid "Group calls are free."
 msgstr "Grupni pozivi su besplatni."
@@ -6514,6 +6577,11 @@ msgstr "Srećan 1. april!"
 msgid "Hard"
 msgstr "Teško"
 
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:27
+#. js-lingui-explicit-id
+msgid "Has not visited yet"
+msgstr "Još nije posetio/posetila"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:39
 #. js-lingui-explicit-id
 msgid "Hate speech"
@@ -6604,6 +6672,11 @@ msgstr "Ево речи које сте највише користили у с�
 #. js-lingui-explicit-id
 msgid "Here is the lesson plan for this session:"
 msgstr "Evo plana lekcije za ovu sesiju:"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:29
+#. js-lingui-explicit-id
+msgid "Here now"
+msgstr "Ovde sada"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:289
 #. js-lingui-explicit-id
@@ -7099,7 +7172,7 @@ msgstr ""
 "Bio sam samouveren i jasan — FluencyPal me je pripremio bolje od bilo kog "
 "trenera za tehničke diskusije o upravljanju stanjem."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:62
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:64
 #. js-lingui-explicit-id
 msgid "I will contact you soon"
 msgstr "Контактираћу вас ускоро"
@@ -7109,7 +7182,7 @@ msgstr "Контактираћу вас ускоро"
 msgid "I will practice daily"
 msgstr "Вежбаћу свакодневно"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:65
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:67
 #. js-lingui-explicit-id
 msgid ""
 "I will write once I find people who fit, so we can choose a time that works "
@@ -7118,7 +7191,7 @@ msgstr ""
 "Написаћу кад пронађем људе који одговарају, тако да можемо изабрати време "
 "које одговара свима."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:149
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:162
 #. js-lingui-explicit-id
 msgid ""
 "I will write to you once I find people who fit. We can discuss a time and "
@@ -7178,7 +7251,7 @@ msgstr ""
 msgid "I've done this — continue"
 msgstr "Урадио сам ово — настави"
 
-#: src/features/Chat/SubmitForm.tsx:218
+#: src/features/Chat/SubmitForm.tsx:260
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ideja za vašu poruku:"
@@ -7494,11 +7567,6 @@ msgstr "Povećaj razmak između paragrafa"
 msgid "Indonesian Learning Plan"
 msgstr "Indonežanski Plan Učenja"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:83
-#. js-lingui-explicit-id
-msgid "Info"
-msgstr "Информације"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7567,7 +7635,7 @@ msgstr "Interaktivni primeri:"
 msgid "Interactive Lesson"
 msgstr "Interaktivna lekcija"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:124
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:137
 #. js-lingui-explicit-id
 msgid "Interests"
 msgstr "Interesi"
@@ -7907,6 +7975,7 @@ msgstr ""
 "Landing Your First Dev Job Is Harder Than It Should Be  \n"
 "Запослити се на првом дев послу теже је него што би требало бити"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:160
 #: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:37
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:117
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
@@ -7981,6 +8050,21 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Poslednjih 6 meseci"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:33
+#. js-lingui-explicit-id
+msgid "Last seen earlier"
+msgstr "Viđeno ranije"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:31
+#. js-lingui-explicit-id
+msgid "Last seen recently"
+msgstr "Последњи пут виђен недавно"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:32
+#. js-lingui-explicit-id
+msgid "Last seen today"
+msgstr "Последњи пут виђен данас"
 
 #: src/features/Game/GameStats.tsx:62
 #: src/features/Game/GameStats.tsx:113
@@ -8281,6 +8365,16 @@ msgstr "Učitavanje biblioteke..."
 msgid "Loading quiz..."
 msgstr "Učitavanje kviza..."
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:242
+#. js-lingui-explicit-id
+msgid "Loading room..."
+msgstr "Učitavanje sobe..."
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
+#. js-lingui-explicit-id
+msgid "Loading rooms..."
+msgstr "Učitavanje soba..."
+
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Loading."
@@ -8295,7 +8389,7 @@ msgstr "Učitavanje.."
 #: src/features/Advanced/AdvancedPage.tsx:101
 #: src/features/Advanced/AdvancedPage.tsx:116
 #: src/features/Advanced/AdvancedPage.tsx:367
-#: src/features/Chat/SubmitForm.tsx:124
+#: src/features/Chat/SubmitForm.tsx:162
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:214
 #: src/features/Conversation/ConversationReviewModal.tsx:108
@@ -8326,9 +8420,6 @@ msgid "Loading..."
 msgstr "Učitavanje..."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:231
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
@@ -8403,7 +8494,7 @@ msgstr "Uverite se da vaša veb kamera ispravno radi."
 msgid "Malay Learning Plan"
 msgstr "Plan učenja malajskog jezika"
 
-#: src/features/Header/NotificationsModal.tsx:35
+#: src/features/Header/NotificationsModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
@@ -8532,7 +8623,7 @@ msgstr "Meni"
 msgid "Message hidden due to policy violation."
 msgstr "Poruka skrivena zbog kršenja pravila."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:253
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Opcije poruka"
@@ -8547,16 +8638,6 @@ msgstr "Pošalji poruku grupi"
 msgid "Messages"
 msgstr "Poruke"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:51
-#. js-lingui-explicit-id
-msgid "Messages are removed after 4 days"
-msgstr "Poruke se uklanjaju nakon 4 dana"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:34
-#. js-lingui-explicit-id
-msgid "Messages are removed after 4 days."
-msgstr "Poruke se uklanjaju nakon 4 dana."
-
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -8565,7 +8646,6 @@ msgstr "Микро-фронтендси"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:151
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
 #: src/features/Settings/MicrophoneSettingsModal.tsx:83
 #: src/features/Settings/MyProfile.tsx:100
@@ -8585,15 +8665,6 @@ msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr ""
 "Pristup mikrofonu je odbijen. Molimo omogućite ga u podešavanjima vašeg "
 "pregledača."
-
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
-#. js-lingui-explicit-id
-msgid ""
-"Microphone access is denied. Please allow microphone access in your browser "
-"settings."
-msgstr ""
-"Pristup mikrofonu je odbijen. Molimo omogućite pristup mikrofonu u "
-"podešavanjima vašeg pregledača."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:144
@@ -8850,11 +8921,6 @@ msgstr "Praksa pregovaranja"
 msgid "Network error. Check your connection and try again."
 msgstr "Greška u mreži. Proverite vašu konekciju i pokušajte ponovo."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:225
-#. js-lingui-explicit-id
-msgid "New"
-msgstr "Novi"
-
 #: src/features/Case/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
 msgid "New features & simulations added regularly"
@@ -8870,10 +8936,31 @@ msgstr "Nova Igra"
 msgid "New Grammar Rules"
 msgstr "Nova pravila gramatike"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:175
+#. js-lingui-explicit-id
+msgid "New people"
+msgstr "Novi ljudi"
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:150
+#. js-lingui-explicit-id
+msgid "New room"
+msgstr "Nova soba"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:79
 #. js-lingui-explicit-id
 msgid "New Space"
 msgstr "Novi Prostor"
+
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:61
+#: src/features/Dashboard/ActivityAlertsCard.tsx:107
+#. js-lingui-explicit-id
+msgid "New voice message in {room}"
+msgstr "Nova glasovna poruka u {room}"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:238
+#. js-lingui-explicit-id
+msgid "New voice messages"
+msgstr "Nove glasovne poruke"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #. js-lingui-explicit-id
@@ -8935,6 +9022,11 @@ msgstr "Sledeća Lekcija"
 msgid "Next month"
 msgstr "Sledeći mesec"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:252
+#. js-lingui-explicit-id
+msgid "Next pictures"
+msgstr "Sledeće slike"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:190
 #. js-lingui-explicit-id
 msgid "Next plan"
@@ -8983,7 +9075,7 @@ msgstr ""
 "Nalog nije pronađen za tu email adresu. Zamolite ih da se prvo prijave, a "
 "zatim pokušajte ponovo."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:109
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:122
 #. js-lingui-explicit-id
 msgid ""
 "No account needed. Tell me what you want to practice, and how I can reach "
@@ -9088,11 +9180,6 @@ msgstr "Nema dostupnih istaknutih stavki"
 msgid "No interviews found"
 msgstr "Нема пронађених интервјуа"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
-#. js-lingui-explicit-id
-msgid "No members yet."
-msgstr "Još nema članova."
-
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -9103,8 +9190,12 @@ msgstr "Нема још порука"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Još nema poruka. Budite prvi koji će podeliti svoja razmišljanja!"
 
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:54
+#. js-lingui-explicit-id
+msgid "No messages yet. You can leave the first one."
+msgstr "Још увек нема порука. Можете оставити прву."
+
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
 #: src/features/Settings/MicrophoneSettingsModal.tsx:145
 #. js-lingui-explicit-id
@@ -9184,15 +9275,15 @@ msgstr "Без подсетника"
 msgid "No results found"
 msgstr "Nema rezultata"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:129
+#. js-lingui-explicit-id
+msgid "No rooms for this language yet. You can start one."
+msgstr "Nema soba za ovaj jezik još. Možete započeti jednu."
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:130
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "Nisu pronađeni scenariji"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:31
-#. js-lingui-explicit-id
-msgid "No text messages and no transcripts."
-msgstr "Нема текстуалних порука и нема транскрипата."
 
 #: src/features/Translation/useTranslate.tsx:186
 #. js-lingui-explicit-id
@@ -9329,11 +9420,6 @@ msgstr ""
 "Ne. Možete započeti besplatni plan bez unosa bilo kakvih podataka o "
 "plaćanju."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
-#. js-lingui-explicit-id
-msgid "Nobody is online right now."
-msgstr "Нико није сада на мрежи."
-
 #: src/features/Settings/VoiceSpeedSelector.tsx:25
 #. js-lingui-explicit-id
 msgid "Normal"
@@ -9370,6 +9456,12 @@ msgstr "Не сада"
 msgid "Not running inside Telegram App"
 msgstr "Није покренуто у оквиру Telegram апликације"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:191
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:206
+#. js-lingui-explicit-id
+msgid "Not set"
+msgstr "Nije postavljeno"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:299
 #. js-lingui-explicit-id
 msgid "Not supported"
@@ -9380,22 +9472,39 @@ msgstr "Није подржано"
 msgid "Not sure what to write? Try one of these:"
 msgstr "Niste sigurni šta da napišete? Pokušajte sa jednim od ovih:"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:81
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:88
 #. js-lingui-explicit-id
-msgid "Not this time. You can try again in {days} days"
-msgstr "Nije ovaj put. Možeš pokušati ponovo za {days} dana"
+msgid "Not this time"
+msgstr "Не овог пута"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:171
+#. js-lingui-explicit-id
+msgid "Notes inside the app"
+msgstr "Beleške unutar aplikacije"
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:114
+#. js-lingui-explicit-id
+msgid "Notification settings"
+msgstr "Podešavanja obaveštenja"
 
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
 msgid "Notification was sent to the dev team. Sorry for that..."
 msgstr "Обавештење је послато развојном тиму. Извините због тога..."
 
-#: src/features/Header/NotificationsModal.tsx:33
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:407
+#: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Obaveštenja"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:130
+#. js-lingui-explicit-id
+msgid "Notifications are blocked in the browser"
+msgstr "Obaveštenja su blokirana u pregledaču"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #. js-lingui-explicit-id
@@ -9518,25 +9627,10 @@ msgstr "Jedna stvar je ostala da se uradi"
 msgid "One-time payment"
 msgstr "Jednokratno plaćanje"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
-#. js-lingui-explicit-id
-msgid "Online"
-msgstr "Онлајн"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
-#. js-lingui-explicit-id
-msgid "Online ({count})"
-msgstr "Online ({count})"
-
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online engleski jezik"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:102
-#. js-lingui-explicit-id
-msgid "Online: {online}, Total: {total}"
-msgstr "Онлајн: {online}, Укупно: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -9548,9 +9642,10 @@ msgstr "Podržani su samo .epub fajlovi"
 msgid "Oops! Something went wrong"
 msgstr "Упс! Нешто је пошло наопако"
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:128
+#: src/features/Dashboard/ActivityAlertsCard.tsx:146
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
-#: src/features/Dashboard/NewPrivateMessageCard.tsx:74
 #: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
@@ -9597,6 +9692,11 @@ msgstr "Otvorite moju kontrolnu tablu za vežbanje"
 msgid "Open news settings"
 msgstr "Otvorite podešavanja vesti"
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:497
+#. js-lingui-explicit-id
+msgid "Open notification settings"
+msgstr "Otvorite podešavanja obaveštenja"
+
 #: src/features/Auth/SignInForm.tsx:38
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -9606,11 +9706,6 @@ msgstr "Otvorite lični plan"
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Otvori podešavanja napretka"
-
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:44
-#. js-lingui-explicit-id
-msgid "Open Request Form"
-msgstr "Otvorite obrazac za zahtev"
 
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -9631,10 +9726,11 @@ msgstr ""
 "Otvorite nečiji profil i pritisnite dugme \"Pozovi na debatu\" da započnete "
 "debatu!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:95
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:77
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:82
 #. js-lingui-explicit-id
-msgid "Open Voice Chat"
-msgstr "Otvorite Glasovni Čet"
+msgid "Open voice chat"
+msgstr "Отвори гласовни чат"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
@@ -9855,7 +9951,7 @@ msgstr ""
 "Nalepite svoj CV ili napišite kratku biografiju o vašem iskustvu, veštinama "
 "i dostignućima."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -9908,12 +10004,12 @@ msgstr "Istorija plaćanja"
 msgid "Payment option"
 msgstr "Opcija plaćanja"
 
-#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:48
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:46
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Uplata primljena. Možete se pridružiti za trenutak."
 
-#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:47
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:45
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Primljena uplata. Možete se pridružiti grupnim razgovorima."
@@ -9928,15 +10024,21 @@ msgstr "Isplata primljena. Vaš saldo će biti ažuriran za trenutak."
 msgid "Payment successful!"
 msgstr "Uspešno plaćanje!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:118
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:413
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:416
 #. js-lingui-explicit-id
-msgid "Pending requests"
-msgstr "Zahtevi na čekanju"
+msgid "People"
+msgstr "Ljudi"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:96
 #. js-lingui-explicit-id
-msgid "People in voice chat"
-msgstr "Ljudi u glasovnom ćaskanju"
+msgid "People in this room"
+msgstr "Ljudi u ovoj prostoriji"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:142
+#. js-lingui-explicit-id
+msgid "People see the name, the short description, and the language on the list."
+msgstr "Ljudi vide ime, kratak opis i jezik na listi."
 
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:67
 #. js-lingui-explicit-id
@@ -10045,6 +10147,11 @@ msgstr "Izaberite težinu koja odgovara vašoj grupi."
 msgid "Pick a level to start playing!"
 msgstr "Izaberite nivo na kojem ćete početi da igrate!"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:87
+#. js-lingui-explicit-id
+msgid "Pick a room, listen, and leave a voice message when you are ready."
+msgstr "Izaberite sobu, slušajte, i ostavite glasovnu poruku kada budete spremni."
+
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:73
 #. js-lingui-explicit-id
 msgid "Pick a username and an avatar. Other people will see them."
@@ -10074,6 +10181,15 @@ msgstr ""
 msgid "Pick words to build the sentence"
 msgstr "Изабери речи да саставиш реченицу"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Pictures take a few minutes. You can keep writing while they appear. Each "
+"option is shown the way it will look on the room list."
+msgstr ""
+"Slike se prave nekoliko minuta. Možete nastaviti sa pisanjem dok se "
+"pojavljuju. Svaka opcija je prikazana onako kako će izgledati na listi soba."
+
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:43
 #. js-lingui-explicit-id
 msgid "Place to share your thoughts"
@@ -10096,7 +10212,7 @@ msgstr "Planovi i pristup"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -10115,6 +10231,11 @@ msgstr "Ponovo Pusti"
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "Igraj i Uči"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:69
+#. js-lingui-explicit-id
+msgid "Play introduction"
+msgstr "Pusti uvod"
 
 #: src/features/InteractiveLesson/UserAudioPlayer.tsx:92
 #. js-lingui-explicit-id
@@ -10251,15 +10372,10 @@ msgstr "Молимо прочитајте више текста."
 msgid "Please record a longer answer — a few words is enough."
 msgstr "Молимо вас да снимите дужи одговор — неколико речи је довољно."
 
-#: src/features/Chat/SubmitForm.tsx:444
+#: src/features/Chat/SubmitForm.tsx:501
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Молимо вас да снимите дужу поруку (бар неколико речи)."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
-#. js-lingui-explicit-id
-msgid "Please record at least {minSeconds} seconds."
-msgstr "Molimo snimite najmanje {minSeconds} sekundi."
 
 #: src/features/Conversation/ConversationError.tsx:43
 #. js-lingui-explicit-id
@@ -10682,12 +10798,12 @@ msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Vežbajte vokabular kreativnim opisivanjem i pogađanjem reči"
 
 #: src/features/Essay/EssayText.tsx:427
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:80
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:93
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Vežbaj sa AI"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:70
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:72
 #. js-lingui-explicit-id
 msgid "Practice with AI while you wait."
 msgstr "Vežbajte sa AI dok čekate."
@@ -10791,6 +10907,11 @@ msgstr "Pripremam vašu igru..."
 msgid "Preparing…"
 msgstr "Pripremanje…"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:240
+#. js-lingui-explicit-id
+msgid "Preview"
+msgstr "Pregled"
+
 #: src/features/ProgressStat/ProgressChart.tsx:208
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
@@ -10825,6 +10946,11 @@ msgstr "Prethodni mesec"
 #. js-lingui-explicit-id
 msgid "Previous news"
 msgstr "Prethodne vesti"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:244
+#. js-lingui-explicit-id
+msgid "Previous pictures"
+msgstr "Prethodne slike"
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:64
 #. js-lingui-explicit-id
@@ -11081,6 +11207,11 @@ msgstr "Pitanja koja ćete vežbati"
 msgid "Queues"
 msgstr "Редови"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:177
+#. js-lingui-explicit-id
+msgid "Quiet hours"
+msgstr "Tihi sati"
+
 #: src/features/Quiz/components/QuizModalHeader.tsx:38
 #: src/features/Sentence/StoriesModal.tsx:556
 #. js-lingui-explicit-id
@@ -11128,7 +11259,7 @@ msgstr "Ocena"
 msgid "Raw"
 msgstr "Sirovo"
 
-#: src/features/Chat/SubmitForm.tsx:341
+#: src/features/Chat/SubmitForm.tsx:383
 #: src/features/Conversation/ConversationCanvas.tsx:674
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -11379,7 +11510,6 @@ msgstr "Preporučite podkast, pesmu ili video na ciljanom jeziku"
 msgid "Recommended"
 msgstr "Preporučeno"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:71
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -11389,6 +11519,7 @@ msgid "Record"
 msgstr "Zapis"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Zabeleži poruku"
@@ -11400,20 +11531,7 @@ msgid ""
 "leaderboard"
 msgstr "Zabeležite poruku u Zajedničkom četu i osvojite {poeni} poena na rang-listi"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:175
-#. js-lingui-explicit-id
-msgid "Record a new message"
-msgstr "Zabeležite novu poruku"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:58
-#. js-lingui-explicit-id
-msgid ""
-"Record a short audio about yourself so others know who is joining. About 30 "
-"seconds is ideal."
-msgstr ""
-"Zabeležite kratak audio o sebi kako bi drugi znali ko se pridružuje. "
-"Otprilike 30 sekundi je idealno."
-
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11442,6 +11560,11 @@ msgstr "Zabeleži odgovor"
 #. js-lingui-explicit-id
 msgid "Record feedback"
 msgstr "Рецензујте повратне информације"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:105
+#. js-lingui-explicit-id
+msgid "Record introduction"
+msgstr "Započni uvod"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:580
 #: src/features/Conversation/ConversationCanvas.tsx:565
@@ -11480,31 +11603,11 @@ msgstr "Снимите гласом"
 msgid "Record your description"
 msgstr "Zabeleži svoj opis"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:20
-#. js-lingui-explicit-id
-msgid "Record your intro"
-msgstr "Zabeleži svoj uvod"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:72
-#. js-lingui-explicit-id
-msgid "Record your reply"
-msgstr "Zabeleži svoj odgovor"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
-#. js-lingui-explicit-id
-msgid "Recording settings"
-msgstr "Podešavanja snimanja"
-
 #: src/features/Auth/RolePlayGuestReply.tsx:168
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:225
 #. js-lingui-explicit-id
 msgid "Recording…"
 msgstr "Snimanje…"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
-#. js-lingui-explicit-id
-msgid "Recording… {seconds}s"
-msgstr "Snimanje… {sekundi}s"
 
 #: src/features/ProgressStat/ProgressDetailsList.tsx:26
 #. js-lingui-explicit-id
@@ -11535,11 +11638,6 @@ msgstr "Refleks"
 msgid "Refresh"
 msgstr "Освежи"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:132
-#. js-lingui-explicit-id
-msgid "Reject"
-msgstr "Odbij"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:421
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -11555,7 +11653,7 @@ msgstr "Ponovo učitaj stranicu"
 msgid "Reloading conversation..."
 msgstr "Ponovno učitavanje razgovora..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:177
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -11604,7 +11702,6 @@ msgid "Replies"
 msgstr "Odgovori"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:187
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:173
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Reply"
@@ -11641,7 +11738,12 @@ msgstr "Prijavi korisnika"
 msgid "Report user"
 msgstr "Prijavi korisnika"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:104
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:61
+#. js-lingui-explicit-id
+msgid "Request a call"
+msgstr "Zatražite poziv"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:117
 #. js-lingui-explicit-id
 msgid "Request a group call"
 msgstr "Zahtevajte grupni poziv"
@@ -11829,6 +11931,22 @@ msgstr "Pregled Uloge"
 msgid "Rome was not built in a day."
 msgstr "Rim nije izgrađen za jedan dan."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:147
+#. js-lingui-explicit-id
+msgid "Room name"
+msgstr "Ime prostorije"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:84
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:217
+#. js-lingui-explicit-id
+msgid "Room rules"
+msgstr "Pravila sobe"
+
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:43
+#. js-lingui-explicit-id
+msgid "Room settings"
+msgstr "Podešavanja sobe"
+
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
@@ -11868,12 +11986,6 @@ msgstr "Pravilo"
 msgid "Rule of the day"
 msgstr "Pravilo dana"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:108
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:24
-#. js-lingui-explicit-id
-msgid "Rules of chat"
-msgstr "Pravila razgovora"
-
 #: src/features/Plan/LessonStartModal.tsx:447
 #. js-lingui-explicit-id
 msgid "Rules to Learn"
@@ -11905,6 +12017,7 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "Ista lekcija Just Talk preko novog WebSocket servera za glas."
 
 #: src/features/Chat/Message/Message.tsx:287
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:427
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -11937,6 +12050,11 @@ msgstr "Čuvanje knjige..."
 msgid "Saving book…"
 msgstr "Čuvanje knjige…"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
+#. js-lingui-explicit-id
+msgid "Saving..."
+msgstr "Čuvanje..."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:100
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
@@ -11952,6 +12070,11 @@ msgstr "Реците нешто више о томе како је час изг
 #. js-lingui-explicit-id
 msgid "Say hello or ask a question..."
 msgstr "Reci zdravo ili postavi pitanje..."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:218
+#. js-lingui-explicit-id
+msgid "Say how you want people to treat each other in the messages."
+msgstr "Реците како желите да се људи међусобно опходе у порукама."
 
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
@@ -12081,7 +12204,6 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "Semantički HTML"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:176
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -12098,17 +12220,12 @@ msgstr "Pošalji najmanje 10 poruka u Samo pričaj"
 msgid "Send email again"
 msgstr "Ponovo pošalji email"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:21
-#. js-lingui-explicit-id
-msgid "Send for approval"
-msgstr "Пошаљи на одобрење"
-
 #: src/features/Auth/AuthSignInStep.tsx:185
 #. js-lingui-explicit-id
 msgid "Send link"
 msgstr "Pošalji link"
 
-#: src/features/Header/NotificationsModal.tsx:57
+#: src/features/Header/NotificationsModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Pošalji mi obaveštenja putem e-pošte"
@@ -12118,38 +12235,34 @@ msgstr "Pošalji mi obaveštenja putem e-pošte"
 msgid "Send message"
 msgstr "Pošalji poruku"
 
-#: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:327
+#: src/features/Chat/SubmitForm.tsx:288
+#: src/features/Chat/SubmitForm.tsx:369
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Pošalji poruku"
 
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:24
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:34
 #. js-lingui-explicit-id
 msgid ""
-"Send more info about your interests, your English level, your fears, and I "
-"will arrange a call that works for you"
+"Send more info about your interests, your English level and I will arrange "
+"a call that works for you. Or open voice chat and start talking with people "
+"by sending a voice message."
 msgstr ""
-"Pošalji više informacija o svojim interesovanjima, tvom nivou znanja "
-"engleskog jezika, tvojim strahovima, i ja ću organizovati poziv koji ti "
-"odgovara."
+"Pošalji više informacija o svojim interesovanjima, nivou engleskog jezika i "
+"ja ću organizovati poziv koji ti odgovara. Ili otvori glasovni čet i počni "
+"da razgovaraš sa ljudima slanjem glasovne poruke."
 
 #: src/features/Tasks/useDailyTasks.tsx:84
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "Pošaljite jednu poruku u prostoru zajednice"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:73
-#. js-lingui-explicit-id
-msgid "Send reply"
-msgstr "Pošalji odgovor"
-
 #: src/features/Game/UserProfileModal.tsx:160
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Pošalji zahtev"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:169
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #. js-lingui-explicit-id
 msgid "Send request"
@@ -12167,6 +12280,11 @@ msgstr "Pošalji link za prijavu"
 msgid "Send to Kindle"
 msgstr "Pošalji na Kindle"
 
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#. js-lingui-explicit-id
+msgid "Send voice message"
+msgstr "Pošalji glasovnu poruku"
+
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:32
 #. js-lingui-explicit-id
 msgid "Send your answer to continue."
@@ -12183,8 +12301,9 @@ msgid "Sending message"
 msgstr "Slanje poruke"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
-#: src/features/Chat/SubmitForm.tsx:327
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:169
+#: src/features/Chat/SubmitForm.tsx:369
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:146
@@ -12192,11 +12311,6 @@ msgstr "Slanje poruke"
 #. js-lingui-explicit-id
 msgid "Sending..."
 msgstr "Slanje..."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
-#. js-lingui-explicit-id
-msgid "Sending…"
-msgstr "Šalje se…"
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
 #. js-lingui-explicit-id
@@ -12269,6 +12383,7 @@ msgstr "Postavite cilj vašeg učenja"
 msgid "Set translate language in Settings"
 msgstr "Подесите језик превода у Подешавањима"
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:406
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12300,11 +12415,6 @@ msgstr "Podeli"
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Podelite frazu koju ste danas naučili (ili onu koja vas je zbunila)"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:57
-#. js-lingui-explicit-id
-msgid "Share a short intro (~30 sec)"
-msgstr "Podelite kratki uvod (~30 sekundi)"
 
 #: src/features/Reader/components/ShareBookModal.tsx:130
 #. js-lingui-explicit-id
@@ -12361,6 +12471,11 @@ msgstr "Kupovina"
 msgid "Shopping at the Grocery Store"
 msgstr "Kupovina u prodavnici prehrambenih proizvoda"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:153
+#. js-lingui-explicit-id
+msgid "Short description"
+msgstr "Kratak opis"
+
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:182
 #. js-lingui-explicit-id
 msgid "Short questions, spoken answers"
@@ -12386,19 +12501,24 @@ msgstr "Prikaži svih {count} glasova"
 msgid "Show fewer voices"
 msgstr "Прикажи мање гласова"
 
-#: src/features/Conversation/ProcessUserInput.tsx:116
+#: src/features/Conversation/ProcessUserInput.tsx:119
 #: src/features/ProgressStat/ProgressStatCard.tsx:48
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Prikaži manje"
 
 #: src/features/Chat/Message/Message.tsx:498
-#: src/features/Conversation/ProcessUserInput.tsx:115
+#: src/features/Conversation/ProcessUserInput.tsx:118
 #: src/features/ProgressStat/ProgressDetailsList.tsx:45
 #: src/features/ProgressStat/ProgressStatCard.tsx:48
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Прикажи више"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:314
+#. js-lingui-explicit-id
+msgid "Show more options"
+msgstr "Prikaži više opcija"
 
 #: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
@@ -12429,6 +12549,11 @@ msgstr "Prikaži snažne osnove podataka"
 #. js-lingui-explicit-id
 msgid "Show the call again"
 msgstr "Prikaži poziv ponovo"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:211
+#. js-lingui-explicit-id
+msgid "Show this room on the website, so more people can find it"
+msgstr "Prikaži ovu sobu na vebsajtu, kako bi je više ljudi moglo pronaći"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -12687,6 +12812,16 @@ msgstr ""
 "Solidno znanje ASP.NET Core i EF Core. Nekoliko nedostataka u obrascima "
 "otpornosti i mogućnosti posmatranja."
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:103
+#. js-lingui-explicit-id
+msgid "Someone"
+msgstr "Неко"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:251
+#. js-lingui-explicit-id
+msgid "Someone wants to join, or your introduction was answered"
+msgstr "Neko želi da se pridruži, ili je vaš uvod bio odgovorен"
+
 #: src/features/Dashboard/CreatePersonalPlanModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Something went wrong while creating your plan. Please try again later."
@@ -12719,6 +12854,7 @@ msgstr ""
 "Nešto je pošlo po zlu. Alex je obavešten. Ako to ne reši, molimo vas da "
 "pišete u globalni čet."
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -12826,7 +12962,6 @@ msgid "Stars"
 msgstr "Zvezde"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -12915,12 +13050,6 @@ msgstr "Počni sa vežbanjem"
 #. js-lingui-explicit-id
 msgid "Start Recording"
 msgstr "Započni snimanje"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
-#. js-lingui-explicit-id
-msgid "Start recording"
-msgstr "Pokreni snimanje"
 
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
@@ -13154,8 +13283,8 @@ msgstr "Koraci:"
 
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Chat/SubmitForm.tsx:341
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -13398,7 +13527,6 @@ msgid "Syncing your library…"
 msgstr "Sinhronizovanje vaše biblioteke…"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
 #: src/features/Settings/MicrophoneSettingsModal.tsx:117
 #. js-lingui-explicit-id
@@ -14111,7 +14239,7 @@ msgstr "Реци ми и заборавићу. Научи ме и запамти
 msgid "Tell me what I want"
 msgstr "Реци ми шта желим"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:108
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:121
 #. js-lingui-explicit-id
 msgid "Tell me what you want to practice, and how I can reach you."
 msgstr "Реци ми шта желиш да вежбаш и како могу да те контактирам."
@@ -14259,15 +14387,19 @@ msgstr "Hvala vam na kupovini."
 msgid "Thanks — I'll use that to make your plan. Let's keep going."
 msgstr "Хвала — употребићу то да направим твој план. Хајде да наставимо."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:76
-#. js-lingui-explicit-id
-msgid "Thanks — we’re reviewing your intro"
-msgstr "Hvala — pregledamo vaš uvod"
-
 #: src/features/Auth/EmailLinkConfirmForm.tsx:34
 #. js-lingui-explicit-id
 msgid "That email does not match this link, or the link has expired."
 msgstr "Ta email adresa ne odgovara ovom linku, ili je link istekao."
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:108
+#. js-lingui-explicit-id
+msgid ""
+"That feature is in development. So it might be buggy or not work as "
+"expected. But you can try it and let me know what you think."
+msgstr ""
+"Ta funkcija je u razvoju. Dakle, može biti nestabilna ili ne raditi kako se "
+"očekuje. Ali možete je isprobati i javite mi šta mislite."
 
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:50
 #. js-lingui-explicit-id
@@ -14422,6 +14554,11 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "Zahtev će biti poslat korisniku {userName}."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:141
+#. js-lingui-explicit-id
+msgid "The room"
+msgstr "Soba"
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:24
 #. js-lingui-explicit-id
 msgid "The secret of getting ahead is getting started."
@@ -14489,6 +14626,11 @@ msgstr ""
 "Постоји заједница овде где можете разговарати о различитим темама и делити "
 "оно што вам је на уму."
 
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:60
+#. js-lingui-explicit-id
+msgid "There is an update about {room}"
+msgstr "Postoji ažuriranje o {room}"
+
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:30
 #. js-lingui-explicit-id
 msgid ""
@@ -14497,6 +14639,15 @@ msgid ""
 msgstr ""
 "Ови позиви су прилика да вежбате са другим ученицима. Неколико навика чине "
 "их лакшим за све."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:102
+#. js-lingui-explicit-id
+msgid ""
+"These choices only apply here. They can make this room quieter than your "
+"main settings. They cannot turn something back on."
+msgstr ""
+"Ови избори се односе само на овде. Они могу учинити ову собу тишом од ваших "
+"главних подешавања. Не могу поново укључити нешто што је искључено."
 
 #: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
@@ -14832,6 +14983,11 @@ msgstr ""
 "Ne moraš biti jak/a ovde.  \n"
 "Samo treba da se pojaviš."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:229
+#. js-lingui-explicit-id
+msgid "This is what a new person reads before they record an introduction."
+msgstr "Ово је оно што нова особа прочита пре него што сними увод."
+
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -14940,6 +15096,11 @@ msgstr ""
 "- Osećanje da niste sami kada nešto deluje „neprijatno“  \n"
 "\n"
 "Ako vas je nešto uznemirilo, vredi ispitati."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
+#. js-lingui-explicit-id
+msgid "This room"
+msgstr "Ova soba"
 
 #: src/features/Tasks/useDailyPlans.ts:306
 #. js-lingui-explicit-id
@@ -15079,11 +15240,6 @@ msgstr ""
 msgid "Total"
 msgstr "Ukupno"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
-#. js-lingui-explicit-id
-msgid "Total ({count})"
-msgstr "Ukupno ({count})"
-
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -15115,7 +15271,7 @@ msgstr ""
 msgid "Track Your Fluency Progress"
 msgstr "Pratite Svoj Napredak u Tečnosti Govora"
 
-#: src/features/Conversation/ProcessUserInput.tsx:113
+#: src/features/Conversation/ProcessUserInput.tsx:116
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -15127,6 +15283,11 @@ msgstr "Transkribovanje..."
 #. js-lingui-explicit-id
 msgid "Transcript"
 msgstr "Препис"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:70
+#. js-lingui-explicit-id
+msgid "Transcription"
+msgstr "Транскрипција"
 
 #: src/features/Router/BlockedAccess.tsx:158
 #. js-lingui-explicit-id
@@ -15220,6 +15381,16 @@ msgstr "Pokušajte sa ovim ulogama"
 msgid "Turkish Learning Plan"
 msgstr "Turski plan učenja"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:221
+#. js-lingui-explicit-id
+msgid "Turn a kind of note off for this room only."
+msgstr "Isključite ovu vrstu beleške samo za ovu prostoriju."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:115
+#. js-lingui-explicit-id
+msgid "Turn a place off here if this room should stay quiet there."
+msgstr "Isključite mesto ovde ako ova soba treba da ostane tiha tamo."
+
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:143
 #. js-lingui-explicit-id
 msgid "Turn off captions"
@@ -15234,6 +15405,16 @@ msgstr "Isključite video"
 #. js-lingui-explicit-id
 msgid "Turn on captions"
 msgstr "Uključite titlove"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:131
+#. js-lingui-explicit-id
+msgid "Turn on notifications"
+msgstr "Uključite obaveštenja"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:486
+#. js-lingui-explicit-id
+msgid "Turn on notifications so you do not miss the answer."
+msgstr "Uključite obaveštenja da ne biste propustili odgovor."
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:121
 #. js-lingui-explicit-id
@@ -15429,6 +15610,11 @@ msgstr "Otključajte neograničene AI razgovore i sve modove vežbanja"
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "Isključi isključenje zvuka"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:200
+#. js-lingui-explicit-id
+msgid "Until"
+msgstr "До"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15639,19 +15825,20 @@ msgstr "Vežbanje vokabulara"
 msgid "Voice"
 msgstr "Glas"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:36
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:50
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:54
 #. js-lingui-explicit-id
-msgid "Voice chat is for paying members. This keeps the room small and respectful."
-msgstr ""
-"Glasovni razgovor je za članove koji plaćaju. Ovo održava prostoriju malom "
-"i punom poštovanja."
+msgid "Voice chat"
+msgstr "Glasovni čet"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:76
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:105
 #. js-lingui-explicit-id
-msgid "Voice chat with people"
-msgstr "Glasovni razgovor sa ljudima"
+msgid ""
+"Voice chat can reach you in three places. Pick where, when, and which notes "
+"you want."
+msgstr ""
+"Гласовни чет може да вас досегне на три места. Изаберите где, када и које "
+"белешке желите."
 
 #: src/features/Usage/FeatureBlocker.tsx:74
 #. js-lingui-explicit-id
@@ -15695,10 +15882,10 @@ msgstr "Brzina glasa"
 msgid "Vue & Pinia"
 msgstr "Vue i Pinia"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:79
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:40
 #. js-lingui-explicit-id
-msgid "Wait for approval"
-msgstr "Čekajte na odobrenje"
+msgid "Waiting for a review"
+msgstr "Čekanje na pregled"
 
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
@@ -15733,7 +15920,7 @@ msgstr ""
 "Prođite kroz redosled međuslojeva (Autentifikacija → Autorizacija → "
 "Usmeravanje → Krajnja tačka) i zašto je to važno."
 
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:21
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:31
 #. js-lingui-explicit-id
 msgid "Want to practice with people?"
 msgstr "Želite li vežbati sa ljudima?"
@@ -15768,6 +15955,13 @@ msgstr "Припремамо лекцију за вас, на основу ва�
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "Спремни смо да саставимо ваш план."
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"We are reviewing your introduction. You will get a note when there is an "
+"answer."
+msgstr "Pregledamo vaš uvod. Dobićete obaveštenje kada bude dostupno."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:22
 #. js-lingui-explicit-id
@@ -15915,6 +16109,11 @@ msgstr "Nedelja"
 msgid "week"
 msgstr "nedelja"
 
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:81
+#. js-lingui-explicit-id
+msgid "Welcome them"
+msgstr "Добродошли их"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
 msgid "Welcome to Your Junior Frontend Developer Interview Prep"
@@ -15934,6 +16133,11 @@ msgstr "Добро урађено! Завршили сте причу."
 #. js-lingui-explicit-id
 msgid "Wellness"
 msgstr "Dobrobit"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:196
+#. js-lingui-explicit-id
+msgid "What a new person should say:"
+msgstr "Šta bi nova osoba trebala da kaže:"
 
 #: src/features/Case/data/frontend-junior/exampleQuestionsSection.ts:38
 #. js-lingui-explicit-id
@@ -16057,6 +16261,12 @@ msgstr "Kakve vrste intervjua za frontend mogu da vežbam?"
 msgid "What we learn with pleasure we never forget."
 msgstr "Što naučimo s užitkom, nikada ne zaboravimo."
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:80
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:228
+#. js-lingui-explicit-id
+msgid "What we usually talk about"
+msgstr "O čemu obično razgovaramo"
+
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:91
 #. js-lingui-explicit-id
 msgid "What work do you do, and what do you need to say in that interview?"
@@ -16082,6 +16292,11 @@ msgstr "Ono što ste uradili dobro"
 msgid "What you get with FluencyPal"
 msgstr "Šta dobijaš sa FluencyPal"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:218
+#. js-lingui-explicit-id
+msgid "What you want to hear about"
+msgstr "О чему желите да чујете"
+
 #: src/features/Essay/EssayText.tsx:131
 #. js-lingui-explicit-id
 msgid "What you want to practice with AI?"
@@ -16104,7 +16319,7 @@ msgstr "Šta je uključeno"
 msgid "What's new?"
 msgstr "Šta je novo?"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:147
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:160
 #. js-lingui-explicit-id
 msgid "What's next"
 msgstr "Šta je sledeće"
@@ -16166,10 +16381,20 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Gde mogu koristiti FluencyPal?"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:112
+#. js-lingui-explicit-id
+msgid "Where notes show up"
+msgstr "Gde se beleške prikazuju"
+
 #: src/features/RolePlay/scenarios/custom-conversation.ts:41
 #. js-lingui-explicit-id
 msgid "Who are you in this scenario?"
 msgstr "Ko si ti u ovom scenariju?"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:182
+#. js-lingui-explicit-id
+msgid "Who reviews new people:"
+msgstr "Ko pregleda nove ljude:"
 
 #: src/features/RolePlay/scenarios/custom-conversation.ts:30
 #. js-lingui-explicit-id
@@ -16385,6 +16610,11 @@ msgstr "Напишите између {minWords} и {maxWords} речи."
 #. js-lingui-explicit-id
 msgid "Write your report here"
 msgstr "Napišite vaš izveštaj ovde"
+
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#. js-lingui-explicit-id
+msgid "Writing down what you said..."
+msgstr "Zapisujem ono što ste rekli..."
 
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:22
 #. js-lingui-explicit-id
@@ -16680,6 +16910,11 @@ msgstr ""
 "одговоре са тренутним повратним информацијама вештачке интелигенције у било "
 "ком тренутку."
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:94
+#. js-lingui-explicit-id
+msgid "You can join {room}"
+msgstr "Možete se pridružiti {room}"
+
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:193
 #. js-lingui-explicit-id
 msgid ""
@@ -16714,11 +16949,6 @@ msgstr ""
 "na nivou osoblja, uključujući tehničke krugove, dizajn frontend sistema, "
 "kodiranje uživo, i ponašajne intervjue fokusirane na React, Vue, Angular, "
 "TypeScript i modernu web arhitekturu."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:37
-#. js-lingui-explicit-id
-msgid "You can remove your own messages anytime."
-msgstr "Можете уклонити своје поруке у било ком тренутку."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
@@ -16787,7 +17017,7 @@ msgstr ""
 msgid "You have"
 msgstr "Имаш"
 
-#: src/features/Dashboard/NewPrivateMessageCard.tsx:70
+#: src/features/Dashboard/ActivityAlertsCard.tsx:126
 #. js-lingui-explicit-id
 msgid "You have a new private message."
 msgstr "Имате нову приватну поруку."
@@ -17061,28 +17291,25 @@ msgstr "Ваш пуни приступ је активан до {date}"
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Vaš cilj nije da budete savršeni, već da nadmašite svog protivnika."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:125
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:138
 #. js-lingui-explicit-id
 msgid "Your goal, what you want to talk about, and your English level"
 msgstr "Vaš cilj, o čemu želite da razgovarate i vaš nivo engleskog jezika"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:127
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:88
 #. js-lingui-explicit-id
-msgid ""
-"Your intro is already in the room. Listen to others, then reply when you’re "
-"ready."
-msgstr ""
-"Vaš uvod je već u prostoriji. Slušajte druge, a zatim odgovorite kada "
-"budete spremni."
+msgid "Your introduction"
+msgstr "Vaše predstavljanje"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:127
+#: src/features/Dashboard/ActivityAlertsCard.tsx:97
 #. js-lingui-explicit-id
-msgid ""
-"Your intro is already in the room. Listen to others, then reply when you’re "
-"ready. Messages are removed after 4 days. No text — voice only."
-msgstr ""
-"Vaš uvod je već u sobi. Slušajte druge, a zatim odgovorite kada budete "
-"spremni. Poruke se uklanjaju nakon 4 dana. Nema teksta — samo glas."
+msgid "Your introduction to {room} was not accepted this time"
+msgstr "Vaše predstavljanje {room} nije prihvaćeno ovog puta."
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:483
+#. js-lingui-explicit-id
+msgid "Your introduction was sent"
+msgstr "Ваш увод је послат"
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
@@ -17106,7 +17333,7 @@ msgstr "Vaša lekcija"
 msgid "Your limitation is only your imagination."
 msgstr "Vaše ograničenje je samo vaša mašta."
 
-#: src/features/Conversation/ProcessUserInput.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:163
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "Vaša Poruka"
@@ -17327,6 +17554,12 @@ msgstr "{count} сат"
 msgid "{count} hours"
 msgstr "{count} sati"
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:73
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:69
+#. js-lingui-explicit-id
+msgid "{count} messages this week"
+msgstr "{count} poruka ove nedelje"
+
 #: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
 #. js-lingui-explicit-id
 msgid "{count} minute"
@@ -17341,6 +17574,17 @@ msgstr "{count} minuta"
 #. js-lingui-explicit-id
 msgid "{count} months of group conversations"
 msgstr "{count} meseci grupnih razgovora"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:71
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:67
+#. js-lingui-explicit-id
+msgid "{count} people"
+msgstr "{count} ljudi"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:53
+#. js-lingui-explicit-id
+msgid "{count} sec"
+msgstr "{count} секунди"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
@@ -17382,6 +17626,11 @@ msgstr "{hours} sati"
 #. js-lingui-explicit-id
 msgid "{hours} hours of conversation"
 msgstr "{hours} sati razgovora"
+
+#: src/features/Dashboard/ActivityAlertsCard.tsx:102
+#. js-lingui-explicit-id
+msgid "{name} wants to join {room}"
+msgstr "{name} želi da se pridruži {room}"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

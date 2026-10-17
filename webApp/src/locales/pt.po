@@ -118,6 +118,12 @@ msgstr "1 hora de conversa"
 msgid "1 month"
 msgstr "1 mês"
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:70
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:66
+#. js-lingui-explicit-id
+msgid "1 person"
+msgstr "1 pessoa"
+
 #: src/features/Alias/components/RoundSettings.tsx:34
 #. js-lingui-explicit-id
 msgid "1 round"
@@ -213,6 +219,16 @@ msgstr "5. Vencedores têm acesso completo gratuitamente"
 msgid "A bit of polish goes a long way. Focus on today’s tasks."
 msgstr "Um pouco de polimento faz toda a diferença. Foque nas tarefas de hoje."
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:116
+#. js-lingui-explicit-id
+msgid ""
+"A browser alert appears on this device. Email goes to your inbox. A note "
+"inside the app waits on your home screen until you open it."
+msgstr ""
+"Um alerta do navegador aparece neste dispositivo. Um email chega à sua "
+"caixa de entrada. Uma nota dentro do aplicativo espera na sua tela inicial "
+"até que você a abra."
+
 #: src/features/TalkWithAlex/TalkWithAlexAuthWall.tsx:14
 #. js-lingui-explicit-id
 msgid "A call with Alex"
@@ -248,15 +264,6 @@ msgstr ""
 "Um jogo divertido de adivinhação de palavras para 2-20 jogadores. Explique "
 "palavras aos seus companheiros de equipe sem dizer a palavra em si!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:80
-#. js-lingui-explicit-id
-msgid ""
-"A host reviews your intro before you can listen and reply. This protects "
-"the group."
-msgstr ""
-"Um anfitrião revisa sua introdução antes que você possa ouvir e responder. "
-"Isso protege o grupo."
-
 #: src/features/Dashboard/dailyTasksQuotes.ts:4
 #. js-lingui-explicit-id
 msgid "A journey of a thousand miles begins with a single step."
@@ -287,6 +294,15 @@ msgstr "Um pequeno progresso a cada dia resulta em grandes conquistas."
 msgid "A little variety helps you grow. Here’s what to do today."
 msgstr "Um pouco de variedade ajuda você a crescer. Veja o que fazer hoje."
 
+#: src/features/Chat/SubmitForm.tsx:484
+#. js-lingui-explicit-id
+msgid ""
+"A longer introduction helps people get to know you. About three minutes is "
+"a good length."
+msgstr ""
+"Uma introdução mais longa ajuda as pessoas a conhecerem você. Cerca de três "
+"minutos é um bom comprimento."
+
 #: src/features/Case/data/backendCSharp/stepInfoSection.ts:11
 #. js-lingui-explicit-id
 msgid "A method focused on clarity and reliability"
@@ -301,6 +317,17 @@ msgstr "Um erro faz parte da prática, não é um motivo para julgar"
 #. js-lingui-explicit-id
 msgid "A month of learning is within reach. Keep going today."
 msgstr "Um mês de aprendizado está ao seu alcance. Continue hoje."
+
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:58
+#: src/features/Dashboard/ActivityAlertsCard.tsx:88
+#. js-lingui-explicit-id
+msgid "A new room is open: {room}"
+msgstr "Uma nova sala está aberta: {room}"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:261
+#. js-lingui-explicit-id
+msgid "A new room was opened"
+msgstr "Uma nova sala foi aberta"
 
 #: src/features/OpenAiLive/OpenAiLiveStartModal.tsx:327
 #. js-lingui-explicit-id
@@ -359,12 +386,8 @@ msgstr ""
 
 #: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:39
 #. js-lingui-explicit-id
-msgid ""
-"A short practice. A few friendly people. Speak when you are ready. You can "
-"listen first."
-msgstr ""
-"Uma prática curta. Algumas pessoas amigáveis. Fale quando estiver pronto. "
-"Você pode ouvir primeiro."
+msgid "A short practice. Speak when you are ready. You can listen first."
+msgstr "Um breve exercício. Fale quando estiver pronto. Você pode ouvir primeiro."
 
 #: src/features/Goal/Quiz/QuizDailyPracticeStep.tsx:24
 #. js-lingui-explicit-id
@@ -379,11 +402,6 @@ msgid ""
 msgstr ""
 "Uma pequena autorização temporária pode aparecer no seu extrato e será "
 "liberada automaticamente pelo seu banco."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:38
-#. js-lingui-explicit-id
-msgid "A small, voice-only room. No transcripts."
-msgstr "Uma sala pequena, apenas de voz. Sem transcrições."
 
 #: src/features/Goal/Quiz/TeacherSelectionQuizStep.tsx:31
 #. js-lingui-explicit-id
@@ -485,12 +503,17 @@ msgstr "Adicionar"
 msgid "Add a book"
 msgstr "Adicionar um livro"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:269
+#. js-lingui-explicit-id
+msgid "Add a name and a short description, then create pictures."
+msgstr "Adicione um nome e uma breve descrição, depois crie imagens."
+
 #: src/features/Chat/ChatReplyModal.tsx:85
 #. js-lingui-explicit-id
 msgid "Add a reply"
 msgstr "Adicionar uma resposta"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:32
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:34
 #. js-lingui-explicit-id
 msgid "Add an email, Telegram, Instagram, or WhatsApp."
 msgstr "Adicione um e-mail, Telegram, Instagram ou WhatsApp."
@@ -592,7 +615,7 @@ msgstr ""
 msgid "Add title..."
 msgstr "Adicione o título..."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:28
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:30
 #. js-lingui-explicit-id
 msgid "Add what you want to talk about."
 msgstr "Adicione o que você gostaria de falar."
@@ -843,6 +866,17 @@ msgstr ""
 msgid "Alex Dmowski (Founder)"
 msgstr "Alex Dmowski (Fundador)"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:192
+#. js-lingui-explicit-id
+msgid "Alex only"
+msgstr "Apenas Alex"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:23
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:14
+#. js-lingui-explicit-id
+msgid "Alex reviews new people"
+msgstr "Alex analisa novas pessoas"
+
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:50
 #. js-lingui-explicit-id
 msgid "Alex will write you"
@@ -977,7 +1011,7 @@ msgstr "Sempre ouvindo. Nunca julgando. Nunca desistindo de você."
 msgid "Amount paid:"
 msgstr "Quantidade paga:"
 
-#: src/features/Conversation/ProcessUserInput.tsx:132
+#: src/features/Conversation/ProcessUserInput.tsx:135
 #. js-lingui-explicit-id
 msgid "An error occurred while analyzing the message. Please try again."
 msgstr "Ocorreu um erro ao analisar a mensagem. Por favor, tente novamente."
@@ -1007,7 +1041,7 @@ msgstr "Analisando"
 msgid "Analyzing your inputs..."
 msgstr "Analisando seus dados de entrada..."
 
-#: src/features/Conversation/ProcessUserInput.tsx:114
+#: src/features/Conversation/ProcessUserInput.tsx:117
 #: src/features/Conversation/ProcessUserInput/ProcessHeader.tsx:47
 #. js-lingui-explicit-id
 msgid "Analyzing..."
@@ -1095,11 +1129,6 @@ msgstr "Insights sobre design de API e modelagem de dados"
 msgid "Appointment"
 msgstr "Compromisso"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:129
-#. js-lingui-explicit-id
-msgid "Approve"
-msgstr "Aprovar"
-
 #: src/features/Lang/getLabels.tsx:16
 #. js-lingui-explicit-id
 msgid "Arabic Learning Plan"
@@ -1161,11 +1190,6 @@ msgstr "Tem certeza de que deseja excluir sua conta?"
 msgid "Are you sure you want to reject this battle?"
 msgstr "Tem certeza de que deseja rejeitar esta batalha?"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:78
-#. js-lingui-explicit-id
-msgid "Are you sure you want to remove this message?"
-msgstr "Você tem certeza de que deseja remover esta mensagem?"
-
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:24
 #. js-lingui-explicit-id
 msgid ""
@@ -1226,7 +1250,7 @@ msgstr "Assistente"
 msgid "At least {minWords} words required"
 msgstr "Pelo menos {minWords} palavras necessárias"
 
-#: src/features/Chat/SubmitForm.tsx:352
+#: src/features/Chat/SubmitForm.tsx:395
 #. js-lingui-explicit-id
 msgid "Attach my voice recording"
 msgstr "Anexar minha gravação de voz"
@@ -1379,11 +1403,6 @@ msgstr ""
 "Com base na sua integração, o FluencyPal criará um plano de aprendizagem "
 "personalizado apenas para você."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:28
-#. js-lingui-explicit-id
-msgid "Be kind. This is a small voice-only space."
-msgstr "Seja gentil. Este é um pequeno espaço somente de voz."
-
 #: src/features/Case/ListPage/components/ListInterviewIntro.tsx:71
 #. js-lingui-explicit-id
 msgid "Be prepared for your job interview"
@@ -1398,11 +1417,6 @@ msgstr "Seja específico sobre o seu papel"
 #. js-lingui-explicit-id
 msgid "Be the first to say hello."
 msgstr "Seja o primeiro a dizer olá."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:35
-#. js-lingui-explicit-id
-msgid "Become a member"
-msgstr "Torne-se um membro"
 
 #: src/features/InteractiveLesson/LessonProgressView.tsx:79
 #. js-lingui-explicit-id
@@ -1582,6 +1596,11 @@ msgstr "Descreva brevemente sua experiência com C#, .NET e design de APIs."
 #. js-lingui-explicit-id
 msgid "British"
 msgstr "Britânico"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:145
+#. js-lingui-explicit-id
+msgid "Browser alerts"
+msgstr "Alertas do navegador"
 
 #: src/features/Tasks/useDailyPlans.ts:28
 #. js-lingui-explicit-id
@@ -1794,7 +1813,6 @@ msgstr "Posso usá-lo no smartphone?"
 
 #: src/features/Chat/Message/Message.tsx:290
 #: src/features/Chat/Message/ReportMessageModal.tsx:101
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:238
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:199
@@ -2568,6 +2586,11 @@ msgstr ""
 "Estrutura clara para o design do sistema. Finalmente expliquei as "
 "compensações sem divagar."
 
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:90
+#. js-lingui-explicit-id
+msgid "Clearer: {text}"
+msgstr "Claro: {text}"
+
 #: src/features/Reader/components/SendToKindleModal.tsx:171
 #. js-lingui-explicit-id
 msgid "Click \"Add a new approved e-mail address\" and enter:"
@@ -2578,14 +2601,12 @@ msgstr "Clique em \"Adicionar um novo endereço de e-mail aprovado\" e insira:"
 msgid "Click the Share button next to app.fluencypal.com in your browser."
 msgstr "Clique no botão Compartilhar ao lado de app.fluencypal.com no seu navegador."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:98
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:42
 #: src/features/Conversation/CallMode/CallButtons.tsx:686
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:76
 #: src/features/Game/Battle/BattleActionModal.tsx:296
 #: src/features/Game/UserProfileModal.tsx:146
 #: src/features/Header/NeedHelpModal.tsx:103
-#: src/features/Header/NotificationsModal.tsx:73
+#: src/features/Header/NotificationsModal.tsx:74
 #: src/features/Header/WithdrawFromContractModal.tsx:306
 #: src/features/Quiz/components/ExamWelcomeScreen.tsx:65
 #: src/features/Quiz/components/QuizResultsScreen.tsx:80
@@ -2933,7 +2954,7 @@ msgstr ""
 msgid "Constructor"
 msgstr "Construtor"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:141
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:154
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:95
 #. js-lingui-explicit-id
 msgid "Contact"
@@ -3199,7 +3220,7 @@ msgstr "Correto"
 msgid "Correct words ({count})"
 msgstr "Palavras corretas ({count})"
 
-#: src/features/Conversation/ProcessUserInput.tsx:170
+#: src/features/Conversation/ProcessUserInput.tsx:173
 #. js-lingui-explicit-id
 msgid "Corrected"
 msgstr "Corrigido"
@@ -3262,7 +3283,7 @@ msgstr ""
 "Não foi possível salvar seu questionário nesta conta. Por favor, tente "
 "novamente."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:43
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:45
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:40
 #. js-lingui-explicit-id
 msgid "Could not send that. Please try again."
@@ -3453,6 +3474,17 @@ msgstr ""
 msgid "Create New Space"
 msgstr "Criar Novo Espaço"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:313
+#. js-lingui-explicit-id
+msgid "Create pictures"
+msgstr "Criar imagens"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:339
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:340
+#. js-lingui-explicit-id
+msgid "Create room"
+msgstr "Criar sala"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:143
 #. js-lingui-explicit-id
 msgid "Create Space"
@@ -3472,6 +3504,16 @@ msgstr "Crie Seu Próprio Cenário"
 #. js-lingui-explicit-id
 msgid "Creating account..."
 msgstr "Criando conta..."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:268
+#. js-lingui-explicit-id
+msgid "Creating pictures. This usually takes a few minutes."
+msgstr "Criando imagens. Isso geralmente leva alguns minutos."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:311
+#. js-lingui-explicit-id
+msgid "Creating pictures..."
+msgstr "Criando imagens..."
 
 #: src/features/Dashboard/Grammar/GrammarImprovementModal.tsx:182
 #. js-lingui-explicit-id
@@ -4275,11 +4317,6 @@ msgstr ""
 msgid "Diagnosis"
 msgstr "Diagnóstico"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:265
-#. js-lingui-explicit-id
-msgid "Discard"
-msgstr "Descartar"
-
 #: src/features/Case/ListPage/components/ListInterview.tsx:72
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:71
 #. js-lingui-explicit-id
@@ -4437,11 +4474,6 @@ msgstr ""
 #. js-lingui-explicit-id
 msgid "Discussions"
 msgstr "Discussões"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:132
-#. js-lingui-explicit-id
-msgid "Dismiss"
-msgstr "Dispensar"
 
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:81
 #. js-lingui-explicit-id
@@ -4607,6 +4639,17 @@ msgstr ""
 "gramática ou expressão que mais lhe causam dificuldade, transformando seus "
 "erros em prática de fala direcionada."
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:178
+#. js-lingui-explicit-id
+msgid ""
+"During this stretch, browser alerts and email stay silent. Notes inside the "
+"app still wait for you. Leave both as “Not set” if you always want to be "
+"reached."
+msgstr ""
+"Durante esse período, os alertas do navegador e os e-mails permanecem "
+"silenciosos. As notas dentro do aplicativo ainda aguardam por você. Deixe "
+"ambos como \"Não definido\" se você sempre quiser ser contatado."
+
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:135
 #. js-lingui-explicit-id
 msgid ""
@@ -4617,6 +4660,25 @@ msgstr ""
 "A cada dia você recebe uma pequena lição. Inclui muita leitura, depois você "
 "diz o que leu. É assim que a gramática, a confiança e as respostas dos "
 "exames se fortalecem."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:176
+#. js-lingui-explicit-id
+msgid ""
+"Each new person records a short introduction before they can leave "
+"messages. Choose who listens to that introduction."
+msgstr ""
+"Cada nova pessoa grava uma breve introdução antes de poder deixar "
+"mensagens. Escolha quem ouvirá essa introdução."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:222
+#. js-lingui-explicit-id
+msgid ""
+"Each switch is a kind of note. New rooms stay off until you ask for them, "
+"so a room someone else starts does not interrupt you."
+msgstr ""
+"Cada interruptor é um tipo de nota. Novos quartos permanecem desligados até "
+"que você os solicite, portanto, um quarto iniciado por outra pessoa não irá "
+"interrompê-lo."
 
 #: src/features/Usage/HoursPaymentModal/FaqHours.tsx:17
 #. js-lingui-explicit-id
@@ -4711,6 +4773,7 @@ msgstr "Ou você controla o dia, ou o dia te controla."
 
 #: src/features/Auth/AuthSignInStep.tsx:165
 #: src/features/Auth/EmailLinkConfirmForm.tsx:75
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:158
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:135
 #: src/features/Reader/components/ReaderSignInModal.tsx:135
 #. js-lingui-explicit-id
@@ -4732,7 +4795,7 @@ msgstr "Email e senha"
 msgid "Email and password. Your practice stays on this account."
 msgstr "Email e senha. Sua prática permanece nesta conta."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:142
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:155
 #. js-lingui-explicit-id
 msgid "Email, Telegram, Instagram, or WhatsApp"
 msgstr "Email, Telegram, Instagram, ou WhatsApp"
@@ -5082,6 +5145,17 @@ msgstr ""
 "Ela vai ajudar.  \n"
 "Ela só comentará sobre a humanidade enquanto faz isso."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:190
+#. js-lingui-explicit-id
+msgid "Everyone in the room"
+msgstr "Todos na sala"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:24
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:15
+#. js-lingui-explicit-id
+msgid "Everyone in the room reviews new people"
+msgstr "Todos na sala avaliam as novas pessoas"
+
 #: src/features/Case/data/reusable/priceSection.ts:12
 #. js-lingui-explicit-id
 msgid "Everything you need to stand out and get the job"
@@ -5305,21 +5379,6 @@ msgstr "Falha ao gerar questionário."
 #. js-lingui-explicit-id
 msgid "Failed to load conversation history"
 msgstr "Falha ao carregar o histórico da conversa"
-
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:41
-#. js-lingui-explicit-id
-msgid "Failed to load messages"
-msgstr "Falha ao carregar mensagens"
-
-#: src/features/Chat/VoiceChat/VoiceChatDashboardCard.tsx:39
-#. js-lingui-explicit-id
-msgid "Failed to load voice chat status"
-msgstr "Falha ao carregar status do chat por voz"
-
-#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:109
-#. js-lingui-explicit-id
-msgid "Failed to play"
-msgstr "Falha ao reproduzir"
 
 #: src/features/Reader/hooks/useReimportEpub.ts:85
 #: src/features/Reader/hooks/useReimportEpub.ts:134
@@ -5951,6 +6010,11 @@ msgstr "Perguntas Frequentes"
 msgid "Friendly"
 msgstr "Amigável"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:185
+#. js-lingui-explicit-id
+msgid "From"
+msgstr "De"
+
 #: src/features/DailyQuestion/DailyQuestionFullCard.tsx:34
 #. js-lingui-explicit-id
 msgid "From a learner"
@@ -6433,7 +6497,7 @@ msgstr "Ótimo!"
 msgid "Grocery Store"
 msgstr "Supermercado"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:153
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:166
 #. js-lingui-explicit-id
 msgid "Group calls are free."
 msgstr "As chamadas em grupo são gratuitas."
@@ -6527,6 +6591,11 @@ msgstr "Feliz 1 de Abril!"
 msgid "Hard"
 msgstr "Difícil"
 
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:27
+#. js-lingui-explicit-id
+msgid "Has not visited yet"
+msgstr "Ainda não visitou"
+
 #: src/features/Chat/Message/ReportMessageModal.tsx:39
 #. js-lingui-explicit-id
 msgid "Hate speech"
@@ -6617,6 +6686,11 @@ msgstr "Aqui estão as palavras que você usou mais nas suas conversas."
 #. js-lingui-explicit-id
 msgid "Here is the lesson plan for this session:"
 msgstr "Aqui está o plano da aula para esta sessão:"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:29
+#. js-lingui-explicit-id
+msgid "Here now"
+msgstr "Aqui agora"
 
 #: src/features/Case/data/frontend-senior/quizData.ts:289
 #. js-lingui-explicit-id
@@ -7115,7 +7189,7 @@ msgstr ""
 "Fiquei confiante e claro — o FluencyPal me preparou melhor do que qualquer "
 "treinador para discussões técnicas sobre gerenciamento de estado."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:62
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:64
 #. js-lingui-explicit-id
 msgid "I will contact you soon"
 msgstr "Eu entrarei em contato com você em breve"
@@ -7125,7 +7199,7 @@ msgstr "Eu entrarei em contato com você em breve"
 msgid "I will practice daily"
 msgstr "Eu vou praticar diariamente"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:65
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:67
 #. js-lingui-explicit-id
 msgid ""
 "I will write once I find people who fit, so we can choose a time that works "
@@ -7134,7 +7208,7 @@ msgstr ""
 "Escreverei assim que encontrar pessoas que se encaixem, para que possamos "
 "escolher um horário que funcione para todos."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:149
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:162
 #. js-lingui-explicit-id
 msgid ""
 "I will write to you once I find people who fit. We can discuss a time and "
@@ -7194,7 +7268,7 @@ msgstr ""
 msgid "I've done this — continue"
 msgstr "Eu fiz isso — continuar"
 
-#: src/features/Chat/SubmitForm.tsx:218
+#: src/features/Chat/SubmitForm.tsx:260
 #. js-lingui-explicit-id
 msgid "Idea for your message:"
 msgstr "Ideia para a sua mensagem:"
@@ -7510,11 +7584,6 @@ msgstr "Aumentar o espaço entre parágrafos"
 msgid "Indonesian Learning Plan"
 msgstr "Plano de Aprendizagem de Indonésio"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatChecklistRow.tsx:83
-#. js-lingui-explicit-id
-msgid "Info"
-msgstr "Info"
-
 #: src/features/Dashboard/BrainCard.tsx:499
 #. js-lingui-explicit-id
 msgid "Initiate brain connection"
@@ -7581,7 +7650,7 @@ msgstr "Exemplos interativos:"
 msgid "Interactive Lesson"
 msgstr "Lição Interativa"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:124
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:137
 #. js-lingui-explicit-id
 msgid "Interests"
 msgstr "Interesses"
@@ -7922,6 +7991,7 @@ msgstr ""
 "Conseguir Seu Primeiro Emprego de Desenvolvedor É Mais Difícil do Que "
 "Deveria Ser"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:160
 #: src/features/FluencyCall/FluencyCallLanguageSelect.tsx:37
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:117
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:307
@@ -7994,6 +8064,21 @@ msgstr "Últimos 30 dias vs 30 dias anteriores — veja como suas métricas muda
 #. js-lingui-explicit-id
 msgid "Last 6 month"
 msgstr "Últimos 6 meses"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:33
+#. js-lingui-explicit-id
+msgid "Last seen earlier"
+msgstr "Visto pela última vez anteriormente"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:31
+#. js-lingui-explicit-id
+msgid "Last seen recently"
+msgstr "Visto recentemente"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:32
+#. js-lingui-explicit-id
+msgid "Last seen today"
+msgstr "Visto pela última vez hoje"
 
 #: src/features/Game/GameStats.tsx:62
 #: src/features/Game/GameStats.tsx:113
@@ -8296,6 +8381,16 @@ msgstr "Carregando biblioteca..."
 msgid "Loading quiz..."
 msgstr "Carregando questionário..."
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:242
+#. js-lingui-explicit-id
+msgid "Loading room..."
+msgstr "Carregando sala..."
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:126
+#. js-lingui-explicit-id
+msgid "Loading rooms..."
+msgstr "Carregando salas..."
+
 #: src/features/Telegram/TgAppPage.tsx:168
 #. js-lingui-explicit-id
 msgid "Loading."
@@ -8310,7 +8405,7 @@ msgstr "Carregando.."
 #: src/features/Advanced/AdvancedPage.tsx:101
 #: src/features/Advanced/AdvancedPage.tsx:116
 #: src/features/Advanced/AdvancedPage.tsx:367
-#: src/features/Chat/SubmitForm.tsx:124
+#: src/features/Chat/SubmitForm.tsx:162
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Conversation/ConversationCanvas.tsx:214
 #: src/features/Conversation/ConversationReviewModal.tsx:108
@@ -8341,9 +8436,6 @@ msgid "Loading..."
 msgstr "Carregando..."
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:231
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:154
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:115
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:139
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:203
 #: src/features/OpenAiLive/OpenAiLiveCallPreview.tsx:78
 #: src/features/Settings/MicrophoneSettingsModal.tsx:111
@@ -8420,7 +8512,7 @@ msgstr "Certifique-se de que sua webcam está funcionando corretamente."
 msgid "Malay Learning Plan"
 msgstr "Plano de Aprendizado de Malaio"
 
-#: src/features/Header/NotificationsModal.tsx:35
+#: src/features/Header/NotificationsModal.tsx:36
 #: src/features/Settings/MyProfile.tsx:127
 #. js-lingui-explicit-id
 msgid "Manage your notification settings"
@@ -8547,7 +8639,7 @@ msgstr "Menu"
 msgid "Message hidden due to policy violation."
 msgstr "Mensagem oculta devido a violação de política."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:253
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:56
 #. js-lingui-explicit-id
 msgid "Message options"
 msgstr "Opções de mensagem"
@@ -8562,16 +8654,6 @@ msgstr "Mensagem para o grupo"
 msgid "Messages"
 msgstr "Mensagens"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:51
-#. js-lingui-explicit-id
-msgid "Messages are removed after 4 days"
-msgstr "Mensagens são removidas após 4 dias"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:34
-#. js-lingui-explicit-id
-msgid "Messages are removed after 4 days."
-msgstr "As mensagens são removidas após 4 dias."
-
 #: src/features/Case/data/frontend-junior/techData.tsx:34
 #: src/features/Case/data/frontend-senior/techData.tsx:34
 #. js-lingui-explicit-id
@@ -8580,7 +8662,6 @@ msgstr "Micro-frontends"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:151
 #: src/features/Chat/SubmitFormMoreOptions.tsx:224
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:132
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:196
 #: src/features/Settings/MicrophoneSettingsModal.tsx:83
 #: src/features/Settings/MyProfile.tsx:100
@@ -8600,15 +8681,6 @@ msgid "Microphone access denied. Please enable it in your browser settings."
 msgstr ""
 "Acesso ao microfone negado. Por favor, ative-o nas configurações do seu "
 "navegador."
-
-#: src/features/Chat/VoiceChat/useVoiceChatRecorder.tsx:43
-#. js-lingui-explicit-id
-msgid ""
-"Microphone access is denied. Please allow microphone access in your browser "
-"settings."
-msgstr ""
-"Acesso ao microfone foi negado. Por favor, permita acesso ao microfone nas "
-"configurações do seu navegador."
 
 #: src/features/Conversation/useExperimentalJustTalk.tsx:44
 #: src/features/Conversation/useJustTalk.tsx:144
@@ -8868,11 +8940,6 @@ msgstr "Prática de negociação"
 msgid "Network error. Check your connection and try again."
 msgstr "Erro de rede. Verifique sua conexão e tente novamente."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:225
-#. js-lingui-explicit-id
-msgid "New"
-msgstr "Novo"
-
 #: src/features/Case/data/reusable/priceSection.ts:43
 #. js-lingui-explicit-id
 msgid "New features & simulations added regularly"
@@ -8888,10 +8955,31 @@ msgstr "Novo Jogo"
 msgid "New Grammar Rules"
 msgstr "Novas Regras de Gramática"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:175
+#. js-lingui-explicit-id
+msgid "New people"
+msgstr "Novas pessoas"
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:150
+#. js-lingui-explicit-id
+msgid "New room"
+msgstr "Nova sala"
+
 #: src/features/Community/CommunitySpace/SpaceEditorModal.tsx:79
 #. js-lingui-explicit-id
 msgid "New Space"
 msgstr "Novo Espaço"
+
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:61
+#: src/features/Dashboard/ActivityAlertsCard.tsx:107
+#. js-lingui-explicit-id
+msgid "New voice message in {room}"
+msgstr "Nova mensagem de voz em {room}"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:238
+#. js-lingui-explicit-id
+msgid "New voice messages"
+msgstr "Novas mensagens de voz"
 
 #: src/features/Landing/Price/FeatureList.tsx:48
 #. js-lingui-explicit-id
@@ -8953,6 +9041,11 @@ msgstr "Próxima Lição"
 msgid "Next month"
 msgstr "Próximo mês"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:252
+#. js-lingui-explicit-id
+msgid "Next pictures"
+msgstr "Próximas imagens"
+
 #: src/features/Goal/Quiz/GoalReview.tsx:190
 #. js-lingui-explicit-id
 msgid "Next plan"
@@ -9001,7 +9094,7 @@ msgstr ""
 "Nenhuma conta encontrada para esse e-mail. Peça-lhes para se inscreverem "
 "primeiro, depois tente novamente."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:109
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:122
 #. js-lingui-explicit-id
 msgid ""
 "No account needed. Tell me what you want to practice, and how I can reach "
@@ -9104,11 +9197,6 @@ msgstr "Sem destaques disponíveis"
 msgid "No interviews found"
 msgstr "Nenhuma entrevista encontrada"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
-#. js-lingui-explicit-id
-msgid "No members yet."
-msgstr "Ainda não há membros."
-
 #: src/features/Chat/FlatChat.tsx:64
 #. js-lingui-explicit-id
 msgid "No messages yet"
@@ -9119,8 +9207,12 @@ msgstr "Ainda não há mensagens"
 msgid "No messages yet. Be the first to share your thoughts!"
 msgstr "Ainda não há mensagens. Seja o primeiro a compartilhar suas ideias!"
 
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:54
+#. js-lingui-explicit-id
+msgid "No messages yet. You can leave the first one."
+msgstr "Ainda não há mensagens. Você pode deixar a primeira."
+
 #: src/features/Chat/SubmitFormMoreOptions.tsx:265
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:173
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:237
 #: src/features/Settings/MicrophoneSettingsModal.tsx:145
 #. js-lingui-explicit-id
@@ -9200,15 +9292,15 @@ msgstr "Sem lembretes"
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:129
+#. js-lingui-explicit-id
+msgid "No rooms for this language yet. You can start one."
+msgstr "Ainda não há salas para este idioma. Você pode começar uma."
+
 #: src/features/Landing/RolePlay/ListRolePlay.tsx:130
 #. js-lingui-explicit-id
 msgid "No scenarios found"
 msgstr "Nenhum cenário encontrado"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:31
-#. js-lingui-explicit-id
-msgid "No text messages and no transcripts."
-msgstr "Sem mensagens de texto e sem transcrições."
 
 #: src/features/Translation/useTranslate.tsx:186
 #. js-lingui-explicit-id
@@ -9346,11 +9438,6 @@ msgstr ""
 "Não. Você pode começar o plano gratuito sem inserir nenhum detalhe de "
 "pagamento."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:79
-#. js-lingui-explicit-id
-msgid "Nobody is online right now."
-msgstr "Ninguém está online agora."
-
 #: src/features/Settings/VoiceSpeedSelector.tsx:25
 #. js-lingui-explicit-id
 msgid "Normal"
@@ -9387,6 +9474,12 @@ msgstr "Não agora"
 msgid "Not running inside Telegram App"
 msgstr "Não está sendo executado dentro do aplicativo Telegram"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:191
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:206
+#. js-lingui-explicit-id
+msgid "Not set"
+msgstr "Não definido"
+
 #: src/features/Reader/components/ReaderSettingsPanel.tsx:299
 #. js-lingui-explicit-id
 msgid "Not supported"
@@ -9397,12 +9490,20 @@ msgstr "Não suportado"
 msgid "Not sure what to write? Try one of these:"
 msgstr "Não tem certeza do que escrever? Experimente um destes:"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:81
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:88
 #. js-lingui-explicit-id
-msgid "Not this time. You can try again in {days} days"
-msgstr ""
-"\n"
-"Desta vez não. Você pode tentar novamente em {days} dias\n"
+msgid "Not this time"
+msgstr "Não desta vez"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:171
+#. js-lingui-explicit-id
+msgid "Notes inside the app"
+msgstr "Notas dentro do aplicativo"
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:114
+#. js-lingui-explicit-id
+msgid "Notification settings"
+msgstr "Configurações de notificações"
 
 #: src/features/Conversation/ConversationError.tsx:47
 #. js-lingui-explicit-id
@@ -9411,12 +9512,19 @@ msgstr ""
 "A notificação foi enviada para a equipe de desenvolvimento. Desculpe por "
 "isso..."
 
-#: src/features/Header/NotificationsModal.tsx:33
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:407
+#: src/features/Header/NotificationsModal.tsx:34
 #: src/features/Navigation/AppNotificationsButton.tsx:62
 #: src/features/Settings/MyProfile.tsx:126
 #. js-lingui-explicit-id
 msgid "Notifications"
 msgstr "Notificações"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:130
+#. js-lingui-explicit-id
+msgid "Notifications are blocked in the browser"
+msgstr "Notificações estão bloqueadas no navegador"
 
 #: src/features/Alias/components/Scoreboard.tsx:147
 #. js-lingui-explicit-id
@@ -9538,25 +9646,10 @@ msgstr "Uma coisa restante a fazer"
 msgid "One-time payment"
 msgstr "Pagamento único"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatUserRow.tsx:43
-#. js-lingui-explicit-id
-msgid "Online"
-msgstr "Online"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:71
-#. js-lingui-explicit-id
-msgid "Online ({count})"
-msgstr "Online ({count})"
-
 #: src/features/SEO/metadata.ts:136
 #. js-lingui-explicit-id
 msgid "Online English"
 msgstr "Online em Inglês"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:102
-#. js-lingui-explicit-id
-msgid "Online: {online}, Total: {total}"
-msgstr "Online: {online}, Total: {total}"
 
 #: src/features/Reader/components/AddBookModal.tsx:266
 #. js-lingui-explicit-id
@@ -9568,9 +9661,10 @@ msgstr "Somente arquivos .epub são suportados"
 msgid "Oops! Something went wrong"
 msgstr "Ops! Algo deu errado"
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:128
+#: src/features/Dashboard/ActivityAlertsCard.tsx:146
 #: src/features/Dashboard/CommunityDashboardCard.tsx:30
 #: src/features/Dashboard/Grammar/GrammarImprovesCard.tsx:46
-#: src/features/Dashboard/NewPrivateMessageCard.tsx:74
 #: src/features/Dashboard/PlanDashboardCards.tsx:155
 #: src/features/Dashboard/RolePlayDashboardCard.tsx:24
 #: src/features/InteractiveLesson/LessonHistoryView.tsx:87
@@ -9617,6 +9711,11 @@ msgstr "Abra meu painel de prática"
 msgid "Open news settings"
 msgstr "Abrir configurações de notícias"
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:497
+#. js-lingui-explicit-id
+msgid "Open notification settings"
+msgstr "Abrir configurações de notificação"
+
 #: src/features/Auth/SignInForm.tsx:38
 #. js-lingui-explicit-id
 msgid "Open personal plan"
@@ -9626,11 +9725,6 @@ msgstr "Abrir plano pessoal"
 #. js-lingui-explicit-id
 msgid "Open progress settings"
 msgstr "Abrir configurações de progresso"
-
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:44
-#. js-lingui-explicit-id
-msgid "Open Request Form"
-msgstr "Abrir Formulário de Solicitação"
 
 #: src/features/Game/Battle/BattleCard.tsx:305
 #. js-lingui-explicit-id
@@ -9651,10 +9745,11 @@ msgstr ""
 "Abra o perfil de alguém e pressione o botão \"Convidar para um debate\" "
 "para iniciar um debate!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:95
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:77
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:82
 #. js-lingui-explicit-id
-msgid "Open Voice Chat"
-msgstr "Abrir Chat de Voz"
+msgid "Open voice chat"
+msgstr "Abrir chat de voz"
 
 #: src/features/InstallApp/InstallAppInstructionSteps.tsx:127
 #. js-lingui-explicit-id
@@ -9877,7 +9972,7 @@ msgstr ""
 "Cole seu CV ou escreva um breve resumo da sua experiência, habilidades e "
 "conquistas."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
 #: src/features/News/NewsPlayButton.tsx:129
 #. js-lingui-explicit-id
 msgid "Pause"
@@ -9930,12 +10025,12 @@ msgstr "Histórico de pagamentos"
 msgid "Payment option"
 msgstr "Opção de pagamento"
 
-#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:48
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:46
 #. js-lingui-explicit-id
 msgid "Payment received. You can join in a moment."
 msgstr "Pagamento recebido. Você poderá participar em breve."
 
-#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:47
+#: src/features/FluencyCall/card/FluencyCallCardHeader.tsx:45
 #. js-lingui-explicit-id
 msgid "Payment received. You can join the group conversations."
 msgstr "Pagamento recebido. Você pode participar das conversas do grupo."
@@ -9950,15 +10045,21 @@ msgstr "Pagamento recebido. Seu saldo será atualizado em breve."
 msgid "Payment successful!"
 msgstr "Pagamento bem-sucedido!"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:118
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:413
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:416
 #. js-lingui-explicit-id
-msgid "Pending requests"
-msgstr "Solicitações pendentes"
+msgid "People"
+msgstr "Pessoas"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:58
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:96
 #. js-lingui-explicit-id
-msgid "People in voice chat"
-msgstr "Pessoas no chat de voz"
+msgid "People in this room"
+msgstr "Pessoas nesta sala"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:142
+#. js-lingui-explicit-id
+msgid "People see the name, the short description, and the language on the list."
+msgstr "As pessoas veem o nome, a breve descrição e o idioma na lista."
 
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:67
 #. js-lingui-explicit-id
@@ -10067,6 +10168,11 @@ msgstr "Escolha uma dificuldade que corresponda ao seu grupo."
 msgid "Pick a level to start playing!"
 msgstr "Escolha um nível para começar a jogar!"
 
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:87
+#. js-lingui-explicit-id
+msgid "Pick a room, listen, and leave a voice message when you are ready."
+msgstr "Escolha uma sala, ouça e deixe uma mensagem de voz quando estiver pronto."
+
 #: src/features/Goal/Quiz/QuizPlayerIdentityStep.tsx:73
 #. js-lingui-explicit-id
 msgid "Pick a username and an avatar. Other people will see them."
@@ -10096,6 +10202,16 @@ msgstr ""
 msgid "Pick words to build the sentence"
 msgstr "Escolha palavras para construir a frase"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:261
+#. js-lingui-explicit-id
+msgid ""
+"Pictures take a few minutes. You can keep writing while they appear. Each "
+"option is shown the way it will look on the room list."
+msgstr ""
+"As imagens levam alguns minutos. Você pode continuar escrevendo enquanto "
+"elas aparecem. Cada opção é mostrada da forma como aparecerá na lista de "
+"salas."
+
 #: src/features/Dashboard/PublicChatDashboardCard.tsx:43
 #. js-lingui-explicit-id
 msgid "Place to share your thoughts"
@@ -10118,7 +10234,7 @@ msgstr "Planos e acesso"
 
 #: src/features/Audio/AudioPlayIcon.tsx:151
 #: src/features/Audio/AudioPlayIcon.tsx:180
-#: src/features/Chat/VoiceChat/components/VoiceChatPlayer.tsx:165
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:39
 #: src/features/Community/GamePage.tsx:90
 #: src/features/Dashboard/GameDashboardCard.tsx:140
 #: src/features/News/NewsPlayButton.tsx:129
@@ -10137,6 +10253,11 @@ msgstr "Jogar Novamente"
 #. js-lingui-explicit-id
 msgid "Play and Learn"
 msgstr "Jogue e Aprenda"
+
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:69
+#. js-lingui-explicit-id
+msgid "Play introduction"
+msgstr "Tocar introdução"
 
 #: src/features/InteractiveLesson/UserAudioPlayer.tsx:92
 #. js-lingui-explicit-id
@@ -10273,15 +10394,10 @@ msgstr "Por favor, leia mais do texto."
 msgid "Please record a longer answer — a few words is enough."
 msgstr "Por favor, grave uma resposta mais longa — algumas palavras são suficientes."
 
-#: src/features/Chat/SubmitForm.tsx:444
+#: src/features/Chat/SubmitForm.tsx:501
 #. js-lingui-explicit-id
 msgid "Please record a longer message (at least a few words)."
 msgstr "Por favor, grave uma mensagem mais longa (pelo menos algumas palavras)."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:69
-#. js-lingui-explicit-id
-msgid "Please record at least {minSeconds} seconds."
-msgstr "Por favor, grave pelo menos {minSeconds} segundos."
 
 #: src/features/Conversation/ConversationError.tsx:43
 #. js-lingui-explicit-id
@@ -10703,12 +10819,12 @@ msgid "Practice vocabulary by creatively describing and guessing words"
 msgstr "Pratique vocabulário descrevendo e adivinhando palavras de forma criativa"
 
 #: src/features/Essay/EssayText.tsx:427
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:80
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:93
 #. js-lingui-explicit-id
 msgid "Practice with AI"
 msgstr "Pratique com IA"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:70
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:72
 #. js-lingui-explicit-id
 msgid "Practice with AI while you wait."
 msgstr "Pratique com AI enquanto espera."
@@ -10812,6 +10928,11 @@ msgstr "Preparando seu jogo..."
 msgid "Preparing…"
 msgstr "Preparando…"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:240
+#. js-lingui-explicit-id
+msgid "Preview"
+msgstr "Visualizar"
+
 #: src/features/ProgressStat/ProgressChart.tsx:208
 #. js-lingui-explicit-id
 msgid "Preview state for gated access once production placement is added."
@@ -10848,6 +10969,11 @@ msgstr "Mês anterior"
 #. js-lingui-explicit-id
 msgid "Previous news"
 msgstr "Notícias anteriores"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:244
+#. js-lingui-explicit-id
+msgid "Previous pictures"
+msgstr "Fotos anteriores"
 
 #: src/features/DailyQuestion/DailyQuestionFullList.tsx:64
 #. js-lingui-explicit-id
@@ -11104,6 +11230,11 @@ msgstr "Perguntas que você irá praticar"
 msgid "Queues"
 msgstr "Filas"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:177
+#. js-lingui-explicit-id
+msgid "Quiet hours"
+msgstr "Horas de silêncio"
+
 #: src/features/Quiz/components/QuizModalHeader.tsx:38
 #: src/features/Sentence/StoriesModal.tsx:556
 #. js-lingui-explicit-id
@@ -11151,7 +11282,7 @@ msgstr "Avaliação"
 msgid "Raw"
 msgstr "Bruto"
 
-#: src/features/Chat/SubmitForm.tsx:341
+#: src/features/Chat/SubmitForm.tsx:383
 #: src/features/Conversation/ConversationCanvas.tsx:674
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:272
 #. js-lingui-explicit-id
@@ -11406,7 +11537,6 @@ msgstr "Recomende um podcast, música ou vídeo na sua língua-alvo"
 msgid "Recommended"
 msgstr "Recomendado"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:71
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:197
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:306
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:220
@@ -11416,6 +11546,7 @@ msgid "Record"
 msgstr "Gravar"
 
 #: src/features/Chat/ChatReplyModal.tsx:85
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:57
 #. js-lingui-explicit-id
 msgid "Record a message"
 msgstr "Gravar uma mensagem"
@@ -11429,20 +11560,7 @@ msgstr ""
 "Grave uma mensagem no Chat da Comunidade e ganhe {points} pontos na "
 "classificação"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:175
-#. js-lingui-explicit-id
-msgid "Record a new message"
-msgstr "Gravar uma nova mensagem"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:58
-#. js-lingui-explicit-id
-msgid ""
-"Record a short audio about yourself so others know who is joining. About 30 "
-"seconds is ideal."
-msgstr ""
-"Grave um áudio curto sobre você para que os outros saibam quem está "
-"participando. Cerca de 30 segundos é o ideal."
-
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:93
 #: src/features/Goal/Quiz/QuizBeforeRecordAboutGate.tsx:76
 #: src/features/InteractiveLesson/SpeechAnswerPanelView.tsx:97
 #. js-lingui-explicit-id
@@ -11471,6 +11589,11 @@ msgstr "Gravar Resposta"
 #. js-lingui-explicit-id
 msgid "Record feedback"
 msgstr "Gravar feedback"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:105
+#. js-lingui-explicit-id
+msgid "Record introduction"
+msgstr "Gravar introdução"
 
 #: src/features/Conversation/CallMode/CallButtons.tsx:580
 #: src/features/Conversation/ConversationCanvas.tsx:565
@@ -11509,31 +11632,11 @@ msgstr "Gravar com voz"
 msgid "Record your description"
 msgstr "Grave a sua descrição"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:20
-#. js-lingui-explicit-id
-msgid "Record your intro"
-msgstr "Grave sua introdução"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:72
-#. js-lingui-explicit-id
-msgid "Record your reply"
-msgstr "Grave sua resposta"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:99
-#. js-lingui-explicit-id
-msgid "Recording settings"
-msgstr "Configurações de gravação"
-
 #: src/features/Auth/RolePlayGuestReply.tsx:168
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:225
 #. js-lingui-explicit-id
 msgid "Recording…"
 msgstr "Gravando…"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:224
-#. js-lingui-explicit-id
-msgid "Recording… {seconds}s"
-msgstr "Gravando… {seconds}s"
 
 #: src/features/ProgressStat/ProgressDetailsList.tsx:26
 #. js-lingui-explicit-id
@@ -11562,11 +11665,6 @@ msgstr "Reflexo"
 msgid "Refresh"
 msgstr "Atualizar"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatPendingRequestCard.tsx:132
-#. js-lingui-explicit-id
-msgid "Reject"
-msgstr "Rejeitar"
-
 #: src/features/Landing/RolePlay/ScenarioOnePage.tsx:421
 #. js-lingui-explicit-id
 msgid "Related Scenarios"
@@ -11582,7 +11680,7 @@ msgstr "Recarregar página"
 msgid "Reloading conversation..."
 msgstr "Recarregando conversa..."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:177
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:79
 #: src/features/DailyQuestion/UserDailyQuestionCard.tsx:71
 #: src/features/Game/Battle/BattleCard.tsx:348
 #. js-lingui-explicit-id
@@ -11631,7 +11729,6 @@ msgid "Replies"
 msgstr "Respostas"
 
 #: src/features/Auth/RolePlayGuestReply.tsx:187
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:173
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Reply"
@@ -11668,7 +11765,12 @@ msgstr "Relatar Usuário"
 msgid "Report user"
 msgstr "Relatar usuário"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:104
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:61
+#. js-lingui-explicit-id
+msgid "Request a call"
+msgstr "Solicitar uma chamada"
+
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:117
 #. js-lingui-explicit-id
 msgid "Request a group call"
 msgstr "Solicitar uma chamada em grupo"
@@ -11856,6 +11958,22 @@ msgstr "Visualização de Roleplay"
 msgid "Rome was not built in a day."
 msgstr "Roma não foi construída em um dia."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:147
+#. js-lingui-explicit-id
+msgid "Room name"
+msgstr "Nome da sala"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:84
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:217
+#. js-lingui-explicit-id
+msgid "Room rules"
+msgstr "Regras da sala"
+
+#: src/features/Chat/VoiceChat/components/RoomThread.tsx:43
+#. js-lingui-explicit-id
+msgid "Room settings"
+msgstr "Configurações da sala"
+
 #: src/features/Alias/components/RoundSettings.tsx:107
 #. js-lingui-explicit-id
 msgid "Round Settings"
@@ -11895,12 +12013,6 @@ msgstr "Regra"
 msgid "Rule of the day"
 msgstr "Regra do dia"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:108
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:24
-#. js-lingui-explicit-id
-msgid "Rules of chat"
-msgstr "Regras do chat"
-
 #: src/features/Plan/LessonStartModal.tsx:447
 #. js-lingui-explicit-id
 msgid "Rules to Learn"
@@ -11932,6 +12044,7 @@ msgid "Same Just Talk lesson via the new WebSocket voice server."
 msgstr "A mesma lição Just Talk via o novo servidor de voz WebSocket."
 
 #: src/features/Chat/Message/Message.tsx:287
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:427
 #: src/features/DailyQuestion/UserDailyQuestionFormModal.tsx:156
 #: src/features/Essay/EssayText.tsx:203
 #: src/features/Essay/EssayText.tsx:237
@@ -11964,6 +12077,11 @@ msgstr "Salvando livro..."
 msgid "Saving book…"
 msgstr "Salvando livro…"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:339
+#. js-lingui-explicit-id
+msgid "Saving..."
+msgstr "Salvando..."
+
 #: src/features/Goal/Quiz/QuizPage2.tsx:100
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:56
 #. js-lingui-explicit-id
@@ -11981,6 +12099,11 @@ msgstr "Diga um pouco mais sobre como foi a aula ou o que você quer em seguida.
 #. js-lingui-explicit-id
 msgid "Say hello or ask a question..."
 msgstr "Diga olá ou faça uma pergunta..."
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:218
+#. js-lingui-explicit-id
+msgid "Say how you want people to treat each other in the messages."
+msgstr "Diga como você quer que as pessoas tratem umas às outras nas mensagens."
 
 #: src/features/RolePlay/scenarios/custom.ts:13
 #. js-lingui-explicit-id
@@ -12110,7 +12233,6 @@ msgstr ""
 msgid "Semantic HTML"
 msgstr "HTML semântico"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:176
 #: src/features/Conversation/ConversationCanvas.tsx:516
 #: src/features/Header/ContactMessageModal.tsx:113
 #. js-lingui-explicit-id
@@ -12127,17 +12249,12 @@ msgstr "Envie pelo menos 10 mensagens em Just talk"
 msgid "Send email again"
 msgstr "Enviar e-mail novamente"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatIntroRecorderPanel.tsx:21
-#. js-lingui-explicit-id
-msgid "Send for approval"
-msgstr "Enviar para aprovação"
-
 #: src/features/Auth/AuthSignInStep.tsx:185
 #. js-lingui-explicit-id
 msgid "Send link"
 msgstr "Enviar link"
 
-#: src/features/Header/NotificationsModal.tsx:57
+#: src/features/Header/NotificationsModal.tsx:58
 #. js-lingui-explicit-id
 msgid "Send me email notifications"
 msgstr "Envie-me notificações por e-mail"
@@ -12147,37 +12264,34 @@ msgstr "Envie-me notificações por e-mail"
 msgid "Send message"
 msgstr "Enviar mensagem"
 
-#: src/features/Chat/SubmitForm.tsx:246
-#: src/features/Chat/SubmitForm.tsx:327
+#: src/features/Chat/SubmitForm.tsx:288
+#: src/features/Chat/SubmitForm.tsx:369
 #. js-lingui-explicit-id
 msgid "Send Message"
 msgstr "Enviar Mensagem"
 
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:24
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:34
 #. js-lingui-explicit-id
 msgid ""
-"Send more info about your interests, your English level, your fears, and I "
-"will arrange a call that works for you"
+"Send more info about your interests, your English level and I will arrange "
+"a call that works for you. Or open voice chat and start talking with people "
+"by sending a voice message."
 msgstr ""
-"Envie mais informações sobre seus interesses, seu nível de inglês, seus "
-"medos, e eu agendarei uma chamada que funcione para você."
+"Envie mais informações sobre os seus interesses, seu nível de inglês e "
+"agendarei uma chamada que funcione para você. Ou abra o chat de voz e "
+"comece a falar com as pessoas enviando uma mensagem de voz."
 
 #: src/features/Tasks/useDailyTasks.tsx:84
 #. js-lingui-explicit-id
 msgid "Send one message in the community space"
 msgstr "Envie uma mensagem no espaço da comunidade"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageItem.tsx:73
-#. js-lingui-explicit-id
-msgid "Send reply"
-msgstr "Enviar resposta"
-
 #: src/features/Game/UserProfileModal.tsx:160
 #. js-lingui-explicit-id
 msgid "Send Request"
 msgstr "Enviar Solicitação"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:169
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #. js-lingui-explicit-id
 msgid "Send request"
@@ -12195,6 +12309,11 @@ msgstr "Enviar link de login"
 msgid "Send to Kindle"
 msgstr "Enviar para o Kindle"
 
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#. js-lingui-explicit-id
+msgid "Send voice message"
+msgstr "Enviar mensagem de voz"
+
 #: src/features/Goal/Quiz/QuizDailyQuestionStep.tsx:32
 #. js-lingui-explicit-id
 msgid "Send your answer to continue."
@@ -12211,19 +12330,15 @@ msgid "Sending message"
 msgstr "Enviando mensagem"
 
 #: src/features/Auth/AuthSignInStep.tsx:185
-#: src/features/Chat/SubmitForm.tsx:327
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:169
+#: src/features/Chat/SubmitForm.tsx:369
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:81
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:182
 #: src/features/FluencyCall/FluencyCallRequestForm.tsx:153
 #: src/features/Header/ContactMessageModal.tsx:113
 #: src/features/Reader/components/ReaderSignInModal.tsx:146
 #: src/features/TalkWithAlex/TalkWithAlexRequest.tsx:122
 #. js-lingui-explicit-id
 msgid "Sending..."
-msgstr "Enviando..."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:255
-#. js-lingui-explicit-id
-msgid "Sending…"
 msgstr "Enviando..."
 
 #: src/features/Case/data/backendCSharp/faqSection.ts:15
@@ -12299,6 +12414,7 @@ msgstr "Defina o objetivo do seu aprendizado"
 msgid "Set translate language in Settings"
 msgstr "Defina o idioma de tradução em Configurações"
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:406
 #: src/features/Conversation/CallMode/CallButtons.tsx:592
 #: src/features/Reader/components/ReaderSpeechSettingsButton.tsx:246
 #. js-lingui-explicit-id
@@ -12330,11 +12446,6 @@ msgstr "Compartilhar"
 #. js-lingui-explicit-id
 msgid "Share a phrase you learned today (or one that confused you)"
 msgstr "Compartilhe uma frase que você aprendeu hoje (ou uma que te confundiu)"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:57
-#. js-lingui-explicit-id
-msgid "Share a short intro (~30 sec)"
-msgstr "Compartilhe uma breve introdução (~30 seg)"
 
 #: src/features/Reader/components/ShareBookModal.tsx:130
 #. js-lingui-explicit-id
@@ -12391,6 +12502,11 @@ msgstr "Compras"
 msgid "Shopping at the Grocery Store"
 msgstr "Comprando no Supermercado"
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:153
+#. js-lingui-explicit-id
+msgid "Short description"
+msgstr "Pequena descrição"
+
 #: src/features/Goal/Quiz/QuizActivitySteps.tsx:182
 #. js-lingui-explicit-id
 msgid "Short questions, spoken answers"
@@ -12416,19 +12532,24 @@ msgstr "Mostrar todas as {count} vozes"
 msgid "Show fewer voices"
 msgstr "Mostrar menos vozes"
 
-#: src/features/Conversation/ProcessUserInput.tsx:116
+#: src/features/Conversation/ProcessUserInput.tsx:119
 #: src/features/ProgressStat/ProgressStatCard.tsx:48
 #. js-lingui-explicit-id
 msgid "Show less"
 msgstr "Mostrar menos"
 
 #: src/features/Chat/Message/Message.tsx:498
-#: src/features/Conversation/ProcessUserInput.tsx:115
+#: src/features/Conversation/ProcessUserInput.tsx:118
 #: src/features/ProgressStat/ProgressDetailsList.tsx:45
 #: src/features/ProgressStat/ProgressStatCard.tsx:48
 #. js-lingui-explicit-id
 msgid "Show more"
 msgstr "Mostrar mais"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:314
+#. js-lingui-explicit-id
+msgid "Show more options"
+msgstr "Mostrar mais opções"
 
 #: src/features/FluencyCall/card/FluencyCallChatPanel.tsx:94
 #. js-lingui-explicit-id
@@ -12459,6 +12580,11 @@ msgstr "Mostre fundamentos sólidos de dados"
 #. js-lingui-explicit-id
 msgid "Show the call again"
 msgstr "Mostrar a chamada novamente"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:211
+#. js-lingui-explicit-id
+msgid "Show this room on the website, so more people can find it"
+msgstr "Mostre esta sala no site, para que mais pessoas possam encontrá-la"
 
 #: src/features/Case/data/frontend-senior/infoCardsSection.ts:23
 #. js-lingui-explicit-id
@@ -12717,6 +12843,16 @@ msgstr ""
 "Conhecimento sólido em ASP.NET Core e EF Core. Algumas lacunas nos padrões "
 "de resiliência e observabilidade."
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:103
+#. js-lingui-explicit-id
+msgid "Someone"
+msgstr "Alguém"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:251
+#. js-lingui-explicit-id
+msgid "Someone wants to join, or your introduction was answered"
+msgstr "Alguém quer participar ou sua introdução foi respondida"
+
 #: src/features/Dashboard/CreatePersonalPlanModal.tsx:127
 #. js-lingui-explicit-id
 msgid "Something went wrong while creating your plan. Please try again later."
@@ -12745,6 +12881,7 @@ msgstr ""
 "Algo deu errado. Alex foi notificado. Se ele não corrigir isso, por favor "
 "escreva no chat global."
 
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:89
 #: src/features/Header/WithdrawFromContractModal.tsx:79
 #: src/features/Reader/components/ReaderSignInModal.tsx:61
 #: src/features/Reader/components/ShareBookModal.tsx:107
@@ -12852,7 +12989,6 @@ msgid "Stars"
 msgstr "Estrelas"
 
 #: src/features/Case/data/backendCSharp/quizData.ts:22
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:49
 #: src/features/Dashboard/DailyTasksDashboardCard.tsx:136
 #: src/features/Dashboard/Exams/ExamsDashboardCard.tsx:67
 #: src/features/Dashboard/ExperimentalDashboardCard.tsx:63
@@ -12941,12 +13077,6 @@ msgstr "Comece a Praticar"
 #. js-lingui-explicit-id
 msgid "Start Recording"
 msgstr "Iniciar Gravação"
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:190
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:202
-#. js-lingui-explicit-id
-msgid "Start recording"
-msgstr "Iniciar gravação"
 
 #: src/features/Landing/LandingPage.tsx:208
 #: src/features/Landing/LandingPage.tsx:209
@@ -13181,8 +13311,8 @@ msgstr "Passos:"
 
 #: src/features/Audio/VoiceRecordControl.tsx:50
 #: src/features/Auth/RolePlayGuestReply.tsx:187
-#: src/features/Chat/SubmitForm.tsx:299
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:235
+#: src/features/Chat/SubmitForm.tsx:341
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:54
 #: src/features/Goal/Quiz/QuizGuestRecordAbout.tsx:244
 #. js-lingui-explicit-id
 msgid "Stop"
@@ -13423,7 +13553,6 @@ msgid "Syncing your library…"
 msgstr "Sincronizando sua biblioteca…"
 
 #: src/features/Chat/SubmitFormMoreOptions.tsx:243
-#: src/features/Chat/VoiceChat/components/VoiceChatRecorderPanel.tsx:151
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:215
 #: src/features/Settings/MicrophoneSettingsModal.tsx:117
 #. js-lingui-explicit-id
@@ -14138,7 +14267,7 @@ msgstr "Diga-me e eu esqueço. Ensina-me e eu lembro. Envolva-me e eu aprendo."
 msgid "Tell me what I want"
 msgstr "Diga-me o que eu quero"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:108
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:121
 #. js-lingui-explicit-id
 msgid "Tell me what you want to practice, and how I can reach you."
 msgstr ""
@@ -14289,15 +14418,20 @@ msgstr "Obrigado pela sua compra."
 msgid "Thanks — I'll use that to make your plan. Let's keep going."
 msgstr "Obrigado — Usarei isso para fazer seu plano. Vamos continuar."
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardPanel.tsx:76
-#. js-lingui-explicit-id
-msgid "Thanks — we’re reviewing your intro"
-msgstr "Obrigado — estamos revisando sua introdução"
-
 #: src/features/Auth/EmailLinkConfirmForm.tsx:34
 #. js-lingui-explicit-id
 msgid "That email does not match this link, or the link has expired."
 msgstr "Esse e-mail não corresponde a este link ou o link expirou."
+
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:108
+#. js-lingui-explicit-id
+msgid ""
+"That feature is in development. So it might be buggy or not work as "
+"expected. But you can try it and let me know what you think."
+msgstr ""
+"Essa funcionalidade está em desenvolvimento. Portanto, pode conter erros ou "
+"não funcionar conforme o esperado. Mas você pode experimentá-la e me contar "
+"o que acha."
 
 #: src/features/FluencyCall/FluencyCallRequestModal.tsx:50
 #. js-lingui-explicit-id
@@ -14454,6 +14588,11 @@ msgstr ""
 msgid "The request will be sent to user {userName}."
 msgstr "A solicitação será enviada para o usuário {userName}."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:141
+#. js-lingui-explicit-id
+msgid "The room"
+msgstr "A sala"
+
 #: src/features/Dashboard/dailyTasksQuotes.ts:24
 #. js-lingui-explicit-id
 msgid "The secret of getting ahead is getting started."
@@ -14521,6 +14660,11 @@ msgstr ""
 "Há uma comunidade aqui onde você pode falar sobre diferentes tópicos e "
 "compartilhar o que está em sua mente."
 
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:60
+#. js-lingui-explicit-id
+msgid "There is an update about {room}"
+msgstr "Há uma atualização sobre {room}"
+
 #: src/features/FluencyCall/FluencyCallConductModal.tsx:30
 #. js-lingui-explicit-id
 msgid ""
@@ -14529,6 +14673,16 @@ msgid ""
 msgstr ""
 "Essas chamadas são uma oportunidade para praticar com outros alunos. Alguns "
 "hábitos as tornam mais fáceis para todos."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:102
+#. js-lingui-explicit-id
+msgid ""
+"These choices only apply here. They can make this room quieter than your "
+"main settings. They cannot turn something back on."
+msgstr ""
+"Essas opções só se aplicam aqui. Elas podem fazer esta sala ficar mais "
+"silenciosa do que suas configurações principais. Elas não podem reativar "
+"algo."
 
 #: src/features/Dashboard/BrainCard.tsx:150
 #. js-lingui-explicit-id
@@ -14870,6 +15024,11 @@ msgstr ""
 "Você não precisa ser forte aqui.  \n"
 "Você só precisa aparecer."
 
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:229
+#. js-lingui-explicit-id
+msgid "This is what a new person reads before they record an introduction."
+msgstr "Este é o texto que uma nova pessoa lê antes de gravar uma introdução."
+
 #: src/features/InteractiveLesson/LanguageSetupView.tsx:49
 #. js-lingui-explicit-id
 msgid ""
@@ -14981,6 +15140,11 @@ msgstr ""
 "- Sentir-se menos sozinho quando algo parece “errado”  \n"
 "\n"
 "Se algo incomodou você, vale a pena examinar."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:98
+#. js-lingui-explicit-id
+msgid "This room"
+msgstr "Esta sala"
 
 #: src/features/Tasks/useDailyPlans.ts:306
 #. js-lingui-explicit-id
@@ -15120,11 +15284,6 @@ msgstr ""
 msgid "Total"
 msgstr "Total"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMembersDialog.tsx:67
-#. js-lingui-explicit-id
-msgid "Total ({count})"
-msgstr "Total ({count})"
-
 #: src/features/Alias/components/TurnSummary.tsx:203
 #. js-lingui-explicit-id
 msgid "Total Scores"
@@ -15154,7 +15313,7 @@ msgstr "Acompanhe como a sua gramática, vocabulário, fluência e confiança me
 msgid "Track Your Fluency Progress"
 msgstr "Rastreie Seu Progresso de Fluência"
 
-#: src/features/Conversation/ProcessUserInput.tsx:113
+#: src/features/Conversation/ProcessUserInput.tsx:116
 #: src/features/Game/gameQuestionScreens/ImageScreen.tsx:90
 #: src/features/Game/gameQuestionScreens/ReadTextScreen.tsx:220
 #: src/features/Game/gameQuestionScreens/TopicToDiscussScreen.tsx:113
@@ -15165,6 +15324,11 @@ msgstr "Transcrevendo..."
 #: src/features/Essay/EssayText.tsx:292
 #. js-lingui-explicit-id
 msgid "Transcript"
+msgstr "Transcrição"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:70
+#. js-lingui-explicit-id
+msgid "Transcription"
 msgstr "Transcrição"
 
 #: src/features/Router/BlockedAccess.tsx:158
@@ -15260,6 +15424,16 @@ msgstr "Experimente estes jogos de papéis"
 msgid "Turkish Learning Plan"
 msgstr "Plano de Aprendizagem de Turco"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:221
+#. js-lingui-explicit-id
+msgid "Turn a kind of note off for this room only."
+msgstr "Desative um tipo de nota apenas para esta sala."
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:115
+#. js-lingui-explicit-id
+msgid "Turn a place off here if this room should stay quiet there."
+msgstr "Desative um lugar aqui se esta sala deve ficar silenciosa lá."
+
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:143
 #. js-lingui-explicit-id
 msgid "Turn off captions"
@@ -15274,6 +15448,16 @@ msgstr "Desligar vídeo"
 #. js-lingui-explicit-id
 msgid "Turn on captions"
 msgstr "Ativar legendas"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:131
+#. js-lingui-explicit-id
+msgid "Turn on notifications"
+msgstr "Ativar notificações"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:486
+#. js-lingui-explicit-id
+msgid "Turn on notifications so you do not miss the answer."
+msgstr "Ative as notificações para não perder a resposta."
 
 #: src/features/Conversation/CallMode/CallSettingsMenu.tsx:121
 #. js-lingui-explicit-id
@@ -15469,6 +15653,11 @@ msgstr "Desbloqueie conversas ilimitadas com IA e todos os modos de prática"
 #. js-lingui-explicit-id
 msgid "Unmute"
 msgstr "Desativar mudo"
+
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:200
+#. js-lingui-explicit-id
+msgid "Until"
+msgstr "Até"
 
 #: src/features/Experiments/IWant.tsx:201
 #: src/features/Experiments/IWant.tsx:286
@@ -15678,19 +15867,20 @@ msgstr "Prática de Vocabulário"
 msgid "Voice"
 msgstr "Voz"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:36
+#: src/features/Chat/VoiceChat/components/RoomListView.tsx:50
+#: src/features/Chat/VoiceChat/SpeakingBrowserNotifications.tsx:54
 #. js-lingui-explicit-id
-msgid "Voice chat is for paying members. This keeps the room small and respectful."
-msgstr ""
-"O chat por voz é para membros pagantes. Isso mantém a sala pequena e "
-"respeitosa."
+msgid "Voice chat"
+msgstr "Conversa por voz"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:37
-#: src/features/Chat/VoiceChat/components/VoiceChatDashboardView.tsx:50
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:76
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:105
 #. js-lingui-explicit-id
-msgid "Voice chat with people"
-msgstr "Converse por voz com pessoas"
+msgid ""
+"Voice chat can reach you in three places. Pick where, when, and which notes "
+"you want."
+msgstr ""
+"O bate-papo por voz pode alcançá-lo em três lugares. Escolha onde, quando e "
+"quais notas você deseja."
 
 #: src/features/Usage/FeatureBlocker.tsx:74
 #. js-lingui-explicit-id
@@ -15734,10 +15924,10 @@ msgstr "Velocidade da voz"
 msgid "Vue & Pinia"
 msgstr "Vue & Pinia"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatOnboardingChecklist.tsx:79
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:40
 #. js-lingui-explicit-id
-msgid "Wait for approval"
-msgstr "Espere pela aprovação"
+msgid "Waiting for a review"
+msgstr "Aguardando uma revisão"
 
 #: src/features/Game/Battle/BattleCard.tsx:281
 #. js-lingui-explicit-id
@@ -15772,7 +15962,7 @@ msgstr ""
 "Passe pelo pedido de middleware (Autenticação → Autorização → Roteamento → "
 "Endpoint) e por que isso importa."
 
-#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:21
+#: src/features/FluencyCall/card/FluencyCallRequestSection.tsx:31
 #. js-lingui-explicit-id
 msgid "Want to practice with people?"
 msgstr "Quer praticar com outras pessoas?"
@@ -15807,6 +15997,15 @@ msgstr "Estamos preparando uma lição para você, com base na sua prática ante
 #. js-lingui-explicit-id
 msgid "We are ready to craft your plan."
 msgstr "Estamos prontos para elaborar seu plano."
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:33
+#. js-lingui-explicit-id
+msgid ""
+"We are reviewing your introduction. You will get a note when there is an "
+"answer."
+msgstr ""
+"Estamos analisando sua introdução. Você receberá uma nota quando houver uma "
+"resposta."
 
 #: src/features/Dashboard/dailyTasksQuotes.ts:22
 #. js-lingui-explicit-id
@@ -15956,6 +16155,11 @@ msgstr "Semana"
 msgid "week"
 msgstr "semana"
 
+#: src/features/Chat/VoiceChat/components/MembersPanel.tsx:81
+#. js-lingui-explicit-id
+msgid "Welcome them"
+msgstr "Bem-vindos"
+
 #: src/features/Case/data/frontend-junior/quizData.ts:13
 #. js-lingui-explicit-id
 msgid "Welcome to Your Junior Frontend Developer Interview Prep"
@@ -15977,6 +16181,11 @@ msgstr "Muito bem! Você completou a história."
 #. js-lingui-explicit-id
 msgid "Wellness"
 msgstr "Bem-estar"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:196
+#. js-lingui-explicit-id
+msgid "What a new person should say:"
+msgstr "O que uma pessoa nova deve dizer:"
 
 #: src/features/Case/data/frontend-junior/exampleQuestionsSection.ts:38
 #. js-lingui-explicit-id
@@ -16100,6 +16309,12 @@ msgstr "Quais tipos de entrevistas de frontend posso praticar?"
 msgid "What we learn with pleasure we never forget."
 msgstr "O que aprendemos com prazer, nunca esquecemos."
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:80
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:228
+#. js-lingui-explicit-id
+msgid "What we usually talk about"
+msgstr "O que geralmente falamos sobre"
+
 #: src/features/Goal/Quiz/QuizRecordAbout.browser.test.tsx:91
 #. js-lingui-explicit-id
 msgid "What work do you do, and what do you need to say in that interview?"
@@ -16125,6 +16340,11 @@ msgstr "O que você fez bem"
 msgid "What you get with FluencyPal"
 msgstr "O que você recebe com o FluencyPal"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:218
+#. js-lingui-explicit-id
+msgid "What you want to hear about"
+msgstr "O que você quer ouvir sobre"
+
 #: src/features/Essay/EssayText.tsx:131
 #. js-lingui-explicit-id
 msgid "What you want to practice with AI?"
@@ -16147,7 +16367,7 @@ msgstr "O que está incluído"
 msgid "What's new?"
 msgstr "O que há de novo?"
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:147
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:160
 #. js-lingui-explicit-id
 msgid "What's next"
 msgstr "O que vem a seguir"
@@ -16212,10 +16432,20 @@ msgstr ""
 msgid "Where can I use FluencyPal?"
 msgstr "Onde posso usar o FluencyPal?"
 
+#: src/features/Chat/VoiceChat/components/NotificationSettingsForm.tsx:112
+#. js-lingui-explicit-id
+msgid "Where notes show up"
+msgstr "Onde as notas aparecem"
+
 #: src/features/RolePlay/scenarios/custom-conversation.ts:41
 #. js-lingui-explicit-id
 msgid "Who are you in this scenario?"
 msgstr "Quem é você neste cenário?"
+
+#: src/features/Chat/VoiceChat/components/RoomForm.tsx:182
+#. js-lingui-explicit-id
+msgid "Who reviews new people:"
+msgstr "Quem revisa novas pessoas:"
 
 #: src/features/RolePlay/scenarios/custom-conversation.ts:30
 #. js-lingui-explicit-id
@@ -16431,6 +16661,11 @@ msgstr "Escreva entre {minWords} e {maxWords} palavras."
 #. js-lingui-explicit-id
 msgid "Write your report here"
 msgstr "Escreva seu relatório aqui"
+
+#: src/features/Chat/VoiceChat/components/VoiceComposer.tsx:56
+#. js-lingui-explicit-id
+msgid "Writing down what you said..."
+msgstr "Escrevendo o que você disse..."
 
 #: src/features/Goal/Quiz/QuizPasswordAccount.tsx:22
 #. js-lingui-explicit-id
@@ -16734,6 +16969,11 @@ msgstr ""
 "Você pode enfatizar APIs, bancos de dados, ou design de sistemas, e repetir "
 "as respostas com feedback instantâneo da IA a qualquer momento."
 
+#: src/features/Dashboard/ActivityAlertsCard.tsx:94
+#. js-lingui-explicit-id
+msgid "You can join {room}"
+msgstr "Você pode entrar em {room}"
+
 #: src/features/Goal/Quiz/QuizExpectationSteps.tsx:193
 #. js-lingui-explicit-id
 msgid ""
@@ -16768,11 +17008,6 @@ msgstr ""
 "staff, incluindo rodadas técnicas, design de sistema frontend, codificação "
 "ao vivo e entrevistas comportamentais com foco em React, Vue, Angular, "
 "TypeScript e arquitetura web moderna."
-
-#: src/features/Chat/VoiceChat/components/VoiceChatRulesDialog.tsx:37
-#. js-lingui-explicit-id
-msgid "You can remove your own messages anytime."
-msgstr "Você pode remover suas próprias mensagens a qualquer momento."
 
 #: src/features/Usage/Subscription/TelegramSubscriptionPaymentModal.tsx:712
 #. js-lingui-explicit-id
@@ -16839,7 +17074,7 @@ msgstr ""
 msgid "You have"
 msgstr "Você tem"
 
-#: src/features/Dashboard/NewPrivateMessageCard.tsx:70
+#: src/features/Dashboard/ActivityAlertsCard.tsx:126
 #. js-lingui-explicit-id
 msgid "You have a new private message."
 msgstr "Você tem uma nova mensagem privada."
@@ -17123,29 +17358,25 @@ msgstr "Seu acesso completo está ativo até {date}"
 msgid "Your goal is not to be perfect, but to surpass your opponent."
 msgstr "Seu objetivo não é ser perfeito, mas superar seu oponente."
 
-#: src/features/FluencyCall/CommunityCallOnboarding.tsx:125
+#: src/features/FluencyCall/CommunityCallOnboarding.tsx:138
 #. js-lingui-explicit-id
 msgid "Your goal, what you want to talk about, and your English level"
 msgstr "Seu objetivo, sobre o que você quer falar, e seu nível de inglês"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatMessageList.tsx:127
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:88
 #. js-lingui-explicit-id
-msgid ""
-"Your intro is already in the room. Listen to others, then reply when you’re "
-"ready."
-msgstr ""
-"Sua introdução já está na sala. Ouça os outros e responda quando estiver "
-"pronto."
+msgid "Your introduction"
+msgstr "Sua introdução"
 
-#: src/features/Chat/VoiceChat/components/VoiceChatModalContent.tsx:127
+#: src/features/Dashboard/ActivityAlertsCard.tsx:97
 #. js-lingui-explicit-id
-msgid ""
-"Your intro is already in the room. Listen to others, then reply when you’re "
-"ready. Messages are removed after 4 days. No text — voice only."
-msgstr ""
-"Sua introdução já está na sala. Ouça os outros, depois responda quando "
-"estiver pronto. As mensagens são removidas após 4 dias. Sem texto — apenas "
-"voz."
+msgid "Your introduction to {room} was not accepted this time"
+msgstr "Sua introdução para {room} não foi aceita desta vez"
+
+#: src/features/Chat/VoiceChat/VoiceChatModal.tsx:483
+#. js-lingui-explicit-id
+msgid "Your introduction was sent"
+msgstr "Sua introdução foi enviada"
 
 #: src/features/Auth/InterviewAuthWall.tsx:12
 #. js-lingui-explicit-id
@@ -17169,7 +17400,7 @@ msgstr "Sua lição"
 msgid "Your limitation is only your imagination."
 msgstr "Sua limitação é apenas a sua imaginação."
 
-#: src/features/Conversation/ProcessUserInput.tsx:160
+#: src/features/Conversation/ProcessUserInput.tsx:163
 #. js-lingui-explicit-id
 msgid "Your Message"
 msgstr "A sua mensagem"
@@ -17394,6 +17625,12 @@ msgstr "{count} hora"
 msgid "{count} hours"
 msgstr "{count} horas"
 
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:73
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:69
+#. js-lingui-explicit-id
+msgid "{count} messages this week"
+msgstr "{count} mensagens esta semana"
+
 #: src/features/OpenAiLive/OpenAiLiveBalanceText.tsx:29
 #. js-lingui-explicit-id
 msgid "{count} minute"
@@ -17408,6 +17645,17 @@ msgstr "{count} minutos"
 #. js-lingui-explicit-id
 msgid "{count} months of group conversations"
 msgstr "{count} meses de conversas em grupo"
+
+#: src/features/Chat/VoiceChat/components/JoinRoomView.tsx:71
+#: src/features/Chat/VoiceChat/components/RoomCard.tsx:67
+#. js-lingui-explicit-id
+msgid "{count} people"
+msgstr "{count} pessoas"
+
+#: src/features/Chat/VoiceChat/components/VoiceMessageRow.tsx:53
+#. js-lingui-explicit-id
+msgid "{count} sec"
+msgstr "{count} seg"
 
 #: src/features/Alias/components/RoundSettings.tsx:185
 #: src/features/Quiz/components/activities/WritingTextActivity.tsx:73
@@ -17449,6 +17697,11 @@ msgstr "{hours} horas"
 #. js-lingui-explicit-id
 msgid "{hours} hours of conversation"
 msgstr "{hours} horas de conversa"
+
+#: src/features/Dashboard/ActivityAlertsCard.tsx:102
+#. js-lingui-explicit-id
+msgid "{name} wants to join {room}"
+msgstr "{name} quer entrar em {room}"
 
 #: src/features/Alias/components/RoundSettings.tsx:35
 #. js-lingui-explicit-id

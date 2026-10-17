@@ -9,8 +9,11 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 Voice Chat
 
-- How to ensure user uses correct user name and info about them
-- How to make user do the first step and actually join the room
+- How to ensure user uses correct user name and info about them?
+- How to make user do the first step and actually join the room?
+- SEO: How it looks like?
+
+- How to make them talking?
 
 - Where to find Review list: Update email as well
 - Tune message player: Play icon should be big
