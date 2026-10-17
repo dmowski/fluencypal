@@ -146,6 +146,7 @@ export const VoiceMessageRow = ({
             aria-label={i18n._('Message options')}
             data-testid="voice-chat-message-menu"
             size="small"
+            disabled={Boolean(locked)}
             onClick={(event) => setMenu(event.currentTarget)}
             sx={{ flexShrink: 0 }}
           >
@@ -173,7 +174,7 @@ export const VoiceMessageRow = ({
             </MenuItem>
           ) : null}
         </Menu>
-        {showTranscript ? (
+        {showTranscript && !locked ? (
           <Stack data-testid="voice-chat-transcript" sx={{ gap: '4px' }}>
             <Typography>{message.transcript}</Typography>
             {message.correctedTranscript &&

@@ -278,6 +278,7 @@ test('a visitor sees messages without being able to play them', async () => {
   await expect.element(page.getByText('Amigos joined the room.')).toBeVisible();
   await expect.element(page.getByTestId('voice-chat-player')).toBeDisabled();
   await expect.element(page.getByTestId('voice-chat-like')).toBeDisabled();
+  await expect.element(page.getByTestId('voice-chat-message-menu')).toBeDisabled();
   await expect.element(page.getByText('2')).toBeVisible();
 });
 
