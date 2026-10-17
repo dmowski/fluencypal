@@ -9,6 +9,9 @@ import fs from 'fs';
 import path from 'path';
 
 jest.mock('@/features/Blog/blogApi');
+jest.mock('@/features/SpeakingClub/publicClubs', () => ({
+  fetchPublicSpeakingClubs: jest.fn(async () => []),
+}));
 
 const IS_SAVE_TO_BASELINE = false;
 

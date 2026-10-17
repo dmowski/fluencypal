@@ -4,6 +4,7 @@ import { getBlogs } from '@/features/Blog/blogData';
 import { getRolePlayScenarios } from '@/features/RolePlay/rolePlayData';
 import { getAllInterviews } from '@/features/Case/data/data';
 import { getFeaturesData } from '@/features/Feature/featuresData';
+import { fetchPublicSpeakingClubs } from '@/features/SpeakingClub/publicClubs';
 
 const updateTime = '2026-07-12T13:01:02+00:00';
 
@@ -112,6 +113,25 @@ export async function generateSitemap(): Promise<string> {
     priority: '0.8000',
   }));
 
+  let speakingClubUrls: UrlDefinition[] = [
+    {
+      path: 'speaking-club',
+      priority: '0.8000',
+    },
+  ];
+  try {
+    const clubs = await fetchPublicSpeakingClubs();
+    speakingClubUrls = [
+      ...speakingClubUrls,
+      ...clubs.map((club) => ({
+        path: `speaking-club/${club.slug}`,
+        priority: '0.7000' as const,
+      })),
+    ];
+  } catch (error) {
+    console.error('Speaking club sitemap skipped', error);
+  }
+
   const urls: UrlDefinition[] = [
     {
       path: '',
@@ -176,6 +196,7 @@ export async function generateSitemap(): Promise<string> {
     ...blogsCategoriesUrls,
     ...featureUrls,
     ...learnLanguageUrls,
+    ...speakingClubUrls,
   ];
 
   const textResponse = `<?xml version="1.0" encoding="UTF-8"?>
