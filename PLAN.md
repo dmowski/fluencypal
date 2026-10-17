@@ -11,9 +11,4 @@ Voice Chat Open questions:
 
 - How to make people talking?. Invite my friends, start talking, invite users directly
 
-=======
-
-- Review members: tune ui. Make preview player better
-
 - Check GDPR compliance, what we need to implement. some reports, ability to report user
-- Tune typography
