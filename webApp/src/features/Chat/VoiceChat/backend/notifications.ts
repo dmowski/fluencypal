@@ -21,14 +21,25 @@ const writeNote = async (
   await ref.set({ ...note, read: false });
 };
 
-const emailNote = async (profile: SpeakingProfile, title: string, body: string): Promise<void> => {
+const voiceChatUrl = (params: Record<string, string> = {}) => {
+  const search = new URLSearchParams({ voiceChat: 'true', ...params });
+  return `https://app.fluencypal.com/practice?${search.toString()}`;
+};
+
+const emailNote = async (
+  profile: SpeakingProfile,
+  title: string,
+  body: string,
+  href = voiceChatUrl(),
+  linkLabel = 'Open voice chat',
+): Promise<void> => {
   if (!profile.email || !profile.emailAllowedByApp) return;
   try {
     await sendEmail({
       emailTo: profile.email,
       title,
-      messageText: body,
-      messageHtml: `<p>${body}</p><p><a href="https://app.fluencypal.com/practice?voiceChat=true">Open voice chat</a></p>`,
+      messageText: `${body}\n\n${href}`,
+      messageHtml: `<p>${body}</p><p><a href="${href}">${linkLabel}</a></p>`,
     });
   } catch (error) {
     console.error('Speaking club email failed', error);
@@ -42,6 +53,8 @@ const deliver = async (params: {
   note: Omit<AppNotification, 'id' | 'read'>;
   emailTitle: string;
   emailBody: string;
+  emailHref?: string;
+  emailLinkLabel?: string;
 }): Promise<void> => {
   const profile = await loadSpeakingProfile(params.userId);
   const narrowing = params.roomId ? await loadRoomNarrowing(params.userId, params.roomId) : null;
@@ -63,7 +76,13 @@ const deliver = async (params: {
       kind: params.kind,
     })
   ) {
-    await emailNote(profile, params.emailTitle, params.emailBody);
+    await emailNote(
+      profile,
+      params.emailTitle,
+      params.emailBody,
+      params.emailHref,
+      params.emailLinkLabel,
+    );
   }
 };
 
@@ -130,6 +149,11 @@ export const notifyReviewers = async (params: {
         kind: 'reviewJoiners',
         emailTitle: `${params.applicant.username} wants to join ${params.room.title}`,
         emailBody: `${params.applicant.username} recorded an introduction for ${params.room.title}.`,
+        emailHref: voiceChatUrl({
+          voiceRoom: params.room.id,
+          voiceRoomTab: 'members',
+        }),
+        emailLinkLabel: 'Review their introduction',
         note: {
           kind: 'reviewJoiner',
           roomId: params.room.id,

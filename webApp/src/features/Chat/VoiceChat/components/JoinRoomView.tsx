@@ -55,9 +55,7 @@ export const JoinRoomView = ({
       <Stack sx={{ gap: '52px' }}>
         <Stack sx={{ gap: '12px' }}>
           <Stack>
-            <Typography variant="h3" sx={{ fontWeight: 800 }}>
-              {room.title}
-            </Typography>
+            <Typography variant="h4">{room.title}</Typography>
             <Typography variant="body1" sx={{ opacity: 0.8 }}>
               {room.subtitle}
             </Typography>
@@ -79,32 +77,36 @@ export const JoinRoomView = ({
         </Stack>
 
         <Stack sx={{ gap: '10px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 800 }}>
-            {i18n._('What we usually talk about')}
-          </Typography>
+          <Typography variant="h5">{i18n._('What we usually talk about')}</Typography>
           <Markdown>{room.discussMarkdown}</Markdown>
         </Stack>
         <Stack sx={{ gap: '10px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 800 }}>
-            {i18n._('Room rules')}
-          </Typography>
+          <Typography variant="h5">{i18n._('Room rules')}</Typography>
           <Markdown>{room.rulesMarkdown}</Markdown>
         </Stack>
         <Stack sx={{ gap: '10px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 800 }}>
-            {i18n._('Your introduction')}
-          </Typography>
+          <Typography variant="h5">{i18n._('Your introduction')}</Typography>
           <Markdown>{room.joinPromptMarkdown}</Markdown>
         </Stack>
       </Stack>
-      <SubmitForm
-        onSubmit={async () => {}}
-        onSubmitRecording={onSubmitRecording}
-        isLoading={isSending}
-        recordMessageTitle={i18n._('Record introduction')}
-        setIsActiveRecording={() => {}}
-        previousBotMessage={room.joinPromptMarkdown}
-      />
+      <Stack
+        sx={{
+          marginTop: '16px',
+          border: '1px solid #333',
+          backgroundColor: 'rgba(36, 48, 68, 0.1)',
+          borderRadius: '16px',
+          padding: '0px',
+        }}
+      >
+        <SubmitForm
+          onSubmit={async () => {}}
+          onSubmitRecording={onSubmitRecording}
+          isLoading={isSending}
+          recordMessageTitle={i18n._('Record introduction')}
+          setIsActiveRecording={() => {}}
+          previousBotMessage={room.joinPromptMarkdown}
+        />
+      </Stack>
     </Stack>
   );
 };

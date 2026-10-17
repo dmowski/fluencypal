@@ -77,6 +77,9 @@ export const ActivityAlertsCard = () => {
     const searchParams = new URLSearchParams(window.location.search);
     searchParams.set('voiceChat', 'true');
     if (note.roomId) searchParams.set('voiceRoom', note.roomId);
+    if (note.kind === 'reviewJoiner' && note.audience === 'reviewer') {
+      searchParams.set('voiceRoomTab', 'members');
+    }
     router.push(`${window.location.pathname}?${searchParams.toString()}`, { scroll: false });
   };
 

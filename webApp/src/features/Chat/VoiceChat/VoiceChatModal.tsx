@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
 import { SupportedLanguage } from '@/features/Lang/lang';
@@ -31,8 +31,16 @@ import { RoomListView } from './components/RoomListView';
 import { RoomThread } from './components/RoomThread';
 import { VoiceComposer } from './components/VoiceComposer';
 import { clearRoomDraft, readRoomDraft, writeRoomDraft } from './roomDraft';
-import { emptyRoomDraft, RoomDraft, RoomListItem, SpeakingRoom } from './types';
+import { emptyRoomDraft, RoomDraft, RoomListItem, RoomMember, SpeakingRoom } from './types';
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
+
+type RoomSettingsTab = 'settings' | 'notifications' | 'members';
+
+const isRoomSettingsTab = (value: string): value is RoomSettingsTab =>
+  value === 'settings' || value === 'notifications' || value === 'members';
+
+const pendingReviewCount = (members: RoomMember[], canReview: boolean) =>
+  canReview ? members.filter((member) => member.status === 'pending').length : 0;
 
 const draftFromRoom = (room: SpeakingRoom): RoomDraft => ({
   ...emptyRoomDraft(),
@@ -55,6 +63,12 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [chosenLanguage, setChosenLanguage] = useState<SupportedLanguage | null>(null);
   const selectedLanguage = chosenLanguage || settings.languageCode || 'en';
   const [voiceRoom, setVoiceRoom] = useUrlState('voiceRoom', '', false);
+  const [voiceNotifications, setVoiceNotifications] = useUrlState(
+    'voiceNotifications',
+    false,
+    false,
+  );
+  const [voiceRoomTab, setVoiceRoomTab] = useUrlState('voiceRoomTab', '', false);
   const [rooms, setRooms] = useState<RoomListItem[]>([]);
   const [detail, setDetail] = useState<RoomDetail | null>(null);
   const [audioUrls, setAudioUrls] = useState<Record<string, string>>({});
@@ -65,10 +79,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
   const [isSaving, setIsSaving] = useState(false);
   const [isCreatingPictures, setIsCreatingPictures] = useState(false);
   const [error, setError] = useState('');
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [roomMenuOpen, setRoomMenuOpen] = useState(false);
-  const [roomTab, setRoomTab] = useState<'settings' | 'notifications' | 'members'>('notifications');
   const [joinSent, setJoinSent] = useState(false);
+  const notificationsOpen = String(voiceNotifications) === 'true';
+  const rawRoomTab = String(voiceRoomTab);
+  const roomMenuTab: RoomSettingsTab | '' = isRoomSettingsTab(rawRoomTab) ? rawRoomTab : '';
 
   const showError = (reason: unknown) => {
     setError(
@@ -114,8 +128,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
         const data = await fetchSpeakingRooms(token);
         if (cancelled) return;
         setRooms(data.rooms);
-        const roomFromUrl = new URLSearchParams(window.location.search).get('voiceRoom');
+        const params = new URLSearchParams(window.location.search);
+        const roomFromUrl = params.get('voiceRoom');
         if (roomFromUrl) await openRoom(roomFromUrl);
+        else if (params.get('voiceRoomTab')) void setVoiceRoomTab('');
       } catch (reason) {
         if (!cancelled) showError(reason);
       } finally {
@@ -159,12 +175,18 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     setScreen('list');
     setVoiceRoom('');
     setDetail(null);
-    setRoomMenuOpen(false);
+    void setVoiceRoomTab('');
     void loadList().catch(showError);
   };
 
+  const roomMenuOpen = roomMenuTab !== '' && Boolean(detail);
   const nestedOpen =
-    screen === 'create' || screen === 'room' || settingsOpen || roomMenuOpen || joinSent;
+    screen === 'create' || screen === 'room' || notificationsOpen || roomMenuOpen || joinSent;
+  const reviewCount = detail ? pendingReviewCount(detail.members, detail.canReview) : 0;
+  const visibleRoomTab: RoomSettingsTab =
+    roomMenuTab === 'settings' && detail && !detail.isAdmin
+      ? 'notifications'
+      : roomMenuTab || 'notifications';
   const visibleRooms = rooms.filter((item) => item.room.languageCode === selectedLanguage);
 
   return (
@@ -194,7 +216,9 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
             );
             setScreen('create');
           }}
-          onOpenSettings={() => setSettingsOpen(true)}
+          onOpenSettings={() => {
+            void setVoiceNotifications(true);
+          }}
         />
         {screen === 'room' ? (
           <CustomModal
@@ -222,9 +246,11 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                   messages={detail.messages}
                   audioUrls={audioUrls}
                   currentUserId={auth.uid || ''}
+                  reviewCount={reviewCount}
                   onOpenSettings={() => {
-                    setRoomTab(detail.isAdmin ? 'settings' : 'notifications');
-                    setRoomMenuOpen(true);
+                    void setVoiceRoomTab(
+                      reviewCount > 0 ? 'members' : detail.isAdmin ? 'settings' : 'notifications',
+                    );
                   }}
                   onRemove={(messageId) => {
                     void (async () => {
@@ -310,6 +336,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
             error={error}
             isSaving={isSaving}
             isCreatingPictures={isCreatingPictures}
+            title={i18n._('Create room')}
             submitLabel={i18n._('Create room')}
             onChange={(next) => {
               setDraft(next);
@@ -348,30 +375,50 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
           />
         </CustomModal>
       ) : null}
-      {settingsOpen ? (
-        <CustomModal isOpen onClose={() => setSettingsOpen(false)} zIndex={1300}>
+      {notificationsOpen ? (
+        <CustomModal
+          isOpen
+          onClose={() => {
+            void setVoiceNotifications(false);
+          }}
+          zIndex={1300}
+          data-testid="voice-notification-modal"
+        >
           <SpeakingNotificationSettings />
         </CustomModal>
       ) : null}
       {roomMenuOpen && detail ? (
         <CustomModal
           isOpen
-          onClose={() => setRoomMenuOpen(false)}
+          onClose={() => {
+            void setVoiceRoomTab('');
+          }}
           zIndex={1300}
           data-testid="voice-room-settings"
         >
           <Stack sx={{ width: '100%', maxWidth: 760, gap: '12px' }}>
             <Tabs
-              value={roomTab}
-              onChange={(_event, value: 'settings' | 'notifications' | 'members') =>
-                setRoomTab(value)
-              }
+              value={visibleRoomTab}
+              onChange={(_event, value: RoomSettingsTab) => {
+                void setVoiceRoomTab(value);
+              }}
             >
               {detail.isAdmin ? <Tab value="settings" label={i18n._('Settings')} /> : null}
               <Tab value="notifications" label={i18n._('Notifications')} />
-              <Tab value="members" label={i18n._('People')} />
+              <Tab
+                value="members"
+                label={
+                  reviewCount > 0 ? (
+                    <Badge color="error" badgeContent={reviewCount} sx={{ paddingRight: '10px' }}>
+                      {i18n._('People')}
+                    </Badge>
+                  ) : (
+                    i18n._('People')
+                  )
+                }
+              />
             </Tabs>
-            {roomTab === 'settings' && detail.isAdmin && editDraft ? (
+            {visibleRoomTab === 'settings' && detail.isAdmin && editDraft ? (
               <RoomForm
                 draft={editDraft}
                 error={error}
@@ -389,7 +436,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                       if (!token) return;
                       const { room } = await updateSpeakingRoom(token, detail.room.id, editDraft);
                       setDetail({ ...detail, room });
-                      setRoomMenuOpen(false);
+                      void setVoiceRoomTab('');
                     } catch (reason) {
                       showError(reason);
                     } finally {
@@ -399,10 +446,10 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 }}
               />
             ) : null}
-            {roomTab === 'notifications' ? (
+            {visibleRoomTab === 'notifications' ? (
               <SpeakingNotificationSettings roomId={detail.room.id} />
             ) : null}
-            {roomTab === 'members' ? (
+            {visibleRoomTab === 'members' ? (
               <MembersPanel
                 members={detail.members}
                 canReview={detail.canReview}
@@ -443,8 +490,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
               color="info"
               onClick={() => {
                 setJoinSent(false);
-                setRoomTab('notifications');
-                setRoomMenuOpen(true);
+                void setVoiceRoomTab('notifications');
               }}
               sx={{ alignSelf: 'flex-start', textTransform: 'none' }}
             >

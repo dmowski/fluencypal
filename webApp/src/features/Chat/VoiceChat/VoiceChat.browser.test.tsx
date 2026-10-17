@@ -71,6 +71,7 @@ import { WindowSizesProvider } from '@/features/Layout/useWindowSizes';
 import { RoomCard } from './components/RoomCard';
 import { RoomForm } from './components/RoomForm';
 import { RoomListView } from './components/RoomListView';
+import { RoomThread } from './components/RoomThread';
 import { JoinRoomView } from './components/JoinRoomView';
 import { VoiceMessageRow } from './components/VoiceMessageRow';
 import { NotificationSettingsForm } from './components/NotificationSettingsForm';
@@ -191,6 +192,22 @@ test('join form explains the room before recording', async () => {
   await expect.element(page.getByTestId('voice-room-join')).toMatchScreenshot('join-room');
 });
 
+test('room settings shows how many people are waiting', async () => {
+  await shell(
+    <RoomThread
+      room={room}
+      messages={[]}
+      audioUrls={{}}
+      currentUserId="me"
+      reviewCount={2}
+      onOpenSettings={() => {}}
+      onRemove={() => {}}
+      composer={null}
+    />,
+  );
+  await expect.element(page.getByTestId('voice-room-review-badge')).toHaveTextContent('2');
+});
+
 test('transcription sits under the voice message', async () => {
   await shell(
     <VoiceMessageRow message={message} audioUrl={null} canRemove={false} onRemove={() => {}} />,
@@ -231,6 +248,7 @@ test('the room form explains each part and keeps the review choice narrow', asyn
       onShowMore={() => {}}
       isCreatingPictures={false}
       onSubmit={() => {}}
+      title="Create room"
       submitLabel="Create room"
       isSaving={false}
       error=""
@@ -241,8 +259,8 @@ test('the room form explains each part and keeps the review choice narrow', asyn
     .element(page.getByText('Listen to the whole message before you answer.'))
     .toBeVisible();
   await expect.element(page.getByText('Pictures take a few minutes.')).toBeVisible();
-  const review = await page.getByTestId('voice-room-review-mode').element();
-  expect(review.getBoundingClientRect().width).toBeLessThanOrEqual(320);
+  await expect.element(page.getByRole('radio', { name: 'Everyone in the room' })).toBeChecked();
+  await expect.element(page.getByRole('radio', { name: 'Alex only' })).toBeVisible();
   await expect.element(page.getByTestId('voice-room-form')).toMatchScreenshot('room-form');
 });
 

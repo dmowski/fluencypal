@@ -1,6 +1,6 @@
 'use client';
 
-import { IconButton, Stack, Typography } from '@mui/material';
+import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Ellipsis } from 'lucide-react';
 import { RoomMessage, SpeakingRoom } from '../types';
@@ -11,6 +11,7 @@ export const RoomThread = ({
   messages,
   audioUrls,
   currentUserId,
+  reviewCount,
   onOpenSettings,
   onRemove,
   composer,
@@ -19,6 +20,7 @@ export const RoomThread = ({
   messages: RoomMessage[];
   audioUrls: Record<string, string>;
   currentUserId: string;
+  reviewCount: number;
   onOpenSettings: () => void;
   onRemove: (messageId: string) => void;
   composer: React.ReactNode;
@@ -31,13 +33,20 @@ export const RoomThread = ({
         <Typography variant="h4" sx={{ fontWeight: 800 }}>
           {room.title}
         </Typography>
-        <IconButton
-          aria-label={i18n._('Room settings')}
-          data-testid="voice-room-more"
-          onClick={onOpenSettings}
+        <Badge
+          color="error"
+          badgeContent={reviewCount}
+          invisible={reviewCount <= 0}
+          data-testid="voice-room-review-badge"
         >
-          <Ellipsis />
-        </IconButton>
+          <IconButton
+            aria-label={i18n._('Room settings')}
+            data-testid="voice-room-more"
+            onClick={onOpenSettings}
+          >
+            <Ellipsis />
+          </IconButton>
+        </Badge>
       </Stack>
       <Typography sx={{ opacity: 0.75 }}>{room.subtitle}</Typography>
       {messages.length === 0 ? (

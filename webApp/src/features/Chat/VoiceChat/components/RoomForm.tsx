@@ -4,9 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import {
   Button,
   Checkbox,
+  FormControl,
   FormControlLabel,
+  FormLabel,
   IconButton,
   MenuItem,
+  Radio,
+  RadioGroup,
   Stack,
   TextField,
   Typography,
@@ -69,12 +73,19 @@ const Section = ({
   <Stack data-testid={testId} sx={{ gap: '10px' }}>
     <Stack sx={{ gap: '4px' }}>
       <Stack direction="row" sx={{ alignItems: 'center', gap: '4px' }}>
-        <Typography sx={{ fontWeight: 800, fontSize: '18px' }}>{title}</Typography>
+        <Typography sx={{ fontWeight: 600, fontSize: '25px' }}>{title}</Typography>
         {titleEnd}
       </Stack>
       {subtitle ? <Typography sx={{ opacity: 0.75 }}>{subtitle}</Typography> : null}
     </Stack>
-    {children}
+    <Stack
+      sx={{
+        padding: '0px 0 0 0',
+        gap: '15px',
+      }}
+    >
+      {children}
+    </Stack>
   </Stack>
 );
 
@@ -85,6 +96,7 @@ export const RoomForm = ({
   onShowMore,
   isCreatingPictures,
   onSubmit,
+  title,
   submitLabel,
   isSaving,
   error,
@@ -95,6 +107,7 @@ export const RoomForm = ({
   onShowMore: () => void;
   isCreatingPictures: boolean;
   onSubmit: () => void;
+  title?: string;
   submitLabel: string;
   isSaving: boolean;
   error: string;
@@ -119,9 +132,11 @@ export const RoomForm = ({
 
   return (
     <Stack data-testid="voice-room-form" sx={{ width: '100%', maxWidth: 760, gap: '36px' }}>
-      <Typography variant="h4" sx={{ fontWeight: 800 }}>
-        {submitLabel}
-      </Typography>
+      {title ? (
+        <Typography variant="h4" sx={{ fontWeight: 800 }}>
+          {title}
+        </Typography>
+      ) : null}
       <Section
         title={i18n._('The room')}
         subtitle={i18n._(
@@ -162,33 +177,40 @@ export const RoomForm = ({
           'Each new person records a short introduction before they can leave messages. Choose who listens to that introduction.',
         )}
       >
-        <TextField
-          select
-          label={i18n._('Who reviews new people')}
-          value={draft.reviewMode}
-          onChange={(event) => set({ reviewMode: event.target.value as RoomReviewMode })}
-          sx={{ maxWidth: 320, width: '100%' }}
-          data-testid="voice-room-review-mode"
-        >
-          <MenuItem value="allMembers">{i18n._('Everyone in the room')}</MenuItem>
-          <MenuItem value="alexOnly">{i18n._('Alex only')}</MenuItem>
-        </TextField>
-        <Typography sx={{ fontWeight: 700 }}>{i18n._('What a new person should say')}</Typography>
-        <RichTextEditor
-          value={draft.joinPromptMarkdown}
-          onChange={(joinPromptMarkdown) => set({ joinPromptMarkdown })}
-          reloadKey="join"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={draft.isPublic}
-              data-testid="voice-room-public"
-              onChange={(_event, checked) => set({ isPublic: checked })}
+        <Stack sx={{ gap: '15px', padding: '10px 0 0 0' }}>
+          <FormControl data-testid="voice-room-review-mode">
+            <FormLabel>{i18n._('Who reviews new people:')}</FormLabel>
+            <RadioGroup
+              value={draft.reviewMode}
+              onChange={(event) => set({ reviewMode: event.target.value as RoomReviewMode })}
+            >
+              <FormControlLabel
+                value="allMembers"
+                control={<Radio />}
+                label={i18n._('Everyone in the room')}
+              />
+              <FormControlLabel value="alexOnly" control={<Radio />} label={i18n._('Alex only')} />
+            </RadioGroup>
+          </FormControl>
+          <Stack sx={{ gap: '5px' }}>
+            <Typography>{i18n._('What a new person should say:')}</Typography>
+            <RichTextEditor
+              value={draft.joinPromptMarkdown}
+              onChange={(joinPromptMarkdown) => set({ joinPromptMarkdown })}
+              reloadKey="join"
             />
-          }
-          label={i18n._('Show this room on the website, so more people can find it')}
-        />
+          </Stack>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={draft.isPublic}
+                data-testid="voice-room-public"
+                onChange={(_event, checked) => set({ isPublic: checked })}
+              />
+            }
+            label={i18n._('Show this room on the website, so more people can find it')}
+          />
+        </Stack>
       </Section>
 
       <Section
