@@ -37,11 +37,13 @@ export const VoiceWaveform = ({
   audioUrl,
   audioRef,
   onPlayingChange,
+  onDuration,
   previewSeed,
 }: {
   audioUrl: string | null;
   audioRef: React.RefObject<HTMLAudioElement | null>;
   onPlayingChange?: (isPlaying: boolean) => void;
+  onDuration?: (seconds: number) => void;
   previewSeed?: string;
 }) => {
   const [peaks, setPeaks] = useState<number[]>(() =>
@@ -142,6 +144,10 @@ export const VoiceWaveform = ({
           ref={audioRef}
           src={audioUrl}
           style={{ display: 'none' }}
+          onLoadedMetadata={(event) => {
+            const duration = event.currentTarget.duration;
+            if (Number.isFinite(duration) && duration > 0) onDuration?.(duration);
+          }}
           onPlay={() => onPlayingChange?.(true)}
           onPause={() => onPlayingChange?.(false)}
           onTimeUpdate={(event) => {

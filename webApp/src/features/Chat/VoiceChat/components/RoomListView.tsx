@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button, IconButton, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
-import { Plus, Settings } from 'lucide-react';
+import { Pencil, Plus, Settings } from 'lucide-react';
 import {
   emojiLanguageName,
   fullLanguageName,
@@ -100,8 +100,11 @@ export const RoomListView = ({
         </IconButton>
       </Stack>
       {!hasBio ? (
-        <Stack data-testid="voice-finish-profile" sx={{ gap: '8px', width: 640 }}>
-          <Typography sx={{ fontWeight: 800 }}>{i18n._('Finish your profile')}</Typography>
+        <Stack
+          data-testid="voice-finish-profile"
+          sx={{ gap: '5px', width: 640, padding: '10px 0' }}
+        >
+          <Typography sx={{ fontWeight: 500 }}>{i18n._('Finish your profile')}</Typography>
           <Stack
             data-testid="voice-add-bio"
             role="button"
@@ -111,19 +114,47 @@ export const RoomListView = ({
               if (event.key === 'Enter' || event.key === ' ') onEditProfile?.();
             }}
             sx={{
-              width: 640,
-              alignItems: 'flex-start',
-              textAlign: 'left',
-              borderRadius: '16px',
-              padding: '14px 16px',
+              width: '100%',
+              maxWidth: '200px',
+              alignItems: 'center',
+              textAlign: 'center',
+              borderRadius: '18px',
+              padding: '16px 12px 12px 12px',
               backgroundColor: 'rgba(255,255,255,0.06)',
               cursor: 'pointer',
-              gap: '4px',
+              gap: '12px',
             }}
           >
-            <Typography sx={{ fontWeight: 750 }}>{i18n._('Add bio')}</Typography>
-            <Typography sx={{ opacity: 0.75 }}>
-              {i18n._("Introduce yourself and tell people what you're into.")}
+            <Stack
+              sx={{
+                padding: '15px',
+                backgroundColor: '#101010',
+                borderRadius: '116px',
+              }}
+            >
+              <Pencil size={17} />
+            </Stack>
+            <Stack sx={{ gap: '2px', alignItems: 'center' }}>
+              <Typography sx={{ fontWeight: 600, textAlign: 'center' }}>
+                {i18n._('Add bio')}
+              </Typography>
+              <Typography variant="caption" sx={{ textAlign: 'center' }}>
+                {i18n._("Introduce yourself and tell people what you're into.")}
+              </Typography>
+            </Stack>
+            <Typography
+              sx={{
+                color: '#222',
+                backgroundColor: '#fff',
+                borderRadius: '12px',
+                padding: '7px 8px',
+                fontSize: '14px',
+                fontWeight: 500,
+                textAlign: 'center',
+                width: '100%',
+              }}
+            >
+              {i18n._('Add bio')}
             </Typography>
           </Stack>
         </Stack>

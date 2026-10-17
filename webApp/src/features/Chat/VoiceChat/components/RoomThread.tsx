@@ -3,12 +3,13 @@
 import { Badge, IconButton, Stack, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { Settings } from 'lucide-react';
-import { RoomMessage, SpeakingRoom } from '../types';
+import { RoomMember, RoomMessage, SpeakingRoom } from '../types';
 import { VoiceMessageRow } from './VoiceMessageRow';
 
 export const RoomThread = ({
   room,
   messages,
+  members,
   audioUrls,
   currentUserId,
   reviewCount,
@@ -20,6 +21,7 @@ export const RoomThread = ({
 }: {
   room: SpeakingRoom;
   messages: RoomMessage[];
+  members?: RoomMember[];
   audioUrls: Record<string, string>;
   currentUserId: string;
   reviewCount: number;
@@ -59,18 +61,22 @@ export const RoomThread = ({
         </Typography>
       ) : (
         <Stack sx={{ gap: '14px' }}>
-          {messages.map((message) => (
-            <VoiceMessageRow
-              key={message.id}
-              message={message}
-              audioUrl={audioUrls[message.id] || null}
-              canRemove={!locked && message.senderId === currentUserId}
-              canLike={!locked}
-              locked={locked}
-              onRemove={() => onRemove(message.id)}
-              onLike={() => onLike?.(message.id)}
-            />
-          ))}
+          {messages.map((message) => {
+            const sender = members?.find((member) => member.userId === message.senderId);
+            return (
+              <VoiceMessageRow
+                key={message.id}
+                message={message}
+                audioUrl={audioUrls[message.id] || null}
+                canRemove={!locked && message.senderId === currentUserId}
+                canLike={!locked}
+                locked={locked}
+                senderBio={sender?.bio || sender?.introTranscript || ''}
+                onRemove={() => onRemove(message.id)}
+                onLike={() => onLike?.(message.id)}
+              />
+            );
+          })}
         </Stack>
       )}
       {composer}

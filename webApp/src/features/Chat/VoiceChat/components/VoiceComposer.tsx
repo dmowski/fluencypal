@@ -26,7 +26,10 @@ export const VoiceComposer = ({
   const showCorrection = recorder.isTranscribing || transcript.length > 0;
 
   return (
-    <Stack data-testid="voice-chat-recorder" sx={{ width: '100%', gap: '12px' }}>
+    <Stack
+      data-testid="voice-chat-recorder"
+      sx={{ width: '100%', gap: '12px', paddingTop: '30px' }}
+    >
       {showCorrection ? (
         <ProcessUserInput
           isTranscribing={recorder.isTranscribing}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Badge, Button, Stack, Tab, Tabs, Typography } from '@mui/material';
 import { useLingui } from '@lingui/react';
 import { useAuth } from '@/features/Auth/useAuth';
@@ -42,9 +42,11 @@ import {
   RoomDraft,
   RoomListItem,
   RoomMember,
+  RoomMessage,
   SpeakingRoom,
 } from './types';
 import { SpeakingNotificationSettings } from './SpeakingNotificationSettings';
+import { useLiveRoomMessages } from './useLiveRoomMessages';
 import { VoiceProfileForm } from './components/VoiceProfileForm';
 
 type RoomSettingsTab = 'settings' | 'notifications' | 'members';
@@ -119,6 +121,8 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     setScreen('room');
     setVoiceRoom(roomId);
     setError('');
+    setAudioUrls({});
+    heardMessageIds.current.clear();
     const token = await auth.getToken();
     if (!token) return;
     const next = await fetchRoomDetail(token, roomId);
@@ -128,10 +132,12 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       await markSpeakingRoomRead(token, roomId);
       const urls: Record<string, string> = {};
       for (const message of next.messages) {
-        if (message.kind === 'join') continue;
+        if (message.kind === 'join' || heardMessageIds.current.has(message.id)) continue;
+        heardMessageIds.current.add(message.id);
         try {
           urls[message.id] = await fetchSpeakingAudio(token, messageAudioPath(roomId, message.id));
         } catch (reason) {
+          heardMessageIds.current.delete(message.id);
           console.error('Could not load a voice message', reason);
         }
       }
@@ -195,14 +201,59 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
     }
   };
 
+  const heardMessageIds = useRef(new Set<string>());
+
   const backToList = () => {
     setScreen('list');
     setVoiceRoom('');
     setDetail(null);
+    setAudioUrls({});
+    heardMessageIds.current.clear();
     setJoinFormOpen(false);
     void setVoiceRoomTab('');
     void loadList().catch(showError);
   };
+
+  const liveRoomId = screen === 'room' ? detail?.room.id || '' : '';
+  const canHearLive = detail?.membership?.status === 'approved';
+
+  const attachNewAudio = (roomId: string, messages: RoomMessage[]) => {
+    if (!canHearLive) return;
+    const missing = messages.filter(
+      (message) => message.kind !== 'join' && !heardMessageIds.current.has(message.id),
+    );
+    if (missing.length === 0) return;
+    missing.forEach((message) => heardMessageIds.current.add(message.id));
+    void (async () => {
+      const token = await auth.getToken();
+      if (!token) return;
+      const urls: Record<string, string> = {};
+      for (const message of missing) {
+        try {
+          urls[message.id] = await fetchSpeakingAudio(token, messageAudioPath(roomId, message.id));
+        } catch (reason) {
+          heardMessageIds.current.delete(message.id);
+          console.error('Could not load a voice message', reason);
+        }
+      }
+      if (Object.keys(urls).length > 0) {
+        setAudioUrls((current) => ({ ...current, ...urls }));
+      }
+    })();
+  };
+
+  useLiveRoomMessages({
+    roomId: liveRoomId,
+    viewerId: auth.uid || '',
+    enabled: Boolean(liveRoomId),
+    onMessages: (sourceRoomId, messages) => {
+      setDetail((current) => {
+        if (!current || current.room.id !== sourceRoomId) return current;
+        return { ...current, messages };
+      });
+      attachNewAudio(sourceRoomId, messages);
+    },
+  });
 
   const roomMenuOpen = roomMenuTab !== '' && Boolean(detail);
   const nestedOpen =
@@ -259,9 +310,14 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
       const token = await auth.getToken();
       if (!token) return;
       const { message } = await sendRoomVoiceMessage(token, detail.room.id, params);
+      heardMessageIds.current.add(message.id);
       const url = await fetchSpeakingAudio(token, messageAudioPath(detail.room.id, message.id));
       setAudioUrls((current) => ({ ...current, [message.id]: url }));
-      setDetail({ ...detail, messages: [...detail.messages, message] });
+      setDetail((current) => {
+        if (!current) return current;
+        if (current.messages.some((item) => item.id === message.id)) return current;
+        return { ...current, messages: [...current.messages, message] };
+      });
     } finally {
       setIsSaving(false);
     }
@@ -444,6 +500,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 <RoomThread
                   room={detail.room}
                   messages={detail.messages}
+                  members={detail.members}
                   audioUrls={audioUrls}
                   currentUserId={auth.uid || ''}
                   reviewCount={reviewCount}
@@ -457,6 +514,7 @@ export const VoiceChatModal = ({ onClose }: { onClose: () => void }) => {
                 <RoomThread
                   room={detail.room}
                   messages={detail.messages}
+                  members={detail.members}
                   audioUrls={{}}
                   currentUserId={auth.uid || ''}
                   reviewCount={0}

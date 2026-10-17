@@ -24,14 +24,11 @@ export const VoiceProfileForm = ({
   const choices = [avatarUrl, ...avatars.filter((url) => url !== avatarUrl)].slice(0, 12);
 
   return (
-    <Stack data-testid="voice-profile-form" sx={{ width: '100%', maxWidth: 640, gap: '16px' }}>
-      <Typography variant="h5" sx={{ fontWeight: 800 }}>
-        {i18n._('My profile')}
-      </Typography>
+    <Stack data-testid="voice-profile-form" sx={{ width: '100%', maxWidth: 640, gap: '20px' }}>
       <Typography sx={{ opacity: 0.75 }}>
         {i18n._('People in a room see your picture, your name, and this introduction.')}
       </Typography>
-      <Stack direction="row" sx={{ gap: '10px', flexWrap: 'wrap' }}>
+      <Stack direction="row" sx={{ gap: '10px', flexWrap: 'wrap', padding: '10px 4px' }}>
         {choices.map((url) => (
           <Avatar
             key={url}
@@ -42,21 +39,23 @@ export const VoiceProfileForm = ({
           />
         ))}
       </Stack>
-      <TextField
-        label={i18n._('Username')}
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-        slotProps={{ htmlInput: { maxLength: 40 } }}
-      />
-      <TextField
-        label={i18n._('Bio')}
-        value={about}
-        multiline
-        minRows={5}
-        onChange={(event) => setAbout(event.target.value)}
-        placeholder={i18n._("Introduce yourself and tell people what you're into.")}
-        slotProps={{ htmlInput: { maxLength: 500 } }}
-      />
+      <Stack sx={{ gap: '15px' }}>
+        <TextField
+          label={i18n._('Username')}
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          slotProps={{ htmlInput: { maxLength: 40 } }}
+        />
+        <TextField
+          label={i18n._('Bio')}
+          value={about}
+          multiline
+          minRows={5}
+          onChange={(event) => setAbout(event.target.value)}
+          placeholder={i18n._("Introduce yourself and tell people what you're into.")}
+          slotProps={{ htmlInput: { maxLength: 500 } }}
+        />
+      </Stack>
       <Button
         data-testid="voice-profile-save"
         variant="contained"

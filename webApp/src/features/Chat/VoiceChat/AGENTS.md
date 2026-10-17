@@ -49,6 +49,7 @@ Private audio lives under `speakingClubs/audio/…`.
 - Modal: `?voiceChat=true`. A room: `?voiceRoom={slug}`. Anonymous visitors do not see it.
 - Avatars and usernames come from the game. A bio is `users/{uid}.speakingBio`.
 - Visitors see the last 7 days of messages and cannot play them. Older messages are removed.
+- An open room listens to `speakingRooms/{roomId}/messages`, so a message from someone else shows up immediately. Audio is fetched only for approved members.
 - Notification settings: `?voiceNotifications=true`. Profile tab: `?voiceSettings=profile`.
 - Room settings tab: `?voiceRoomTab=settings|notifications|members`. Pending reviews open `members`.
 - The review email uses that People link: `voiceChat=true&voiceRoom={slug}&voiceRoomTab=members`.

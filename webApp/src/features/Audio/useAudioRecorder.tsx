@@ -34,7 +34,9 @@ export const useAudioRecorder = () => {
   const recordingMilliSeconds = recorderControls.recordingTime;
   useEffect(() => {
     const seconds = Math.floor(recordingMilliSeconds / 1000);
-    setRecordingSeconds(seconds);
+    // The visualizer resets recordingTime to 0 when recording stops. Keep the
+    // length that was reached so Send still knows it was about a minute.
+    if (seconds > 0) setRecordingSeconds(seconds);
   }, [recordingMilliSeconds]);
   useEffect(() => {
     if (!recorderControls.recordedBlob) return;
@@ -117,6 +119,7 @@ export const useAudioRecorder = () => {
         }
       }
 
+      setRecordingSeconds(0);
       recorderControls.startRecording();
       isCancel.current = false;
     } finally {
@@ -134,6 +137,7 @@ export const useAudioRecorder = () => {
       cancelRecording();
       return;
     }
+    setRecordingSeconds(seconds);
     if (auth.uid) {
       setIsTranscribing(true);
     }

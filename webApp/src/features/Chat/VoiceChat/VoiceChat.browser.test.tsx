@@ -279,6 +279,29 @@ test('a visitor sees messages without being able to play them', async () => {
   await expect.element(page.getByTestId('voice-room-thread')).toMatchScreenshot('room-preview');
 });
 
+test('clicking a message avatar shows that person', async () => {
+  await shell(
+    <RoomThread
+      room={room}
+      messages={[message]}
+      members={[member({ userId: 'maria', username: 'Maria', bio: 'I cook on Sundays.' })]}
+      audioUrls={{}}
+      currentUserId="me"
+      reviewCount={0}
+      onOpenSettings={() => {}}
+      onRemove={() => {}}
+      composer={null}
+    />,
+  );
+  await userEvent.click(page.getByTestId('voice-chat-avatar-maria'));
+  await expect.element(page.getByTestId('voice-message-profile')).toBeVisible();
+  await expect.element(page.getByRole('heading', { name: 'Maria' })).toBeVisible();
+  await expect.element(page.getByText('I cook on Sundays.')).toBeVisible();
+  await expect
+    .element(page.getByTestId('voice-message-profile'))
+    .toMatchScreenshot('message-profile');
+});
+
 test('unfinished profile asks for a bio', async () => {
   await shell(
     <RoomListView
@@ -296,7 +319,7 @@ test('unfinished profile asks for a bio', async () => {
   );
   await document.fonts.ready;
   await expect.element(page.getByText('Finish your profile')).toBeVisible();
-  await expect.element(page.getByText('Add bio')).toBeVisible();
+  await expect.element(page.getByTestId('voice-add-bio')).toBeVisible();
   await expect.element(page.getByTestId('voice-add-bio')).toMatchScreenshot('room-list-bio');
 });
 

@@ -9,9 +9,7 @@ Twitter/Instagram/Threads/SubStuck/YouTube/TikTok
 
 Voice Chat Open questions:
 
-- How to make them talking?
-
-Todo:
+- How to make people talking?. Invite my friends, start talking, invite users directly
 
 =======
 

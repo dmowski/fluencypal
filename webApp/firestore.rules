@@ -479,9 +479,7 @@ service cloud.firestore {
       }
 
       match /messages/{messageId} {
-        allow read: if isSignedIn()
-          && exists(/databases/$(database)/documents/speakingRooms/$(roomId)/members/$(request.auth.uid))
-          && get(/databases/$(database)/documents/speakingRooms/$(roomId)/members/$(request.auth.uid)).data.status == 'approved';
+        allow read: if isSignedIn();
         allow write: if false;
       }
     }
